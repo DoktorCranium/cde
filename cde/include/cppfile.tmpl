@@ -1,0 +1,7 @@
+CLEANFILES += $(CPPTARGET)
+
+all:: $(CPPTARGET)
+
+$(CPPTARGET):: $(CPPSRC)
+	$(RM) $@
+	$(CPP) -P -DXCOMM=# $(SCRIPTFLAGS) < $(CPPSRC) > $@
