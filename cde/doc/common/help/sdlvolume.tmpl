@@ -1,0 +1,11 @@
+all:: ../help-sdl/$(NAME).sdl
+
+../help-sdl/$(NAME).sdl: $(SRCS)
+	$(MKDIR_P) ../help-sdl
+	LANG=$(LANG) SGML_SEARCH_PATH=".:.." $(LD_LIBRARY_PATH) \
+	DTLCXSEARCHPATH=$(srcdir)/lib/dthelp $(KSH) \
+	$(srcdir)/programs/dtdocbook/doc2sdl/dtdocbook -o \
+	../help-sdl/$(NAME).sdl $(NAME)/book.sgm
+
+clean::
+	$(RM) ../help-sdl/$(NAME).sdl $(NAME)/book.log
