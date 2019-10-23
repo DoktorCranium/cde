@@ -1,0 +1,85 @@
+csadir = $(includedir)/csa
+
+MAINTAINERCLEANFILES = Makefile.in
+
+CLEANFILES = agent.h agent_xdr.c cm_clnt.c reparser.c reparser.h \
+             rtable2_clnt.c rtable2_xdr.c rtable3_clnt.c rtable3_xdr.c \
+             rtable4_clnt.c rtable4_xdr.c
+
+lib_LTLIBRARIES = libcsa.la
+
+libcsa_la_CFLAGS = -DRFC_MIME -DLINE_COUNT -DV2 -DOW_I18N $(TIRPCINC)
+
+libcsa_la_LIBADD = -lXt $(TIRPCLIB)
+
+libDtMrm_la_LDFLAGS = -version-info 2:1:0
+
+if SUN
+libcsa_la_LDFLAGS += -G -z text -z defs
+libcsa_la_CFLAGS += -v
+endif
+
+if HPUX
+libcsa_la_CFLAGS += -DHPUX
+endif
+
+if LINUX
+else
+libcsa_la_LIBADD += $(LIBSVC) -lXm
+endif
+
+csa_HEADERS = csa.h
+
+GENERATED_SRCS = agent_xdr.c cm_clnt.c reparser.c reparser.h \
+        rtable2_clnt.c rtable2_xdr.c rtable3_clnt.c rtable3_xdr.c \
+        rtable4_clnt.c rtable4_xdr.c
+
+all::
+
+libcsa_la_SOURCES = agent.c         agent_xdr.c     api.c \
+		    appt4.c         attr.c          calendar.c \
+		    cm_clnt.c       cmcbxdr.c       cmsdata.c \
+		    cmxdr.c         connection.c    convert2-4.c \
+		    convert3-4.c    convert4-2.c    convert4-3.c \
+		    convert4-5.c    convert5-4.c    debug.c \
+		    entry.c         free.c          hash.c \
+		    iso8601.c       laccess.c       lutil.c \
+		    match.c         nametbl.c       refree.c \
+		    reparser.c      rescan.c        rpccalls.c \
+		    rtable2_clnt.c  rtable2_xdr.c   rtable3_clnt.c \
+		    rtable3_xdr.c   rtable4_clnt.c  rtable4_xdr.c \
+		    table.c         updateattrs.c   xtclient.c \
+		    ansi_c.c
+
+.SUFFIXES: .y
+
+.y.c:
+	$(YACC) -d $(YFLAGS) $<
+	sed -e s/yyparse/_DtCm_rule_parser/g -e s/yy/_DtCm_yy/g y.tab.c > $*.c
+	sed s/yy/_DtCm_yy/g y.tab.h > $*.h
+	$(RM) y.tab.c y.tab.h
+
+reparser.o:     reparser.c
+
+rtable2_clnt.c rtable3_clnt.c rtable4_clnt.c cm_clnt.c:
+	$(RM) $@
+	cat EUSinclude > $@
+	rpcgen -l $(@:_clnt.c=.x) | sed -f namechange1.sed | sed -f namechange2.sed >> $@
+
+rtable2_xdr.c rtable3_xdr.c rtable4_xdr.c agent_xdr.c:
+	$(RM) $@
+	cat EUSinclude > $(@:.x=_xdr.c)
+	rpcgen -c $(@:_xdr.c=.x) | sed -f namechange1.sed | sed -f namechange2.sed >> $(@:.x=_xdr.c)
+
+rtable4_clnt.c rtable4_xdr.c: rtable4.h namechange1.sed namechange2.sed
+rtable3_clnt.c rtable3_xdr.c: rtable3.h namechange1.sed namechange2.sed
+rtable2_clnt.c rtable2_xdr.c: rtable3.h namechange1.sed namechange2.sed
+agent_xdr.c agent.c: agent.h
+
+agent.h:
+	$(RM) $@
+	cat agent.wrapbegin > agent.h
+	rpcgen -h agent.x | $(SED) -f namechange1.sed | $(SED) -f namechange2.sed >> agent.h
+	cat agent.wrapend >> agent.h
+
+.SUFFIXES: .x
