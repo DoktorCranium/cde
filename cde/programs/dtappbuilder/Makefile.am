@@ -1,0 +1,7 @@
+MAINTAINERCLEANFILES = Makefile.in
+
+if SUN
+.NO_PARALLEL:
+endif
+
+SUBDIRS = src
