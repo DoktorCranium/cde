@@ -1,0 +1,23 @@
+MAINTAINERCLEANFILES = Makefile.in
+
+include ../../tooltalk.tmpl
+
+bin_PROGRAMS = ttsession
+
+ttsession_CXXFLAGS = -I../../slib -I../../lib $(TIRPCINC) $(TT_VERSION_DEFINE)
+
+ttsession_LDADD = $(LIBTT) $(X_LIBS) ../../slib/libstt.a
+
+if LINUX
+ttsession_LDADD += $(TIRPCLIB) $(XTOOLLIB)
+endif
+
+if SUN
+ttsession_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
+endif
+
+if OPENBSD
+ttsession_LDADD += $(XTOOLLIB)
+endif
+
+ttsession_SOURCES = mp_server.C
