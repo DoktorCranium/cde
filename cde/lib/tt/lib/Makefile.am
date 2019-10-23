@@ -17,8 +17,8 @@ endif
 libtt_la_LIBADD = api/c/libapi.la api/dnd/libdnd.la db/libdb.la mp/libmp.la \
 		  tttk/libtttk.la
 
-if SUN
+if SOLARIS
 libtt_la_LIBADD += -lnsl -lsocket -lintl -ldl -lc -lw
 endif
 
-libDtMrm_la_LDFLAGS = -version-info 2:1:0
+libtt_la_LDFLAGS = -version-info 2:1:0

@@ -6,15 +6,6 @@ libDtUtil2_la_CFLAGS = -DCDE_INSTALLATION_TOP=\"${prefix}\" \
 		       -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
 		       -DMULTIBYTE -DUSE_XINERAMA $(TIRPCINC)
 
-if SUN
-libDtUtil2_la_SOURCES += SunDtHelp.c
-libDtUtil2_la_CFLAGS += -I../../DtHelp -DNO_REGCOMP
-endif
-
-if HPUX
-libDtUtil2_la_CFLAGS += -DMESSAGE_CAT
-endif
-
 
 libDtUtil2_la_SOURCES = ChkpntClient.c ChkpntListen.c DtEnvMap.c \
 			DtNlUtils.c EnvControl.c FileUtil.c \
@@ -26,3 +17,14 @@ libDtUtil2_la_SOURCES = ChkpntClient.c ChkpntListen.c DtEnvMap.c \
 			XmWrap.c addToRes.c lock.c \
 			SvcTT.c MsgCat.c MsgLog.c \
 			LocaleXlate.c XlationSvc.c
+
+if SOLARIS
+libDtUtil2_la_SOURCES += SunDtHelp.c
+libDtUtil2_la_CFLAGS += -I../../DtHelp -DNO_REGCOMP
+endif
+
+if HPUX
+libDtUtil2_la_CFLAGS += -DMESSAGE_CAT
+endif
+
+

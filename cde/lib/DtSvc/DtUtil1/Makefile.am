@@ -6,12 +6,12 @@ libDtUtil1_la_CFLAGS = -I../include $(TIRPCINC) -DMULTIBYTE \
 		       -DCDE_INSTALLATION_TOP=\"${prefix}\" \
 		       -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\"
 
-if SUN
+if SOLARIS
 libDtUtil1_la_CFLAGS += -DNO_REGCOMP
 endif
 
 if HPUX
-libDtUtil2_la_CFLAGS += -DMESSAGE_CAT
+libDtUtil1_la_CFLAGS += -DMESSAGE_CAT
 endif
 
 libDtUtil1_la_SOURCES = Action.c ActionTt.c ActionDb.c ActionFind.c \

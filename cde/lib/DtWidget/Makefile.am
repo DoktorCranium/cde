@@ -12,27 +12,29 @@ AM_CPPFLAGS = -DCDE_INSTALLATION_TOP=${prefix}
 
 libDtWidget_la_CFLAGS = -DI18N_MSG -DMULTIBYTE
 
+libDtWidget_la_LDFLAGS = -version-info 2:1:0
+
 if LINUX
 libDtWidget_la_CFLAGS += -I/usr/include/freetype2
 endif
 
-if CSRG
+if BSD
 libDtWidget_la_CFLAGS += -I$(x_includes)/freetype2
+endif
+
 if NETBSD
  libDtWidget_la_CFLAGS += -I$(x_includes)
 endif
-endif
 
-if SUN
+if SOLARIS
 libDtWidget_la_CFLAGS += -DNO_REGCOMP
-libDtWidget_la_LIBADD += -lXm -lc -lw -lm -lintl
+libDtWidget_la_LIBADD = -lXm -lc -lw -lm -lintl
 endif
 
 if HPUX
 libDtWidget_la_CFLAGS += -DMESSAGE_CAT
 endif
 
-libDtWidget_la_LIBADD += -version-info 2:1:0
 
 libDtWidget_la_SOURCES = ComboBox.c      Control.c       DialogBox.c \
 			 DtMsgs.c        DtStrDefs.c     EditAreaData.c \
@@ -43,4 +45,5 @@ libDtWidget_la_SOURCES = ComboBox.c      Control.c       DialogBox.c \
 
 CPPTARGET = UNIXbindings
 CPPSRC = UNIXbindings.cpp
-include $(srcdir)/include/cppfile.tmpl
+# FIXME
+#include $(srcdir)/include/cppfile.tmpl

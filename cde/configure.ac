@@ -4,6 +4,8 @@ AC_CONFIG_HEADERS([include/config.h])
 AM_INIT_AUTOMAKE([foreign])
 AC_PREFIX_DEFAULT(/usr/dt)
 
+ACLOCAL_AMFLAGS = -I m4 --install
+
 dnl todo: determine what version of autoconf we depend on
 dnl AC_PREREQ()
 
@@ -135,7 +137,7 @@ AC_SUBST(LIBXIN)
 AC_SUBST(LIBWIDGET)
 AC_SUBST(LIBTERM)
 AC_SUBST(LIBSVC)
-AC_SUSBT(LIBSEARCH)
+AC_SUBST(LIBSEARCH)
 AC_SUBST(LIBPRINT)
 AC_SUBST(LIBMRM)
 AC_SUBST(LIBMMDB)
@@ -194,4 +196,66 @@ AC_C_CONST
 AC_PATH_X
 AC_PATH_XTRA
 
+dnl All of the makefile we need to generate go here...
+AC_CONFIG_FILES([
+Makefile
+
+lib/Makefile
+
+lib/DtXinerama/Makefile
+
+lib/tt/Makefile
+lib/tt/mini_isam/Makefile
+lib/tt/slib/Makefile
+lib/tt/lib/Makefile
+lib/tt/lib/api/Makefile
+lib/tt/lib/api/dnd/Makefile
+lib/tt/lib/api/c/Makefile
+lib/tt/lib/tttk/Makefile
+lib/tt/lib/db/Makefile
+lib/tt/lib/mp/Makefile
+lib/tt/bin/Makefile
+lib/tt/bin/shell/Makefile
+lib/tt/bin/ttauth/Makefile
+lib/tt/bin/scripts/Makefile
+lib/tt/bin/tttar/Makefile
+lib/tt/bin/tt_type_comp/Makefile
+lib/tt/bin/tttrace/Makefile
+lib/tt/bin/dbck/Makefile
+lib/tt/bin/ttdbserverd/Makefile
+lib/tt/bin/ttsession/Makefile
+
+lib/DtSvc/Makefile
+lib/DtSvc/DtUtil1/Makefile
+lib/DtSvc/DtUtil2/Makefile
+lib/DtSvc/DtEncap/Makefile
+lib/DtSvc/DtCodelibs/Makefile
+lib/DtSvc/DtXpm/Makefile
+
+lib/DtSearch/Makefile
+lib/DtSearch/raima/Makefile
+
+lib/DtWidget/Makefile
+
+lib/DtHelp/Makefile
+lib/DtHelp/il/Makefile
+
+lib/DtPrint/Makefile
+
+lib/DtTerm/Term/Makefile
+lib/DtTerm/Makefile
+lib/DtTerm/TermView/Makefile
+lib/DtTerm/util/Makefile
+lib/DtTerm/TermPrim/Makefile
+
+lib/DtMrm/Makefile
+
+lib/csa/Makefile
+
+logs/Makefile
+
+programs/Makefile
+])
+
 AC_OUTPUT
+

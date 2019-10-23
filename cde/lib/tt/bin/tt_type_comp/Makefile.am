@@ -13,7 +13,7 @@ if LINUX
 tt_type_comp_LDADD += $(TIRPCLIB) $(XTOOLLIB)
 endif
 
-if SUN
+if SOLARIS
 tt_type_comp_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
 endif
 

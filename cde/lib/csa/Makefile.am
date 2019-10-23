@@ -12,9 +12,9 @@ libcsa_la_CFLAGS = -DRFC_MIME -DLINE_COUNT -DV2 -DOW_I18N $(TIRPCINC)
 
 libcsa_la_LIBADD = -lXt $(TIRPCLIB)
 
-libDtMrm_la_LDFLAGS = -version-info 2:1:0
+libcsa_la_LDFLAGS = -version-info 2:1:0
 
-if SUN
+if SOLARIS
 libcsa_la_LDFLAGS += -G -z text -z defs
 libcsa_la_CFLAGS += -v
 endif
@@ -51,7 +51,7 @@ libcsa_la_SOURCES = agent.c         agent_xdr.c     api.c \
 		    table.c         updateattrs.c   xtclient.c \
 		    ansi_c.c
 
-.SUFFIXES: .y
+SUFFIXES = .y
 
 .y.c:
 	$(YACC) -d $(YFLAGS) $<
@@ -82,4 +82,4 @@ agent.h:
 	rpcgen -h agent.x | $(SED) -f namechange1.sed | $(SED) -f namechange2.sed >> agent.h
 	cat agent.wrapend >> agent.h
 
-.SUFFIXES: .x
+SUFFIXES = .x

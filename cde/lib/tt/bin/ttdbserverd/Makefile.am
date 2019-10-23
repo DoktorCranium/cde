@@ -12,7 +12,7 @@ if LINUX
 rpc_ttdbserver_LDADD += $(TIRPCLIB) $(XTOOLLIB)
 endif
 
-if SUN
+if SOLARIS
 rpc_ttdbserver_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
 endif
 

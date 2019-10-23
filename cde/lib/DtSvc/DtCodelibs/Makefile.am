@@ -8,7 +8,7 @@ if AIX
 libDtCodelibs_la_CXXFLAGS = -qlanglvl=compat
 endif
 
-if SUN
+if SOLARIS
 libDtCodelibs_la_CXXFLAGS = -DNO_REGCOMP
 endif
 

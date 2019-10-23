@@ -10,7 +10,7 @@ libDtHelp_la_CFLAGS = -I./il -I./jpeg -I../DtSvc/DtUtil2 -DDTLIB \
 
 libDtHelp_la_LIBADD = -ljpeg il/libil.la
 
-if SUN
+if SOLARIS
 libDtHelp_la_CFLAGS += -DICONV_INBUF_CONST=const -DLSB_BIT_ORDER
 libDtHelp_la_LIBADD += -lw -lgen -lm -lc $(XTOOLLIB) ${X_LIBS}
 endif
@@ -53,4 +53,4 @@ libDtHelp_la_SOURCES = Actions.c       AsciiSpc.c      Callbacks.c \
 		       Layout.c        LayoutUtil.c    LinkMgr.c \
 		       Selection.c     VirtFuncs.c
 
-libDtMrm_la_LDFLAGS = -version-info 2:1:0
+libDtHelp_la_LDFLAGS = -version-info 2:1:0

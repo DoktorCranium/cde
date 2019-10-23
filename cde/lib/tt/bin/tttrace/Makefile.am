@@ -12,7 +12,7 @@ if LINUX
 tttrace_LDADD += $(TIRPCLIB) $(XTOOLLIB)
 endif
 
-if SUN
+if SOLARIS
 tttrace_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
 endif
 

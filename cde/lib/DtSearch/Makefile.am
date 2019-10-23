@@ -21,7 +21,7 @@ if BSD
 libDtSearch_la_CFLAGS += -DBYTE_SWAP
 endif
 
-if SUN
+if SOLARIS
 libDtSearch_la_CFLAGS += -DBYTE_SWAP
 libDtSearch_la_LIBADD += -lm -lc
 endif

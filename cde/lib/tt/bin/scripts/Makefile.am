@@ -11,4 +11,5 @@ all:: ttce2xdr
 CPPTARGET = ttce2xdr
 CPPSRC = ttce2xdr.cpp
 
-include $(srcdir)/include/cppfile.tmpl
+# FIXME - need solution here
+# include $(srcdir)/include/cppfile.tmpl

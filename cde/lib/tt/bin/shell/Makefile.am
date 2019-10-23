@@ -12,7 +12,7 @@ if LINUX
 AM_LDADD += $(TIRPCLIB) $(XTOOLLIB)
 endif
 
-if SUN
+if SOLARIS
 AM_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
 endif
 

@@ -10,7 +10,7 @@ if LINUX
 ttdbck_LDADD += $(TIRPCLIB) $(XTOOLLIB)
 endif
 
-if SUN
+if SOLARIS
 ttdbck_LDADD += $(XTOOLLIB)
 endif
 
@@ -18,7 +18,7 @@ if OPENBSD
 ttdbck_LDADD += $(XTOOLLIB)
 endif
 
-ttdbck_CXXFLAGS += $(TIRPCINC) -I../../slib -I../../lib -I../../mini_isam \
+ttdbck_CXXFLAGS = $(TIRPCINC) -I../../slib -I../../lib -I../../mini_isam \
 		   $(TT_VERSION_DEFINE)
 
 ttdbck_SOURCES = binkey.C        binkey_utils.C  common.C \

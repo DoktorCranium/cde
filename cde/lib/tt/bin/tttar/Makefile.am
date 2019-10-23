@@ -10,7 +10,7 @@ if LINUX
 tttar_LDADD += $(TIRPCLIB) $(XTOOLLIB)
 endif
 
-if SUN
+if SOLARIS
 tttar_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
 endif
 

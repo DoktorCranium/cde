@@ -6,7 +6,7 @@ noinst_LTLIBRARIES = libmp.la
 
 libmp_la_CXXFLAGS = $(TIRPCINC) -I../../lib -I../../mini_isam
 
-libmpa_la_SOURCES = mp_arg.C            mp_arg_utils.C          mp_auth.C \
+libmp_la_SOURCES = mp_arg.C            mp_arg_utils.C          mp_auth.C \
         mp_auth_functions.C mp_c_file.C \
         mp_c_file_utils.C   mp_c_message.C          mp_c_message_utils.C \
         mp_c_mp.C           mp_c_msg_context.C      mp_c_msg_context_utils.C \

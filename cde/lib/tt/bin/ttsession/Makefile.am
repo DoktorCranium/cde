@@ -12,7 +12,7 @@ if LINUX
 ttsession_LDADD += $(TIRPCLIB) $(XTOOLLIB)
 endif
 
-if SUN
+if SOLARIS
 ttsession_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
 endif
 

@@ -6,14 +6,14 @@ lib_LTLIBRARIES = libDtTerm.la
 
 libDtTerm_la_SOURCES =
 
-libDtTerm_la_LIBADD += Term/libTerm.la TermPrim/libTermPrim.la \
+libDtTerm_la_LIBADD = Term/libTerm.la TermPrim/libTermPrim.la \
 		       TermView/libTermView.la
 
 if OPENBSD
 libDtTerm_la_LIBADD += -lutil
 endif
 
-if SUN
+if SOLARIS
 libDtTerm_la_LIBADD += -ldl -lgen
 endif
 

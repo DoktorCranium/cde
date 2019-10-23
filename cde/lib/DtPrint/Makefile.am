@@ -4,7 +4,7 @@ lib_LTLIBRARIES = libDtPrint.la
 
 libDtPrint_la_CFLAGS = -DMULTIBYTE -DI18N_MSG
 
-if SUN
+if SOLARIS
 libDtPrint_la_CFLAGS += -DNO_REGCOMP
 endif
 

@@ -16,7 +16,7 @@ if BSD
 libraima_la_CFLAGS += DBYTE_SWAP -D_XOPEN_SOURCE=700
 endif
 
-if SUN
+if SOLARIS
 libraima_la_CFLAGS += -DBYTE_SWAP -D_XOPEN_SOURCE=500 -DNO_REGCOMP
 endif
 

@@ -10,7 +10,7 @@ if LINUX
 ttauth_LDADD += $(TIRPCLIB) $(XTOOLLIB)
 endif
 
-if SUN
+if SOLARIS
 ttauth_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
 endif
 

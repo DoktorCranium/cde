@@ -7,7 +7,7 @@ libDtEncap_la_CFLAGS = -DMULTIBYTE -I../include -I../DtUtil2 $(TIRPCINC) \
 		       -DCDE_INSTALLATION_TOP=\"${prefix}\" \
 		       -DCDE_LOGFILES_TOP=\"$(CDE_LOGFILES_TOP)/tmp\"
 
-if SUN
+if SOLARIS
 libDtEncap_la_CFLAGS += -DNO_REGCOMP
 endif
 
