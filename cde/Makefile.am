@@ -10,6 +10,3 @@ MAINTAINERCLEANFILES = Makefile.in \
 
 SUBDIRS = lib logs programs doc
 
-AUTOMAKE_OPTIONS = 1.4
-
-ACLOCAL_AMFLAGS = -I admin
