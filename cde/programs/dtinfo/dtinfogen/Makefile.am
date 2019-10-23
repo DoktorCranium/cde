@@ -1,0 +1,1 @@
+SUBDIRS = mmdb infolib install
