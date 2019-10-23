@@ -1,5 +1,5 @@
 AC_INIT([cde-desktop], [2.3.1], [jon@radscan.com])
-AC_CONFIG_AUX_DIR([admin])
+AC_CONFIG_AUX_DIR([m4])
 AC_CONFIG_HEADERS([include/config.h])
 AM_INIT_AUTOMAKE([foreign])
 AC_PREFIX_DEFAULT(/usr/dt)
