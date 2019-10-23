@@ -1,0 +1,3 @@
+MAINTAINERCLEANFILES = Makefile.am
+
+SUBDIRS = PrintObj
