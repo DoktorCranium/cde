@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-include ../../tooltalk.tmpl
+include ../../tooltalk.inc
 
 bin_PROGRAMS = tt_type_comp
 

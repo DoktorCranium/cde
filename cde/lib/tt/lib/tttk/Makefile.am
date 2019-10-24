@@ -2,7 +2,7 @@ headerdir = ${prefix}/share/include/Tt
 
 MAINTAINERCLEANFILES = Makefile.in
 
-include ../../tooltalk.tmpl
+include ../../tooltalk.inc
 
 header_HEADERS = tttk.h
 

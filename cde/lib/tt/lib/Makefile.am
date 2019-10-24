@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 SUBDIRS = api db mp util tttk
 
-include ../tooltalk.tmpl
+include ../tooltalk.inc
 
 lib_LTLIBRARIES = libtt.la
 

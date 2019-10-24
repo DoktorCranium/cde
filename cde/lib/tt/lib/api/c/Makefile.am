@@ -2,7 +2,7 @@ ttdir = ${includedir}/Tt
 
 MAINTAINERCLEANFILES = Makefile.in
 
-include ../../../tooltalk.tmpl
+include ../../../tooltalk.inc
 
 tt_HEADERS = tt_c.h
 
