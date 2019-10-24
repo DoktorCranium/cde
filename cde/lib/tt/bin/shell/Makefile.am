@@ -1,23 +1,23 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-include ../../tooltalk.tmpl
+include ../../tooltalk.inc
 
 bin_PROGRAMS = ttmv ttrm ttcp ttrmdir
 
 AM_CXXFLAGS = -I../../lib $(TIRPCINC) $(TT_VERSION_DEFINE)
 
-AM_LDADD = $(LIBTT) $(X_LIBS)
+LDADD = $(LIBTT) $(X_LIBS)
 
 if LINUX
-AM_LDADD += $(TIRPCLIB) $(XTOOLLIB)
+LDADD += $(TIRPCLIB) $(XTOOLLIB)
 endif
 
 if SOLARIS
-AM_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
+LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
 endif
 
 if OPENBSD
-AM_LDADD += $(XTOOLLIB)
+LDADD += $(XTOOLLIB)
 endif
 
 ttmv_SOURCES = ttmv.C mover.C
