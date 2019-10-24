@@ -1,10 +1,9 @@
 AC_INIT([cde-desktop], [2.3.1], [jon@radscan.com])
-AC_CONFIG_AUX_DIR([m4])
 AC_CONFIG_HEADERS([include/config.h])
+AC_CONFIG_MACRO_DIRS([m4])
 AM_INIT_AUTOMAKE([foreign])
 AC_PREFIX_DEFAULT(/usr/dt)
 
-ACLOCAL_AMFLAGS = -I m4 --install
 
 dnl todo: determine what version of autoconf we depend on
 dnl AC_PREREQ()
@@ -36,8 +35,6 @@ build_aix=no
 case "${host_os}" in
 	linux*)
 		build_linux=yes
-		tirpcinc=yes
-		tirpclib=yes
 		;;
 	freebsd*)
 		build_freebsd=yes
@@ -70,19 +67,6 @@ AM_CONDITIONAL([NETBSD], [test "$build_netbsd" = "yes"])
 AM_CONDITIONAL([SOLARIS], [test "$build_solaris" = "yes"])
 AM_CONDITIONAL([AIX], [test "$build_aix" = "yes"])
 AM_CONDITIONAL([HPUX], [test "$build_hpux" = "yes"])
-
-if test $tirpcinc = "yes"
-then
-    TIRPCINC = -I/usr/include/tirpc
-fi;
-
-if test $tirpclib = "yes"
-then
-    TIRPCLIB = -ltirpc
-fi;
-
-AC_SUBST(TIRPCINC)
-AC_SUBST(TIRPCLIB)
 
 is_x86_64=no
 is_i386=no
@@ -177,12 +161,6 @@ AC_PROG_CPP
 AM_PROG_LIBTOOL
 AC_PROG_YACC
 
-AC_CHECK_PROGS(KSH, ksh)
-AC_CHECK_PROGS(BDFTOPCF, bdftopcf)
-AC_CHECK_PROGS(MKFONTIDR, mkfontdir)
-AC_CHECK_PROGS(GZIP, gzip)
-AC_CHECK_PROGS(M4, m4)
-
 AM_PROG_LEX
 AC_PROG_INSTALL
 AC_PROG_LN_S
@@ -196,7 +174,22 @@ AC_C_CONST
 AC_PATH_X
 AC_PATH_XTRA
 
-dnl All of the makefile we need to generate go here...
+dnl programs
+AC_CHECK_PROGS(KSH, ksh)
+AC_CHECK_PROGS(BDFTOPCF, bdftopcf)
+AC_CHECK_PROGS(MKFONTIDR, mkfontdir)
+AC_CHECK_PROGS(GZIP, gzip)
+AC_CHECK_PROGS(M4, m4)
+
+dnl headers
+AC_HEADER_STDC
+
+dnl libraries
+AC_CHECK_LIB(tirpc, main, [TIRPCINC=-I/usr/include/tirpc; TIRPCLIB=-ltirpc])
+AC_SUBST(TIRPCINC)
+AC_SUBST(TIRPCLIB)
+
+dnl All of the makefiles we need to generate go here...
 AC_CONFIG_FILES([
 Makefile
 
