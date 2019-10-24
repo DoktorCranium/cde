@@ -68,6 +68,15 @@ AM_CONDITIONAL([SOLARIS], [test "$build_solaris" = "yes"])
 AM_CONDITIONAL([AIX], [test "$build_aix" = "yes"])
 AM_CONDITIONAL([HPUX], [test "$build_hpux" = "yes"])
 
+dnl set CSRG_BASED define for the BSD's
+if test "$build_bsd" = "yes"
+then
+        oflags="$CFLAGS"
+        CFLAGS="$oflags -DCSRG_BASED"
+        oflags="$CXXFLAGS"
+        CXXFLAGS="$oflags -DCSRG_BASED"
+fi
+
 is_x86_64=no
 is_i386=no
 is_sparc=no
