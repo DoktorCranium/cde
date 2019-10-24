@@ -1,5 +1,5 @@
 AC_INIT([cde-desktop], [2.3.1], [jon@radscan.com])
-AC_CONFIG_HEADERS([include/config.h])
+AC_CONFIG_HEADERS([include/autotools_config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AM_INIT_AUTOMAKE([foreign])
 AC_PREFIX_DEFAULT(/usr/dt)
@@ -71,10 +71,8 @@ AM_CONDITIONAL([HPUX], [test "$build_hpux" = "yes"])
 dnl set CSRG_BASED define for the BSD's
 if test "$build_bsd" = "yes"
 then
-        oflags="$CFLAGS"
-        CFLAGS="$oflags -DCSRG_BASED"
-        oflags="$CXXFLAGS"
-        CXXFLAGS="$oflags -DCSRG_BASED"
+        oflags="$CPPFLAGS"
+        CPPFLAGS="$oflags -DCSRG_BASED"
 fi
 
 is_x86_64=no
@@ -123,7 +121,8 @@ LIBMRM="$srcdir/lib/DtMrm/libDtMrm.so.2.1"
 LIBMMDB="$srcdir/lib/DtMmdb/libDtMmdb.so.2.1"
 LIBHELP="$srcdir/lib/DtHelp/libDtHelp.so.2.1"
 LIBCSA="$srcdir/lib/csa/libcsa.so.2.1"
-XTOOLLIB=-lICE -lSM -lXt
+dnl JET FIXME
+XTOOLLIB="-lICE -lSM -lXt"
 
 AC_SUBST(LIBTT)
 AC_SUBST(LIBXIN)
