@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-include ../tooltalk.tmpl
+include ../tooltalk.inc
 
 noinst_LIBRARIES= libisam.a
 

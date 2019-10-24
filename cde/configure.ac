@@ -185,7 +185,7 @@ dnl headers
 AC_HEADER_STDC
 
 dnl libraries
-AC_CHECK_LIB(tirpc, main, [TIRPCINC=-I/usr/include/tirpc; TIRPCLIB=-ltirpc])
+AC_CHECK_LIB(tirpc, main, [TIRPCINC="-DOPT_TIRPC -I/usr/include/tirpc"; TIRPCLIB=-ltirpc])
 AC_SUBST(TIRPCINC)
 AC_SUBST(TIRPCLIB)
 
