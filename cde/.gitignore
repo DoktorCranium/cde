@@ -2443,7 +2443,6 @@ debian/.debhelper
 
 # autotools things...
 Makefile.in
-.deps
 aclocal.m4
 autom4te.cache/
 config.log
@@ -2461,6 +2460,10 @@ depcomp
 install-sh
 ltmain.sh
 missing
-
+*.lo
+*.la
+.libs
+.deps
+.objs
 
 
