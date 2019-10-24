@@ -51,13 +51,6 @@ libcsa_la_SOURCES = agent.c         agent_xdr.c     api.c \
 		    table.c         updateattrs.c   xtclient.c \
 		    ansi_c.c
 
-SUFFIXES = .y
-
-.y.c:
-	$(YACC) -d $(YFLAGS) $<
-	sed -e s/yyparse/_DtCm_rule_parser/g -e s/yy/_DtCm_yy/g y.tab.c > $*.c
-	sed s/yy/_DtCm_yy/g y.tab.h > $*.h
-	$(RM) y.tab.c y.tab.h
 
 reparser.o:     reparser.c
 
@@ -82,4 +75,3 @@ agent.h:
 	rpcgen -h agent.x | $(SED) -f namechange1.sed | $(SED) -f namechange2.sed >> agent.h
 	cat agent.wrapend >> agent.h
 
-SUFFIXES = .x
