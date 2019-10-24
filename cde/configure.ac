@@ -141,7 +141,7 @@ AC_ARG_ENABLE(japanese, [--build-japanese    Build Japanese (default=no)])
 AM_CONDITIONAL([JAPANESE], [test "build_japanese" = "yes"])
 
 AC_ARG_ENABLE(german, [--build-german    Build German    (default=no)])
-AM_CONDITIONAL([GERMAN], [test "build_japanese" = "yes"])
+AM_CONDITIONAL([GERMAN], [test "build_german" = "yes"])
 
 AC_ARG_ENABLE(italian, [--build-italian    Build Italian    (default=no)])
 AM_CONDITIONAL([ITALIAN], [test "build_italian" = "yes"])
@@ -150,7 +150,7 @@ AC_ARG_ENABLE(french, [--build-french    Build French    (default=no)])
 AM_CONDITIONAL([FRENCH], [test "build_french" = "yes"])
 
 AC_ARG_ENABLE(spanish, --build-spanish    Build Spanish    (default=no)])
-AM_CONDITIONAL([FRENCH], [test "build_french" = "yes"])
+AM_CONDITIONAL([SPANISH], [test "build_spanish" = "yes"])
 
 RM="rm -f"
 AC_SUBST(RM)
