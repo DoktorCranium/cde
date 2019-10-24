@@ -2454,5 +2454,13 @@ include/config.h.in
 include/stamp-h1
 libtool
 m4/
+compile
+config.guess
+config.sub
+depcomp
+install-sh
+ltmain.sh
+missing
+
 
 
