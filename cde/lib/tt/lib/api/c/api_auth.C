@@ -36,7 +36,7 @@
  * some file named api_mp_*.cc.
  */
 
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "api/c/api_auth.h"
 
 char *

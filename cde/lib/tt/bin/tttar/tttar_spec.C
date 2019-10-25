@@ -37,7 +37,7 @@
 #else
 #include <osfcn.h>
 #endif
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_iostream.h"
 #include "tttar_utils.h"
 #include "tttar_spec.h"

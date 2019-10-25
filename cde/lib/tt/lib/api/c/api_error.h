@@ -37,7 +37,7 @@
 #define _API_ERROR_H
 
 #include "db/tt_db_results.h"
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 
 typedef enum api_module {_TT_API_SPEC,	// tt_spec_ calls
 		    	 _TT_API_FILE,	// tt_file_ calls

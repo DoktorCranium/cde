@@ -46,7 +46,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_path.h"
 #include "util/tt_gettext.h"
 #include "util/copyright.h"

@@ -36,7 +36,7 @@
 
 #include <stdio.h>
 #include "util/tt_string.h"
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 
 class _Tt_message;
 class _Tt_pattern;

@@ -33,9 +33,9 @@
 #ifndef tttk2free_h
 #define tttk2free_h
 
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_new.h"
-#include "tttk/tttk.h"
+#include "Tt/tttk.h"
 
 //
 // An instance of this class will automatically destroy() a message or

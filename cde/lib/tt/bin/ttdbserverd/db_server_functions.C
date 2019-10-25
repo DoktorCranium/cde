@@ -45,7 +45,7 @@
 #include <unistd.h>
 #include <nl_types.h>
 
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_file_system.h"
 #include "util/tt_file_system_entry.h"
 #include "util/tt_path.h"

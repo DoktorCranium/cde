@@ -34,7 +34,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "ttdnd.h"
 
 static Tt_callback_action	_ttdnd_get_contents_callback();

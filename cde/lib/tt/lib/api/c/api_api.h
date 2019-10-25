@@ -35,7 +35,7 @@
  */
 #if !defined(_TT_API_API_H)
 #define _TT_API_API_H
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_string.h"
 extern char _tt_api_status_page[(int)TT_STATUS_LAST];
 

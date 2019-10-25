@@ -40,7 +40,7 @@
 #endif
 #include <sys/param.h>
 #include "api/c/api_api.h"
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_path.h"
 #include "util/tt_gettext.h"
 #include "tttar_utils.h"

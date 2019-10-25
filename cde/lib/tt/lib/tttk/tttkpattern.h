@@ -34,7 +34,7 @@
 #ifndef tttkpattern_h
 #define tttkpattern_h
 
-#include "tttk/tttk.h"
+#include "Tt/tttk.h"
 #include "tttk/tttkmessage.h"
 
 Tt_status		_tttk_patterns_destroy(

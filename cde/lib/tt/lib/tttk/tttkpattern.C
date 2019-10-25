@@ -30,8 +30,8 @@
  *
  * Copyright 1993 Sun Microsystems, Inc.  All rights reserved.
  */
-#include "api/c/tt_c.h"
-#include "tttk/tttk.h"
+#include "Tt/tt_c.h"
+#include "Tt/tttk.h"
 #include "tttk/tttkmessage.h"
 #include "tttk/tttk2free.h"
 #include "tttk/tttkutils.h"

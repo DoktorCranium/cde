@@ -61,7 +61,7 @@ extern int errno;
 #endif
 #include "ttauth.h"
 #include "api/c/api_auth.h"
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 
 #include <signal.h>
 

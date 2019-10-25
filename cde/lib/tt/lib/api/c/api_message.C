@@ -38,7 +38,7 @@
 #include "mp/mp_msg_context.h"
 #include "util/tt_path.h"
 #include "util/tt_audit.h"
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "api/c/api_api.h"
 #include "api/c/api_xdr.h"
 #include "api/c/api_mp.h"

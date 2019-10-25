@@ -52,7 +52,7 @@
 #include "mp_ptype.h"
 #include "mp_typedb.h"
 #include "api/c/api_api.h"
-#include "tttk/tttk.h"
+#include "Tt/tttk.h"
 #include <sys/stat.h>
 #include <errno.h>
 #include <sys/wait.h>

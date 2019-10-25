@@ -38,7 +38,7 @@
 #if defined(OPT_BUG_SUNOS_4)
 #	include <stdlib.h>
 #endif
-#include <api/c/tt_c.h>
+#include <Tt/tt_c.h>
 #include <util/tt_path.h>
 #include <util/tt_enumname.h>
 #include <util/copyright.h>

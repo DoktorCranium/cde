@@ -4,12 +4,6 @@ include ../tooltalk.inc
 
 noinst_LIBRARIES = libstt.a
 
-BUILT_SOURCES = Tt
-CLEANFILES = Tt
-Tt: Makefile
-	$(RM) Tt
-	$(LN_S) ../lib/api/c Tt
-
 libstt_a_CXXFLAGS = $(TIRPCINC) $(TIRPC_DEFINES) -I../lib
 
 libstt_a_SOURCES = mp_ce_attrs.C mp_observer.C mp_observer_utils.C  \

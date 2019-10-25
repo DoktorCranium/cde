@@ -52,7 +52,7 @@
 #include "db/tt_old_db_partition_map_ref.h"
 #include "db/tt_old_db_consts.h"
 #include "db/tt_old_db_utils.h"
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 
 static void _old_tt_close_db_partition_files (const _Tt_string&);
 static bool_t _old_tt_is_file_a_directory (const _Tt_string&);

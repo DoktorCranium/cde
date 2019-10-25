@@ -38,7 +38,7 @@
 #ifdef _OPT_TIMERS_SUNOS
 #include <sys/time.h>
 #endif
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "mp/mp_message.h"
 #include "mp/mp_pattern.h"
 #include "util/tt_trace_stream.h"

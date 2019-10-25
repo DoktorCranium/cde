@@ -50,7 +50,7 @@ in this Software without prior written authorization from The Open Group.
  */
 
 #include "ttauth.h"
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 
 
 /*

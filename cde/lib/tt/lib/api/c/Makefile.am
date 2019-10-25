@@ -4,8 +4,6 @@ MAINTAINERCLEANFILES = Makefile.in
 
 include ../../../tooltalk.inc
 
-tt_HEADERS = tt_c.h
-
 noinst_LTLIBRARIES = libapi.la
 
 libapi_la_CXXFLAGS = $(TIRPCINC) -I../../../lib

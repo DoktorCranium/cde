@@ -35,7 +35,7 @@
 #ifndef _REMOVER_H
 #define _REMOVER_H
 
-#include <api/c/tt_c.h>
+#include <Tt/tt_c.h>
 #include <util/tt_string.h>
 
 class remover : public _Tt_object {

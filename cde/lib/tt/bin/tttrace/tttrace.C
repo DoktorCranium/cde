@@ -46,7 +46,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_string.h"
 #include "util/tt_port.h"
 #include "util/tt_gettext.h"

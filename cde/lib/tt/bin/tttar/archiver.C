@@ -42,7 +42,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <errno.h>
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/copyright.h"
 #include "util/tt_gettext.h"
 #include "tttar_utils.h"

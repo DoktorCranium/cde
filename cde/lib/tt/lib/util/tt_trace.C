@@ -32,7 +32,7 @@
  */
 #include <unistd.h>
 #include <fcntl.h>
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_global_env.h"
 #include "util/tt_trace.h"
 #include "util/tt_port.h"

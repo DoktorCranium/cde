@@ -49,11 +49,11 @@
 #include <X11/Intrinsic.h>
 #include <X11/StringDefs.h>
 #include <X11/Shell.h>
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "api/c/api_api.h"
 #include "util/tt_Xlib.h"
 #include "util/tt_port.h"
-#include "tttk/tttk.h"
+#include "Tt/tttk.h"
 #include "tttk/tttk2free.h"
 #include "tttk/tttkutils.h"
 #include "tttk/tttkmessage.h"

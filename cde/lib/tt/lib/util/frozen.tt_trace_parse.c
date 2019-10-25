@@ -151,7 +151,7 @@ extern struct tt_trace_svf tt_trace_svec[], *tt_trace_bgin;
 #include <stdio.h>
 #include <string.h>
 #include <sys/param.h>
-#include <api/c/tt_c.h>
+#include <Tt/tt_c.h>
 #include "util/tt_trace.tab.h"
 
 #undef input

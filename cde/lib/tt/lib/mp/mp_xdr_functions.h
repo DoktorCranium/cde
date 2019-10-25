@@ -42,7 +42,7 @@
 
 #include <stdlib.h>
 #include <rpc/rpc.h>
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_string.h"
 #include "mp/mp_auth.h"
 #include "mp/mp_file_utils.h"

@@ -41,7 +41,7 @@
 #if defined(OPT_BUG_SUNOS_4) && defined(__GNUG__)
 #	include <stdlib.h>
 #endif
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 
 const int VER_NO_LENGTH = 4;
 const int INITIAL_VERSION_NO = 0;

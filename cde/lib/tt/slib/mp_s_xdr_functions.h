@@ -37,7 +37,7 @@
 #ifndef MP_S_XDR_FUNCTIONS_H
 #define MP_S_XDR_FUNCTIONS_H
 #include <rpc/rpc.h>
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "mp_s_message_utils.h"
 #include "mp_s_pattern_utils.h"
 #include "mp_s_procid_utils.h"

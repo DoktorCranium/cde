@@ -35,7 +35,7 @@
 #ifndef _COPIER_H
 #define _COPIER_H
 
-#include <api/c/tt_c.h>
+#include <Tt/tt_c.h>
 #include <util/tt_string.h>
 
 class copier : public _Tt_object {

@@ -34,7 +34,7 @@
 #ifndef	_LSTAR_UTILS_H
 #define	_LSTAR_UTILS_H
 
-#include <api/c/tt_c.h>
+#include <Tt/tt_c.h>
 #include <util/tt_string.h>
 
 

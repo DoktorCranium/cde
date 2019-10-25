@@ -35,7 +35,7 @@
  */
 #if !defined(_TT_ENUMNAME_H)
 #define _TT_ENUMNAME_H
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_entry_pt.h"
 
 typedef int _Tt_ce_status;

@@ -34,7 +34,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <api/c/tt_c.h>
+#include <Tt/tt_c.h>
 #include <util/tt_enumname.h>
 #include "tttar_utils.h"
 

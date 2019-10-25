@@ -33,7 +33,7 @@
 #ifndef ttdesktop_h
 #define ttdesktop_h
 
-#include "tttk/tttk.h"
+#include "Tt/tttk.h"
 #include "tttk/tttkmessage.h"
 
 typedef struct {

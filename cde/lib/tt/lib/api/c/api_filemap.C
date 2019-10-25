@@ -43,7 +43,7 @@
 #include "db/tt_db_file.h"
 #include "mp/mp_c.h"
 #include "util/tt_path.h"
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "api/c/api_api.h"
 #include "api/c/api_mp.h"
 #include "api/c/api_error.h"

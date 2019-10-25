@@ -25,9 +25,9 @@
 //%%  (c) Copyright 1993, 1994 Sun Microsystems, Inc.			
 //%%  (c) Copyright 1993, 1994 Novell, Inc. 				
 //%%  $XConsortium: ttmedia.C /main/3 1995/10/23 10:32:41 rswiston $ 			 				
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_gettext.h"
-#include "tttk/tttk.h"
+#include "Tt/tttk.h"
 #include "tttk/ttdesktop.h"
 #include "tttk/tttkmessage.h"
 #include "tttk/tttkpattern.h"

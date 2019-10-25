@@ -37,7 +37,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_port.h"
 #include "util/tt_gettext.h"
 #include "db/tt_old_db_consts.h"

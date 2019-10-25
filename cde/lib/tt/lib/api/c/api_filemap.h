@@ -39,7 +39,7 @@
 #ifndef _TT_API_FILEMAP_H
 #define _TT_API_FILEMAP_H
 
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_string.h"
 
 class _Tt_api_filename_map : public _Tt_object  {

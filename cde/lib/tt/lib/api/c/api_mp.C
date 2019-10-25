@@ -40,7 +40,7 @@
 #include "db/tt_old_db_partition_map_ref.h"
 #include "mp/mp_c_global.h"
 #include "mp/mp_c.h"
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "api/c/api_api.h"
 #include "api/c/api_mp.h"
 #include "api/c/api_handle.h"

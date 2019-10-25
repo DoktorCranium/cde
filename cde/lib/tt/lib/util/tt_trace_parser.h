@@ -34,7 +34,7 @@
 #ifndef _TT_TRACE_PARSER_H
 #define _TT_TRACE_PARSER_H
  
-#include	"api/c/tt_c.h"
+#include	"Tt/tt_c.h"
 #include	"util/tt_object.h"
 #include	"util/tt_string.h"
 #include	"util/tt_int_rec.h"

@@ -42,7 +42,7 @@
 
 #include <util/tt_object.h>
 #include <util/tt_string.h>
-#include <api/c/tt_c.h>
+#include <Tt/tt_c.h>
 #include <rpc/rpc.h>
 
 class _Tt_context : public _Tt_object {

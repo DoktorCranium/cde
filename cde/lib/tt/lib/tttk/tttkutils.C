@@ -33,10 +33,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "util/tt_port.h"
 #include "api/c/api_api.h"
-#include "tttk/tttk.h"
+#include "Tt/tttk.h"
 #include "tttk/tttkutils.h"
 
 char _TttkKeys[ _TttkNumKeys ] = { 0 };

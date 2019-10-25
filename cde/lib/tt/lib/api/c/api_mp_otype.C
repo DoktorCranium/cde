@@ -38,7 +38,7 @@
 
 #include "mp/mp_c.h"
 #include "mp/mp_rpc_interface.h"
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "api/c/api_api.h"
 #include "api/c/api_mp.h"
 #include "api/c/api_handle.h"

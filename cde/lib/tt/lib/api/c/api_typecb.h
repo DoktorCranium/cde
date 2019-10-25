@@ -41,7 +41,7 @@
 #define _API_TYPECB_H
 
 #include "util/tt_object.h"
-#include "api/c/tt_c.h"
+#include "Tt/tt_c.h"
 #include "api/c/api_handle.h"
 
 #if defined(__linux__)

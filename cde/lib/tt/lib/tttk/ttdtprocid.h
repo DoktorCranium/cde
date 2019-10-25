@@ -35,7 +35,7 @@
 #define ttdtprocid_h
 
 #include "util/tt_new.h"
-#include "tttk/tttk.h"
+#include "Tt/tttk.h"
 
 class _TtDtProcid: public _Tt_allocated {
     public:

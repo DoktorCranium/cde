@@ -34,7 +34,7 @@
 #ifndef ttdtmessage_h
 #define ttdtmessage_h
 
-#include "tttk/tttk.h"
+#include "Tt/tttk.h"
 
 typedef Tt_message	(*_TtDtMessageCB)(
 				Tt_message	msg,
