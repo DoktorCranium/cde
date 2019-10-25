@@ -4,7 +4,7 @@ bin_PROGRAMS = tttar
 
 tttar_CXXFLAGS = $(TIRPCINC) -I../../lib $(TT_VERSION_DEFINE)
 
-tttar_LDADD = $(LIBTT) $(X_LIBS) ../../slib/libstt.a ../../mini_isam/libisam.a
+tttar_LDADD = @LIBTT@ $(X_LIBS) ../../slib/libstt.a ../../mini_isam/libisam.a
 
 if LINUX
 tttar_LDADD += $(TIRPCLIB) $(XTOOLLIB)

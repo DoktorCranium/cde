@@ -4,7 +4,7 @@ include ../../tooltalk.inc
 
 bin_PROGRAMS = ttdbck
 
-ttdbck_LDADD = $(LIBTT) $(X_LIBS) ../../slib/libstt.a ../../mini_isam/libisam.a
+ttdbck_LDADD = @LIBTT@ $(X_LIBS) ../../slib/libstt.a ../../mini_isam/libisam.a 
 
 if LINUX
 ttdbck_LDADD += $(TIRPCLIB) $(XTOOLLIB)

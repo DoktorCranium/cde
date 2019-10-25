@@ -4,12 +4,9 @@ include ../../tooltalk.inc
 
 noinst_SCRIPTS = ttce2xdr
 
-ttce2xdr_CPPFLAGS = $(TIRPCINC) $(TT_VERSION_DEFINE)
-
-all:: ttce2xdr
+AM_CPPFLAGS = $(TIRPCINC) $(TT_VERSION_DEFINE)
 
 CPPTARGET = ttce2xdr
 CPPSRC = ttce2xdr.cpp
 
-# FIXME - need solution here
-# include $(srcdir)/include/cppfile.tmpl
+include $(top_builddir)/include/cppfile.inc

@@ -6,7 +6,7 @@ bin_PROGRAMS = ttmv ttrm ttcp ttrmdir
 
 AM_CXXFLAGS = -I../../lib $(TIRPCINC) $(TT_VERSION_DEFINE)
 
-LDADD = $(LIBTT) $(X_LIBS)
+LDADD = @LIBTT@ $(X_LIBS)
 
 if LINUX
 LDADD += $(TIRPCLIB) $(XTOOLLIB)

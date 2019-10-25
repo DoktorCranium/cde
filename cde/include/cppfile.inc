@@ -1,0 +1,7 @@
+BUILT_SOURCES = $(CPPTARGET)
+CLEANFILES += $(CPPTARGET)
+
+
+$(CPPTARGET): Makefile $(CPPSRC)
+	$(RM) $@
+	$(CPP) -P -DXCOMM=# $(AM_CPPFLAGS) $(CPPSRC) -o $@

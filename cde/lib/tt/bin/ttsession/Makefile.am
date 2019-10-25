@@ -6,7 +6,7 @@ bin_PROGRAMS = ttsession
 
 ttsession_CXXFLAGS = -I../../slib -I../../lib $(TIRPCINC) $(TT_VERSION_DEFINE)
 
-ttsession_LDADD = $(LIBTT) $(X_LIBS) ../../slib/libstt.a
+ttsession_LDADD = @LIBTT@ $(X_LIBS) ../../slib/libstt.a
 
 if LINUX
 ttsession_LDADD += $(TIRPCLIB) $(XTOOLLIB)

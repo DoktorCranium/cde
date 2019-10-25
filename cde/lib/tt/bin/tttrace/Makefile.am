@@ -6,7 +6,7 @@ bin_PROGRAMS = tttrace
 
 tttrace_CXXFLAGS = $(TIRPCINC) -I../../lib
 
-tttrace_LDADD = $(LIBTT) $(X_LIBS)
+tttrace_LDADD = @LIBTT@ $(X_LIBS)
 
 if LINUX
 tttrace_LDADD += $(TIRPCLIB) $(XTOOLLIB)

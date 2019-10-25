@@ -7,7 +7,7 @@ bin_PROGRAMS = tt_type_comp
 tt_type_comp_CXXFLAGS = $(TIRPCINC) -I../../lib -I../../slib \
 			$(TT_VERSION_DEFINE)
 
-tt_type_comp_LDADD = $(LIBTT) $(X_LIBS) ../../slib/libstt.a
+tt_type_comp_LDADD = @LIBTT@ $(X_LIBS) ../../slib/libstt.a
 
 if LINUX
 tt_type_comp_LDADD += $(TIRPCLIB) $(XTOOLLIB)

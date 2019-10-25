@@ -110,32 +110,21 @@ AM_CONDITIONAL([SPARC], [test "$is_sparc" = yes])
 AM_CONDITIONAL([MIPS], [test "is_mips" = yes])
 AM_CONDITIONAL([PPC], [test "is_ppc" = yes])
 
-LIBTT="$srcdir/lib/tt/lib/libtt.so.2.1"
-LIBXIN="$srcdir/lib/DtXinerama/libDtXinerama.a"
-LIBWIDGET="$srcdir/lib/DtWidget/libDtWidget.so.2.1"
-LIBTERM="$srcdir/lib/DtTerm/libDtTerm.so.2.1"
-LIBSVC="$srcdir/lib/DtSvc/libDtSvc.so.2.1"
-LIBSEARCH="$srcdir/lib/DtSearch/lbiDtSearch.so.2.1"
-LIBPRINT="$srcdir/lib/DtPrint/libDtPrint.so.2.1"
-LIBMRM="$srcdir/lib/DtMrm/libDtMrm.so.2.1"
-LIBMMDB="$srcdir/lib/DtMmdb/libDtMmdb.so.2.1"
-LIBHELP="$srcdir/lib/DtHelp/libDtHelp.so.2.1"
-LIBCSA="$srcdir/lib/csa/libcsa.so.2.1"
-dnl JET FIXME
-XTOOLLIB="-lICE -lSM -lXt"
+dnl our main libraries
+AC_SUBST(LIBTT, '$(top_builddir)/lib/tt/lib/libtt.la')
+AC_SUBST(LIBXIN, '$(top_builddir)/lib/DtXinerama/libDtXinerama.a')
+AC_SUBST(LIBWIDGET, '$(top_builddir)/lib/DtWidget/libDtWidget.la')
+AC_SUBST(LIBTERM, '$(top_builddir)/lib/DtTerm/libDtTerm.la')
+AC_SUBST(LIBSVC, '$(top_builddir)/lib/DtSvc/libDtSvc.la')
+AC_SUBST(LIBSEARCH, '$(top_builddir)/lib/DtSearch/lbiDtSearch.la')
+AC_SUBST(LIBPRINT, '$(top_builddir)/lib/DtPrint/libDtPrint.la')
+AC_SUBST(LIBMRM, '$(top_builddir)/lib/DtMrm/libDtMrm.la')
+AC_SUBST(LIBMMDB, '$(top_builddir)/lib/DtMmdb/libDtMmdb.la')
+AC_SUBST(LIBHELP, '$(top_builddir)/lib/DtHelp/libDtHelp.la')
+AC_SUBST(LIBCSA, '$(top_builddir)/lib/csa/libcsa.la')
 
-AC_SUBST(LIBTT)
-AC_SUBST(LIBXIN)
-AC_SUBST(LIBWIDGET)
-AC_SUBST(LIBTERM)
-AC_SUBST(LIBSVC)
-AC_SUBST(LIBSEARCH)
-AC_SUBST(LIBPRINT)
-AC_SUBST(LIBMRM)
-AC_SUBST(LIBMMDB)
-AC_SUBST(LIBHELP)
-AC_SUBST(LIBCSA)
-AC_SUBST(XTOOLLIB)
+dnl JET FIXME/CHECKME
+AC_SUBST(XTOOLLIB, "-lICE -lSM -lXt")
 
 AC_ARG_ENABLE(japanese, [--build-japanese    Build Japanese (default=no)])
 AM_CONDITIONAL([JAPANESE], [test "build_japanese" = "yes"])
@@ -178,6 +167,7 @@ AC_PROG_AWK
 AC_PROG_GREP
 
 AC_C_CONST
+AC_SYS_POSIX_TERMIOS
 
 AC_PATH_X
 AC_PATH_XTRA
