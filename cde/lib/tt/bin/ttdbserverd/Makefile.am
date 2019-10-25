@@ -1,5 +1,7 @@
 MAINTAINERCLEANFILES = Makefile.in
 
+include ../../tooltalk.inc
+
 bin_PROGRAMS = rpc.ttdbserver
 
 rpc_ttdbserver_CXXFLAGS = -I../../slib -I../../lib -I../../mini_isam \

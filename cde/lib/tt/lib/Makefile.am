@@ -15,7 +15,7 @@ libtt_la_SOURCES =
 endif
 
 libtt_la_LIBADD = api/c/libapi.la api/dnd/libdnd.la db/libdb.la mp/libmp.la \
-		  util/libutil.la tttk/libtttk.la
+		  util/libutil.la tttk/libtttk.la -lstdc++
 
 if SOLARIS
 libtt_la_LIBADD += -lnsl -lsocket -lintl -ldl -lc -lw

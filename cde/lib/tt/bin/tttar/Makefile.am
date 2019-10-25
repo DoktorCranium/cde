@@ -1,5 +1,7 @@
 MAINTAINERCLENAFILES = Makefile.in
 
+include ../../tooltalk.inc
+
 bin_PROGRAMS = tttar
 
 tttar_CXXFLAGS = $(TIRPCINC) -I../../lib $(TT_VERSION_DEFINE)
