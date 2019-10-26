@@ -287,9 +287,6 @@ lib/DtMrm/Makefile
 
 lib/csa/Makefile
 
-logs/Makefile
-
-programs/Makefile
 ])
 
 AC_OUTPUT
