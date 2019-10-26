@@ -32,24 +32,43 @@ build_solaris=no
 build_hpux=no
 build_aix=no
 
+dnl For now, we need to fake the OSMAJORVERSION, OSMINORVERSION.  In Linux
+dnl this never mattered anyway as it was always the kernel version.  We will
+dnl choose defaults here.  These need to be removed in the code in favor
+dnl of actual checks for functionality. So this should be considered
+dnl temporary.
+
+osmajorversion=4
+osminorversion=15
+
 case "${host_os}" in
 	linux*)
 		build_linux=yes
+                osmajorversion=4
+                osminorversion=15
 		;;
 	freebsd*)
 		build_freebsd=yes
 		bsd=yes
+                osmajorversion=10
+                osminorversion=0
 		;;
 	openbsd*)
 		build_openbsd=yes
 		bsd=yes
+                osmajorversion=6
+                osminorversion=2
 		;;
 	netbsd*)
 		build_netbsd=yes
 		bsd=yes
+                osmajorversion=8
+                osminorversion=0
 		;;
 	solaris*|sun*)
 		build_solaris=yes
+                osmajorversion=5
+                osminorversion=10
 		;;
 	aix*)
 		build_aix=yes
@@ -67,6 +86,12 @@ AM_CONDITIONAL([NETBSD], [test "$build_netbsd" = "yes"])
 AM_CONDITIONAL([SOLARIS], [test "$build_solaris" = "yes"])
 AM_CONDITIONAL([AIX], [test "$build_aix" = "yes"])
 AM_CONDITIONAL([HPUX], [test "$build_hpux" = "yes"])
+
+dnl Add osmajor/minor version to cppflags.
+oflags="$CPPFLAGS"
+CPPFLAGS="$oflags -DOSMAJORVERSION=$osmajorversion \
+                  -DOSMINORVERSION=$osminorversion"
+
 
 dnl set CSRG_BASED define for the BSD's
 if test "$build_bsd" = "yes"
