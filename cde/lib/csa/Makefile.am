@@ -32,7 +32,7 @@ GENERATED_SRCS = agent_xdr.c cm_clnt.c reparser.c reparser.h \
         rtable4_clnt.c rtable4_xdr.c agent.h
 
 BUILT_SOURCES = $(GENERATED_SRCS)
-CLEANFILES = $(GENERATED_SRCS)
+CLEANFILES = $(GENERATED_SRCS) y.tab.c y.tab.h
 
 libcsa_la_SOURCES = agent.c         agent_xdr.c     api.c \
 		    appt4.c         attr.c          calendar.c \
@@ -43,18 +43,16 @@ libcsa_la_SOURCES = agent.c         agent_xdr.c     api.c \
 		    entry.c         free.c          hash.c \
 		    iso8601.c       laccess.c       lutil.c \
 		    match.c         nametbl.c       refree.c \
-		    rescan.c        rpccalls.c \
+		    reparser.c	    rescan.c        rpccalls.c \
 		    rtable2_clnt.c  rtable2_xdr.c   rtable3_clnt.c \
 		    rtable3_xdr.c   rtable4_clnt.c  rtable4_xdr.c \
 		    table.c         updateattrs.c   xtclient.c \
 		    ansi_c.c
 
-reparser.c: reparser.y
+reparser.c reparser.h: reparser.y
 	$(YACC) $(AM_YFLAGS) $<
-	sed -e s/yyparse/_DtCm_rule_parser/g -e s/yy/_DtCm_yy/g y.tab.c > $*.c
-	sed s/yy/_DtCm_yy/g y.tab.h > $*.h
-	$(RM) y.tab.c y.tab.h
-
+	sed -e s/yyparse/_DtCm_rule_parser/g -e s/yy/_DtCm_yy/g y.tab.c > reparser.c
+	sed s/yy/_DtCm_yy/g y.tab.h > reparser.h
 
 rtable2_clnt.c rtable3_clnt.c rtable4_clnt.c cm_clnt.c:
 	$(RM) $@
