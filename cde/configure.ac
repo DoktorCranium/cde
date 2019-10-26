@@ -155,6 +155,8 @@ AC_SUBST(DT_INCDIR, '-I$(top_builddir)/include/Dt')
 AC_SUBST(DTI_INCDIR, '-I$(top_builddir)/include/DtI')
 AC_SUBST(TT_INCDIR, '-I$(top_builddir)/include/Tt')
 AC_SUBST(XM_INCDIR, '-I$(top_builddir)/include/Xm')
+AC_SUBST(CSA_INCDIR, '-I$(top_builddir)/include/csa')
+AC_SUBST(SPC_INCDIR, '-I$(top_builddir)/include/SPC')
 
 dnl JET FIXME/CHECKME
 AC_SUBST(XTOOLLIB, "-lICE -lSM -lXt")
@@ -217,6 +219,7 @@ AC_CHECK_PROGS(BDFTOPCF, bdftopcf)
 AC_CHECK_PROGS(MKFONTIDR, mkfontdir)
 AC_CHECK_PROGS(GZIP, gzip)
 AC_CHECK_PROGS(M4, m4)
+AC_CHECK_PROGS(RPCGEN, rpcgen)
 
 dnl headers
 AC_HEADER_STDC
