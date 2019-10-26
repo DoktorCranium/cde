@@ -5,15 +5,16 @@ noinst_LTLIBRARIES = libraima.la
 libraima_la_LIBADD = -lc -lm
 
 libraima_la_CFLAGS = -DCDE_INSTALLATION_TOP=\"${prefix}\" \
+		     -I$(top_builddir)/include/Dt \
 		     -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
 		     -DNO_TRANS -DUNIX -D_POSIX_SOURCE -DMULTIBYTE
 
 if LINUX
-libraima_la_CFLAGS += DBYTE_SWAP -D_XOPEN_SOURCE=700
+libraima_la_CFLAGS += -DBYTE_SWAP -D_XOPEN_SOURCE=700
 endif
 
 if BSD
-libraima_la_CFLAGS += DBYTE_SWAP -D_XOPEN_SOURCE=700
+libraima_la_CFLAGS += -DBYTE_SWAP -D_XOPEN_SOURCE=700
 endif
 
 if SOLARIS

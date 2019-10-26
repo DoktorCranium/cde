@@ -1,14 +1,16 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-CLEANFILES = y.tab.c y.tab.h boolyac.h boolyac.c
-
 SUBDIRS = raima
 
 lib_LTLIBRARIES = libDtSearch.la
 
-YFLAGS = -d
+BUILT_SOURCES = boolyac.h boolyac.c
+CLEANFILES = boolyac.h boolyac.c
+AM_YFLAGS = -d
 
-libDtSearch_la_CFLAGS = -DI18N_MSG -DMULTIBYTE -I./raima
+libDtSearch_la_CFLAGS = -DI18N_MSG -DMULTIBYTE -I./raima \
+			-I$(top_builddir)/include/Dt
+
 
 libDtSearch_la_LIBADD = raima/libraima.la
 
@@ -36,7 +38,7 @@ endif
 
 libDtSearch_la_SOURCES = apndext.c	ausdopen.c	ausexit.c \
 			 bmstrstr.c	boolpars.c	boolsrch.c \
-			 boolyac.c	cuslang.c	dbchange.c \
+			 boolyac.y	cuslang.c	dbchange.c \
 			 dberr.c	delspace.c	dtoe.c \
 			 dtoeinit.c	dtsrapi.c	dtsrdbrec.c \
 			 dtsrjoint.c	dtsrswab.c	dtsrutil.c  \
@@ -49,10 +51,4 @@ libDtSearch_la_SOURCES = apndext.c	ausdopen.c	ausexit.c \
 			 readchar.c	strupr.c	userint.c \
 			 vedelete.c	vestatis.c	vstfunct.c
 
-all:: boolyac.c
 
-boolyac.h boolyac.c: boolyac.y
-	$(YACC) $(YFLAGS) boolyac.y
-	$(MV) y.tab.c boolyac.c
-	@if [ -f y.tab.h ]; then set -x; $(MV) y.tab.h boolyac.h; \
-	else exit 0; fi
