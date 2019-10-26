@@ -2,13 +2,10 @@ csadir = $(includedir)/csa
 
 MAINTAINERCLEANFILES = Makefile.in
 
-CLEANFILES = agent.h agent_xdr.c cm_clnt.c reparser.c reparser.h \
-             rtable2_clnt.c rtable2_xdr.c rtable3_clnt.c rtable3_xdr.c \
-             rtable4_clnt.c rtable4_xdr.c
-
 lib_LTLIBRARIES = libcsa.la
 
-libcsa_la_CFLAGS = -DRFC_MIME -DLINE_COUNT -DV2 -DOW_I18N $(TIRPCINC)
+libcsa_la_CFLAGS = -DRFC_MIME -DLINE_COUNT -DV2 -DOW_I18N $(TIRPCINC) \
+		   @CSA_INCDIR@
 
 libcsa_la_LIBADD = -lXt $(TIRPCLIB)
 
@@ -28,13 +25,14 @@ else
 libcsa_la_LIBADD += $(LIBSVC) -lXm
 endif
 
-csa_HEADERS = csa.h
+AM_YFLAGS = -d
 
 GENERATED_SRCS = agent_xdr.c cm_clnt.c reparser.c reparser.h \
         rtable2_clnt.c rtable2_xdr.c rtable3_clnt.c rtable3_xdr.c \
-        rtable4_clnt.c rtable4_xdr.c
+        rtable4_clnt.c rtable4_xdr.c agent.h
 
-all::
+BUILT_SOURCES = $(GENERATED_SRCS)
+CLEANFILES = $(GENERATED_SRCS)
 
 libcsa_la_SOURCES = agent.c         agent_xdr.c     api.c \
 		    appt4.c         attr.c          calendar.c \
@@ -45,14 +43,18 @@ libcsa_la_SOURCES = agent.c         agent_xdr.c     api.c \
 		    entry.c         free.c          hash.c \
 		    iso8601.c       laccess.c       lutil.c \
 		    match.c         nametbl.c       refree.c \
-		    reparser.c      rescan.c        rpccalls.c \
+		    rescan.c        rpccalls.c \
 		    rtable2_clnt.c  rtable2_xdr.c   rtable3_clnt.c \
 		    rtable3_xdr.c   rtable4_clnt.c  rtable4_xdr.c \
 		    table.c         updateattrs.c   xtclient.c \
 		    ansi_c.c
 
+reparser.c: reparser.y
+	$(YACC) $(AM_YFLAGS) $<
+	sed -e s/yyparse/_DtCm_rule_parser/g -e s/yy/_DtCm_yy/g y.tab.c > $*.c
+	sed s/yy/_DtCm_yy/g y.tab.h > $*.h
+	$(RM) y.tab.c y.tab.h
 
-reparser.o:     reparser.c
 
 rtable2_clnt.c rtable3_clnt.c rtable4_clnt.c cm_clnt.c:
 	$(RM) $@
