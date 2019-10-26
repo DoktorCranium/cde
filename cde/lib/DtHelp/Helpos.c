@@ -42,11 +42,16 @@
  ****************************************************************************
  ************************************<+>*************************************/
 
-
 #include <sys/param.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include <autotools_config.h>
+#if defined(HAVE_LOCALE_H)
+#include <locale.h>
+#endif
+
 #define X_INCLUDE_PWD_H
 #define XOS_USE_XT_LOCKING
 #include <X11/Xos_r.h>

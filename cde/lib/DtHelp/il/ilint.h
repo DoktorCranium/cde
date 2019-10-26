@@ -43,6 +43,12 @@
         /*  General internal definitions for Image Library (IL).
         */
 
+/* use autotools detection to determine endianess */
+#include <autotools_config.h>
+#ifndef WORDS_BIGENDIAN
+# define LSB_BIT_ORDER
+#endif
+
 #include <stddef.h>        /* for size_t declaration */
 #ifndef IL_H
 #include "il.h"

@@ -3,19 +3,8 @@ MAINTAINERCLEANFILES = Makefile.in
 noinst_LTLIBRARIES = libil.la
 
 libil_la_CFLAGS = -I.. -DDTLIB -DCDE_INSTALLATION_TOP='"${prefix}"' \
-		  -DCDE_CONFIGURATION_TOP='"$(CDE_CONFIGURATION_TOP)"'
-
-if BSD
-libil_la_CFLAGS += -DLSB_BIT_ORDER
-else
- if LINUX
- libil_la_CFLAGS += -DLSB_BIT_ORDER
- else
-  if SUN
-  libil_la_CFLAGS += -DLSB_BIT_ORDER
-  endif
- endif
-endif
+		  -DCDE_CONFIGURATION_TOP='"$(CDE_CONFIGURATION_TOP)"' \
+		  @DT_INCDIR@ @DTI_INCDIR@
 
 libil_la_SOURCES = ilX.c                ilbigray.c           ilcodec.c \
 		   ilcontext.c          ilconvert.c          ilcrop.c \

@@ -6,7 +6,8 @@ lib_LTLIBRARIES = libDtHelp.la
 
 libDtHelp_la_CFLAGS = -I./il -I./jpeg -I../DtSvc/DtUtil2 -DDTLIB \
 		      -DCDE_INSTALLATION_TOP='"${prefix}"' \
-		      -DCDE_CONFIGURATION_TOP='"$(CDE_CONFIGURATION_TOP)"'
+		      -DCDE_CONFIGURATION_TOP='"$(CDE_CONFIGURATION_TOP)"' \
+		      @DT_INCDIR@ @DTI_INCDIR@
 
 libDtHelp_la_LIBADD = -ljpeg il/libil.la
 
