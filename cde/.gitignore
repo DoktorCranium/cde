@@ -2469,6 +2469,7 @@ ylwrap
 autotools_config.h
 autotools_config.h.in
 lib/DtTerm/util/lineToData
-
+lib/csa/y.tab.c
+lib/csa/y.tab.h
 
 
