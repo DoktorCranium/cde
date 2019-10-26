@@ -3,6 +3,7 @@ MAINTAINERCLEANFILES = Makefile.in
 noinst_LTLIBRARIES = libDtEncap.la
 
 libDtEncap_la_CFLAGS = -DMULTIBYTE -I../include -I../DtUtil2 $(TIRPCINC) \
+		       -I$(top_builddir)/include/Dt \
 		       -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
 		       -DCDE_INSTALLATION_TOP=\"${prefix}\" \
 		       -DCDE_LOGFILES_TOP=\"$(CDE_LOGFILES_TOP)/tmp\"
