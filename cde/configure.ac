@@ -136,6 +136,8 @@ AM_CONDITIONAL([MIPS], [test "is_mips" = yes])
 AM_CONDITIONAL([PPC], [test "is_ppc" = yes])
 
 dnl our main libraries
+dnl we use single quotes so that $top_builder is evaluated in the makfiles,
+dnl not here.
 AC_SUBST(LIBTT, '$(top_builddir)/lib/tt/lib/libtt.la')
 AC_SUBST(LIBXIN, '$(top_builddir)/lib/DtXinerama/libDtXinerama.a')
 AC_SUBST(LIBWIDGET, '$(top_builddir)/lib/DtWidget/libDtWidget.la')
@@ -147,6 +149,11 @@ AC_SUBST(LIBMRM, '$(top_builddir)/lib/DtMrm/libDtMrm.la')
 AC_SUBST(LIBMMDB, '$(top_builddir)/lib/DtMmdb/libDtMmdb.la')
 AC_SUBST(LIBHELP, '$(top_builddir)/lib/DtHelp/libDtHelp.la')
 AC_SUBST(LIBCSA, '$(top_builddir)/lib/csa/libcsa.la')
+
+dnl set up come convenience replacements for global include dirs
+AC_SUBST(DT_INCDIR, '-I$(top_builddir)/include/Dt')
+AC_SUBST(TT_INCDIR, '-I$(top_builddir)/include/Tt')
+AC_SUBST(XM_INCDIR, '-I$(top_builddir)/include/Xm')
 
 dnl JET FIXME/CHECKME
 AC_SUBST(XTOOLLIB, "-lICE -lSM -lXt")

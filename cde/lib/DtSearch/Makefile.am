@@ -9,7 +9,7 @@ CLEANFILES = boolyac.h boolyac.c
 AM_YFLAGS = -d
 
 libDtSearch_la_CFLAGS = -DI18N_MSG -DMULTIBYTE -I./raima \
-			-I$(top_builddir)/include/Dt
+			@DT_INCDIR@
 
 
 libDtSearch_la_LIBADD = raima/libraima.la
