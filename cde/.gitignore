@@ -2460,6 +2460,7 @@ depcomp
 install-sh
 ltmain.sh
 missing
+ylwrap
 *.lo
 *.la
 .libs
@@ -2467,5 +2468,7 @@ missing
 .objs
 autotools_config.h
 autotools_config.h.in
+lib/DtTerm/util/lineToData
+
 
 
