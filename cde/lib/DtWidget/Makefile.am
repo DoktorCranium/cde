@@ -2,13 +2,9 @@ unixdir = ${prefix}/app-defaults/C
 
 MAINTAINERCLEANFILES = Makefile.in
 
-CLEANFILES = UNIXbindings
-
 lib_LTLIBRARIES = libDtWidget.la
 
-unix_PROGRAMS = UNIXbindings
-
-AM_CPPFLAGS = -DCDE_INSTALLATION_TOP=${prefix}
+AM_CPPFLAGS = -DCDE_INSTALLATION_TOP=${prefix} @DT_INCDIR@
 
 libDtWidget_la_CFLAGS = -DI18N_MSG -DMULTIBYTE
 
@@ -43,7 +39,11 @@ libDtWidget_la_SOURCES = ComboBox.c      Control.c       DialogBox.c \
 			 SearchDlg.c     SpinBox.c       TitleBox.c \
 			 View.c
 
+# cpp this...
+BUILT_SOURCES = UNIXbindings
+CLEANFILES = UNIXbindings
+
 CPPTARGET = UNIXbindings
 CPPSRC = UNIXbindings.cpp
-# FIXME
-#include $(srcdir)/include/cppfile.tmpl
+
+include $(top_builddir)/include/cppfile.inc
