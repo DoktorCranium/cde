@@ -152,6 +152,7 @@ AC_SUBST(LIBCSA, '$(top_builddir)/lib/csa/libcsa.la')
 
 dnl set up come convenience replacements for global include dirs
 AC_SUBST(DT_INCDIR, '-I$(top_builddir)/include/Dt')
+AC_SUBST(DTI_INCDIR, '-I$(top_builddir)/include/DtI')
 AC_SUBST(TT_INCDIR, '-I$(top_builddir)/include/Tt')
 AC_SUBST(XM_INCDIR, '-I$(top_builddir)/include/Xm')
 
@@ -189,7 +190,6 @@ AC_PROG_CXX
 AC_PROG_CPP
 AM_PROG_LIBTOOL
 AC_PROG_YACC
-
 AM_PROG_LEX
 AC_PROG_INSTALL
 AC_PROG_LN_S
@@ -199,7 +199,14 @@ AC_PROG_AWK
 AC_PROG_GREP
 
 AC_C_CONST
+AC_C_BIGENDIAN
+AC_C_INLINE
+AC_C_CHAR_UNSIGNED
+AC_C_STRINGIZE
+AC_C_FLEXIBLE_ARRAY_MEMBER
 AC_SYS_POSIX_TERMIOS
+
+dnl AC_PROG_CC_C99, someday.
 
 AC_PATH_X
 AC_PATH_XTRA
@@ -213,6 +220,7 @@ AC_CHECK_PROGS(M4, m4)
 
 dnl headers
 AC_HEADER_STDC
+AC_CHECK_HEADERS([locale.h])
 
 dnl libraries
 AC_CHECK_LIB(tirpc, main, [TIRPCINC="-DOPT_TIRPC -I/usr/include/tirpc"; TIRPCLIB=-ltirpc])
