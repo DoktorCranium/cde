@@ -3,8 +3,9 @@ MAINTAINERCLEANFILES = Makefile.in
 noinst_LTLIBRARIES = libDtUtil1.la
 
 libDtUtil1_la_CFLAGS = -I../include $(TIRPCINC) -DMULTIBYTE \
+		       -I$(top_builddir)/include/Dt \
 		       -DCDE_INSTALLATION_TOP=\"${prefix}\" \
-		       -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\"
+		       -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" 
 
 if SOLARIS
 libDtUtil1_la_CFLAGS += -DNO_REGCOMP

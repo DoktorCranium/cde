@@ -2,9 +2,11 @@ MAINTAINERCLEANFILES = Makefile.in
 
 noinst_LTLIBRARIES = libDtUtil2.la
 
-libDtUtil2_la_CFLAGS = -DCDE_INSTALLATION_TOP=\"${prefix}\" \
-		       -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
-		       -DMULTIBYTE -DUSE_XINERAMA $(TIRPCINC)
+libDtUtil2_la_CFLAGS = -I../include $(TIRPCINC) -DMULTIBYTE \
+			-I$(top_builddir)/include/Dt \
+			-DCDE_INSTALLATION_TOP=\"${prefix}\" \
+			-DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
+			-DMULTIBYTE -DUSE_XINERAMA $(TIRPCINC)
 
 
 libDtUtil2_la_SOURCES = ChkpntClient.c ChkpntListen.c DtEnvMap.c \
