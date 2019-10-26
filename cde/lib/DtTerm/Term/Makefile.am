@@ -2,13 +2,9 @@ MAINTAINERCLEANFILES = Makefile.in
 
 CLEANFILES = TermLineData.c
 
-dtdir = ${includedir}/Dt
-
-dt_HEADERS = Term.h
-
 noinst_LTLIBRARIES = libTerm.la
 
-libTerm_la_CFLAGS = -I../TermPrim
+libTerm_la_CFLAGS = -I../TermPrim @DT_INCDIR@
 
 TermLineData.c: TermLineData.data
 	$(RM) $@
@@ -28,3 +24,4 @@ libTerm_la_SOURCES = \
         TermParse.c \
         TermParseTable.c \
         TermVersion.c
+
