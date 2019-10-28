@@ -44,7 +44,10 @@
         */
 
 /* use autotools detection to determine endianess */
-#include <autotools_config.h>
+#if defined(HAVE_CONFIG_H)
+# include <autotools_config.h>
+#endif
+
 #ifndef WORDS_BIGENDIAN
 # define LSB_BIT_ORDER
 #endif

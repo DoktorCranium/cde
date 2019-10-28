@@ -47,9 +47,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <autotools_config.h>
+#if defined(HAVE_CONFIG_H)
+# include <autotools_config.h>
+#endif
 #if defined(HAVE_LOCALE_H)
-#include <locale.h>
+# include <locale.h>
 #endif
 
 #define X_INCLUDE_PWD_H
