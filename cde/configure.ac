@@ -221,6 +221,8 @@ AC_C_STRINGIZE
 AC_C_FLEXIBLE_ARRAY_MEMBER
 AC_SYS_POSIX_TERMIOS
 
+AX_PTHREAD
+
 dnl AC_PROG_CC_C99, someday.
 
 AC_PATH_X
@@ -244,10 +246,16 @@ AC_SUBST(TIRPCINC)
 AC_SUBST(TIRPCLIB)
 
 
-dnl set CPPFLAGS, CFLAGS, and CXXFLAGS
+dnl set CPPFLAGS, CFLAGS, and CXXFLAGS.
+dnl The Autoconf manual says that these are user variables and
+dnl shouldn't be modified.  It suggests that you create a special
+dnl variable and presumably add those to your Makefile.am files.  We
+dnl have 192 of these currently, so... The user will just have to
+dnl deal, or modify them here directly.
 CPPFLAGS="${CPPFLAGS} ${SOURCE_CPP_DEFINES} ${CPP_COMPILER_FLAGS} ${OSVERSION}"
-CFLAGS="${CFLAGS} ${C_COMPILER_FLAGS}"
-CXXFLAGS="${CXXFLAGS} ${CXX_COMPILER_FLAGS}"
+CFLAGS="${CFLAGS} ${C_COMPILER_FLAGS} ${PTHREAD_CFLAGS}"
+CXXFLAGS="${CXXFLAGS} ${CXX_COMPILER_FLAGS} ${PTHREAD_CFLAGS}"
+LIBS="${LIBS} ${PTHREAD_LIBS}"
 
 dnl All of the makefiles we need to generate go here...
 AC_CONFIG_FILES([
