@@ -20,8 +20,21 @@ AC_SUBST(MAJOR)
 AC_SUBST(MINOR)
 AC_SUBST(MICRO)
 
-dnl These OS checks are deprecated and should be replaced with feature checks
-dnl where appropriate
+dnl SOURCE_DEFINES - needed for some OS's
+SOURCE_CPP_DEFINES=""
+
+dnl CPP_COMPILER_FLAGS - CPP/C/C++ compiler flags
+CPP_COMPILER_FLAGS=""
+
+dnl CXX_COMPILER_FLAGS - C++ compiler flags
+CXX_COMPILER_FLAGS=""
+
+dnl C_COMPILER_FLAGS - C compiler flags
+C_COMPILER_FLAGS=""
+
+
+dnl These OS version checks are deprecated and should be replaced with
+dnl feature checks where appropriate
 
 build_linux=no
 bsd=no
@@ -38,37 +51,41 @@ dnl choose defaults here.  These need to be removed in the code in favor
 dnl of actual checks for functionality. So this should be considered
 dnl temporary.
 
-osmajorversion=4
-osminorversion=15
+OSMAJORVERSION=4
+OSMINORVERSION=15
 
 case "${host_os}" in
 	linux*)
 		build_linux=yes
-                osmajorversion=4
-                osminorversion=15
-		;;
+                OSMAJORVERSION=4
+                OSMINORVERSION=15
+                SOURCE_CPP_DEFINES="-D_POSIX_SOURCE -D_DEFAULT_SOURCE \
+-D_BSD_SOURCE -D_SVID_SOURCE"
+                CPP_COMPILER_FLAGS="-fno-strict-aliasing -Wno-write-strings \
+-Wno-unused-result"
+                 ;;
 	freebsd*)
 		build_freebsd=yes
 		bsd=yes
-                osmajorversion=10
-                osminorversion=0
+                OSMAJORVERSION=10
+                OSMINORVERSION=0
 		;;
 	openbsd*)
 		build_openbsd=yes
 		bsd=yes
-                osmajorversion=6
-                osminorversion=2
+                OSMAJORVERSION=6
+                OSMINORVERSION=2
 		;;
 	netbsd*)
 		build_netbsd=yes
 		bsd=yes
-                osmajorversion=8
-                osminorversion=0
+                OSMAJORVERSION=8
+                OSMINORVERSION=0
 		;;
 	solaris*|sun*)
 		build_solaris=yes
-                osmajorversion=5
-                osminorversion=10
+                OSMAJORVERSION=5
+                OSMINORVERSION=10
 		;;
 	aix*)
 		build_aix=yes
@@ -88,16 +105,12 @@ AM_CONDITIONAL([AIX], [test "$build_aix" = "yes"])
 AM_CONDITIONAL([HPUX], [test "$build_hpux" = "yes"])
 
 dnl Add osmajor/minor version to cppflags.
-oflags="$CPPFLAGS"
-CPPFLAGS="$oflags -DOSMAJORVERSION=$osmajorversion \
-                  -DOSMINORVERSION=$osminorversion"
-
+OSVERSION="-DOSMAJORVERSION=$OSMAJORVERSION -DOSMINORVERSION=$OSMINORVERSION"
 
 dnl set CSRG_BASED define for the BSD's
 if test "$build_bsd" = "yes"
 then
-        oflags="$CPPFLAGS"
-        CPPFLAGS="$oflags -DCSRG_BASED"
+        SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DCSRG_BASED"
 fi
 
 is_x86_64=no
@@ -136,7 +149,7 @@ AM_CONDITIONAL([MIPS], [test "is_mips" = yes])
 AM_CONDITIONAL([PPC], [test "is_ppc" = yes])
 
 dnl our main libraries
-dnl we use single quotes so that $top_builder is evaluated in the makfiles,
+dnl we use single quotes so that $top_builder is evaluated in the makefiles,
 dnl not here.
 AC_SUBST(LIBTT, '$(top_builddir)/lib/tt/lib/libtt.la')
 AC_SUBST(LIBXIN, '$(top_builddir)/lib/DtXinerama/libDtXinerama.a')
@@ -229,6 +242,12 @@ dnl libraries
 AC_CHECK_LIB(tirpc, main, [TIRPCINC="-DOPT_TIRPC -I/usr/include/tirpc"; TIRPCLIB=-ltirpc])
 AC_SUBST(TIRPCINC)
 AC_SUBST(TIRPCLIB)
+
+
+dnl set CPPFLAGS, CFLAGS, and CXXFLAGS
+CPPFLAGS="${CPPFLAGS} ${SOURCE_CPP_DEFINES} ${CPP_COMPILER_FLAGS} ${OSVERSION}"
+CFLAGS="${CFLAGS} ${C_COMPILER_FLAGS}"
+CXXFLAGS="${CXXFLAGS} ${CXX_COMPILER_FLAGS}"
 
 dnl All of the makefiles we need to generate go here...
 AC_CONFIG_FILES([
