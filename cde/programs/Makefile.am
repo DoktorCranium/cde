@@ -1,8 +1,10 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = backdrops icons dthelp dsdm dtmail dtpad dtfile dtwm dtlogin \
+SUBDIRS = backdrops icons dsdm dtmail dtpad dtfile dtwm dtlogin \
         dtsession dthello dtstyle dtexec dtdbcache dticon dtterm dtcalc \
-	dtaction dtspcd dtscreen dtksh dtcm dtsearchpath dtappbuilder \
+	dtaction dtspcd dtscreen dtcm dtsearchpath  \
 	dtappintegrate dtprintegrate dtconfig dtcreate dtprintinfo fontaliases \
-	dtdspmsg ttsnoop dtimsstart dtdocbook dtpdm dtsr dtpdmd dtinfo types \
-	localized tttypes util dtopen nsgmls
+	dtdspmsg ttsnoop dtimsstart dtpdm dtsr dtpdmd types \
+	localized tttypes util dtopen
+
+# NOTYET = dthelp dtksh dtappbuilder dtdocbook dtinfo nsgmls
