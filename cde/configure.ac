@@ -171,9 +171,6 @@ AC_SUBST(XM_INCDIR, '-I$(top_builddir)/include/Xm')
 AC_SUBST(CSA_INCDIR, '-I$(top_builddir)/include/csa')
 AC_SUBST(SPC_INCDIR, '-I$(top_builddir)/include/SPC')
 
-dnl JET FIXME/CHECKME
-AC_SUBST(XTOOLLIB, "-lICE -lSM -lXt")
-
 AC_ARG_ENABLE(japanese, [--build-japanese    Build Japanese (default=no)])
 AM_CONDITIONAL([JAPANESE], [test "build_japanese" = "yes"])
 
@@ -245,6 +242,13 @@ AC_CHECK_LIB(tirpc, main, [TIRPCINC="-DOPT_TIRPC -I/usr/include/tirpc"; TIRPCLIB
 AC_SUBST(TIRPCINC)
 AC_SUBST(TIRPCLIB)
 
+dnl Setup XTOOLLIB
+XTOOLLIB=""
+AC_CHECK_LIB(X11, XOpenDisplay, [XTOOLLIB="-lX11"])
+AC_CHECK_LIB(Xt, XtInitialize, [XTOOLLIB="-lXt ${XTOOLLIB}"])
+AC_CHECK_LIB(ICE, IceCloseConnection, [XTOOLLIB="-lICE ${XTOOLLIB}"])
+AC_CHECK_LIB(SM, SmcOpenConnection, [XTOOLLIB="-lSM ${XTOOLLIB}"])
+AC_SUBST([XTOOLLIB])
 
 dnl set CPPFLAGS, CFLAGS, and CXXFLAGS.
 dnl The Autoconf manual says that these are user variables and
