@@ -5,7 +5,7 @@ bin_PROGRAMS = dtpad
 dtpad_CFLAGS = -DDT_LITE -DWORDWRAP -UNLS16 $(TIRPCINC)
 
 dtpad_LDADD = $(LIBPRINT) $(LIBHELP) $(LIBWIDGET) $(LIBSVC) $(LIBTT) -lXm \
-	      $(XTOOLLIB) ${X_LIBS}
+	      $(TIRPCLIB) $(XTOOLLIB) ${X_LIBS} -lX11
 
 if SOLARIS
 dtpad_CFLAGS += -xF
