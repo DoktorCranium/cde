@@ -319,6 +319,11 @@ lib/DtMrm/Makefile
 lib/csa/Makefile
 
 programs/Makefile
+
+programs/backdrops/Makefile
+
+programs/icons/Makefile
+
 programs/dthelp/Makefile
 programs/dthelp/dthelpgen/Makefile
 programs/dthelp/dthelpprint/Makefile
