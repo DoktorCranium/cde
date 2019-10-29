@@ -1,7 +1,7 @@
 AC_INIT([cde-desktop], [2.3.1], [jon@radscan.com])
 AC_CONFIG_HEADERS([include/autotools_config.h])
 AC_CONFIG_MACRO_DIRS([m4])
-AM_INIT_AUTOMAKE([foreign])
+AM_INIT_AUTOMAKE([foreign subdir-objects])
 AC_PREFIX_DEFAULT(/usr/dt)
 
 
@@ -313,6 +313,34 @@ lib/DtTerm/TermPrim/Makefile
 lib/DtMrm/Makefile
 
 lib/csa/Makefile
+
+programs/Makefile
+programs/dthelp/Makefile
+programs/dthelp/dthelpgen/Makefile
+programs/dthelp/dthelpprint/Makefile
+programs/dthelp/parser/pass1/helptag/Makefile
+programs/dthelp/parser/pass1/Makefile
+programs/dthelp/parser/pass1/eltdef/Makefile
+programs/dthelp/parser/pass1/build/Makefile
+programs/dthelp/parser/Makefile
+programs/dthelp/parser/canon1/Makefile
+programs/dthelp/parser/pass2/Makefile
+programs/dthelp/dthelpview/Makefile
+
+programs/dsdm/Makefile
+
+programs/dtmail/Makefile
+programs/dtmail/dtmail/Makefile
+programs/dtmail/MotifApp/Makefile
+programs/dtmail/dtmailpr/Makefile
+programs/dtmail/libDtMail/Makefile
+programs/dtmail/libDtMail/RFC/Makefile
+programs/dtmail/libDtMail/Common/Makefile
+
+programs/dtpad/Makefile
+
+programs/dtfile/Makefile
+programs/dtfile/dtcopy/Makefile
 
 ])
 

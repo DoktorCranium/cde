@@ -7,9 +7,9 @@ dtpad_CFLAGS = -DDT_LITE -DWORDWRAP -UNLS16 $(TIRPCINC)
 dtpad_LDADD = $(LIBPRINT) $(LIBHELP) $(LIBWIDGET) $(LIBSVC) $(LIBTT) -lXm \
 	      $(XTOOLLIB) ${X_LIBS}
 
-if SUN
+if SOLARIS
 dtpad_CFLAGS += -xF
-dtpad_LDADD += -lintl -lresolv
+dtpad_LDFLAGS = -lintl -lresolv
 endif
 
 dtpad_SOURCES = dtpad.c         editCB.c        fileCB.c \

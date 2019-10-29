@@ -1,8 +1,8 @@
-bin_PROGAMS = dsdm
+bin_PROGRAMS = dsdm
 
 dsdm_LDADD = ${X_LIBS}
 
-if SUN
+if SOLARIS
 dsdm_LDADD += -ldl
 endif
 

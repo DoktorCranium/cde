@@ -5,7 +5,7 @@ dthelpprint_CPPFLAGS = -I.. -DCDE_CONFIGURATION_TOP='"${prefix}"' \
 
 dthelpprint_LDADD = $(LIBSVC) $(LIBTT) $(LIBHELP) $(XTOOLLIB) ${X_LIBS}
 
-if SUN
+if SOLARIS
 dthelpprint_LDADD += -lw -ldl -lgen -lm
 endif
 

@@ -1,4 +1,8 @@
-bin_PROGRAM = dthelpgen dthelpgen.dtsh
+MAINTAINERCLEANFILES = Makefile.in
+
+bin_PROGRAMS = dthelpgen
+
+bin_SCRIPTS = dthelpgen.dtsh
 
 dthelpgen_CPPFLAGS = -I.. -DCDE_INSTALLATION_TOP=\"${prefix}\" \
 		   -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\"

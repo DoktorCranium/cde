@@ -4,6 +4,8 @@ SUBDIRS = dtcopy
 
 bin_PROGRAMS = dtfile
 
+BUILT_SOURCES = dtfile.config dtfile_error
+
 dist_config_DATA = dtfile.config
 
 dist_bin_SCRIPTS = dtfile_error
@@ -25,8 +27,8 @@ if LINUX
 dtfile_CPPFLAGS += -DFILE_MAP_OPTIMIZE
 endif
 
-if SUN
-dtfile_CFLAGS += -xF
+if SOLARIS
+dtfile_CFLAGS = -xF
 dtfile_LDADD += -lintl -lresolv
 endif
 
@@ -40,10 +42,10 @@ dtfile_SOURCES = ChangeDir.c     ChangeDirP.c    Command.c       Common.c \
 		 Prefs.c         PrefsP.c        SharedMsgs.c    SharedProcs.c \
 		 ToolTalk.c      Trash.c         Utils.c         fsDialog.c
 
-CPPSRC = dtfile.config.cpp
-CPPTARGET = dtfile.config
-include $(srcdir)/include/cppfile.tmpl
+dtfile.config: dtfile.config.cpp
+	$(RM) dtfile.config
+	$(CPP) -P -DXCOMM=# $(AM_CPPFLAGS) dtfile.config.cpp -o dtfile.config
 
-CPPSRC = dtfile_error
-CPPTARGET = dtfile_error
-include $(srcdir)/include/cppfile.tmpl
+dtfile_error: dtfile_error.cpp
+	$(RM) dtfile_error
+	$(CPP) -P -DXCOMM=# $(AM_CPPFLAGS) dtfile_error.cpp -o dtfile_error

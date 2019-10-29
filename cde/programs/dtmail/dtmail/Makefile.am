@@ -9,31 +9,31 @@ dtmail_CXXFLAGS = -I../include -I../include/MotifApp -I../include/utils \
 
 dtmail_LDADD = ../libDtMail/libDtMail.a ../MotifApp/libMotifApp.a
 
-if SUN
-dtmail_LDADD += -lw
-if SUNPRODIR
-SUNPRO_DIR = SUNPRODIR
-else
-SUNPRO_DIR = /opt/SUNWspro
-endif
-C++LIBPATH = -L$(SUNPRO_DIR)/lib
-
-if USE_SPRO_V3
-SPRO_V3_OPTIONS =      -noex -USPRO_V2
-if DEBUGTREE
-SPRO_V3_OPTIONS +=      -xsb
-endif
-else
-EXTRA_CCOPTIONS +=      -DSPRO_V2
-endif
-
-EXTRA_C++OPTIONS = -xF +w $(SPRO_V3_OPTIONS)
-EXTRA_CCOPTIONS = -xF -xstrconst -Xa -v
-if USE_EDITRES
-EXTRA_LIBRARIES = $(XMULIB) ExtraLibraries
-endif
-endif
-
+# FIXME solaris....
+#if SOLARIS
+#dtmail_LDFLAGS = -lw
+#if SUNPRODIR
+#SUNPRO_DIR = SUNPRODIR
+#else
+#SUNPRO_DIR = /opt/SUNWspro
+#endif
+#C++LIBPATH = -L$(SUNPRO_DIR)/lib
+#
+#if USE_SPRO_V3
+#SPRO_V3_OPTIONS =      -noex -USPRO_V2
+#if DEBUGTREE
+#3SPRO_V3_OPTIONS +=      -xsb
+#endif
+#else
+#EXTRA_CCOPTIONS +=      -DSPRO_V2
+#endif
+#
+#EXTRA_C++OPTIONS = -xF +w $(SPRO_V3_OPTIONS)
+#EXTRA_CCOPTIONS = -xF -xstrconst -Xa -v
+#if USE_EDITRES
+#EXTRA_LIBRARIES = $(XMULIB) ExtraLibraries
+#endif
+#endif SOLARIS
 
 
 dtmail_SOURCES = AliasListUiItem.C               AlternatesListUiItem.C \

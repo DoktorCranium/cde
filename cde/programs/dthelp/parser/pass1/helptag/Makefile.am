@@ -6,8 +6,6 @@ ARCCMD = arc u
 UNARCCMD = arc x
 ARCDELCMD = arc d
 
-.SUFFIXES : .e .arc .c .h
-
 HELPTAG       = ..
 HELPTAGSRC    = $(HELPTAG)/helptag
 HELPPARSERSRC = $(HELPTAG)/parser
@@ -21,12 +19,12 @@ HELPTSSFILE   = $(HELPTAGSRC)/htag.tss
 
 XLATESRC  = $(DTHELPSRC)
 XLATEHDRS = $(XLATESRC)/XlationSvc.h $(XLATESRC)/LocaleXlate.h
-XLATESRCS = ${srcdir}/lib/DtSvc/DtUtil2/XlationSvc.c \
-	    ${srcdir}/lib/DtSvc/DtUtil2/LocaleXlate.c
+XLATESRCS = ${top_srcdir}/lib/DtSvc/DtUtil2/XlationSvc.c \
+	    ${top_srcdir}/lib/DtSvc/DtUtil2/LocaleXlate.c
 
 ELTHDRS = $(HELPUTILSRC)/entdef.h $(HELPUTILSRC)/entext.h
 
-XCOMM PARSEHDRS are header files used by many parser routines
+# PARSEHDRS are header files used by many parser routines
 PARSEHDRS = $(HELPUTILSRC)/basic.h $(HELPUTILSRC)/trie.h \
         $(HELPUTILSRC)/common.h $(HELPUTILSRC)/dtddef.h \
         $(HELPUTILSRC)/dtdext.h $(HELPUTILSRC)/sparse.h \
@@ -45,17 +43,17 @@ dthelp_htag1_CFLAGS = -I$(HELPUTILSRC) -I$(HELPPARSERSRC) -I$(HELPELTDEFSRC) \
 dthelp_htag1_LDADD = $(HELPUTILLIB)
 
 if HPUX
-dthelp_htag1_LDADD += -Wl,-a archive
+dthelp_htag1_LDFLAGS = -Wl,-a archive
 endif
 
-if SUN
+if SOLARIS
 dthelp_htag1_LDADD += -lm -ldl -lgen
 endif
 
-dthelp_htag1_LDADD += custom.c default.c help.c make.c option.c out.c \
+dthelp_htag1_SOURCES = custom.c default.c help.c make.c option.c out.c \
 		      special.c xref.c $(XLATESRCS)
 
-dthelp_htag1: $(HELPPARSERSRC)/parser
+dthelp_htag1$(EXEEXT): $(HELPPARSERSRC)/parser
         $(RM) dthelp_htag1
         $(CP) $(HELPPARSERSRC)/parser dthelp_htag1
 
@@ -67,8 +65,3 @@ arcappl archptag :
 unarcappl unarchptag :
         $(UNARCCMD) hptag.arc
 
-tags ::
-        etags -t *.c *.h *.if
-
-etags ::
-        etags -t *.c *.h *.if

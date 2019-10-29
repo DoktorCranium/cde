@@ -20,10 +20,10 @@ build_CFLAGS = -I$(HELPUTILSRC)
 build_LDADD = -l$(HELPUTILLIB)
 
 if HPUX
-build_LDADD += -Wl,-a archive
+build_LDFLAGS = -Wl,-a archive
 endif
 
-if SUN
+if SOLARIS
 .NO_PARALLEL:
 endif
 

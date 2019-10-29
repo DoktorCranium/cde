@@ -4,7 +4,7 @@ bin_PROGRAMS = dtfile_copy
 
 dtfile_copy_CFLAGS = -DSHAPE
 
-if SUN
+if SOLARIS
 dtfile_copy_CFLAGS += -xF
 endif
 

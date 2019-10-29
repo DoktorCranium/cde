@@ -4,35 +4,21 @@ noinst_LIBRARIES = libMotifApp.a
 
 libMotifApp_a_CXXFLAGS = -I../include/MotifApp -I../include -I../include/utils \
 			 $(TIRPCINC)
-if SUN
 
- if USE_SPRO_V3
- libMotifApp_a_CXXFLAGS += -noex -xO0 -USPRO_V2
-  if DEBUGTREE
-  libMotifApp_a_CXXFLAGS += -xsb
-  endif
- endif
+# FIXME - some of these aren't set and sould be by configure.ac
+#if SOLARIS
 
-libMotifApp_a_CXXFLAGS += -DMMAP_NORESERVE -DSPRO_V2
+#if USE_SPRO_V3
+#libMotifApp_a_CXXFLAGS += -noex -xO0 -USPRO_V2
+#endif
 
- if I386
- libMotifApp_a_CXXFLAGS += -DBIG_ENDIAN
- endif
+#if DEBUGTREE
+#libMotifApp_a_CXXFLAGS += -xsb
+#endif
+#
+#libMotifApp_a_CXXFLAGS += -DMMAP_NORESERVE -DSPRO_V2
 
-endif
-
-if HPUX
-libMotifApp_a_CXXFLAGS += -DUSE_SOCKSTREAM -DBIG_ENDIAN -DDO_ANONYMOUS_MAP \
-                        -DNEED_MMAP_WRAPPER -DSENDMAIL_LOCKS +p \
-                        -DMAILGROUP_REQUIRED -DMAIL_SPOOL_PATH=\"/var/mail/%s\"
-endif
-
-if AIX
-libMotifApp_a_CXXFLAGS += -DI_HAVE_NO_BOOL -DI_HAVE_SELECT_H -DBIG_ENDIAN \
-                        -DSTRCASECMP_NOT_DEFINED -DDO_ANONYMOUS_MAP \
-                        -DSENDMAIL_LOCKS -DMAILGROUP_REQUIRED \
-                        -DMAIL_SPOOL_PATH=\"/var/spool/mail/%s\"
-endif
+#endif
 
 libMotifApp_a_SOURCES = Application.C           AskFirstCmd.C \
 			BasicComponent.C        BusyPixmap.C \
@@ -51,8 +37,8 @@ libMotifApp_a_SOURCES = Application.C           AskFirstCmd.C \
 			UndoCmd.C               WarnNoUndoCmd.C \
 			WorkingDialogManager.C
 
-if SUN
-clean::
+if SOLARIS
+clean-local:
 	$(RM) -r .sb
 	$(RM) .make.state*
 endif

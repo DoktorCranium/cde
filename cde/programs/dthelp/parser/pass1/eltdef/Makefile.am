@@ -20,10 +20,10 @@ HELPTSSFILE   = $(HELPTAGSRC)/htag.tss
 eltdef_LDADD = -l$(HELPUTILLIB)
 
 if HPUX
-eltdef += -Wl,-a archive
+eltdef_LDFLAGS = -Wl,-a archive
 endif
 
-if SUN
+if SOLARIS
 .NO_PARALLEL:
 endif
 
