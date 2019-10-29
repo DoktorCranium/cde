@@ -64,11 +64,22 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#if defined(SVR4)
-#include <string.h>
-#else	/* SVR4 */
-#include <strings.h>
-#endif	/* SVR4 */
+#if defined(HAVE_CONFIG_H)
+# include <autotools_config.h>
+#endif
+#if defined(HAVE_STRING_H)
+# include <string.h>
+#endif
+
+#if defined(HAVE_STRINGS_H)
+# include <strings.h>
+#endif
+
+#if defined(HAVE_SYS_TYPES_H)
+# include <sys/types.h>
+#endif
+
+#include <unistd.h>
 
 #define XFreeDefn	char *
 
@@ -77,6 +88,8 @@
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
 
+extern void ProxyInit(Display *dpy, Window dsdm_win);
+extern void ProxyMain(Display *dpy, XEvent *event);
 /*
  * Use DPRINTF to write debugging messages.  Place all arguments in an
  * extra pair of parentheses, like so:

@@ -1,6 +1,6 @@
 bin_PROGRAMS = dsdm
 
-dsdm_LDADD = ${X_LIBS}
+dsdm_LDADD = $(XTOOLLIB)
 
 if SOLARIS
 dsdm_LDADD += -ldl

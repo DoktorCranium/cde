@@ -185,7 +185,7 @@ extern Atom ATOM_WM_STATE;
 
 unsigned char *GetInterestProperty();
 
-static ForwardConversion();
+static int ForwardConversion(XSelectionEvent *event, drop_info_t *drop_info);
 
 static drop_info_t drop_table[DROP_TABLE_MAX];
 Atom ATOM_SUN_DND_TRIGGER;
@@ -1134,7 +1134,7 @@ CopyTargets(Display *dpy, Atom prop, Window old_win, Window new_win)
 /* Forward the SelectionNotify to the receiver.
    Returns True if we get ATOM_SUN_DND_DONE or ATOM_SUN_SELECTION_END */
 static
-ForwardConversion(XSelectionEvent *event, drop_info_t *drop_info)
+int ForwardConversion(XSelectionEvent *event, drop_info_t *drop_info)
 {
     int ol_done = False;
 
