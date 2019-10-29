@@ -15,7 +15,7 @@ if AIX
 dtstyle_CFLAGS += -DANSICPP -Aa -D_POSIX_SOURCE
 endif
 
-if SUN
+if SOLARIS
 EXTRA_SRC = OWsync.c
 endif
 

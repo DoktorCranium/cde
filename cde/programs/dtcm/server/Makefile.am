@@ -8,7 +8,7 @@ rpc.cmsd_CFLAGS = -I$(CSASRC) -I$(HELPSRC) $(TIRPCINC)
 
 rpc.cmsd_LDADD = $(LIBCSA) $(LIBSVC) $(LIBTT) $(LIBWIDGET) $(XTOOLLIB) ${X_LIBS}
 
-if SUN
+if SOLARIS
 rpc.cmsd_CFLAGS += -xstrconst -Xc -v
 rpc.cmsd_LDADD += -lsocket -lnsl -lintl -lm -ldl
 endif

@@ -4,7 +4,7 @@ noinst_LIBRARIES = libCliSrv.a
 
 libCliSrv_a_CXXFLAGS = $(TIRPCINC)
 
-if SUN
+if SOLARIS
 libCliSrv_a_CXXFLAGS += -DIOSTREAMSWORKS
 libCliSrv_a_LDADD = -ldl -lintl -Bstatic -Bdynamic -lm -lc -ladm -Bstatic
 endif

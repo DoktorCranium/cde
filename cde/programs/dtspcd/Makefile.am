@@ -11,7 +11,7 @@ dtspcd_CFLAGS = $(TIRPCINC) -I../dthelp -DCDE_CONFIGURATION_TOP=\"${prefix}\" \
 
 dtspcd_LDADD = $(LIBHELP) $(LIBSVC) $(LIBTT) -lXm $(XTOOLLIB) ${X_LIBS} -lm
 
-if SUN
+if SOLARIS
 dtspcd_LDADD += -ldl -lgen
 endif
 

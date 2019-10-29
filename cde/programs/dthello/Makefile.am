@@ -9,7 +9,7 @@ if HPUX
 dthello_LDADD = -DHP_COLOR
 endif
 
-if SUN
+if SOLARIS
 dthello_LDADD = -ldl -lgen
 endif
 

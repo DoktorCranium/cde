@@ -4,7 +4,7 @@ noinst_LIBRARIES = libWWL.a
 
 libWWL_a_CXXFLAGS = -I../include
 
-if SUN
+if SOLARIS
 lbWWL_a_CXXFLAGS += -DSYSV -DSVR4
 endif
 

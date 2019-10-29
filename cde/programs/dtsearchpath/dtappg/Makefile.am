@@ -10,7 +10,7 @@ endif
 
 dtappgather_LDADD = ../libCliSrv/libCliSrv.a $(LIBTT) $(XTOOLLIB) ${X_LIB}
 
-if SUN
+if SOLARIS
 dtappgather_LDADD += -ldl -lintl
 endif
 

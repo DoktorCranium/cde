@@ -7,7 +7,7 @@ dtpdm_CFLAGS = -DI18N_MSG -DCDE_INSTALLATION_TOP=\"${prefix}\"
 dtpdm_LDADD = $(LIBPRINT) $(LIBHELP) $(LIBWIDGET) $(LIBSVC) $(LIBTT) -lXm \
 	      $(XTOOLLIB) ${X_LIBS}
 
-if SUN
+if SOLARIS
 dtpdm_LDADD += -lintl -lm -lgen -ldl -lresolv
 endif
 

@@ -10,7 +10,7 @@ dtudcexch_LDADD = $(LIBSVC) $(LIBTT) -lXm $(XTOOLLIB) ${X_LIBS} \
                 $(FONTEDT_PATH1)/libfuty/liboakfuty.a \
                 $(FONTEDT_PATH1)/libfal/libfal.a
 
-if SUN
+if SOLARIS
 dtudcexch_LDADD += -ldl -lgen
 endif
 

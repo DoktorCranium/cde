@@ -4,7 +4,7 @@ bin_PROGRAMS = dtsearchpath
 
 dtsearchpath_CFLAGS = -I../libCliSrv $(TIRPCINC)
 
-if SUN
+if SOLARIS
 dtsearchpath_CFLAGS += -DIOSTREAMSWORKS
 endif
 

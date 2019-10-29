@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-if SUN
+if SOLARIS
 .NO_PARALLEL:
 endif
 
@@ -14,7 +14,7 @@ if BSD
 UTILLIB = -lutil
 endif
 
-if SUN
+if SOLARIS
 LIBHELP =
 endif
 

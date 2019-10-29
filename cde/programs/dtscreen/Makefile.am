@@ -6,7 +6,7 @@ dist_default_DATA = Dtscreen
 
 dtscreen_LDADD = -lm $(SVCLIB) $(LIBTT) $(XTOOLLIB) ${X_LIBS}
 
-if SUN
+if SOLARIS
 dtscreen_LDADD += -ldl -lgen
 endif
 

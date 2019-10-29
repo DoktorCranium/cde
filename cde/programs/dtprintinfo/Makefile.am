@@ -2,7 +2,7 @@ SUBDIRS = util libUI objects UI
 
 all:: dtprintinfo_cat.h dtprintinfo_msg.h dtprintinfo.msg
 
-if SUN
+if SOLARIS
 .NO_PARALLEL:
 endif
 
@@ -15,7 +15,7 @@ dtprintinfo_LDADD = ./UI/libDtPrintinfo.a ./util/libUtil.a \
         ./libUI/MotifUI/libMotifUI.a ./objects/PrintObj/libPrintObj.a \
 	$(LIBHELP) $(LIBWIDGET) $(LIBSVC) $(LIBTT) $(XTOOLLIB) ${X_LIBS}
 
-if SUN
+if SOLARIS
 dtprintinfo_LDADD += -lm -ldl
 endif
 

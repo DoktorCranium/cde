@@ -12,7 +12,7 @@ dtimsstart_CFLAGS = -DNLS -I../../lib
 
 dtimsstart_LDADD = $(LIBHELP) $(LIBSVC) $(LIBTT) -lXm $(XTOOLLIB) ${X_LIBS}
 
-if SUN
+if SOLARIS
 dtimsstart_CFLAGS += -xF
 endif
 

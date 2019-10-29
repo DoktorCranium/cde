@@ -1,4 +1,4 @@
-if SUN
+if SOLARIS
 .NO_PARALLEL:
 endif
 

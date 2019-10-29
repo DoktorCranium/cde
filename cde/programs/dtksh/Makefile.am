@@ -4,7 +4,7 @@ dist_ksh_SCRIPTS = DtFuncs.dtsh
 
 KSH93SRC = ./ksh93
 
-if SUN
+if SOLARIS
 .NO_PARALLEL:
 endif
 
@@ -25,7 +25,7 @@ if LINUX
 dtksh_LDADD += -ldl
 endif
 
-if SUN
+if SOLARIS
 dtksh_CPPFLAGS += -DDYNLIB
 endif
 

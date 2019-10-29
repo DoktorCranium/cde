@@ -4,14 +4,14 @@ bin_PROGRAMS = dticon
 
 dticon_CFLAGS = -D__TOOLTALK $(TIRPCINC)
 
-if SUN
+if SOLARIS
 LIBHELP =
 endif
 
 dticon_LDADD = ${X_LIBS} -lm $(LIBHELP) $(LIBWIDGET) $(LIBSVC) $(LIBTT) \
 	       $(XTOOLLIB) -lXm
 
-if SUN
+if SOLARIS
 dticon_LDADD += -ldl
 endif
 

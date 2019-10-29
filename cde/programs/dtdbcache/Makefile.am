@@ -8,7 +8,7 @@ if HPUX
 dtdbcache_LDADD += +e
 endif
 
-if SUN
+if SOLARIS
 dtdbcache_LDADD += -ldl -lw -lgen
 endif
 

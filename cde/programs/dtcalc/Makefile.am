@@ -8,7 +8,7 @@ if AIX
 dtcalc_LDADD += -lmsaa -liconv
 endif
 
-if SUN
+if SOLARIS
 dtcalc_LDADD += -lintl -ldl
 endif
 

@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-if SUN
+if SOLARIS
 .NO_PARALLEL:
 endif
 

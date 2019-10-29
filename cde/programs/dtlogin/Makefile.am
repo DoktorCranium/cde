@@ -28,7 +28,7 @@ XBINDIR = /usr/X11R7/bin
 AM_LDADD += -lm -lcrypt
 endif
 
-if SUN
+if SOLARIS
 XBINDIR = /usr/bin/X11
 AM_LDADD += -lm -ldl -lgen -lresolv -lbsm -lcmd
 dtlogin_SOURCES += solaris.c

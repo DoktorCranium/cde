@@ -7,7 +7,7 @@ noinst_LIBRARIES = libDtCmP.a
 libDtCmP_a_CFLAGS = -I../../../lib/csa -DRFC_MIME -DLINE_COUNT -DV2 -DOW_I18N \
 		  $(TIRPCINC)
 
-if SUN
+if SOLARIS
 libDtCmP_a_CFLAGS += -xstrconst -Xc -v
 endif
 

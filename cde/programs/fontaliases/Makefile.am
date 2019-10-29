@@ -4,7 +4,7 @@ if LINUX
 SUBDIRS = linux
 endif
 
-if SUN
+if SOLARIS
 SUBDIRS = sun
 endif
 

@@ -7,7 +7,7 @@ AM_CFLAGS = -I../../../lib/csa -I../libDtCmP -I../../dthelp $(TIRPCINC)
 AM_LDADD = ../libDtCmP/libDtCmP.a $(LIBCSA) $(LIBPRINT) $(LIBHELP) \
 	   $(LIBWIDGET) $(LIBSVC) $(LIBTT) -lXm $(XTOOLLIB) ${X_LIBS}
 
-if SUN
+if SOLARIS
 AM_CFLAGS += -xstrconst -Xc -v
 endif
 

@@ -14,7 +14,7 @@ if AIX
 dtaction_LDADD += -liconv
 endif
 
-if SUN
+if SOLARIS
 dtaction_LDADD += -ldl
 endif
 

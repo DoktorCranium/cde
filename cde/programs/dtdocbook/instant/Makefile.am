@@ -26,7 +26,7 @@ instant_CFLAGS += -I/usr/pkg/include/tcl
 instant_LDADD += -ltcl86
 endif
 
-if SUN
+if SOLARIS
 instant_LDADD += -lsocket -lnsl -lgen
 endif
 

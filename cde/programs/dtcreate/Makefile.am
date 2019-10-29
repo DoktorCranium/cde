@@ -4,7 +4,7 @@ bin_PROGRAMS = dtcreate
 
 dtcreate_CPPFLAGS = $(TIRPCINC)
 
-if SUN
+if SOLARIS
 LIBHELP =
 endif
 
@@ -19,7 +19,7 @@ if AIX
 dtcreate_LDADD += -liconv
 endif
 
-if SUN
+if SOLARIS
 dtcreate_LDADD += -ldl
 endif
 

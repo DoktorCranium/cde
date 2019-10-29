@@ -6,7 +6,7 @@ dtpdmd_CFLAGS = -DCDE_INSTALLATION_TOP='"'${prefix}'"'
 
 dtpdmd_LDADD = $(XTOOLLIB) ${X_LIBS}
 
-if SUN
+if SOLARIS
 dtpdmd_LDADD += -lm -ldl
 endif
 

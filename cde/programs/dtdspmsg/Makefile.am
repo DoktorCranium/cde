@@ -8,7 +8,7 @@ endif
 
 dtdspmsg_LDADD = -lm
 
-if SUN
+if SOLARIS
 dtdspmsg_LDADD += -ldl -lgen
 endif
 
