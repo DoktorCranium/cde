@@ -5,18 +5,19 @@ SUBDIRS = dtcopy
 bin_PROGRAMS = dtfile
 
 BUILT_SOURCES = dtfile.config dtfile_error
+CLEANFILES = dtfile.config dtfile_error
 
 dist_config_DATA = dtfile.config
 
 dist_bin_SCRIPTS = dtfile_error
 
-dtfile_CPPFLAGS = -I./dtcopy -I(TIRPCINC) -DSHAPE -D_ILS_MACROS -DSUN_PERF \
-		-DUSE_XINERAMA -DCDE_INSTALLATION_TOP=\"${prefix}\" \
+dtfile_CPPFLAGS = -I./dtcopy $(TIRPCINC) -DSHAPE -D_ILS_MACROS -DSUN_PERF \
+		-DCDE_INSTALLATION_TOP=\"${prefix}\" \
 		-DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
-		-DKORNSHELL=\"$(KSH)\" -I${x_includes}/freetype2
+		-DKORNSHELL=\"$(KSH)\" -I/usr/include/freetype2
 
-dtfile_LDADD = $(LIBPRINT) $(LIBHELP) $(LIBWIDGET) $(LIBSVC) $(LIBTT) -lXm \
-	       $(XTOOLLIB) ${X_LIBS} -lXinerama dtcopy/sharedFuncs.o \
+dtfile_LDADD = @DTCLIENTLIBS@ $(TIRPCLIB) -lXm -lXext \
+	       $(XTOOLLIB) ${X_LIBS} dtcopy/sharedFuncs.o \
 	       dtcopy/fsrtns.o
 
 if OPENBSD

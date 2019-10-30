@@ -712,13 +712,13 @@ CopyDir(
         rc = execlp(DTCOPY, "dtfile_copy",
                      "-dontDelete", "-forceCopies", "-copyTop",
                      "-confirmReplace", "-confirmErrors", "-popDown",
-                     from, target, 0);
+                    from, target, (char *)NULL);
       else
          /* replace target dir */
          rc = execlp(DTCOPY, "dtfile_copy",
                      "-forceCopies", "-copyTop",
                      "-confirmErrors", "-popDown",
-                     from, target, 0);
+                     from, target, (char *)NULL);
 
       /* call errorhandler */
       perror ("Could not exec child process \"dtfile_copy\"");

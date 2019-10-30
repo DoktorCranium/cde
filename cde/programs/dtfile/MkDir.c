@@ -154,7 +154,8 @@ RunFileCommand(
       command_name++;
 
    _DtEnvControl(DT_ENV_RESTORE_PRE_DT);
-   (void) execl (command_path, command_name, argument1, argument2, argument3,0);
+   (void) execl (command_path, command_name, argument1, argument2,
+                 argument3, (char *)NULL);
     
    DBGFORK(("%s:  child exiting\n", pname));
 

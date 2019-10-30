@@ -41,6 +41,7 @@
 #ifndef _DtFile_SharedProcs_h
 #define _DtFile_SharedProcs_h
 
+#include <Xm/XmPrivate.h>
 #include <Dt/Icon.h>
 #include <Dt/Action.h>
 #include <Dt/Dnd.h>
