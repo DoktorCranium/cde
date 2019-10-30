@@ -2470,6 +2470,7 @@ ylwrap
 .libs
 .deps
 .objs
+.dirstamp
 autotools_config.h
 autotools_config.h.in
 lib/DtTerm/util/lineToData
