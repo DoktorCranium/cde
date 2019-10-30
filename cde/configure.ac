@@ -2,9 +2,12 @@ AC_INIT([cde-desktop], [2.3.1], [jon@radscan.com])
 AC_CONFIG_HEADERS([include/autotools_config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
+LT_INIT
 AC_PREFIX_DEFAULT(/usr/dt)
 
 AC_ENABLE_STATIC([no])
+
+PKG_PROG_PKG_CONFIG
 
 dnl todo: determine what version of autoconf we depend on
 dnl AC_PREREQ()
@@ -21,8 +24,8 @@ AC_SUBST(CDE_VERSION_MAJOR)
 AC_SUBST(CDE_VERSION_MINOR)
 AC_SUBST(CDE_VERSION_MICRO)
 
-dnl SOURCE_DEFINES - needed for some OS's
-SOURCE_CPP_DEFINES=""
+dnl SOURCE_DEFINES - start with CDE project default
+SOURCE_CPP_DEFINES="-DANSICPP -DMULTIBYTE -DNLS16"
 
 dnl CPP_COMPILER_FLAGS - CPP/C/C++ compiler flags
 CPP_COMPILER_FLAGS=""
@@ -60,8 +63,8 @@ case "${host_os}" in
 		build_linux=yes
                 OSMAJORVERSION=4
                 OSMINORVERSION=15
-                SOURCE_CPP_DEFINES="-D_POSIX_SOURCE -D_DEFAULT_SOURCE \
--D_BSD_SOURCE -D_SVID_SOURCE"
+                SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -D_POSIX_SOURCE \
+-D_DEFAULT_SOURCE -D_BSD_SOURCE -D_SVID_SOURCE"
                 CPP_COMPILER_FLAGS="-fno-strict-aliasing -Wno-write-strings \
 -Wno-unused-result"
                  ;;
