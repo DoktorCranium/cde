@@ -6,7 +6,6 @@ lib_LTLIBRARIES = libDtSvc.la
 
 libDtSvc_la_SOURCES =
 
-libDtSvc_la_LIBADD = $(LIBXIN) -lXinerama DtUtil1/libDtUtil1.la \
-		    DtUtil2/libDtUtil2.la DtEncap/libDtEncap.la \
-		    DtCodelibs/libDtCodelibs.la DtXpm/libDtXpm.la
-libDtSvc_la_LDFLAGS = -version-info 2:1:0
+libDtSvc_la_LIBADD = DtUtil1/*.lo DtUtil2/*.lo DtEncap/*.lo \
+		    DtCodelibs/*.lo DtXpm/*.lo
+libDtSvc_la_LDFLAGS = -fPIC -version-info 2:1:0

@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 noinst_LTLIBRARIES = libDtUtil2.la
 
-libDtUtil2_la_CFLAGS = -I../include $(TIRPCINC) -DMULTIBYTE \
+libDtUtil2_la_CFLAGS = -I../include $(TIRPCINC) -DMULTIBYTE -DNLS16 \
 			@DT_INCDIR@ \
 			-DCDE_INSTALLATION_TOP=\"${prefix}\" \
 			-DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
