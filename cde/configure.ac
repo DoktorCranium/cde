@@ -164,7 +164,8 @@ AC_SUBST(LIBMMDB, '$(top_builddir)/lib/DtMmdb/libDtMmdb.la')
 AC_SUBST(LIBHELP, '$(top_builddir)/lib/DtHelp/libDtHelp.la')
 AC_SUBST(LIBCSA, '$(top_builddir)/lib/csa/libcsa.la')
 
-AC_SUBST(DTCLIENTLIBS, '$(LIBPRINT) $(LIBHELP) $(LIBWIDGET) $(LIBSVC) $(LIBTT)')
+AC_SUBST(DTCLIENTLIBS, '$(LIBPRINT) $(LIBHELP) $(LIBWIDGET) $(LIBSVC) \
+$(LIBTT) $(LIBXIN)')
 
 dnl set up come convenience replacements for global include dirs
 AC_SUBST(DT_INCDIR, '-I$(top_builddir)/include/Dt')
@@ -247,6 +248,7 @@ dnl libraries
 AC_CHECK_LIB(tirpc, main, [TIRPCINC="-DOPT_TIRPC -I/usr/include/tirpc"; TIRPCLIB=-ltirpc])
 AC_SUBST(TIRPCINC)
 AC_SUBST(TIRPCLIB)
+AC_CHECK_LIB(Xinerama, XineramaQueryScreens, ,[AC_MSG_ERROR([libXinerama not found])])
 
 dnl Setup XTOOLLIB
 XTOOLLIB=""
@@ -255,6 +257,10 @@ AC_CHECK_LIB(Xt, XtInitialize, [XTOOLLIB="-lXt ${XTOOLLIB}"])
 AC_CHECK_LIB(ICE, IceCloseConnection, [XTOOLLIB="-lICE ${XTOOLLIB}"])
 AC_CHECK_LIB(SM, SmcOpenConnection, [XTOOLLIB="-lSM ${XTOOLLIB}"])
 AC_SUBST([XTOOLLIB])
+
+dnl Add -DUSE_XINERAMA to SOURCE_CPP_DEFINES for now.  Eventually this
+dnl should be configurable.
+SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DUSE_XINERAMA"
 
 dnl set CPPFLAGS, CFLAGS, and CXXFLAGS.
 dnl The Autoconf manual says that these are user variables and
