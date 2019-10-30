@@ -145,7 +145,7 @@ static void SetSegment(
                         int y1,
                         int x2,
                         int y2) ;
-static int round( 
+static int wmround( 
                         double x) ;
 static void DrawClockFace( 
                         DtClockGadget g) ;
@@ -535,13 +535,13 @@ DrawHand(
 	wc = width * cosangle;
 	ws = width * sinangle;
 	SetSegment (w,
-		   x = w->clock.centerX + round (length * sinangle),
-		   y = w->clock.centerY - round (length * cosangle),
-		   x1 = w->clock.centerX - round (ws + wc), 
-		   y1 = w->clock.centerY + round (wc - ws));  /* 1 ---- 2 */
+		   x = w->clock.centerX + wmround (length * sinangle),
+		   y = w->clock.centerY - wmround (length * cosangle),
+		   x1 = w->clock.centerX - wmround (ws + wc), 
+		   y1 = w->clock.centerY + wmround (wc - ws));  /* 1 ---- 2 */
 	SetSegment (w, x1, y1, 
-		   x2 = w->clock.centerX - round (ws - wc), 
-		   y2 = w->clock.centerY + round (wc + ws));  /* 2 ----- 3 */
+		   x2 = w->clock.centerX - wmround (ws - wc), 
+		   y2 = w->clock.centerY + wmround (wc + ws));  /* 2 ----- 3 */
 	SetSegment (w, x2, y2, x, y);	/* 3 ----- 1 (4) */
 }
 
@@ -572,7 +572,7 @@ SetSegment(
 **		round integer.
 */
 static int 
-round(
+wmround(
         double x )
 {
 	return (x >= 0.0 ? (int) (x + .5) : (int) (x - .5));

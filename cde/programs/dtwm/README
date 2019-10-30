@@ -44,9 +44,6 @@ header file include flags, and macros (e.g. ABS).
     OLD_CODE
 	Vestigal code.
 
-    PORT_NOVFORK
-	Enable for systems that don't have the vfork() call.
-
     R2_COMPAT
 	Enables support for old clients that still pass window geometry
 	hint information in WM_NORMAL_HINTS.

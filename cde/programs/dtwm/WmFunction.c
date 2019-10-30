@@ -81,19 +81,29 @@
 #include <Xm/RowColumnP.h> /* for MS_LastManagedMenuTime */
 extern XmMenuState _XmGetMenuState();
 
-extern int putenv ();
-extern char * getenv ();
-#ifndef PORT_NOVFORK
-extern pid_t vfork();
-#endif /* PORT_NOVFORK */
+#if defined(HAVE_CONFIG_H)
+#include <autotools_config.h>
+#endif
+
+#if defined(HAVE_SYS_TYPES_H)
+#include <sys/types.h>
+#endif
+
+#include <unistd.h>
+#include <stdlib.h>
+
+#if defined(HAVE_VFORK) && defined(HAVE_VFORK_H)
+#include <vfork.h>
+#endif
 
 static unsigned int GetEventInverseMask(XEvent *event);
 
 #if (defined(__linux__) || defined(sun) || defined(CSRG_BASED)) && !defined(_NFILE)
 #define _NFILE FOPEN_MAX
 #endif
+
 #define CLOSE_FILES_ON_EXEC() \
-{int ifx; for (ifx=3; ifx < _NFILE; ifx++) (void) fcntl (ifx, F_SETFD, 1);}
+{int ifx; for (ifx=3; ifx < _NFILE; ifx++) (void) fcntl (ifx, F_SETFD, FD_CLOEXEC);}
 
 /*
  * Global Variables:
@@ -948,10 +958,10 @@ Boolean F_Exec (String args, ClientData *pCD, XEvent *event)
      * Fork a process to exec a shell to run the specified command:
      */
 
-#ifdef PORT_NOVFORK
-    if ((pid = fork ()) == 0)
-#else
+#if defined(HAVE_VFORK)
     if ((pid = vfork ()) == 0)
+#else
+    if ((pid = fork ()) == 0)
 #endif
     {
 
