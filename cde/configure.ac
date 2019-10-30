@@ -304,11 +304,6 @@ lib/tt/bin/ttdbserverd/Makefile
 lib/tt/bin/ttsession/Makefile
 
 lib/DtSvc/Makefile
-lib/DtSvc/DtUtil1/Makefile
-lib/DtSvc/DtUtil2/Makefile
-lib/DtSvc/DtEncap/Makefile
-lib/DtSvc/DtCodelibs/Makefile
-lib/DtSvc/DtXpm/Makefile
 
 lib/DtSearch/Makefile
 lib/DtSearch/raima/Makefile
