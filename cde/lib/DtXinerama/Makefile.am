@@ -1,8 +1,8 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-lib_LIBRARIES = libDtXinerama.a
+lib_LTLIBRARIES = libDtXinerama.la
 
-# JET - why?
-#libDtXinerama_a_CFLAGS = -fpic
+libDtXinerama_la_SOURCES = DtXinerama.c
 
-libDtXinerama_a_SOURCES = DtXinerama.c
+libDtXinerama_la_LIBADD = -lXinerama
+
