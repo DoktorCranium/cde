@@ -235,6 +235,8 @@ AC_PROG_CC_C99
 AC_PATH_X
 AC_PATH_XTRA
 
+AC_FUNC_FORK
+
 dnl programs
 AC_CHECK_PROGS(KSH, ksh)
 AC_CHECK_PROGS(BDFTOPCF, bdftopcf)
@@ -248,6 +250,7 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS([locale.h])
 
 dnl libraries
+AC_CHECK_LIB(m, cosf)
 AC_CHECK_LIB(tirpc, main, [TIRPCINC="-DOPT_TIRPC -I/usr/include/tirpc"; TIRPCLIB=-ltirpc])
 AC_SUBST(TIRPCINC)
 AC_SUBST(TIRPCLIB)
@@ -361,6 +364,7 @@ programs/dtpad/Makefile
 programs/dtfile/Makefile
 programs/dtfile/dtcopy/Makefile
 
+programs/dtwm/Makefile
 ])
 
 AC_OUTPUT
