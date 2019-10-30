@@ -206,7 +206,20 @@ AC_SUBST(CDE_USER_TOP)
 
 AC_PROG_CC
 AC_PROG_CXX
+
 AC_PROG_CPP
+
+dnl we need a real preprocessor, not gcc -E.  We will call it GENCPP.  We may
+dnl just bite the bullet and go with BSD's tradcpp here...
+CPP_PATH="`which cpp`"
+if test -z "$CPP_PATH"
+then
+   AC_MSG_ERROR([Could not find a C preprocessor (cpp).  Please install it.]);
+else
+   AC_SUBST(GENCPP, "$CPP_PATH -traditional -nostdinc", [CPP command])
+fi
+
+
 AM_PROG_LIBTOOL
 AC_PROG_YACC
 AM_PROG_LEX
@@ -238,7 +251,19 @@ AC_PATH_XTRA
 AC_FUNC_FORK
 
 dnl programs
-AC_CHECK_PROGS(KSH, ksh)
+
+dnl we have to treat ksh specially, as we need it's full path for
+dnl various scripts.
+
+KSH_PATH="`which ksh`"
+if test -z "$KSH_PATH"
+then
+   AC_MSG_ERROR([Could not find the Korn shell (ksh).  Please install it.]);
+else
+   AC_SUBST(KSH, $KSH_PATH, [Path to ksh])
+fi
+
+
 AC_CHECK_PROGS(BDFTOPCF, bdftopcf)
 AC_CHECK_PROGS(MKFONTIDR, mkfontdir)
 AC_CHECK_PROGS(GZIP, gzip)
@@ -368,6 +393,7 @@ programs/dtfile/dtcopy/Makefile
 programs/dtwm/Makefile
 
 programs/dtlogin/Makefile
+programs/dtlogin/config/Makefile
 
 ])
 
