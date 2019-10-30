@@ -4,6 +4,7 @@ AC_CONFIG_MACRO_DIRS([m4])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
 AC_PREFIX_DEFAULT(/usr/dt)
 
+AC_ENABLE_STATIC([no])
 
 dnl todo: determine what version of autoconf we depend on
 dnl AC_PREREQ()
@@ -12,13 +13,13 @@ AC_CANONICAL_HOST
 
 dnl global CDE versioning
 
-MAJOR=2
-MINOR=3
-MICRO=0
+CDE_VERSION_MAJOR=2
+CDE_VERSION_MINOR=3
+CDE_VERSION_MICRO=0
 
-AC_SUBST(MAJOR)
-AC_SUBST(MINOR)
-AC_SUBST(MICRO)
+AC_SUBST(CDE_VERSION_MAJOR)
+AC_SUBST(CDE_VERSION_MINOR)
+AC_SUBST(CDE_VERSION_MICRO)
 
 dnl SOURCE_DEFINES - needed for some OS's
 SOURCE_CPP_DEFINES=""
@@ -152,7 +153,7 @@ dnl our main libraries
 dnl we use single quotes so that $top_builder is evaluated in the makefiles,
 dnl not here.
 AC_SUBST(LIBTT, '$(top_builddir)/lib/tt/lib/libtt.la')
-AC_SUBST(LIBXIN, '$(top_builddir)/lib/DtXinerama/libDtXinerama.a')
+AC_SUBST(LIBXIN, '$(top_builddir)/lib/DtXinerama/libDtXinerama.la')
 AC_SUBST(LIBWIDGET, '$(top_builddir)/lib/DtWidget/libDtWidget.la')
 AC_SUBST(LIBTERM, '$(top_builddir)/lib/DtTerm/libDtTerm.la')
 AC_SUBST(LIBSVC, '$(top_builddir)/lib/DtSvc/libDtSvc.la')
@@ -162,6 +163,8 @@ AC_SUBST(LIBMRM, '$(top_builddir)/lib/DtMrm/libDtMrm.la')
 AC_SUBST(LIBMMDB, '$(top_builddir)/lib/DtMmdb/libDtMmdb.la')
 AC_SUBST(LIBHELP, '$(top_builddir)/lib/DtHelp/libDtHelp.la')
 AC_SUBST(LIBCSA, '$(top_builddir)/lib/csa/libcsa.la')
+
+AC_SUBST(DTCLIENTLIBS, '$(LIBPRINT) $(LIBHELP) $(LIBWIDGET) $(LIBSVC) $(LIBTT)')
 
 dnl set up come convenience replacements for global include dirs
 AC_SUBST(DT_INCDIR, '-I$(top_builddir)/include/Dt')
@@ -209,6 +212,9 @@ AC_PROG_MAKE_SET
 AC_PROG_SED
 AC_PROG_AWK
 AC_PROG_GREP
+
+dnl AC_PROG_AR
+AC_PROG_RANLIB
 
 AC_C_CONST
 AC_C_BIGENDIAN
