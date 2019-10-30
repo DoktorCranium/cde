@@ -3,14 +3,10 @@ MAINTAINERCLEANFILES = Makefile.in
 noinst_LIBRARIES = libCommon.a
 
 libCommon_a_CXXFLAGS = -I../../include -I../../include/utils -I$(srcdir)/lib \
-		       $(TIRPCINC) -DDL_NOT_DYNAMIC
+		       $(TIRPCINC) -DDL_NOT_DYNAMIC -DUSE_SOCKSTREAM
 
 if SOLARIS
 libCommon_a_CXXFLAGS += -DMMAP_NORESERVE -DSPRO_V2
-# FIXME - i386 is NOT big endian...
-#if I386
-#libCommon_a_CXXFLAGS += -DBIG_ENDIAN
-#endif
 endif
 
 libCommon_a_SOURCES = APOPServer.C \
@@ -35,7 +31,7 @@ libCommon_a_SOURCES = APOPServer.C \
 		      IO.C \
 		      LanguagePortability.C \
 		      ObjectKey.C \
-		      NotDynamic.C
+		      NotDynamic.C \
 		      POP2Server.C \
 		      POP3Server.C \
 		      Process.C \

@@ -58,7 +58,7 @@
 
 // For CHARSET
 #include <locale.h>
-#include <DtHelp/LocaleXlate.h>
+#include <Dt/LocaleXlate.h>
 
 V3BodyPart::V3BodyPart(DtMailEnv & error,
 		       DtMail::Message * parent,

@@ -57,7 +57,7 @@
 
 // For CHARSET
 #include <locale.h>
-#include <DtHelp/LocaleXlate.h>
+#include <Dt/LocaleXlate.h>
 #include "str_utils.h"
 
 MIMEBodyPart::MIMEBodyPart(DtMailEnv & error,

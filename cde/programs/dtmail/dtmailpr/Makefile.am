@@ -5,8 +5,8 @@ bin_PROGRAMS = dtmailpr
 dtmailpr_CXXFLAGS = -I../include -I../../dtcompat -I../../../. \
 		    -I$(srcdir)/lib $(TIRPCINC)
 
-dtmailpr_LDADD = ../libDtMail/libDtMail.a $(LIBPRINT) $(LIBHELP) $(LIBWIDGET) \
-		 $(LIBSVC) $(LIBTT) -lXm $(XTOOLLIB) ${X_LIBS}
+dtmailpr_LDADD = ../libDtMail/libDtMail.a @DTCLIENTLIBS@ \
+		 -lXm @LIBXIN@ -lXinerama $(XTOOLLIB) ${X_LIBS} $(TIRPCLIB)
 
 if FREEBSD
 dtmailpr_LDADD += -liconv

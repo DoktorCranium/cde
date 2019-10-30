@@ -69,7 +69,7 @@
 //-------------------------------------
 #include <locale.h>
 #include <time.h>
-#include <DtHelp/LocaleXlate.h>
+#include <Dt/LocaleXlate.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <limits.h>

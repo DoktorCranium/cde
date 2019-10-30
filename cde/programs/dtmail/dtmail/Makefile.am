@@ -7,7 +7,8 @@ dtmail_CXXFLAGS = -I../include -I../include/MotifApp -I../include/utils \
 		  $(TIRPCINC) -I$(srcdir)/lib -I../../dthelp -DRELEASE_NOTES \
 		  -DDTMAIL_TOOLTALK -DDTEDITOR
 
-dtmail_LDADD = ../libDtMail/libDtMail.a ../MotifApp/libMotifApp.a
+dtmail_LDADD = ../libDtMail/libDtMail.a ../MotifApp/libMotifApp.a -lXm \
+		@DTCLIENTLIBS@ $(XTOOLLIB) $(TIRPCLIB)
 
 # FIXME solaris....
 #if SOLARIS

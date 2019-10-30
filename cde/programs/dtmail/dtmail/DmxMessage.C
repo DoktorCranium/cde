@@ -72,7 +72,7 @@
 
 #include "Dmx.h"
 // For CHARSET
-#include <LocaleXlate.h>
+#include <Dt/LocaleXlate.h>
 #include <locale.h>
 #include <strings.h>
 

@@ -3,7 +3,7 @@ MAINTAINERCLEANFILES = Makefile.in
 noinst_LIBRARIES = libRFC.a
 
 libRFC_a_CXXFLAGS = -I../Common -I../../include -I../../include/utils \
-		    -I$(srcdir)/lib $(TIRPCINC) -DTTLOCK_OFF
+		    $(TIRPCINC) -DTTLOCK_OFF
 
 if SOLARIS
 libRFC_a_CXXFLAGS += -DMMAP_NORESERVE -DSPRO_V2
