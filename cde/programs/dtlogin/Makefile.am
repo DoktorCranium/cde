@@ -4,58 +4,6 @@ bin_PROGRAMS = dtlogin dtgreet dtchooser
 
 XDMDIR = $(CDE_LOGFILES_TOP)
 
-if LINUX
-AM_LDADD += -lm -lcrypt
-AM_CFLAGS += -DXDMCP -DUNIXCONN -DTCPCONN -DHASDES -DHASXDMAUTH \
-	     -DSILLYEXPORTRULE
-XBINDIR = /usr/bin/X11
-dtlogin_SOURCES += xdmauth.c
-endif
-
-if FREEBSD
-XBINDIR = /usr/local/bin
-AM_LDADD += -lm -lcrypt
-endif
-
-if OPENBSD
-XBINDIR = /usr/X11R6/bin
-dtlogin_CFLAGS += -DHASDES
-dtlogin_SOURCES += xdmauth.c
-endif
-
-if NETBSD
-XBINDIR = /usr/X11R7/bin
-AM_LDADD += -lm -lcrypt
-endif
-
-if SOLARIS
-XBINDIR = /usr/bin/X11
-AM_LDADD += -lm -ldl -lgen -lresolv -lbsm -lcmd
-dtlogin_SOURCES += solaris.c
-endif
-
-if AIX
-XBINDIR = /usr/bin/X11
-AM_CFLAGS += -D_ILS_MACROS -DBSD44SOCKETS -D__NetBSD__ -DENABLE_DYNAMIC_LANGLIST
-AM_LDADD += -ls
-endif
-
-if HPUX
-XBINDIR = /usr/bin/X11
-AM_CFLAGS += -D_XPG2 -DAUDIT -DBYPASSLOGIN -DXOS -DBSTORE -DSOFTWARE_CURSOR \
-	     -DSCREEN_PIXMAPS -DMERGE_SAVE_UNDERS -DHAS_IFREQ \
-	     -DFORCE_SEPARATE_PRIVATE -DINCLUDE_ALLOCA_H
-AM_LDADD += -lsec
-endif
-
-AM_CFLAGS = -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
-            -DCDE_INSTALLATION_TOP=${prefix} \
-            -DCDE_LOGFILES_TOP=$(CDE_LOGFILES_TOP \
-	    -I$(x_includes)/freetype2 -DUSE_XINERAMA -DBINDIR=\"$(XBINDIR)\" \
-	    -DXDMDIR=\"$(XDMDIR)\"
-
-AM_LDADD = -lXinerama $(LIBXIN) ${X_LIBS}
-
 DEF_SERVER = $(XBINDIR)/X
 DEF_USER_PATH = $(PATH):/usr/ccs/bin:$(XBINDIR)
 DEF_SYSTEM_PATH = $(PATH):$(XBINDIR)
@@ -78,6 +26,13 @@ dtlogin_CFLAGS = -DDEF_SESSION="${prefix}/bin/Xsession" \
                  -DDEF_PM_SEARCH_PATH="$(DEF_PM_PATH)" \
                  -DDEF_BM_SEARCH_PATH="$(DEF_BM_PATH)"
 
+AM_CFLAGS = -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
+            -DCDE_INSTALLATION_TOP=${prefix} \
+            -DCDE_LOGFILES_TOP=$(CDE_LOGFILES_TOP \
+	    -I/usr/include/freetype2 -DBINDIR=\"$(XBINDIR)\" \
+	    -DXDMDIR=\"$(XDMDIR)\" $(TIRPCINC) \
+	    -DKORNSHELL=$(KSH) -DUNIXCONN -DTCPCONN -DXDMCP
+
 dtlogin_SOURCES = access.c account.c auth.c genauth.c daemon.c dm.c \
                   dpylist.c error.c file.c mitauth.c protodpy.c policy.c \
                   reset.c resource.c server.c session.c socket.c util.c \
@@ -88,3 +43,37 @@ dtgreet_SOURCES = vgcallback.c vglogo.c vgmain.c vgutil.c vglang.c
 
 dtchooser_SOURCES = chooser.c dtchooser.c vglogo.c vgutil.c vgcallback.c \
 		    vglang.c
+
+dtlogin_LDADD = @DTCLIENTLIBS@ $(XTOOLLIB)
+dtgreet_LDADD = @DTCLIENTLIBS@ $(XTOOLLIB)
+dtchooser_LDADD = @DTCLIENTLIBS@ $(XTOOLLIB)
+
+
+if LINUX
+AM_CFLAGS += -DHASDES -DHASXDMAUTH
+XBINDIR = /usr/bin/X11
+dtlogin_SOURCES += xdmauth.c
+endif
+
+if FREEBSD
+XBINDIR = /usr/local/bin
+endif
+
+if OPENBSD
+XBINDIR = /usr/X11R6/bin
+dtlogin_CFLAGS += -DHASDES
+dtlogin_SOURCES += xdmauth.c
+endif
+
+if NETBSD
+XBINDIR = /usr/X11R7/bin
+endif
+
+if SOLARIS
+XBINDIR = /usr/bin/X11
+dtlogin_LDADD += -ldl -lgen -lresolv -lbsm -lcmd
+dtgreet_LDADD += -ldl -lgen -lresolv -lbsm -lcmd
+dtchooser_LDADD += -ldl -lgen -lresolv -lbsm -lcmd
+dtlogin_SOURCES += solaris.c
+endif
+
