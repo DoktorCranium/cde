@@ -4,6 +4,7 @@ bin_PROGRAMS = dtwm dtfplist
 
 dist_config_DATA = sys.dtwmrc Dtwm.defs
 BUILT_SOURCES = sys.dtwmrc Dtwm.defs
+CLEANFILES = sys.dtwmrc Dtwm.defs
 
 AM_CPPFLAGS = -DLARGECURSORS -DR2_COMPAT -DOPAQUE -DSHAPE -DUNMAP_ON_RESTART \
 	      -DBATCH_DRAG_REQUESTS -DCDE_INSTALLATION_TOP=\"${prefix}\" \
@@ -43,10 +44,9 @@ SCRIPTFLAGS = -DCDE_INSTALLATION_TOP=${prefix} \
 
 Dtwm.defs: Dtwm.defs.src
 	$(RM) $@
-	$(CPP) -P -DXCOMM=# $(AM_CPPFLAGS) - < $< > $@
+	$(GENCPP) -P -DXCOMM=# $(AM_CPPFLAGS) $< > $@
 
-CPPSRC = sys.dtwmrc.src
 sys.dtwmrc: sys.dtwmrc.src
 	$(RM) $@
-	$(CPP) -P -DXCOMM=# $(AM_CPPFLAGS) - < $< > $@
+	$(GENCPP) -P -DXCOMM=# $(AM_CPPFLAGS) $< > $@
 
