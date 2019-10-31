@@ -8,5 +8,5 @@ MAINTAINERCLEANFILES = Makefile.in \
 		config.h.in \
 		install-sh
 
-SUBDIRS = lib programs doc
+SUBDIRS = util lib programs doc
 
