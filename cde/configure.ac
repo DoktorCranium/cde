@@ -209,16 +209,9 @@ AC_PROG_CXX
 
 AC_PROG_CPP
 
-dnl we need a real preprocessor, not gcc -E.  We will call it GENCPP.  We may
-dnl just bite the bullet and go with BSD's tradcpp here...
-CPP_PATH="`which cpp`"
-if test -z "$CPP_PATH"
-then
-   AC_MSG_ERROR([Could not find a C preprocessor (cpp).  Please install it.]);
-else
-   AC_SUBST(GENCPP, "$CPP_PATH -traditional -nostdinc", [CPP command])
-fi
-
+dnl we need a real preprocessor, not gcc -E.  We will call it GENCPP.  We will
+dnl go with BSD's tradcpp here...
+AC_SUBST(GENCPP, '$(top_builddir)/util/tradcpp/tradcpp')
 
 AM_PROG_LIBTOOL
 AC_PROG_YACC
@@ -298,6 +291,9 @@ LIBS="${LIBS} ${PTHREAD_LIBS}"
 dnl All of the makefiles we need to generate go here...
 AC_CONFIG_FILES([
 Makefile
+
+util/Makefile
+util/tradcpp/Makefile
 
 lib/Makefile
 
