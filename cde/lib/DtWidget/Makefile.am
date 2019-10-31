@@ -43,7 +43,6 @@ libDtWidget_la_SOURCES = ComboBox.c      Control.c       DialogBox.c \
 BUILT_SOURCES = UNIXbindings
 CLEANFILES = UNIXbindings
 
-CPPTARGET = UNIXbindings
-CPPSRC = UNIXbindings.cpp
-
-include $(top_builddir)/include/cppfile.inc
+UNIXbindings: UNIXbindings.cpp
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(AM_CPPFLAGS) $< > $@
