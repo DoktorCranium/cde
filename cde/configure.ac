@@ -252,17 +252,7 @@ AC_FUNC_FORK
 
 dnl programs
 
-dnl we have to treat ksh specially, as we need it's full path for
-dnl various scripts.
-
-KSH_PATH="`which ksh`"
-if test -z "$KSH_PATH"
-then
-   AC_MSG_ERROR([Could not find the Korn shell (ksh).  Please install it.]);
-else
-   AC_SUBST(KSH, $KSH_PATH, [Path to ksh])
-fi
-
+AC_PATH_PROG(KSH, ksh)
 
 AC_CHECK_PROGS(BDFTOPCF, bdftopcf)
 AC_CHECK_PROGS(MKFONTIDR, mkfontdir)
