@@ -43,10 +43,16 @@ dtfile_SOURCES = ChangeDir.c     ChangeDirP.c    Command.c       Common.c \
 		 Prefs.c         PrefsP.c        SharedMsgs.c    SharedProcs.c \
 		 ToolTalk.c      Trash.c         Utils.c         fsDialog.c
 
+# Mind the quoting here...
+LOCAL_CPP_DEFINES = -DSHAPE -D_ILS_MACROS -DSUN_PERF \
+		-DCDE_INSTALLATION_TOP="${prefix}" \
+		-DCDE_CONFIGURATION_TOP="$(CDE_CONFIGURATION_TOP)" \
+		-DKORNSHELL="$(KSH)"
+
 dtfile.config: dtfile.config.cpp
-	$(RM) dtfile.config
-	$(CPP) -P -DXCOMM=# $(AM_CPPFLAGS) dtfile.config.cpp -o dtfile.config
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
 
 dtfile_error: dtfile_error.cpp
-	$(RM) dtfile_error
-	$(CPP) -P -DXCOMM=# $(AM_CPPFLAGS) dtfile_error.cpp -o dtfile_error
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $<  > $@
