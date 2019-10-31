@@ -44,9 +44,9 @@ SCRIPTFLAGS = -DCDE_INSTALLATION_TOP=${prefix} \
 
 Dtwm.defs: Dtwm.defs.src
 	$(RM) $@
-	$(GENCPP) -P -DXCOMM=# $(AM_CPPFLAGS) $< > $@
+	$(GENCPP) -P -DXCOMM=# $(SCRIPTFLAGS) $< > $@
 
 sys.dtwmrc: sys.dtwmrc.src
 	$(RM) $@
-	$(GENCPP) -P -DXCOMM=# $(AM_CPPFLAGS) $< > $@
+	$(GENCPP) -P -DXCOMM=# $(SCRIPTFLAGS) $< > $@
 
