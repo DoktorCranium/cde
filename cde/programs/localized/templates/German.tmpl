@@ -4,25 +4,30 @@ XCOMM $XConsortium: German.tmpl /main/1 1995/12/08 09:41:46 rswiston $
  * variable for the German locale.
  */
 
+#if BuildingDocs
+
+XCOMM stick to ISO8859-1
 SOURCE_LANG=de_DE.ISO8859-1
-
-#ifdef AlphaArchitecture
-LANG=de_DE.ISO8859-1
-#endif
-
-#ifdef RsArchitecture
-SHELL=/bin/ksh
-LANG=de_DE
-#endif
 
 #ifdef SunArchitecture
 LANG=de
 #endif
 
-#ifdef HPArchitecture
-LANG=de_DE.iso88591
+#if defined(LinuxArchitecture) || defined(BSDArchitecture)
+LANG=de_DE.ISO8859-1
+#endif
+
+#else
+
+XCOMM use UTF-8 for localization
+SOURCE_LANG=de_DE.UTF-8
+
+#ifdef SunArchitecture
+LANG=de
 #endif
 
 #if defined(LinuxArchitecture) || defined(BSDArchitecture)
-LANG=de_DE.ISO8859-1
+LANG=de_DE.UTF-8
+#endif
+
 #endif
