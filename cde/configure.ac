@@ -408,6 +408,8 @@ programs/dtaction/Makefile
 
 programs/dtspcd/Makefile
 
+programs/dtscreen/Makefile
+
 ])
 
 AC_OUTPUT

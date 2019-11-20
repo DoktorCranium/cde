@@ -1,20 +1,22 @@
-defaultdir = ${prefix}/app_defaults/C
+MAITAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtscreen
 
-dist_default_DATA = Dtscreen
-
-dtscreen_LDADD = -lm $(SVCLIB) $(LIBTT) $(XTOOLLIB) ${X_LIBS}
+dtscreen_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
 dtscreen_LDADD += -ldl -lgen
 endif
 
-dtscreen_SOURCES = blank.c         dtscreen.c      flame.c         hopalong.c \
-		   hsbramp.c       image.c         life.c          pyro.c \
-		   qix.c           resource.c      rotor.c         swarm.c \
-		   usleep.c        worm.c
+dtscreen_SOURCES = blank.c dtscreen.c flame.c hopalong.c hsbramp.c	\
+		   image.c life.c pyro.c qix.c resource.c rotor.c	\
+		   swarm.c usleep.c worm.c dtscreen.h
 
-CPPTARGET = Dtscreen
-CPPSRC = Dtscreen.src
-include $(srcdir)/include/cppfile.tmpl
+CPP_TARGETS = Dtscreen
+BUILT_SOURCES = $(CPP_TARGETS)
+CLEANFILES = $(CPP_TARGETS)
+
+Dtscreen: Dtscreen.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=#  $< > $@
+
