@@ -11,7 +11,7 @@ endif
 dtterm_CFLAGS = -I$(top_builddir)/lib/DtTerm/TermPrim	\
 	-I$(top_builddir)/lib/DtTerm/Term			\
 	-I$(top_builddir)/lib/DtTerm/TermView $(TIRPCINC)	\
-	-I$(top_builddir)/include/Dt \
+	$(DT_INCDIR) \
 	-DSUN_TERMINAL_SERVER
 
 dtterm_SOURCES = DtTermLogit.c DtTermMain.c DtTermFallBackResources.c	\

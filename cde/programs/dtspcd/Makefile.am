@@ -4,7 +4,7 @@ bin_PROGRAMS = dtspcd
 
 dtspcd_CFLAGS = $(TIRPCINC) -DCDE_CONFIGURATION_TOP=\"${prefix}\" \
 		-DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
-		-I$(top_builddir)/include/Dt
+		$(DT_INCDIR)
 
 dtspcd_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
