@@ -1,31 +1,31 @@
-configdir = ${prefix}/config
-
 MAITAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtspcd
 
-config_PROGRAMS = dtspcdenv
+dtspcd_CFLAGS = $(TIRPCINC) -DCDE_CONFIGURATION_TOP=\"${prefix}\" \
+		-DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
+		-I$(top_builddir)/include/Dt
 
-dtspcd_CFLAGS = $(TIRPCINC) -I../dthelp -DCDE_CONFIGURATION_TOP=\"${prefix}\" \
-		-DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\"
-
-dtspcd_LDADD = $(LIBHELP) $(LIBSVC) $(LIBTT) -lXm $(XTOOLLIB) ${X_LIBS} -lm
+dtspcd_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
 dtspcd_LDADD += -ldl -lgen
 endif
 
-if HPUX
-dtspcd_CFLAGS += -D_XOPEN_SOURCE -D__hpux_8_0 -DFUNCPROTO
-endif
-
-dtspcdenv_CPPFLAGS = -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
-                    -DCDE_INSTALLATION_TOP=${prefix} \
-                    -DCDE_LOGFILES_TOP=$(CDE_LOGFILES_TOP) \
-                    -DDEF_SYSTEM_PATH=$(PATH)
+# I really think we should get rid of dtspcd in general...
 
 dtspcd_SOURCES = main.c spcd_event.c
 
-CPPTARGET = dtspcdenv
-CPPSRC = dtspcdenv.src
-include $(srcdir)/include/cppfile.tmpl
+DEF_SYSTEM_PATH = "/bin:/usr/bin"
+LOCAL_CPP_DEFINES = -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP)	\
+	-DCDE_LOGFILES_TOP=$(CDE_LOGFILES_TOP) \
+	-DDEF_SYSTEM_PATH=$(DEF_SYSTEM_PATH)
+
+CPP_TARGETS = dtspcdenv
+BUILT_SOURCES = $(CPP_TARGETS)
+CLEANFILES = $(CPP_TARGETS)
+
+dtspcdenv: dtspcdenv.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
