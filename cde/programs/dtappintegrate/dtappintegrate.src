@@ -1,6 +1,5 @@
 XCOMM!KORNSHELL
 XCOMM $XConsortium: dtappintegrate.src /main/4 1996/04/21 19:27:37 drk $
-#define COMMENT_STAR *
 XCOMM ###################################################################
 XCOMM                                                                   #
 XCOMM  dtappintegrate                                                   #
@@ -153,9 +152,9 @@ function LinkCfgs
   do
     if [[ $pattern = "(*)" ]]
       then
-      files=$(ls -d "$source"/COMMENT_STAR 2>/dev/null)
+      files=$(ls -d "$source/"STAR 2>/dev/null)
     else
-      files=$(ls -d "$source"/"$pattern" 2>/dev/null)
+      files=$(ls -d "$source/$pattern" 2>/dev/null)
     fi
     if $files
       then
@@ -480,4 +479,5 @@ fi
 XCOMM -------------------------------------------------------------------
 XCOMM  Exit
 XCOMM -------------------------------------------------------------------
+
 ExitOut 0

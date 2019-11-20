@@ -420,6 +420,8 @@ programs/dtsearchpath/libCliSrv/Makefile
 programs/dtsearchpath/dtsp/Makefile
 programs/dtsearchpath/dtappg/Makefile
 
+programs/dtappintegrate/Makefile
+
 ])
 
 AC_OUTPUT

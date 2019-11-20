@@ -1,13 +1,15 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-bin_PROGRAMS = dtappintegrate
+bin_SCRIPTS = dtappintegrate
+BUILT_SOURCES = $(bin_SCRIPTS)
+CLEANFILES = $(bin_SCRIPTS)
 
-dtappintegrate_CPPFLAGS = -DKORNSHELL=$(KSH)
-			  -DCDE_INSTALLATION_TOP=${prefix} \
-			  -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
+LOCAL_CPP_DEFINES = -DKORNSHELL=$(KSH)			\
+	-DCDE_INSTALLATION_TOP=$(CDE_INSTALLATION_TOP)	\
+	-DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP)
 
-all: dtappintegrate
+dtappintegrate: dtappintegrate.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# -DSTAR='*' $(LOCAL_CPP_DEFINES) $< > $@
+	chmod 755 $@
 
-CPPSRC = dtappintegrate.src
-CPPTARGET = dtappintegrate
-include $(srcdir)/include/cppfile.src
