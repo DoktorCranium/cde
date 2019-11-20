@@ -396,6 +396,8 @@ programs/dtstyle/Makefile
 
 programs/dtexec/Makefile
 
+programs/dtdbcache/Makefile
+
 ])
 
 AC_OUTPUT

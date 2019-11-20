@@ -30,7 +30,9 @@ cc -g -o Main Main.c -I/usr/dt/include -I/usr/openwin/include -R/export2/build/S
 #include <Xm/MessageB.h>
 #include <Xm/Form.h>
 #include <Xm/Text.h>
+#include <Dt/Dt.h>
 #include <Dt/Dts.h>
+#include <Dt/DtsMM.h>
 #include <Dt/UserMsg.h>
 #include <Dt/EnvControlP.h>
 
