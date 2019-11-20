@@ -153,7 +153,7 @@ AM_CONDITIONAL([MIPS], [test "is_mips" = yes])
 AM_CONDITIONAL([PPC], [test "is_ppc" = yes])
 
 dnl our main libraries
-dnl we use single quotes so that $top_builder is evaluated in the makefiles,
+dnl we use single quotes so that $top_buildir is evaluated in the makefiles,
 dnl not here.
 AC_SUBST(LIBTT, '$(top_builddir)/lib/tt/lib/libtt.la')
 AC_SUBST(LIBXIN, '$(top_builddir)/lib/DtXinerama/libDtXinerama.la')
@@ -196,10 +196,13 @@ AM_CONDITIONAL([SPANISH], [test "build_spanish" = "yes"])
 RM="rm -f"
 AC_SUBST(RM)
 
+dnl these should be configurable someday...
+CDE_INSTALLATION_TOP="$ac_default_prefix"
 CDE_LOGFILES_TOP=/var/dt
 CDE_CONFIGURATION_TOP=/etc/dt
 CDE_USER_TOP=.dt
 
+AC_SUBST(CDE_INSTALLATION_TOP)
 AC_SUBST(CDE_CONFIGURATION_TOP)
 AC_SUBST(CDE_LOGFILES_TOP)
 AC_SUBST(CDE_USER_TOP)
@@ -243,10 +246,12 @@ AC_PATH_XTRA
 
 AC_FUNC_FORK
 
-dnl programs
+dnl programs with full paths
 
 AC_PATH_PROG(KSH, ksh)
+AC_PATH_PROG(XRDB, xrdb)
 
+dnl programs
 AC_CHECK_PROGS(BDFTOPCF, bdftopcf)
 AC_CHECK_PROGS(MKFONTIDR, mkfontdir)
 AC_CHECK_PROGS(GZIP, gzip)
@@ -380,6 +385,8 @@ programs/dtwm/Makefile
 
 programs/dtlogin/Makefile
 programs/dtlogin/config/Makefile
+
+programs/dtsession/Makefile
 
 ])
 

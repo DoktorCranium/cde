@@ -166,4 +166,4 @@ display=$(echo ${display%.*} | /usr/bin/tr ".:" "__")
   if [ ! -z "$resourceFiles" ]; then
     cat $resourceFiles
   fi
-) | XBINDIR/xrdb -quiet $xrdbOption -DDISPLAY_$display
+) | XRDB -quiet $xrdbOption -DDISPLAY_$display
