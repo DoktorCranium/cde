@@ -21,4 +21,8 @@ if SOLARIS
 libtt_la_LIBADD += -lnsl -lsocket -lintl -ldl -lc -lw
 endif
 
+if LINUX
+libtt_la_LIBADD += $(TIRPCLIB)
+endif
+
 libtt_la_LDFLAGS = -version-info 2:1:0
