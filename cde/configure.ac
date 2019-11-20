@@ -388,6 +388,8 @@ programs/dtlogin/config/Makefile
 
 programs/dtsession/Makefile
 
+programs/dthello/Makefile
+
 ])
 
 AC_OUTPUT

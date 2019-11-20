@@ -2,15 +2,14 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dthello
 
-dthello_LDADD = ${X_LIBS} -lm $(XTOOLLIB) ../DtSvc/DtUtil2/EnvControl.o \
-                ../DtSvc/DtUtil2/DtNlUtils.o ../DtSvc/DtUtil2/GetDispRes.o
-
-if HPUX
-dthello_LDADD = -DHP_COLOR
-endif
+dthello_LDADD = $(DTCLIENTLIBS) ${X_LIBS} -lXm $(XTOOLLIB)
 
 if SOLARIS
-dthello_LDADD = -ldl -lgen
+dthello_LDADD += -ldl -lgen
+endif
+
+if LINUX
+dthello_LDADD += $(TIRPCLIB)
 endif
 
 dthello_SOURCES = dthello.c
