@@ -1,3 +1,3 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = libDtCmpP dtcm server
+SUBDIRS = libDtCmP dtcm server

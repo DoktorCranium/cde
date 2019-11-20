@@ -130,7 +130,7 @@ char *hours[24] = {
  * Given a weekmask and the first day of the week, calculate
  * the number of times outstanding in the week.
  */
-extern int
+int
 ntimes_this_week(u_int weekmask, int firstday)
 {
 	int i, ntimes, weekdaymask = 1 << firstday;
@@ -146,21 +146,21 @@ ntimes_this_week(u_int weekmask, int firstday)
 }
 
 /* Return beginning of time */
-extern Tick
+Tick
 get_bot(void)
 {
 	return bot;
 }
 
 /* Return end of time */
-extern Tick
+Tick
 get_eot(void)
 {
 	return eot;
 }
 
 /* Given a weekmask, find the last appointment in the week */
-extern int
+int
 lastapptofweek(u_int mask)
 {
 	int n;
@@ -174,7 +174,7 @@ lastapptofweek(u_int mask)
 }
 
 /*      Remove after v3 release */
-extern boolean_t
+boolean_t
 magic_time(Tick t)
 {
         boolean_t magic=B_FALSE;
@@ -188,7 +188,7 @@ magic_time(Tick t)
         return(magic);
 }
 /* for 12 hour clock, if 24 subtract 12 */
-extern boolean_t
+boolean_t
 adjust_hour(int *hr)
 {
 	boolean_t am = B_TRUE;
@@ -204,7 +204,7 @@ adjust_hour(int *hr)
 }
 
 
-extern int
+int
 timeok( Tick t)
 {
 	int r =((t >= bot) &&(t <= eot));
@@ -232,19 +232,19 @@ dst_changed(Tick old, Tick new)
 	}
 }
 	
-extern int
+int
 seconds(int n, Unit unit)
 {
 	return(n *(int)unit);
 }
 
-extern double
+double
 seconds_dble(double n, Unit unit)
 {
 	return((double)(n * (int)unit));
 }
 
-extern int
+int
 year(Tick t)
 {
 	struct tm *tm;
@@ -254,7 +254,7 @@ year(Tick t)
 	return(tm->tm_year + 1900);
 }
 
-extern int
+int
 month(Tick t)
 {
 	struct tm *tm;
@@ -264,7 +264,7 @@ month(Tick t)
 	return(tm->tm_mon+1);
 }
 
-extern int
+int
 hour(Tick t)
 {
 	struct tm *tm;
@@ -274,7 +274,7 @@ hour(Tick t)
 	return(tm->tm_hour);
 }
 
-extern int
+int
 minute(Tick t)
 {
 	struct tm *tm;
@@ -284,14 +284,14 @@ minute(Tick t)
 	return(tm->tm_min);
 }
 
-extern int
+int
 leapyr(int y)
 {
 	return
 	 (y % 4 == 0 && y % 100 !=0 || y % 400 == 0);
 }
 
-extern int
+int
 monthlength(Tick t)
 {
 	int mon;
@@ -303,7 +303,7 @@ monthlength(Tick t)
 	return(((mon==1) && leapyr(tm.tm_year+1900))? 29 : monthdays[mon]);
 }
 
-extern int
+int
 monthseconds(Tick t)
 {
 	int mon;
@@ -315,7 +315,7 @@ monthseconds(Tick t)
 	return(((mon==1) && leapyr(tm.tm_year+1900))? 29*daysec : monthsecs[mon]);
 }
 
-extern int
+int
 dom(Tick t)
 {
 	struct tm *tm;
@@ -325,7 +325,7 @@ dom(Tick t)
 	return(tm->tm_mday);
 }
 
-extern int
+int
 wom(Tick t)
 {
 	struct tm *tm;
@@ -365,13 +365,13 @@ next_nmonth(Tick t, int n)
 	return(mktime(&tm));
 }
 
-extern Tick
+Tick
 nextmonth(Tick t)
 {
 	return(next_nmonth(t, 1));
 }
 
-extern boolean_t
+boolean_t
 weekofmonth(Tick t, int *wk)
 {
 	struct tm tm, tm1, tm2;
@@ -403,7 +403,7 @@ weekofmonth(Tick t, int *wk)
 	}
 }
 
-extern int
+int
 dow(Tick t)
 {
 	struct tm tm;
@@ -413,7 +413,7 @@ dow(Tick t)
 	return(tm.tm_wday);
 }
 
-extern int /* find dow(0-6) that 1st dom falls on */
+int /* find dow(0-6) that 1st dom falls on */
 fdom(Tick t)
 {
 	struct tm tm;
@@ -427,7 +427,7 @@ fdom(Tick t)
 	return(tm.tm_wday);
 }
 
-extern int
+int
 ldom(Tick t /* find dow(0-6) that last dom falls on */ )
 {
 	struct tm tm;
@@ -442,21 +442,21 @@ ldom(Tick t /* find dow(0-6) that last dom falls on */ )
 }
 
 /* returns tick of last day of month */
-extern Tick
+Tick
 last_dom(Tick tick)
 {
         return(upperbound(next_ndays(tick, monthlength(tick) - dom(tick))));
 }
 
 /* returns tick of first day of month */
-extern Tick
+Tick
 first_dom(Tick tick)
 {
         return(lowerbound(last_ndays(tick, dom(tick)-1)));
 }
 
 /* returns tick of first day of week */
-extern Tick
+Tick
 first_dow(Tick tick)
 {
 	int d;
@@ -470,7 +470,7 @@ first_dow(Tick tick)
 }
 
 /* returns tick of first day of week */
-extern Tick
+Tick
 last_dow(Tick tick)
 {
 	int d;
@@ -484,13 +484,13 @@ last_dow(Tick tick)
         return(upperbound(next_ndays(tick, d)));
 }
 /* returns number of weeks in month */
-extern int
+int
 numwks(Tick tick)
 {
         return (wom(last_dom(tick)));
 }
 
-extern int
+int
 adjust_dst(Tick start, Tick next) 
 {
 	DSTchange change;
@@ -508,7 +508,7 @@ adjust_dst(Tick start, Tick next)
 	return(next);
 }
 
-extern Tick
+Tick
 next_nhours(Tick t, int n)
 {
 	Tick next;
@@ -525,7 +525,7 @@ next_nhours(Tick t, int n)
 	return(next);
 }
 
-extern Tick
+Tick
 last_ndays(Tick t, int n)
 {
 	Tick last;
@@ -543,7 +543,7 @@ last_ndays(Tick t, int n)
 	return(last);
 }
 
-extern Tick
+Tick
 next_ndays(Tick t, int n)
 {
 	Tick next;
@@ -565,7 +565,7 @@ next_ndays(Tick t, int n)
 	return(next);
 }
 
-extern Tick
+Tick
 nextday(Tick t)
 {
 	Tick next;
@@ -575,7 +575,7 @@ nextday(Tick t)
 	return(next);
 }
 
-extern Tick
+Tick
 prevday(Tick t)
 {
 	Tick prev;
@@ -585,7 +585,7 @@ prevday(Tick t)
 	return(prev);
 }
 
-extern Tick
+Tick
 nextweek(Tick t)
 {
 	Tick next;
@@ -595,7 +595,7 @@ nextweek(Tick t)
 	return(next);
 }
 
-extern Tick
+Tick
 prevweek(Tick t)
 {
 	Tick prev;
@@ -605,7 +605,7 @@ prevweek(Tick t)
 	return(prev);
 }
 
-extern Tick
+Tick
 next2weeks(Tick t)
 {
 	Tick next;
@@ -615,7 +615,7 @@ next2weeks(Tick t)
 	return(next);
 }
 
-extern Tick
+Tick
 prev2weeks(Tick t)
 {
 	Tick prev;
@@ -626,7 +626,7 @@ prev2weeks(Tick t)
 }
 
 /*		WORK OUT A BETTER WAY TO DO THIS!!	*/
-extern Tick
+Tick
 prevmonth_exactday(Tick t)
 {
 	Tick prev; int day;
@@ -660,7 +660,7 @@ prevmonth_exactday(Tick t)
 }
 
 /*		WORK OUT A BETTER WAY TO DO THIS!!	*/
-extern Tick
+Tick
 nextmonth_exactday(Tick t)
 {
 	Tick next; int day;
@@ -692,7 +692,7 @@ nextmonth_exactday(Tick t)
 	return(next);
 }
 
-extern Tick
+Tick
 nextnyear(Tick t, int n)
 {
 	struct tm tm;
@@ -707,13 +707,13 @@ nextnyear(Tick t, int n)
 #endif /* SVR4 */
 }
 
-extern Tick
+Tick
 nextyear(Tick t)
 {
 	return(nextnyear(t, 1));
 }
 
-extern Tick
+Tick
 prevnday_exacttime(Tick t, int n)
 {
 	Tick prev;
@@ -723,7 +723,7 @@ prevnday_exacttime(Tick t, int n)
 	return(prev);
 }
 
-extern Tick
+Tick
 prevnyear(Tick t, int n)
 {
 	struct tm tm;
@@ -738,13 +738,13 @@ prevnyear(Tick t, int n)
 #endif /* SVR4 */
 }
 
-extern Tick
+Tick
 prevyear(Tick t)
 {
 	return(prevnyear(t, 1));
 }
 
-extern Tick
+Tick
 previousmonth(Tick t)
 {
 	struct tm tm;
@@ -771,7 +771,7 @@ previousmonth(Tick t)
 #endif /* SVR4 */
 }
 
-extern Tick
+Tick
 prev_nmonth(Tick t, int n)
 {
 	struct tm tm;
@@ -801,7 +801,7 @@ prev_nmonth(Tick t, int n)
 #endif /* SVR4 */
 }
 
-extern Tick
+Tick
 jan1(Tick t)
 {
 	struct tm tm;
@@ -818,7 +818,7 @@ jan1(Tick t)
 #endif /* SVR4 */
 }
 
-extern Tick
+Tick
 nextjan1(Tick t)
 {
 	struct tm tm;
@@ -836,7 +836,7 @@ nextjan1(Tick t)
 #endif /* SVR4 */
 }
 
-extern Tick
+Tick
 lastjan1(Tick t)
 {
 	struct tm tm;
@@ -854,7 +854,7 @@ lastjan1(Tick t)
 #endif /* SVR4 */
 }
 
-extern Tick
+Tick
 lowerbound(Tick t)
 {
 	struct tm tm;
@@ -871,7 +871,7 @@ lowerbound(Tick t)
 	return(timelocal(&tm));
 #endif /* SVR4 */
 }
-extern Tick
+Tick
 lower_bound(int i, Tick t)
 {
         struct tm tm;
@@ -888,7 +888,7 @@ lower_bound(int i, Tick t)
         return (timelocal(&tm));
 #endif /* SVR4 */
 }
-extern Tick
+Tick
 upperbound(Tick t)
 {
         struct tm tm;
@@ -912,7 +912,7 @@ leapsB4(int y)
 	return((y-1)/4 -(y-1)/100 +(y-1)/400);
 }
 
-extern Tick
+Tick
 xytoclock(int x, int y, Tick t)
 {
 	int dd, mn, yr, ly, leaps;
@@ -943,13 +943,13 @@ xytoclock(int x, int y, Tick t)
 	return(tick);
 }
 
-extern Tick
+Tick
 now(void)
 {
 	return(time(0));
 }
 
-extern void
+void
 set_timezone(char *tzname)
 {
 	static char tzenv[MAXPATHLEN];
@@ -970,7 +970,7 @@ set_timezone(char *tzname)
 	}
 }
  
-extern long
+long
 gmt_off(void)
 {
         struct tm tm;
@@ -999,7 +999,7 @@ gmt_off(void)
  * definitions of eot and EOT need to be changed as well as some
  * of the routines in this file and the caller of these routines.
  */
-extern void
+void
 init_time(void)
 {
 	struct tm tm, gm;
@@ -1035,57 +1035,57 @@ init_time(void)
 	eot             =mktime(&tm);
 }
 
-extern int
+int
 seconds_to_hours(int n)
 {
         return(n/(int)hrsec);
 }
 
-extern int
+int
 hours_to_seconds(int n)
 {
         return(n *(int)hrsec);
 }
 
-extern int
+int
 seconds_to_minutes(int n)
 {
         return(n/60);
 }
 
-extern int
+int
 minutes_to_seconds(int n)
 {
         return(n *(int)minsec);
 }
 
 
-extern int
+int
 days_to_seconds(int n)
 {
         return(n *(int)daysec);
 }
 
-seconds_to_days(int n)
+int seconds_to_days(int n)
 {
         return(n/(int)daysec);
 }
 
 /*
-extern int
+int
 weeks_to_seconds(int n)
 {
         return(n *(int)wksec);
 }
 
-extern int
+int
 seconds_to_weeks(int)
 {
         return(n/(int)wksec);
 }
 */
 
-extern Tick
+Tick
 monthdayyear(int m, int d, int y)
 {
         int t, t1;

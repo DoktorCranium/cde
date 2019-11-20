@@ -410,6 +410,12 @@ programs/dtspcd/Makefile
 
 programs/dtscreen/Makefile
 
+programs/dtcm/Makefile
+programs/dtcm/libDtCmP/Makefile
+programs/dtcm/server/Makefile
+programs/dtcm/dtcm/Makefile
+
+
 ])
 
 AC_OUTPUT

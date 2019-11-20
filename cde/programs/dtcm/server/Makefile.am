@@ -1,53 +1,38 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-CLEANFILES = parser.c
-
 bin_PROGRAMS = rpc.cmsd
 
-rpc.cmsd_CFLAGS = -I$(CSASRC) -I$(HELPSRC) $(TIRPCINC)
+rpc_cmsd_CFLAGS = -I../../../lib/csa $(DT_INCDIR) $(CSA_INCDIR) $(TIRPCINC)
 
-rpc.cmsd_LDADD = $(LIBCSA) $(LIBSVC) $(LIBTT) $(LIBWIDGET) $(XTOOLLIB) ${X_LIBS}
+rpc_cmsd_LDADD = $(LIBCSA) $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
-rpc.cmsd_CFLAGS += -xstrconst -Xc -v
-rpc.cmsd_LDADD += -lsocket -lnsl -lintl -lm -ldl
+rpc_cmsd_CFLAGS += -xstrconst -Xc -v
+rpc_cmsd_LDADD += -lsocket -lnsl -lintl -lm -ldl
 endif
 
-if AIX
-rpc.cmsd_LDADD += -lrpcsvc -lPW -ldiag -lc
-endif
+rpc_cmsd_SOURCES = parser.c access.c callback.c cmscalendar.c		\
+		   cmsconvert.c cmsentry.c cmsmatch.c delete.c		\
+		   garbage.c insert.c lexit.c list.c log.c lookup.c	\
+		   reclotick.c recount.c relasttick.c reminder.c	\
+		   renexttick.c repeat.c reprevtick.c rerule.c		\
+		   reutil.c tree.c utility.c v4ops.c v5ops.c		\
+		   cmsfunc.c programtable.c rtable2.c rtable3.c		\
+		   rtable4.c svcmain.c update.c access.h cmsentry.h	\
+		   insert.h parser.h tree.h callback.h cmsmatch.h	\
+		   lexer.h reminder.h update.h cmsattr.h data.h		\
+		   list.h repeat.h utility.h cmscalendar.h delete.h	\
+		   log.h reutil.h v4ops.h cmsconvert.h garbage.h	\
+		   lookup.h rpcextras.h v5ops.h
 
-if HPUX
-rpc.cmsd_CFLAGS += -DHPUX -DS9000
-rpc.cmsd_LDADD += -lrpcsvc -lV3 -lc -lPW
-endif
+BUILT_SOURCES = parser.c parser.h
+CLEANFILES = parser.c parser.h
 
-rpc_cmsd_SOURCES = parser.c        access.c        callback.c \
-		   cmscalendar.c   cmsconvert.c    cmsentry.c \
-		   cmsmatch.c      delete.c        garbage.c \
-		   insert.c        lexit.c         list.c \
-		   log.c           lookup.c        reclotick.c \
-		   recount.c       relasttick.c    reminder.c \
-		   renexttick.c    repeat.c        reprevtick.c \
-		   rerule.c        reutil.c        tree.c \
-		   utility.c       v4ops.c         v5ops.c \
-		   cmsfunc.c       programtable.c  rtable2.c \
-		   rtable3.c       rtable4.c       svcmain.c \
-		   update.c
+AM_YFLAGS = -d
 
-all:: rpc.cmsd
-
-.SUFFIXES: .y
-
-.y.c:
-	$(YACC) -d $(YFLAGS) $<
-	$(SED) -e "s/yy/yyy/g" -e "/# line/d" y.tab.c > $*.c
-	$(SED) s/yy/yyy/g y.tab.h >  $*.h
+parser.c parser.h: parser.y
+	$(YACC) $(AM_YFLAGS) $<
+	$(SED) -e "s/yy/yyy/g" -e "/# line/d" y.tab.c > parser.c
+	$(SED) -e 's/yy/yyy/g' y.tab.h >  parser.h
 	$(RM) y.tab.c  y.tab.h
 
-parser.o:       parser.c
-
-includes:: parser.c
-
-clean::
-	echo -n > parser.h

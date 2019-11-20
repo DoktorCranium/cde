@@ -2,29 +2,21 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtcm dtcm_delete dtcm_insert dtcm_lookup dtcm_editor
 
-AM_CFLAGS = -I../../../lib/csa -I../libDtCmP -I../../dthelp $(TIRPCINC)
+AM_CFLAGS = $(DT_INCDIR) $(CSA_INCDIR) -I../../../lib/csa	\
+-I../libDtCmP $(TIRPCINC)
 
-AM_LDADD = ../libDtCmP/libDtCmP.a $(LIBCSA) $(LIBPRINT) $(LIBHELP) \
-	   $(LIBWIDGET) $(LIBSVC) $(LIBTT) -lXm $(XTOOLLIB) ${X_LIBS}
+LDADD = ../libDtCmP/libDtCmP.a $(LIBCSA) $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
 AM_CFLAGS += -xstrconst -Xc -v
 endif
 
-if HPUX
-AM_LDADD += -lrpcsvc -lV3
-endif
-
-if AIX
-AM_LDADD += -lrpcsvc -lPW -ldiag
-endif
-
 if FREEBSD
-AM_LDADD += -lcompat
+LDADD += -lcompat
 endif
 
 if NETBSD
-AM_LDADD += -lcompat
+LDADD += -lcompat
 endif
 
 dtcm_SOURCES = MonthPanel.c    RFCMIME.c       about.c \
