@@ -2,13 +2,9 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtexec
 
-dtexec_CFLAGS = $(TIRPCINC) -DMSGLOG_CLIENT_ONLY
+dtexec_CFLAGS = $(TIRPCINC) -DMSGLOG_CLIENT_ONLY	\
+	-I../../lib/DtSvc/include
 
-dtexec_LDADD = $(LIBTT) $(XTOOLLIB) ${X_LIBS}
+dtexec_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
-DtSvcLock.h: ../../lib/DtSvc/include/DtSvcLock.h
-	$(RM) $@
-	$(LN_S) $? $@
-
-dtexec_SOURCES = ../../lib/DtSvc/DtUtil2/DtGetMessage.c \
-		 ../../lib/DtSvc/DtUtil/MsgLog.c Main.c
+dtexec_SOURCES = Main.c

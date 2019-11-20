@@ -394,6 +394,8 @@ programs/dthello/Makefile
 
 programs/dtstyle/Makefile
 
+programs/dtexec/Makefile
+
 ])
 
 AC_OUTPUT
