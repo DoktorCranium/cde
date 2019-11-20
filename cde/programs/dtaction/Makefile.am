@@ -4,15 +4,7 @@ bin_PROGRAMS = dtaction
 
 dtaction_SOURCES = Main.c
 
-dtaction_LDADD = -lm ${X_LIBS} $(LIBTT) $(LIBSVC) $(XTOOLLIB)
-
-if HPUX
-dtaction_LDADD += +e
-endif
-
-if AIX
-dtaction_LDADD += -liconv
-endif
+dtaction_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
 dtaction_LDADD += -ldl
