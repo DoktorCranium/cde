@@ -50,7 +50,7 @@
 #include <X11/Xlib.h>
 #include <X11/Intrinsic.h>
 
-#include <DtHelp/LocaleXlate.h>  /* for locale equivalence between platforms */
+#include <Dt/LocaleXlate.h>  /* for locale equivalence between platforms */
 
 #include "Main.h"
 #include "I18nEnv.h"

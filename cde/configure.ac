@@ -270,12 +270,14 @@ AC_SUBST(TIRPCINC)
 AC_SUBST(TIRPCLIB)
 AC_CHECK_LIB(Xinerama, XineramaQueryScreens, ,[AC_MSG_ERROR([libXinerama not found])])
 
-dnl Setup XTOOLLIB
-XTOOLLIB=""
+dnl Setup XTOOLLIB - we do it in this specific order to avoid ordering
+dnl issues
+XTOOLLIB="$X_LIBS"
 AC_CHECK_LIB(X11, XOpenDisplay, [XTOOLLIB="-lX11"])
 AC_CHECK_LIB(Xt, XtInitialize, [XTOOLLIB="-lXt ${XTOOLLIB}"])
 AC_CHECK_LIB(ICE, IceCloseConnection, [XTOOLLIB="-lICE ${XTOOLLIB}"])
 AC_CHECK_LIB(SM, SmcOpenConnection, [XTOOLLIB="-lSM ${XTOOLLIB}"])
+AC_CHECK_LIB(Xm, XmTextSetString, [XTOOLLIB="-lXm ${XTOOLLIB}"])
 AC_SUBST([XTOOLLIB])
 
 dnl Add -DUSE_XINERAMA to SOURCE_CPP_DEFINES for now.  Eventually this
@@ -389,6 +391,8 @@ programs/dtlogin/config/Makefile
 programs/dtsession/Makefile
 
 programs/dthello/Makefile
+
+programs/dtstyle/Makefile
 
 ])
 
