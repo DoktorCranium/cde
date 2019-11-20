@@ -400,6 +400,8 @@ programs/dtdbcache/Makefile
 
 programs/dticon/Makefile
 
+programs/dtterm/Makefile
+
 ])
 
 AC_OUTPUT

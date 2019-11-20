@@ -1,48 +1,36 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-if SOLARIS
-.NO_PARALLEL:
-endif
-
-all:: dtterm.ti DtTermFallBackResources.c
-
-SUBDIRS = util
-
 bin_PROGRAMS = dtterm
 
+dtterm_LDADD = $(LIBTERM) $(DTCLIENTLIBS) $(XTOOLLIB) 
+
 if BSD
-UTILLIB = -lutil
+dtterm_LDADD += -lutil
 endif
 
-if SOLARIS
-LIBHELP =
-endif
+dtterm_CFLAGS = -I$(top_builddir)/lib/DtTerm/TermPrim	\
+	-I$(top_builddir)/lib/DtTerm/Term			\
+	-I$(top_builddir)/lib/DtTerm/TermView $(TIRPCINC)	\
+	-I$(top_builddir)/include/Dt \
+	-DSUN_TERMINAL_SERVER
 
-dtterm_LDADD = $(LIBTERM) $(XINPUTLIB) $(LIBHELP) \
-        -lXm $(XTOOLLIB) ${X_LIB} $(UTILLIB) $(LIBSVC) $(LIBTT)
+dtterm_SOURCES = DtTermLogit.c DtTermMain.c DtTermFallBackResources.c	\
+		 sunDtTermServer.c DtTermSyntax.c DtTermLogit.h		\
+		 DtTermMain.h DtTermServer.h DtTermSyntax.h
 
-dtterm_CFLAGS = -I$(DTTERMSRC)/TermPrim -I$(DTTERMSRC)/Term \
-		-I$(DTTERMSRC)/TermView $(TIRPCINC)
+CPP_TARGETS = dtterm.ti DtTermFallBackResources.c.src	\
+	DtTermFallBackResources.c Dtterm.ad
 
-if AIX
-dtterm_CFLAGS += -DHAS_KNL -DHAS_KTAB
-endif
+BUILT_SOURCES = $(CPP_TARGETS)
+CLEANFILES = $(CPP_TARGETS)
 
-if HPVUE
-AM_CPPFLAGS += -DBUILD_HPVUE -DHPVUE
-endif
+Dtterm.ad: Dtterm.ad.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $< > $@
 
-dtterm_SOURCES = DtTermLogit.c 	DtTermMain.c	DtTermFallBackResources.c \
-		 sunDtTermServer.c 		DtTermSyntax.c
-
-CPPSRC = Dtterm.ad.src
-CPPTARGET = Dtterm.ad
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = Dtterm.ad.src
-CPPTARGET = DtTermFallBackResources.c.src
-AM_CPPFLAGS = -DFALLBACK_RESOURCES
-include $(srcdir)/include/cppfile.tmpl
+DtTermFallBackResources.c.src: Dtterm.ad.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# -DFALLBACK_RESOURCES $< > $@
 
 DtTermFallBackResources.c: DtTermFallBackResources.c.src
 	$(RM) $@
@@ -50,4 +38,4 @@ DtTermFallBackResources.c: DtTermFallBackResources.c.src
 
 dtterm.ti: terminfoChecklist
 	$(RM) $@
-	CPP="$(CPP) $(TIC_DEFINES)" $(SHELL) terminfoCreate < terminfoChecklist > $@
+	CPP="$(GENCPP)" $(SHELL) terminfoCreate < terminfoChecklist > $@
