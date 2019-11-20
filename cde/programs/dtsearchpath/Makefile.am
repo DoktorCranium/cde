@@ -1,19 +1,19 @@
-xsessiondir = ${prefix}/config/Xsession.d
-
 MAINTAINERCLEANFILES = Makefile.in
 
 SUBDIRS = libCliSrv dtsp dtappg
 
-dist_xsession_SCRIPTS
+BUILT_SOURCES = 0010.dtpaths 0030.dttmpdir
+CLEANFILES = $(BUILT_SOURCES)
 
-AM_CPPFLAGS = -DCDE_INSTALLATION_TOP=${prefix} \
-              -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
-              -DKORNSHELL=$(KSH)
+LOCAL_CPP_DEFINES = -DCDE_INSTALLATION_TOP=$(CDE_INSTALLATION_TOP)	\
+	-DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP)		\
+	-DCDE_LOGFILES_TOP=$(CDE_LOGFILES_TOP) -DKORNSHELL=$(KSH)
 
-CPPSRC = 0010.dtpaths.src
-CPPTARGET = 0010.dtpaths
-include $(srcdir)/include/cppfile.tmpl
+0010.dtpaths: 0010.dtpaths.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
 
-CPPSRC = 0030.dttmpdir.src
-CPPTARGET = 0030.dttmpdir
-include $(srcdir)/include/cppfile.tmpl
+0030.dttmpdir: 0030.dttmpdir.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+

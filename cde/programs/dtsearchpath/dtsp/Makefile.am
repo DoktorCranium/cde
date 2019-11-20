@@ -2,18 +2,16 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtsearchpath
 
-dtsearchpath_CFLAGS = -I../libCliSrv $(TIRPCINC)
+dtsearchpath_CPPFLAGS = -I../libCliSrv $(DT_INCDIR) $(TIRPCINC)
 
 if SOLARIS
-dtsearchpath_CFLAGS += -DIOSTREAMSWORKS
+dtsearchpath_CPPFLAGS += -DIOSTREAMSWORKS
 endif
 
-if AIX
-dtsearchpath_CFLAGS += -DIOSTREAMSWORKS
-endif
+dtsearchpath_LDADD = ../libCliSrv/libCliSrv.a $(DTCLIENTLIBS) $(XTOOLLIB)
 
-dtsearchpath_LDADD = ../libCliSrv/libCliSrv.a $(LIBTT) $(XTOOLLIB) ${X_LIB}
-
-dtsearchpath_SOURCES = AppSearchPath.C DbSearchPath.C HelpSearchPath.C \
-		       IconSearchPath.C InfoLibSearchPath.C ManSearchPath.C \
-		       Options.C SearchPath.C dtsearchpath.C
+dtsearchpath_SOURCES = AppSearchPath.C DbSearchPath.C			\
+		       HelpSearchPath.C IconSearchPath.C		\
+		       InfoLibSearchPath.C ManSearchPath.C Options.C	\
+		       SearchPath.C dtsearchpath.C Options.h		\
+		       SearchPath.h

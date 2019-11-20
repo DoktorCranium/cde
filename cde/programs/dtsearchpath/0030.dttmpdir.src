@@ -18,8 +18,8 @@ XCOMM ##  Invoked by:        CDE_INSTALLATION_TOP/bin/Xsession
 XCOMM ##
 XCOMM ##  Product:           @(#)Common Desktop Environment 1.0          
 XCOMM ##
-XCOMM ##  Note:              Creates the /var/dt directory if one doesn't exist.
-XCOMM ##                     However, root privilege may be required.  If /var/dt
+XCOMM ##  Note:              Creates the CDE_LOGFILES_TOP directory if one doesn't exist.
+XCOMM ##                     However, root privilege may be required.  If CDE_LOGFILES_TOP
 XCOMM ##                     disappears, then logging in as root should restore it.
 XCOMM ##
 XCOMM ##  $TOG: 0030.dttmpdir.src /main/7 1997/04/21 12:08:15 samborn $
@@ -61,28 +61,28 @@ then
 fi
 
 XCOMM 
-XCOMM 	Create the /var/dt subdirectory, if one doesn't exist
+XCOMM 	Create the CDE_LOGFILES_TOP subdirectory, if one doesn't exist
 XCOMM 
-if [[ ! -d /var/dt ]]
+if [[ ! -d CDE_LOGFILES_TOP ]]
 then
         HASH
 	HASH  This step requires root privilege
 	HASH
-	mkdir -p /var/dt >/dev/null 2>/dev/null
-	chmod 755 /var/dt >/dev/null 2>/dev/null
-	chgrp bin /var/dt >/dev/null 2>/dev/null
-	chown bin /var/dt >/dev/null 2>/dev/null
+	mkdir -p CDE_LOGFILES_TOP >/dev/null 2>/dev/null
+	chmod 755 CDE_LOGFILES_TOP >/dev/null 2>/dev/null
+	chgrp bin CDE_LOGFILES_TOP >/dev/null 2>/dev/null
+	chown bin CDE_LOGFILES_TOP >/dev/null 2>/dev/null
 fi
 
-if [ ! -d /var/dt/tmp ]
+if [ ! -d CDE_LOGFILES_TOP/tmp ]
 then
 	HASH
 	HASH  This step requires root privilege
 	HASH
-	mkdir -p /var/dt/tmp >/dev/null 2>/dev/null
-	chmod 755 /var/dt/tmp >/dev/null 2>/dev/null
-	chgrp bin /var/dt/tmp >/dev/null 2>/dev/null
-	chown bin /var/dt/tmp >/dev/null 2>/dev/null
+	mkdir -p CDE_LOGFILES_TOP/tmp >/dev/null 2>/dev/null
+	chmod 755 CDE_LOGFILES_TOP/tmp >/dev/null 2>/dev/null
+	chgrp bin CDE_LOGFILES_TOP/tmp >/dev/null 2>/dev/null
+	chown bin CDE_LOGFILES_TOP/tmp >/dev/null 2>/dev/null
 fi
 
 XCOMM #########################         eof       ########################

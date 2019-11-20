@@ -1172,7 +1172,8 @@ programs/dtprintinfo/libUI/Test
 # programs/dtsearchpath
 programs/dtsearchpath/0010.dtpaths
 programs/dtsearchpath/0030.dttmpdir
-programs/dtsearchpath/dtappg/dtappg
+programs/dtsearchpath/dtappg/dtappgather
+programs/dtsearchpath/dtsp/dtsearchpath
 
 # programs/dtsession
 programs/dtsession/dtsession.msg

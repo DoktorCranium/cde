@@ -2,16 +2,12 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtappgather
 
-dtappgather_CXXFLAGS = -I../libCliSrv
+dtappgather_CXXFLAGS = -I../libCliSrv $(DT_INCDIR)
 
-if AIX
-dtappgather_CXXFLAGS += -DIOSTREAMSWORKS
-endif
-
-dtappgather_LDADD = ../libCliSrv/libCliSrv.a $(LIBTT) $(XTOOLLIB) ${X_LIB}
+dtappgather_LDADD = ../libCliSrv/libCliSrv.a $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
 dtappgather_LDADD += -ldl -lintl
 endif
 
-dtappgather_SOURCES = Options.C dtappgather.C
+dtappgather_SOURCES = Options.C dtappgather.C dtappgather.h Options.h
