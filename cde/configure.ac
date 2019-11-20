@@ -402,6 +402,8 @@ programs/dticon/Makefile
 
 programs/dtterm/Makefile
 
+programs/dtcalc/Makefile
+
 ])
 
 AC_OUTPUT
