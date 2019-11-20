@@ -9,5 +9,5 @@ lib/DtSvc/DtUtil1/Dt.h
         DtUPDATE_LEVEL) numbers as well as the string must be
         changed. 
 lib/tt/bin/ttauth/ttauth.man
-lib/tt/tooltalk.tmpl
+lib/tt/tooltalk.inc
 
