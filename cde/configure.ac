@@ -265,8 +265,10 @@ AC_CHECK_HEADERS([locale.h])
 dnl libraries
 AC_CHECK_LIB(m, cosf)
 AC_CHECK_LIB(crypt, crypt)
-AC_CHECK_LIB(Xinerama, XineramaQueryScreens, ,
-                       [AC_MSG_ERROR([libXinerama not found])])
+dnl this should be configurable, for now it is required
+AC_CHECK_LIB(Xinerama, XineramaQueryScreens,
+                [SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DUSE_XINERAMA"],
+                [AC_MSG_ERROR([libXinerama not found])])
 
 dnl Special check for tirpc...
 AC_CHECK_LIB(tirpc, svc_register,
@@ -284,10 +286,6 @@ AC_CHECK_LIB(ICE, IceCloseConnection, [XTOOLLIB="-lICE ${XTOOLLIB}"])
 AC_CHECK_LIB(SM, SmcOpenConnection, [XTOOLLIB="-lSM ${XTOOLLIB}"])
 AC_CHECK_LIB(Xm, XmTextSetString, [XTOOLLIB="-lXm ${XTOOLLIB}"])
 AC_SUBST([XTOOLLIB])
-
-dnl Add -DUSE_XINERAMA to SOURCE_CPP_DEFINES for now.  Eventually this
-dnl should be configurable.
-SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DUSE_XINERAMA"
 
 dnl set CPPFLAGS, CFLAGS, and CXXFLAGS.
 dnl The Autoconf manual says that these are user variables and
