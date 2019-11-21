@@ -6,8 +6,6 @@ include ../tooltalk.inc
 
 lib_LTLIBRARIES = libtt.la
 
-libtt_la_CFLAGS = $(TIRPCINC)
-
 if AIX
 libtt_la_SOURCES = realpath.c
 else

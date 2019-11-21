@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtfile_copy
 
-dtfile_copy_CFLAGS = -DSHAPE $(TIRPCINC)
+dtfile_copy_CFLAGS = -DSHAPE
 
 if SOLARIS
 dtfile_copy_CFLAGS += -xF

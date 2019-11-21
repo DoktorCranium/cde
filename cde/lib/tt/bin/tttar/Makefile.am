@@ -4,20 +4,13 @@ include ../../tooltalk.inc
 
 bin_PROGRAMS = tttar
 
-tttar_CXXFLAGS = $(TIRPCINC) -I../../lib $(TT_VERSION_DEFINE)
+tttar_CXXFLAGS = -I../../lib $(TT_VERSION_DEFINE)
 
-tttar_LDADD = @LIBTT@ $(X_LIBS) ../../slib/libstt.a ../../mini_isam/libisam.a
-
-if LINUX
-tttar_LDADD += $(TIRPCLIB) $(XTOOLLIB)
-endif
+tttar_LDADD = @LIBTT@ ../../slib/libstt.a ../../mini_isam/libisam.a \
+	$(XTOOLLIB)
 
 if SOLARIS
-tttar_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
-endif
-
-if OPENBSD
-tttar_LDADD += $(XTOOLLIB)
+tttar_LDADD += -ldl -lintl -lsocket -lnsl
 endif
 
 tttar_SOURCES = tttar.C \

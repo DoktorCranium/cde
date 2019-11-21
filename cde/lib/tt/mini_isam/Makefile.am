@@ -4,7 +4,7 @@ include ../tooltalk.inc
 
 noinst_LIBRARIES= libisam.a
 
-libisam_a_CFLAGS = $(TIRPCINC) $(TT_VERSION_DEFINE)
+libisam_a_CFLAGS = $(TT_VERSION_DEFINE)
 
 libisam_a_SOURCES = isaddindex.c isamaddindex.c isopen.c isamopen.c \
              isdelcurr.c isdelrec.c isamdelrec.c isbuild.c \

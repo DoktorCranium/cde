@@ -4,7 +4,7 @@ bin_PROGRAMS = dtmail
 
 dtmail_CXXFLAGS = -I../include -I../include/MotifApp -I../include/utils \
 		  -I../include/DtMail -I../libDtMail/RFC -I$(x_includes) \
-		  $(TIRPCINC) -I$(srcdir)/lib -I../../dthelp -DRELEASE_NOTES \
+		  -I$(srcdir)/lib -I../../dthelp -DRELEASE_NOTES \
 		  -DDTMAIL_TOOLTALK -DDTEDITOR
 
 dtmail_LDADD = ../libDtMail/libDtMail.a ../MotifApp/libMotifApp.a -lXm \

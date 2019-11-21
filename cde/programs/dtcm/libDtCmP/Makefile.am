@@ -3,7 +3,7 @@ MAINTAINERCLEANFILES = Makefile.in
 noinst_LIBRARIES = libDtCmP.a
 
 libDtCmP_a_CFLAGS = $(CSA_INCDIR) -I../../../lib/csa -DRFC_MIME	\
-	-DLINE_COUNT -DV2 -DOW_I18N $(TIRPCINC)
+	-DLINE_COUNT -DV2 -DOW_I18N
 
 if SOLARIS
 libDtCmP_a_CFLAGS += -xstrconst -Xc -v

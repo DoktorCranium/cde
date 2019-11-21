@@ -15,7 +15,7 @@ KSH93LIBSHELL = $(KSH93SRC)/src/cmd/ksh93/libshell.a
 bin_PROGRAMS = dtksh
 
 dtksh_CPPFLAGS = -I$(KSH93SRC)/include/ast -I$(KSH93SRC)/src/cmd/ksh93/include \
-	       -I$(KSH93SRC)/src/cmd/ksh93 $(TIRPCINC) -I${srcdir}/lib/DtPrint \
+	       -I$(KSH93SRC)/src/cmd/ksh93 -I${srcdir}/lib/DtPrint \
 	       -I${srcdir}/lib/DtHelp
 dtksh_LDADD = $(DTHELPLIB) $(DTWIDGETLIB) $(DTSVCLIB) $(DTPRINTLIB) $(TTLIB) \
 	      -lXm $(XTOOLLIB) ${X_LIB} $(KSH93SRC)/lib/libcmd.a  \

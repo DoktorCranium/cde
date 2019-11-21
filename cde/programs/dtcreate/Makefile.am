@@ -2,8 +2,6 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtcreate
 
-dtcreate_CPPFLAGS = $(TIRPCINC)
-
 dtcreate_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS

@@ -3,7 +3,7 @@ MAINTAINERCLEANFILES = Makefile.in
 noinst_LIBRARIES = libCommon.a
 
 libCommon_a_CXXFLAGS = -I../../include -I../../include/utils -I$(srcdir)/lib \
-		       $(TIRPCINC) -DDL_NOT_DYNAMIC -DUSE_SOCKSTREAM
+		       -DDL_NOT_DYNAMIC -DUSE_SOCKSTREAM
 
 if SOLARIS
 libCommon_a_CXXFLAGS += -DMMAP_NORESERVE -DSPRO_V2

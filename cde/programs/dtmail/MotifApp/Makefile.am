@@ -2,8 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 noinst_LIBRARIES = libMotifApp.a
 
-libMotifApp_a_CXXFLAGS = -I../include/MotifApp -I../include -I../include/utils \
-			 $(TIRPCINC)
+libMotifApp_a_CXXFLAGS = -I../include/MotifApp -I../include -I../include/utils 
 
 # FIXME - some of these aren't set and sould be by configure.ac
 #if SOLARIS

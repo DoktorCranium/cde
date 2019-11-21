@@ -10,7 +10,7 @@ endif
 
 dtterm_CFLAGS = -I$(top_builddir)/lib/DtTerm/TermPrim	\
 	-I$(top_builddir)/lib/DtTerm/Term			\
-	-I$(top_builddir)/lib/DtTerm/TermView $(TIRPCINC)	\
+	-I$(top_builddir)/lib/DtTerm/TermView	\
 	$(DT_INCDIR) \
 	-DSUN_TERMINAL_SERVER
 

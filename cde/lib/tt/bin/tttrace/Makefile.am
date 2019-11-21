@@ -4,20 +4,12 @@ include ../../tooltalk.inc
 
 bin_PROGRAMS = tttrace
 
-tttrace_CXXFLAGS = $(TIRPCINC) -I../../lib
+tttrace_CXXFLAGS = -I../../lib
 
-tttrace_LDADD = @LIBTT@ $(X_LIBS)
-
-if LINUX
-tttrace_LDADD += $(TIRPCLIB) $(XTOOLLIB)
-endif
+tttrace_LDADD = @LIBTT@ $(XTOOLLIB)
 
 if SOLARIS
-tttrace_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
-endif
-
-if OPENBSD
-tttrace_LDADD += $(XTOOLLIB)
+tttrace_LDADD += -ldl -lintl -lsocket -lnsl
 endif
 
 tttrace_SOURCES = tttrace.C tttrace_objs.C

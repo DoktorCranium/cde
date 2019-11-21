@@ -4,20 +4,12 @@ include ../../tooltalk.inc
 
 bin_PROGRAMS = ttmv ttrm ttcp ttrmdir
 
-AM_CXXFLAGS = -I../../lib $(TIRPCINC) $(TT_VERSION_DEFINE)
+AM_CXXFLAGS = -I../../lib $(TT_VERSION_DEFINE)
 
-LDADD = @LIBTT@ $(X_LIBS)
-
-if LINUX
-LDADD += $(TIRPCLIB) $(XTOOLLIB)
-endif
+LDADD = @LIBTT@ $(XTOOLLIB)
 
 if SOLARIS
-LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
-endif
-
-if OPENBSD
-LDADD += $(XTOOLLIB)
+LDADD += -ldl -lintl -lsocket -lnsl
 endif
 
 ttmv_SOURCES = ttmv.C mover.C

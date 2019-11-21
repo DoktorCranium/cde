@@ -4,7 +4,7 @@ include ../../tooltalk.inc
 
 noinst_LTLIBRARIES = libutil.la
 
-libutil_la_CXXFLAGS = $(TIRPCINC) $(TT_VERSION_DEFINE) -I../../lib 
+libutil_la_CXXFLAGS = $(TT_VERSION_DEFINE) -I../../lib 
 
 libutil_la_SOURCES = copyright.C	    tt_map_entry_utils.C \
 	tt_Xlib.C			    tt_new.C \

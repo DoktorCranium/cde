@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dticon
 
-dticon_CFLAGS = -D__TOOLTALK $(TIRPCINC)
+dticon_CFLAGS = -D__TOOLTALK
 
 dticon_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 

@@ -4,7 +4,7 @@ bin_PROGRAMS = dtsession
 
 dtsession_CFLAGS = -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
           -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
-	  -Ddtsession $(TIRPCINC)
+	  -Ddtsession
 
 dtsession_SOURCES = SmMain.c SmHelp.c SmGlobals.c SmCommun.c		\
 	SmError.c SmProperty.c SmProtocol.c SmSave.c SmScreen.c		\

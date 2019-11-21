@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 noinst_PROGRAMS = dtinfo_start
 
-dtinfo_start_CFLAGS = -I. $(TIRPCINC)
+dtinfo_start_CFLAGS = -I.
 
 dtinfo_start_LDADD = ${X_LIBS} $(LIBTT) $(LIBSVC) $(XTOOLLIB) -lXm
 

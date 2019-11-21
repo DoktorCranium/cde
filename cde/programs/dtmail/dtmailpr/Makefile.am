@@ -3,7 +3,7 @@ MAINTAINERCLEANFILES = Makefile.in
 bin_PROGRAMS = dtmailpr
 
 dtmailpr_CXXFLAGS = -I../include -I../../dtcompat -I../../../. \
-		    -I$(srcdir)/lib $(TIRPCINC)
+		    -I$(srcdir)/lib
 
 dtmailpr_LDADD = ../libDtMail/libDtMail.a @DTCLIENTLIBS@ \
 		 -lXm @LIBXIN@ -lXinerama $(XTOOLLIB) ${X_LIBS} $(TIRPCLIB)

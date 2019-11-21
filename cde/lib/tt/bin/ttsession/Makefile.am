@@ -4,7 +4,7 @@ include ../../tooltalk.inc
 
 bin_PROGRAMS = ttsession
 
-ttsession_CXXFLAGS = -I../../slib -I../../lib $(TIRPCINC) $(TT_VERSION_DEFINE)
+ttsession_CXXFLAGS = -I../../slib -I../../lib $(TT_VERSION_DEFINE)
 
 ttsession_LDADD = @LIBTT@ $(X_LIBS) ../../slib/libstt.a
 

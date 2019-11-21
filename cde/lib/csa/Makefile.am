@@ -4,7 +4,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 lib_LTLIBRARIES = libcsa.la
 
-libcsa_la_CFLAGS = -DRFC_MIME -DLINE_COUNT -DV2 -DOW_I18N $(TIRPCINC) \
+libcsa_la_CFLAGS = -DRFC_MIME -DLINE_COUNT -DV2 -DOW_I18N \
 		   @CSA_INCDIR@
 
 libcsa_la_LIBADD = -lXt $(TIRPCLIB)

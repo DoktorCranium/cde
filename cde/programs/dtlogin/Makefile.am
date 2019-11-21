@@ -15,7 +15,7 @@ AM_CFLAGS = -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
             -DCDE_INSTALLATION_TOP=\"${prefix}\" \
             -DCDE_LOGFILES_TOP=\"$(CDE_LOGFILES_TOP)\" \
 	    -I/usr/include/freetype2 -DBINDIR=\"$(XBINDIR)\" \
-	    -DXDMDIR=\"$(XDMDIR)\" $(TIRPCINC) \
+	    -DXDMDIR=\"$(XDMDIR)\" \
 	    -DKORNSHELL=$(KSH) -DUNIXCONN -DTCPCONN -DXDMCP
 
 dtlogin_SOURCES = access.c account.c auth.c genauth.c daemon.c dm.c \

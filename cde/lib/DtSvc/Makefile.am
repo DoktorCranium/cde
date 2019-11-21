@@ -6,7 +6,7 @@ libDtSvc_la_LDFLAGS = -version-info 2:1:0
 
 # USe CPPFLAGS so it will apply to both C and C++ components
 libDtSvc_la_CPPFLAGS = -I./include -DMULTIBYTE -DNLS16 -I../include \
-	$(TIRPCINC) @DT_INCDIR@ -DCDE_INSTALLATION_TOP=\"${prefix}\" \
+	@DT_INCDIR@ -DCDE_INSTALLATION_TOP=\"${prefix}\" \
        -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\"
 
 if SOLARIS
