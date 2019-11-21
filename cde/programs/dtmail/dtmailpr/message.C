@@ -449,9 +449,9 @@ DmxMsg::parse (void)
 	if (handleError (env, "getContents") == B_TRUE)
 		exit (1);
 
-	bodyParts = new (DtMail::BodyPart *[bc]);
+	bodyParts = new DtMail::BodyPart *[bc];
 	cachedValues = B_TRUE;
-	
+
 	// cache values
 	bodyParts [0] = part;
 	numBPs++;
