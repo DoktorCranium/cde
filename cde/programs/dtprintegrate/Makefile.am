@@ -1,15 +1,27 @@
-bin_PROGRAMS = dtprintegrate dtlp dtlpsetup
+MAINTAINERCLEANFILES = Makefile.in
 
-SCRIPTFLAGS = -DDTKORNSHELL=$(DTKORNSHELL)
+bin_SCRIPTS = dtprintegrate dtlp dtlpsetup
 
-CPPTARGET = dtprintegrate
-CPPSRC = dtprintegrate.src
-include $(srcdir)/include/cppfile.tmpl
+LOCAL_CPP_DEFINES = -DCDE_INSTALLATION_TOP=$(CDE_INSTALLATION_TOP) \
+		-DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP)   \
+		-DDTKORNSHELL="$(CDE_INSTALLATION_TOP)/bin/dtksh"  \
+		-DKORNSHELL=$(KSH)
 
-CPPTARGET = dtlp
-CPPSRC = dtlp.src
-include $(srcdir)/include/cppfile.tmpl
+BUILT_SOURCES = dtprintegrate dtlp dtlpsetup
+CLEANFILES = $(BUILT_SOURCES)
 
-CPPTARGET = dtlpsetup
-CPPSRC = dtlpsetup.src
-include $(srcdir)/include/cppfile.tmpl
+dtprintegrate: dtprintegrate.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+	chmod 755 $@
+
+dtlp: dtlp.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+	chmod 755 $@
+
+dtlpsetup: dtlpsetup.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+	chmod 755 $@
+
