@@ -265,10 +265,15 @@ AC_CHECK_HEADERS([locale.h])
 dnl libraries
 AC_CHECK_LIB(m, cosf)
 AC_CHECK_LIB(crypt, crypt)
-AC_CHECK_LIB(tirpc, main, [TIRPCINC="-DOPT_TIRPC -I/usr/include/tirpc"; TIRPCLIB=-ltirpc])
-AC_SUBST(TIRPCINC)
+AC_CHECK_LIB(Xinerama, XineramaQueryScreens, ,
+                       [AC_MSG_ERROR([libXinerama not found])])
+
+dnl Special check for tirpc...
+AC_CHECK_LIB(tirpc, svc_register,
+      [CFLAGS="${CFLAGS} -DOPT_TIRPC -I/usr/include/tirpc";
+       CXXFLAGS="${CXXFLAGS} -DOPT_TIRPC -I/usr/include/tirpc";
+       TIRPCLIB=-ltirpc])
 AC_SUBST(TIRPCLIB)
-AC_CHECK_LIB(Xinerama, XineramaQueryScreens, ,[AC_MSG_ERROR([libXinerama not found])])
 
 dnl Setup XTOOLLIB - we do it in this specific order to avoid ordering
 dnl issues
