@@ -424,6 +424,9 @@ programs/dtappintegrate/Makefile
 
 programs/dtprintegrate/Makefile
 
+programs/dtconfig/Makefile
+programs/dtconfig/sun/Makefile
+
 ])
 
 AC_OUTPUT

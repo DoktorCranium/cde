@@ -1,16 +1,23 @@
-configdir = ${prefix}/config
+MAINTAINERCLEANFILES = Makefile.in
 
 dist_bin_SCRIPTS = dtconfig
 
+configdir = $(CDE_INSTALLATION_TOP)/config
 dist_config_DATA = dtlogin.rc dtlogin.xml
 
-SCRIPTFLAGS = -DCDE_INSTALLATION_TOP=${prefix} \
+SCRIPTFLAGS = -DCDE_INSTALLATION_TOP=$(CDE_INSTALLATION_TOP) \
               -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP)
 
-CPPTARGET = dtconfig
-CPPSRC = dtconfig.src
-include $(srcdir)/include/cppfile.tmpl
+BUILT_SOURCES = dtconfig dtlogin.rc
+CLEANFILES = $(BUILT_SOURCES)
 
-CPPTARGET = dtlogin.rc
-CPPSRC = dtlogin.rc.src
-include $(srcdir)/include/cppfile.tmpl
+dtconfig: dtconfig.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+	chmod 755 $@
+
+dtlogin.rc: dtlogin.rc.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+	chmod 755 $@
+
