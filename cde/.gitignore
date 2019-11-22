@@ -2413,6 +2413,7 @@ programs/tttypes/types.xdr
 # programs/types
 programs/types/IconBrowse.dt
 programs/types/autoStart.dt
+programs/types/compat.dt
 programs/types/datatypes.dt
 programs/types/develop.dt
 programs/types/dt.dt
@@ -2430,9 +2431,13 @@ programs/types/dtwm.fp
 programs/types/error.ds
 programs/types/hp.dt
 programs/types/ibm.dt
+programs/types/laserrom.dt
 programs/types/miscActions.dt
 programs/types/miscImages.dt
 programs/types/print.dt
+programs/types/printerNN.dt
+programs/types/sunOW.dt
+programs/types/unsupported.dt
 programs/types/user-prefs.dt
 programs/types/uxstd.dt
 programs/types/xclients.dt

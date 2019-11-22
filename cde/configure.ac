@@ -463,6 +463,8 @@ programs/dtsr/Makefile
 
 programs/dtpdmd/Makefile
 
+programs/types/Makefile
+
 ])
 
 AC_OUTPUT

@@ -1,121 +1,142 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-AM_CPPFLAGS = -DCDE_INSTALLATION_TOP=${prefix} \
-	      -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
-	      -DKORNSHELL=$(KSH) -DDTKORNSHELL=/usr/dt/bin/dtksh
+LOCAL_CPP_DEFINES = -DCDE_INSTALLATION_TOP=$(CDE_INSTALLATION_TOP) \
+	-DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) -DKORNSHELL=$(KSH) \
+	-DDTKORNSHELL=$(CDE_INSTALLATION_TOP)/bin/dtksh
 
-TARGETS = IconBrowse.dt   autoStart.dt    datatypes.dt \
-	 develop.dt      dt.dt           dt.softinit \
-	 dtappman.dt     dtfile.dt       dthelp.dt \
-	 dthelpprint.dt  dthelptag.dt    dtims.dt \
-	 dtinfo.dt       dtpad.dt        dtscreen.dt \
-	 dtwm.fp         error.ds        hp.dt \
-	 ibm.dt          miscActions.dt  miscImages.dt \
-	 print.dt        user-prefs.dt   uxstd.dt \
-	 xclients.dt
-
-
-
-CPPSRC = IconBrowse.dt.src
-CPPTARGET = IconBrowse.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = autoStart.dt.src
-CPPTARGET = autoStart.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = datatypes.dt.src
-CPPTARGET = datatypes.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = develop.dt.src
-CPPTARGET = develop.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dt.dt.src
-CPPTARGET = dt.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dt.softinit.src
-CPPTARGET = dt.softinit
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dtappman.dt.src
-CPPTARGET = dtappman.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dtfile.dt.src
-CPPTARGET = dtfile.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dthelp.dt.src
-CPPTARGET = dthelp.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dthelpprint.dt.src
-CPPTARGET = dthelpprint.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dthelptag.dt.src
-CPPTARGET = dthelptag.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dtims.dt.src
-CPPTARGET = dtims.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dtinfo.dt.src
-CPPTARGET = dtinfo.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dtpad.dt.src
-CPPTARGET = dtpad.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dtscreen.dt.src
-CPPTARGET = dtsreen.dt
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = dtwm.fp.src
-CPPTARGET = dtwm.fp
-include $(srcdir)/include/cppfile.tmpl
-
-CPPSRC = error.ds.src
-CPPTARGET = error.ds
-include $(srcdir)/include/cppfile.tmpl
-
-if HPUX
-CPPSRC = hp.dt.src
-CPPTARGET = hp.dt
-include $(srcdir)/include/cppfile.tmpl
+if SOLARIS
+LOCAL_CPP_DEFINES += -D__sun
 endif
 
-if AIX
-CPPSRC = ibm.dt.src
-CPPTARGET = ibm.dt
-include $(srcdir)/include/cppfile.tmpl
-endif
+BUILT_SOURCES = autoStart.dt compat.dt datatypes.dt develop.dt		\
+	dtappman.dt dt.dt dtfile.dt dthelp.dt dthelpprint.dt		\
+	dthelptag.dt dtims.dt dtinfo.dt dtpad.dt dtscreen.dt		\
+	dt.softinit dtwm.fp error.ds hp.dt ibm.dt IconBrowse.dt		\
+	laserrom.dt miscActions.dt miscImages.dt print.dt		\
+	printerNN.dt sunOW.dt unsupported.dt user-prefs.dt uxstd.dt	\
+	xclients.dt
 
-CPPSRC = miscActions.dt.src
-CPPTARGET = miscActions.dt
-include $(srcdir)/include/cppfile.tmpl
+CLEANFILES = $(BUILT_SOURCES)
 
-CPPSRC = miscImages.dt.src
-CPPTARGET = miscImages.dt
-include $(srcdir)/include/cppfile.tmpl
+# Use -C to GENCPP to preserve /* and */ sequences
 
-CPPSRC = print.dt.src
-CPPTARGET = print.dt
-include $(srcdir)/include/cppfile.tmpl
+autoStart.dt: autoStart.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
 
-CPPSRC = user-prefs.dt.src
-CPPTARGET = user-prefs.dt
-include $(srcdir)/include/cppfile.tmpl
+compat.dt: compat.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
 
-CPPSRC = uxstd.dt.src
-CPPTARGET = uxstd.dt
-include $(srcdir)/include/cppfile.tmpl
+datatypes.dt: datatypes.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
 
-CPPSRC = xclients.dt.src
-CPPTARGET = xclients.dt
-include $(srcdir)/include/cppfile.tmpl
+develop.dt: develop.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dtappman.dt: dtappman.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dt.dt: dt.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dtfile.dt: dtfile.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dthelp.dt: dthelp.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dthelpprint.dt: dthelpprint.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dthelptag.dt: dthelptag.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dtims.dt: dtims.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dtinfo.dt: dtinfo.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dtpad.dt: dtpad.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dtscreen.dt: dtscreen.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dt.softinit: dt.softinit.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dtwm.fp: dtwm.fp.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+error.ds: error.ds.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+hp.dt: hp.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+ibm.dt: ibm.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+IconBrowse.dt: IconBrowse.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+laserrom.dt: laserrom.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+miscActions.dt: miscActions.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+miscImages.dt: miscImages.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+print.dt: print.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+printerNN.dt: printerNN.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+sunOW.dt: sunOW.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+unsupported.dt: unsupported.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+user-prefs.dt: user-prefs.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+uxstd.dt: uxstd.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+xclients.dt: xclients.dt.src
+	$(RM) $@
+	$(GENCPP) -P -C -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
