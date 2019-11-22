@@ -61,7 +61,8 @@ SYM2NUM_CMD = CPP=$(GENCPP) $(KSH) sym2num
 BUILT_SOURCES = dtprintinfo_cat.h dtprintinfo_msg.h dtprintinfo.msg
 CLEANFILES = $(BUILT_SOURCES)
 
-dtprintinfo_msg.h dtprintinfo.msg: dtprintinfo.msg.src
+# this will also create dtprintinfo_msg.h
+dtprintinfo.msg: dtprintinfo.msg.src
 	$(RM) dtprintinfo_msg.h dtprintinfo.msg
 	$(SYM2NUM_CMD) dtprintinfo dtprintinfo.msg.src > dtprintinfo.msg
 

@@ -478,6 +478,7 @@ programs/dtcm/libDtCmP/getdate.c
 programs/dtcm/server/parser.c
 programs/dtcm/server/parser.h
 programs/dtcm/server/rpc.cmsd
+programs/dtcm/server/y.tab*
 
 # programs/dtconfig
 programs/dtconfig/hp/dtconfig

@@ -26,7 +26,7 @@ rpc_cmsd_SOURCES = parser.c access.c callback.c cmscalendar.c		\
 		   lookup.h rpcextras.h v5ops.h
 
 BUILT_SOURCES = parser.c parser.h
-CLEANFILES = parser.c parser.h
+CLEANFILES = parser.c parser.h y.tab.c  y.tab.h
 
 AM_YFLAGS = -d
 
@@ -34,5 +34,4 @@ parser.c parser.h: parser.y
 	$(YACC) $(AM_YFLAGS) $<
 	$(SED) -e "s/yy/yyy/g" -e "/# line/d" y.tab.c > parser.c
 	$(SED) -e 's/yy/yyy/g' y.tab.h >  parser.h
-	$(RM) y.tab.c  y.tab.h
 
