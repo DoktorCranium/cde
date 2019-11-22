@@ -6,26 +6,26 @@ bin_PROGRAMS = dtimsstart
 
 dist_xsession_SCRIPTS = 0020.dtims
 
-0020.dtims_CPPFLAGS = -P
+dtimsstart_CFLAGS = -DNLS 
 
-dtimsstart_CFLAGS = -DNLS -I../../lib
-
-dtimsstart_LDADD = $(LIBHELP) $(LIBSVC) $(LIBTT) -lXm $(XTOOLLIB) ${X_LIBS}
+dtimsstart_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
 dtimsstart_CFLAGS += -xF
 endif
 
-if AIX
-dtimsstart_CFLAGS += -DANSICPP
-endif
+dtimsstart_SOURCES = action.c env.c file.c main.c remote.c select.c	\
+		     start.c util.c win.c ximserr.h ximsfunc.h xims.h	\
+		     ximspath.h
 
-all: 0020.dtims
+BUILT_SOURCES = 0020.dtims
+CLEANFILE = $(BUILT_SOURCES)
 
-dtimsstart_SOURCES = action.c        env.c           file.c \
-		     main.c          remote.c        select.c \
-		     start.c         util.c
+LOCAL_CPP_DEFINES = -DCDE_INSTALLATION_TOP=$(CDE_INSTALLATION_TOP) \
+                    -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
+		    -DKORNSHELL=$(KSH)
 
-CPPSRC = 0020.dtims.src
-CPPTARGET = 0020.dtims
-include $(srcdir)/include/cppfile.tmpl
+0020.dtims: 0020.dtims.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+

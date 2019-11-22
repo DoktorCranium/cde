@@ -23,6 +23,7 @@
 /* @(#)$TOG: win.c /main/9 1997/06/18 17:33:01 samborn $ */
 
 #include	<stdint.h>
+#include	<time.h>
 
 #include	<X11/X.h>
 #include	<X11/Xlib.h>

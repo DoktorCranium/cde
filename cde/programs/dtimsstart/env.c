@@ -26,6 +26,8 @@
 #include "xims.h"
 
 
+int find_CDE_locale_name(void); /* from util.c */
+
 typedef	enum {
     P_Shell,	/* posix shell */
     K_Shell,	/* Korn shell */

@@ -27,6 +27,7 @@
 #include	<sys/wait.h>
 #include	<setjmp.h>
 #include	<unistd.h>
+#include	<time.h>
 
 #if (defined(__linux__) || defined(CSRG_BASED)) && !defined(_NFILE)
 #define _NFILE FOPEN_MAX

@@ -453,6 +453,8 @@ programs/fontaliases/freebsd/C/Makefile
 
 programs/dtdspmsg/Makefile
 
+programs/dtimsstart/Makefile
+
 ])
 
 AC_OUTPUT
