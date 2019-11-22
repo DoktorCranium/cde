@@ -2,14 +2,13 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtpdmd
 
-dtpdmd_CFLAGS = -DCDE_INSTALLATION_TOP='"'${prefix}'"'
+dtpdmd_CFLAGS = -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\"
 
-dtpdmd_LDADD = $(XTOOLLIB) ${X_LIBS}
+dtpdmd_LDADD = $(XTOOLLIB)
 
 if SOLARIS
-dtpdmd_LDADD += -lm -ldl
+dtpdmd_LDADD += -ldl
 endif
 
-dtpdmd_SOURCES = dispatch.c      dtpdmd.c        mailbox.c \
-		 manager.c       records.c       setup.c \
-		 util.c
+dtpdmd_SOURCES = dispatch.c dtpdmd.c mailbox.c manager.c records.c	\
+		 nlmsg.c setup.c util.c dtpdmdP.h nlmsg.h

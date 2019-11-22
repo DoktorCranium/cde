@@ -285,6 +285,7 @@ dnl Setup XTOOLLIB - we do it in this specific order to avoid ordering
 dnl issues
 XTOOLLIB="$X_LIBS"
 AC_CHECK_LIB(X11, XOpenDisplay, [XTOOLLIB="-lX11"])
+AC_CHECK_LIB(Xau, XauReadAuth, [XTOOLLIB="-lXau ${XTOOLLIB}"])
 AC_CHECK_LIB(Xt, XtInitialize, [XTOOLLIB="-lXt ${XTOOLLIB}"])
 AC_CHECK_LIB(ICE, IceCloseConnection, [XTOOLLIB="-lICE ${XTOOLLIB}"])
 AC_CHECK_LIB(SM, SmcOpenConnection, [XTOOLLIB="-lSM ${XTOOLLIB}"])
@@ -459,6 +460,8 @@ programs/dtimsstart/Makefile
 programs/dtpdm/Makefile
 
 programs/dtsr/Makefile
+
+programs/dtpdmd/Makefile
 
 ])
 
