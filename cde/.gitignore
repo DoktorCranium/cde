@@ -2402,6 +2402,8 @@ programs/tttypes/dticon.done
 programs/tttypes/dticon.ptype.deps
 programs/tttypes/dtinfo.done
 programs/tttypes/dtinfo.ptype.deps
+programs/tttypes/dtinfo_start.done
+programs/tttypes/dtinfo_start.ptype.deps
 programs/tttypes/dtmail.done
 programs/tttypes/dtmail.ptype.deps
 programs/tttypes/dtpad.done

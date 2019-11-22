@@ -1,8 +1,10 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-CLEANFILES = *.done types.xdr .tt_lock
+# We need to ensure that the jobs here are run in sequence to build up
+# the types.xdr file.
+.NOTPARALLEL:
 
-.SUFFIXES: .ptype .done
+SUFFIXES: .ptype .done
 
 LOCALDEPFILES = \
         dtfile.done \
@@ -13,13 +15,14 @@ LOCALDEPFILES = \
         dtdbcache.done \
         dtterm.done \
         dtinfo.done \
-        dtinfo.done
+        dtinfo_start.done
 
-all:: types.xdr
+BUILT_SOURCES = types.xdr
+CLEANFILES = *.done types.xdr .tt_lock
 
 types.xdr: $(LOCALDEPFILES)
 
-TT_TYPE_COMP = $(srcdir)/lib/tt/bin/tt_type_comp/tt_type_comp
+TT_TYPE_COMP = $(top_builddir)/lib/tt/bin/tt_type_comp/tt_type_comp
 
 .ptype.done:
 	$(RM) $@

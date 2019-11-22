@@ -465,6 +465,8 @@ programs/dtpdmd/Makefile
 
 programs/types/Makefile
 
+programs/tttypes/Makefile
+
 ])
 
 AC_OUTPUT
