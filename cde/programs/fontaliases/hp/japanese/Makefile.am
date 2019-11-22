@@ -1,1 +1,0 @@
-include ../../bdf/fonts.tmpl

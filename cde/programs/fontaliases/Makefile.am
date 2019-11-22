@@ -1,29 +1,23 @@
 MAINTAINERCLEANFILES = Makefile.in
 
+SUBDIRS = bdf
+
 if LINUX
-SUBDIRS = linux
+SUBDIRS += linux
 endif
 
 if SOLARIS
-SUBDIRS = sun
+SUBDIRS += sun
 endif
 
 if FREEBSD
-SUBDIRS = freebsd
-endif
-
-if HPUX
-SUBDIRS = hpux
-endif
-
-if AIX
-SUBDIRS = ibm
+SUBDIRS += freebsd
 endif
 
 if OPENBSD
-SUBDIRS = openbsd
+SUBDIRS += openbsd
 endif
 
 if NETBSD
-SUBDIRS = netbsd
+SUBDIRS += netbsd
 endif

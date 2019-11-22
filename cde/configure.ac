@@ -193,8 +193,11 @@ AM_CONDITIONAL([FRENCH], [test "build_french" = "yes"])
 AC_ARG_ENABLE(spanish, --build-spanish    Build Spanish    (default=no)])
 AM_CONDITIONAL([SPANISH], [test "build_spanish" = "yes"])
 
+dnl hmmm...
 RM="rm -f"
 AC_SUBST(RM)
+CP="cp -f"
+AC_SUBST(CP)
 
 dnl these should be configurable someday...
 CDE_INSTALLATION_TOP="$ac_default_prefix"
@@ -253,7 +256,7 @@ AC_PATH_PROG(XRDB, xrdb)
 
 dnl programs
 AC_CHECK_PROGS(BDFTOPCF, bdftopcf)
-AC_CHECK_PROGS(MKFONTIDR, mkfontdir)
+AC_CHECK_PROGS(MKFONTDIR, mkfontdir)
 AC_CHECK_PROGS(GZIP, gzip)
 AC_CHECK_PROGS(M4, m4)
 AC_CHECK_PROGS(RPCGEN, rpcgen)
@@ -433,6 +436,20 @@ programs/dtconfig/sun/Makefile
 programs/dtcreate/Makefile
 
 programs/dtprintinfo/Makefile
+
+programs/fontaliases/Makefile
+programs/fontaliases/bdf/Makefile
+programs/fontaliases/linux/Makefile
+programs/fontaliases/linux/C/Makefile
+programs/fontaliases/linux/en_US.UTF-8/Makefile
+programs/fontaliases/sun/Makefile
+programs/fontaliases/sun/C/Makefile
+programs/fontaliases/netbsd/Makefile
+programs/fontaliases/netbsd/C/Makefile
+programs/fontaliases/openbsd/Makefile
+programs/fontaliases/openbsd/C/Makefile
+programs/fontaliases/freebsd/Makefile
+programs/fontaliases/freebsd/C/Makefile
 
 ])
 

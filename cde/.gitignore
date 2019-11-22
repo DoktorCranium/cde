@@ -1207,11 +1207,17 @@ programs/dtwm/dtfplist
 programs/dtwm/sys.dtwmrc
 
 # programs/fontaliases
+programs/fontaliases/bdf/dtinfo.pcf.gz
 programs/fontaliases/linux/C/dtinfo.bdf
 programs/fontaliases/linux/C/dtinfo.pcf
 programs/fontaliases/linux/C/dtinfo.pcf.gz
 programs/fontaliases/linux/C/dtinfo.pcf.Z
 programs/fontaliases/linux/C/fonts.dir
+programs/fontaliases/linux/en_US.UTF-8/dtinfo.bdf
+programs/fontaliases/linux/en_US.UTF-8/dtinfo.pcf
+programs/fontaliases/linux/en_US.UTF-8/dtinfo.pcf.gz
+programs/fontaliases/linux/en_US.UTF-8/dtinfo.pcf.Z
+programs/fontaliases/linux/en_US.UTF-8/fonts.dir
 programs/fontaliases/freebsd/C/dtinfo.bdf
 programs/fontaliases/freebsd/C/dtinfo.pcf
 programs/fontaliases/freebsd/C/dtinfo.pcf.gz
