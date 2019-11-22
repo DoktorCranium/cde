@@ -2,11 +2,8 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtdspmsg
 
-if HPUX
-dtdspmsg_CFLAGS = +e
-endif
-
-dtdspmsg_LDADD = -lm
+# this is just to initialize so the += ops can work later if needed
+dtdspmsg_LDADD =
 
 if SOLARIS
 dtdspmsg_LDADD += -ldl -lgen
