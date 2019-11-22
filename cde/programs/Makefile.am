@@ -4,7 +4,7 @@ SUBDIRS = backdrops icons dsdm dtmail dtpad dtfile dtwm dtlogin \
         dtsession dthello dtstyle dtexec dtdbcache dticon dtterm dtcalc \
 	dtaction dtspcd dtscreen dtcm dtsearchpath  \
 	dtappintegrate dtprintegrate dtconfig dtcreate dtprintinfo fontaliases \
-	dtdspmsg ttsnoop dtimsstart dtpdm dtsr dtpdmd types \
+	dtdspmsg dtimsstart dtpdm dtsr dtpdmd types \
 	localized tttypes util dtopen
 
-# NOTYET = dthelp dtksh dtappbuilder dtdocbook dtinfo nsgmls
+# NOTYET = dthelp dtksh dtappbuilder dtdocbook dtinfo nsgmls ttsnoop 
