@@ -432,6 +432,8 @@ programs/dtconfig/sun/Makefile
 
 programs/dtcreate/Makefile
 
+programs/dtprintinfo/Makefile
+
 ])
 
 AC_OUTPUT
