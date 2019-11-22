@@ -2,19 +2,15 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtpdm
 
-dtpdm_CFLAGS = -DI18N_MSG -DCDE_INSTALLATION_TOP=\"${prefix}\"
+dtpdm_CFLAGS = -DI18N_MSG -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\"
 
-dtpdm_LDADD = $(LIBPRINT) $(LIBHELP) $(LIBWIDGET) $(LIBSVC) $(LIBTT) -lXm \
-	      $(XTOOLLIB) ${X_LIBS}
+dtpdm_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
-dtpdm_LDADD += -lintl -lm -lgen -ldl -lresolv
+dtpdm_LDADD += -lintl -lgen -ldl -lresolv
 endif
 
-if AIX
-dtpdm_LDADD += -lmsaa -liconv
-endif
-
-dtpdm_SOURCES = JobBox.c        Main.c          MainWindow.c \
-		PdmMsgs.c       PdmOid.c        PdmXp.c \
-		PrinterBox.c
+dtpdm_SOURCES = JobBox.c Main.c MainWindow.c PdmMsgs.c PdmOid.c		\
+		PdmXp.c PrinterBox.c JobBox.h PdmMsgs.h PdmOid.h	\
+		PdmXp.h MainWindow.h PdmOidDefs.h PdmOidStrs.h		\
+		PrinterBox.h

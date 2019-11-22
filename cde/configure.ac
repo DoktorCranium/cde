@@ -455,6 +455,8 @@ programs/dtdspmsg/Makefile
 
 programs/dtimsstart/Makefile
 
+programs/dtpdm/Makefile
+
 ])
 
 AC_OUTPUT
