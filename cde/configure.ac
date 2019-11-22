@@ -13,6 +13,7 @@ dnl todo: determine what version of autoconf we depend on
 dnl AC_PREREQ()
 
 AC_CANONICAL_HOST
+AC_CANONICAL_BUILD
 
 dnl global CDE versioning
 
@@ -124,23 +125,23 @@ is_mips=no
 is_arm=no
 is_ppc=no
 
-case "$target_or_host" in
-	i*86-*-*)
+case "${host_cpu}" in
+	i[3456]86*)
 		is_i386=yes
 		;;
-	x86_64-*)
+	x86_64* | amd64*)
 		is_x86_64=yes
 		;;
-	*arm*)
+	arm*)
 		is_arm=yes
 		;;
-	*mips*)
+	mips*)
 		is_mips=yes
 		;;
-	*sparc*)
+	sparc*)
 		is_sparc=yes
 		;;
-	ppc-*-linux* | powerpc-*)
+	ppc* | powerpc*)
 		is_ppc=yes
 		;;
 esac
@@ -456,6 +457,8 @@ programs/dtdspmsg/Makefile
 programs/dtimsstart/Makefile
 
 programs/dtpdm/Makefile
+
+programs/dtsr/Makefile
 
 ])
 
