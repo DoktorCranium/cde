@@ -61,7 +61,15 @@ SYM2NUM_CMD = CPP=$(GENCPP) $(KSH) sym2num
 BUILT_SOURCES = dtprintinfo_cat.h dtprintinfo_msg.h dtprintinfo.msg
 CLEANFILES = $(BUILT_SOURCES)
 
-# this will also create dtprintinfo_msg.h
+# we set this up as an empty target to please make.  The commands for
+# the dtprintinfo.msg target will generate it.  We do it this way so
+# that this module can be built in parallel without causing corruption
+# in the dtprintinfo_msg.h file.  Otherwise an attempt to call
+# SYM2NUM_CMD twice will occur during multi-core builds if it is
+# listed as the second target depending on dtprintinfo.msg.src along
+# with dtprintinfo.msg.
+dtprintinfo_msg.h:
+
 dtprintinfo.msg: dtprintinfo.msg.src
 	$(RM) dtprintinfo_msg.h dtprintinfo.msg
 	$(SYM2NUM_CMD) dtprintinfo dtprintinfo.msg.src > dtprintinfo.msg
