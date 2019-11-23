@@ -470,6 +470,8 @@ programs/tttypes/Makefile
 programs/util/Makefile
 programs/util/dttypes/Makefile
 
+programs/dtopen/Makefile
+
 ])
 
 AC_OUTPUT
