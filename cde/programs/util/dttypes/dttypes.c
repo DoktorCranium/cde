@@ -57,6 +57,10 @@ static	int	rexp_errno = 0;
 #endif 
 
 extern	char **	_DtsMMListDb(void);
+
+int usage(void);
+
+
 static	enum	errors
 {
 	BAD_DB,
