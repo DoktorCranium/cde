@@ -1,0 +1,17 @@
+#  This file is a template for setting the platform-specific LANG
+#  variable for a locale.
+
+if SOLARIS
+LANG=de
+endif
+
+if LINUX
+LANG=de_DE.UTF-8
+endif
+
+if BSD
+LANG=de_DE.UTF-8
+endif
+
+SOURCE_LANG=de_DE.ISO8859-1
+

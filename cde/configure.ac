@@ -476,6 +476,14 @@ programs/localized/Makefile
 programs/localized/util/Makefile
 programs/localized/C/Makefile
 programs/localized/C/app-defaults/Makefile
+programs/localized/de_DE.UTF-8/Makefile
+programs/localized/de_DE.UTF-8/app-defaults/Makefile
+programs/localized/fr_FR.UTF-8/Makefile
+programs/localized/fr_FR.UTF-8/app-defaults/Makefile
+programs/localized/it_IT.UTF-8/Makefile
+programs/localized/it_IT.UTF-8/app-defaults/Makefile
+programs/localized/es_ES.UTF-8/Makefile
+programs/localized/es_ES.UTF-8/app-defaults/Makefile
 
 ])
 
