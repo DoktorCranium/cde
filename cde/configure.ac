@@ -472,6 +472,11 @@ programs/util/dttypes/Makefile
 
 programs/dtopen/Makefile
 
+programs/localized/Makefile
+programs/localized/util/Makefile
+programs/localized/C/Makefile
+programs/localized/C/app-defaults/Makefile
+
 ])
 
 AC_OUTPUT
