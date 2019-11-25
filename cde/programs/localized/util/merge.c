@@ -95,6 +95,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
+#include <unistd.h>
 #include <nl_types.h>
 
 nl_catd catfile[2] = {NULL, NULL};	/* [0] for primary, [1] for default */
