@@ -1,5 +1,9 @@
 # process the app-defaults files...
 
+# We can't do parallel builds here because MERGE is rather dumb and
+# hardcodes file names and the like.
+.NOTPARALLEL:
+
 #NOTYET - Dtinfo 
 
 BUILT_SOURCES = Dthelpview Dtimsstart Dtlogin Dthello Dtsession		\
