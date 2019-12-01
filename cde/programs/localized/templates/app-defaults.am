@@ -1,8 +1,10 @@
 # process the app-defaults files...
 
+#NOTYET - Dtinfo 
+
 BUILT_SOURCES = Dthelpview Dtimsstart Dtlogin Dthello Dtsession		\
 	Dtscreen Dtwm Dtfile Dtstyle Dtpad Dticon Dtcreate Dtcalc	\
-	Dtcm Dtterm Dtmail Dtbuilder Dtinfo Dtudcfonted Dt
+	Dtcm Dtterm Dtmail Dtbuilder Dtudcfonted Dt
 
 CLEANFILES = $(BUILT_SOURCES)
 
