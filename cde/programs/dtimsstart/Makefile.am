@@ -1,4 +1,4 @@
-xsessiondir = ${prefix)/config/Xsession.d
+xsessiondir = $(CDE_INSTALLATION_TOP)/config/Xsession.d
 
 MAINTAINERCLEANFILES = Makefile.in
 
