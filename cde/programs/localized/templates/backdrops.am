@@ -1,0 +1,11 @@
+# process the backdrop file...
+
+BUILT_SOURCES = desc.$(LANG)
+
+CLEANFILES = $(BUILT_SOURCES)
+
+TOP = $(top_builddir)/programs
+MERGE = $(top_builddir)/programs/localized/util/merge
+
+desc.$(LANG): $(TOP)/dtstyle/Backdrops Backdrops.tmsg
+	$(MERGE) -lang $(LANG) Backdrops.tmsg < $< > $@ || $(RM) $@
