@@ -1,0 +1,13 @@
+# message files for non-C locales - ie: local .msg files.  So much
+# nicer :)
+
+TMPLOCAL_DEST = $(shell ls *.msg |grep -v libAB |sed -e 's/.msg/.cat/g')
+
+BUILT_SOURCES = $(TMPLOCAL_DEST)
+CLEANFILES = $(BUILT_SOURCES)
+
+SUFFIXES = .msg .cat
+
+.msg.cat:
+	$(RM) $@
+	LANG=$(LANG) $(GENCAT) -o $@ $^ || $(RM) $@

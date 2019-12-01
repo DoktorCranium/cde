@@ -261,6 +261,7 @@ AC_CHECK_PROGS(MKFONTDIR, mkfontdir)
 AC_CHECK_PROGS(GZIP, gzip)
 AC_CHECK_PROGS(M4, m4)
 AC_CHECK_PROGS(RPCGEN, rpcgen)
+AC_CHECK_PROGS(GENCAT, gencat)
 
 dnl headers
 AC_HEADER_STDC
@@ -480,30 +481,35 @@ programs/localized/C/config/Makefile
 programs/localized/C/backdrops/Makefile
 programs/localized/C/types/Makefile
 programs/localized/C/palettes/Makefile
+programs/localized/C/msg/Makefile
 programs/localized/de_DE.UTF-8/Makefile
 programs/localized/de_DE.UTF-8/app-defaults/Makefile
 programs/localized/de_DE.UTF-8/config/Makefile
 programs/localized/de_DE.UTF-8/backdrops/Makefile
 programs/localized/de_DE.UTF-8/types/Makefile
 programs/localized/de_DE.UTF-8/palettes/Makefile
+programs/localized/de_DE.UTF-8/msg/Makefile
 programs/localized/fr_FR.UTF-8/Makefile
 programs/localized/fr_FR.UTF-8/app-defaults/Makefile
 programs/localized/fr_FR.UTF-8/config/Makefile
 programs/localized/fr_FR.UTF-8/backdrops/Makefile
 programs/localized/fr_FR.UTF-8/types/Makefile
 programs/localized/fr_FR.UTF-8/palettes/Makefile
+programs/localized/fr_FR.UTF-8/msg/Makefile
 programs/localized/it_IT.UTF-8/Makefile
 programs/localized/it_IT.UTF-8/app-defaults/Makefile
 programs/localized/it_IT.UTF-8/config/Makefile
 programs/localized/it_IT.UTF-8/backdrops/Makefile
 programs/localized/it_IT.UTF-8/types/Makefile
 programs/localized/it_IT.UTF-8/palettes/Makefile
+programs/localized/it_IT.UTF-8/msg/Makefile
 programs/localized/es_ES.UTF-8/Makefile
 programs/localized/es_ES.UTF-8/app-defaults/Makefile
 programs/localized/es_ES.UTF-8/config/Makefile
 programs/localized/es_ES.UTF-8/backdrops/Makefile
 programs/localized/es_ES.UTF-8/types/Makefile
 programs/localized/es_ES.UTF-8/palettes/Makefile
+programs/localized/es_ES.UTF-8/msg/Makefile
 
 ])
 
