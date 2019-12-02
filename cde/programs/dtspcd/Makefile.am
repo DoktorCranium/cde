@@ -12,6 +12,9 @@ if SOLARIS
 dtspcd_LDADD += -ldl -lgen
 endif
 
+cfgdir = $(CDE_INSTALLATION_TOP)/config
+dist_cfg_DATA = dtspcdenv
+
 # I really think we should get rid of dtspcd in general...
 
 dtspcd_SOURCES = main.c spcd_event.c

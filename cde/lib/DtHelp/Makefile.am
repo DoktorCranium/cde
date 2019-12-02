@@ -2,6 +2,10 @@ MAINTAINERCLEANFILES = Makefile.in
 
 SUBDIRS = il
 
+cfgdir = $(CDE_INSTALLATION_TOP)/config/svc
+dist_cfg_DATA = CDE.lcx
+
+
 lib_LTLIBRARIES = libDtHelp.la
 
 libDtHelp_la_CFLAGS = -I./il -I./jpeg -I../DtSvc/DtUtil2 -DDTLIB \
@@ -13,12 +17,7 @@ libDtHelp_la_LIBADD = -ljpeg il/libil.la
 
 if SOLARIS
 libDtHelp_la_CFLAGS += -DICONV_INBUF_CONST=const -DLSB_BIT_ORDER
-libDtHelp_la_LIBADD += -lw -lgen -lm -lc $(XTOOLLIB) ${X_LIBS}
-endif
-
-if AIX
-libDtHelp_la_CFLAGS += -DICONV_INBUF_CONST=const
-libDtHelp_la_LIBADD += $(XTOOLLIB) ${X_LIBS} -liconv
+libDtHelp_la_LIBADD += -lw -lgen -lm -lc
 endif
 
 if LINUX
@@ -27,12 +26,9 @@ endif
 
 if BSD
 libDtHelp_la_CFLAGS += -DLSB_BIT_ORDER
-libDtHelp_la_LIBADD += -liconv $(XTOOLLIB) ${X_LIBS}
+libDtHelp_la_LIBADD += -liconv
 endif
 
-if HPUX
-libDtHelp_la_LIBADD += $(LIBSVC) -lXm -lm $(XTOOLLIB) ${X_LIBS}
-endif
 
 libDtHelp_la_SOURCES = Actions.c       AsciiSpc.c      Callbacks.c \
 		       Destroy.c       Environ_c.c     FileListUtils.c \

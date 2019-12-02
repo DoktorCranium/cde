@@ -2493,4 +2493,14 @@ lib/csa/y.tab.c
 lib/csa/y.tab.h
 util/tradcpp/tradcpp
 
+programs/dtlogin/config/sys.dtprofile
+programs/localized/C/config/0100.session
+programs/localized/C/config/0120.session
+programs/localized/C/config/0140.session
+programs/localized/C/config/0160.session
+programs/localized/de_DE.UTF-8/config/0100.session
+programs/localized/de_DE.UTF-8/config/0120.session
+programs/localized/de_DE.UTF-8/config/0140.session
+programs/localized/de_DE.UTF-8/config/0160.session
+
 

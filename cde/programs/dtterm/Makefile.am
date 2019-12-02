@@ -24,6 +24,9 @@ CPP_TARGETS = dtterm.ti DtTermFallBackResources.c.src	\
 BUILT_SOURCES = $(CPP_TARGETS)
 CLEANFILES = $(CPP_TARGETS)
 
+cfgdir = $(CDE_INSTALLATION_TOP)/config
+dist_cfg_DATA = dtterm.ti
+
 Dtterm.ad: Dtterm.ad.src
 	$(RM) $@
 	$(GENCPP) -P -DXCOMM=# $< > $@
