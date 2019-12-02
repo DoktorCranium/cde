@@ -1,4 +1,4 @@
-backdropdir = ${prefix}/share/backdrops
+backdropdir = $(CDE_INSTALLATION_TOP)/backdrops
 
 dist_backdrop_DATA = Ankh.bm Crochet.pm Lattice.pm Paver.pm SkyLight.pm \
 Background.bm Foreground.bm Leaves.pm Pebbles.pm Sprinkles.pm \

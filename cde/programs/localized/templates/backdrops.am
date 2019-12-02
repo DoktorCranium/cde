@@ -1,8 +1,10 @@
 # process the backdrop file...
 
 BUILT_SOURCES = desc.$(LANG)
-
 CLEANFILES = $(BUILT_SOURCES)
+
+backdropsdir = $(CDE_INSTALLATION_TOP)/backdrops
+dist_backdrops_DATA = $(BUILT_SOURCES)
 
 TOP = $(top_builddir)/programs
 MERGE = $(top_builddir)/programs/localized/util/merge
