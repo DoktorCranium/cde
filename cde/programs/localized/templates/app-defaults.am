@@ -12,6 +12,10 @@ BUILT_SOURCES = Dthelpview Dtimsstart Dtlogin Dthello Dtsession		\
 
 CLEANFILES = $(BUILT_SOURCES)
 
+appdefdir = $(CDE_INSTALLATION_TOP)/app-defaults/$(LANG)
+appdef_DATA = $(BUILT_SOURCES)
+EXTRA_DIST = $(BUILT_SOURCES)
+
 TOP = $(top_builddir)/programs
 DTSVCSRC = $(top_builddir)/lib/DtSvc
 MERGE = $(top_builddir)/programs/localized/util/merge
