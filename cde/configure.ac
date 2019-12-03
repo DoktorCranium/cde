@@ -363,6 +363,8 @@ programs/Makefile
 
 programs/backdrops/Makefile
 
+programs/palettes/Makefile
+
 programs/icons/Makefile
 
 programs/dthelp/Makefile

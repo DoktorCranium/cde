@@ -1,8 +1,10 @@
 # process the palettes file...
 
 BUILT_SOURCES = desc.$(LANG)
-
 CLEANFILES = $(BUILT_SOURCES)
+
+palettesdir = $(CDE_INSTALLATION_TOP)/palettes
+dist_palettes_DATA = $(BUILT_SOURCES)
 
 TOP = $(top_builddir)/programs
 MERGE = $(top_builddir)/programs/localized/util/merge
