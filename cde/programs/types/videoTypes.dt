@@ -320,7 +320,6 @@ ACTION Open
 ACTION Print
 {
         LABEL           %|nls-2-Print|
-	LABEL           Print
 	ARG_TYPE        AVI
 	TYPE            MAP
 	MAP_ACTION		NoPrint
