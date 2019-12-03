@@ -1,8 +1,9 @@
-configdir = ${prefix}/config/C
 
 bin_PROGRAMS = dtwm dtfplist
 
+configdir = $(CDE_INSTALLATION_TOP)/config/C
 dist_config_DATA = sys.dtwmrc Dtwm.defs
+
 BUILT_SOURCES = sys.dtwmrc Dtwm.defs
 CLEANFILES = sys.dtwmrc Dtwm.defs
 
@@ -10,7 +11,7 @@ AM_CPPFLAGS = -DLARGECURSORS -DR2_COMPAT -DOPAQUE -DSHAPE -DUNMAP_ON_RESTART \
 	      -DBATCH_DRAG_REQUESTS -DCDE_INSTALLATION_TOP=\"${prefix}\" \
 	      -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\"
 
-dtwm_LDADD = @DTCLIENTLIBS@ $(TIRPCLIB) -lXm -lXext $(XTOOLLIB)
+dtwm_LDADD = $(DTCLIENTLIBS) -lXext $(XTOOLLIB)
 dtfplist_LDADD = @DTCLIENTLIBS@ $(TIRPCLIB) -lXm -lXext $(XTOOLLIB)
 
 if SOLARIS
