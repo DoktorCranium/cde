@@ -1,8 +1,10 @@
 # process the message files...
 
-# NOTYET dtinfo.cat dtinfo_start.cat 
+# NOTYET dtinfo.cat dtinfo_start.cat
 
-BUILT_SOURCES = Xm.cat Mrm.cat Uil.cat DtHelp.cat fmt_tbl.cat		\
+# BROKEN (always has been): fmt_tbl.cat
+
+BUILT_SOURCES = Xm.cat Mrm.cat Uil.cat DtHelp.cat 		\
       DtMail.cat DtPrint.cat DtWidget.cat MotifApp.cat			\
       SUNW_TOOLTALK.cat dt.cat dtact.cat dtbuilder.cat dtcalc.cat	\
       dtcm.cat dtcodegen.cat dtconfig.cat dtcopy.cat dtcreate.cat	\
@@ -14,6 +16,9 @@ BUILT_SOURCES = Xm.cat Mrm.cat Uil.cat DtHelp.cat fmt_tbl.cat		\
       dtudcexch.cat dtudcfonted.cat libdtcm.cat libDtMail.cat
 
 CLEANFILES = $(BUILT_SOURCES)
+
+msgcatdir = $(CDE_INSTALLATION_TOP)/lib/nls/msg/$(LANG)
+dist_msgcat_DATA = $(BUILT_SOURCES)
 
 TOP = $(top_builddir)/programs
 TOPLIB = $(top_builddir)/lib
@@ -35,9 +40,12 @@ DtHelp.cat: $(TOPLIB)/DtHelp/DtHelp.msg
 	$(RM) $@
 	LANG=C $(GENCAT) -o $@ $^ || $(RM) $@
 
-fmt_tbl.cat: $(TOPLIB)/DtHelp/fmt_tbl.msg
-	$(RM) $@
-	LANG=C $(GENCAT) -o $@ $^ || $(RM) $@
+# FIXME This appears to have been broken a long time ago.  Needs
+# investigation.
+#
+#fmt_tbl.cat: $(TOPLIB)/DtHelp/fmt_tbl.msg
+#	$(RM) $@
+#	LANG=C $(GENCAT) -o $@ $^ || $(RM) $@
 
 DtMail.cat: $(TOP)/dtmail/dtmail/DtMail.msg
 	$(RM) $@

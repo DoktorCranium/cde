@@ -1,10 +1,11 @@
 # message files for non-C locales - ie: local .msg files.  So much
 # nicer :)
 
-TMPLOCAL_DEST = $(shell ls *.msg |grep -v libAB |sed -e 's/.msg/.cat/g')
-
-BUILT_SOURCES = $(TMPLOCAL_DEST)
+BUILT_SOURCES = $(shell ls *.msg |grep -v libAB |sed -e 's/.msg/.cat/g')
 CLEANFILES = $(BUILT_SOURCES)
+
+msgcatdir = $(CDE_INSTALLATION_TOP)/lib/nls/msg/$(LANG)
+dist_msgcat_DATA = $(BUILT_SOURCES)
 
 SUFFIXES = .msg .cat
 
