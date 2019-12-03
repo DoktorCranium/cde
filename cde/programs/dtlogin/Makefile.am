@@ -5,9 +5,11 @@ bin_PROGRAMS = dtlogin dtgreet dtchooser
 XDMDIR = $(CDE_LOGFILES_TOP)
 
 DEF_SERVER = $(XBINDIR)/X
-DEF_USER_PATH = $(PATH):/usr/ccs/bin:$(XBINDIR)
+DEF_USER_PATH = $(PATH):$(XBINDIR)
 DEF_SYSTEM_PATH = $(PATH):$(XBINDIR)
-CPP_PROGRAM = $(CPP)
+
+CPP_PROGRAM = $(prefix)/bin/traddcpp
+
 DEF_BM_PATH = $(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B:${prefix}/appconfig/icons/%L/%B%M.bm:${prefix}/appconfig/icons/%L/%B%M.pm:${prefix}/appconfig/icons/%L/%B:${prefix}/appconfig/icons/C/%B%M.bm:${prefix}/appconfig/icons/C/%B%M.pm:${prefix}/appconfig/icons/C/%B
 DEF_PM_PATH = $(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B:${prefix}/appconfig/icons/%L/%B%M.pm:${prefix}/appconfig/icons/%L/%B%M.bm:${prefix}/appconfig/icons/%L/%B:${prefix}/appconfig/icons/C/%B%M.pm:${prefix}/appconfig/icons/C/%B%M.bm:${prefix}/appconfig/icons/C/%B
 
@@ -33,7 +35,7 @@ libresource_a_CFLAGS = $(AM_CFLAGS) \
                  -DDEF_CHOOSER=\"${prefix}/bin/dtchooser\" \
                  -DDEF_XDM_CONFIG=\"Xconfig\" -DSIGNALRETURNSINT \
 		 -DDEF_SERVER_LINE=\"":0 Local local $(DEF_SERVER) :0"\" \
-                 -DXRDB_PROGRAM=\"$(XBINDIR)/xrdb\" \
+                 -DXRDB_PROGRAM=\"$(XRDB)\" \
                  -DDEF_USER_PATH=\"$(DEF_USER_PATH)\" \
                  -DDEF_SYSTEM_PATH=\"$(DEF_SYSTEM_PATH)\" \
                  -DDEF_FAILSAFE_CLIENT=\"$(XBINDIR)/xterm\" \
@@ -51,15 +53,14 @@ dtchooser_SOURCES = chooser.c dtchooser.c vglogo.c vgutil.c vgcallback.c \
 dtlogin_LDADD = libresource.a @DTCLIENTLIBS@ -lXau -lXmu -lXext -lXdmcp \
 	$(XTOOLLIB) $(TIRPCLIB)
 
-dtgreet_LDADD = -lXm @DTCLIENTLIBS@ $(XTOOLLIB) $(TIRPCLIB)
+dtgreet_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
-dtchooser_LDADD = -lXm @DTCLIENTLIBS@ -lXau -lXmu -lXext -lXdmcp $(XTOOLLIB) \
-	$(TIRPCLIB)
+dtchooser_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)  -lXau -lXmu -lXext -lXdmcp $(XTOOLLIB)
 
 
 if LINUX
 AM_CFLAGS += -DHASDES -DHASXDMAUTH
-XBINDIR = /usr/bin/X11
+XBINDIR = /usr/bin
 dtlogin_SOURCES += xdmauth.c
 endif
 

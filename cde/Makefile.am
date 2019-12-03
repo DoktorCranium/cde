@@ -1,4 +1,5 @@
-doc_DATA = CONTRIBUTORS COPYING copyright HISTORY README
+docsdir = $(CDE_INSTALLATION_TOP)
+docs_DATA = CONTRIBUTORS COPYING copyright HISTORY README
 
 MAINTAINERCLEANFILES = Makefile.in \
 		configure libtool \
