@@ -12,7 +12,7 @@ BUILT_SOURCES = autoStart.dt user-prefs.dt uxstd.dt dt.dt develop.dt	\
 	DisplayImage.dt DisplayPDF.dt DisplayVideo.dt DisplayPS.dt	\
 	videoTypes.dt Education.dt gcompris.dt geogebra.dt		\
 	stellarium.dt tuxpaint.dt dreamchess.dt eboard.dt Games.dt	\
-	gcompris.dt ktuberling.dt lbreakout2.dt powermanga.dt		\
+	ktuberling.dt lbreakout2.dt powermanga.dt		\
 	pychess.dt supertux.dt xboard.dt fontforge.dt gimp.dt		\
 	Graphics.dt inkscape.dt okular.dt xv.dt chromium.dt		\
 	firefox.dt Internet.dt nxclient.dt skype.dt thunderbird.dt	\
@@ -27,6 +27,9 @@ BUILT_SOURCES = autoStart.dt user-prefs.dt uxstd.dt dt.dt develop.dt	\
 	kile.dt mgv.dt TeX.dt xdvi.dt xournal.dt xpdf.dt
 
 CLEANFILES = $(BUILT_SOURCES)
+
+typesdir = $(CDE_INSTALLATION_TOP)/appconfig/types/$(LANG)
+dist_types_DATA = $(BUILT_SOURCES)
 
 TOP = $(top_builddir)/programs
 MERGE = $(top_builddir)/programs/localized/util/merge
