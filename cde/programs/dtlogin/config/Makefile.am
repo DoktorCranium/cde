@@ -4,9 +4,30 @@ AM_CPPFLAGS = -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
             -DCDE_LOGFILES_TOP=$(CDE_LOGFILES_TOP) \
 	    -DKORNSHELL=$(KSH)
 
-if FREEBSD
-AM_CPPFLAGS += -DFREEBSD
+if LINUX
+AM_CPPFLAGS += -DXPROJECTROOT="/usr" -Dlinux -D__linux__
 endif
+
+if FREEBSD
+AM_CPPFLAGS += -DFREEBSD -DXPROJECTROOT="/usr/local" -D__FreeBSD__
+endif
+
+if SOLARIS
+AM_CPPFLAGS += -DXPROJECTROOT="/usr" -Dsun
+endif
+
+if OPENBSD
+AM_CPPFLAGS += -DXPROJECTROOT="/usr/X11R6" -D__OpenBSD__
+endif
+
+if NETBSD
+AM_CPPFLAGS += -DXPROJECTROOT="/usr/X11R7" -D__NetBSD__
+endif
+
+if BSD
+AM_CPPFLAGS += -DCSRG_BASED
+endif
+
 
 CPP_TARGETS = 0060.dtsysenv Dtlogin Xaccess Xconfig Xconfig.con	\
 	Xconfig.nc Xfailsafe Xreset Xresources Xresources.ive	\

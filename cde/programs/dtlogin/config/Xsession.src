@@ -69,7 +69,7 @@ XCOMM ##########################################################################
 #endif
 
 #ifdef linux
-#  define cpp_MAIL "/var/spool/mail/$USER"
+#  define cpp_MAIL "/var/mail/$USER"
 #  define cpp_XDIR "/usr/bin"
 #  define cpp_XINITUSER "$HOME/.xinitrc"
 #  define cpp_XDMSYS "/etc/X11/Xsession"
