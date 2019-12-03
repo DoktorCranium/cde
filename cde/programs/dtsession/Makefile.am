@@ -20,7 +20,7 @@ dtsession_SOURCES = SmMain.c SmHelp.c SmGlobals.c SmCommun.c		\
 	SmMigResources.h SmSave.h SmXrm.h
 
 
-dtsession_LDADD = @DTCLIENTLIBS@ -lXm $(TIRPCLIB) $(XTOOLLIB)
+dtsession_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
 dtsession_SOURCES += OWsync.c
@@ -50,6 +50,31 @@ LOCAL_CPP_DEFINES = -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
 		    -DDTSM_CMD2="\"$(DTSM_CMD2)\"" \
 		    -DDTSM_CMD4="\"$(DTSM_CMD4)\"" \
 		    -DDTSM_CMD5="\"$(DTSM_CMD5)\""
+
+if LINUX
+LOCAL_CPP_DEFINES += -Dlinux -D__linux__
+endif
+
+if FREEBSD
+LOCAL_CPP_DEFINES += -DFREEBSD -D__FreeBSD__
+endif
+
+if SOLARIS
+LOCAL_CPP_DEFINES += -Dsun
+endif
+
+if OPENBSD
+LOCAL_CPP_DEFINES += -D__OpenBSD__
+endif
+
+if NETBSD
+LOCAL_CPP_DEFINES += -D__NetBSD__
+endif
+
+if BSD
+LOCAL_CPP_DEFINES += -DCSRG_BASED
+endif
+
 
 BUILT_SOURCES = Dtsession dtloadresources dtsession.msg sys.font	\
 	sys.resources sys.resources.ive sys.session sys.session.ive
