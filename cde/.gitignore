@@ -179,6 +179,7 @@ programs/dtsearchpath/dtsp/dtsp
 programs/dtsession/Dtsession
 programs/dtsession/dtloadresources
 programs/dtsession/dtsession
+programs/dtsession/dtsession_res
 programs/dtspcd/dtspcd
 programs/dtspcd/dtspcdenv
 programs/dtsr/dtsrclean

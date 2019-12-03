@@ -2,6 +2,8 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dtsession
 
+bin_SCRIPTS = dtsession_res
+
 dtsession_CFLAGS = -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
           -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
 	  -Ddtsession
@@ -56,6 +58,10 @@ CLEANFILES = $(BUILT_SOURCES)
 Dtsession: Dtsession.src
 	$(RM) $@
 	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) $< > $@
+
+dtsession_res: dtloadresources
+	$(RM) $@
+	$(LN_S) $< $@
 
 dtloadresources: dtloadresources.src
 	$(RM) $@
