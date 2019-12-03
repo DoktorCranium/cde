@@ -28,6 +28,7 @@ dist_configs_DATA = Xaccess Xconfig Xfailsafe Xreset Xservers Xsetup \
 xsessdir=$(CDE_INSTALLATION_TOP)/config/Xsession.d
 dist_xsess_DATA = 0060.dtsysenv
 
+dist_bin_SCRIPTS = Xsession
 
 # fake - installed under a different name
 sys.dtprofile: dtprofile
