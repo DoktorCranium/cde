@@ -1,5 +1,10 @@
 # to be included by OS/LANG/Makefile.am's
 
+BUILT_SOURCES = fonts.dir dtinfo.pcf.gz
+CLEANFILES = $(BUILT_SOURCES)
+
+fontdir = $(CDE_INSTALLATION_TOP)/config/xfonts/$(LANG)
+dist_font_DATA = $(BUILT_SOURCES) fonts.alias
 
 dtinfo.pcf.gz: $(top_builddir)/programs/fontaliases/bdf/dtinfo.pcf.gz
 	$(RM) $@
