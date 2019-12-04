@@ -564,6 +564,7 @@ CheckMonitor(
 	   XInternAtom(dpy, cust_msg, FALSE);
        
        /* go set ownership of the pixel set atoms */
+       sleep(5);
        result = XtOwnSelection(shell[screen_number],
 			       colorSrv.XA_CUSTOMIZE[screen_number],
 			       CurrentTime, convert_selection, 
@@ -804,15 +805,19 @@ lose_selection(
      pixel_set_atom = XInternAtom(XtDisplay(w), XmSPIXEL_SET_PROP, FALSE) ;
      XDeleteProperty(XtDisplay(w), XtWindow(shell[0]), pixel_set_atom) ;
 
-     tmpStr = (char *)SRV_MALLOC(strlen(MSG2) + strlen(MSG2a) +  6);
-     tmpStr2 = (char *)SRV_MALLOC(strlen(MSG2) + 1);
      if (selection != NULL) {
           tmpStr3 = XGetAtomName(XtDisplay(w), *selection);
      } else {
-          tmpStr3 = NULL;
+          tmpStr3 = "(null)";
      }
-     printf(tmpStr2,"%s", MSG2);
-     sprintf(tmpStr,"%s%s%s", tmpStr2, (tmpStr3 == NULL) ? "(null)" : tmpStr3, MSG2a);
+
+     const int str1len = strlen(MSG2) + strlen(MSG2a) + strlen(tmpStr3) + 10;
+     const int str2len = strlen(MSG2) + 1;
+     tmpStr = (char *)SRV_MALLOC(str1len);
+     tmpStr2 = (char *)SRV_MALLOC(str2len);
+
+     snprintf(tmpStr2, str2len, "%s", MSG2);
+     snprintf(tmpStr, str1len, "%s %s\n%s", tmpStr2, tmpStr3, MSG2a);
      _DtSimpleError(XmSCOLOR_SRV_NAME, DtWarning, NULL, tmpStr, NULL);
      SRV_FREE(tmpStr);
      SRV_FREE(tmpStr2);
