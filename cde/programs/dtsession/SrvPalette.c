@@ -36,26 +36,26 @@ static char rcsid[] =
 **
 **  File:        SrvPalette.c
 **
-**  Project:     HP DT Style Manager , integrated into dtsession 
+**  Project:     HP DT Style Manager , integrated into dtsession
 **
 **  Description:
 **  -----------
 **  This is the main program for the color server portion of the dt session
 **  manager.  It:
-**             1. Determines the number of color cells for each screen 
+**             1. Determines the number of color cells for each screen
 **                attached to the server this session manager is running on.
 **             2. Reads in resouces for the colorserver on a per screen
-**                basis. 
+**                basis.
 **             3. Allocates pixels either Read/Write or Read Only depending
 **                on the resource DynamicColor.
 **             4. Handles query's about those allocated pixels through
-**                Selections. 
+**                Selections.
 **
 *******************************************************************
-**  (c) Copyright Hewlett-Packard Company, 1990.  All rights are  
-**  reserved.  Copying or other reproduction of this program      
-**  except for archival purposes is prohibited without prior      
-**  written consent of Hewlett-Packard Company.		     
+**  (c) Copyright Hewlett-Packard Company, 1990.  All rights are
+**  reserved.  Copying or other reproduction of this program
+**  except for archival purposes is prohibited without prior
+**  written consent of Hewlett-Packard Company.
 ********************************************************************
 **
 **
@@ -118,7 +118,7 @@ static XtResource resources[] = {
         DtRShadowPixmaps,
         sizeof(int),
         XtOffset(AppdataPtr, ShadowPixmaps),
-        XmRString, 
+        XmRString,
         "DEFAULT"},
 
     {   "foregroundColor",
@@ -126,7 +126,7 @@ static XtResource resources[] = {
         DtRForegroundColor,
         sizeof(int),
         XtOffset(AppdataPtr, ForegroundColor),
-        XmRString, 
+        XmRString,
         "DYNAMIC"},
 
     {   "dynamicColor",
@@ -134,7 +134,7 @@ static XtResource resources[] = {
         XmRBoolean,
         sizeof(Boolean),
         XtOffset(AppdataPtr, DynamicColor),
-        XmRImmediate, 
+        XmRImmediate,
         (XtPointer) True},
 
     {   "writeXrdbColors",
@@ -142,7 +142,7 @@ static XtResource resources[] = {
         XmRBoolean,
         sizeof(Boolean),
         XtOffset(AppdataPtr, WriteXrdbColors),
-        XmRImmediate, 
+        XmRImmediate,
         (XtPointer) True},
 
     {   "colorPalette",
@@ -172,12 +172,12 @@ Widget shell[MAX_NUM_SCREENS];
 
 /********    Static Function Declarations    ********/
 
-static Boolean AllocateColors( 
+static Boolean AllocateColors(
                         Display *dpy) ;
 static char *convert_pixel_set(
                         int typeOfMonitor,
                         ColorSet *color );
-static Boolean convert_selection( 
+static Boolean convert_selection(
                         Widget w,
                         Atom *selection,
                         Atom *target,
@@ -185,51 +185,51 @@ static Boolean convert_selection(
                         XtPointer *value,
                         unsigned long *length,
                         int *format) ;
-static void lose_selection( 
+static void lose_selection(
                         Widget w,
                         Atom *selection) ;
-static int FindMaximumDefault( 
+static int FindMaximumDefault(
                         Display *dpy,
                         int screen_number) ;
-static int FindNumOfPixels( 
+static int FindNumOfPixels(
                         Display *dpy,
                         int screen_number) ;
-static int GetNumOfPixels( 
+static int GetNumOfPixels(
                         int screen_number) ;
-static void MatchAndStore( 
+static void MatchAndStore(
                         Display *dpy,
                         int screen_number,
                         unsigned long *pixels) ;
-static Boolean AllocReadWrite( 
+static Boolean AllocReadWrite(
                         Display *dpy,
                         int screen_number,
                         int numOfPixels) ;
-static void AllocReadOnly( 
+static void AllocReadOnly(
                         Display *dpy,
                         int screen_number) ;
-static void CvtStringToColorUse( 
+static void CvtStringToColorUse(
                         XrmValue *args,
                         Cardinal *num_args,
                         XrmValue *from_val,
                         XrmValue *to_val) ;
-static void CvtStringToForegroundColor( 
+static void CvtStringToForegroundColor(
                         XrmValue *args,
                         Cardinal *num_args,
                         XrmValue *from_val,
                         XrmValue *to_val) ;
-static void CvtStringToShadowPixmaps( 
+static void CvtStringToShadowPixmaps(
                         XrmValue *args,
                         Cardinal *num_args,
                         XrmValue *from_val,
                         XrmValue *to_val) ;
-static Boolean _DtWmStringsAreEqual( 
+static Boolean _DtWmStringsAreEqual(
                         register char *in_str,
                         register char *test_str) ;
-static void SetDefaults( 
+static void SetDefaults(
                         Display *dpy,
                         int screen_number) ;
 
-static void _DtCacheProperties(	
+static void _DtCacheProperties(
 			Display *dpy,
 			Window Win) ;
 /********    End Static Function Declarations    ********/
@@ -245,7 +245,7 @@ static void _DtCacheProperties(
  *      for the color server.
  *
  **********************************************************************/
-int 
+int
 InitializeDtcolor(
         Display *dpy,
         short sessionType )
@@ -279,14 +279,14 @@ InitializeDtcolor(
 	return(0);
 
 #ifdef sun
-    OWsyncColorResources(dpy, colorSrv.TypeOfMonitor[0], 
+    OWsyncColorResources(dpy, colorSrv.TypeOfMonitor[0],
 			colorSrv.pCurrentPalette[0]->color);
     OWsyncLocaleResources(dpy);
 #else
-   /* Set the *background: resource 
+   /* Set the *background: resource
        What gets set depends on what type of monitor */
      /* For XmCO_HIGH_COLOR the default primary colorset is 4, else 1 */
-    if(colorSrv.TypeOfMonitor[0] != XmCO_BLACK_WHITE) 
+    if(colorSrv.TypeOfMonitor[0] != XmCO_BLACK_WHITE)
     {
        int chipnum = colorSrv.TypeOfMonitor[0] == XmCO_HIGH_COLOR ? 4 : 1;
        sprintf(xrdb_string,
@@ -299,7 +299,7 @@ InitializeDtcolor(
                       colorSrv.pCurrentPalette[0]->color[chipnum].fg.blue);
 
     }
-     /* For XmCO_BLACK_WHITE the resources depended on whether the default 
+     /* For XmCO_BLACK_WHITE the resources depended on whether the default
         palette is White on Black or Black on White */
     else /* XmCO_BLACK_WHITE */
     {
@@ -317,7 +317,7 @@ InitializeDtcolor(
     }
     /* go merge the xrdb_string into the xrdb */
     _DtAddToResource(dpy, xrdb_string);
-#endif    
+#endif
 
     _DtCacheProperties(dpy, XtWindow(shell[0])) ;
 
@@ -344,18 +344,18 @@ _DtCacheProperties(
        palette->converted = convert_pixel_set(typeOfMonitor, palette->color);
        palette->converted_len = strlen(palette->converted);
      }
-  
+
   *(palette->converted + palette->converted_len) = XmPIXEL_SET_PROP_VERSION ;
   palette->converted_len++ ;
   palette->converted[palette->converted_len] = 0 ;
-  XChangeProperty(dpy, win, pixel_set_atom, XA_STRING, 8, PropModeAppend, 
-		 (unsigned char *) XtNewString(palette->converted), 
+  XChangeProperty(dpy, win, pixel_set_atom, XA_STRING, 8, PropModeAppend,
+		 (unsigned char *) XtNewString(palette->converted),
 		 palette->converted_len) ;
 }
 
 /*****************************************************************************
 **
-**  Allocates color cells to be used by clients.  The global varible 
+**  Allocates color cells to be used by clients.  The global varible
 **  DynamicColor[screen_number] determines if the cells are to be allocated
 **  read/write or read only.  Right now this routine allocates
 **  all cells needed for a palette up front.  For performance tuning we will
@@ -382,7 +382,7 @@ _DtCacheProperties(
 **                                 of Bg
 **
 ***************************************************************************/
-static Boolean 
+static Boolean
 AllocateColors(
         Display *dpy )
 {
@@ -393,7 +393,7 @@ AllocateColors(
     for(screen_number=0;screen_number != colorSrv.NumOfScreens;screen_number++)
     {
        numOfPixels = GetNumOfPixels(screen_number);
- 
+
    /* Now allocate the correct number of pixels using numOfPixels */
        if(numOfPixels != 0)  /* Not XmCO_BLACK_WHITE */
        {
@@ -406,7 +406,7 @@ AllocateColors(
           else
             /* go allocate Read Only cells for the color server */
              AllocReadOnly(dpy, screen_number);
-       } 
+       }
 
        if(colorSrv.TypeOfMonitor[screen_number] == XmCO_BLACK_WHITE)
        {
@@ -435,7 +435,7 @@ AllocateColors(
 	     WhiteColorSet(dpy,screen_number,palette->color[1].bs);
 	     BlackColorSet(dpy,screen_number,palette->color[1].sc);
           }
-          else 
+          else
           if(!(strcmp(colorSrv.pCurrentPalette[screen_number]->name, B_O_W)))
           {
 	     BlackColorSet(dpy,screen_number,palette->color[0].bg);
@@ -450,7 +450,7 @@ AllocateColors(
 	     BlackColorSet(dpy,screen_number,palette->color[1].bs);
 	     WhiteColorSet(dpy,screen_number,palette->color[1].sc);
           }
-          else 
+          else
           if(!(strcmp(colorSrv.pCurrentPalette[screen_number]->name, W_ONLY)))
           {
 	     WhiteColorSet(dpy,screen_number,palette->color[0].bg);
@@ -484,7 +484,7 @@ AllocateColors(
        }
      XSync(dpy, 0);
    } /* for screen_number=0 ; screen_number < NumOfScreens; screen_number++ */
-  
+
    return(True);
 }
 
@@ -494,7 +494,7 @@ AllocateColors(
 **                screens on the server is running on.
 **
 ************************************************************************/
-int 
+int
 CheckMonitor(
         Display *dpy )
 {
@@ -508,7 +508,7 @@ CheckMonitor(
 
     Widget mainShell;
     XtAppContext app_context;
-    
+
     /* Determine the number of screens attached to this server */
     colorSrv.NumOfScreens = ScreenCount(dpy);
 
@@ -518,24 +518,24 @@ CheckMonitor(
 
    /* create a top level shell to retrieve subresources from */
     n = 0;
-    XtSetArg(args[n], XmNbackground, 
+    XtSetArg(args[n], XmNbackground,
         BlackPixelOfScreen(DefaultScreenOfDisplay(dpy))); n++;
     XtSetArg(args[n], XmNmappedWhenManaged, False); n++;
     XtSetArg (args[n], XmNwidth, 1); n++;
     XtSetArg (args[n], XmNheight, 1); n++;
     mainShell = XtAppCreateShell("dtsession", XmSCOLOR_SRV_NAME,
-                                  applicationShellWidgetClass, 
+                                  applicationShellWidgetClass,
                                   dpy, args, n);
 
    /* create an application context */
     app_context = XtWidgetToApplicationContext(mainShell);
-    
+
    /* Register the resource converters */
-    XtAppAddConverter(app_context, XmRString, "ColorUse", 
+    XtAppAddConverter(app_context, XmRString, "ColorUse",
             CvtStringToColorUse, NULL, 0);
-    XtAppAddConverter(app_context, XmRString, "ForegroundColor", 
+    XtAppAddConverter(app_context, XmRString, "ForegroundColor",
             CvtStringToForegroundColor, NULL, 0);
-    XtAppAddConverter(app_context, XmRString, "ShadowPixmaps", 
+    XtAppAddConverter(app_context, XmRString, "ShadowPixmaps",
             CvtStringToShadowPixmaps, NULL, 0);
 
    /* cycle through each screen */
@@ -543,40 +543,39 @@ CheckMonitor(
     {
        sprintf(screenStr,"%d",screen_number);
        n = 0;
-       XtSetArg(args[n], XmNbackground, 
+       XtSetArg(args[n], XmNbackground,
            BlackPixelOfScreen(DefaultScreenOfDisplay(dpy))); n++;
        XtSetArg(args[n], XmNmappedWhenManaged, False); n++;
        XtSetArg (args[n], XmNwidth, 1); n++;
        XtSetArg (args[n], XmNheight, 1); n++;
-       shell[screen_number] = XtAppCreateShell(screenStr, XmSCOLOR_SRV_NAME, 
-                                               applicationShellWidgetClass, 
+       shell[screen_number] = XtAppCreateShell(screenStr, XmSCOLOR_SRV_NAME,
+                                               applicationShellWidgetClass,
                                                dpy, args, n);
 
-       /* 
-	* widget needs to be realized for the window ID for 
-	* selections to work 
+       /*
+	* widget needs to be realized for the window ID for
+	* selections to work
 	*/
-       
+
        XtRealizeWidget(shell[screen_number]);
-       
+
        sprintf(cust_msg,"%s%d", XmSCUSTOMIZE_DATA, screen_number);
-       colorSrv.XA_CUSTOMIZE[screen_number] = 
+       colorSrv.XA_CUSTOMIZE[screen_number] =
 	   XInternAtom(dpy, cust_msg, FALSE);
-       
+
        /* go set ownership of the pixel set atoms */
-       sleep(5);
        result = XtOwnSelection(shell[screen_number],
 			       colorSrv.XA_CUSTOMIZE[screen_number],
-			       CurrentTime, convert_selection, 
+			       CurrentTime, convert_selection,
 			       lose_selection, NULL);
-  
+
        if(result == False)
        {
 	   /*
 	    * Don't forget to add length for the extra characters.
 	    */
 	   tmpStr = (char *)SRV_MALLOC(strlen(MSG1) + 25 + 5 + 1 + 1);
-	   sprintf(tmpStr,"%s colorSrv.XA_CUSTOMIZE[%d].\n", 
+	   sprintf(tmpStr,"%s colorSrv.XA_CUSTOMIZE[%d].\n",
 		   MSG1, screen_number);
 	   _DtSimpleError(XmSCOLOR_SRV_NAME, DtWarning, NULL, tmpStr, NULL);
 	   SRV_FREE(tmpStr);
@@ -588,18 +587,18 @@ CheckMonitor(
        XtGetSubresources(mainShell, &pColorSrvRsrc, screenStr, screenStr,
                           resources, XtNumber(resources), NULL, 0);
 
-      /* 
-       * Set TypeOfMonitor, UsePixmaps FgColor and 
+      /*
+       * Set TypeOfMonitor, UsePixmaps FgColor and
        * DynamicColor for this screen
        */
 
        SetDefaults(dpy, screen_number);
-       
+
        if (colorSrv.TypeOfMonitor[screen_number] != XmCO_BLACK_WHITE)
        {
-          colorSrv.pCurrentPalette[screen_number] = 
-                (struct _palette *) GetPaletteDefinition(dpy, 
-                                     screen_number, 
+          colorSrv.pCurrentPalette[screen_number] =
+                (struct _palette *) GetPaletteDefinition(dpy,
+                                     screen_number,
                                      pColorSrvRsrc.ColorPalette);
        }
        else
@@ -609,11 +608,11 @@ CheckMonitor(
                (struct _palette *) SRV_MALLOC( sizeof(struct _palette) + 1 );
 
            /*  allocate enough space for the name */
-           strcpy(tmpPalette, pColorSrvRsrc.MonochromePalette); 
+           strcpy(tmpPalette, pColorSrvRsrc.MonochromePalette);
            for (token1=tmpPalette; *token1; token1++);
            while (token1!=tmpPalette && *token1!='.') token1--;
 	   if (!strcmp(token1,PALETTE_SUFFIX)) *token1 = '\0';
-           colorSrv.pCurrentPalette[screen_number]->name = 
+           colorSrv.pCurrentPalette[screen_number]->name =
                (char *)SRV_MALLOC(strlen(tmpPalette) + 1);
            strcpy(colorSrv.pCurrentPalette[screen_number]->name,
                   (char *) tmpPalette);
@@ -629,7 +628,7 @@ CheckMonitor(
 
        xrdb_string = XtMalloc(BUFSIZ);
 
-       if (colorSrv.TypeOfMonitor[0] == XmCO_HIGH_COLOR || 
+       if (colorSrv.TypeOfMonitor[0] == XmCO_HIGH_COLOR ||
            colorSrv.TypeOfMonitor[0] == XmCO_MEDIUM_COLOR ||
            colorSrv.TypeOfMonitor[0] == XmCO_LOW_COLOR)
        {
@@ -648,7 +647,7 @@ CheckMonitor(
        _DtAddToResource(dpy, xrdb_string);
 
        XtFree(xrdb_string);
-    
+
    } /* for each screen */
    return(0);
 }
@@ -690,23 +689,23 @@ convert_pixel_set(
     case XmCO_MEDIUM_COLOR: colormappingindex = 1; break;
     case XmCO_LOW_COLOR:    colormappingindex = 2; break;
     case XmCO_BLACK_WHITE:  colormappingindex = 3; break;
-  } 
+  }
 
   p = converted = (char *)SRV_MALLOC(400);
- 
+
   /* lead the string with the type of monitor */
   p += sprintf(p, "%x_", typeOfMonitor);
 
   for (i = 0; i < NUM_OF_COLORS; i++)
   {
-    p += sprintf (p, "%lx_%lx_%lx_%lx_%lx_", 
+    p += sprintf (p, "%lx_%lx_%lx_%lx_%lx_",
                   color[colormapping[colormappingindex][i]].bg.pixel,
                   color[colormapping[colormappingindex][i]].fg.pixel,
                   color[colormapping[colormappingindex][i]].ts.pixel,
                   color[colormapping[colormappingindex][i]].bs.pixel,
                   color[colormapping[colormappingindex][i]].sc.pixel);
   }
- 
+
   return(converted);
 }
 
@@ -716,7 +715,7 @@ convert_pixel_set(
 **        to get information from the dtcolor (color server)
 **
 ************************************************************************/
-static Boolean 
+static Boolean
 convert_selection(
         Widget w,
         Atom *selection,
@@ -737,7 +736,7 @@ convert_selection(
   Boolean status;
   struct _palette *palette;
   int typeOfMonitor;
-                    
+
 
   /* Determine for which screen the selection came from */
   for(i=0; i < MAX_NUM_SCREENS; i++)
@@ -790,11 +789,11 @@ convert_selection(
 /************************************************************************
 **
 ** lose_selection - Callback, called when some other client wishes
-**        to take ownership of one of the servers selections ... 
+**        to take ownership of one of the servers selections ...
 **        should never happen.
 **
 ************************************************************************/
-static void 
+static void
 lose_selection(
         Widget w,
         Atom *selection )
@@ -830,8 +829,8 @@ lose_selection(
 ** are available .. this finds and allocates the maximum that are available
 ** It also adjusts TypeOfMonitor, UsePixmaps, and FgColor accordingly.
 **
-******************************************************************************/ 
-static int 
+******************************************************************************/
+static int
 FindMaximumDefault(
         Display *dpy,
         int screen_number )
@@ -859,7 +858,7 @@ FindMaximumDefault(
    }
    else if(colorSrv.TypeOfMonitor[screen_number] == XmCO_HIGH_COLOR)
    {
-       if(numOfPixelsLeft >= 32) /* was asking for 40 */ 
+       if(numOfPixelsLeft >= 32) /* was asking for 40 */
        {
           colorSrv.UsePixmaps[screen_number] = FALSE;
           colorSrv.FgColor[screen_number] = WHITE;
@@ -870,13 +869,13 @@ FindMaximumDefault(
           colorSrv.UsePixmaps[screen_number] = TRUE;
           colorSrv.FgColor[screen_number] = DYNAMIC;
           return(24);
-       } 
+       }
        else if(numOfPixelsLeft >= 16)
        {
           colorSrv.UsePixmaps[screen_number] = TRUE;
           colorSrv.FgColor[screen_number] = WHITE;
           return(16);
-       } 
+       }
        else  /* can't use XmCO_HIGH_COLOR anymore so set to
 		next highest XmCO_MEDIUM_COLOR */
        {
@@ -886,7 +885,7 @@ FindMaximumDefault(
     }
 
    /* need to do an if instead of an else because TypeOfMonitor can be reset
-      in the else if above */     
+      in the else if above */
     if(colorSrv.TypeOfMonitor[screen_number] == XmCO_MEDIUM_COLOR)
     {
        if(numOfPixelsLeft >= 16)
@@ -908,7 +907,7 @@ FindMaximumDefault(
           return(8);
        }
        else /* can't use XmCO_MEDIUM_COLOR anymore so set to next */
-	    /* highest XmCO_LOW_COLOR*/ 
+	    /* highest XmCO_LOW_COLOR*/
        {
           colorSrv.TypeOfMonitor[screen_number] = XmCO_LOW_COLOR;
           colorSrv.pCurrentPalette[screen_number]->num_of_colors = 2;
@@ -917,7 +916,7 @@ FindMaximumDefault(
     }
 
    /* need to do an if instead of an else because TypeOfMonitor can be reset
-      in the else if above */     
+      in the else if above */
     if(colorSrv.TypeOfMonitor[screen_number] == XmCO_LOW_COLOR)
     {
        if(numOfPixelsLeft >= 10)
@@ -956,7 +955,7 @@ FindMaximumDefault(
 ** Maximum default for the user
 **
 ******************************************************************************/
-static int 
+static int
 FindNumOfPixels(
         Display *dpy,
         int screen_number )
@@ -1020,7 +1019,7 @@ FindNumOfPixels(
 **        and ForegroundColor(FgColor).
 **
 ************************************************************************/
-static int 
+static int
 GetNumOfPixels(
         int screen_number )
 {
@@ -1033,7 +1032,7 @@ GetNumOfPixels(
    {
       if(colorSrv.UsePixmaps[screen_number] == FALSE)
       {
-         if(colorSrv.FgColor[screen_number] == DYNAMIC) 
+         if(colorSrv.FgColor[screen_number] == DYNAMIC)
          {
             return(colorSrv.pCurrentPalette[screen_number]->num_of_colors * 5);
          }
@@ -1063,7 +1062,7 @@ GetNumOfPixels(
 **        correctly at the X server.
 **
 ************************************************************************/
-static void 
+static void
 MatchAndStore(
         Display *dpy,
         int screen_number,
@@ -1076,7 +1075,7 @@ MatchAndStore(
    p = colorSrv.pCurrentPalette[screen_number];
    xcolor = (XColor *)SRV_MALLOC (p->num_of_colors * 5 * sizeof (XColor));
 
-   for(i = 0; i < p->num_of_colors; i++) 
+   for(i = 0; i < p->num_of_colors; i++)
    {
       /* Background Pixel */
       p->color[i].bg.pixel = pixels[count];
@@ -1152,7 +1151,7 @@ MatchAndStore(
 **        the varibles TypeOfMonitor, UsePixmaps, and FgColor accordingly.
 **
 ************************************************************************/
-static Boolean 
+static Boolean
 AllocReadWrite(
         Display *dpy,
         int screen_number,
@@ -1170,7 +1169,7 @@ AllocReadWrite(
    status = XAllocColorCells (dpy, DefaultColormap(dpy, screen_number),
                               (Boolean)0, &plane_mask, 0, pixels, numOfPixels);
 
-  /* When status is false means the alloc couldn't get all the pixels 
+  /* When status is false means the alloc couldn't get all the pixels
     the user wanted or what the default is .. so lets go find the
     minumum and set up and use that */
    if(status == False)
@@ -1213,22 +1212,22 @@ AllocReadWrite(
         XStoreColors to set the RGB values of them */
       MatchAndStore(dpy, screen_number, pixels);
 
-   } 
+   }
 
   /* free the allocated space for pixels */
    SRV_FREE((char *) pixels);
    return(True);
-} 
+}
 
 /************************************************************************
 **
 ** AllocReadOnly - Allocates Read Only cells for use by the color
 **        server.  If the X server can't allocate the cell it finds the
 **        closest approximation to the color of a cell already allocated.
-**        Therefore there is no error recorded.  
+**        Therefore there is no error recorded.
 **
 ************************************************************************/
-static void 
+static void
 AllocReadOnly(
         Display *dpy,
         int screen_number )
@@ -1271,14 +1270,14 @@ AllocReadOnly(
          colorSrv.pCurrentPalette[screen_number]->color[i].fg.pixel =
                                           WhitePixel(dpy,screen_number);
    }
-} 
+}
 
 /*********************************************************************
 **
-** Converter which converts a string to the ColorUse value 
+** Converter which converts a string to the ColorUse value
 **
 **********************************************************************/
-static void 
+static void
 CvtStringToColorUse(
         XrmValue *args,
         Cardinal *num_args,
@@ -1310,10 +1309,10 @@ CvtStringToColorUse(
 }
 /**********************************************************************
 **
-** Converter which converts a string to the ForegroundColor value 
+** Converter which converts a string to the ForegroundColor value
 **
 **********************************************************************/
-static void 
+static void
 CvtStringToForegroundColor(
         XrmValue *args,
         Cardinal *num_args,
@@ -1342,10 +1341,10 @@ CvtStringToForegroundColor(
 
 /***********************************************************************
 **
-** Converter which converts a string to the ShadowPixmaps value 
+** Converter which converts a string to the ShadowPixmaps value
 **
 ***********************************************************************/
-static void 
+static void
 CvtStringToShadowPixmaps(
         XrmValue *args,
         Cardinal *num_args,
@@ -1380,7 +1379,7 @@ CvtStringToShadowPixmaps(
  *      responsibility to ensure that test_str is already lower cased.
  *
  ************************************************************************/
-static Boolean 
+static Boolean
 _DtWmStringsAreEqual(
         register char *in_str,
         register char *test_str )
@@ -1408,16 +1407,16 @@ _DtWmStringsAreEqual(
       test_str++;
    }
 }
-  
+
 /************************************************************************
  *
  * SetDefaults - set the TypeOfMonitor, UsePixmaps, FgColor, and DynamicColor
  *       for the screen passed in.  Use the resource values, the number of
- *       colors for this screen, and the visual type of the screen to 
+ *       colors for this screen, and the visual type of the screen to
  *       determine which values best fit.
  *
  *************************************************************************/
-static void 
+static void
 SetDefaults(
         Display *dpy,
         int screen_number )
@@ -1443,13 +1442,13 @@ SetDefaults(
    {
       if ((visual->class == GrayScale) || (visual->class == StaticGray))
       {
-          pColorSrvRsrc.ColorPalette = 
+          pColorSrvRsrc.ColorPalette =
                 XtMalloc(strlen(DEFAULT_GRAYSCALE_PALETTE)+1);
           strcpy(pColorSrvRsrc.ColorPalette, DEFAULT_GRAYSCALE_PALETTE);
       }
       else
       {
-          pColorSrvRsrc.ColorPalette = 
+          pColorSrvRsrc.ColorPalette =
                 XtMalloc(strlen(DEFAULT_COLOR_PALETTE)+1);
           strcpy(pColorSrvRsrc.ColorPalette, DEFAULT_COLOR_PALETTE);
       }
@@ -1458,7 +1457,7 @@ SetDefaults(
    numPlanes = XDisplayPlanes(dpy, screen_number);
 
    if( numPlanes < 3) /* 1 or 2 planes */
-   { 
+   {
       colorSrv.TypeOfMonitor[screen_number] = XmCO_BLACK_WHITE;
       colorSrv.DynamicColor[screen_number] = False;
    }
@@ -1501,8 +1500,8 @@ SetDefaults(
          case XmCO_HIGH_COLOR:
            /* for 5 planes ColorUse = hi_color shadowPixmaps have to be True */
             pColorSrvRsrc.ShadowPixmaps = -1;
-            colorSrv.TypeOfMonitor[screen_number] = XmCO_HIGH_COLOR; 
-            break; 
+            colorSrv.TypeOfMonitor[screen_number] = XmCO_HIGH_COLOR;
+            break;
          case XmCO_MEDIUM_COLOR:
             colorSrv.TypeOfMonitor[screen_number] = XmCO_MEDIUM_COLOR;
             break;
