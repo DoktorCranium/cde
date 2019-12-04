@@ -216,8 +216,11 @@ AC_PROG_CXX
 
 AC_PROG_CPP
 
-dnl we need a real preprocessor, not gcc -E.  We will call it GENCPP.  We will
-dnl go with BSD's tradcpp here...
+dnl we need a real preprocessor, not gcc -E.  We will call it GENCPP.
+dnl We will go with BSD's tradcpp here...  This is used for
+dnl pre-processing during building of CDE - in the way imake used to
+dnl do.  This is not a replacement for cpp, used at runtime by
+dnl software such as tt_type_comp.
 AC_SUBST(GENCPP, '$(top_builddir)/util/tradcpp/tradcpp')
 
 AM_PROG_LIBTOOL
@@ -254,6 +257,13 @@ dnl programs with full paths
 
 AC_PATH_PROG(KSH, ksh)
 AC_PATH_PROG(XRDB, xrdb)
+dnl we need to use cpp for some things, like tooltalk and other
+dnl runtime uses.  So look for the system's cpp.  NOTE: this is NOT
+dnl the CPP (gcc -E) set by AC_PROG_CPP.  At this point I don't know
+dnl if we should even bother looking for that as we can't really use
+dnl it.
+AC_PATH_PROG(CPP_PROGRAM, cpp, ,
+       [/lib:/usr/bin:/usr/ccs/lib/:/usr/lib:/usr/libexec:/opt/langtools/lbin:$PATH])
 
 dnl programs
 AC_CHECK_PROGS(BDFTOPCF, bdftopcf)

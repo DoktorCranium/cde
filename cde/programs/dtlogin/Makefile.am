@@ -8,13 +8,11 @@ DEF_SERVER = $(XBINDIR)/X
 DEF_USER_PATH = $(PATH):$(XBINDIR)
 DEF_SYSTEM_PATH = $(PATH):$(XBINDIR)
 
-CPP_PROGRAM = $(prefix)/bin/traddcpp
-
-DEF_BM_PATH = $(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B:${prefix}/appconfig/icons/%L/%B%M.bm:${prefix}/appconfig/icons/%L/%B%M.pm:${prefix}/appconfig/icons/%L/%B:${prefix}/appconfig/icons/C/%B%M.bm:${prefix}/appconfig/icons/C/%B%M.pm:${prefix}/appconfig/icons/C/%B
-DEF_PM_PATH = $(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B:${prefix}/appconfig/icons/%L/%B%M.pm:${prefix}/appconfig/icons/%L/%B%M.bm:${prefix}/appconfig/icons/%L/%B:${prefix}/appconfig/icons/C/%B%M.pm:${prefix}/appconfig/icons/C/%B%M.bm:${prefix}/appconfig/icons/C/%B
+DEF_BM_PATH = $(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B:$(CDE_INSTALLATION_TOP)/appconfig/icons/%L/%B%M.bm:$(CDE_INSTALLATION_TOP)/appconfig/icons/%L/%B%M.pm:$(CDE_INSTALLATION_TOP)/appconfig/icons/%L/%B:$(CDE_INSTALLATION_TOP)/appconfig/icons/C/%B%M.bm:$(CDE_INSTALLATION_TOP)/appconfig/icons/C/%B%M.pm:$(CDE_INSTALLATION_TOP)/appconfig/icons/C/%B
+DEF_PM_PATH = $(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.pm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B%M.bm:$(CDE_CONFIGURATION_TOP)/appconfig/icons/C/%B:$(CDE_INSTALLATION_TOP)/appconfig/icons/%L/%B%M.pm:$(CDE_INSTALLATION_TOP)/appconfig/icons/%L/%B%M.bm:$(CDE_INSTALLATION_TOP)/appconfig/icons/%L/%B:$(CDE_INSTALLATION_TOP)/appconfig/icons/C/%B%M.pm:$(CDE_INSTALLATION_TOP)/appconfig/icons/C/%B%M.bm:$(CDE_INSTALLATION_TOP)/appconfig/icons/C/%B
 
 AM_CFLAGS = -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
-            -DCDE_INSTALLATION_TOP=\"${prefix}\" \
+            -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
             -DCDE_LOGFILES_TOP=\"$(CDE_LOGFILES_TOP)\" \
 	    -I/usr/include/freetype2 -DBINDIR=\"$(XBINDIR)\" \
 	    -DXDMDIR=\"$(XDMDIR)\" \
@@ -30,9 +28,9 @@ dtlogin_SOURCES = access.c account.c auth.c genauth.c daemon.c dm.c \
 noinst_LIBRARIES = libresource.a
 libresource_a_SOURCES = resource.c
 libresource_a_CFLAGS = $(AM_CFLAGS) \
-		 -DDEF_SESSION=\"${prefix}/bin/Xsession\" \
+		 -DDEF_SESSION=\"$(CDE_INSTALLATION_TOP)/bin/Xsession\" \
 		 -DDEF_SYSTEM_SHELL=\"/bin/sh\" \
-                 -DDEF_CHOOSER=\"${prefix}/bin/dtchooser\" \
+                 -DDEF_CHOOSER=\"$(CDE_INSTALLATION_TOP)/bin/dtchooser\" \
                  -DDEF_XDM_CONFIG=\"Xconfig\" -DSIGNALRETURNSINT \
 		 -DDEF_SERVER_LINE=\"":0 Local local $(DEF_SERVER) :0"\" \
                  -DXRDB_PROGRAM=\"$(XRDB)\" \
