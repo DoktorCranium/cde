@@ -642,6 +642,7 @@ wordval(struct place *p, char *word)
 			complain_fail();
 		}
 	}
+	debuglog(p, "Undefined symbol %s; substituting 0", word);
 	return 0;
 }
 
@@ -707,29 +708,29 @@ tokenize(struct place *p, char *expr)
 	while (expr[pos] != '\0') {
 		len = strspn(expr+pos, ws);
 		pos += len;
-		p->column += len;
+		place_addcolumns(p, len);
 		/* trailing whitespace is supposed to have been pruned */
 		assert(expr[pos] != '\0');
 		if (check_word(p, expr, pos, &len)) {
 			pos += len;
-			p->column += len;
+			place_addcolumns(p, len);
 			continue;
 		}
 		if (check_tokens_2(p, expr, pos)) {
 			pos += 2;
-			p->column += 2;
+			place_addcolumns(p, 2);
 			continue;
 		}
 		if (check_tokens_1(p, expr, pos)) {
 			pos++;
-			p->column++;
+			place_addcolumns(p, 1);
 			continue;
 		}
 		complain(p, "Invalid character %u in #if-expression",
 			 (unsigned char)expr[pos]);
 		complain_fail();
 		pos++;
-		p->column++;
+		place_addcolumns(p, 1);
 	}
 	token(p, T_EOF, 0);
 }
@@ -744,6 +745,7 @@ eval(struct place *p, char *expr)
 #ifdef DEBUG
 	fprintf(stderr, "eval: %s\n", expr);
 #endif
+	debuglog(p, "eval: %s", expr);
 
 	tokenarray_init(&tokens);
 	tokenize(p, expr);

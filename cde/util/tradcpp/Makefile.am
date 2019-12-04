@@ -2,25 +2,9 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = tradcpp
 
-tradcpp_SOURCES = array.c \
-	array.h \
-	config.h \
-	directive.c \
-	directive.h \
-	eval.c \
-	eval.h \
-	files.c \
-	files.h \
-	inlinedefs.h \
-	macro.c \
-	macro.h \
-	main.c \
-	mode.h \
-	output.c \
-	output.h \
-	place.c \
-	place.h \
-	utils.c \
-	utils.h \
-	version.h
+tradcpp_SOURCES = array.c directive.c files.c macro.h output.h		\
+	utils.c array.h directive.h files.h main.c place.c utils.h	\
+	bool.h eval.c inlinedefs.h mode.h place.h version.h config.h	\
+	eval.h macro.c output.c union.h
+
 

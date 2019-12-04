@@ -27,7 +27,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -35,6 +34,7 @@
 #include <fcntl.h>
 #include <errno.h>
 
+#include "bool.h"
 #include "array.h"
 #include "mode.h"
 #include "place.h"
@@ -163,6 +163,10 @@ countnls(const char *buf, size_t start, size_t limit)
 	for (i=start; i<limit; i++) {
 		if (buf[i] == '\n') {
 			count++;
+			if (count == 0) {
+				/* just return the max and error downstream */
+				return count - 1;
+			}
 		}
 	}
 	return count;
@@ -172,14 +176,21 @@ static
 void
 file_read(const struct placefile *pf, int fd, const char *name, bool toplevel)
 {
-	struct place linestartplace, nextlinestartplace, ptmp;
+	struct lineplace places;
+	struct place ptmp;
 	size_t bufend, bufmax, linestart, lineend, nextlinestart, tmp;
 	ssize_t result;
 	bool ateof = false;
 	char *buf;
 
-	place_setfilestart(&linestartplace, pf);
-	nextlinestartplace = linestartplace;
+	place_setfilestart(&places.current, pf);
+	places.nextline = places.current;
+
+	if (name) {
+		debuglog(&places.current, "Reading file %s", name);
+	} else {
+		debuglog(&places.current, "Reading standard input");
+	}
 
 	bufmax = 128;
 	bufend = 0;
@@ -202,6 +213,12 @@ file_read(const struct placefile *pf, int fd, const char *name, bool toplevel)
 				/* need bigger buffer */
 				buf = dorealloc(buf, bufmax, bufmax*2);
 				bufmax = bufmax*2;
+				/* just in case someone's screwing around */
+				if (bufmax > 0xffffffff) {
+					complain(&places.current,
+						 "Input line too long");
+					die();
+				}
 			}
 
 			if (ateof) {
@@ -223,9 +240,15 @@ file_read(const struct placefile *pf, int fd, const char *name, bool toplevel)
 			} else if (result == 0) {
 				/* eof in middle of line */
 				ateof = true;
-				ptmp = linestartplace;
-				ptmp.column += bufend - linestart;
-				complain(&ptmp, "No newline at end of file");
+				ptmp = places.current;
+				place_addcolumns(&ptmp, bufend - linestart);
+				if (buf[bufend - 1] == '\n') {
+					complain(&ptmp, "Unclosed comment");
+					complain_fail();
+				} else {
+					complain(&ptmp,
+						 "No newline at end of file");
+				}
 				if (mode.werror) {
 					complain_fail();
 				}
@@ -244,7 +267,7 @@ file_read(const struct placefile *pf, int fd, const char *name, bool toplevel)
 		assert(buf[lineend] == '\n');
 		buf[lineend] = '\0';
 		nextlinestart = lineend+1;
-		nextlinestartplace.line++;
+		place_addlines(&places.nextline, 1);
 
 		/* check for CR/NL */
 		if (lineend > 0 && buf[lineend-1] == '\r') {
@@ -271,21 +294,19 @@ file_read(const struct placefile *pf, int fd, const char *name, bool toplevel)
 		assert(buf[lineend] == '\0');
 
 		/* count how many commented-out newlines we swallowed */
-		nextlinestartplace.line += countnls(buf, linestart, lineend);
+		place_addlines(&places.nextline,
+			       countnls(buf, linestart, lineend));
 
-		/* if the line isn't empty, process it */
-		if (lineend > linestart) {
-			directive_gotline(&linestartplace,
-					  buf+linestart, lineend-linestart);
-		}
+		/* process the line (even if it's empty) */
+		directive_gotline(&places, buf+linestart, lineend-linestart);
 
 		linestart = nextlinestart;
 		lineend = findeol(buf, linestart, bufend);
-		linestartplace = nextlinestartplace;
+		places.current = places.nextline;
 	}
 
 	if (toplevel) {
-		directive_goteof(&linestartplace);
+		directive_goteof(&places.current);
 	}
 	dofree(buf, bufmax);
 }

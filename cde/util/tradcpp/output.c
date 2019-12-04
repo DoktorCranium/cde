@@ -27,6 +27,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -172,6 +173,15 @@ output(const struct place *p, const char *buf, size_t len)
 		linebuf = dorealloc(linebuf, oldmax, linebufmax);
 	}
 	if (linebufpos == 0) {
+		if (!place_samefile(&linebufplace, p)) {
+			if (mode.output_cheaplinenumbers) {
+				char str[256];
+
+				snprintf(str, sizeof(str), "# %u \"%s\"\n",
+					 p->line, place_getname(p));
+				dowrite(str, strlen(str));
+			}
+		}
 		linebufplace = *p;
 	}
 	memcpy(linebuf + linebufpos, buf, len);

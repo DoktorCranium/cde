@@ -27,13 +27,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
 
+#include "bool.h"
 #include "version.h"
 #include "config.h"
 #include "utils.h"
@@ -55,6 +55,7 @@ struct mode mode = {
 
 	.do_output = true,
 	.output_linenumbers = true,
+	.output_cheaplinenumbers = false,
 	.output_retain_comments = false,
 	.output_file = NULL,
 
@@ -154,7 +155,7 @@ commandline_def(const struct place *p, char *str)
 
 	if (val) {
 		p2 = *p;
-		p2.column += strlen(str);
+		place_addcolumns(&p2, strlen(str));
 	} else {
 		place_setbuiltin(&p2, 1);
 	}
@@ -166,7 +167,7 @@ void
 commandline_undef(const struct place *p, char *str)
 {
 	if (*str == '\0') {
-		complain(NULL, "-D: macro name expected");
+		complain(NULL, "-U: macro name expected");
 		die();
 	}
 	commandline_macro_add(p, str, p, NULL);
@@ -195,6 +196,16 @@ apply_commandline_macros(void)
 
 static
 void
+apply_magic_macro(unsigned num, const char *name)
+{
+	struct place p;
+
+	place_setbuiltin(&p, num);
+	macro_define_magic(&p, name);
+}
+
+static
+void
 apply_builtin_macro(unsigned num, const char *name, const char *val)
 {
 	struct place p;
@@ -208,6 +219,9 @@ void
 apply_builtin_macros(void)
 {
 	unsigned n = 1;
+
+	apply_magic_macro(n++, "__FILE__");
+	apply_magic_macro(n++, "__LINE__");
 
 #ifdef CONFIG_OS
 	apply_builtin_macro(n++, CONFIG_OS, "1");
@@ -781,6 +795,7 @@ static const struct flag_option flag_options[] = {
 	{ "fdollars-in-identifiers",    &mode.input_allow_dollars,     true },
 	{ "fno-dollars-in-identifiers", &mode.input_allow_dollars,     false },
 	{ "nostdinc",                   &mode.do_stdinc,               false },
+	{ "p",                          &mode.output_cheaplinenumbers, true },
 	{ "undef",                      &mode.do_stddef,               false },
 };
 static const unsigned num_flag_options = HOWMANY(flag_options);
@@ -814,6 +829,7 @@ static const struct arg_option arg_options[] = {
 	{ "MF",          commandline_setdependoutput },
 	{ "MQ",          commandline_setdependtarget_quoted },
 	{ "MT",          commandline_setdependtarget },
+	{ "debuglog",    debuglog_open },
 	{ "idirafter",   commandline_addincpath_late },
 	{ "imacros",     commandline_addfile_nooutput },
 	{ "include",     commandline_addfile_output },
@@ -934,7 +950,7 @@ check_arg_option(const char *opt, const struct place *argplace, char *arg)
 	return false;
 }
 
-DEAD static
+DEAD PF(2, 3) static
 void
 usage(const char *progname, const char *fmt, ...)
 {
@@ -946,7 +962,7 @@ usage(const char *progname, const char *fmt, ...)
 	va_end(ap);
 	fprintf(stderr, "\n");
 
-	fprintf(stderr, "Usage: %s [options] [infile [outfile]]\n", progname);
+	fprintf(stderr, "usage: %s [options] [infile [outfile]]\n", progname);
 	fprintf(stderr, "Common options:\n");
 	fprintf(stderr, "   -C               Retain comments\n");
 	fprintf(stderr, "   -Dmacro[=def]    Predefine macro\n");
@@ -999,6 +1015,7 @@ cleanup(void)
 	commandline_files_cleanup();
 	commandline_macros_cleanup();
 	incpath_cleanup();
+	debuglog_close();
 
 	num = stringarray_num(&freestrings);
 	for (i=0; i<num; i++) {
@@ -1040,7 +1057,7 @@ main(int argc, char *argv[])
 	init();
 
 	for (i=1; i<argc; i++) {
-		if (argv[i][0] != '-') {
+		if (argv[i][0] != '-' || argv[i][1] == 0) {
 			break;
 		}
 		place_setcommandline(&cmdplace, i, 1);
@@ -1065,9 +1082,15 @@ main(int argc, char *argv[])
 	}
 	if (i < argc) {
 		inputfile = argv[i++];
+		if (!strcmp(inputfile, "-")) {
+			inputfile = NULL;
+		}
 	}
 	if (i < argc) {
 		outputfile = argv[i++];
+		if (!strcmp(outputfile, "-")) {
+			outputfile = NULL;
+		}
 	}
 	if (i < argc) {
 		usage(progname, "Extra non-option argument %s", argv[i]);

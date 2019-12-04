@@ -96,7 +96,7 @@ Suppress line number information in the output.
 Currently line number information is not generated at all and this
 option has no effect.
 .It Fl Umacro
-Remove any existing defintion for the named macro.
+Remove any existing definition for the named macro.
 Note that like many Unix compilers,
 .Nm
 does not accept a space between the
@@ -254,12 +254,20 @@ and add this directory as if it were specified with
 .Fl idirafter .
 .It Fl iwithprefixbefore
 Like
--Fl iwithprefix
+.Fl iwithprefix
 but adds the result as if it were specified with
 .Fl I .
 .El
 .Ss Diagnostic Options
 .Bl -tag -width bubblebabble
+.It Fl debuglog Ar file
+Write a trace of actions and operations to
+.Ar file
+as the input is processed.
+Meant for debugging problems in complex substitution schemes fed to
+.Nm ,
+such as those used by
+.Xr imake 1 .
 .It Fl dD
 Dump all macro definitions, except for the predefined macros, after
 the normal preprocessing output.
