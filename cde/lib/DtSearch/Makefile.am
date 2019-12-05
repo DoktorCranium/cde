@@ -12,6 +12,7 @@ libDtSearch_la_CFLAGS = -DI18N_MSG -DMULTIBYTE -I./raima \
 			@DT_INCDIR@
 
 
+libDtSearch_la_LDFLAGS = -version-info 2:1:0
 libDtSearch_la_LIBADD = raima/libraima.la
 
 if LINUX
