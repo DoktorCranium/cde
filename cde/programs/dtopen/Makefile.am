@@ -18,4 +18,4 @@ install-data-hook:
 	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin && $(LN_S) dtopen dtopen_video
 	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin && $(LN_S) dtopen dtopen_image
 	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin && $(LN_S) dtopen dtopen_ps
-	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin && $(LN_S) dtopen dtopen_ypdf
+	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin && $(LN_S) dtopen dtopen_pdf
