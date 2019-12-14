@@ -59,6 +59,11 @@ dnl temporary.
 OSMAJORVERSION=4
 OSMINORVERSION=15
 
+dnl locations of libs/includes if not in 'standard' places like on
+dnl linux
+MOTIF_LIB=""
+MOTIF_INC=""
+
 case "${host_os}" in
 	linux*)
 		build_linux=yes
@@ -113,9 +118,11 @@ dnl Add osmajor/minor version to cppflags.
 OSVERSION="-DOSMAJORVERSION=$OSMAJORVERSION -DOSMINORVERSION=$OSMINORVERSION"
 
 dnl set CSRG_BASED define for the BSD's
-if test "$build_bsd" = "yes"
+if test "$bsd" = "yes"
 then
         SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DCSRG_BASED"
+        MOTIF_LIB="-L/usr/local/lib -R/usr/local/lib"
+        MOTIF_INC="-I/usr/local/include -I/usr/X11R6/include/freetype2"
 fi
 
 is_x86_64=no
@@ -283,7 +290,7 @@ AC_CHECK_LIB(crypt, crypt)
 dnl this should be configurable, for now it is required
 AC_CHECK_LIB(Xinerama, XineramaQueryScreens,
                 [SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DUSE_XINERAMA"],
-                [AC_MSG_ERROR([libXinerama not found])])
+                [AC_MSG_ERROR([libXinerama not found])], $X_LIBS)
 
 dnl Special check for tirpc...
 AC_CHECK_LIB(tirpc, svc_register,
@@ -294,13 +301,14 @@ AC_SUBST(TIRPCLIB)
 
 dnl Setup XTOOLLIB - we do it in this specific order to avoid ordering
 dnl issues
-XTOOLLIB="$X_LIBS"
-AC_CHECK_LIB(X11, XOpenDisplay, [XTOOLLIB="-lX11"])
-AC_CHECK_LIB(Xau, XauReadAuth, [XTOOLLIB="-lXau ${XTOOLLIB}"])
-AC_CHECK_LIB(Xt, XtInitialize, [XTOOLLIB="-lXt ${XTOOLLIB}"])
-AC_CHECK_LIB(ICE, IceCloseConnection, [XTOOLLIB="-lICE ${XTOOLLIB}"])
-AC_CHECK_LIB(SM, SmcOpenConnection, [XTOOLLIB="-lSM ${XTOOLLIB}"])
-AC_CHECK_LIB(Xm, XmTextSetString, [XTOOLLIB="-lXm ${XTOOLLIB}"])
+XTOOLLIB=""
+AC_CHECK_LIB(X11, XOpenDisplay, [XTOOLLIB="-lX11"], , $X_LIBS)
+AC_CHECK_LIB(Xau, XauReadAuth, [XTOOLLIB="-lXau ${XTOOLLIB}"], , $X_LIBS)
+AC_CHECK_LIB(Xt, XtInitialize, [XTOOLLIB="-lXt ${XTOOLLIB}"], , $X_LIBS)
+AC_CHECK_LIB(ICE, IceCloseConnection, [XTOOLLIB="-lICE ${XTOOLLIB}"], , $X_LIBS)
+AC_CHECK_LIB(SM, SmcOpenConnection, [XTOOLLIB="-lSM ${XTOOLLIB}"], , $X_LIBS)
+AC_CHECK_LIB(Xm, XmTextSetString, [XTOOLLIB="-lXm ${XTOOLLIB}"], , [$MOTIF_LIB $X_LIBS])
+XTOOLLIB="$X_LIBS $MOTIF_LIB ${XTOOLLIB}"
 AC_SUBST([XTOOLLIB])
 
 dnl set CPPFLAGS, CFLAGS, and CXXFLAGS.
@@ -310,8 +318,8 @@ dnl variable and presumably add those to your Makefile.am files.  We
 dnl have 192 of these currently, so... The user will just have to
 dnl deal, or modify them here directly.
 CPPFLAGS="${CPPFLAGS} ${SOURCE_CPP_DEFINES} ${CPP_COMPILER_FLAGS} ${OSVERSION}"
-CFLAGS="${CFLAGS} ${C_COMPILER_FLAGS} ${PTHREAD_CFLAGS}"
-CXXFLAGS="${CXXFLAGS} ${CXX_COMPILER_FLAGS} ${PTHREAD_CFLAGS}"
+CFLAGS="${CFLAGS} ${C_COMPILER_FLAGS} ${X_CFLAGS} ${MOTIF_INC} ${PTHREAD_CFLAGS}"
+CXXFLAGS="${CXXFLAGS} ${CXX_COMPILER_FLAGS} ${X_CFLAGS} ${MOTIF_INC} ${PTHREAD_CFLAGS}"
 LIBS="${LIBS} ${PTHREAD_LIBS}"
 
 dnl All of the makefiles we need to generate go here...
