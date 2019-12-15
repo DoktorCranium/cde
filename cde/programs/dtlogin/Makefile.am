@@ -53,7 +53,7 @@ dtlogin_LDADD = libresource.a @DTCLIENTLIBS@ -lXau -lXmu -lXext -lXdmcp \
 
 dtgreet_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
-dtchooser_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)  -lXau -lXmu -lXext -lXdmcp $(XTOOLLIB)
+dtchooser_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB) -lXmu -lXext -lXdmcp $(XTOOLLIB)
 
 
 if LINUX
@@ -63,12 +63,13 @@ dtlogin_SOURCES += xdmauth.c
 endif
 
 if FREEBSD
+AM_CFLAGS += -DHASDES -DHASXDMAUTH
 XBINDIR = /usr/local/bin
 endif
 
 if OPENBSD
 XBINDIR = /usr/X11R6/bin
-AM_CFLAGS += -DHASDES
+AM_CFLAGS += -DHASDES -DHASXDMAUTH
 dtlogin_SOURCES += xdmauth.c
 endif
 
