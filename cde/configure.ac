@@ -106,7 +106,7 @@ case "${host_os}" in
 esac
 
 AM_CONDITIONAL([LINUX], [test "$build_linux" = "yes"])
-AM_CONDITIONAL([BSD], [test "$build_bsd" = "yes"])
+AM_CONDITIONAL([BSD], [test "$bsd" = "yes"])
 AM_CONDITIONAL([FREEBSD], [test "$build_freebsd" = "yes"])
 AM_CONDITIONAL([OPENBSD], [test "$build_openbsd" = "yes"])
 AM_CONDITIONAL([NETBSD], [test "$build_netbsd" = "yes"])
