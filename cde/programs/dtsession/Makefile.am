@@ -29,12 +29,12 @@ endif
 
 if LINUX
 dtsession_CFLAGS += -DUSE_X11SSEXT
-dtsession_LDADD += $(TIRPCLIB) -lXss -ldl -lcrypt
+dtsession_LDADD += $(TIRPCLIB) -lXss -ldl
 endif
 
 if BSD
 dtsession_CFLAGS += -DUSE_X11SSEXT
-dtsession_LDADD +=  -lXss -lcrypt
+dtsession_LDADD +=  -lXss
 endif
 
 DTSM_CMD1 = $(CDE_INSTALLATION_TOP)/bin/dtaction OpenHomeDir
