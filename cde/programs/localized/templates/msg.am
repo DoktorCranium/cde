@@ -11,4 +11,4 @@ SUFFIXES = .msg .cat
 
 .msg.cat:
 	$(RM) $@
-	LANG=$(LANG) $(GENCAT) -o $@ $^ || $(RM) $@
+	LANG=$(LANG) $(GENCAT) $@ $^ || $(RM) $@
