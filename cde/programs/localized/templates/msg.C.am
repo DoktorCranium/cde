@@ -24,17 +24,25 @@ TOP = $(top_builddir)/programs
 TOPLIB = $(top_builddir)/lib
 TOPMOTIF = $(top_builddir)/imports/
 
+MKCATDEFS = $(TOP)/localized/util/mkcatdefs
+
 Xm.cat: $(top_srcdir)/imports/motif/localized/$(LANG)/msg/Xm.msg
 	$(RM) $@
-	LANG=C $(GENCAT) $@ $^ || $(RM) $@
+	$(MKCATDEFS) Xm $^ -h > Xm.tmp.msg
+	LANG=C $(GENCAT) $@ Xm.tmp.msg || $(RM) $@
+	$(RM) Xm.tmp.msg
 
 Mrm.cat: $(top_srcdir)/imports/motif/localized/$(LANG)/msg/Mrm.msg
 	$(RM) $@
-	LANG=C $(GENCAT) $@ $^ || $(RM) $@
+	$(MKCATDEFS) Mrm $^ -h > Mrm.tmp.msg
+	LANG=C $(GENCAT) $@ Mrm.tmp.msg || $(RM) $@
+	$(RM) Mrm.tmp.msg
 
 Uil.cat: $(top_srcdir)/imports/motif/localized/$(LANG)/msg/Uil.msg
 	$(RM) $@
-	LANG=C $(GENCAT) $@ $^ || $(RM) $@
+	$(MKCATDEFS) Uil $^ -h > Uil.tmp.msg
+	LANG=C $(GENCAT) $@ Uil.tmp.msg || $(RM) $@
+	$(RM) Uil.tmp.msg
 
 DtHelp.cat: $(TOPLIB)/DtHelp/DtHelp.msg
 	$(RM) $@
