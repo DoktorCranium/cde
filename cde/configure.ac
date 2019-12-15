@@ -2,6 +2,11 @@ AC_INIT([cde-desktop], [2.3.1], [jon@radscan.com])
 AC_CONFIG_HEADERS([include/autotools_config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
+
+dnl These must be up here for the compiler search list to actually work
+AC_PROG_CC([cc gcc clang])
+AC_PROG_CXX([c++ g++ clang++])
+
 LT_INIT
 AC_PREFIX_DEFAULT(/usr/dt)
 
@@ -218,9 +223,6 @@ AC_SUBST(CDE_CONFIGURATION_TOP)
 AC_SUBST(CDE_LOGFILES_TOP)
 AC_SUBST(CDE_USER_TOP)
 
-AC_PROG_CC
-AC_PROG_CXX
-
 AC_PROG_CPP
 
 dnl we need a real preprocessor, not gcc -E.  We will call it GENCPP.
@@ -320,7 +322,7 @@ dnl deal, or modify them here directly.
 CPPFLAGS="${CPPFLAGS} ${SOURCE_CPP_DEFINES} ${CPP_COMPILER_FLAGS} ${OSVERSION}"
 CFLAGS="${CFLAGS} ${C_COMPILER_FLAGS} ${X_CFLAGS} ${MOTIF_INC} ${PTHREAD_CFLAGS}"
 CXXFLAGS="${CXXFLAGS} ${CXX_COMPILER_FLAGS} ${X_CFLAGS} ${MOTIF_INC} ${PTHREAD_CFLAGS}"
-LIBS="${LIBS} ${PTHREAD_LIBS}"
+LIBS="${X_LIBS} ${LIBS} ${PTHREAD_LIBS}"
 
 dnl All of the makefiles we need to generate go here...
 AC_CONFIG_FILES([
