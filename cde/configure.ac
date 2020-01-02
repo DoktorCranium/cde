@@ -234,6 +234,14 @@ AC_SUBST(GENCPP, '$(top_builddir)/util/tradcpp/tradcpp')
 
 AM_PROG_LIBTOOL
 AC_PROG_YACC
+dnl the above YACC macro sets YACC variable to 'yacc' even if no program
+dnl is found, it's pants, so check it really exists here
+
+dnl this doesn't quite work yet, as when YACC is set to 'bison -y' this
+dnl goes wrong
+dnl AC_CHECK_PROG(YACC_CHECK,YACC,yes)
+dnl AS_IF([test x"$YACC_CHECK" != x"yes"], [AC_MSG_ERROR([yacc/bison/byacc program not found])])
+
 AM_PROG_LEX
 AC_PROG_INSTALL
 AC_PROG_LN_S
@@ -264,6 +272,8 @@ AC_FUNC_FORK
 
 dnl programs with full paths
 
+AC_CHECK_PROG(KSH_CHECK, ksh, yes)
+AS_IF([test x"$KSH_CHECK" != x"yes"], [AC_MSG_ERROR([ksh not found])])
 AC_PATH_PROG(KSH, ksh)
 AC_PATH_PROG(XRDB, xrdb)
 dnl we need to use cpp for some things, like tooltalk and other
@@ -285,6 +295,11 @@ AC_CHECK_PROGS(GENCAT, gencat)
 dnl headers
 AC_HEADER_STDC
 AC_CHECK_HEADERS([locale.h])
+AC_CHECK_HEADERS([Xm/Xm.h], ,[AC_MSG_ERROR([libxm headers not found])])
+AC_CHECK_HEADERS([X11/Intrinsic.h], ,[AC_MSG_ERROR([libxt headers not found])])
+AC_CHECK_HEADERS([X11/Xmu/Xmu.h], ,[AC_MSG_ERROR([libxmu headers not found])])
+AC_CHECK_HEADERS([X11/extensions/scrnsaver.h], ,[AC_MSG_ERROR([libxss headers not found])])
+AC_CHECK_HEADERS([jpeglib.h], ,[AC_MSG_ERROR([libjpeg headers not found])])
 
 dnl libraries
 AC_CHECK_LIB(m, cosf)
@@ -386,18 +401,6 @@ programs/backdrops/Makefile
 programs/palettes/Makefile
 
 programs/icons/Makefile
-
-programs/dthelp/Makefile
-programs/dthelp/dthelpgen/Makefile
-programs/dthelp/dthelpprint/Makefile
-programs/dthelp/parser/pass1/helptag/Makefile
-programs/dthelp/parser/pass1/Makefile
-programs/dthelp/parser/pass1/eltdef/Makefile
-programs/dthelp/parser/pass1/build/Makefile
-programs/dthelp/parser/Makefile
-programs/dthelp/parser/canon1/Makefile
-programs/dthelp/parser/pass2/Makefile
-programs/dthelp/dthelpview/Makefile
 
 programs/dsdm/Makefile
 
@@ -537,3 +540,15 @@ programs/localized/es_ES.UTF-8/msg/Makefile
 
 AC_OUTPUT
 
+dnl not currently building
+dnl programs/dthelp/Makefile
+dnl programs/dthelp/dthelpgen/Makefile
+dnl programs/dthelp/dthelpprint/Makefile
+dnl programs/dthelp/parser/pass1/helptag/Makefile
+dnl programs/dthelp/parser/pass1/Makefile
+dnl programs/dthelp/parser/pass1/eltdef/Makefile
+dnl programs/dthelp/parser/pass1/build/Makefile
+dnl programs/dthelp/parser/Makefile
+dnl programs/dthelp/parser/canon1/Makefile
+dnl programs/dthelp/parser/pass2/Makefile
+dnl programs/dthelp/dthelpview/Makefile
