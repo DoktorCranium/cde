@@ -191,20 +191,36 @@ AC_SUBST(XM_INCDIR, '-I$(top_builddir)/include/Xm')
 AC_SUBST(CSA_INCDIR, '-I$(top_builddir)/include/csa')
 AC_SUBST(SPC_INCDIR, '-I$(top_builddir)/include/SPC')
 
-AC_ARG_ENABLE(japanese, [--build-japanese    Build Japanese (default=no)])
-AM_CONDITIONAL([JAPANESE], [test "build_japanese" = "yes"])
+AC_ARG_ENABLE([german],
+        AS_HELP_STRING([--enable-german], [Build German locale (default=no)]),
+        [enable_de="yes"], [enable_de=""]
+)
+AM_CONDITIONAL([GERMAN], [test -n "$enable_de"])
 
-AC_ARG_ENABLE(german, [--build-german    Build German    (default=no)])
-AM_CONDITIONAL([GERMAN], [test "build_german" = "yes"])
+AC_ARG_ENABLE([italian],
+        AS_HELP_STRING([--enable-italian], [Build Italian locale (default=no)]),
+        [enable_it="yes"], [enable_it=""]
+)
+AM_CONDITIONAL([ITALIAN], [test -n "$enable_it"])
 
-AC_ARG_ENABLE(italian, [--build-italian    Build Italian    (default=no)])
-AM_CONDITIONAL([ITALIAN], [test "build_italian" = "yes"])
+AC_ARG_ENABLE([french],
+        AS_HELP_STRING([--enable-french], [Build French locale (default=no)]),
+        [enable_fr="yes"], [enable_fr=""]
+)
+AM_CONDITIONAL([FRENCH], [test -n "$enable_fr"])
 
-AC_ARG_ENABLE(french, [--build-french    Build French    (default=no)])
-AM_CONDITIONAL([FRENCH], [test "build_french" = "yes"])
+AC_ARG_ENABLE([spanish],
+        AS_HELP_STRING([--enable-spanish], [Build Spanish locale (default=no)]),
+        [enable_es="yes"], [enable_es=""]
+)
+AM_CONDITIONAL([SPANISH], [test -n "$enable_es"])
 
-AC_ARG_ENABLE(spanish, --build-spanish    Build Spanish    (default=no)])
-AM_CONDITIONAL([SPANISH], [test "build_spanish" = "yes"])
+AC_ARG_ENABLE([japanese],
+        AS_HELP_STRING([--enable-japanese], [Build Japanese locale (default=no, never tested)]),
+        [enable_jp="yes"], [enable_jp=""]
+)
+AM_CONDITIONAL([JAPANESE], [test -n "$enable_jp"])
+
 
 dnl hmmm...
 RM="rm -f"
