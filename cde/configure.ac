@@ -223,6 +223,14 @@ AC_SUBST(CDE_CONFIGURATION_TOP)
 AC_SUBST(CDE_LOGFILES_TOP)
 AC_SUBST(CDE_USER_TOP)
 
+dnl This variable will contain a list of programs that were not found,
+dnl but are required to build CDE.  At the end, if the variable is
+dnl non-empty, an error message will be printed, listing the missing
+dnl programs.  We don't bother with the simple expected commands like
+dnl ln, cp, etc...
+
+MISSING_PROGS=""
+
 AC_PROG_CPP
 
 dnl we need a real preprocessor, not gcc -E.  We will call it GENCPP.
@@ -233,16 +241,18 @@ dnl software such as tt_type_comp.
 AC_SUBST(GENCPP, '$(top_builddir)/util/tradcpp/tradcpp')
 
 AM_PROG_LIBTOOL
-AC_PROG_YACC
-dnl the above YACC macro sets YACC variable to 'yacc' even if no program
-dnl is found, it's pants, so check it really exists here
 
-dnl this doesn't quite work yet, as when YACC is set to 'bison -y' this
-dnl goes wrong
-dnl AC_CHECK_PROG(YACC_CHECK,YACC,yes)
-dnl AS_IF([test x"$YACC_CHECK" != x"yes"], [AC_MSG_ERROR([yacc/bison/byacc program not found])])
+dnl make sure it's installed
+AC_PROG_YACC
+if test -z "$ac_cv_prog_YACC"; then
+   AC_MSG_ERROR([please install bison or yacc])
+fi
 
 AM_PROG_LEX
+if test -z "$ac_cv_prog_LEX"; then
+   AC_MSG_ERROR([please install flex or lex])
+fi
+
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
@@ -272,10 +282,16 @@ AC_FUNC_FORK
 
 dnl programs with full paths
 
-AC_CHECK_PROG(KSH_CHECK, ksh, yes)
-AS_IF([test x"$KSH_CHECK" != x"yes"], [AC_MSG_ERROR([ksh not found])])
 AC_PATH_PROG(KSH, ksh)
+if test -z "$ac_cv_path_KSH"; then
+   MISSING_PROGS="ksh ${MISSING_PROGS}"
+fi
+
 AC_PATH_PROG(XRDB, xrdb)
+if test -z "$ac_cv_path_XRDB"; then
+   MISSING_PROGS="xrdb ${MISSING_PROGS}"
+fi
+
 dnl we need to use cpp for some things, like tooltalk and other
 dnl runtime uses.  So look for the system's cpp.  NOTE: this is NOT
 dnl the CPP (gcc -E) set by AC_PROG_CPP.  At this point I don't know
@@ -283,22 +299,39 @@ dnl if we should even bother looking for that as we can't really use
 dnl it.
 AC_PATH_PROG(CPP_PROGRAM, cpp, ,
        [/lib:/usr/bin:/usr/ccs/lib/:/usr/lib:/usr/libexec:/opt/langtools/lbin:$PATH])
+if test -z "$ac_cv_path_CPP_PROGRAM"; then
+   MISSING_PROGS="cpp ${MISSING_PROGS}"
+fi
 
-dnl programs
+dnl major external program dependencies
 AC_CHECK_PROGS(BDFTOPCF, bdftopcf)
+if test -z "$ac_cv_prog_BDFTOPCF"; then
+   MISSING_PROGS="bdftopcf ${MISSING_PROGS}"
+fi
 AC_CHECK_PROGS(MKFONTDIR, mkfontdir)
+if test -z "$ac_cv_prog_MKFONTDIR"; then
+   MISSING_PROGS="mkfontdir ${MISSING_PROGS}"
+fi
 AC_CHECK_PROGS(GZIP, gzip)
+if test -z "$ac_cv_prog_GZIP"; then
+   MISSING_PROGS="gzip ${MISSING_PROGS}"
+fi
 AC_CHECK_PROGS(M4, m4)
+if test -z "$ac_cv_prog_M4"; then
+   MISSING_PROGS="m4 ${MISSING_PROGS}"
+fi
 AC_CHECK_PROGS(RPCGEN, rpcgen)
+if test -z "$ac_cv_prog_RPCGEN"; then
+   MISSING_PROGS="rpcgen ${MISSING_PROGS}"
+fi
 AC_CHECK_PROGS(GENCAT, gencat)
+if test -z "$ac_cv_prog_GENCAT"; then
+   MISSING_PROGS="gencat ${MISSING_PROGS}"
+fi
 
 dnl headers
 AC_HEADER_STDC
 AC_CHECK_HEADERS([locale.h])
-AC_CHECK_HEADERS([Xm/Xm.h], ,[AC_MSG_ERROR([libxm headers not found])])
-AC_CHECK_HEADERS([X11/Intrinsic.h], ,[AC_MSG_ERROR([libxt headers not found])])
-AC_CHECK_HEADERS([X11/Xmu/Xmu.h], ,[AC_MSG_ERROR([libxmu headers not found])])
-AC_CHECK_HEADERS([X11/extensions/scrnsaver.h], ,[AC_MSG_ERROR([libxss headers not found])])
 AC_CHECK_HEADERS([jpeglib.h], ,[AC_MSG_ERROR([libjpeg headers not found])])
 
 dnl libraries
@@ -327,6 +360,14 @@ AC_CHECK_LIB(SM, SmcOpenConnection, [XTOOLLIB="-lSM ${XTOOLLIB}"], , $X_LIBS)
 AC_CHECK_LIB(Xm, XmTextSetString, [XTOOLLIB="-lXm ${XTOOLLIB}"], , [$MOTIF_LIB $X_LIBS])
 XTOOLLIB="${X_LIBS} ${MOTIF_LIB} ${X_EXTRA_LIBS} ${X_PRE_LIBS} ${XTOOLLIB}"
 AC_SUBST([XTOOLLIB])
+
+dnl check MISSING_PROGS - error out here if there's stuff in it.
+
+if test -n "$MISSING_PROGS"; then
+   AC_MSG_ERROR([Please install the following REQUIRED programs: ${MISSING_PROGS}])
+fi
+
+
 
 dnl set CPPFLAGS, CFLAGS, and CXXFLAGS.
 dnl The Autoconf manual says that these are user variables and
