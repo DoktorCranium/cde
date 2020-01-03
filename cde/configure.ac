@@ -245,12 +245,12 @@ AM_PROG_LIBTOOL
 dnl make sure it's installed
 AC_PROG_YACC
 if test -z "$ac_cv_prog_YACC"; then
-   AC_MSG_ERROR([please install bison or yacc])
+   MISSING_PROGS="[bison or byacc] ${MISSING_PROGS}"
 fi
 
 AM_PROG_LEX
 if test -z "$ac_cv_prog_LEX"; then
-   AC_MSG_ERROR([please install flex or lex])
+   MISSING_PROGS="[flex or lex] ${MISSING_PROGS}"
 fi
 
 AC_PROG_INSTALL
@@ -332,7 +332,6 @@ fi
 dnl headers
 AC_HEADER_STDC
 AC_CHECK_HEADERS([locale.h])
-AC_CHECK_HEADERS([jpeglib.h], ,[AC_MSG_ERROR([libjpeg headers not found])])
 
 dnl libraries
 AC_CHECK_LIB(m, cosf)
