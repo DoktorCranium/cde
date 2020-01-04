@@ -14,7 +14,7 @@ if SOLARIS
 ttauth_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
 endif
 
-if OPENBSD
+if BSD
 ttauth_LDADD += $(XTOOLLIB)
 endif
 

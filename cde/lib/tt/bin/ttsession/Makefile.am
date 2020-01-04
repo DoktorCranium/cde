@@ -16,7 +16,7 @@ if SOLARIS
 ttsession_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
 endif
 
-if OPENBSD
+if BSD
 ttsession_LDADD += $(XTOOLLIB)
 endif
 

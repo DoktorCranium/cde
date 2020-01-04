@@ -127,7 +127,7 @@ if test "$bsd" = "yes"
 then
         SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DCSRG_BASED"
         MOTIF_LIB="-L/usr/local/lib -R/usr/local/lib"
-        MOTIF_INC="-I/usr/local/include -I/usr/X11R6/include/freetype2"
+        MOTIF_INC="-I/usr/local/include -I/usr/X11R6/include/freetype2 -I/usr/local/include/freetype2"
 fi
 
 is_x86_64=no
@@ -298,9 +298,13 @@ AC_FUNC_FORK
 
 dnl programs with full paths
 
+dnl - KSH, some systems call it as ksh93
 AC_PATH_PROG(KSH, ksh)
 if test -z "$ac_cv_path_KSH"; then
-   MISSING_PROGS="ksh ${MISSING_PROGS}"
+   AC_PATH_PROG(KSH, ksh93)
+   if test -z "$ac_cv_path_KSH"; then
+      MISSING_PROGS="[ksh or ksh93] ${MISSING_PROGS}"
+   fi
 fi
 
 AC_PATH_PROG(XRDB, xrdb)

@@ -15,20 +15,12 @@ libDtWidget_la_CFLAGS += -I/usr/include/freetype2
 endif
 
 if BSD
-libDtWidget_la_CFLAGS += -I$(x_includes)/freetype2
-endif
-
-if NETBSD
- libDtWidget_la_CFLAGS += -I$(x_includes)
+libDtWidget_la_CFLAGS += -I/usr/local/include/freetype2
 endif
 
 if SOLARIS
 libDtWidget_la_CFLAGS += -DNO_REGCOMP
 libDtWidget_la_LIBADD = -lXm -lc -lw -lm -lintl
-endif
-
-if HPUX
-libDtWidget_la_CFLAGS += -DMESSAGE_CAT
 endif
 
 

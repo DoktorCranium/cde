@@ -65,6 +65,7 @@ endif
 if FREEBSD
 AM_CFLAGS += -DHASDES -DHASXDMAUTH
 XBINDIR = /usr/local/bin
+dtlogin_SOURCES += xdmauth.c
 endif
 
 if OPENBSD

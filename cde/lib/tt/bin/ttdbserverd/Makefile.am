@@ -18,7 +18,7 @@ if SOLARIS
 rpc_ttdbserver_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
 endif
 
-if OPENBSD
+if BSD
 rpc_ttdbserver_LDADD += $(XTOOLLIB)
 endif
 
