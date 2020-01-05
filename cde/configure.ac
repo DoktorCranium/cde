@@ -126,7 +126,7 @@ dnl set CSRG_BASED define for the BSD's
 if test "$bsd" = "yes"
 then
         SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DCSRG_BASED"
-        MOTIF_LIB="-L/usr/local/lib -R/usr/local/lib"
+        MOTIF_LIB="-L/usr/local/lib"
         MOTIF_INC="-I/usr/local/include -I/usr/X11R6/include/freetype2 -I/usr/local/include/freetype2"
 fi
 
@@ -367,6 +367,12 @@ AC_CHECK_LIB(tirpc, svc_register,
        CXXFLAGS="${CXXFLAGS} -DOPT_TIRPC -I/usr/include/tirpc";
        TIRPCLIB=-ltirpc])
 AC_SUBST(TIRPCLIB)
+
+dnl jpeg
+AC_CHECK_LIB(jpeg, jpeg_read_header, [JPEGLIB="-ljpeg"],
+             [AC_MSG_ERROR([libjpeg not found, please install it])],
+             [$MOTIF_LIB $X_LIBS])
+AC_SUBST(JPEGLIB)
 
 dnl Setup XTOOLLIB - we do it in this specific order to avoid ordering
 dnl issues
