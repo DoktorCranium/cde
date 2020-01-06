@@ -42,3 +42,8 @@ DtTermFallBackResources.c: DtTermFallBackResources.c.src
 dtterm.ti: terminfoChecklist
 	$(RM) $@
 	CPP="$(GENCPP)" $(SHELL) terminfoCreate < terminfoChecklist > $@
+
+install-exec-hook:
+	chown root $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtterm
+	chmod 4755 $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtterm
+

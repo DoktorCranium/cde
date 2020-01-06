@@ -11,3 +11,7 @@ dtappgather_LDADD += -ldl -lintl
 endif
 
 dtappgather_SOURCES = Options.C dtappgather.C dtappgather.h Options.h
+
+install-exec-hook:
+	chown root $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtappgather
+	chmod 4755 $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtappgather

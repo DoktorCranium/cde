@@ -116,3 +116,9 @@ sys.session: sys.session.src
 sys.session.ive: sys.session.src
 	$(RM) $@
 	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) -DIVE $< > $@
+
+
+install-exec-hook:
+	chown root $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtsession
+	chmod 4755 $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtsession
+

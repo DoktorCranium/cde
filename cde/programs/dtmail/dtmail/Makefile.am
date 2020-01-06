@@ -70,3 +70,8 @@ dtmail_SOURCES = AliasListUiItem.C               AlternatesListUiItem.C \
 		 XmTextEditor.C                  XtArgCollector.C \
 		 dtb_utils.C                     options_stubs.C \
 		 options_ui.C                    options_util.C
+
+install-exec-hook:
+	chown root $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtmail
+	chgrp mail $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtmail
+	chmod 2755 $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtmail
