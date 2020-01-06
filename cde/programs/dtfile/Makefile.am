@@ -14,11 +14,12 @@ dist_bin_SCRIPTS = dtfile_error
 dtfile_CPPFLAGS = -I./dtcopy -DSHAPE -D_ILS_MACROS -DSUN_PERF \
 		-DCDE_INSTALLATION_TOP=\"${prefix}\" \
 		-DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
-		-DKORNSHELL=\"$(KSH)\" -I/usr/include/freetype2
+		-DKORNSHELL=\"$(KSH)\" $(FREETYPE_CFLAGS)
 
-dtfile_LDADD = @DTCLIENTLIBS@ $(TIRPCLIB) -lXm -lXext \
-	       $(XTOOLLIB) ${X_LIBS} dtcopy/sharedFuncs.o \
-	       dtcopy/fsrtns.o
+dtfile_LDADD = dtcopy/sharedFuncs.o \
+	dtcopy/fsrtns.o \
+	$(DTCLIENTLIBS) $(TIRPCLIB) -lXm -lXext $(FREETYPE_LIBS) \
+	$(XTOOLLIB) 
 
 if OPENBSD
 dtfile_CPPFLAGS += -DFILE_MAP_OPTIMIZE

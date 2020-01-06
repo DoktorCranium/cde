@@ -65,9 +65,10 @@ OSMAJORVERSION=4
 OSMINORVERSION=15
 
 dnl locations of libs/includes if not in 'standard' places like on
-dnl linux
-MOTIF_LIB=""
-MOTIF_INC=""
+dnl linux (/usr/...).  We build these up based on where X11 is, and
+dnl other things as we go along.
+EXTRA_LIBS=""
+EXTRA_INCS=""
 
 case "${host_os}" in
 	linux*)
@@ -122,12 +123,13 @@ AM_CONDITIONAL([HPUX], [test "$build_hpux" = "yes"])
 dnl Add osmajor/minor version to cppflags.
 OSVERSION="-DOSMAJORVERSION=$OSMAJORVERSION -DOSMINORVERSION=$OSMINORVERSION"
 
-dnl set CSRG_BASED define for the BSD's
+dnl set CSRG_BASED define for the BSD's.  Also, they use /usr/local
+dnl for a lot of things, so add that to the INCS and LIBS
 if test "$bsd" = "yes"
 then
         SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DCSRG_BASED"
-        MOTIF_LIB="-L/usr/local/lib"
-        MOTIF_INC="-I/usr/local/include -I/usr/X11R6/include/freetype2 -I/usr/local/include/freetype2"
+        EXTRA_INCS="-I/usr/local/include ${EXTRA_INCS}"
+        EXTRA_LIBS="-L/usr/local/lib ${EXTRA_LIBS}"
 fi
 
 is_x86_64=no
@@ -294,6 +296,10 @@ AC_PROG_CC_C99
 AC_PATH_X
 AC_PATH_XTRA
 
+dnl Add X11 goodies here
+EXTRA_LIBS="${X_LIBS} ${EXTRA_LIBS}"
+EXTRA_INCS="${X_CFLAGS} ${EXTRA_INCS}"
+
 AC_FUNC_FORK
 
 dnl programs with full paths
@@ -371,20 +377,38 @@ AC_SUBST(TIRPCLIB)
 dnl jpeg
 AC_CHECK_LIB(jpeg, jpeg_read_header, [JPEGLIB="-ljpeg"],
              [AC_MSG_ERROR([libjpeg not found, please install it])],
-             [$MOTIF_LIB $X_LIBS])
+             [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_SUBST(JPEGLIB)
 
 dnl Setup XTOOLLIB - we do it in this specific order to avoid ordering
 dnl issues
 XTOOLLIB=""
-AC_CHECK_LIB(X11, XOpenDisplay, [XTOOLLIB="-lX11"], , $X_LIBS)
-AC_CHECK_LIB(Xau, XauReadAuth, [XTOOLLIB="-lXau ${XTOOLLIB}"], , $X_LIBS)
-AC_CHECK_LIB(Xt, XtInitialize, [XTOOLLIB="-lXt ${XTOOLLIB}"], , $X_LIBS)
-AC_CHECK_LIB(ICE, IceCloseConnection, [XTOOLLIB="-lICE ${XTOOLLIB}"], , $X_LIBS)
-AC_CHECK_LIB(SM, SmcOpenConnection, [XTOOLLIB="-lSM ${XTOOLLIB}"], , $X_LIBS)
-AC_CHECK_LIB(Xm, XmTextSetString, [XTOOLLIB="-lXm ${XTOOLLIB}"], , [$MOTIF_LIB $X_LIBS])
-XTOOLLIB="${X_LIBS} ${MOTIF_LIB} ${X_EXTRA_LIBS} ${X_PRE_LIBS} ${XTOOLLIB}"
+AC_CHECK_LIB(X11, XOpenDisplay, [XTOOLLIB="-lX11"], ,
+                  [${EXTRA_INCS} ${EXTRA_LIBS}])
+AC_CHECK_LIB(Xau, XauReadAuth, [XTOOLLIB="-lXau ${XTOOLLIB}"], ,
+                  [${EXTRA_INCS} ${EXTRA_LIBS}])
+AC_CHECK_LIB(Xt, XtInitialize, [XTOOLLIB="-lXt ${XTOOLLIB}"], ,
+                 [${EXTRA_INCS} ${EXTRA_LIBS}])
+AC_CHECK_LIB(ICE, IceCloseConnection, [XTOOLLIB="-lICE ${XTOOLLIB}"], ,
+                  [${EXTRA_INCS} ${EXTRA_LIBS}])
+AC_CHECK_LIB(SM, SmcOpenConnection, [XTOOLLIB="-lSM ${XTOOLLIB}"], ,
+                 [${EXTRA_INCS} ${EXTRA_LIBS}])
+AC_CHECK_LIB(Xm, XmTextSetString, [XTOOLLIB="-lXm ${XTOOLLIB}"], ,
+                 [${EXTRA_INCS} ${EXTRA_LIBS}])
+
+XTOOLLIB="${EXTRA_INCS} ${EXTRA_LIBS} ${X_EXTRA_LIBS} ${XTOOLLIB}"
 AC_SUBST([XTOOLLIB])
+
+dnl Check for freetype libraries/headers
+AC_CHECK_TOOLS([FREETYPE_CONFIG], [freetype-config])
+if test -z "$FREETYPE_CONFIG"; then
+  AC_MSG_ERROR([Missing freetype-config. Install freetype development headers and library.])
+fi
+
+FREETYPE_CFLAGS=`$FREETYPE_CONFIG --cflags`
+AC_SUBST(FREETYPE_CFLAGS)
+FREETYPE_LIBS=`$FREETYPE_CONFIG --libs`
+AC_SUBST(FREETYPE_LIBS)
 
 dnl check MISSING_PROGS - error out here if there's stuff in it.
 
@@ -401,9 +425,9 @@ dnl variable and presumably add those to your Makefile.am files.  We
 dnl have 192 of these currently, so... The user will just have to
 dnl deal, or modify them here directly.
 CPPFLAGS="${CPPFLAGS} ${SOURCE_CPP_DEFINES} ${CPP_COMPILER_FLAGS} ${OSVERSION}"
-CFLAGS="${CFLAGS} ${C_COMPILER_FLAGS} ${X_CFLAGS} ${MOTIF_INC} ${PTHREAD_CFLAGS}"
-CXXFLAGS="${CXXFLAGS} ${CXX_COMPILER_FLAGS} ${X_CFLAGS} ${MOTIF_INC} ${PTHREAD_CFLAGS}"
-LIBS="${X_LIBS} ${LIBS} ${PTHREAD_LIBS}"
+CFLAGS="${CFLAGS} ${C_COMPILER_FLAGS} ${EXTRA_INCS} ${PTHREAD_CFLAGS}"
+CXXFLAGS="${CXXFLAGS} ${CXX_COMPILER_FLAGS} ${EXTRA_INCS} ${PTHREAD_CFLAGS}"
+LIBS="${EXTRA_LIBS} ${LIBS} ${PTHREAD_LIBS}"
 
 dnl All of the makefiles we need to generate go here...
 AC_CONFIG_FILES([

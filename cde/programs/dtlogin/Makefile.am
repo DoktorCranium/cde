@@ -14,7 +14,7 @@ DEF_PM_PATH = $(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.pm:$(CDE_CONFIGUR
 AM_CFLAGS = -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
             -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
             -DCDE_LOGFILES_TOP=\"$(CDE_LOGFILES_TOP)\" \
-	    -I/usr/include/freetype2 -DBINDIR=\"$(XBINDIR)\" \
+	    $(FREETYPE_CFLAGS) -DBINDIR=\"$(XBINDIR)\" \
 	    -DXDMDIR=\"$(XDMDIR)\" \
 	    -DKORNSHELL=$(KSH) -DUNIXCONN -DTCPCONN -DXDMCP
 
@@ -49,11 +49,11 @@ dtchooser_SOURCES = chooser.c dtchooser.c vglogo.c vgutil.c vgcallback.c \
 		    vglang.c
 
 dtlogin_LDADD = libresource.a @DTCLIENTLIBS@ -lXau -lXmu -lXext -lXdmcp \
-	$(XTOOLLIB) $(TIRPCLIB)
+	$(FREETYPE_LIBS) $(XTOOLLIB) $(TIRPCLIB)
 
-dtgreet_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
+dtgreet_LDADD = $(DTCLIENTLIBS) $(FREETYPE_LIBS) $(XTOOLLIB)
 
-dtchooser_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB) -lXmu -lXext -lXdmcp $(XTOOLLIB)
+dtchooser_LDADD = $(DTCLIENTLIBS) $(FREETYPE_LIBS) -lXmu -lXext -lXdmcp $(XTOOLLIB)
 
 
 if LINUX
