@@ -6,6 +6,15 @@ use 'git log', or peruse the commit history at:
 https://sourceforge.net/p/cdesktopenv/code/commit_browser
 
 #######################################################################
+### 2.3.2 (stable) 01/14/2020
+
+The only change in this version from 2.3.1 is a fix for CERT
+CVE-2020-2692, a potential privilege escalation exploit in dtsession.
+There is POC for Solaris.  Exploiting this on our CDE would be
+significantly more difficult, but we fixed them just the same.
+
+
+#######################################################################
 ### 2.3.1 (stable) 11/15/2019
 
 This stable release comes from the 2.3.0a development release, and
