@@ -40,10 +40,6 @@
 
 #include "WmGlobal.h"
 
-#define MWM_NEED_NOENTER16
-#include "WmBitmap.h"
-
-
 /*
  * include extern functions
  */
@@ -57,7 +53,10 @@
 #include "WmWinInfo.h"
 #include "WmWrkspace.h"
 
-
+#include <X11/bitmaps/xm_noenter16>
+#include <X11/bitmaps/xm_noenter16m>
+#include <X11/bitmaps/xm_noenter32>
+#include <X11/bitmaps/xm_noenter32m>
 
 
 /*

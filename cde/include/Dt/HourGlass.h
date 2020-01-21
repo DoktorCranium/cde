@@ -47,6 +47,10 @@
 #ifndef _hourglass_h
 #define _hourglass_h
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* _DtGetHourGlassCursor -
  *
  *   Builds and returns the appropriate HourGlass cursor.
@@ -86,9 +90,9 @@ extern void _DtTurnOffHourGlass(
   *  to remove hourglass cursor from.
   */
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _hourglass_h */
 /* DON'T ADD ANYTHING AFTER THIS #endif */
-
-
-

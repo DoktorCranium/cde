@@ -141,8 +141,6 @@ extern void SeparateTextLines(
                         unsigned char *pchIn) ;
 extern void CatchAlarm( 
                         int sig) ;
-extern Cursor GetHourGlass( 
-                        Display *dpy) ;
 extern void VhGetResources( 
                         Display *dpy,
                         char *name,

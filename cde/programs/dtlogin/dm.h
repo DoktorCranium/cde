@@ -905,8 +905,6 @@ extern char * localHostname( void ) ;
 /*******************************     util.c	  **************************/
 
 extern void CleanUpChild( void ) ;
-extern Cursor GetHourGlass(
-			Display *dpy) ;
 #if !defined (ENABLE_DYNAMIC_LANGLIST)
 extern void MakeLangList( void ) ;
 #endif

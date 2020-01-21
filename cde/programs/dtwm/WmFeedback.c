@@ -36,8 +36,6 @@
 #include "WmGlobal.h"
 #include "WmResNames.h"
 
-#define MWM_NEED_TIME16
-#include "WmBitmap.h"
 #include "WmError.h"
 #include <Xm/Xm.h>
 #include <X11/Shell.h>
@@ -898,8 +896,6 @@ void ConfirmAction (WmScreenData *pSD, int nbr)
 
 void ShowWaitState (Boolean flag)
 {
-    char        *bits;
-    char        *maskBits;
     unsigned int width;
     unsigned int height;
     unsigned int xHotspot;
@@ -908,56 +904,7 @@ void ShowWaitState (Boolean flag)
     Pixmap       maskPixmap;
     XColor       xcolors[2];
 
-    if (!waitCursor)
-    {
-#ifdef LARGECURSORS
-	if (wmGD.useLargeCursors)
-	{
-	    width = time32_width;
-	    height = time32_height;
-	    bits = (char *)time32_bits;
-	    maskBits = (char *)time32m_bits;
-	    xHotspot = time32_x_hot;
-	    yHotspot = time32_y_hot;
-	}
-	else
-#endif /* LARGECURSORS */
-
-	{
-	    width = time16_width;
-	    height = time16_height;
-	    bits = (char *)time16_bits;
-	    maskBits = (char *)time16m_bits;
-	    xHotspot = time16_x_hot;
-	    yHotspot = time16_y_hot;
-	}
-
-        pixmap = XCreateBitmapFromData (DISPLAY, 
-		         DefaultRootWindow(DISPLAY), bits, 
-			 width, height);
-
-        maskPixmap = XCreateBitmapFromData (DISPLAY, 
-		         DefaultRootWindow(DISPLAY), maskBits, 
-			 width, height);
-#ifdef INTEGRATION_TESTING_
-        xcolors[1].pixel = BlackPixelOfScreen(DefaultScreenOfDisplay(DISPLAY));
-        xcolors[0].pixel = WhitePixelOfScreen(DefaultScreenOfDisplay(DISPLAY));
-#else /* INTEGRATION_TESTING */
-
-        xcolors[0].pixel = BlackPixelOfScreen(DefaultScreenOfDisplay(DISPLAY));
-        xcolors[1].pixel = WhitePixelOfScreen(DefaultScreenOfDisplay(DISPLAY));
-
-#endif /* INTEGRATION_TESTING */
-        XQueryColors (DISPLAY, 
-		      DefaultColormapOfScreen(DefaultScreenOfDisplay
-					      (DISPLAY)), 
-		      xcolors, 2);
-	waitCursor = XCreatePixmapCursor (DISPLAY, pixmap, maskPixmap,
-	                                  &(xcolors[0]), &(xcolors[1]),
-                                          xHotspot, yHotspot);
-        XFreePixmap (DISPLAY, pixmap);
-        XFreePixmap (DISPLAY, maskPixmap);
-    }
+   _DtGetHourGlassCursor(DISPLAY);
 
     if (flag)
     {

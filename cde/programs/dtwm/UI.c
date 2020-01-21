@@ -66,8 +66,6 @@
 #include <langinfo.h>
 #include <stdint.h>
 
-#define MWM_NEED_TIME16
-#include "WmBitmap.h"
 #include "WmHelp.h"
 
 #include "DataBaseLoad.h"
@@ -394,7 +392,6 @@ Initialize (DtPanelShellWidget panel_shell)
 
    Pixmap busy_pixmap;
    Pixmap busy_pixmap_mask;
-   XColor xcolors[2];
 
    Pixel black_pixel = BlackPixelOfScreen (screen);
    Pixel white_pixel = WhitePixelOfScreen (screen);
@@ -410,25 +407,7 @@ Initialize (DtPanelShellWidget panel_shell)
 
    /*  Create busy cursor.  */
 
-   xcolors[0].pixel = black_pixel;
-   xcolors[1].pixel = white_pixel;
-
-   XQueryColors (display, DefaultColormapOfScreen (screen), xcolors, 2);
-   busy_pixmap = 
-      XCreateBitmapFromData (display, RootWindowOfScreen (screen),
-                             (char *)time16_bits, time16_width, time16_height);
-   busy_pixmap_mask = 
-      XCreateBitmapFromData (display, RootWindowOfScreen (screen),
-                             (char *)time16m_bits, time16_width, time16_height);
-
-   panel.busy_cursor = 
-      XCreatePixmapCursor (display, busy_pixmap, busy_pixmap_mask,
-                           &(xcolors[0]), &(xcolors[1]),
-                           time16_x_hot, time16_y_hot);
-
-   XFreePixmap (display, busy_pixmap);
-   XFreePixmap (display, busy_pixmap_mask);
-
+  _DtGetHourGlassCursor(display);
    
    panel.resolution = (int) (intptr_t) panel.element_values[PANEL_RESOLUTION].parsed_value;
 
