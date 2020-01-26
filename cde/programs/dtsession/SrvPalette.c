@@ -613,13 +613,6 @@ CheckMonitor(
                (struct _palette *) SRV_MALLOC( sizeof(struct _palette) + 1 );
 
            /*  allocate enough space for the name */
-<<<<<<< HEAD
-           strcpy(tmpPalette, pColorSrvRsrc.MonochromePalette);
-           for (token1=tmpPalette; *token1; token1++);
-           while (token1!=tmpPalette && *token1!='.') token1--;
-	   if (!strcmp(token1,PALETTE_SUFFIX)) *token1 = '\0';
-           colorSrv.pCurrentPalette[screen_number]->name =
-=======
            snprintf(tmpPalette, SRVBUFSIZE, "%s",
                     pColorSrvRsrc.MonochromePalette);
            for (token1=tmpPalette; *token1; token1++)
@@ -629,7 +622,6 @@ CheckMonitor(
 	   if (!strcmp(token1, PALETTE_SUFFIX))
                *token1 = '\0';
            colorSrv.pCurrentPalette[screen_number]->name = 
->>>>>>> master
                (char *)SRV_MALLOC(strlen(tmpPalette) + 1);
            strcpy(colorSrv.pCurrentPalette[screen_number]->name,
                   (char *) tmpPalette);
