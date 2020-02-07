@@ -402,13 +402,28 @@ AC_SUBST([XTOOLLIB])
 dnl Check for freetype libraries/headers
 AC_CHECK_TOOLS([FREETYPE_CONFIG], [freetype-config])
 if test -z "$FREETYPE_CONFIG"; then
-  AC_MSG_ERROR([Missing freetype-config. Install freetype development headers and library.])
-fi
+  dnl freetype-config not available try pkg-config
 
-FREETYPE_CFLAGS=`$FREETYPE_CONFIG --cflags`
-AC_SUBST(FREETYPE_CFLAGS)
-FREETYPE_LIBS=`$FREETYPE_CONFIG --libs`
-AC_SUBST(FREETYPE_LIBS)
+  AC_CHECK_TOOLS([FREETYPE_CONFIG], [pkg-config])
+  if test -z "$FREETYPE_CONFIG"; then
+    AC_MSG_ERROR([Missing freetype-config or pkg-config. Install freetype development headers and library.])
+  fi
+
+  dnl check specific package is available
+  PKG_CHECK_MODULES([FREETYPE_CHECK], [freetype2])
+
+  FREETYPE_CFLAGS=`$FREETYPE_CONFIG freetype2 --cflags`
+  AC_SUBST(FREETYPE_CFLAGS)
+  FREETYPE_LIBS=`$FREETYPE_CONFIG freetype2 --libs`
+  AC_SUBST(FREETYPE_LIBS)
+else
+  dnl freetype-config is available
+
+  FREETYPE_CFLAGS=`$FREETYPE_CONFIG --cflags`
+  AC_SUBST(FREETYPE_CFLAGS)
+  FREETYPE_LIBS=`$FREETYPE_CONFIG --libs`
+  AC_SUBST(FREETYPE_LIBS)
+fi
 
 dnl check MISSING_PROGS - error out here if there's stuff in it.
 
