@@ -509,6 +509,13 @@ programs/icons/Makefile
 
 programs/dsdm/Makefile
 
+programs/dthelp/Makefile
+programs/dthelp/dthelpview/Makefile
+programs/dthelp/dthelpgen/Makefile
+programs/dthelp/dthelpdemo/Makefile
+
+programs/nsgmls/Makefile
+
 programs/dtmail/Makefile
 programs/dtmail/dtmail/Makefile
 programs/dtmail/MotifApp/Makefile
