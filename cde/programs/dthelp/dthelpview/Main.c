@@ -74,7 +74,7 @@
 /* Local Includes */
 
 #include <DtI/HelposI.h>
-#include <DtI/HelpP.h>
+#include <Dt/HelpP.h>
 #include <DtI/FileUtilsI.h>
 #include "Main.h"
 #include "UtilI.h"

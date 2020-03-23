@@ -58,7 +58,7 @@
 #include <Xm/Text.h>
 
 #include <Dt/Help.h>
-#include <DtI/HelpP.h>
+#include <Dt/HelpP.h>
 #include <Dt/HelpDialog.h>
 #include <Dt/HelpQuickD.h>
 

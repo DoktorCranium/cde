@@ -41,13 +41,13 @@
 #include <Dt/Help.h>
 #include <Dt/EnvControlP.h>
 
-#include "HelpP.h"        /* in DtHelp library */
+#include "Dt/HelpP.h"        /* in DtHelp library */
 #include "GenUtilsP.h"    /* in DtHelp library */
 #include "ObsoleteP.h"    /* in DtHelp library */
-#include "bufioI.h"       /* for AccessI.h     */
-#include "Access.h"       /* in DtHelp library */
-#include "AccessP.h"      /* in DtHelp library */
-#include "AccessI.h"      /* in DtHelp library */
+#include "DtI/bufioI.h"       /* for AccessI.h     */
+#include "DtI/Access.h"       /* in DtHelp library */
+#include "DtI/AccessP.h"      /* in DtHelp library */
+#include "DtI/AccessI.h"      /* in DtHelp library */
 #include "AccessCCDFI.h"  /* in DtHelp library */
 #include "StringFuncsI.h" /* in DtHelp library */
 
