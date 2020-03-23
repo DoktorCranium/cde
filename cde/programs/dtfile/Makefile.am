@@ -1,4 +1,4 @@
-configdir = ${prefix}/config/C
+configdir = $(CDE_INSTALLATION_TOP)/config/C
 
 SUBDIRS = dtcopy
 
@@ -12,7 +12,7 @@ dist_config_DATA = dtfile.config
 dist_bin_SCRIPTS = dtfile_error
 
 dtfile_CPPFLAGS = -I./dtcopy -DSHAPE -D_ILS_MACROS -DSUN_PERF \
-		-DCDE_INSTALLATION_TOP=\"${prefix}\" \
+		-DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
 		-DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
 		-DKORNSHELL=\"$(KSH)\" $(FREETYPE_CFLAGS)
 

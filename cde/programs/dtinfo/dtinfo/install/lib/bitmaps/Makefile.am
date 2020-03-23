@@ -1,7 +1,7 @@
-icondir = ${prefix}/appconfig/icons/C
+icondir = $(CDE_INSTALLATION_TOP)/appconfig/icons/C
 
 if JAPANESE
-jdir = ${prefix}/appconfig/icons/ja
+jdir = $(CDE_INSTALLATION_TOP)/appconfig/icons/ja
 
 dist_j_DATA = bomb \
               bomb16 \

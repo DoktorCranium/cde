@@ -9,7 +9,7 @@ dist_cfg_DATA = CDE.lcx
 lib_LTLIBRARIES = libDtHelp.la
 
 libDtHelp_la_CFLAGS = -I./il -I./jpeg -I../DtSvc/DtUtil2 -DDTLIB \
-		      -DCDE_INSTALLATION_TOP='"${prefix}"' \
+		      -DCDE_INSTALLATION_TOP='"$(CDE_INSTALLATION_TOP)"' \
 		      -DCDE_CONFIGURATION_TOP='"$(CDE_CONFIGURATION_TOP)"' \
 		      @DT_INCDIR@ @DTI_INCDIR@
 

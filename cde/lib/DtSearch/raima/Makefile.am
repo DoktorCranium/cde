@@ -4,7 +4,7 @@ noinst_LTLIBRARIES = libraima.la
 
 libraima_la_LIBADD = -lc -lm
 
-libraima_la_CFLAGS = -DCDE_INSTALLATION_TOP=\"${prefix}\" \
+libraima_la_CFLAGS = -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
 		     @DT_INCDIR@ \
 		     -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
 		     -DNO_TRANS -DUNIX -D_POSIX_SOURCE -DMULTIBYTE

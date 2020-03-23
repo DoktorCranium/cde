@@ -1,4 +1,4 @@
-unixdir = ${prefix}/app-defaults/C
+unixdir = $(CDE_INSTALLATION_TOP)/app-defaults/C
 
 MAINTAINERCLEANFILES = Makefile.in
 
