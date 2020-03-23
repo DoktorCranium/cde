@@ -44,6 +44,6 @@ dtterm.ti: terminfoChecklist
 	CPP="$(GENCPP)" $(SHELL) terminfoCreate < terminfoChecklist > $@
 
 install-exec-hook:
-	chown root $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtterm
-	chmod 4755 $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtterm
+	chown root $(DESTDIR)$(bindir)/dtterm
+	chmod 4755 $(DESTDIR)$(bindir)/dtterm
 

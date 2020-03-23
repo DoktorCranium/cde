@@ -119,6 +119,6 @@ sys.session.ive: sys.session.src
 
 
 install-exec-hook:
-	chown root $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtsession
-	chmod 4755 $(DESTDIR)$(CDE_INSTALLATION_TOP)/bin/dtsession
+	chown root $(DESTDIR)$(bindir)/dtsession
+	chmod 4755 $(DESTDIR)$(bindir)/dtsession
 
