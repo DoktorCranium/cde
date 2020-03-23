@@ -28,7 +28,7 @@ nsgmls_CXXFLAGS = -DSP_VOLATILE=volatile -DSP_CONST=const \
 		  -DSP_HAVE_LOCALE -DSP_MULTI_BYTE -DSP_MANUAL_INST
 endif
 
-.SUFFIXES: .m4
+SUFFIXES: .m4
 .m4.C:
 	rm -f $@
 	$(M4) instmac.m4 $< >$@
