@@ -4,7 +4,7 @@ include ../../tooltalk.inc
 
 bin_PROGRAMS = ttdbck
 
-ttdbck_LDADD = @LIBTT@ ../../slib/libstt.a ../../mini_isam/libisam.a \
+ttdbck_LDADD = ../../slib/libstt.a ../../mini_isam/libisam.a @LIBTT@ \
 	$(XTOOLLIB) 
 
 ttdbck_CXXFLAGS = -I../../slib -I../../lib -I../../mini_isam \
