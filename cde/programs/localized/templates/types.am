@@ -4,7 +4,7 @@
 # hardcodes file names and the like.
 .NOTPARALLEL:
 
-BUILT_SOURCES = autoStart.dt user-prefs.dt uxstd.dt dt.dt develop.dt	\
+DTTYPES = autoStart.dt user-prefs.dt uxstd.dt dt.dt develop.dt		\
 	datatypes.dt dtappman.dt dtfile.dt dtims.dt dtinfo.dt		\
 	dtpad.dt xclients.dt dthelp.dt dthelpprint.dt print.dt		\
 	dthelptag.dt dtmail.dt dtwm.fp dtscreen.dt dtcm.dt		\
@@ -12,27 +12,34 @@ BUILT_SOURCES = autoStart.dt user-prefs.dt uxstd.dt dt.dt develop.dt	\
 	DisplayImage.dt DisplayPDF.dt DisplayVideo.dt DisplayPS.dt	\
 	videoTypes.dt Education.dt gcompris.dt geogebra.dt		\
 	stellarium.dt tuxpaint.dt dreamchess.dt eboard.dt Games.dt	\
-	ktuberling.dt lbreakout2.dt powermanga.dt		\
-	pychess.dt supertux.dt xboard.dt fontforge.dt gimp.dt		\
-	Graphics.dt inkscape.dt okular.dt xv.dt chromium.dt		\
-	firefox.dt Internet.dt nxclient.dt skype.dt thunderbird.dt	\
-	amarok.dt brasero.dt k3b.dt k9copy.dt Media_Tools.dt		\
-	pavucontrol.dt rhythmbox.dt rosegarden.dt sound-juicer.dt	\
-	vlc.dt xine.dt libreoffice-base.dt libreoffice-calc.dt		\
-	libreoffice-draw.dt libreoffice-impress.dt			\
-	libreoffice-main.dt libreoffice-math.dt libreoffice-writer.dt	\
-	nedit.dt Office.dt xournal.dt caja.dt engrampa.dt		\
-	file-roller.dt firestarter.dt pgadmin.dt synaptic.dt		\
-	System.dt virtualbox.dt wicd.dt acroread.dt emacs.dt gv.dt	\
-	kile.dt mgv.dt TeX.dt xdvi.dt xournal.dt xpdf.dt
+	ktuberling.dt lbreakout2.dt powermanga.dt pychess.dt		\
+	supertux.dt xboard.dt fontforge.dt gimp.dt Graphics.dt		\
+	inkscape.dt okular.dt xv.dt chromium.dt firefox.dt		\
+	Internet.dt nxclient.dt skype.dt thunderbird.dt amarok.dt	\
+	brasero.dt k3b.dt k9copy.dt Media_Tools.dt pavucontrol.dt	\
+	rhythmbox.dt rosegarden.dt sound-juicer.dt vlc.dt xine.dt	\
+	libreoffice-base.dt libreoffice-calc.dt libreoffice-draw.dt	\
+	libreoffice-impress.dt libreoffice-main.dt			\
+	libreoffice-math.dt libreoffice-writer.dt nedit.dt Office.dt	\
+	xournal.dt caja.dt engrampa.dt file-roller.dt firestarter.dt	\
+	pgadmin.dt synaptic.dt System.dt virtualbox.dt wicd.dt		\
+	acroread.dt emacs.dt gv.dt kile.dt mgv.dt TeX.dt xdvi.dt	\
+	xournal.dt xpdf.dt
 
+BUILT_SOURCES = $(DTTYPES) action
 CLEANFILES = $(BUILT_SOURCES)
 
+# we do not want to install 'action'
 typesdir = $(CDE_INSTALLATION_TOP)/appconfig/types/$(LANG)
-dist_types_DATA = $(BUILT_SOURCES)
+dist_types_DATA = $(DTTYPES)
 
 TOP = $(top_builddir)/programs
 MERGE = $(top_builddir)/programs/localized/util/merge
+
+# This isn't really an action/type - it's an executable placeholder
+# used by and for appmanager.
+action: $(TOP)/types/action action.tmsg
+	$(MERGE) -lang $(LANG) action.tmsg < $< > $@ || $(RM) $@
 
 autoStart.dt: $(TOP)/types/autoStart.dt _common.dt.tmsg
 	$(MERGE) -lang $(LANG) _common.dt.tmsg < $< > $@ || $(RM) $@
@@ -87,9 +94,6 @@ dtmail.dt: $(TOP)/types/dtmail.dt _common.dt.tmsg
 
 dtwm.fp: $(TOP)/types/dtwm.fp _common.dt.tmsg
 	$(MERGE) -lang $(LANG) _common.dt.tmsg < $< > $@ || $(RM) $@
-
-action: $(TOP)/types/action action.tmsg
-	$(MERGE) -lang $(LANG) action.tmsg < $< > $@ || $(RM) $@
 
 dtscreen.dt: $(TOP)/types/dtscreen.dt _common.dt.tmsg
 	$(MERGE) -lang $(LANG) _common.dt.tmsg < $< > $@ || $(RM) $@
