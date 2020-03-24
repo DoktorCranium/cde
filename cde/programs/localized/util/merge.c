@@ -96,6 +96,9 @@
 #include <string.h>
 #include <locale.h>
 #include <unistd.h>
+#include <limits.h>
+#include <sys/types.h>
+
 #include <nl_types.h>
 
 nl_catd catfile[2] = {NULL, NULL};	/* [0] for primary, [1] for default */
@@ -108,20 +111,26 @@ int bs = 0;
 int crt_line[3] = {0, 0, 1}; /* current line  [0]: Primary message file */
                              /*               [1]: Default message file */
                              /*               [2]: Template file        */
+char pFilename[PATH_MAX];
+char dFilename[PATH_MAX];
+pid_t procPID = 0;
 
-void process_message ();
-int get_char ();
-void cat_open ();
-int find_message ();
-int find_msg_in_file ();
-void get_message ();
-void fatal ();
-void get_option ();
-
+/* merge.c */
+void process_message(void);
+int get_char(void);
+void cat_open(void);
+int find_message(int msg);
+int find_msg_in_file(int msg, int file);
+void fatal(char *m, int line, int file);
+void get_option(int *argc, char *argv[]);
 
 void main (int argc, char *argv [])
 {
     int c;
+
+    procPID = getpid();
+    snprintf(pFilename, PATH_MAX, "/tmp/dt_pfile.%d.cat", procPID);
+    snprintf(dFilename, PATH_MAX, "/tmp/dt_dfile.%d.cat", procPID);
 
     get_option(&argc, argv);
 
@@ -171,8 +180,8 @@ void main (int argc, char *argv [])
     if ( catfile[1] )
        catclose(catfile[1]);
 
-    unlink("./.dt_pfile.cat");
-    unlink("./.dt_dfile.cat");
+    unlink(pFilename);
+    unlink(dFilename);
 
     exit (0);
 }
@@ -234,25 +243,25 @@ int get_char (void)
  */
 void cat_open (void)
 {
-    char line[255];
+    char line[PATH_MAX];
 
-    unlink("./.dt_pfile.cat");
-    unlink("./.dt_dfile.cat");
+    unlink(pFilename);
+    unlink(dFilename);
 
     if(pfile != NULL)
     {
-        sprintf(line,"gencat ./.dt_pfile.cat %s",pfile);
+        snprintf(line, PATH_MAX, "gencat %s %s", pFilename, pfile);
         if ( system(line) != 0 )
 	{
            fatal("primary .tmsg file would not gencat\n",0,9);
 	}
     }
 
-    catfile[0] =  catopen("./.dt_pfile.cat",0);
+    catfile[0] =  catopen(pFilename, 0);
 
     if(dfile != NULL)
     {
-        sprintf(line,"gencat ./.dt_dfile.cat %s",dfile);
+        sprintf(line,"gencat %s %s", dFilename, dfile);
         if ( system(line) != 0 )
 	{
            fatal("default .tmsg file would not gencat\n",0,9);
@@ -260,10 +269,10 @@ void cat_open (void)
 
     }
 
-    catfile[1] = catopen("./.dt_dfile.cat",0);
+    catfile[1] = catopen(dFilename, 0);
 
     /* if all fails */
-    if(catfile[0] == NULL && catfile[1] == NULL)
+    if (catfile[0] == NULL && catfile[1] == NULL)
         fatal("Can't open message files.\n", 0, 9);
 
 }
