@@ -1,9 +1,5 @@
 # process the config files...
 
-# We can't do parallel builds here because MERGE is rather dumb and
-# hardcodes file names and the like.
-.NOTPARALLEL:
-
 BUILT_SOURCES = sys.resources sys.session sys.font sys.dtwmrc	\
 	Xresources dtfile.config home.session current.session	\
 	display.home.session display.current.session 0100.session \

@@ -1,9 +1,5 @@
 # process the types files...
 
-# We can't do parallel builds here because MERGE is rather dumb and
-# hardcodes file names and the like.
-.NOTPARALLEL:
-
 DTTYPES = autoStart.dt user-prefs.dt uxstd.dt dt.dt develop.dt		\
 	datatypes.dt dtappman.dt dtfile.dt dtims.dt dtinfo.dt		\
 	dtpad.dt xclients.dt dthelp.dt dthelpprint.dt print.dt		\
