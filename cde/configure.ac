@@ -513,6 +513,7 @@ programs/dthelp/Makefile
 programs/dthelp/dthelpview/Makefile
 programs/dthelp/dthelpgen/Makefile
 programs/dthelp/dthelpdemo/Makefile
+programs/dthelp/dthelpprint/Makefile
 
 programs/nsgmls/Makefile
 

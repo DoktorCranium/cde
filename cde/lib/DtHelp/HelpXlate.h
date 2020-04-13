@@ -41,8 +41,8 @@
 #ifndef _DtHELP_XLATE_I
 #define _DtHELP_XLATE_I
 
-#include <LocaleXlate.h>
-#include <XlationSvc.h>
+#include <Dt/LocaleXlate.h>
+#include <Dt/XlationSvc.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -1,5 +1,5 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = dthelpview dthelpgen dthelpdemo
+SUBDIRS = dthelpview dthelpgen dthelpdemo dthelpprint
 
-#NOTYET  = parser dthelpprint
+#NOTYET  = parser 

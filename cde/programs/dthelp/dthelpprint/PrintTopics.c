@@ -58,15 +58,17 @@ $COPYRIGHT$:
 
 #include <time.h>
 
+
 #include "HelpPrintI.h"  /* helpprint */
 
-#include "HelpTermP.h"	/* from libDtHelp */
-#include "CanvasP.h"	/* from libDtHelp */
+#include "DtI/HelpTermP.h"	/* from libDtHelp */
+#include "Dt/CanvasP.h"	/* from libDtHelp */
 #include "StringFuncsI.h" /* from libDtHelp */
-#include "LocaleXlate.h" /* from libDtHelp */
-#include "bufioI.h" /* from libDtHelp; required for AccessI.h */
-#include "FileUtilsI.h" /* from libDtHelp */
+#include "Dt/LocaleXlate.h" /* from libDtHelp */
+#include "DtI/bufioI.h" /* from libDtHelp; required for AccessI.h */
+#include "DtI/FileUtilsI.h" /* from libDtHelp */
 #include "GenUtilsP.h" /* from libDtHelp */
+#include "HelpXlate.h" /* from libDtHelp */
 
 /*#include "AccessI.h" ** from libDtHelp */
 /* I can't include AccessI.h because it redefines the Boolean type,
