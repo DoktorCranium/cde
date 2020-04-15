@@ -10,8 +10,9 @@
 *~
 .depend
 
-# flags for saying directory is complete
+# flags for saying directory/target is complete
 DONE
+?DONE
 
 # imports of of headers
 imports/x11
@@ -590,13 +591,12 @@ programs/dthelp/parser/pass1/eltdef/stfile.c
 programs/dthelp/parser/pass1/eltdef/tfile.c
 programs/dthelp/parser/pass1/helptag/LocaleXlate.c
 programs/dthelp/parser/pass1/helptag/XlationSvc.c
-programs/dthelp/parser/pass1/helptag/dthelp_htag1
 programs/dthelp/parser/pass1/parser/case.c
 programs/dthelp/parser/pass1/parser/context.h
 programs/dthelp/parser/pass1/parser/delim.dat
 programs/dthelp/parser/pass1/parser/delim.h
 programs/dthelp/parser/pass1/parser/error
-programs/dthelp/parser/pass1/parser/parser
+programs/dthelp/parser/pass1/parser/dthelp_htag1
 programs/dthelp/parser/pass1/util/context
 programs/dthelp/parser/pass1/util/fclndir
 programs/dthelp/parser/pass2/build/arc.h

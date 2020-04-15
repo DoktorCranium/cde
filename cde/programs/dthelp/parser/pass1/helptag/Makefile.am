@@ -1,10 +1,9 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-bin_PROGRAMS = dthelp_htag1
-
-ARCCMD = arc u
-UNARCCMD = arc x
-ARCDELCMD = arc d
+# Due to the wierd interdepencencies between helptag and parser,
+# disable parallel builds here.  This is some really horrible code and
+# design - not surprising since it dates to 1989.
+.NOTPARALLEL:
 
 HELPTAG       = ..
 HELPTAGSRC    = $(HELPTAG)/helptag
@@ -17,51 +16,28 @@ HELPUTILLIB   = $(HELPTAG)/util/libutil.a
 HELPIFFILE    = $(HELPTAGSRC)/help.if
 HELPTSSFILE   = $(HELPTAGSRC)/htag.tss
 
-XLATESRC  = $(DTHELPSRC)
-XLATEHDRS = $(XLATESRC)/XlationSvc.h $(XLATESRC)/LocaleXlate.h
-XLATESRCS = ${top_srcdir}/lib/DtSvc/DtUtil2/XlationSvc.c \
-	    ${top_srcdir}/lib/DtSvc/DtUtil2/LocaleXlate.c
+XLATESRCS = XlationSvc.c LocaleXlate.c
 
-ELTHDRS = $(HELPUTILSRC)/entdef.h $(HELPUTILSRC)/entext.h
+XLATESRCDIR = ${top_srcdir}/lib/DtSvc/DtUtil2
 
-# PARSEHDRS are header files used by many parser routines
-PARSEHDRS = $(HELPUTILSRC)/basic.h $(HELPUTILSRC)/trie.h \
-        $(HELPUTILSRC)/common.h $(HELPUTILSRC)/dtddef.h \
-        $(HELPUTILSRC)/dtdext.h $(HELPUTILSRC)/sparse.h \
-        parser.h proto.h
+$(XLATESRCS): XDONE
 
-APPLHDRS = $(PARSEHDRS) $(ELTHDRS) \
-        $(HELPUTILSRC)/version.h \
-        $(HELPTAGSRC)/global.h $(HELPTAGSRC)/charconv.h \
-        $(HELPTAGSRC)/roman8.h $(HELPTAGSRC)/fproto.h \
-        ../parser/pval.h ../parser/globdec.h ../parser/signonx.h \
-        ../parser/userinc.h
+XDONE: $(XLATESRCDIR)/XlationSvc.c $(XLATESRCDIR)/LocaleXlate.c
+	$(RM) $(XLATESRCS)
+	$(CP) $(XLATESRCDIR)/XlationSvc.c XlationSvc.c
+	$(CP) $(XLATESRCDIR)/LocaleXlate.c LocaleXlate.c
+	cd ../parser; $(MAKE) CDONE
+	touch XDONE
 
-dthelp_htag1_CFLAGS = -I$(HELPUTILSRC) -I$(HELPPARSERSRC) -I$(HELPELTDEFSRC) \
-		      -I$(XLATESRC)
+BUILT_SOURCES = $(XLATESRCS)
+CLEANFILES = $(BUILT_SOURCES) XDONE
 
-dthelp_htag1_LDADD = $(HELPUTILLIB)
+AM_CPPFLAGS = -I. -I$(HELPPARSERSRC) -I$(HELPUTILSRC) \
+	    -I$(HELPELTDEFSRC) -I$(XLATESRCDIR) $(DT_INCDIR)
 
-if HPUX
-dthelp_htag1_LDFLAGS = -Wl,-a archive
-endif
-
-if SOLARIS
-dthelp_htag1_LDADD += -lm -ldl -lgen
-endif
-
-dthelp_htag1_SOURCES = custom.c default.c help.c make.c option.c out.c \
-		      special.c xref.c $(XLATESRCS)
-
-dthelp_htag1$(EXEEXT): $(HELPPARSERSRC)/parser
-        $(RM) dthelp_htag1
-        $(CP) $(HELPPARSERSRC)/parser dthelp_htag1
-
-arcappl archptag :
-        if exist hptag.arc $(CP) hptag.arc hptag.old
-        $(ARCCMD) hptag.arc *.c *.h linkcmd.dos linkcmd.unx $(HELPDTDFILE) \
-        tex.if makefile makefile.doc make.ini delim.*
-
-unarcappl unarchptag :
-        $(UNARCCMD) hptag.arc
+# needed by parser/
+noinst_LIBRARIES = libhelptag.a
+libhelptag_a_SOURCES = custom.c default.c help.c make.c option.c	\
+		      special.c out.c xref.c $(XLATESRCS)		\
+		      ../parser/delim.h
 

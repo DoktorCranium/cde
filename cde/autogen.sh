@@ -9,7 +9,7 @@ DIE=0
 
 libtoolize --force --automake
 aclocal -I admin
-autoconf
+autoconf -f
 autoheader
 automake --foreign  --include-deps --add-missing
 

@@ -514,6 +514,13 @@ programs/dthelp/dthelpview/Makefile
 programs/dthelp/dthelpgen/Makefile
 programs/dthelp/dthelpdemo/Makefile
 programs/dthelp/dthelpprint/Makefile
+programs/dthelp/parser/Makefile
+programs/dthelp/parser/pass1/Makefile
+programs/dthelp/parser/pass1/util/Makefile
+programs/dthelp/parser/pass1/build/Makefile
+programs/dthelp/parser/pass1/eltdef/Makefile
+programs/dthelp/parser/pass1/helptag/Makefile
+programs/dthelp/parser/pass1/parser/Makefile
 
 programs/nsgmls/Makefile
 
@@ -659,9 +666,6 @@ programs/localized/es_ES.UTF-8/appmanager/Makefile
 AC_OUTPUT
 
 dnl not currently building
-dnl programs/dthelp/Makefile
-dnl programs/dthelp/dthelpgen/Makefile
-dnl programs/dthelp/dthelpprint/Makefile
 dnl programs/dthelp/parser/pass1/helptag/Makefile
 dnl programs/dthelp/parser/pass1/Makefile
 dnl programs/dthelp/parser/pass1/eltdef/Makefile
@@ -669,4 +673,3 @@ dnl programs/dthelp/parser/pass1/build/Makefile
 dnl programs/dthelp/parser/Makefile
 dnl programs/dthelp/parser/canon1/Makefile
 dnl programs/dthelp/parser/pass2/Makefile
-dnl programs/dthelp/dthelpview/Makefile
