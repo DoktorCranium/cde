@@ -43,6 +43,8 @@
 
 #include <syslog.h>
 
+#include <debug.h>
+
 static int inited = 0;
 
 extern void

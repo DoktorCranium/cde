@@ -48,6 +48,7 @@
 #include <X11/Intrinsic.h>
 
 #include "agent.h"
+#include "agent_p.h"
 #include "cmcb.h"
 #include "entry.h"
 #include "debug.h"

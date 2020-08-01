@@ -33,6 +33,7 @@
 #include <X11/Intrinsic.h>
 #include <rpc/rpc.h>
 #include "debug.h"
+#include "xtclient.h"
 
 typedef struct _appctlist {
 	XtAppContext	appct;
@@ -55,7 +56,7 @@ static boolean_t new_appct(XtAppContext apptct);
  * register callback for all file descriptors that's set
  * (since we don't know which one is ours).
  */
-extern void
+void
 _DtCm_register_xtcallback(XtAppContext appct)
 {
 	XtInputId	id;

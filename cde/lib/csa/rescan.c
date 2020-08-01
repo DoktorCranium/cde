@@ -60,6 +60,7 @@
 #define FRISYMBOL		"FR"
 #define SATSYMBOL		"SA"
 
+int _DtCm_yylex(void);
 static int scanbuf(char **inbuf, char *, int *);
 
 /* The rule that needs to be parsed is passed to yylex() through this var */
