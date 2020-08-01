@@ -803,7 +803,7 @@ _DtCm_add_reminder(char *rem, CSA_reminder * val, Appt_4 *appt)
 	/* convert lead_time to advance value */
 	if (val->lead_time)
 		_csa_iso8601_to_duration(val->lead_time, &ltime);
-	sprintf(adv, "%d", ltime);
+	sprintf(adv, "%ld", ltime);
 
 	if ((newattr->value = strdup(adv)) == NULL) {
 		_DtCm_free_attr4(newattr);

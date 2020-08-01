@@ -108,5 +108,9 @@ extern CSA_return_code _DtCm_get_server_rpc_version P((char *host, int *vers));
 
 extern CSA_return_code _DtCm_clntstat_to_csastat P((enum clnt_stat clntstat));
 
+extern enum clnt_stat _DtCm_clnt_call(_DtCm_Connection *conn,
+                u_long proc, xdrproc_t inproc, caddr_t in,
+                xdrproc_t outproc, caddr_t out, struct timeval tout);
+
 #endif
 

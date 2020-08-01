@@ -52,7 +52,7 @@ _DtCm_print_tick(time_t t)
 	_Xctimeparams ctime_buf;
  
         a = _XCtime(&t, ctime_buf);
-        (void) fprintf (stderr, "%d %s\n", t, a);
+        (void) fprintf (stderr, "%ld %s\n", t, a);
 }
 
 extern void
