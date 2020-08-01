@@ -83,7 +83,7 @@ static u_long gettransient (u_long version);
 #else
 static u_long gettransient (int proto, u_long vers, int *sockp);
 #endif
-static void _DtCm_handle_callback();
+static void _DtCm_handle_callback(void);
 static CSA_return_code _ConvertCallbackData(cmcb_update_callback_args *args,
 					_CallbackInfo **cbi);
 static CSA_return_code _CopyAttributeNames(uint fnum, char **fnames,
@@ -108,12 +108,6 @@ _DtCm_init_agent(void)
 	extern boolean_t rpc_reg(const u_long, const u_long, const u_long,
 		const char *(*)(), const xdrproc_t, const xdrproc_t,
 		const char *);
-#endif
-
-#if defined(SunOS)
-	extern void (*sigset(int, void (*)(int)))(int);
-#else
-	extern void (*sigset())();
 #endif
 
 	/* locking candidate for MT-safe purpose */
@@ -155,14 +149,14 @@ _DtCm_init_agent(void)
 	}
  
 	if (registerrpc(_DtCm_transient, AGENTVERS, update_callback,
-	    (char *(*)())_DtCm_update_callback_1, (xdrproc_t)_DtCm_xdr_Table_Res_4,
+	    (char *(*)(char *))_DtCm_update_callback_1, (xdrproc_t)_DtCm_xdr_Table_Res_4,
 	    (xdrproc_t)_DtCm_xdr_Update_Status) == -1) {
 		_DtCm_print_errmsg("Cannot register v1 callback handler\n");
 		_DtCm_print_errmsg("Callback cannot be enabled.\n");
 	}
 
 	if (registerrpc(_DtCm_transient, AGENTVERS_2, CMCB_UPDATE_CALLBACK,
-	    (char *(*)())cmcb_update_callback_2_svc,
+	    (char *(*)(char *))cmcb_update_callback_2_svc,
 	    (xdrproc_t)xdr_cmcb_update_callback_args, (xdrproc_t)xdr_void) == -1) {
 		_DtCm_print_errmsg("Cannot register v2 callback handler\n");
 		_DtCm_print_errmsg("Callback cannot be enabled.\n");
