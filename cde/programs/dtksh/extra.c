@@ -70,7 +70,7 @@ int
 ksh_eval(
         char *cmd )
 {
-        sh_eval(sfopen(NIL(Sfile_t*),cmd,"s"),0);
+        sh_eval(sfopen(NIL(Sfio_t*),cmd,"s"),0);
         sfsync(sh.outpool);
 	return(sh.exitval);
 }

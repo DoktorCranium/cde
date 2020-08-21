@@ -30,8 +30,8 @@
 /*	The copyright notice above does not evidence any        */
 /*	actual or intended publication of such source code.     */
 
-#include        "name.h"
-#include        "shell.h"
+#include "name.h"
+#include "shell.h"
 #include <string.h>
 #include <X11/Intrinsic.h>
 #include <X11/IntrinsicP.h>
@@ -129,7 +129,7 @@ init_widgets( void )
 	for (i = 0; C[i].cname != NULL; i++) {
                 if ((nam = hashput(Wclasses, C[i].cname, (char *)(&C[i]))) == NULL) 
                 {
-                         errhdr = strdup(GetSharedMsg(DT_ERROR));
+                         errhdr = strdup(GetSharedMsg(DTKSH_ERROR));
                          errmsg = strdup(GETMESSAGE(14,1, 
                                  "Internal hash table failure during widget class initialization; exiting"));
                          printerr(errhdr, errmsg, NULL);
@@ -213,7 +213,7 @@ str_to_class(
             if ((nam = (char *)hashput((Hash_table_t*)ret->res, 
                 resources[i].resource_name, (char *)&resources[i])) == NULL) 
             {
-               errhdr = strdup(GetSharedMsg(DT_ERROR));
+               errhdr = strdup(GetSharedMsg(DTKSH_ERROR));
                errmsg=strdup(GetSharedMsg( DT_HASHING_FAILURE));
                printerrf(errhdr, errmsg, resources[i].resource_name,
                          ret->cname, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -251,7 +251,7 @@ str_to_class(
                              blockArray[i]->resources[j].resource_name, 
                              (char *)&(blockArray[i]->resources[j]))) == NULL)
                   {
-                     errhdr = strdup(GetSharedMsg(DT_ERROR));
+                     errhdr = strdup(GetSharedMsg(DTKSH_ERROR));
                      errmsg=strdup(GetSharedMsg( DT_HASHING_FAILURE));
                      printerrf(errhdr, errmsg, 
                                blockArray[i]->resources[j].resource_name,
@@ -286,7 +286,7 @@ str_to_class(
                if ((nam = (char *)hashput((Hash_table_t*)ret->con, 
                     resources[i].resource_name, &resources[i])) == NULL) 
                {
-                  errhdr =strdup(GetSharedMsg(DT_ERROR));
+                  errhdr =strdup(GetSharedMsg(DTKSH_ERROR));
                   errmsg=strdup(GetSharedMsg(DT_HASHING_FAILURE));
                   printerrf(errhdr, errmsg, resources[i].resource_name,
                             ret->cname, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -617,7 +617,7 @@ do_DtLoadWidget(
       classtab->class = ((WidgetClass *)address)[0];
       if ((nam = hashput(Wclasses, classtab->cname, (char *)classtab)) == NULL)
       {
-         errhdr = strdup(GetSharedMsg(DT_ERROR));
+         errhdr = strdup(GetSharedMsg(DTKSH_ERROR));
          errmsg= strdup(GETMESSAGE(14,7, 
             "Internal hash table failure during initialization of widget class '%s'"));
          printerrf(errhdr, errmsg, classtab->cname,

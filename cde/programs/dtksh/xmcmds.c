@@ -29,7 +29,7 @@
 /*	The copyright notice above does not evidence any        */
 /*	actual or intended publication of such source code.     */
 
-#include	"shell.h" 
+#include "shell.h"
 #include <signal.h>
 #include <stdlib.h>
 #include <fcntl.h>

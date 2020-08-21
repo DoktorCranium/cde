@@ -32,7 +32,7 @@
 
 /* X includes */
 
-#include	"shell.h" 
+#include "shell.h"
 #include <signal.h>
 #include <fcntl.h>
 #include <X11/X.h>

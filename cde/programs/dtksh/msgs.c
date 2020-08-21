@@ -150,7 +150,7 @@ GetSharedMsg(
          msg = GETMESSAGE(11,28, "Usage: %s widget");
          break;
 
-      case DT_ERROR:
+      case DTKSH_ERROR:
          msg = GETMESSAGE(11,29, "dtksh error");
          break;
 

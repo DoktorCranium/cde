@@ -30,6 +30,7 @@
 /*	The copyright notice above does not evidence any       */
 /*	actual or intended publication of such source code.    */
 
+#include "shell.h"
 #include "stdio.h"
 #include <sys/types.h>
 
@@ -39,8 +40,6 @@
 #else
 #include <dlfcn.h>
 #endif
-/* from ksh93/include/ast/shell.h */
-extern void **sh_getliblist(void);
 #endif
 #ifdef HPUX_DYNLIB
 #include <dl.h>
@@ -65,7 +64,6 @@ fsym(
         int lib )
 {
 #ifdef DYNLIB
-   void ** liblist;
    int i = 0;
    long addr;
 #endif
@@ -75,12 +73,11 @@ fsym(
 #endif
 
 #ifdef DYNLIB
-   if ((liblist = sh_getliblist()) == NULL)
-        return(NULL);
-
-   while (liblist[i])
+   if (liblist == NULL)
+      return (NULL);
+   while (liblist[i].dll)
    {
-      if (addr = dlsym(liblist[i], str))
+      if (addr = dlsym(liblist[i].dll, str))
          return((unsigned long)addr);
       i++;
    }

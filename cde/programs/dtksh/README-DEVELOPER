@@ -1,5 +1,13 @@
 /* $XConsortium: README-DEVELOPER /main/3 1996/07/15 14:12:13 drk $ */
 
+(NOTE: As of CDE 2.3.1 and later, this entire document is obsolete and only kept
+ for historical purposes, the updating process has been streamlined to a simple
+ three step process:
+ 1. cd ksh93; git pull
+ 2. Merge upstream init.c with ours, keeping all of our changes.
+ 3. Merge upstream builtins.c. doing the same as init.c
+ and thats all there is to it.)
+
 IMPORTANT!!!  PLEASE READ ON!!
 ------------------------------
 

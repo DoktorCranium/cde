@@ -104,7 +104,7 @@ extern char *_DtGetMessage(char *filename, int set, int n, char *s );
 #define DT_USAGE_WIDGET_POS        25
 #define DT_USAGE_WIDGET_TIME       27
 #define DT_USAGE_WIDGET            28
-#define DT_ERROR                   29
+#define DTKSH_ERROR                29 /* ksh93 retroactively claimed DT_ERROR */
 #define DT_WARNING                 30
 #define DT_XK_FREE_NO_MEMBER       31
 #define DT_XK_PARSE_ERROR          32

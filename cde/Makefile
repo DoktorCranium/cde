@@ -21,6 +21,13 @@
     MAKE_CMD = $(MAKE) $(MAKE_OPTS)
    NMAKE_CMD = $(NMAKE) $(MAKE_OPTS)
        FLAGS = $(MFLAGS) -f Makefile.ini BOOTSTRAPCFLAGS="$(BOOTSTRAPCFLAGS)"
+SUIDEXECDEFINES = \
+        -DPROFILEPATH=\"$(CDE_CONFIGURATION_TOP)/config/profile\" \
+        -DSUIDPROFILEPATH=\"$(CDE_CONFIGURATION_TOP)/config/suid_profile\" \
+        -DSUIDEXECPATH=\"$(CDE_INSTALLATION_TOP)/bin/suid_exec\" \
+        -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" -DBUILD_DTKSH
+CDE_CONFIGURATION_TOP = /etc/dt
+CDE_INSTALLATION_TOP = /usr/dt
 
 all:
 	@$(MAKE_CMD) xmakefile-exists || $(MAKE) all-initial
@@ -51,6 +58,10 @@ World:
 	;; esac;
 	@date
 	@echo ""
+	# this is a weird glitch in the build process, will probably be solved
+	# with autotools conversion, but we need to build here for now
+	cd programs/dtksh/ksh93; ./bin/package clean
+	cd programs/dtksh/ksh93; ./bin/package make CCFLAGS='$(SUIDEXECDEFINES) -g'
 	cd $(IMAKESRC) && $(MAKE) $(FLAGS) clean
 	$(MAKE) $(MFLAGS) Makefile.boot
 	$(MAKE_CMD) $(MFLAGS) VerifyOS

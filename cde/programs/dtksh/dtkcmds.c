@@ -31,8 +31,8 @@
 
 /* X includes */
 
-#include	"name.h" 
-#include	"shell.h" 
+#include "name.h"
+#include "shell.h"
 #include <signal.h>
 #include <fcntl.h>
 #include <X11/X.h>

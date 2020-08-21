@@ -22,7 +22,7 @@
  */
 /* $TOG: xmdtksym.c /main/6 1998/04/20 12:55:58 mgreess $ */
 
-#include	"shell.h" 
+#include "shell.h"
 #include <signal.h>
 #include <fcntl.h>
 #include <X11/X.h>
@@ -69,7 +69,9 @@ extern unsigned long ed_setup ();
 extern unsigned long ed_ungetchar ();
 extern unsigned long ed_virt_to_phys ();
 extern unsigned long ed_window ();
+#ifndef KSHELL
 extern unsigned long editb;
+#endif
 extern unsigned long env_init ();
 extern unsigned long hist_cancel ();
 extern unsigned long hist_close ();
@@ -106,7 +108,9 @@ extern unsigned long path_search ();
 extern unsigned long st;
 extern unsigned long test_binop ();
 extern unsigned long test_inode ();
+#ifndef SHOPT_RAWONLY
 extern unsigned long tty_alt ();
+#endif
 extern unsigned long tty_check ();
 extern unsigned long tty_cooked ();
 extern unsigned long tty_get ();
@@ -417,7 +421,9 @@ struct symarray Symarray[] = {
 	{ "ed_ungetchar", (unsigned long) &ed_ungetchar },
 	{ "ed_virt_to_phys", (unsigned long) &ed_virt_to_phys },
 	{ "ed_window", (unsigned long) &ed_window },
+#ifndef KSHELL
 	{ "editb", (unsigned long) &editb },
+#endif
 	{ "env_blank", (unsigned long) &env_blank },
 	{ "env_get", (unsigned long) &env_get },
 	{ "env_set", (unsigned long) &env_set },
@@ -432,7 +438,6 @@ struct symarray Symarray[] = {
 	{ "path_exec", (unsigned long) &path_exec },
 	{ "path_expand", (unsigned long) &path_expand },
 	{ "path_get", (unsigned long) &path_get },
-	{ "path_join", (unsigned long) &path_join },
 	{ "path_open", (unsigned long) &path_open },
 	{ "path_pwd", (unsigned long) &path_pwd },
 	{ "path_relative", (unsigned long) &path_relative },
@@ -446,7 +451,9 @@ struct symarray Symarray[] = {
 	{ "strperm", (unsigned long) &strperm },
 	{ "test_binop", (unsigned long) &test_binop },
 	{ "test_inode", (unsigned long) &test_inode },
+#ifndef SHOPT_RAWONLY
 	{ "tty_alt", (unsigned long) &tty_alt },
+#endif
 	{ "tty_check", (unsigned long) &tty_check },
 	{ "tty_cooked", (unsigned long) &tty_cooked },
 	{ "tty_get", (unsigned long) &tty_get },

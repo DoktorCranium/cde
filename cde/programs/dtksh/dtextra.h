@@ -45,7 +45,7 @@
  */
 
 #if defined(bltin) && ( defined(__STDC__) || defined(__STDPP__) )
-#define lcl_cast(x)	((int (*)__PROTO__((int, char*[], __V_*)))x)
+#define lcl_cast(x)	((int (*)__PROTO__((int, char*[], Shbltin_t*)))x)
 #else
 #define lcl_cast(x)	x
 #endif
