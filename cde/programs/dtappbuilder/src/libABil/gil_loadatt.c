@@ -58,7 +58,7 @@
 #include <ab_private/trav.h>
 #include <ab_private/istr.h>
 #include "../libABobj/obj_utils.h"
-#include "gil.h"
+#include <ab_private/gil.h>
 #include "gilP.h"
 #include "gil_loadattP.h"
 #include "load.h"

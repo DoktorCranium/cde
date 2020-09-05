@@ -255,7 +255,7 @@ bilP_load_att_class(BIL_TOKEN valueToken)
              * This skips the rest of the BIL file and prints out
              * an error message.
              */
-            fseek(AByyin, SEEK_END, 0);
+            fseek(yyin, SEEK_END, 0);
             abil_print_load_err(ERR_NOT_PROJECT);
         }
 	else
@@ -281,7 +281,7 @@ bilP_load_att_class(BIL_TOKEN valueToken)
 	     * project into another project.  This skips the
 	     * rest of the BIL file and prints out an error.
 	     */
-	    fseek(AByyin, SEEK_END, 0);
+	    fseek(yyin, SEEK_END, 0);
 	    abil_print_load_err(ERR_NOT_MODULE);
 	}
 	break;

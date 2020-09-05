@@ -77,6 +77,7 @@
 #include <Dt/SpinBox.h>
 #include <Dt/TermPrim.h>
 #include <Dt/Term.h>
+#include "dtb_utils.h"
 #include <ab_private/XmAll.h>
 #include <ab_private/x_util.h>
 #include <ab_private/ui_util.h>

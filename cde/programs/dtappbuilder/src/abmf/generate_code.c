@@ -53,7 +53,7 @@
 #include <assert.h>
 #include <ab_private/util.h>
 #include <ab_private/abio.h>
-#include "dtb_utils.h"
+#include <ab_private/dtb_utils.h>
 #include "msg_file.h"
 #include "obj_namesP.h"
 #include "write_codeP.h"
@@ -69,7 +69,7 @@
 #include "instancesP.h"
 #include "utils_header_fileP.h"
 #include "utils_c_fileP.h"
-#include "abmf.h"
+#include <ab_private/abmf.h>
 #include "msg_cvt.h"
 
 /*************************************************************************

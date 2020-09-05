@@ -46,6 +46,7 @@
  */
 #include <stdio.h>
 #include <Xm/Xm.h>
+#include "dtb_utils.h"
 #include <ab_private/pal.h>
 #include <ab_private/ab.h>
 #include <ab_private/prop.h>

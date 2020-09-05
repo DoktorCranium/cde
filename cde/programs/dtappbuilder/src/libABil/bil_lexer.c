@@ -58,7 +58,7 @@
 /*
  * Public symbols
  */
-FILE	*AByyin = NULL;
+FILE	*yyin = NULL;
 
 #define MAX_TOKEN_LEN	1023
 #define MAX_TOKEN_SIZE	(MAX_TOKEN_LEN + 1)	/* len+1 for NULL */
@@ -108,9 +108,9 @@ static int	get_(FILE *file, int lastChar);
 
 
 int
-AByylex(void)
+yylex(void)
 {
-    return get_token(AByyin);
+    return get_token(yyin);
 }
 
 
@@ -370,7 +370,7 @@ get_string(FILE *file, int lastChar)
  * Called by the lexical analyzer or parser whenever an error occurs.
  */
 void 
-AByyerror(const char *message)
+yyerror(const char *message)
 {
     char        tokenMsg[1024] = "";
     char        errMsg[1024] = "";

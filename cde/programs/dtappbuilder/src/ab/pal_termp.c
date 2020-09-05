@@ -49,6 +49,7 @@
 #include <Xm/Xm.h>
 #include <Dt/TermPrim.h>
 #include <Dt/Term.h>
+#include "dtb_utils.h"
 #include <ab_private/util.h>
 #include <ab_private/ab.h>
 #include <ab_private/pal.h>

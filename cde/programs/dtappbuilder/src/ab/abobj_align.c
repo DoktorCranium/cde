@@ -58,6 +58,7 @@
 #include <Xm/RowColumn.h>
 #include <Xm/TextF.h>
 #include <Xm/Text.h>
+#include "dtb_utils.h"
 #include <ab_private/trav.h>
 #include <ab_private/proj.h>
 #include <Dt/xpm.h>		/* will this be in include/Dt? */

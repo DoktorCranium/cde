@@ -58,7 +58,7 @@
 #include <ab_private/abio.h>
 #include <ab_private/objxm.h>
 #include <ab_private/istr.h>
-#include "abuil_print.h"
+#include <ab_private/abuil_print.h>
 #include "../libABobj/obj_utils.h"
 
 #include <Xm/Xm.h>

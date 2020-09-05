@@ -47,6 +47,7 @@
 #include <Xm/Xm.h>
 #include <Xm/List.h>
 #include <Dt/ComboBox.h>
+#include "dtb_utils.h"
 #include <ab_private/objxm.h>
 #include <ab_private/ui_util.h>
 

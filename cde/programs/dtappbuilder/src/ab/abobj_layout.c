@@ -52,6 +52,7 @@
 #include <X11/Intrinsic.h>
 #include <X11/StringDefs.h>
 #include <Xm/Xm.h>
+#include "dtb_utils.h"
 #include <ab_private/objxm.h>
 #include <ab_private/trav.h>
 #include "abobjP.h"

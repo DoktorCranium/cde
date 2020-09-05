@@ -56,6 +56,7 @@
 #include <Xm/List.h>
 #include <Dt/SpinBox.h>
 #include <Dt/ComboBox.h>
+#include "dtb_utils.h"
 #include <ab_private/obj.h>
 #include <ab_private/trav.h>
 #include <ab_private/objxm.h>

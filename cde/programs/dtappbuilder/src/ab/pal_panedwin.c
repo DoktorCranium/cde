@@ -50,6 +50,7 @@
 #include <sys/param.h>		/* MAXPATHLEN */
 #include <Xm/Xm.h>
 #include <Xm/List.h>
+#include "dtb_utils.h"
 #include <ab/util_types.h>
 #include <ab_private/ab.h>
 #include <ab_private/obj.h>

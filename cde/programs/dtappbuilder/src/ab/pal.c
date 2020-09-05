@@ -42,6 +42,7 @@
  */
 #include <stdio.h>
 #include <string.h>
+#include "dtb_utils.h"
 #include <Xm/Xm.h>
 #include <Xm/PushB.h>
 #include <Xm/RowColumn.h>

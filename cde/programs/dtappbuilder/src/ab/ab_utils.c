@@ -50,6 +50,7 @@
 #include <Xm/Xm.h>
 #include <Xm/MessageB.h>
 #include <X11/cursorfont.h>
+#include "dtb_utils.h"
 #include <ab_private/ab.h>
 #include <ab_private/abobj.h>
 #include <ab_private/abobj_set.h>
@@ -62,7 +63,6 @@
 #include <ab_private/cgen.h>
 #include <ab_private/ui_util.h>
 #include "palette_ui.h"
-#include "dtb_utils.h"
 
 
 typedef struct INIT_WIN_POS {

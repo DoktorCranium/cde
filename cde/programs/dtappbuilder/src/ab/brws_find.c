@@ -49,6 +49,7 @@
 #include <Xm/Xm.h>
 #include <Xm/ScrollBar.h>
 #include <Xm/SelectioB.h>
+#include "dtb_utils.h"
 #include <ab_private/obj.h>
 #include <ab/util_types.h>
 #include <ab_private/abobj.h>

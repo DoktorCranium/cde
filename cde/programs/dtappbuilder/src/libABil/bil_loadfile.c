@@ -144,7 +144,7 @@ bil_load_file(
     if (inFile == NULL)
     {
 	/* Open the input file.  */
-	errmsg = abio_open_bil_input(bil_file, &lineNumber, &AByyin);
+	errmsg = abio_open_bil_input(bil_file, &lineNumber, &yyin);
 	if (errmsg != NULL)
 	{
 	    LoadErr = TRUE;
@@ -162,7 +162,7 @@ bil_load_file(
 	    goto epilogue;
         }
 	else
-	    AByyin = inFile;
+	    yyin = inFile;
     }
     ++lineNumber;
 
@@ -171,7 +171,7 @@ bil_load_file(
      */
     bilP_load_reset();
     bilP_load_set_line_number(lineNumber);
-    if ((success = AByyparse()) != 0)
+    if ((success = yyparse()) != 0)
     {
 	abio_close_input(inFile);
 	LoadErr = TRUE;
@@ -204,7 +204,7 @@ bil_load_file(
 #endif /* BOGUS */
 
     /* Close the input file. */
-    abio_close_input(AByyin);
+    abio_close_input(yyin);
 
     if (bilP_load.project == NULL)
     {
@@ -402,7 +402,7 @@ bilP_load_end_of_file(void)
 int
 bilP_load_end_of_data(void)
 {
-    fseek(AByyin, 0, SEEK_END);		/* move to end of file */
+    fseek(yyin, 0, SEEK_END);		/* move to end of file */
     return 0;
 }
 

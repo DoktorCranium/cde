@@ -46,6 +46,7 @@
 */
 
 #include "tmodeP.h"
+#include "dtb_utils.h"
 #include <ab_private/trav.h>
 #include <ab_private/util.h>
 #include <ab_private/ui_util.h>

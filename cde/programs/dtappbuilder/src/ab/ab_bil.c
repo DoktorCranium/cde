@@ -48,6 +48,7 @@
 #include <time.h>
 #include <sys/param.h>		/* MAXPATHLEN */
 #include <errno.h>
+#include "dtb_utils.h"
 #include <ab_private/obj.h>
 #include <ab_private/trav.h>
 #include <ab_private/bil.h>

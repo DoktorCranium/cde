@@ -55,6 +55,7 @@
 #include <X11/StringDefs.h>
 #include <Xm/Xm.h>
 #include <Xm/ScrolledW.h>
+#include "dtb_utils.h"
 #include <ab_private/trav.h>
 #include <ab_private/ui_util.h>
 #include <ab_private/x_util.h>

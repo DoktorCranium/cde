@@ -52,6 +52,7 @@
 #include <stdio.h>
 #include <X11/cursorfont.h>
 #include <Xm/ScrolledW.h>
+#include "dtb_utils.h"
 #include <ab_private/objxm.h>
 #include <ab_private/prop.h>
 #include <ab_private/x_util.h>

@@ -46,6 +46,7 @@
 
 #include <stdio.h>
 #include <Xm/List.h>
+#include "dtb_utils.h"
 #include <ab_private/abobj_list.h>
 #include <ab_private/ui_util.h>
 #include <ab_private/trav.h>

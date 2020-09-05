@@ -50,6 +50,7 @@
 #include <Xm/Xm.h>
 #include <Xm/FileSB.h>
 #include <Xm/TextF.h>
+#include "dtb_utils.h"
 #include <ab_private/ab.h>
 #include <ab_private/proj.h>
 #include <ab_private/projP.h>

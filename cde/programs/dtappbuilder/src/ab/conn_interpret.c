@@ -42,6 +42,7 @@
 
 #include <stdio.h>
 #include <Dt/SpinBox.h>
+#include "dtb_utils.h"
 #include <ab_private/XmAll.h>
 #include <ab_private/obj.h>
 #include <ab_private/trav.h>

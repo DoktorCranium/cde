@@ -56,6 +56,7 @@
 #include <Xm/Xm.h>
 #include <Xm/Form.h>
 #include <Xm/ScrolledW.h>
+#include "dtb_utils.h"
 #include <ab_private/trav.h>
 #include <ab_private/objxm.h>
 #include <ab_private/ab.h>

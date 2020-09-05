@@ -50,6 +50,7 @@
 #include <X11/Xlib.h>
 #include <Xm/Xm.h>
 #include <Xm/DialogS.h>
+#include "dtb_utils.h"
 #include <ab_private/obj.h>
 #include <ab_private/trav.h>
 #include <ab_private/istr.h>

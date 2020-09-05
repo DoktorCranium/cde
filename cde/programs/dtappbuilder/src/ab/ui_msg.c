@@ -55,6 +55,7 @@
 #include <Xm/SelectioB.h>
 #include <Xm/PushB.h>
 #include <Xm/TextF.h>
+#include "dtb_utils.h"
 #include <ab_private/ab.h>
 #include <ab_private/objxm.h>
 #include <ab_private/ui_util.h>

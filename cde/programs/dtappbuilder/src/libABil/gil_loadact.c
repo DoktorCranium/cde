@@ -55,7 +55,7 @@
 #include <ab_private/util.h>
 #include <ab_private/istr.h>
 #include "../libABobj/obj_utils.h"
-#include "gil.h"
+#include <ab_private/gil.h>
 #include "gilP.h"
 #include "load.h"
 #include "loadP.h"

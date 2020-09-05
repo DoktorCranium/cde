@@ -61,6 +61,7 @@
 #include <Dt/ComboBox.h>
 #include <Dt/MenuButton.h>
 #include <Dt/SpinBox.h>
+#include "dtb_utils.h"
 #include <ab_private/trav.h>
 #include <ab_private/objxm.h>
 #include <ab_private/ab.h>

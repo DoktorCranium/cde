@@ -395,7 +395,6 @@ AC_CHECK_LIB(SM, SmcOpenConnection, [XTOOLLIB="-lSM ${XTOOLLIB}"], ,
                  [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_CHECK_LIB(Xm, XmTextSetString, [XTOOLLIB="-lXm ${XTOOLLIB}"], ,
                  [${EXTRA_INCS} ${EXTRA_LIBS}])
-
 XTOOLLIB="${EXTRA_INCS} ${EXTRA_LIBS} ${X_EXTRA_LIBS} ${XTOOLLIB}"
 AC_SUBST([XTOOLLIB])
 
@@ -573,6 +572,15 @@ programs/dtsearchpath/Makefile
 programs/dtsearchpath/libCliSrv/Makefile
 programs/dtsearchpath/dtsp/Makefile
 programs/dtsearchpath/dtappg/Makefile
+
+programs/dtappbuilder/Makefile
+programs/dtappbuilder/src/Makefile
+programs/dtappbuilder/src/libAButil/Makefile
+programs/dtappbuilder/src/libABobj/Makefile
+programs/dtappbuilder/src/libABobjXm/Makefile
+programs/dtappbuilder/src/libABil/Makefile
+programs/dtappbuilder/src/abmf/Makefile
+programs/dtappbuilder/src/ab/Makefile
 
 programs/dtappintegrate/Makefile
 

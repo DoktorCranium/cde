@@ -46,6 +46,7 @@
 #include <Xm/Xm.h>
 #include <Xm/BulletinB.h>
 #include <Xm/SelectioB.h>
+#include "dtb_utils.h"
 #include <ab_private/ab.h> 
 #include <ab_private/bil.h> 
 #include <ab_private/abobj.h> 

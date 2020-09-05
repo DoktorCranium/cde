@@ -68,6 +68,7 @@
 #include <Xm/ToggleB.h>
 #include <Dt/ComboBox.h>
 #include <Dt/SpinBox.h>
+#include "dtb_utils.h"
 #include <ab_private/trav.h>
 #include <ab_private/obj_notify.h>
 #include <ab_private/objxm.h>

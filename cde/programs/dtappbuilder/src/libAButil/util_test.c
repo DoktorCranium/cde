@@ -40,7 +40,7 @@
  *
  */
 
-#include "util.h"
+#include <ab_private/util.h>
 #include <sys/types.h>
 #include <sys/stat.h>		/* mkdir */
 #include <sys/param.h>

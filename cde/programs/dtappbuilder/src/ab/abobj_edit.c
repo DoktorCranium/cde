@@ -51,6 +51,7 @@
 #include <stdio.h>
 #include <sys/param.h>
 #include <Xm/Xm.h>
+#include "dtb_utils.h"
 #include <ab_private/trav.h>
 #include <ab_private/ui_util.h>
 #include <ab_private/brws.h>

@@ -47,6 +47,7 @@
 #include <Dt/Dt.h>
 #include <Dt/Dts.h>
 #include <Dt/Dnd.h>
+#include "dtb_utils.h"
 #include <ab_private/ab.h>
 #include <ab_private/ab_dnd.h>
 #include <ab_private/ab_bil.h>

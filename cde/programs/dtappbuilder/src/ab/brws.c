@@ -60,6 +60,7 @@
 #include <Xm/SelectioB.h>
 #include <Xm/ScrolledW.h>
 #include <Xm/PushB.h>
+#include "dtb_utils.h"
 #include <ab_private/obj.h>
 #include <ab_private/obj_notify.h>
 #include <ab_private/trav.h>

@@ -53,7 +53,7 @@
 #include <ab_private/obj.h>
 #include <ab_private/objxm.h>
 #include <ab_private/bil.h>
-#include "dtb_utils.h"
+#include <ab_private/dtb_utils.h>
 #include "write_codeP.h"
 #include "motifdefsP.h"
 #include "argsP.h"
@@ -61,7 +61,7 @@
 #include "instancesP.h"
 #include "ui_header_fileP.h"
 #include "abmfP.h"
-#include "abmf.h"
+#include <ab_private/abmf.h>
 
 /* glibc considers CLK_TCK obsolete */
 #if defined(__linux__) && !defined(CLK_TCK)

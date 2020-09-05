@@ -19,7 +19,7 @@
  */
 
 #include <stdio.h>
-#include <ab_private/bil_parse.h>
+#include "bil_parse.h"
 #include <ab/util_types.h>
 #include "bil_loadattP.h"
 

@@ -70,6 +70,7 @@
 #include <Dt/TermPrim.h>
 #include <Dt/Term.h>
 
+#include "dtb_utils.h"
 #include <ab_private/ab.h>
 #include <ab_private/abobj_set.h>
 #include <ab_private/proj.h>

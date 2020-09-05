@@ -54,6 +54,7 @@
 #include <Xm/FileSB.h>
 #include <Xm/TextF.h>
 #include <Xm/ToggleB.h>
+#include "dtb_utils.h"
 #include <ab_private/ab.h>
 #include <ab_private/obj.h>
 #include <ab_private/brws.h>

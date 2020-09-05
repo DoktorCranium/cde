@@ -47,6 +47,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <Xm/Xm.h>
+#include "dtb_utils.h"
 #include <ab_private/obj_notify.h>
 #include <ab_private/trav.h>
 #include <ab_private/objxm.h>

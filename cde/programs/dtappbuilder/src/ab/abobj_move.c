@@ -51,6 +51,7 @@
 #include <stdio.h>
 #include <X11/Intrinsic.h>
 #include <X11/StringDefs.h>
+#include "dtb_utils.h"
 #include <ab_private/x_util.h>
 #include <ab_private/objxm.h>
 #include <ab_private/abobj_edit.h>

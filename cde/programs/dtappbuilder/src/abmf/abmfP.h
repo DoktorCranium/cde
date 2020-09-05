@@ -56,7 +56,7 @@
 #include <ab_private/obj.h>
 #include <ab_private/trav.h>
 #include <ab_private/strlist.h>
-#include "abmf.h"
+#include <ab_private/abmf.h>
 
 /*
  * Constants

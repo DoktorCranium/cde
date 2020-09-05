@@ -360,7 +360,6 @@ programs/dtappbuilder/src/ab/textp_ui.h
 programs/dtappbuilder/src/abmf/ab_func_strings
 programs/dtappbuilder/src/abmf/dtcodegen
 programs/dtappbuilder/src/abmf/dtcodegen.cat
-programs/dtappbuilder/src/include/
 programs/dtappbuilder/src/libABil/bil_parse.c
 programs/dtappbuilder/src/libABil/bil_parse.h
 

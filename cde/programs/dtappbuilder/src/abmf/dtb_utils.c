@@ -52,7 +52,7 @@
 #include <sys/param.h>
 #include <sys/stat.h>
 #include <ab_private/util.h>
-#include "dtb_utils.h"
+#include <ab_private/dtb_utils.h>
 
 /*
  * Map Xt/Xm symbols to symbols we have defined

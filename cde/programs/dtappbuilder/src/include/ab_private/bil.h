@@ -43,7 +43,7 @@
 #define _ABIL_BIL_H_
 
 #include <X11/Intrinsic.h>
-#include <ab_private/bil_parse.h>
+#include "bil_parse.h"
 
 typedef enum
 {

@@ -53,7 +53,8 @@
 #include <Xm/CascadeB.h>
 #include <Xm/MenuShell.h>
 #include <Xm/RowColumn.h>	/* XmMenuPosition() */
-#include <Xm/Separator.h>	
+#include <Xm/Separator.h>
+#include "dtb_utils.h"
 #include <ab_private/objxm.h>
 #include <ab_private/ui_util.h>
 #include <ab_private/brws.h>
