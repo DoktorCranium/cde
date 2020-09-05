@@ -12,6 +12,10 @@ DTCODEGENCAT = NLSPATH=$(top_builddir)/programs/dtappbuilder/src/abmf/dtcodegen.
 
 DTCODEGEN = $(DTCODEGENCAT) ../abmf/dtcodegen
 
+# Due to the way dtcodegen works, especially with the -merge option, we need
+# to disable parallel builds (-j) here to avoid corrupting everything.
+.NOTPARALLEL:
+
 if BSD
 UTILLIB = -lutil
 endif
