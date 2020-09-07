@@ -1,3 +1,3 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = doc2sdl lib instant xlate_locale
+SUBDIRS = lib instant xlate_locale

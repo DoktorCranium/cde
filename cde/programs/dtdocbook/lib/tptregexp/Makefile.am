@@ -1,5 +1,5 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = tptregexp.a
+noinst_LIBRARIES = libtptregexp.a
 
-tptregexp_a_SOURCES = regexp.c regsub.c regerror.c
+libtptregexp_a_SOURCES = regexp.c regsub.c regerror.c

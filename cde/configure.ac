@@ -629,6 +629,12 @@ programs/util/dttypes/Makefile
 
 programs/dtopen/Makefile
 
+programs/dtdocbook/Makefile
+programs/dtdocbook/lib/Makefile
+programs/dtdocbook/lib/tptregexp/Makefile
+programs/dtdocbook/instant/Makefile
+programs/dtdocbook/xlate_locale/Makefile
+
 programs/localized/Makefile
 programs/localized/util/Makefile
 programs/localized/C/Makefile
