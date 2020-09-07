@@ -424,13 +424,16 @@ else
   AC_SUBST(FREETYPE_LIBS)
 fi
 
+dnl Figure out TCL
+
+SC_PATH_TCLCONFIG
+SC_LOAD_TCLCONFIG
+
 dnl check MISSING_PROGS - error out here if there's stuff in it.
 
 if test -n "$MISSING_PROGS"; then
    AC_MSG_ERROR([Please install the following REQUIRED programs: ${MISSING_PROGS}])
 fi
-
-
 
 dnl set CPPFLAGS, CFLAGS, and CXXFLAGS.
 dnl The Autoconf manual says that these are user variables and
