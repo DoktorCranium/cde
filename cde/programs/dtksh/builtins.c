@@ -68,7 +68,6 @@
 /*
  * IMPORTANT: The order of these struct members must be synchronous
  * with the offsets on the macros defined in include/builtins.h!
- * The order up through "local" is significant.
  */
 const struct shtable3 shtab_builtins[] =
 {
@@ -95,9 +94,6 @@ const struct shtable3 shtab_builtins[] =
 	".",		NV_BLTIN|BLT_ENV|BLT_SPC,	bltin(dot_cmd),
 	"source",	NV_BLTIN|BLT_ENV,		bltin(dot_cmd),
 	"return",	NV_BLTIN|BLT_ENV|BLT_SPC,	bltin(return),
-#if SHOPT_BASH
-	"local",	NV_BLTIN|BLT_ENV|BLT_SPC|BLT_DCL,bltin(typeset),
-#endif
 /*
  * Builtins without offset macros in include/builtins.h follow.
  */
@@ -178,7 +174,7 @@ const struct shtable3 shtab_builtins[] =
 	"__regress__",		NV_BLTIN|BLT_ENV,	bltin(__regress__),
 #endif
 #ifdef BUILD_DTKSH
-	DTK_EXTRA_TABLE
+        DTK_EXTRA_TABLE
         DTK_EXTRA_TABLE2
         DTK_TK_EXTRA_TABLE
         DTK_TK_LIST_TABLE
@@ -241,13 +237,6 @@ const char sh_set[] =
 		"[+gmacs?Enables/disables \bgmacs\b editing mode.  \bgmacs\b "
 			"editing mode is the same as \bemacs\b editing mode "
 			"except for the handling of \b^T\b.]"
-#if SHOPT_BASH
-		"[+hashall?Equivalent to \b-h\b and \b-o trackall\b. Available "
-		"in bash compatibility mode only.]"
-		"[+history?Enable command history. Available in bash "
-		"compatibility mode only. On by default in interactive "
-		"shells.]"
-#endif
 #if SHOPT_HISTEXPAND
 		"[+histexpand?Equivalent to \b-H\b.]"
 #endif
@@ -268,20 +257,12 @@ const char sh_set[] =
 			"compatibility.]"
 		"[+notify?Equivalent to \b-b\b.]"
 		"[+nounset?Equivalent to \b-u\b.]"
-#if SHOPT_BASH
-		"[+onecmd?Equivalent to \b-t\b. Available in bash compatibility "
-		"mode only.]"
-		"[+physical?Equivalent to \b-P\b. Available in bash "
-		"compatibility mode only.]"
-		"[+posix?Turn on POSIX compatibility. Available in bash "
-		"compatibility mode only. Bash in POSIX mode is not the "
-		"same as ksh.]"
-#endif
 		"[+pipefail?A pipeline will not complete until all components "
 			"of the pipeline have completed, and the exit status "
 			"of the pipeline will be the value of the last "
 			"command to exit with non-zero exit status, or will "
 			"be zero if all commands return zero exit status.]"
+		"[+posix?Enable full POSIX standard compliance mode.]"
 		"[+privileged?Equivalent to \b-p\b.]"
 		"[+rc?Do not run the \b.kshrc\b file for interactive shells.]"
 		"[+showme?Simple commands preceded by a \b;\b will be traced "
@@ -310,9 +291,6 @@ const char sh_set[] =
 "[x?Execution trace.  The shell will display each command after all "
 	"expansion and before execution preceded by the expanded value "
 	"of the \bPS4\b parameter.]"
-#if SHOPT_BASH
-	"\fbash1\f"
-#endif
 #if SHOPT_BRACEPAT
 "[B?Enable {...} group expansion. On by default.]"
 #endif
@@ -1590,9 +1568,6 @@ USAGE_LICENSE
 "[I:regress]:[intercept?Enable the regression test \aintercept\a. Must be "
 	"the first command line option(s).]"
 #endif
-#if SHOPT_BASH
-   "\fbash2\f"
-#endif
 "\fabc\f"
 "?"
 "[T?Enable implementation specific test code defined by mask.]#[mask]"
@@ -1805,12 +1780,8 @@ USAGE_LICENSE
 "[+?\btypeset\b is built in to the shell as a declaration command so that "
 	"field splitting and pathname expansion are not performed on "
 	"the arguments.  Tilde expansion occurs on \avalue\a.]"
-#if 1
 "[a]:?[type?Indexed array.  This is the default. If \b[\b\atype\a\b]]\b is "
     "specified, each subscript is interpreted as a value of type \atype\a.]"
-#else
-"[a?Indexed array. this is the default.]"
-#endif
 "[b?Each \aname\a may contain binary data.  Its value is the mime "
 	"base64 encoding of the data. It can be used with \b-Z\b, "
 	"to specify fixed sized fields.]"

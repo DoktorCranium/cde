@@ -119,10 +119,6 @@ char e_version[]	= "\n@(#)$Id: Version "
 #define ATTRS		1
 			"A"
 #endif
-#if SHOPT_BASH
-#define ATTRS		1
-			"B"
-#endif
 #if SHOPT_BGX
 #define ATTRS		1
 			"J"
@@ -147,10 +143,6 @@ char e_version[]	= "\n@(#)$Id: Version "
 			" "
 #endif
 			SH_RELEASE " $\0\n";
-
-#if SHOPT_BASH
-    extern void bash_init(Shell_t*,int);
-#endif
 
 #define RANDMASK	0x7fff
 
@@ -239,7 +231,7 @@ typedef struct _init_
 static Init_t		*ip;
 static int		lctype;
 static int		nbltins;
-static void		env_init(Shell_t*);
+static void		env_init(Shell_t*,int);
 static Init_t		*nv_init(Shell_t*);
 static Dt_t		*inittree(Shell_t*,const struct shtable2*);
 static int		shlvl;
@@ -380,10 +372,6 @@ static void put_restricted(register Namval_t* np,const char *val,int flags,Namfu
 			if(mp && (val=nv_getval(mp)))
 				nv_putval(mp,val,NV_RDONLY);
 		}
-#if 0
-sfprintf(sfstderr,"%d: name=%s val=%s\n",getpid(),name,val);
-path_dump((Pathcomp_t*)shp->pathlist);
-#endif
 	}
 }
 
@@ -401,7 +389,6 @@ static void put_cdpath(register Namval_t* np,const char *val,int flags,Namfun_t 
 }
 
 #ifdef _hdr_locale
-
 #ifdef BUILD_DTKSH
 /*
  * This version of putenv uses the hash storage to assign environment values
@@ -910,22 +897,12 @@ static char *msg_translate(const char *message,int type)
 }
 
 #else
-
-#if ERROR_VERSION >= 20000101L
     static char* msg_translate(const char* catalog, const char* message)
     {
 	NOT_USED(catalog);
 	return((char*)message);
     }
-#else
-    static char* msg_translate(const char* message, int type)
-    {
-	NOT_USED(type);
-	return((char*)message);
-    }
 #endif
-
-#endif /* BUILD_DTKSH */
 
     /* Trap for LC_ALL, LC_CTYPE, LC_MESSAGES, LC_COLLATE and LANG */
     static void put_lang(Namval_t* np,const char *val,int flags,Namfun_t *fp)
@@ -1019,10 +996,11 @@ static char *msg_translate(const char *message,int type)
 			sh_lexstates[ST_BRACE]=(char*)sh_lexrstates[ST_BRACE];
 		}
 	}
-#if ERROR_VERSION < 20000101L || defined(BUILD_DTKSH)
+#ifdef BUILD_DTKSH
 	if(type==LC_ALL || type==LC_MESSAGES)
 		error_info.translate = msg_translate;
 #endif
+
     }
 #endif /* _hdr_locale */
 
@@ -1647,7 +1625,7 @@ int sh_type(register const char *path)
 	}
 	for (;;)
 	{
-		if (!(t & (SH_TYPE_KSH|SH_TYPE_BASH)))
+		if (!(t & SH_TYPE_KSH))
 		{
 			if (*s == 'k')
 			{
@@ -1655,14 +1633,6 @@ int sh_type(register const char *path)
 				t |= SH_TYPE_KSH;
 				continue;
 			}
-#if SHOPT_BASH
-			if (*s == 'b' && *(s+1) == 'a')
-			{
-				s += 2;
-				t |= SH_TYPE_BASH;
-				continue;
-			}
-#endif
 		}
 		if (!(t & (SH_TYPE_PROFILE|SH_TYPE_RESTRICTED)))
 		{
@@ -1687,6 +1657,12 @@ int sh_type(register const char *path)
 	{
 		s++;
 		t |= SH_TYPE_SH;
+#if _WINIX
+		if (!(t & SH_TYPE_KSH) && (!*s || *s == '.'))
+#else
+		if (!(t & SH_TYPE_KSH) && !*s)
+#endif
+			t |= SH_TYPE_POSIX;
 		if ((t & SH_TYPE_KSH) && *s == '9' && *(s+1) == '3')
 			s += 2;
 #if _WINIX
@@ -1696,7 +1672,7 @@ int sh_type(register const char *path)
 		if (!isalnum(*s))
 			return t;
 	}
-	return t & ~(SH_TYPE_BASH|SH_TYPE_KSH|SH_TYPE_PROFILE|SH_TYPE_RESTRICTED);
+	return t & ~(SH_TYPE_KSH|SH_TYPE_PROFILE|SH_TYPE_RESTRICTED);
 }
 
 
@@ -1760,6 +1736,9 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 	{
 		beenhere = 1;
 		shp = &sh;
+#if SHOPT_REGRESS
+		sh_regress_init(shp);
+#endif
 		shgd = newof(0,struct shared,1,0);
 		shgd->current_pid = shgd->pid = getpid();
 		shgd->ppid = getppid();
@@ -1794,9 +1773,7 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 	shp->stk = stkstd;
 	sfsetbuf(shp->strbuf,(char*)0,64);
 	sh_onstate(SH_INIT);
-#if ERROR_VERSION >= 20000102L
 	error_info.catalog = e_dict;
-#endif
 #if SHOPT_REGRESS
 	{
 		Opt_t*	nopt;
@@ -1805,7 +1782,6 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 		char**	av = argv;
 		char*	regress[3];
 
-		sh_regress_init(shp);
 		regress[0] = "__regress__";
 		regress[2] = 0;
 		/* NOTE: only shp is used by __regress__ at this point */
@@ -1827,7 +1803,9 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 				break;
 			nopt = optctx(0, 0);
 			oopt = optctx(nopt, 0);
+			error_info.exit = exit;  /* avoid crash on b___regress__ error as shell is not fully initialized */
 			b___regress__(2, regress, &shp->bltindata);
+			error_info.exit = sh_exit;
 			optctx(oopt, nopt);
 		}
 	}
@@ -1849,14 +1827,17 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 	stakinstall(NIL(Stak_t*),nospace);
 	/* set up memory for name-value pairs */
 	shp->init_context =  nv_init(shp);
-	/* read the environment */
+	/* initialize shell type */
 	if(argc>0)
 	{
 		type = sh_type(*argv);
 		if(type&SH_TYPE_LOGIN)
 			shp->login_sh = 2;
+		if(type&SH_TYPE_POSIX)
+			sh_onoption(SH_POSIX);
 	}
-	env_init(shp);
+	/* read the environment; don't import attributes yet */
+	env_init(shp,0);
 	if(!ENVNOD->nvalue.cp)
 	{
 		sfprintf(shp->strbuf,"%s/.kshrc",nv_getval(HOME));
@@ -1873,17 +1854,8 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 		char *cp=nv_getval(L_ARGNOD);
 		char buff[PATH_MAX+1];
 		shp->gd->shpath = 0;
-#if _AST_VERSION >= 20090202L
 		if((n = pathprog(NiL, buff, sizeof(buff))) > 0 && n <= sizeof(buff))
 			shp->gd->shpath = strdup(buff);
-#else
-		sfprintf(shp->strbuf,"/proc/%d/exe",getpid());
-		if((n=readlink(sfstruse(shp->strbuf),buff,sizeof(buff)-1))>0)
-		{
-			buff[n] = 0;
-			shp->gd->shpath = strdup(buff);
-		}
-#endif
 		else if((cp && (sh_type(cp)&SH_TYPE_SH)) || (argc>0 && strchr(cp= *argv,'/')))
 		{
 			if(*cp=='/')
@@ -1918,17 +1890,6 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 		/* check for profile shell */
 		else if(type&SH_TYPE_PROFILE)
 			sh_onoption(SH_PFSH);
-#endif
-#if SHOPT_BASH
-		/* check for invocation as bash */
-		if(type&SH_TYPE_BASH)
-		{
-		        shp>userinit = userinit = bash_init;
-			sh_onoption(SH_BASH);
-			sh_onstate(SH_PREINIT);
-			(*userinit)(shp, 0);
-			sh_offstate(SH_PREINIT);
-		}
 #endif
 		/* look for options */
 		/* shp->st.dolc is $#	*/
@@ -1977,6 +1938,9 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 			beenhere = 2;
 		}
 	}
+	/* import variable attributes from environment */
+	if(!sh_isoption(SH_POSIX))
+		env_init(shp,1);
 #if SHOPT_PFSH
 	if (sh_isoption(SH_PFSH))
 	{
@@ -2031,11 +1995,9 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 	shp->bltindata.shtrap = sh_trap;
 	shp->bltindata.shexit = sh_exit;
 	shp->bltindata.shbltin = sh_addbuiltin;
-#if _AST_VERSION >= 20080617L
 	shp->bltindata.shgetenv = sh_getenv;
 	shp->bltindata.shsetenv = sh_setenviron;
 	astintercept(&shp->bltindata,1);
-#endif
 #if 0
 #define NV_MKINTTYPE(x,y,z)	nv_mkinttype(#x,sizeof(x),(x)-1<0,(y),(Namdisc_t*)z);
 	NV_MKINTTYPE(pid_t,"process id",0);
@@ -2054,7 +2016,6 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 #endif
 	if(shp->userinit=userinit)
 		(*userinit)(shp, 0);
-
 #ifdef BUILD_DTKSH
 	int * lockedFds;
 
@@ -2085,7 +2046,6 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
         SyncEnv("NLSPATH");
         SyncEnv("LANG");
 #endif
-
 	return(shp);
 }
 
@@ -2492,20 +2452,24 @@ static Dt_t *inittree(Shell_t *shp,const struct shtable2 *name_vals)
 /*
  * read in the process environment and set up name-value pairs
  * skip over items that are not name-value pairs
+ *
+ * Must be called with import_attributes == 0 first, then again with
+ * import_attributes == 1 if variable attributes are to be imported
+ * from the environment.
  */
 
-static void env_init(Shell_t *shp)
+static void env_init(Shell_t *shp, int import_attributes)
 {
 	register char		*cp;
 	register Namval_t	*np,*mp;
 	register char		**ep=environ;
-	char			*dp,*next=0;
+	char			*dp;
 	int			nenv=0,k=0,size=0;
 	Namval_t		*np0;
-#ifdef _ENV_H
-	shp->env = env_open(environ,3);
-	env_delete(shp->env,"_");
-#endif
+	static char		*next=0;  /* next variable whose attributes to import */
+
+	if(import_attributes)
+		goto import_attributes;
 	if(!ep)
 		goto skip;
 	while(*ep++)
@@ -2522,10 +2486,10 @@ static void env_init(Shell_t *shp)
 			mp->nvenv = (char*)cp;
 			dp[-1] = '=';
 		}
-		else if(*cp=='A' && cp[1]=='_' && cp[2]=='_' && cp[3]=='z' && cp[4]==0)
+		else if(strcmp(cp,e_envmarker)==0)
 		{
 			dp[-1] = '=';
-			next = cp+4;
+			next = cp + strlen(e_envmarker);
 			continue;
 		}
 		else
@@ -2535,7 +2499,7 @@ static void env_init(Shell_t *shp)
 			mp->nvname = cp;
 			size += strlen(cp);
 		}
-			nv_onattr(mp,NV_IMPORT);
+		nv_onattr(mp,NV_IMPORT);
 		if(mp->nvfun || nv_isattr(mp,NV_INTEGER))
 			nv_putval(mp,dp,0);
 		else
@@ -2557,6 +2521,18 @@ static void env_init(Shell_t *shp)
 		dp += size+1;
 		dtinsert(shp->var_base,np++);
 	}
+skip:
+	if(nv_isnull(PWDNOD) || nv_isattr(PWDNOD,NV_TAGGED))
+	{
+		nv_offattr(PWDNOD,NV_TAGGED);
+		path_pwd(shp,0);
+	}
+	if((cp = nv_getval(SHELLNOD)) && (sh_type(cp)&SH_TYPE_RESTRICTED))
+		sh_onoption(SH_RESTRICTED); /* restricted shell */
+	return;
+
+	/* Import variable attributes from environment (from variable named by e_envmarker) */
+import_attributes:
 	while(cp=next)
 	{
 		if(next = strchr(++cp,'='))
@@ -2598,17 +2574,6 @@ static void env_init(Shell_t *shp)
 		else
 			cp += 2;
 	}
-skip:
-#ifdef _ENV_H
-	env_delete(shp->env,e_envmarker);
-#endif
-	if(nv_isnull(PWDNOD) || nv_isattr(PWDNOD,NV_TAGGED))
-	{
-		nv_offattr(PWDNOD,NV_TAGGED);
-		path_pwd(shp,0);
-	}
-	if((cp = nv_getval(SHELLNOD)) && (sh_type(cp)&SH_TYPE_RESTRICTED))
-		sh_onoption(SH_RESTRICTED); /* restricted shell */
 	return;
 }
 
