@@ -130,7 +130,7 @@ init_widgets( void )
                 if ((nam = hashput(Wclasses, C[i].cname, (char *)(&C[i]))) == NULL) 
                 {
                          errhdr = strdup(GetSharedMsg(DTKSH_ERROR));
-                         errmsg = strdup(GETMESSAGE(14,1, 
+                         errmsg = strdup(GETMESSAGE(
                                  "Internal hash table failure during widget class initialization; exiting"));
                          printerr(errhdr, errmsg, NULL);
                          free(errhdr);
@@ -303,7 +303,7 @@ str_to_class(
       return(ret);
    }
 
-   errmsg = strdup(GETMESSAGE(14,2, 
+   errmsg = strdup(GETMESSAGE(
                    "Could not find a widget class named '%s'"));
    printerrf(arg0, errmsg, s, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
    free(errmsg);
@@ -368,7 +368,7 @@ str_to_wtab(
 		if ((wid = DtkshNameToWidget(v)) == NULL) {
 			if (arg0)
                         {
-                                errmsg = strdup(GETMESSAGE(14,3, 
+                                errmsg = strdup(GETMESSAGE(
                                   "The identifier '%s' is not a valid widget handle"));
 				printerrf(arg0, errmsg, v,
                                           NULL, NULL, NULL, NULL, NULL,
@@ -472,7 +472,7 @@ widget_to_wtab(
 			}
 		}
 		if (class == NULL) {
-                        errmsg = strdup(GETMESSAGE(14,4, 
+                        errmsg = strdup(GETMESSAGE(
                               "Unable to find the widget class"));
 			printerr("widget_to_wtab", errmsg, NULL);
                         free(errmsg);
@@ -593,7 +593,7 @@ do_DtLoadWidget(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(14,5, 
+      errmsg = strdup(GETMESSAGE(
                "Usage: DtLoadWidget widgetClassName widgetClassRecordName"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -602,7 +602,7 @@ do_DtLoadWidget(
 
    if ((address = (void *)fsym(argv[2], -1)) == NULL) 
    {
-      errmsg = strdup(GETMESSAGE(14,6, 
+      errmsg = strdup(GETMESSAGE(
                     "Unable to locate a widget class record named '%s'"));
       printerrf(argv[0], errmsg,
                 argv[2], NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -618,7 +618,7 @@ do_DtLoadWidget(
       if ((nam = hashput(Wclasses, classtab->cname, (char *)classtab)) == NULL)
       {
          errhdr = strdup(GetSharedMsg(DTKSH_ERROR));
-         errmsg= strdup(GETMESSAGE(14,7, 
+         errmsg= strdup(GETMESSAGE(
             "Internal hash table failure during initialization of widget class '%s'"));
          printerrf(errhdr, errmsg, classtab->cname,
                    NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -692,8 +692,8 @@ _pr_resource(
 	if (Show_constraint && c->con == NULL)	/* No constraint resources */
 		return;
 
-	errmsg = strdup(GETMESSAGE(14,8, "\n%sRESOURCES FOR %s%s%s:\n"));
-	errmsg2 = strdup(Show_constraint ? GETMESSAGE(14,9, "CONSTRAINT ") : 
+	errmsg = strdup(GETMESSAGE("\n%sRESOURCES FOR %s%s%s:\n"));
+	errmsg2 = strdup(Show_constraint ? GETMESSAGE("CONSTRAINT ") :
                          str_nill);
 	printf(errmsg, errmsg2,
                 c->cname,
@@ -779,11 +779,10 @@ pr_widinfo(
 
         if (errmsg == NULL)
         {
-	   errmsg = strdup(GETMESSAGE(14,13, 
-                           "%-15s %-6s %-6s %-18s %-6s %s\n"));
-	   realizedStr = strdup(GETMESSAGE(14,10, "R"));
-	   managedStr = strdup(GETMESSAGE(14,11, "M"));
-	   sensitiveStr = strdup(GETMESSAGE(14,12, "S"));
+	   errmsg = strdup(GETMESSAGE("%-15s %-6s %-6s %-18s %-6s %s\n"));
+	   realizedStr = strdup(GETMESSAGE("R"));
+	   managedStr = strdup(GETMESSAGE("M"));
+	   sensitiveStr = strdup(GETMESSAGE("S"));
         }
 
 	name = getname(w, namebuf, sizeof(namebuf));
@@ -806,7 +805,7 @@ pr_widheader( void )
 {
    char * errmsg;
 
-   errmsg = strdup(GETMESSAGE(14,14, 
+   errmsg = strdup(GETMESSAGE(
             "ENV VARIABLE    HANDLE PARENT CLASS              STATUS NAME\n"));
    printf(errmsg);
    free(errmsg);
@@ -914,7 +913,7 @@ do_DtWidgetInfo(
                                   NULL, NULL, NULL, NULL, NULL, NULL);
                         free(errmsg);
 
-                        errmsg = strdup(GETMESSAGE(14,15, "\nUsage:\tDtWidgetInfo [widgetHandle]\n\tDtWidgetInfo -r <widgetHandle|className>\n\tDtWidgetInfo -R <widgetHandle|className>\n\tDtWidgetInfo -c [className]\n\tDtWidgetInfo -h [widgetHandle]"));
+                        errmsg = strdup(GETMESSAGE("\nUsage:\tDtWidgetInfo [widgetHandle]\n\tDtWidgetInfo -r <widgetHandle|className>\n\tDtWidgetInfo -R <widgetHandle|className>\n\tDtWidgetInfo -c [className]\n\tDtWidgetInfo -h [widgetHandle]"));
 		        printerr(str_nill, errmsg, NULL);
                         free(errmsg);
 			return(255);

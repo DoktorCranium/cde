@@ -65,13 +65,13 @@ char * GetSharedMsg(
 # ifdef _NO_PROTO
 extern char *_DtGetMessage();
 # else  /* _NO_PROTO */
-extern char *_DtGetMessage(char *filename, int set, int n, char *s );
+extern char *_DtGetMessage(char *filename, char *s );
 # endif /* _NO_PROTO */
 
-# define GETMESSAGE(set, number, string)\
-    (_DtGetMessage(_CLIENT_CAT_NAME, set, number, string))
+# define GETMESSAGE(string)\
+    (_DtGetMessage(_CLIENT_CAT_NAME, string))
 #else
-# define GETMESSAGE(set, number, string)\
+# define GETMESSAGE(string)\
     string
 #endif
 

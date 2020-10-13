@@ -149,7 +149,7 @@ DtkshCvtStringToPixel(
             {
                char * errbuf;
 
-	       errmsg = GETMESSAGE(1, 1, 
+	       errmsg = GETMESSAGE(
                         "DtkshCvtStringToPixel: The color '%s' is not defined");
                errbuf = XtMalloc(strlen(errmsg) + strlen(str) + 10);
                sprintf(errbuf, errmsg, str);

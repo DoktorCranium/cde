@@ -105,7 +105,7 @@ DtkshCvtWindowToString(
 
    if (fval->size != sizeof(Window))
    {
-      errmsg = strdup(GETMESSAGE(6,1, 
+      errmsg = strdup(GETMESSAGE(
             "DtkshCvtWindowToString: The 'from' value is an invalid size"));
       XtWarning(errmsg);
       free(errmsg);
@@ -135,7 +135,7 @@ DtkshCvtScreenToString(
 
    if (fval->size != sizeof(Screen *))
    {
-      errmsg = strdup(GETMESSAGE(6,14, 
+      errmsg = strdup(GETMESSAGE(
             "DtkshCvtScreenToString: The 'from' value is an invalid size"));
       XtWarning(errmsg);
       free(errmsg);
@@ -225,7 +225,7 @@ DtkshCvtHexIntToString(
    if (fval->size != sizeof(long) && fval->size != sizeof(int) && 
        fval->size != sizeof(short) && fval->size != sizeof(char)) 
    {
-      errmsg = strdup(GETMESSAGE(6,2, 
+      errmsg = strdup(GETMESSAGE(
            "DtkshCvtHexIntToString: The 'from' value is an invalid size"));
       XtWarning(errmsg);
       free(errmsg);
@@ -257,7 +257,7 @@ DtkshCvtIntToString(
 
    if (fval->size != sizeof(int) && fval->size != sizeof(short)) 
    {
-      errmsg = strdup(GETMESSAGE(6,3, 
+      errmsg = strdup(GETMESSAGE(
              "DtkshCvtIntToString: The 'from' value is an invalid size"));
       XtWarning(errmsg);
       free(errmsg);
@@ -286,7 +286,7 @@ DtkshCvtBooleanToString(
    if (fval->size != sizeof(int) && fval->size != sizeof(short) &&
        fval->size != sizeof(char)) 
    {
-      errmsg = strdup(GETMESSAGE(6,4, 
+      errmsg = strdup(GETMESSAGE(
              "DtkshCvtBooleanToString: The 'from' value is an invalid size"));
       XtWarning(errmsg);
       free(errmsg);
@@ -347,7 +347,7 @@ DtkshCvtStringToWidget(
 
    if (fval->size <= 0) 
    {
-      errmsg = strdup(GETMESSAGE(6,5, 
+      errmsg = strdup(GETMESSAGE(
              "DtkshCvtStringToWidget: The 'from' value is an invalid size"));
       XtWarning(errmsg);
       free(errmsg);
@@ -387,7 +387,7 @@ DtkshCvtStringToWidget(
    {
       char errbuf[1024];
 
-      errmsg = strdup(GETMESSAGE(6,6, 
+      errmsg = strdup(GETMESSAGE(
                "DtkshCvtStringToWidget: Unable to find a widget named '%s'"));
       sprintf(errbuf, errmsg, wname);
       XtWarning(errbuf);
@@ -414,7 +414,7 @@ DtkshCvtStringToCallback(
 
    if (fval->size <= 0) 
    {
-      errmsg = strdup(GETMESSAGE(6,7, 
+      errmsg = strdup(GETMESSAGE(
              "DtkshCvtStringToCallback: The 'from' value is an invalid size"));
       XtWarning(errmsg);
       free(errmsg);
@@ -451,7 +451,7 @@ DtkshCvtCallbackToString(
 
    if (fval->size != sizeof(XtCallbackList)) 
    {
-      errmsg = strdup(GETMESSAGE(6,8, 
+      errmsg = strdup(GETMESSAGE(
           "DtkshCvtCallbackToString: The 'from' value is an invalid size"));
       XtWarning(errmsg);
       free(errmsg);
@@ -508,7 +508,7 @@ DtkshCvtWidgetToString(
 
    if (fval->size != sizeof(Widget) || fval->addr == NULL) 
    {
-      errmsg = strdup(GETMESSAGE(6,9, 
+      errmsg = strdup(GETMESSAGE(
            "DtkshCvtWidgetToString: The 'from' value is an invalid size"));
       XtWarning(errmsg);
       free(errmsg);
@@ -525,7 +525,7 @@ DtkshCvtWidgetToString(
    }
    if ((w = widget_to_wtab(widget)) == NULL) 
    {
-      errmsg = strdup(GETMESSAGE(6,10, 
+      errmsg = strdup(GETMESSAGE(
           "DtkshCvtWidgetToString: Unable to find a name for the widget"));
       XtWarning(errmsg);
       free(errmsg);
@@ -646,7 +646,7 @@ DtkshCvtWidgetClassToString(
 
    if (fval->size != sizeof(WidgetClass))
    {
-      errmsg = strdup(GETMESSAGE(6,11, 
+      errmsg = strdup(GETMESSAGE(
            "DtkshCvtWidgetClassToString: The 'from' value is an invalid size"));
       XtWarning(errmsg);
       free(errmsg);
@@ -673,7 +673,7 @@ DtkshCvtWidgetClassToString(
    }
 
    /* No match found */
-   errmsg = strdup(GETMESSAGE(6,12,
+   errmsg = strdup(GETMESSAGE(
           "DtkshCvtWidgetClassToString: Unknown widget class"));
    XtWarning(errmsg);
    free(errmsg);
@@ -717,7 +717,7 @@ DtkshCvtStringToWidgetClass(
    }
 
    /* No match found */
-   errmsg = strdup(GETMESSAGE(6,13,
+   errmsg = strdup(GETMESSAGE(
           "DtkshCvtStringToWidgetClass: Unknown widget class name"));
    XtWarning(errmsg);
    free(errmsg);

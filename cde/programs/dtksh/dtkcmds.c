@@ -554,7 +554,7 @@ parse_args(
 	*n = 0;
 	for (i = 0; i < argc; i++) {
 		if (i >= MAXARGS) {
-			errmsg = strdup(GETMESSAGE(5,1, 
+			errmsg = strdup(GETMESSAGE(
                                       "Too many resource parameters have been specified; skipping '%s'"));
 			printerrf(arg0, errmsg,
                                  argv[*n], NULL, NULL, NULL, NULL, NULL,
@@ -564,7 +564,7 @@ parse_args(
 		}
 		if ((colon = strchr(argv[i], ':')) == NULL)
                 {
-                        errmsg = strdup(GETMESSAGE(5,2, 
+                        errmsg = strdup(GETMESSAGE(
                                 "Bad resource specification; should be of the form 'name:value' : %s"));
 			printerrf(arg0, errmsg,
                              argv[i], NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -664,7 +664,7 @@ do_XtInitialize(
 
 	if (Toplevel != NULL)
         {
-		errmsg = strdup(GETMESSAGE(5,4, 
+		errmsg = strdup(GETMESSAGE(
                             "The toolkit has already been initialized"));
 		printerr(argv[0], errmsg, NULL);
                 free(errmsg);
@@ -672,7 +672,7 @@ do_XtInitialize(
 	}
 
 	if (argc < 4) {
-           errmsg =strdup(GETMESSAGE(5,5, 
+           errmsg =strdup(GETMESSAGE(
                       "Usage: XtInitialize variable applicationName applicationClass [args ...]"));
 	   printerr(str_nill, errmsg, NULL);
            free(errmsg);
@@ -707,7 +707,7 @@ _CreateWidget(
 	char ** pargv;
 
 	if (argc < 5) {
-                errmsg = strdup(GETMESSAGE(5,6, 
+                errmsg = strdup(GETMESSAGE(
                         "Usage: %s variable name class parent [arg:val ...]"));
 		printerrf(str_nill, errmsg,
                   argv[0], NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -784,7 +784,7 @@ do_XtCreateApplicationShell(
 	char ** pargv;
 
 	if (argc < 4) {
-           errmsg=strdup(GETMESSAGE(5,7, 
+           errmsg=strdup(GETMESSAGE(
                     "Usage: XtCreateApplicationShell variable name class [arg:val ...]"));
  	   printerr(str_nill, errmsg, NULL);
            free(errmsg);
@@ -869,8 +869,8 @@ do_XtPopup(
 
    if (argc != 3) 
    {
-      errmsg=strdup(GETMESSAGE(5,8, 
-              "Usage: XtPopup widget GrabNone|GrabNonexclusive|GrabExclusive"));
+      errmsg=strdup(GETMESSAGE(
+	     "Usage: XtPopup widget GrabNone|GrabNonexclusive|GrabExclusive"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -889,7 +889,7 @@ do_XtPopup(
          grab = XtGrabExclusive;
       else 
       {
-         errmsg=strdup(GETMESSAGE(5,9, 
+         errmsg=strdup(GETMESSAGE(
                    "The grab type '%s' is not recognized; using 'GrabNone'"));
          printerrf(argv[0], errmsg, argv[2], NULL, NULL, NULL, NULL, NULL,
                    NULL, NULL);
@@ -990,7 +990,7 @@ do_XtIsShell(
 
    if (argc != 2) 
    {
-      errmsg = strdup(GETMESSAGE(5,10, "Usage: XtIsShell widget"));
+      errmsg = strdup(GETMESSAGE("Usage: XtIsShell widget"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -1048,7 +1048,7 @@ do_XtMapWidget(
         char * errmsg;
 
 	if (argc < 2) {
-		errmsg = strdup(GETMESSAGE(5,11, "Usage: XtMapWidget widget"));
+		errmsg = strdup(GETMESSAGE("Usage: XtMapWidget widget"));
 		printerr(str_nill, errmsg, NULL);
                 free(errmsg);
 		return(1);
@@ -1072,7 +1072,7 @@ do_XtUnmapWidget(
         char * errmsg;
 
 	if (argc < 2) {
-	   errmsg = strdup(GETMESSAGE(5,12, "Usage: XtUnmapWidget widget"));
+	   errmsg = strdup(GETMESSAGE("Usage: XtUnmapWidget widget"));
 	   printerr(str_nill, errmsg, NULL);
            free(errmsg);
 	   return(1);
@@ -1143,7 +1143,7 @@ GetDisplayHandle(
 
    if (argc != 3)
    {
-      errmsg = strdup(GETMESSAGE(5,13, "Usage: %s variable widget"));
+      errmsg = strdup(GETMESSAGE("Usage: %s variable widget"));
       printerrf(str_nill, errmsg, arg0, NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
       free(errmsg);
@@ -1174,7 +1174,7 @@ do_XtNameToWidget(
 
    if (argc != 4) 
    {
-      errmsg = strdup(GETMESSAGE(5,82, 
+      errmsg = strdup(GETMESSAGE(
             "Usage: XtNameToWidget variable referenceWidget names"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -1229,7 +1229,7 @@ do_XtScreen(
 
    if (argc != 3)
    {
-      errmsg = strdup(GETMESSAGE(5,14, "Usage: XtScreen variable widget"));
+      errmsg = strdup(GETMESSAGE("Usage: XtScreen variable widget"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -1258,7 +1258,7 @@ do_XtWindow(
 
    if (argc != 3)
    {
-      errmsg = strdup(GETMESSAGE(5,15, "Usage: XtWindow variable widget"));
+      errmsg = strdup(GETMESSAGE("Usage: XtWindow variable widget"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -1280,7 +1280,7 @@ XtCallCallbacks_usage(
 {
    char * errmsg;
 
-   errmsg = strdup(GETMESSAGE(5,16, 
+   errmsg = strdup(GETMESSAGE(
                    "Usage: XtCallCallbacks widget callbackName"));
    printerr(str_nill, errmsg, NULL);
    free(errmsg);
@@ -1323,7 +1323,7 @@ do_XtHasCallbacks(
 
    if (argc != 4)
    {
-      errmsg = strdup(GETMESSAGE(5,17, 
+      errmsg = strdup(GETMESSAGE(
                    "Usage: XtHasCallbacks variable widget callbackName"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -1367,7 +1367,7 @@ do_XtAddCallback(
 
    if (argc != 4)
    {
-      errmsg = strdup(GETMESSAGE(5,18, 
+      errmsg = strdup(GETMESSAGE(
                   "Usage: XtAddCallback widget callbackName ksh-command"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -1437,7 +1437,7 @@ do_XtRemoveCallback(
 
    if (argc != 4)
    {
-      errmsg = strdup(GETMESSAGE(5,19, 
+      errmsg = strdup(GETMESSAGE(
                   "Usage: XtRemoveCallback widget callbackName ksh-command"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -1492,7 +1492,7 @@ RemoveOneCallback(
       handle = (DtWsmCBContext)strtoul(handleStr, &p, 0);
       if (p == handleStr)
       {
-         errmsg = strdup(GETMESSAGE(5,20, 
+         errmsg = strdup(GETMESSAGE(
                       "The following is an invalid callback handle: %s"));
          printerrf(cmd, errmsg, handleStr, NULL, NULL, NULL, NULL, NULL,
                    NULL, NULL);
@@ -1531,7 +1531,7 @@ RemoveOneCallback(
       return(0);
    }
 
-   errmsg = strdup(GETMESSAGE(5,21, 
+   errmsg = strdup(GETMESSAGE(
             "The specified callback is not registered"));
    printerr(cmd, errmsg, NULL);
    free(errmsg);
@@ -1553,7 +1553,7 @@ do_XtAddEventHandler(
 
    if (argc != 5)
    {
-      errmsg=strdup(GETMESSAGE(5,22, 
+      errmsg=strdup(GETMESSAGE(
                "Usage: XtAddEventHandler widget mask nonMaskable ksh-command"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -1609,7 +1609,7 @@ do_XtRemoveEventHandler(
 
    if (argc != 5)
    {
-      errmsg =strdup(GETMESSAGE(5,23, 
+      errmsg =strdup(GETMESSAGE(
             "Usage: XtRemoveEventHandler widget mask nonMaskable ksh-command"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -1669,7 +1669,7 @@ do_XtRemoveEventHandler(
       return(0);
    }
 
-   errmsg = strdup(GETMESSAGE(5,24, 
+   errmsg = strdup(GETMESSAGE(
                    "The specified event handler is not registered"));
    printerr(arg0, errmsg, NULL);
    free(errmsg);
@@ -1691,7 +1691,7 @@ do_XtGetValues(
         char * errmsg;
 
 	if (argc < 3) {
-                errmsg = strdup(GETMESSAGE(5,25, 
+                errmsg = strdup(GETMESSAGE(
                         "Usage: XtGetValues widget resource:variable ..."));
 		printerr(str_nill, errmsg, NULL);
                 free(errmsg);
@@ -1711,7 +1711,7 @@ do_XtGetValues(
 
 	for (i = 0, n = 0; i < argc; i++) {
 		if ((p = strchr(argv[i], ':')) == NULL) {
-                        errmsg=strdup(GETMESSAGE(5,26, 
+                        errmsg=strdup(GETMESSAGE(
                                 "The following resource parameter is incorrectly formed: %s"));
 	 	   	printerrf(arg0, errmsg, argv[i],
                                   NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -1763,7 +1763,7 @@ do_XtSetValues(
         char ** pargv;
 
 	if (argc < 3) {
-		errmsg = strdup(GETMESSAGE(5,27, 
+		errmsg = strdup(GETMESSAGE(
                             "Usage: XtSetValues widget arg:val ..."));
 		printerr(str_nill, errmsg, NULL);
                 free(errmsg);
@@ -1886,7 +1886,7 @@ do_XtAddWorkProc(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,28, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: XtAddWorkProc variable command"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -1913,7 +1913,7 @@ do_XtRemoveWorkProc(
 
    if (argc != 2) 
    {
-      errmsg = strdup(GETMESSAGE(5,29, "Usage: XtRemoveWorkProc workProcId"));
+      errmsg = strdup(GETMESSAGE("Usage: XtRemoveWorkProc workProcId"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -1922,7 +1922,7 @@ do_XtRemoveWorkProc(
    id = strtoul(argv[1], &p, 16);
    if (p == argv[1]) 
    {
-      errmsg=strdup(GETMESSAGE(5,30, 
+      errmsg=strdup(GETMESSAGE(
                    "The workProcId parameter must be a hex number: %s"));
       printerrf(argv[0], errmsg, argv[1], NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
@@ -1949,7 +1949,7 @@ do_XtAddTimeOut(
 
    if (argc != 4) 
    {
-      errmsg = strdup(GETMESSAGE(5,31, 
+      errmsg = strdup(GETMESSAGE(
                "Usage: XtAddTimeOut variable milliseconds command"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -1959,7 +1959,7 @@ do_XtAddTimeOut(
    variable = argv[1];
    if ((milliseconds = atol(argv[2])) <= 0) 
    {
-      errmsg = strdup(GETMESSAGE(5,32, 
+      errmsg = strdup(GETMESSAGE(
                 "The milliseconds parameter must be greater than zero"));
       printerr(argv[0], errmsg, NULL);
       free(errmsg);
@@ -1987,7 +1987,7 @@ do_XtRemoveTimeOut(
 
    if (argc != 2) 
    {
-      errmsg = strdup(GETMESSAGE(5,33, "Usage: XtRemoveTimeOut intervalId"));
+      errmsg = strdup(GETMESSAGE("Usage: XtRemoveTimeOut intervalId"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -1995,7 +1995,7 @@ do_XtRemoveTimeOut(
 
    id = strtoul(argv[1], &p, 16);
    if (p == argv[1]) {
-      errmsg = strdup(GETMESSAGE(5,34, 
+      errmsg = strdup(GETMESSAGE(
                    "The intervalId parameter must be a hex number: %s"));
       printerrf(argv[0], errmsg, argv[1], NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
@@ -2036,7 +2036,7 @@ do_managelist_func(
         char * errmsg;
 
 	if (argc < 2) {
-		errmsg = strdup(GETMESSAGE(5,35, "Usage: %s widget ..."));
+		errmsg = strdup(GETMESSAGE("Usage: %s widget ..."));
 		printerrf(str_nill, errmsg, argv[0], NULL, NULL,
                           NULL, NULL, NULL, NULL, NULL);
                 free(errmsg);
@@ -2064,7 +2064,7 @@ do_XtIsSubclass(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,120, 
+      errmsg = strdup(GETMESSAGE(
                "Usage: XtIsSubclass widget class"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -2080,7 +2080,7 @@ do_XtIsSubclass(
             return(!XtIsSubclass(w->w, C[i].class));
       }
    }
-   errmsg = strdup(GETMESSAGE(5,121, 
+   errmsg = strdup(GETMESSAGE(
                "%s is not a valid widget class name"));
    printerrf(str_nill, errmsg, argv[2], NULL, NULL,
              NULL, NULL, NULL, NULL, NULL);
@@ -2101,7 +2101,7 @@ do_XtClass(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,122, 
+      errmsg = strdup(GETMESSAGE(
                "Usage: XtClass variable widget"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -2156,7 +2156,7 @@ do_XBell(
 
    if (argc != 3) 
    {
-      errmsg=strdup(GETMESSAGE(5,36, "Usage: XBell display volume"));
+      errmsg=strdup(GETMESSAGE("Usage: XBell display volume"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -2196,7 +2196,7 @@ do_RootWindowCmd(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,37, "Usage: %s variable screen"));
+      errmsg = strdup(GETMESSAGE("Usage: %s variable screen"));
       printerrf(str_nill, errmsg, argv[0], NULL, NULL, NULL, NULL, NULL, 
                 NULL, NULL);
       free(errmsg);
@@ -2206,7 +2206,7 @@ do_RootWindowCmd(
    screen = (Screen *)strtoul(argv[2], &p, 0);
    if (p == argv[2]) 
    {
-      errmsg = strdup(GETMESSAGE(5,38, "The screen parameter is invalid: %s"));
+      errmsg = strdup(GETMESSAGE("The screen parameter is invalid: %s"));
       printerrf(argv[0], errmsg, argv[2], NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
       free(errmsg);
@@ -2255,7 +2255,7 @@ do_XDefineCursor(
 
    if (argc != 4) 
    {
-      errmsg = strdup(GETMESSAGE(5,39, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: XDefineCursor display window cursorId"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -2285,7 +2285,7 @@ do_XDefineCursor(
    cursor = (Cursor)strtoul(argv[3], &p, 0);
    if (p == argv[3]) 
    {
-      errmsg = strdup(GETMESSAGE(5,40, 
+      errmsg = strdup(GETMESSAGE(
                       "The cursorId parameter is invalid: %s"));
       printerrf(argv[0], errmsg, argv[3], NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
@@ -2309,7 +2309,7 @@ do_XUndefineCursor(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,41, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: XUndefineCursor display window"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -2350,7 +2350,7 @@ do_XtRemoveAllCallbacks(
         char * errmsg;
 
 	if (argc != 3) {
-                errmsg = strdup(GETMESSAGE(5,42, 
+                errmsg = strdup(GETMESSAGE(
                           "Usage: XtRemoveAllCallbacks widget callbackName"));
 		printerr(str_nill, errmsg, NULL);
                 free(errmsg);
@@ -2441,7 +2441,7 @@ do_XTextWidth(
 
    if (argc != 4) 
    {
-      errmsg = strdup(GETMESSAGE(5,43, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: XTextWidth variable fontName string"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -2496,7 +2496,7 @@ invokeXDrawFunction(
 
    if (argc < 3)
    {
-      errmsg = strdup(GETMESSAGE(5,44, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: %s display drawable [args ...]"));
       printerrf(str_nill, errmsg, functionName, NULL, NULL, NULL, NULL, NULL, 
                 NULL, NULL);
@@ -2516,7 +2516,7 @@ invokeXDrawFunction(
    drawable = (Window)strtoul(argv[2], &sp, 0);
    if (sp == argv[2]) 
    {
-      errmsg = strdup(GETMESSAGE(5,45, 
+      errmsg = strdup(GETMESSAGE(
                       "The drawable parameter is invalid: %s"));
       printerrf(argv[0], errmsg, argv[2], NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
@@ -2532,7 +2532,7 @@ invokeXDrawFunction(
       destination = (Window)strtoul(argv[3], &sp, 0);
       if (sp == argv[3]) 
       {
-         errmsg = strdup(GETMESSAGE(5,46, 
+         errmsg = strdup(GETMESSAGE(
                          "The destination parameter is invalid: %s"));
          printerrf(argv[0], errmsg, argv[3], NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
@@ -2766,7 +2766,7 @@ invokeXDrawFunction(
             f = GXcopyInverted;
          else 
          {
-            errmsg = strdup(GETMESSAGE(5,47, 
+            errmsg = strdup(GETMESSAGE(
                       "Unrecognized graphics function name: %s"));
             printerrf(functionName, errmsg, argv[4],
                       NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -2795,7 +2795,7 @@ invokeXDrawFunction(
          else if (strcmp(argv[4], "LineOnOffDash") == 0)
             f = LineOnOffDash;
          else {
-            errmsg = strdup(GETMESSAGE(5,48, "Unrecognized line style: %s"));
+            errmsg = strdup(GETMESSAGE("Unrecognized line style: %s"));
             printerrf(functionName, errmsg,
                        argv[4], NULL, NULL, NULL, NULL, NULL, NULL, NULL);
             free(errmsg);
@@ -2811,7 +2811,7 @@ invokeXDrawFunction(
       } 
       else 
       {
-         errmsg = strdup(GETMESSAGE(5,49, "Unrecognized drawing option: %s"));
+         errmsg = strdup(GETMESSAGE("Unrecognized drawing option: %s"));
          printerrf(functionName, errmsg, argv[3], NULL, NULL,
                    NULL, NULL, NULL, NULL, NULL);
          free(errmsg);
@@ -2943,7 +2943,7 @@ invokeXDrawFunction(
 
    if (argc != 0) 
    {
-      errmsg = strdup(GETMESSAGE(5,50, 
+      errmsg = strdup(GETMESSAGE(
                   "There were left over points which were ignored"));
       printerr(functionName, errmsg, NULL);
       free(errmsg);
@@ -3021,7 +3021,7 @@ do_XCopyArea(
 
    if (argc < 10)
    {
-     errmsg = strdup(GETMESSAGE(5,51, 
+     errmsg = strdup(GETMESSAGE(
               "Usage: XCopyArea display source dest sourceX sourceY width height destX destY [args ...]"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -3146,7 +3146,7 @@ ConvertTypeToString(
         if ((to_val.addr) || (strcmp(res->resource_type, XmRXmString) == 0)) {
 		*ret = to_val.addr;
 	} else {
-	    errmsg=strdup(GETMESSAGE(5,52, 
+	    errmsg=strdup(GETMESSAGE(
                    "Unable to convert resource type '%s' to 'String'"));
 	    printerrf(arg0, errmsg,
                       res->resource_type, NULL, NULL, NULL, NULL, NULL,
@@ -3278,7 +3278,7 @@ ConvertStringToType(
 		    *freeit = TRUE;
 		}
 	} else {
-	    errmsg=strdup(GETMESSAGE(5,53, 
+	    errmsg=strdup(GETMESSAGE(
                    "Unable to convert resource type 'String' to type '%s'"));
 	    printerrf(arg0, errmsg,
                       res->resource_type, NULL, NULL, NULL, NULL, NULL,
@@ -3295,7 +3295,7 @@ XtAddInputUsage(
 {
         char * errmsg;
 
-	errmsg=strdup(GETMESSAGE(5,54, 
+	errmsg=strdup(GETMESSAGE(
           "Usage: XtAddInput variable [-r] fileDescriptor kshCommand"));
 	printerr(str_nill, errmsg, NULL);
         free(errmsg);
@@ -3406,7 +3406,7 @@ do_XtRemoveInput(
 
    if (argc != 2) 
    {
-      errmsg = strdup(GETMESSAGE(5,56, "Usage: XtRemoveInput inputId"));
+      errmsg = strdup(GETMESSAGE("Usage: XtRemoveInput inputId"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -3415,7 +3415,7 @@ do_XtRemoveInput(
    id = strtoul(argv[1], &p, 16);
    if (p == argv[1]) 
    {
-      errmsg = strdup(GETMESSAGE(5,57, 
+      errmsg = strdup(GETMESSAGE(
                         "The inputId parameter must be a hex number: %s"));
       printerrf(argv[0], errmsg, argv[1], NULL, NULL, NULL, NULL,
                 NULL, NULL, NULL);
@@ -3954,7 +3954,7 @@ do_XFlush(
 
    if (argc != 2) 
    {
-      errmsg = strdup(GETMESSAGE(5,59, "Usage: XFlush display"));
+      errmsg = strdup(GETMESSAGE("Usage: XFlush display"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -3987,7 +3987,7 @@ do_XSync(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,60, "Usage: XSync display discard"));
+      errmsg = strdup(GETMESSAGE("Usage: XSync display discard"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -4031,7 +4031,7 @@ do_XRaiseWindow(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,61, "Usage: XRaiseWindow display window"));
+      errmsg = strdup(GETMESSAGE("Usage: XRaiseWindow display window"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -4066,7 +4066,7 @@ XtSetSensitive_usage(
 {
    char * errmsg;
 
-   errmsg = strdup(GETMESSAGE(5,62, "Usage: %s widget [True|False]"));
+   errmsg = strdup(GETMESSAGE("Usage: %s widget [True|False]"));
    printerrf(str_nill, errmsg, arg0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
    free(errmsg);
    return(1);
@@ -4114,7 +4114,7 @@ RegisterTranslations(
 
    if (argc != 3)
    {
-      errmsg = strdup(GETMESSAGE(5,63, "Usage: %s widget translations"));
+      errmsg = strdup(GETMESSAGE("Usage: %s widget translations"));
       printerrf(str_nill, errmsg, argv[0], NULL, NULL,
                NULL, NULL, NULL, NULL, NULL);
       free(errmsg);
@@ -4166,7 +4166,7 @@ do_XtUninstallTranslations(
 
    if (argc != 2)
    {
-      errmsg = strdup(GETMESSAGE(5,64, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: XtUninstallTranslations widget"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -4194,7 +4194,7 @@ do_XtParent(
    char * errmsg;
    
    if (argc != 3 ) {
-	errmsg = strdup(GETMESSAGE(5,65, "Usage: XtParent variable widget"));
+	errmsg = strdup(GETMESSAGE("Usage: XtParent variable widget"));
 	printerr(str_nill, errmsg, NULL);
         free(errmsg);
 	return(1);
@@ -4239,7 +4239,7 @@ do_XtLastTimestampProcessed(
    char * errmsg;
    
    if (argc != 3 ) {
-	errmsg = strdup(GETMESSAGE(5,66, 
+	errmsg = strdup(GETMESSAGE(
                  "Usage: XtLastTimestampProcessed variable display"));
 	printerr(str_nill, errmsg, NULL);
         free(errmsg);
@@ -4496,7 +4496,7 @@ do_DtSessionRestorePath(
 
    if (argc != 4) 
    {
-      errmsg = strdup(GETMESSAGE(5,67, 
+      errmsg = strdup(GETMESSAGE(
                "Usage: DtSessionRestorePath widget pathVariable saveFile"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -4529,7 +4529,7 @@ do_DtSessionSavePath(
 
    if (argc != 4) 
    {
-      errmsg = strdup(GETMESSAGE(5,68, 
+      errmsg = strdup(GETMESSAGE(
                "Usage: DtSessionSavePath widget pathVariable fileVariable"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -4572,7 +4572,7 @@ do_DtShellIsIconified(
 
    if (argc != 2) 
    {
-      errmsg = strdup(GETMESSAGE(5,69, "Usage: DtShellIsIconified widget"));
+      errmsg = strdup(GETMESSAGE("Usage: DtShellIsIconified widget"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -4604,7 +4604,7 @@ do_DtSetStartupCommand(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,70, 
+      errmsg = strdup(GETMESSAGE(
                        "Usage: DtSetStartupCommand widget command"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -4640,7 +4640,7 @@ do_DtSetIconifyHint(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,71, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: DtSetIconifyHint widget boolean"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -4778,7 +4778,7 @@ do_DtWsmGetCurrentWorkspace(
    rootWindow = (Window)strtoul(argv[2], &p, 0);
    if (p == argv[2]) 
    {
-      errmsg = strdup(GETMESSAGE(5,73, 
+      errmsg = strdup(GETMESSAGE(
                       "The rootWindow parameter is invalid: %s"));
       printerrf(argv[0], errmsg, argv[2], NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
@@ -4807,7 +4807,7 @@ do_DtWsmSetCurrentWorkspace(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,74, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: DtWsmSetCurrentWorkspace widget atom"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -4821,7 +4821,7 @@ do_DtWsmSetCurrentWorkspace(
    atom = (Atom)strtoul(argv[2], &p, 0);
    if (p == argv[2])
    {
-      errmsg = strdup(GETMESSAGE(5,75, "The workspace atom is invalid: %s"));
+      errmsg = strdup(GETMESSAGE("The workspace atom is invalid: %s"));
       printerrf(argv[0], errmsg, argv[2], NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
       free(errmsg);
@@ -4962,7 +4962,7 @@ do_DtWsmSetWorkspacesOccupied(
 
    if (argc != 4) 
    {
-      errmsg = strdup(GETMESSAGE(5,78, 
+      errmsg = strdup(GETMESSAGE(
              "Usage: DtWsmSetWorkspacesOccupied display window workspaceList"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5098,7 +5098,7 @@ do__DtGetHourGlassCursor(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,79, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: _DtGetHourGlassCursor variable display"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5186,7 +5186,7 @@ do_DtWsmAddCurrentWorkspaceCallback(
 
    if (argc != 4)
    {
-      errmsg = strdup(GETMESSAGE(5,80, 
+      errmsg = strdup(GETMESSAGE(
         "Usage: DtWsmAddCurrentWorkspaceCallback variable widget ksh-command"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5227,7 +5227,7 @@ do_DtWsmRemoveWorkspaceCallback(
 
    if (argc != 2)
    {
-      errmsg = strdup(GETMESSAGE(5,81, 
+      errmsg = strdup(GETMESSAGE(
        "Usage: DtWsmRemoveWorkspaceCallback handle"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5252,7 +5252,7 @@ do_DtWsmRemoveWorkspaceCallback(
 
    if(cdata == (dtksh_client_data_t *)NULL)
    {
-      errmsg = strdup(GETMESSAGE(5,20, 
+      errmsg = strdup(GETMESSAGE(
                    "The following is an invalid callback handle: %s"));
       printerrf(argv[0], errmsg, argv[1], NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
@@ -5278,7 +5278,7 @@ do_DtDbLoad(
 
    if (argc != 1) 
    {
-      errmsg = strdup(GETMESSAGE(5,83, "Usage: DtDbLoad"));
+      errmsg = strdup(GETMESSAGE("Usage: DtDbLoad"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -5321,7 +5321,7 @@ do_DtDbReloadNotify(
 
    if (argc != 2) 
    {
-      errmsg = strdup(GETMESSAGE(5,84, "Usage: DtDbReloadNotify ksh-command"));
+      errmsg = strdup(GETMESSAGE("Usage: DtDbReloadNotify ksh-command"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -5352,7 +5352,7 @@ do_DtActionExists(
 
    if (argc != 2) 
    {
-      errmsg = strdup(GETMESSAGE(5,85, "Usage: DtActionExists actionName"));
+      errmsg = strdup(GETMESSAGE("Usage: DtActionExists actionName"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -5379,7 +5379,7 @@ do_DtActionLabel(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,86, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: DtActionLabel variable actionName"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5412,7 +5412,7 @@ do_DtActionDescription(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,87, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: DtActionDescription variable actionName"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5435,7 +5435,7 @@ _DtActionInvokeUsage( void )
 {
    char * errmsg;
 
-   errmsg = strdup(GETMESSAGE(5,88, 
+   errmsg = strdup(GETMESSAGE(
         "Usage: DtActionInvoke widget actionName termParms execHost contextDir useIndicator ksh-command [\"FILE\" fileName] ..."));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5548,7 +5548,7 @@ do_DtDtsLoadDataTypes(
 
    if (argc != 1) 
    {
-      errmsg = strdup(GETMESSAGE(5,89, "Usage: DtDtsLoadDataTypes"));
+      errmsg = strdup(GETMESSAGE("Usage: DtDtsLoadDataTypes"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -5569,7 +5569,7 @@ do_DtDtsFileToDataType(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,90, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: DtDtsFileToDataType variable fileName"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5597,7 +5597,7 @@ do_DtDtsFileToAttributeValue(
 
    if (argc != 4) 
    {
-      errmsg = strdup(GETMESSAGE(5,91,
+      errmsg = strdup(GETMESSAGE(
               "Usage: DtDtsFileToAttributeValue variable fileName attrName"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5627,7 +5627,7 @@ do_DtDtsFileToAttributeList(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,92,
+      errmsg = strdup(GETMESSAGE(
               "Usage: DtDtsFileToAttributeList variable fileName"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5669,7 +5669,7 @@ do_DtDtsDataTypeToAttributeValue(
 
    if ((argc != 4) && (argc != 5))
    {
-      errmsg = strdup(GETMESSAGE(5,93,
+      errmsg = strdup(GETMESSAGE(
    "Usage: DtDtsDataTypeToAttributeValue variable dataType attrName optName"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5705,7 +5705,7 @@ do_DtDtsDataTypeToAttributeList(
 
    if ((argc != 3) && (argc != 4))
    {
-      errmsg = strdup(GETMESSAGE(5,94,
+      errmsg = strdup(GETMESSAGE(
         "Usage: DtDtsDataTypeToAttributeList variable dataType optName"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5753,7 +5753,7 @@ do_DtDtsFindAttribute(
 
    if (argc != 4)
    {
-      errmsg = strdup(GETMESSAGE(5,95,
+      errmsg = strdup(GETMESSAGE(
                    "Usage: DtDtsFindAttribute variable name value"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5796,7 +5796,7 @@ do_DtDtsDataTypeNames(
 
    if (argc != 2)
    {
-      errmsg = strdup(GETMESSAGE(5,96, "Usage: DtDtsDataTypeNames variable"));
+      errmsg = strdup(GETMESSAGE("Usage: DtDtsDataTypeNames variable"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
       return(1);
@@ -5837,7 +5837,7 @@ do_DtDtsSetDataType(
 
    if (argc != 5)
    {
-      errmsg = strdup(GETMESSAGE(5,97, 
+      errmsg = strdup(GETMESSAGE(
        "Usage: DtDtsSetDataType variable fileName dataType override"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5872,7 +5872,7 @@ do_DtDtsDataTypeIsAction(
 
    if (argc != 2) 
    {
-      errmsg = strdup(GETMESSAGE(5,98, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: DtDtsDataTypeIsAction dataType"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5909,7 +5909,7 @@ do_ttdt_open(
 
    if (argc != 8) 
    {
-      errmsg = strdup(GETMESSAGE(5,99, 
+      errmsg = strdup(GETMESSAGE(
          "Usage: ttdt_open variable status variable2 toolname vendor version sendStarted"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -5973,7 +5973,7 @@ do_ttdt_close(
 
    if (argc != 5) 
    {
-      errmsg = strdup(GETMESSAGE(5,103, 
+      errmsg = strdup(GETMESSAGE(
          "Usage: ttdt_close status procId newProcId sendStopped"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -6032,7 +6032,7 @@ do_tttk_Xt_input_handler(
 
    if (argc != 4) 
    {
-      errmsg = strdup(GETMESSAGE(5,100, 
+      errmsg = strdup(GETMESSAGE(
          "Usage: tttk_Xt_input_handler procId source id"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -6042,7 +6042,7 @@ do_tttk_Xt_input_handler(
    source = strtoul(argv[2], &p, 0);
    if (p == argv[2]) 
    {
-      errmsg=strdup(GETMESSAGE(5,101, 
+      errmsg=strdup(GETMESSAGE(
                    "The source parameter must be an integer: %s"));
       printerrf(argv[0], errmsg, argv[2], NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
@@ -6053,7 +6053,7 @@ do_tttk_Xt_input_handler(
    fid = strtoul(argv[3], &p, 0);
    if (p == argv[3]) 
    {
-      errmsg = strdup(GETMESSAGE(5,102, 
+      errmsg = strdup(GETMESSAGE(
              "The id parameter must be a hex number: %s")); 
       printerrf(argv[0], errmsg, argv[3], NULL, NULL, NULL, NULL, NULL, 
                 NULL, NULL);
@@ -6084,7 +6084,7 @@ do_ttdt_session_join(
 
    if (argc != 6) 
    {
-      errmsg = strdup(GETMESSAGE(5,104, 
+      errmsg = strdup(GETMESSAGE(
        "Usage: ttdt_session_join variable status sessId shellWidgetHandle join"
         ));
       printerr(str_nill, errmsg, NULL);
@@ -6157,7 +6157,7 @@ do_ttdt_session_quit(
 
    if (argc != 5) 
    {
-      errmsg = strdup(GETMESSAGE(5,105, 
+      errmsg = strdup(GETMESSAGE(
           "Usage: ttdt_session_quit status sessId sessPatterns quit"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -6185,7 +6185,7 @@ do_ttdt_session_quit(
       patterns = (Tt_pattern *)strtoul(argv[3], &p, 0);
       if (p == argv[3]) 
       {
-         errmsg=strdup(GETMESSAGE(5,106, 
+         errmsg=strdup(GETMESSAGE(
                    "The sessPatterns parameter is invalid: %s"));
          printerrf(argv[0], errmsg, argv[3], NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL);
@@ -6225,7 +6225,7 @@ do_ttdt_file_event(
 
    if (argc != 5) 
    {
-      errmsg = strdup(GETMESSAGE(5,107, 
+      errmsg = strdup(GETMESSAGE(
           "Usage: ttdt_file_event status op patterns send"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -6373,7 +6373,7 @@ do_ttdt_file_join(
 
    if (argc != 7) 
    {
-      errmsg = strdup(GETMESSAGE(5,115,
+      errmsg = strdup(GETMESSAGE(
       "Usage: ttdt_file_join variable status pathName scope join ksh-command"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -6466,7 +6466,7 @@ do_ttdt_file_quit(
 
    if (argc != 4) 
    {
-      errmsg = strdup(GETMESSAGE(5,108, 
+      errmsg = strdup(GETMESSAGE(
           "Usage: ttdt_file_quit status patterns quit"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -6536,7 +6536,7 @@ do_ttdt_Get_Modified(
 
    if (argc != 4) 
    {
-      errmsg = strdup(GETMESSAGE(5,109, 
+      errmsg = strdup(GETMESSAGE(
           "Usage: ttdt_Get_Modified pathName scope timeout"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -6590,7 +6590,7 @@ ttdt_SaveOrRevert(
 
    if (argc != 5) 
    {
-      errmsg = strdup(GETMESSAGE(5,110, 
+      errmsg = strdup(GETMESSAGE(
                       "Usage: %s status pathName scope timeout"));
       printerrf(str_nill, errmsg, argv[0], NULL, NULL, NULL, NULL, NULL,
              NULL, NULL);
@@ -6664,7 +6664,7 @@ do_tt_error_pointer(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,112,
+      errmsg = strdup(GETMESSAGE(
           "Usage: tt_error_pointer variable ttStatus"));
       printerr(str_nill, errmsg, NULL);
       free(errmsg);
@@ -6702,7 +6702,7 @@ message_DestroyOrReply(
 
    if (argc != 3) 
    {
-      errmsg = strdup(GETMESSAGE(5,113, "Usage: %s status msg"));
+      errmsg = strdup(GETMESSAGE("Usage: %s status msg"));
       printerrf(str_nill, errmsg, argv[0], NULL, NULL, NULL, NULL, NULL,
              NULL, NULL);
       free(errmsg);
@@ -6769,7 +6769,7 @@ message_FailOrReject(
 
    if (argc != 6) 
    {
-      errmsg = strdup(GETMESSAGE(5,114,
+      errmsg = strdup(GETMESSAGE(
                  "Usage: %s status msg msgStatus msgStatusString destroy"));
       printerrf(str_nill, errmsg, argv[0], NULL, NULL, NULL, NULL, NULL,
              NULL, NULL);
@@ -6899,7 +6899,7 @@ do_tt_file_netfile(
    char * usageMsg;
    int results;
 
-   usageMsg = strdup(GETMESSAGE(5,116,
+   usageMsg = strdup(GETMESSAGE(
              "Usage: tt_file_netfile variable status filename"));
    results = tt_netfile_handler(4, tt_file_netfile, usageMsg, argc, argv);
    XtFree(usageMsg);
@@ -6915,7 +6915,7 @@ do_tt_netfile_file(
    char * usageMsg;
    int results;
 
-   usageMsg = strdup(GETMESSAGE(5,117,
+   usageMsg = strdup(GETMESSAGE(
              "Usage: tt_netfile_file variable status netfilename"));
    results = tt_netfile_handler(4, tt_netfile_file, usageMsg, argc, argv);
    XtFree(usageMsg);
@@ -6931,7 +6931,7 @@ do_tt_host_file_netfile(
    char * usageMsg;
    int results;
 
-   usageMsg = strdup(GETMESSAGE(5,118,
+   usageMsg = strdup(GETMESSAGE(
              "Usage: tt_host_file_netfile variable status host filename"));
    results = tt_netfile_handler(5, tt_host_file_netfile, usageMsg, argc, argv);
    XtFree(usageMsg);
@@ -6947,7 +6947,7 @@ do_tt_host_netfile_file(
    char * usageMsg;
    int results;
 
-   usageMsg = strdup(GETMESSAGE(5,119,
+   usageMsg = strdup(GETMESSAGE(
              "Usage: tt_host_netfile_file variable status host netfilename"));
    results = tt_netfile_handler(5, tt_host_netfile_file, usageMsg, argc, argv);
    XtFree(usageMsg);
