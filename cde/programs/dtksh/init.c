@@ -231,9 +231,9 @@ typedef struct _init_
 static Init_t		*ip;
 static int		lctype;
 static int		nbltins;
-static void		env_init(Shell_t*,int);
+static char		*env_init(Shell_t*);
+static void		env_import_attributes(Shell_t*,char*);
 static Init_t		*nv_init(Shell_t*);
-static Dt_t		*inittree(Shell_t*,const struct shtable2*);
 static int		shlvl;
 
 #ifdef _WINIX
@@ -260,7 +260,7 @@ static void put_ed(register Namval_t* np,const char *val,int flags,Namfun_t *fp)
 {
 	register const char *cp, *name=nv_name(np);
 	register int	newopt=0;
-	Shell_t *shp = nv_shell(np);
+	Shell_t *shp = sh_getinterp();
 	if(*name=='E' && nv_getval(sh_scoped(shp,VISINOD)))
 		goto done;
 	if(!(cp=val) && (*name=='E' || !(cp=nv_getval(sh_scoped(shp,EDITNOD)))))
@@ -287,7 +287,7 @@ done:
 /* Trap for HISTFILE and HISTSIZE variables */
 static void put_history(register Namval_t* np,const char *val,int flags,Namfun_t *fp)
 {
-	Shell_t *shp = nv_shell(np);
+	Shell_t *shp = sh_getinterp();
 	void 	*histopen = shp->gd->hist_ptr;
 	char	*cp;
 	if(val && histopen)
@@ -311,7 +311,7 @@ static void put_history(register Namval_t* np,const char *val,int flags,Namfun_t
 /* Trap for OPTINDEX */
 static void put_optindex(Namval_t* np,const char *val,int flags,Namfun_t *fp)
 {
-	Shell_t *shp = nv_shell(np);
+	Shell_t *shp = sh_getinterp();
 	shp->st.opterror = shp->st.optchar = 0;
 	nv_putv(np, val, flags, fp);
 	if(!val)
@@ -336,7 +336,7 @@ static Namfun_t *clone_optindex(Namval_t* np, Namval_t *mp, int flags, Namfun_t 
 /* Trap for restricted variables FPATH, PATH, SHELL, ENV */
 static void put_restricted(register Namval_t* np,const char *val,int flags,Namfun_t *fp)
 {
-	Shell_t *shp = nv_shell(np);
+	Shell_t *shp = sh_getinterp();
 	int	path_scoped = 0, fpath_scoped=0;
 	Pathcomp_t *pp;
 	char *name = nv_name(np);
@@ -378,7 +378,7 @@ static void put_restricted(register Namval_t* np,const char *val,int flags,Namfu
 static void put_cdpath(register Namval_t* np,const char *val,int flags,Namfun_t *fp)
 {
 	Pathcomp_t *pp;
-	Shell_t *shp = nv_shell(np);
+	Shell_t *shp = sh_getinterp();
 	nv_putv(np, val, flags, fp);
 	if(!shp->cdpathlist)
 		return;
@@ -389,6 +389,10 @@ static void put_cdpath(register Namval_t* np,const char *val,int flags,Namfun_t 
 }
 
 #ifdef _hdr_locale
+    /*
+     * This function needs to be modified to handle international
+     * error message translations
+     */
     static char* msg_translate(const char* catalog, const char* message)
     {
 	NOT_USED(catalog);
@@ -398,7 +402,7 @@ static void put_cdpath(register Namval_t* np,const char *val,int flags,Namfun_t 
     /* Trap for LC_ALL, LC_CTYPE, LC_MESSAGES, LC_COLLATE and LANG */
     static void put_lang(Namval_t* np,const char *val,int flags,Namfun_t *fp)
     {
-	Shell_t *shp = nv_shell(np);
+	Shell_t *shp = sh_getinterp();
 	int type;
 	char *name = nv_name(np);
 	if(name==(LCALLNOD)->nvname)
@@ -523,7 +527,7 @@ static char* get_ifs(register Namval_t* np, Namfun_t *fp)
 	register struct ifs *ip = (struct ifs*)fp;
 	register char *cp, *value;
 	register int c,n;
-	register Shell_t *shp = nv_shell(np);
+	register Shell_t *shp = sh_getinterp();
 	value = nv_getv(np,fp);
 	if(np!=ip->ifsnp)
 	{
@@ -531,21 +535,14 @@ static char* get_ifs(register Namval_t* np, Namfun_t *fp)
 		memset(shp->ifstable,0,(1<<CHAR_BIT));
 		if(cp=value)
 		{
-#if SHOPT_MULTIBYTE
-			while(n=mbsize(cp),c= *(unsigned char*)cp)
-#else
-			while(c= *(unsigned char*)cp++)
-#endif /* SHOPT_MULTIBYTE */
+			while(n = mbsize(cp), c = *(unsigned char*)cp++)
 			{
-#if SHOPT_MULTIBYTE
-				cp++;
 				if(n>1)
 				{
 					cp += (n-1);
 					shp->ifstable[c] = S_MBYTE;
 					continue;
 				}
-#endif /* SHOPT_MULTIBYTE */
 				n = S_DELIM;
 				if(c== *cp)
 					cp++;
@@ -561,6 +558,7 @@ static char* get_ifs(register Namval_t* np, Namfun_t *fp)
 			shp->ifstable[' '] = shp->ifstable['\t'] = S_SPACE;
 			shp->ifstable['\n'] = S_NL;
 		}
+		shp->ifstable[0] = S_EOF;
 	}
 	return(value);
 }
@@ -602,7 +600,7 @@ static void put_seconds(register Namval_t* np,const char *val,int flags,Namfun_t
 
 static char* get_seconds(register Namval_t* np, Namfun_t *fp)
 {
-	Shell_t *shp = nv_shell(np);
+	Shell_t *shp = sh_getinterp();
 	register int places = nv_size(np);
 	struct tms tp;
 	double d, offset = (np->nvalue.dp?*np->nvalue.dp:0);
@@ -686,7 +684,7 @@ static Sfdouble_t nget_lineno(Namval_t* np, Namfun_t *fp)
 static void put_lineno(Namval_t* np,const char *val,int flags,Namfun_t *fp)
 {
 	register long n;
-	Shell_t *shp = nv_shell(np);
+	Shell_t *shp = sh_getinterp();
 	if(!val)
 	{
 		fp = nv_stack(np, NIL(Namfun_t*));
@@ -710,7 +708,7 @@ static char* get_lineno(register Namval_t* np, Namfun_t *fp)
 
 static char* get_lastarg(Namval_t* np, Namfun_t *fp)
 {
-	Shell_t	*shp = nv_shell(np);
+	Shell_t	*shp = sh_getinterp();
 	char	*cp;
 	int	pid;
         if(sh_isstate(SH_INIT) && (cp=shp->lastarg) && *cp=='*' && (pid=strtol(cp+1,&cp,10)) && *cp=='*')
@@ -720,7 +718,7 @@ static char* get_lastarg(Namval_t* np, Namfun_t *fp)
 
 static void put_lastarg(Namval_t* np,const char *val,int flags,Namfun_t *fp)
 {
-	Shell_t *shp = nv_shell(np);
+	Shell_t *shp = sh_getinterp();
 	if(flags&NV_INTEGER)
 	{
 		sfprintf(shp->strbuf,"%.*g",12,*((double*)val));
@@ -963,7 +961,7 @@ static void math_init(Shell_t *shp)
 
 static Namval_t *create_math(Namval_t *np,const char *name,int flag,Namfun_t *fp)
 {
-	Shell_t		*shp = nv_shell(np);
+	Shell_t		*shp = sh_getinterp();
 	if(!name)
 		return(SH_MATHNOD);
 	if(name[0]!='a' || name[1]!='r' || name[2]!='g' || name[4] || !isdigit(name[3]) || (name[3]=='0' || (name[3]-'0')>MAX_MATH_ARGS))
@@ -974,7 +972,7 @@ static Namval_t *create_math(Namval_t *np,const char *name,int flag,Namfun_t *fp
 
 static char* get_math(register Namval_t* np, Namfun_t *fp)
 {
-	Shell_t		*shp = nv_shell(np);
+	Shell_t		*shp = sh_getinterp();
 	Namval_t	*mp,fake;
 	char		*val;
 	int		first=0;
@@ -995,7 +993,7 @@ static char* get_math(register Namval_t* np, Namfun_t *fp)
 
 static char *setdisc_any(Namval_t *np, const char *event, Namval_t *action, Namfun_t *fp)
 {
-	Shell_t		*shp=nv_shell(np);
+	Shell_t		*shp=sh_getinterp();
 	Namval_t	*mp,fake;
 	char		*name;
 	int		getname=0, off=staktell();
@@ -1208,6 +1206,7 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 	Shell_t	*shp;
 	register int n;
 	int type;
+	char *save_envmarker;
 	static char *login_files[3];
 	memfatal();
 	n = strlen(e_version);
@@ -1322,8 +1321,8 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 		if(type&SH_TYPE_POSIX)
 			sh_onoption(SH_POSIX);
 	}
-	/* read the environment; don't import attributes yet */
-	env_init(shp,0);
+	/* read the environment; don't import attributes yet, but save pointer to them */
+	save_envmarker = env_init(shp);
 	if(!ENVNOD->nvalue.cp)
 	{
 		sfprintf(shp->strbuf,"%s/.kshrc",nv_getval(HOME));
@@ -1426,7 +1425,7 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 	}
 	/* import variable attributes from environment */
 	if(!sh_isoption(SH_POSIX))
-		env_init(shp,1);
+		env_import_attributes(shp,save_envmarker);
 #if SHOPT_PFSH
 	if (sh_isoption(SH_PFSH))
 	{
@@ -1504,11 +1503,11 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 		(*userinit)(shp, 0);
 #ifdef BUILD_DTKSH
 	int * lockedFds = LockKshFileDescriptors();
-        (void) XtSetLanguageProc((XtAppContext)NULL, (XtLanguageProc)NULL,
+	(void) XtSetLanguageProc((XtAppContext)NULL, (XtLanguageProc)NULL,
                                 (XtPointer)NULL);
 	DtNlInitialize();
-        _DtEnvControl(DT_ENV_SET);
-        UnlockKshFileDescriptors(lockedFds);
+	_DtEnvControl(DT_ENV_SET);
+	UnlockKshFileDescriptors(lockedFds);
 #endif
 	return(shp);
 }
@@ -1611,6 +1610,9 @@ int sh_reinit(char *argv[])
 	shp->inpipe = shp->outpipe = 0;
 	job_clear();
 	job.in_critical = 0;
+	/* update ${.sh.pid}, $$, $PPID */
+	shgd->current_pid = shgd->pid = getpid();
+	shgd->ppid = getppid();
 	return(1);
 }
 
@@ -1745,7 +1747,7 @@ static Init_t *nv_init(Shell_t *shp)
 	shp->nvfun.last = (char*)shp;
 	shp->nvfun.nofree = 1;
 	ip->sh = shp;
-	shp->var_base = shp->var_tree = inittree(shp,shtab_variables);
+	shp->var_base = shp->var_tree = sh_inittree(shp,shtab_variables);
 	SHLVL->nvalue.ip = &shlvl;
 	ip->IFS_init.hdr.disc = &IFS_disc;
 	ip->PATH_init.disc = &RESTRICTED_disc;
@@ -1836,7 +1838,7 @@ static Init_t *nv_init(Shell_t *shp)
 	/* set up the seconds clock */
 	shp->alias_tree = dtopen(&_Nvdisc,Dtoset);
 	shp->track_tree = dtopen(&_Nvdisc,Dtset);
-	shp->bltin_tree = inittree(shp,(const struct shtable2*)shtab_builtins);
+	shp->bltin_tree = sh_inittree(shp,(const struct shtable2*)shtab_builtins);
 	shp->fun_tree = dtopen(&_Nvdisc,Dtoset);
 	dtview(shp->fun_tree,shp->bltin_tree);
 	nv_mount(DOTSHNOD, "type", shp->typedict=dtopen(&_Nvdisc,Dtoset));
@@ -1859,7 +1861,7 @@ static Init_t *nv_init(Shell_t *shp)
  * initialize name-value pairs
  */
 
-static Dt_t *inittree(Shell_t *shp,const struct shtable2 *name_vals)
+Dt_t *sh_inittree(Shell_t *shp,const struct shtable2 *name_vals)
 {
 	register Namval_t *np;
 	register const struct shtable2 *tp;
@@ -1917,75 +1919,35 @@ static Dt_t *inittree(Shell_t *shp,const struct shtable2 *name_vals)
  * read in the process environment and set up name-value pairs
  * skip over items that are not name-value pairs
  *
- * Must be called with import_attributes == 0 first, then again with
- * import_attributes == 1 if variable attributes are to be imported
- * from the environment.
+ * Returns pointer to A__z env var from which to import attributes, or 0.
  */
 
-static void env_init(Shell_t *shp, int import_attributes)
+static char *env_init(Shell_t *shp)
 {
 	register char		*cp;
-	register Namval_t	*np,*mp;
+	register Namval_t	*np;
 	register char		**ep=environ;
-	char			*dp;
-	int			nenv=0,k=0,size=0;
-	Namval_t		*np0;
-	static char		*next=0;  /* next variable whose attributes to import */
-
-	if(import_attributes)
-		goto import_attributes;
-	if(!ep)
-		goto skip;
-	while(*ep++)
-		nenv++;
-	np = newof(0,Namval_t,nenv,0);
-	for(np0=np,ep=environ;cp= *ep; ep++)
+	char			*next = 0;	/* pointer to A__z env var */
+	if(ep)
 	{
-		dp = strchr(cp,'=');
-		if(!dp)
-			continue;
-		*dp++ = 0;
-		if(mp = dtmatch(shp->var_base,cp))
+		while(cp = *ep++)
 		{
-			mp->nvenv = (char*)cp;
-			dp[-1] = '=';
+			/* The magic A__z env var is an invention of ksh88. See e_envmarker[]. */
+			if(*cp=='A' && cp[1]=='_' && cp[2]=='_' && cp[3]=='z' && cp[4]=='=')
+				next = cp + 4;
+			else if(np = nv_open(cp,shp->var_tree,(NV_EXPORT|NV_IDENT|NV_ASSIGN|NV_NOFAIL)))
+			{
+				nv_onattr(np,NV_IMPORT);
+				np->nvenv = cp;
+				nv_close(np);
+			}
+			else  /* swap with front */
+			{
+				ep[-1] = environ[shp->nenv];
+				environ[shp->nenv++] = cp;
+			}
 		}
-		else if(strcmp(cp,e_envmarker)==0)
-		{
-			dp[-1] = '=';
-			next = cp + strlen(e_envmarker);
-			continue;
-		}
-		else
-		{
-			k++;
-			mp = np++;
-			mp->nvname = cp;
-			size += strlen(cp);
-		}
-		nv_onattr(mp,NV_IMPORT);
-		if(mp->nvfun || nv_isattr(mp,NV_INTEGER))
-			nv_putval(mp,dp,0);
-		else
-		{
-			mp->nvalue.cp = dp;
-			nv_onattr(mp,NV_NOFREE);
-		}
-		nv_onattr(mp,NV_EXPORT|NV_IMPORT);
 	}
-	np =  (Namval_t*)realloc((void*)np0,k*sizeof(Namval_t));
-	dp = (char*)malloc(size+k);
-	while(k-->0)
-	{
-		size = strlen(np->nvname);
-		memcpy(dp,np->nvname,size+1);
-		np->nvname[size] = '=';
-		np->nvenv = np->nvname;
-		np->nvname = dp;
-		dp += size+1;
-		dtinsert(shp->var_base,np++);
-	}
-skip:
 	if(nv_isnull(PWDNOD) || nv_isattr(PWDNOD,NV_TAGGED))
 	{
 		nv_offattr(PWDNOD,NV_TAGGED);
@@ -1993,10 +1955,17 @@ skip:
 	}
 	if((cp = nv_getval(SHELLNOD)) && (sh_type(cp)&SH_TYPE_RESTRICTED))
 		sh_onoption(SH_RESTRICTED); /* restricted shell */
-	return;
+	return(next);
+}
 
-	/* Import variable attributes from environment (from variable named by e_envmarker) */
-import_attributes:
+/*
+ * Import variable attributes from magic A__z env var pointed to by 'next'.
+ * If next == 0, this function does nothing.
+ */
+static void env_import_attributes(Shell_t *shp, char *next)
+{
+	register char		*cp;
+	register Namval_t	*np;
 	while(cp=next)
 	{
 		if(next = strchr(++cp,'='))
@@ -2009,7 +1978,7 @@ import_attributes:
 			if((flag&NV_INTEGER) && size==0)
 			{
 				/* check for floating*/
-				char *val = nv_getval(np);
+				char *dp, *val = nv_getval(np);
 				strtol(val,&dp,10);
 				if(*dp=='.' || *dp=='e' || *dp=='E')
 				{
@@ -2032,11 +2001,7 @@ import_attributes:
 				}
 			}
 			nv_newattr(np,flag|NV_IMPORT|NV_EXPORT,size);
-			if((flag&(NV_INTEGER|NV_UTOL|NV_LTOU))==(NV_UTOL|NV_LTOU))
-				nv_mapchar(np,(flag&NV_UTOL)?e_tolower:e_toupper);
 		}
-		else
-			cp += 2;
 	}
 	return;
 }
