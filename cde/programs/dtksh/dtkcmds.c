@@ -7896,6 +7896,7 @@ nopCreateDisc(
 
    np2 = CreateEmptyNameValuePair(np, token, fp);
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -7938,6 +7939,7 @@ dftCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -7968,6 +7970,7 @@ ehCreateDisc(
    token = strtok(tmpBuf, ".");
    np2 = ProcessCallbackEvent(event, np, token, fp);
    XtFree(tmpBuf);
+   fp->last = "";
    return(np2);
 }
 
@@ -7998,6 +8001,7 @@ transCreateDisc(
    token = strtok(tmpBuf, ".");
    np2 = ProcessCallbackEvent(event, np, token, fp);
    XtFree(tmpBuf);
+   fp->last = "";
    return(np2);
 }
 
@@ -8037,6 +8041,7 @@ scaleCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8084,6 +8089,7 @@ arrowCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8129,6 +8135,7 @@ comboCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8177,6 +8184,7 @@ cmdCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8216,6 +8224,7 @@ dAreaCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8265,6 +8274,7 @@ dbtnCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8343,6 +8353,7 @@ fselCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8441,6 +8452,7 @@ listCreateDisc(
       np2 =  CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8488,6 +8500,7 @@ pbtnCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8541,6 +8554,7 @@ rcCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8587,6 +8601,7 @@ sbarCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8628,6 +8643,7 @@ swinCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8676,6 +8692,7 @@ sboxCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8715,6 +8732,7 @@ tbtnCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8875,6 +8893,7 @@ textCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -8986,6 +9005,7 @@ textCreateDisc2(
 
    XtFree(nameCopy);
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -9064,6 +9084,7 @@ helpCreateDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
@@ -9103,6 +9124,7 @@ dtPrintSetupProcDisc(
       np2 = CreateEmptyNameValuePair(np, token, fp);
 
    XtFree(dupName);
+   fp->last = "";
    return(np2);
 }
 
