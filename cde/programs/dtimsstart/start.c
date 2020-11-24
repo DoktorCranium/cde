@@ -28,14 +28,10 @@
 #include	<setjmp.h>
 #include	<unistd.h>
 #include	<time.h>
+#include    <errno.h>
 
 #if (defined(__linux__) || defined(CSRG_BASED)) && !defined(_NFILE)
 #define _NFILE FOPEN_MAX
-#endif
-
-#if !defined(__linux__) && !defined(CSRG_BASED)
-extern char	*sys_errlist[];
-extern int	sys_nerr;
 #endif
 
     /* local functions */
@@ -600,8 +596,7 @@ static int	invoke_ims(UserSelection *sel)
 
     pid = fork();
     if (pid == (pid_t) -1) {
-	put_xims_log("fork failed [%s]",
-		(errno <= sys_nerr) ? sys_errlist[errno] : NULL, 0, 0);
+	put_xims_log("fork failed [%s]", strerror(errno), 0, 0);
 #ifdef	DEBUG
 	perror("fork");
 #endif
@@ -618,8 +613,7 @@ static int	invoke_ims(UserSelection *sel)
 #endif
 	execl(SH_PATH, "sh", "-c", renv->cmdbuf, NULL);
 
-	put_xims_log("%s: exec failed [%s]", SH_PATH,
-		(errno <= sys_nerr) ? sys_errlist[errno] : NULL, 0, 0);
+	put_xims_log("%s: exec failed [%s]", SH_PATH, strerror(errno) , 0, 0);
 	/* perror(SH_PATH); */
 	sleep(1);
 	_exit(1);
