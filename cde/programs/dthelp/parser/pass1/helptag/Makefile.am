@@ -39,5 +39,5 @@ AM_CPPFLAGS = -I. -I$(HELPPARSERSRC) -I$(HELPUTILSRC) \
 noinst_LIBRARIES = libhelptag.a
 libhelptag_a_SOURCES = custom.c default.c help.c make.c option.c	\
 		      special.c out.c xref.c $(XLATESRCS)		\
-		      ../parser/delim.h
+		      global.c ../parser/delim.h
 
