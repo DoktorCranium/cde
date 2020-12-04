@@ -76,7 +76,6 @@ KSH93LIBSHELL = $(KSH93SRC)/arch/$(HOSTDIR)/lib/libshell.a
 PROGRAMS = dtksh
 
 SRCS = 		init.c \
-		builtins.c \
 		widget.c \
 		dtkcvt.c \
 		dtkcmds.c \
@@ -107,17 +106,16 @@ OBJS =  \
 
 all:: dtksh
 
-libshell.a: $(KSH93LIBSHELL) init.o builtins.o
+libshell.a: $(KSH93LIBSHELL) init.o
 	$(CP) $(KSH93LIBSHELL) libshell.a; \
-	ar d libshell.a init.o builtins.o; \
-	$(AR) libshell.a init.o builtins.o
+	ar d libshell.a init.o; \
+	$(AR) libshell.a init.o
 
 pmain.o:
 	cp ./ksh93/arch/$(HOSTDIR)/src/cmd/ksh93/pmain.o pmain.o
 	cp ./ksh93/arch/$(HOSTDIR)/bin/suid_exec suid_exec
 
 SpecialObjectRule(init.o, $(NULL), -DSHOPT_STATS -DSHOPT_NAMESPACE -DSHOPT_2DMATCH -DSHOPT_PFSH -DSHOPT_MULTIBYTE -DSHOPT_BGX -DSHOPT_AUDIT '-D_API_ast=20100309' -D_PACKAGE_ast -DSHOPT_DYNAMIC -D_BLD_shell -DSHOPT_KIA -DKSHELL -DSHOPT_HISTEXPAND -DSHOPT_EDPREDICT -DSHOPT_ESH -DSHOPT_VSH -DSHOPT_FIXEDARRAY '-DERROR_CONTEXT_T=Error_context_t' -DSHOPT_SUID_EXEC -DSHOPT_BRACEPAT -DBUILD_DTKSH -l$(KSH93SRC)/arch/$(HOSTDIR)/lib/libcmd.a  -l$(KSH93SRC)/arch/$(HOSTDIR)/lib/libast.a -l$(KSH93SRC)/arch/$(HOSTDIR)/lib/libdll.a)
-SpecialObjectRule(builtins.o, $(NULL), -DSHOPT_TYPEDEF -DSHOPT_KIA -DSHOPT_PFSH -DSHOPT_BRACEPAT -DSHOPT_HISTEXPAND '-D_API_ast=20100309' -D_PACKAGE_ast -DSHOPT_BGX -DSHOPT_MULTIBYTE -D_BLD_shell -DSHOPT_DYNAMIC -DKSHELL -DSHOPT_FIXEDARRAY -DSHOPT_STATS -DSHOPT_NAMESPACE '-DERROR_CONTEXT_T=Error_context_t' -DSHOPT_ESH  -DBUILD_DTKSH -l$(KSH93SRC)/arch/$(HOSTDIR)/lib/libcmd.a  -l$(KSH93SRC)/arch/$(HOSTDIR)/lib/libast.a -l$(KSH93SRC)/arch/$(HOSTDIR)/lib/libdll.a)
 
 ComplexProgramTarget($(PROGRAMS))
 

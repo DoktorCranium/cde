@@ -1508,6 +1508,8 @@ Shell_t *sh_init(register int argc,register char *argv[], Shinit_f userinit)
 	DtNlInitialize();
 	_DtEnvControl(DT_ENV_SET);
 	UnlockKshFileDescriptors(lockedFds);
+
+	dtksh_init();
 #endif
 	return(shp);
 }
