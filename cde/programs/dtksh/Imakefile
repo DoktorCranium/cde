@@ -8,8 +8,6 @@ SUBDIRS = examples
 
 MakeSubdirs($(SUBDIRS))
 
-HOSTDIR = $(shell ./ksh93/bin/package host)
-
 KSH93SRC = ./ksh93
 
 SYS_LIBRARIES = -lm $(DYNLIBSYSLIB) $(REGEXSYSLIB) $(ICONVSYSLIB)
@@ -19,27 +17,25 @@ SYS_LIBRARIES = -lm -ldl
 #endif
 
 #ifdef HPArchitecture
-EXTRA_DEFINES = -Wl,-E -DHPUX_DYNLIB -Wp,-H12000
+EXTRA_DEFINES = -Wl,-E -Wp,-H12000
 SYS_LIBRARIES = -lm -ldld 
 #endif
 
 #ifdef RsArchitecture
-EXTRA_DEFINES = -DDYNLIB -D_IBMRPC_
+EXTRA_DEFINES = -D_IBMRPC_
 LOCAL_LDFLAGS = -bE:dtksh.exp
 #endif
 
 #ifdef SunArchitecture
 .NO_PARALLEL:
 
-EXTRA_DEFINES = -DDYNLIB
-
 /* These need to be manually set for Solaris due to a bug in the build system */
 KSH_LDFLAGS = -lm -lsocket
 #endif
 
 DEPEND_DEFINES = $(DEPENDDEFINES)
-INCLUDES = -I. -I$(KSH93SRC)/arch/$(HOSTDIR)/include/ast \
-	   -I$(KSH93SRC)/arch/$(HOSTDIR)/src/cmd/ksh93 \
+INCLUDES = -I. -I$(KSH93SRC)/include/ast \
+	   -I$(KSH93SRC)/src/cmd/ksh93 \
 	   -I$(KSH93SRC)/src/cmd/ksh93/include -I$(KSH93SRC)/src/cmd/ksh93 \
 	   -I$(KSH93SRC)/src/lib/libast/include $(TIRPCINC)
 
@@ -54,14 +50,13 @@ INCLUDES = -I. -I$(KSH93SRC)/arch/$(HOSTDIR)/include/ast \
  */
 DEPLIBS = $(DEPDTHELPLIB) $(DEPDTSVCLIB) $(DEPDTWIDGETLIB) $(DEPDTPRINTLIB) \
 	  $(DEPTTLIB) $(DEPXMLIB) $(DEPXTOOLLIB) $(DEPXLIB) \
-	  $(KSH93SRC)/arch/$(HOSTDIR)/lib/libast.a
+	  $(KSH93SRC)/lib/libast.a
 LOCAL_LIBRARIES = $(DTHELPLIB) $(DTWIDGETLIB) $(DTSVCLIB) $(DTPRINTLIB) \
                   $(TTLIB) $(XMLIB) $(XTOOLLIB) $(XLIB) \
-		  $(KSH93SRC)/arch/$(HOSTDIR)/lib/libcmd.a \
-		  $(KSH93SRC)/arch/$(HOSTDIR)/lib/libast.a \
-		  $(KSH93SRC)/arch/$(HOSTDIR)/lib/libdll.a libshell.a
+		  $(KSH93SRC)/lib/libcmd.a  $(KSH93SRC)/lib/libast.a \
+		  $(KSH93SRC)/lib/libdll.a libshell.a
 
-EXTRA_DEFINES = -DDYNLIB -DKSHELL -DSHOPT_RAWONLY
+EXTRA_DEFINES = -DKSHELL -DSHOPT_RAWONLY
 
 EXTRA_INCLUDES = -I$(DTHELPSRC) -I$(DTPRINTSRC)
 
@@ -71,7 +66,7 @@ SUIDEXECDEFINES = \
 	-DSUIDEXECPATH=\"$(CDE_INSTALLATION_TOP)/bin/suid_exec\" \
 	-DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" -DBUILD_DTKSH
 
-KSH93LIBSHELL = $(KSH93SRC)/arch/$(HOSTDIR)/lib/libshell.a
+KSH93LIBSHELL = $(KSH93SRC)/lib/libshell.a
 
 PROGRAMS = dtksh
 
@@ -84,7 +79,6 @@ SRCS = 		init.c \
 		xmcmds.c \
 		xmwidgets.c \
 		extra.c \
-                xmdtksym.c \
 		findsym.c \
 		msgs.c
 
@@ -99,7 +93,6 @@ OBJS =  \
 		xmcmds.o \
 		xmwidgets.o \
 		extra.o \
-                xmdtksym.o \
                 findsym.o \
                 msgs.o \
 		$(LOCAL_LIBRARIES2)
@@ -112,12 +105,15 @@ libshell.a: $(KSH93LIBSHELL) init.o
 	$(AR) libshell.a init.o
 
 pmain.o:
-	cp ./ksh93/arch/$(HOSTDIR)/src/cmd/ksh93/pmain.o pmain.o
-	cp ./ksh93/arch/$(HOSTDIR)/bin/suid_exec suid_exec
+	cd ksh93; ./bin/package flat make CCFLAGS='$(SUIDEXECDEFINES) -g'
+	./setup.sh
+	cp ./ksh93/bin/suid_exec suid_exec
 
-SpecialObjectRule(init.o, $(NULL), -DSHOPT_STATS -DSHOPT_NAMESPACE -DSHOPT_2DMATCH -DSHOPT_PFSH -DSHOPT_MULTIBYTE -DSHOPT_BGX -DSHOPT_AUDIT '-D_API_ast=20100309' -D_PACKAGE_ast -DSHOPT_DYNAMIC -D_BLD_shell -DSHOPT_KIA -DKSHELL -DSHOPT_HISTEXPAND -DSHOPT_EDPREDICT -DSHOPT_ESH -DSHOPT_VSH -DSHOPT_FIXEDARRAY '-DERROR_CONTEXT_T=Error_context_t' -DSHOPT_SUID_EXEC -DSHOPT_BRACEPAT -DBUILD_DTKSH -l$(KSH93SRC)/arch/$(HOSTDIR)/lib/libcmd.a  -l$(KSH93SRC)/arch/$(HOSTDIR)/lib/libast.a -l$(KSH93SRC)/arch/$(HOSTDIR)/lib/libdll.a)
+SpecialObjectRule(init.o, $(NULL), -DSHOPT_STATS -DSHOPT_NAMESPACE -DSHOPT_2DMATCH -DSHOPT_PFSH -DSHOPT_MULTIBYTE -DSHOPT_BGX -DSHOPT_AUDIT '-D_API_ast=20100309' -D_PACKAGE_ast -DSHOPT_DYNAMIC -D_BLD_shell -DSHOPT_KIA -DKSHELL -DSHOPT_HISTEXPAND -DSHOPT_EDPREDICT -DSHOPT_ESH -DSHOPT_VSH -DSHOPT_FIXEDARRAY '-DERROR_CONTEXT_T=Error_context_t' -DSHOPT_SUID_EXEC -DSHOPT_BRACEPAT -DBUILD_DTKSH -l$(KSH93SRC)/lib/libcmd.a  -l$(KSH93SRC)/lib/libast.a -l$(KSH93SRC)/lib/libdll.a)
 
 ComplexProgramTarget($(PROGRAMS))
 
 clean::
+	cd ksh93; ./bin/package flat clean
 	rm -f suid_exec
+	rm -rf FEATURE

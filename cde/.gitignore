@@ -906,6 +906,7 @@ programs/dtinfo/tools/misc/pmaker
 programs/dtinfo/tools/misc/treeres
 
 # program/dtksh
+programs/dtksh/FEATURE
 programs/dtksh/dtksh
 programs/dtksh/suid_exec
 programs/dtksh/examples/CallDataTest4
@@ -1032,10 +1033,6 @@ programs/fontaliases/sun/ja/dtinfo.pcf
 programs/fontaliases/sun/ja/dtinfo.pcf.gz
 programs/fontaliases/sun/ja/dtinfo.pcf.Z
 programs/fontaliases/sun/ja/fonts.dir
-
-# programs/ksh93
-programs/dtksh/ksh93/man/man1/sh.1
-programs/dtksh/ksh93/man/man3/nval.3
 
 # programs/localized
 programs/localized/C/types/*.dt
