@@ -214,7 +214,7 @@ programs/dtksh/dtksh
 	mode = 0555
 }
 #
-programs/dtksh/suid_exec
+programs/dtksh/ksh93/bin/suid_exec
 { default
 	install_target = /usr/dt/bin/suid_exec
 	owner = root

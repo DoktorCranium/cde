@@ -908,7 +908,7 @@ programs/dtinfo/tools/misc/treeres
 # program/dtksh
 programs/dtksh/FEATURE
 programs/dtksh/dtksh
-programs/dtksh/suid_exec
+programs/dtksh/init.c
 programs/dtksh/examples/CallDataTest4
 programs/dtksh/examples/CallbackTest2
 programs/dtksh/examples/DtCursorTest2
