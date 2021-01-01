@@ -50,20 +50,20 @@
  * as requested by a DtLoadWidget request.
  */
 
-unsigned long
+void *
 fsym(
         char *str,
         int lib )
 {
    int i = 0;
-   long addr;
+   void * addr;
 
    if (liblist == NULL)
       return (NULL);
    while (liblist[i].dll)
    {
       if (addr = dlsym(liblist[i].dll, str))
-         return((unsigned long)addr);
+         return(addr);
       i++;
    }
 
