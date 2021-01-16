@@ -107,7 +107,7 @@ libshell.a: $(KSH93LIBSHELL) init.o
 pmain.o:
 	cd ksh93; ./bin/package flat make CCFLAGS='$(SUIDEXECDEFINES) -g'
 	cp ./ksh93/src/cmd/ksh93/sh/init.c init.c
-	patch -u init.c -i init.patch
+	patch --posix init.c -i init.patch
 	./setup.sh
 
 SpecialObjectRule(init.o, $(NULL), -DSHOPT_STATS -DSHOPT_NAMESPACE -DSHOPT_2DMATCH -DSHOPT_PFSH -DSHOPT_MULTIBYTE -DSHOPT_BGX -DSHOPT_AUDIT '-D_API_ast=20100309' -D_PACKAGE_ast -DSHOPT_DYNAMIC -D_BLD_shell -DSHOPT_KIA -DKSHELL -DSHOPT_HISTEXPAND -DSHOPT_EDPREDICT -DSHOPT_ESH -DSHOPT_VSH -DSHOPT_FIXEDARRAY '-DERROR_CONTEXT_T=Error_context_t' -DSHOPT_SUID_EXEC -DSHOPT_BRACEPAT -DBUILD_DTKSH -l$(KSH93SRC)/lib/libcmd.a  -l$(KSH93SRC)/lib/libast.a -l$(KSH93SRC)/lib/libdll.a)
