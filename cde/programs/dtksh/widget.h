@@ -45,9 +45,7 @@
 #include <X11/X.h>
 #include <X11/Intrinsic.h>
 #include <X11/IntrinsicP.h>
-#define NO_AST
 #include "dtksh.h"
-#undef NO_AST
 
 extern int Wtab_free;
 extern wtab_t **W;

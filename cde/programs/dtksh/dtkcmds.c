@@ -58,9 +58,7 @@
 #include "hash.h"
 #include "stdio.h"
 #include "defs.h"
-#define NO_AST
 #include "dtksh.h"
-#undef NO_AST
 #include "xmksh.h"
 #include "dtkcmds.h"
 #include "xmcvt.h"

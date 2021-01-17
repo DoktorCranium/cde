@@ -55,9 +55,7 @@
 #include <Dt/Print.h>
 #include "hash.h"
 #include "stdio.h"
-#define NO_AST
 #include "dtksh.h"
-#undef NO_AST
 #include "xmksh.h"
 #include "XtCvtrs.h"
 #include "dtkcmds.h"

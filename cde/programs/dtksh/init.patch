@@ -1,31 +1,22 @@
---- ./ksh93/src/cmd/ksh93/sh/init.c	2020-11-22 15:34:35.964537420 -0600
-+++ init.c	2020-12-31 19:31:00.091176802 -0600
-@@ -48,6 +48,38 @@
+--- ./ksh93/src/cmd/ksh93/sh/init.c	2021-01-16 15:27:03.589079734 -0600
++++ init.c	2021-01-16 15:53:50.700864511 -0600
+@@ -48,6 +48,28 @@
  #include	"lexstates.h"
  #include	"version.h"
 
 +#ifdef BUILD_DTKSH
 +#include <Dt/DtNlUtils.h>
 +#include <Dt/EnvControlP.h>
-+#include <stdio.h>
-+#include <nl_types.h>
 +#include <X11/X.h>
 +#include <X11/Intrinsic.h>
 +#include <X11/IntrinsicP.h>
 +#include <X11/CoreP.h>
 +#include <X11/StringDefs.h>
 +#include <Xm/XmStrDefs.h>
-+#include <setjmp.h>
-+#include <string.h>
-+#include <ctype.h>
 +#include <Xm/Xm.h>
 +#include <Xm/Protocols.h>
-+#include "hash.h"
-+#include "stdio.h"
 +
-+#define NO_AST
 +#include "dtksh.h"
-+#undef NO_AST
 +#include "xmksh.h"
 +#include "dtkcmds.h"
 +#include "xmcvt.h"
@@ -33,16 +24,15 @@
 +#include "extra.h"
 +#include "xmwidgets.h"
 +#include "msgs.h"
-+#include <locale.h>
 +#endif
 +
  #if _hdr_wctype
  #include	<ast_wchar.h>
  #include	<wctype.h>
-@@ -1469,6 +1501,16 @@
- #endif
-	if(shp->userinit=userinit)
-		(*userinit)(shp, 0);
+@@ -1481,6 +1503,16 @@
+	shp->exittrap = 0;
+	shp->errtrap = 0;
+	shp->end_fn = 0;
 +#ifdef BUILD_DTKSH
 +	int * lockedFds = LockKshFileDescriptors();
 +	(void) XtSetLanguageProc((XtAppContext)NULL, (XtLanguageProc)NULL,

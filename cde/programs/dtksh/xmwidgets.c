@@ -77,9 +77,7 @@
 #include <Dt/HelpQuickD.h>
 #include <Dt/Print.h>
 
-#define NO_AST
 #include "dtksh.h"
-#undef NO_AST
 
 #include "xmksh.h"
 #include "dtkcmds.h"

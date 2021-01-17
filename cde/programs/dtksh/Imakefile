@@ -29,8 +29,7 @@ LOCAL_LDFLAGS = -bE:dtksh.exp
 #ifdef SunArchitecture
 .NO_PARALLEL:
 
-/* These need to be manually set for Solaris due to a bug in the build system */
-KSH_LDFLAGS = -lm -lsocket
+SYS_LIBRARIES = -lm -lsecdb -lsocket -lnsl
 #endif
 
 DEPEND_DEFINES = $(DEPENDDEFINES)
