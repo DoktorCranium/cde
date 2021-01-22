@@ -33,8 +33,6 @@
 #ifndef _Dtksh_dtksh_h
 #define _Dtksh_dtksh_h
 
-#include "nval.h"
-
 #define SUCCESS		0
 #define FAIL		(-1)
 

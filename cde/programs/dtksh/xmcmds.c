@@ -174,7 +174,7 @@ static int Text_VarAndWidget(
                         int argc,
                         char *argv[]) ;
 static int Text_WidgetAndBoolean( 
-                        void (*func)(Widget w, int b),
+                        void (*func)(Widget w, char b),
                         int argc,
                         char *argv[]) ;
 static int Text_WidgetAndOneParam( 
@@ -4062,7 +4062,7 @@ do_XmTextGetString(
 
 static int
 Text_WidgetAndBoolean(
-        void (*func)(Widget w, int b),
+        void (*func)(Widget w, char b),
         int argc,
         char *argv[] )
 {
