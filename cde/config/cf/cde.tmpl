@@ -55,6 +55,22 @@ XCOMM $XConsortium: cde.tmpl /main/2 1996/12/04 10:13:09 swick $
 # define SharedPamRev		CDESharedRev
 #endif
 
+#ifndef SharedLibDtPamSvc
+# define SharedLibDtPamSvc		HasSharedLibraries
+#endif
+#ifndef NormalLibDtPamSvc
+# define NormalLibDtPamSvc		(!SharedLibDtPamSvc | ForceNormalLib)
+#endif
+#ifndef DebugLibDtPamSvc
+# define DebugLibDtPamSvc		NO
+#endif
+#ifndef ProfileLibDtPamSvc
+# define ProfileLibDtPamSvc		NO
+#endif
+#ifndef SharedDtPamSvcRev
+# define SharedDtPamSvcRev		CDESharedRev
+#endif
+
 #ifndef SharedLibTt
 # define SharedLibTt		HasSharedLibraries
 #endif
@@ -280,6 +296,7 @@ XCOMM $XConsortium: cde.tmpl /main/2 1996/12/04 10:13:09 swick $
  TOP_CDE_INCLUDES = -I$(CDEINCLUDESRC)
         CDELIBSRC = $(CDETOP)/lib
            PAMSRC = $(CDELIBSRC)/pam/libpam
+           DTPAMSVCSRC = $(CDELIBSRC)/DtPamSvc
             TTSRC = $(CDELIBSRC)/tt
          DTSVCSRC = $(CDELIBSRC)/DtSvc
       DTSEARCHSRC = $(CDELIBSRC)/DtSearch
@@ -348,6 +365,12 @@ DTLCXENVSETUP = DTLCXSEARCHPATH=$(DTHELPSRC)
 SharedLibReferences(PAM,pam,$(PAMSRC),SOPAMREV,SharedPamRev)
 #else
 ProjectUnsharedLibReferences(PAM,pam,$(PAMSRC),CDEBuildLibDir)
+#endif
+
+#if SharedLibDtPamSvc
+SharedLibReferences(DTPAMSVC,dtpamsvc,$(DTPAMSVCSRC),SODTPAMSVCREV,SharedDtPamSvcRev)
+#else
+ProjectUnsharedLibReferences(DTPAMSVC,dtpamsvc,$(DTPAMSVCSRC),CDEBuildLibDir)
 #endif
 
 #if SharedLibTt
