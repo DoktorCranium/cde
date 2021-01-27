@@ -12,8 +12,14 @@ PAMDIR = pam
 PAMDIR =
 #endif
 
-SUBDIRS = $(XINDIR) $(PAMDIR) tt DtSvc DtSearch DtWidget DtHelp DtPrint \
-	DtTerm DtMrm csa
+#if defined(HasPamLibrary) && HasPamLibrary
+DTPAMSVCDIR = DtPamSvc
+#else
+DTPAMSVCDIR =
+#endif
+
+SUBDIRS = $(XINDIR) $(PAMDIR) $(DTPAMSVCDIR) tt DtSvc DtSearch DtWidget DtHelp \
+		  DtPrint DtTerm DtMrm csa
 
 MakeSubdirs($(SUBDIRS))
 DependSubdirs($(SUBDIRS))
