@@ -84,7 +84,7 @@
 #include	<stdlib.h>
 #include	<pwd.h>
 
-#ifdef PAM
+#if defined(PAM) || defined(HAS_PAM_LIBRARY)
 #include	<security/pam_appl.h>
 #endif
 
@@ -114,7 +114,8 @@
 /*
  * Define as generic those without platform specific code.
  */
-#if !(defined(__hpux) || defined(_AIX) || defined(sun))
+#if !(defined(__hpux) || defined(_AIX) || defined(sun) || \
+        defined(HAS_PAM_LIBRARY))
 #define generic
 #endif
 
@@ -1061,7 +1062,8 @@ WriteBtmp( char *name )
  ***************************************************************************/
 
 
-#ifdef sun
+#if defined(sun) || defined(HAS_PAM_LIBRARY)
+
 /***************************************************************************
  *
  *  Start authentication routines (SUN)
@@ -1150,8 +1152,14 @@ Authenticate( struct display *d, char *name, char *passwd, char **msg )
     * Authenticate user and return status
     */
 
-#ifdef PAM 
-    status = PamAuthenticate("dtlogin", d->name, passwd, name, ttyLine);
+#if defined(PAM) || defined(HAS_PAM_LIBRARY)
+    status =
+#ifdef PAM
+        PamAuthenticate
+#else
+        _DtAuthentication
+#endif
+        ("dtlogin", d->name, passwd, name, ttyLine);
 
     switch(status) {
         case PAM_SUCCESS:

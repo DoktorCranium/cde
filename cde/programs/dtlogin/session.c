@@ -166,6 +166,7 @@ struct greet_state {
 };
 
 char *globalDisplayName;
+extern char *progName;	/* Global argv[0]; dtlogin name and path */
 
 /***************************************************************************
  *
@@ -276,9 +277,10 @@ SessionPingFailed( struct display *d )
     	AbortClient (clientPid);
     	source (&verify, d->reset);
 
+        char* user = getEnv (verify.userEnviron, "USER");
+
 #if defined (PAM) || defined(SUNAUTH) 
 	{
-    	    char* user = getEnv (verify.userEnviron, "USER");
 	    char* ttyLine = d->gettyLine;
 	    
 #ifdef DEF_NETWORK_DEV
@@ -310,6 +312,9 @@ SessionPingFailed( struct display *d )
 	}
 #endif
 
+#if !defined(sun) && defined(HAS_PAM_LIBRARY)
+    Account(d, user, NULL, clientPid, DEAD_PROCESS, NULL);
+#endif
     }
     SessionExit (d, RESERVER_DISPLAY);
 }
@@ -597,9 +602,10 @@ ManageSession( struct display *d )
     Debug ("Source reset program %s\n", d->reset);
     source (&verify, d->reset);
 
+    char* user = getEnv (verify.userEnviron, "USER");
+
 #if defined(PAM) || defined(SUNAUTH)
     {
-	char* user = getEnv (verify.userEnviron, "USER");
 	char* ttyLine = d->gettyLine;
 	    
 #   ifdef DEF_NETWORK_DEV
@@ -629,6 +635,10 @@ ManageSession( struct display *d )
 	solaris_resetdevperm(ttyLine);
 #   endif
     }
+#endif
+
+#if !defined(sun) && defined(HAS_PAM_LIBRARY)
+    Account(d, user, NULL, clientPid, DEAD_PROCESS, NULL);
 #endif
 
     SessionExit (d, OBEYSESS_DISPLAY);
@@ -1262,7 +1272,7 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
 	}
 #endif
 
-#if !defined(sun) && !defined(CSRG_BASED)
+#if !defined(sun) && (!defined(CSRG_BASED) || defined(HAS_PAM_LIBRARY))
 	Account(d, user, NULL, getpid(), USER_PROCESS, status);
 #endif
 
@@ -1344,6 +1354,18 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
             Debug("Can't set User's Credentials (user=%s)\n",user);
 	    return(0);
 	} 
+#elif defined(HAS_PAM_LIBRARY)
+    char *prog_name = strrchr(progName, '/');
+    if (!prog_name || _DtSetCred(prog_name + 1, user, verify->uid,
+#ifdef NGROUPS
+                verify->groups[0]
+#else
+                verify->gid
+#endif
+                ) > 0 ) {
+            Debug("Can't set User's Credentials (user=%s)\n",user);
+	    return(0);
+	}
 #endif
 
 #ifdef SUNAUTH 
@@ -1843,7 +1865,6 @@ execute(char **argv, char **environ )
 #define MSGSIZE 512
 
 extern int session_set;	
-extern char *progName;	/* Global argv[0]; dtlogin name and path */
 
 int         response[2], request[2];
 

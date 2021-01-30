@@ -130,6 +130,13 @@ DEPXAUTHLIB =
 DEPXDMCPLIB = 
 #endif
 
+#ifdef HasPamLibrary
+DTPAMSVCLIB = -lDtPamSvc
+EXTRA_DEFINES += -DHAS_PAM_LIBRARY
+#else
+DTPAMSVCLIB =
+#endif
+
 /**************************************************************************
  *
  *  Source and object modules
@@ -291,7 +298,8 @@ EXTRA_RES_DEFINES = \
 	        $(DEPXTOOLLIB) $(DEPXLIB)
     DEPLIBS3 = $(DEPXDMCPLIB) $(DEPXMLIB) $(DEPXTOOLLIB) $(DEPXLIB)
 
-    BASE_LIBS1  = $(XAUTHLIB) $(LOGINXMULIB) $(XDMCPLIB) $(LOGINXLIB)
+    BASE_LIBS1  = $(XAUTHLIB) $(LOGINXMULIB) $(XDMCPLIB) $(LOGINXLIB) \
+				  $(DTPAMSVCLIB)
     BASE_LIBS2  = $(DTWIDGETLIB) $(DTSVCLIB) $(TTLIB) $(XMLIB) \
 		  $(XTOOLLIB) $(XLIB) $(XINLIB)
     BASE_LIBS3  = $(DTWIDGETLIB) $(DTSVCLIB) $(TTLIB) $(XDMCPLIB) $(XMLIB) \
