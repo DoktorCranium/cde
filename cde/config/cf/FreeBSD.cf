@@ -247,4 +247,12 @@ ICONVSYSLIB != if test -f /usr/local/include/iconv.h; then echo -liconv; else ec
 
 #define CDESharedRev		2
 
+#if !defined(HasPamLibrary)
+#define HasPamLibrary YES
+#endif
+
+#if !defined(PamAuthenticationModule)
+#define PamAuthenticationModule /usr/local/lib/security/pam_pwauth_suid.so
+#endif
+
 #include <bsdLib.rules>
