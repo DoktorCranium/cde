@@ -56,7 +56,7 @@ CPP_TARGETS = \
 	Xstartup		current.session \
 	display.current.session	display.home.session \
 	dtlslocale		dtprofile \
-	home.session	dtlogin.pam.conf \
+	home.session	pam.d.dtlogin \
 	$(EXTRA_CPP_TARGETS)
 
 AllTarget($(CPP_TARGETS))
@@ -92,5 +92,5 @@ CppSourceFile(dtprofile,dtprofile.src,$(LOCAL_CPP_DEFINES),)
 CppSourceFile(home.session,home.session.src,$(LOCAL_CPP_DEFINES),)
 
 #if defined(HasPamLibrary) && HasPamLibrary
-CppSourceFile(dtlogin.pam.conf,dtlogin.pam.conf.src,$(LOCAL_CPP_DEFINES),)
+CppSourceFile(pam.d.dtlogin,pam.d.dtlogin.src,$(LOCAL_CPP_DEFINES),)
 #endif

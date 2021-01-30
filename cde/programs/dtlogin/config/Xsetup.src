@@ -88,10 +88,15 @@ fi
 #define PAM_D /etc/pam.d
 #endif
 
-  if [ ! -f PAM_D/dtlogin ]; then
-    if [ -f CDE_INSTALLATION_TOP/config/dtlogin.pam.conf ]; then
-      /bin/cp CDE_INSTALLATION_TOP/config/dtlogin.pam.conf PAM_D/dtlogin
-      /bin/chmod 644 PAM_D/dtlogin
+for i in CDE_INSTALLATION_TOP/config/pam.d.*
+do
+  conf=PAM_D/${i##*.}
+
+  if [ ! -f $conf ]; then
+    if [ -f $i ]; then
+      /bin/cp $i $conf
+      /bin/chmod 644 $conf
     fi
   fi
+done
 #endif
