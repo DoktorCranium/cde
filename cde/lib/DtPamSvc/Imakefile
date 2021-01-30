@@ -4,7 +4,7 @@
 #define DoProfileLib ProfileLibDtPamSvc
 #define LibName DtPamSvc
 #define SoRev SOPAMREV
-#define LibHeaders NO
+#define LibHeaders YES
 
 #include <Threads.tmpl>
 
