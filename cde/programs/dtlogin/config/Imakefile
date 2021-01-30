@@ -26,6 +26,14 @@ LOCAL_CPP_DEFINES = -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
 LOCAL_CPP_DEFINES += -DFREEBSD
 #endif
 
+#ifdef HasPamLibrary
+LOCAL_CPP_DEFINES += -DHAS_PAM_LIBRARY
+#ifdef PamAuthenticationModule
+PAM_AUTHENTICATION_MODULE=PamAuthenticationModule
+LOCAL_CPP_DEFINES += -DPAM_AUTHENTICATION_MODULE=$(PAM_AUTHENTICATION_MODULE)
+#endif
+#endif
+
 #ifdef SunArchitecture
 EXTRA_CPP_TARGETS = \
 	0015.sun.env \
@@ -48,7 +56,8 @@ CPP_TARGETS = \
 	Xstartup		current.session \
 	display.current.session	display.home.session \
 	dtlslocale		dtprofile \
-	home.session		$(EXTRA_CPP_TARGETS)
+	home.session	dtlogin.pam.conf \
+	$(EXTRA_CPP_TARGETS)
 
 AllTarget($(CPP_TARGETS))
 
@@ -81,3 +90,7 @@ CppSourceFile(display.home.session,display.home.session.src,$(LOCAL_CPP_DEFINES)
 CppSourceFile(dtlslocale,dtlslocale.src,$(LOCAL_CPP_DEFINES),)
 CppSourceFile(dtprofile,dtprofile.src,$(LOCAL_CPP_DEFINES),)
 CppSourceFile(home.session,home.session.src,$(LOCAL_CPP_DEFINES),)
+
+#ifdef HasPamLibrary
+CppSourceFile(dtlogin.pam.conf,dtlogin.pam.conf.src,$(LOCAL_CPP_DEFINES),)
+#endif

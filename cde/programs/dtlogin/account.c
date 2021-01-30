@@ -137,9 +137,14 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 #endif /* NeedWidePrototypes */
         waitType exitcode )
 {
-#if !defined(CSRG_BASED) /* we cannot do this on BSD ... */
+#if !defined(CSRG_BASED) || defined(HAS_PAM_LIBRARY)
+#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+    struct utmpx utmp;		/* local struct for new entry	   	   */
+    struct utmpx *u;		/* pointer to entry in utmp file	   */
+#else
     struct utmp utmp;		/* local struct for new entry	   	   */
     struct utmp *u;		/* pointer to entry in utmp file	   */
+#endif
     int	fd;
     char	buf[32];
     char* user_str = user ? user : "NULL";
@@ -169,6 +174,9 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 #ifdef PAM
     PamAccounting("dtlogin", d->name, d->utmpId, user, 
 		        line, pid, type, exitcode);
+#elif defined(HAS_PAM_LIBRARY)
+    _DtAccounting("dtlogin", d->name, d->utmpId, user,
+		        line, pid, type, exitcode);
 #else
 #   ifdef SUNAUTH
        solaris_accounting("dtlogin", d->name, d->utmpId, user, 
@@ -179,13 +187,22 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 #ifdef sun
     return;
 #else
+#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+    bzero(&utmp, sizeof(struct utmpx));
+#else
     bzero(&utmp, sizeof(struct utmp));
+#endif
 
     strncpy(utmp.ut_id, d->utmpId, sizeof(u->ut_id) - 1);
     utmp.ut_type = LOGIN_PROCESS;
     
+#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+    setutxent();
+    if ( (u = getutxid(&utmp)) == NULL ) u = &utmp;
+#else
     setutent();
     if ( (u = getutid(&utmp)) == NULL ) u = &utmp;
+#endif
 
     /*
      *  make sure process ID's match if this is DEAD_PROCESS...
@@ -195,7 +212,11 @@ Account( struct display *d, char *user, char *line, pid_t pid,
     if ((type == DEAD_PROCESS && pid != 0 && u->ut_pid != pid) ||
         (type == DEAD_PROCESS && u->ut_type == DEAD_PROCESS)	) {
 
+#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+	endutxent();
+#else
 	endutent();
+#endif
 	return;
     }
 
@@ -247,8 +268,10 @@ Account( struct display *d, char *user, char *line, pid_t pid,
     if (type) {
 	u->ut_type = type;
 	if (type == DEAD_PROCESS) {
+#if !(defined(__FreeBSD__) && OSMAJORVERSION > 8)
 	    u->ut_exit.e_termination = waitSig(exitcode);
 	    u->ut_exit.e_exit = waitCode(exitcode);
+#endif
 #ifndef SVR4
 	    (void) memset((char *) u->ut_host, '\0', sizeof(u->ut_host));
 #endif
@@ -263,11 +286,17 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 #endif
  	}
  		    
+#if !(defined(__FreeBSD__) && OSMAJORVERSION > 8)
 	if (type == USER_PROCESS)
 	    u->ut_exit.e_exit = (d->displayType.location == Local ? 1 : 0 );
+#endif
     }	
 
+#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+    (void) time(&u->ut_tv);
+#else
     (void) time(&u->ut_time);
+#endif
 
     /* 
      * write to utmp...  
@@ -277,9 +306,14 @@ Account( struct display *d, char *user, char *line, pid_t pid,
      *  to wtmp!)
      */
 
+#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+    pututxline(u);
+#else
     pututline(u);
+#endif
 
 
+#if !(defined(__FreeBSD__) && OSMAJORVERSION > 8)
     /*
      *  write the same entry to wtmp...
      */
@@ -297,6 +331,9 @@ Account( struct display *d, char *user, char *line, pid_t pid,
      */
      
     endutent();
+#else
+    endutxent();
+#endif
 
 #ifdef __PASSWD_ETC
     /* Now fill in the "rgy utmp" struct */

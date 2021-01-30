@@ -80,3 +80,18 @@ fi
     fi
   fi
 #endif
+
+#ifdef HAS_PAM_LIBRARY
+#ifdef __FreeBSD__
+#define PAM_D /usr/local/etc/pam.d
+#else
+#define PAM_D /etc/pam.d
+#endif
+
+  if [ ! -f PAM_D/dtlogin ]; then
+    if [ -f CDE_INSTALLATION_TOP/config/dtlogin.pam.conf ]; then
+      /bin/cp CDE_INSTALLATION_TOP/config/dtlogin.pam.conf PAM_D/dtlogin
+      /bin/chmod 644 PAM_D/dtlogin
+    fi
+  fi
+#endif
