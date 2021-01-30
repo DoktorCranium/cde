@@ -4,6 +4,12 @@ DEPEND_DEFINES = $(DEPENDDEFINES)
 DEFINES = -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
           -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\"
 
+#if defined(HasPamLibrary) && HasPamLibrary
+DTPAMSVCLIB = -lDtPamSvc
+#else
+DTPAMSVCLIB =
+#endif
+
 #if defined(SunArchitecture)
 DEPLIBS = $(DEPDTWIDGETLIB) $(DEPDTSVCLIB) $(DEPTTLIB) \
                   $(DEPXMLIB) $(DEPXTOOLLIB) $(DEPXLIB)
@@ -13,7 +19,7 @@ LOCAL_LIBRARIES = $(DTWIDGETLIB) $(DTSVCLIB) $(TTLIB) \
 DEPLIBS = $(DEPDTHELPLIB) $(DEPDTWIDGETLIB) $(DEPDTSVCLIB) $(DEPTTLIB) \
                   $(DEPXMLIB) $(DEPXTOOLLIB) $(DEPXLIB)
 LOCAL_LIBRARIES = $(DTHELPLIB) $(DTWIDGETLIB) $(DTSVCLIB) $(TTLIB) \
-                  $(XMLIB) $(XTOOLLIB) $(USE_XHPLIB) $(XLIB)
+                  $(XMLIB) $(XTOOLLIB) $(USE_XHPLIB) $(XLIB) $(DTPAMSVCLIB)
 #endif /* SunArchitecture */
 SYS_LIBRARIES = -lm
 
@@ -60,6 +66,10 @@ INCLUDES = $(TIRPCINC)
 #if defined(FreeBSDArchitecture) || defined(NetBSDArchitecture)
 EXTRA_DEFINES = -D${PROGRAMS} $(XINOPT) -DUSE_X11SSEXT
 SYS_LIBRARIES = $(XINLIB) -lXss -lcrypt -lm
+#endif
+
+#if defined(HasPamLibrary) && HasPamLibrary
+EXTRA_DEFINES += -DHAS_PAM_LIBRARY
 #endif
 
 PROGRAMS=dtsession

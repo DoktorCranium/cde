@@ -85,6 +85,10 @@
 #include <pwd.h>
 #endif
 
+#ifdef HAS_PAM_LIBRARY
+#include <PamSvc.h>
+#endif
+
 #include "Sm.h"
 #include "SmGlobals.h"
 #include "SmUI.h"
@@ -1602,7 +1606,22 @@ localAuthenticate(
         char *name,
         uid_t uid,
         char *passwd )
-#ifdef SIA
+#if defined(HAS_PAM_LIBRARY)
+{
+    char *service;
+    struct passwd *pwent;
+
+    if (!(name || passwd)) return True;
+    if (!passwd) return False;
+    if (!(pwent = name ? getpwnam(name) : getpwuid(uid))) return False;
+
+    endpwent();
+
+    if (!(service = strrchr(smGD.programName, '/'))) return False;
+
+    return !_DtAuthentication(service + 1, NULL, passwd, pwent->pw_name, NULL);
+}
+#elif defined(SIA)
 
 
 
@@ -1962,4 +1981,3 @@ Authenticate(
     return(arc == 0 ? True : False);
 }
 #endif /* _AIX && _POWER */
-
