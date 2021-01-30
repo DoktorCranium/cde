@@ -252,3 +252,22 @@ programs/dtdbcache/dtdbcache
 	install_target = /usr/dt/bin/dtdbcache
 	mode = 0555
 }
+
+#
+# PAM configuration files.
+#
+#ifdef HAS_PAM_LIBRARY
+programs/dtlogin/config/pam.d.dtlogin
+{ default
+	install_target = /usr/dt/config/pam.d.dtlogin
+	mode = 0644
+	owner = root
+}
+#
+programs/dtsession/config/pam.d.dtsession
+{ default
+	install_target = /usr/dt/config/pam.d.dtsession
+	mode = 0644
+	owner = root
+}
+#endif

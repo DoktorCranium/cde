@@ -316,3 +316,11 @@ CXXDEPENDINCLUDE != CppCmd -x c++ -Wp,-v < /dev/null \
 #ifndef KornShell
 #define KornShell		/usr/pkg/bin/ksh93
 #endif
+
+#if !defined(HasPamLibrary)
+#define HasPamLibrary YES
+#endif
+
+#if !defined(PamAuthenticationModule)
+#define PamAuthenticationModule /usr/pkg/lib/security/pam_pwauth_suid.so
+#endif

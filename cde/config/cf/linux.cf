@@ -299,5 +299,9 @@ XCOMM This is needed for CDE currently
 
 #define SharedTtReqs $(TIRPCLIB) $(LDPRELIBS) SharedXReqs $(CXXLIB)
 
+#if !defined(HasPamLibrary)
+#define HasPamLibrary YES
+#endif
+
 #include <lnxDep.rules>
 #include <lnxLib.rules>

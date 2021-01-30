@@ -1523,12 +1523,21 @@ programs/dtfile/dtcopy/dtfile_copy
 	mode = 0555
 }
 #
+#ifdef HAS_PAM_LIBRARY
+programs/dtsession/dtsession
+{ default
+        install_target = /usr/dt/bin/dtsession
+	owner = root
+        mode = 0555
+}
+#else
 programs/dtsession/dtsession
 { default
         install_target = /usr/dt/bin/dtsession
 	owner = root
         mode = 04555
 }
+#endif
 #
 programs/dtsession/dtloadresources
 { default
