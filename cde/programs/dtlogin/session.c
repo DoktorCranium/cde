@@ -105,6 +105,10 @@
 #include "rgy_base.h"
 #endif
 
+#ifdef HAS_PAM_LIBRARY
+#include <PamSvc.h>
+#endif
+
 #ifdef SIA
 
 static  SIAENTITY *siaHandle = NULL;
@@ -313,7 +317,7 @@ SessionPingFailed( struct display *d )
 #endif
 
 #if !defined(sun) && defined(HAS_PAM_LIBRARY)
-    Account(d, user, NULL, clientPid, DEAD_PROCESS, NULL);
+    Account(d, user, NULL, clientPid, DEAD_PROCESS, 0);
 #endif
     }
     SessionExit (d, RESERVER_DISPLAY);
@@ -638,7 +642,7 @@ ManageSession( struct display *d )
 #endif
 
 #if !defined(sun) && defined(HAS_PAM_LIBRARY)
-    Account(d, user, NULL, clientPid, DEAD_PROCESS, NULL);
+    Account(d, user, NULL, clientPid, DEAD_PROCESS, 0);
 #endif
 
     SessionExit (d, OBEYSESS_DISPLAY);

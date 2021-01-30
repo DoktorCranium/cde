@@ -26,7 +26,7 @@ LOCAL_CPP_DEFINES = -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
 LOCAL_CPP_DEFINES += -DFREEBSD
 #endif
 
-#ifdef HasPamLibrary
+#if defined(HasPamLibrary) && HasPamLibrary
 LOCAL_CPP_DEFINES += -DHAS_PAM_LIBRARY
 #ifdef PamAuthenticationModule
 PAM_AUTHENTICATION_MODULE=PamAuthenticationModule
@@ -91,6 +91,6 @@ CppSourceFile(dtlslocale,dtlslocale.src,$(LOCAL_CPP_DEFINES),)
 CppSourceFile(dtprofile,dtprofile.src,$(LOCAL_CPP_DEFINES),)
 CppSourceFile(home.session,home.session.src,$(LOCAL_CPP_DEFINES),)
 
-#ifdef HasPamLibrary
+#if defined(HasPamLibrary) && HasPamLibrary
 CppSourceFile(dtlogin.pam.conf,dtlogin.pam.conf.src,$(LOCAL_CPP_DEFINES),)
 #endif
