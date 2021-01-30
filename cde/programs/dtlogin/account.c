@@ -406,11 +406,18 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 int 
 UtmpIdOpen( char *utmpId )
 {
-    struct utmp *u;		/* pointer to entry in utmp file	   */
     int    status = 1;		/* return code				   */
 
-#if !defined(CSRG_BASED)
+#if !defined(CSRG_BASED) || defined(HAS_PAM_LIBRARY)
+#ifdef HAS_PAM_LIBRARY
+    struct utmpx *u;		/* pointer to entry in utmp file	   */
+
+    while ( (u = getutxent()) != NULL ) {
+#else
+    struct utmp *u;		/* pointer to entry in utmp file	   */
+
     while ( (u = getutent()) != NULL ) {
+#endif
 
 	if ( (strncmp(u->ut_id, utmpId, 4) == 0 ) &&
 	     u->ut_type != DEAD_PROCESS ) {
@@ -420,7 +427,11 @@ UtmpIdOpen( char *utmpId )
 	}
     }
     
+#ifdef HAS_PAM_LIBRARY
+    endutxent();
+#else
     endutent();
+#endif
 #endif
     return (status);
 }
