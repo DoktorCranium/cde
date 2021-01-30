@@ -130,7 +130,7 @@ DEPXAUTHLIB =
 DEPXDMCPLIB = 
 #endif
 
-#ifdef HasPamLibrary
+#if defined(HasPamLibrary) && HasPamLibrary
 DTPAMSVCLIB = -lDtPamSvc
 EXTRA_DEFINES += -DHAS_PAM_LIBRARY
 #else
