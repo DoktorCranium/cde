@@ -1,0 +1,13 @@
+#if defined(HasPamLibrary) && HasPamLibrary
+LOCAL_CPP_DEFINES = -DHAS_PAM_LIBRARY
+#ifdef PamAuthenticationModule
+PAM_AUTHENTICATION_MODULE=PamAuthenticationModule
+LOCAL_CPP_DEFINES += -DPAM_AUTHENTICATION_MODULE=$(PAM_AUTHENTICATION_MODULE)
+#endif
+
+CPP_TARGETS = dtsession.pam.conf
+
+AllTarget($(CPP_TARGETS))
+
+CppSourceFile(dtsession.pam.conf,dtsession.pam.conf.src,$(LOCAL_CPP_DEFINES),)
+#endif
