@@ -5,9 +5,9 @@ PAM_AUTHENTICATION_MODULE=PamAuthenticationModule
 LOCAL_CPP_DEFINES += -DPAM_AUTHENTICATION_MODULE=$(PAM_AUTHENTICATION_MODULE)
 #endif
 
-CPP_TARGETS = dtsession.pam.conf
+CPP_TARGETS = pam.d.dtsession
 
 AllTarget($(CPP_TARGETS))
 
-CppSourceFile(dtsession.pam.conf,dtsession.pam.conf.src,$(LOCAL_CPP_DEFINES),)
+CppSourceFile(pam.d.dtsession,pam.d.dtsession.src,$(LOCAL_CPP_DEFINES),)
 #endif
