@@ -95,13 +95,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
-#include <unistd.h>
-#include <limits.h>
-#include <sys/types.h>
+#include <Dt/MsgCatP.h>
 
-#include <nl_types.h>
-
-nl_catd catfile[2] = {NULL, NULL};	/* [0] for primary, [1] for default */
+/* [0] for primary, [1] for default */
+nl_catd catfile[2] = {(nl_catd) -1, (nl_catd) -1};
 char *big_buff;
 char *lang = NULL;
 char envvar[100];
@@ -174,11 +171,8 @@ void main (int argc, char *argv [])
         c = get_char ();
     }
 
-    if ( catfile[0] )
-       catclose(catfile[0]);
-
-    if ( catfile[1] )
-       catclose(catfile[1]);
+    CATCLOSE(catfile[0]);
+    CATCLOSE(catfile[1]);
 
     unlink(pFilename);
     unlink(dFilename);
@@ -257,7 +251,7 @@ void cat_open (void)
 	}
     }
 
-    catfile[0] =  catopen(pFilename, 0);
+    catfile[0] =  CATOPEN(pFilename,0);
 
     if(dfile != NULL)
     {
@@ -269,10 +263,10 @@ void cat_open (void)
 
     }
 
-    catfile[1] = catopen(dFilename, 0);
+    catfile[1] = CATOPEN(dFilename,0);
 
     /* if all fails */
-    if (catfile[0] == NULL && catfile[1] == NULL)
+    if((catfile[0] == (nl_catd) -1) && (catfile[1] == (nl_catd) -1))
         fatal("Can't open message files.\n", 0, 9);
 
 }
@@ -286,9 +280,9 @@ int find_message (int msg)
 {
     int ret = 0;
 
-    if(catfile[0] != NULL)
+    if(catfile[0] != (nl_catd) -1)
         ret = find_msg_in_file(msg, 0);
-    if(ret == 0 && catfile[1] != NULL)
+    if(ret == 0 && catfile[1] != (nl_catd) -1)
         ret = find_msg_in_file(msg, 1);
     return ret;
 }
@@ -303,7 +297,7 @@ int find_message (int msg)
  */
 int find_msg_in_file (int msg, int file)
 {
-        big_buff = catgets(catfile[file],1,msg,"MSG_NOT_FOUND");
+        big_buff = CATGETS(catfile[file],1,msg,"MSG_NOT_FOUND");
         if ( strcmp(big_buff,"MSG_NOT_FOUND") )
            return(1);
         else

@@ -43,7 +43,6 @@
 #include <errno.h>
 #include <stdint.h>
 #include <unistd.h>
-#include <nl_types.h>
 
 #include "Tt/tt_c.h"
 #include "util/tt_file_system.h"
