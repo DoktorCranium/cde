@@ -1,14 +1,14 @@
-# $TOG: CDE-RUN.udb /main/52 1999/05/27 11:56:18 samborn $
-#>>------------------------------
-# CDE-RUN.udb   CDE runtime product universal database
-#--------------------------------
-#
-#>>------------------------------
-# Defaults for: hpux
-#<<------------------------------
-#
+XCOMM  $TOG: CDE-RUN.udb /main/52 1999/05/27 11:56:18 samborn $
+XCOMM >>------------------------------
+XCOMM  CDE-RUN.udb   CDE runtime product universal database
+XCOMM --------------------------------
+XCOMM
+XCOMM >>------------------------------
+XCOMM  Defaults for: hpux
+XCOMM <<------------------------------
+XCOMM
 { hpux : defaults
-	install_target = 
+	install_target =
 	fileset = CDE-RUN
 	type = file
 	status = di----
@@ -18,18 +18,18 @@
 	group = bin
 	link_source = <LNK>
 	build_target = /
-	install_rule_name = 
-	install_flags = 
+	install_rule_name =
+	install_flags =
 	a_out_location = <SRC>
 	order = 0
 	responsible_project = cde_dt
 }
-#>>------------------------------
-# Defaults for: hpux 10.0
-#<<------------------------------
-#
+XCOMM >>------------------------------
+XCOMM  Defaults for: hpux 10.0
+XCOMM <<------------------------------
+XCOMM
 { hpV4 : defaults
-	install_target = 
+	install_target =
 	fileset = CDE-RUN
 	type = file
 	status = di----
@@ -39,18 +39,18 @@
 	group = bin
 	link_source = <LNK>
 	build_target = /
-	install_rule_name = 
-	install_flags = 
+	install_rule_name =
+	install_flags =
 	a_out_location = <SRC>
 	order = 0
 	responsible_project = cde_dt
 }
-#>>------------------------------
-# Defaults for: aix
-#<<------------------------------
-#
+XCOMM >>------------------------------
+XCOMM  Defaults for: aix
+XCOMM <<------------------------------
+XCOMM
 { aix : defaults
-	install_target = 
+	install_target =
 	fileset = CDE-RUN
 	type = file
 	status = di----
@@ -60,17 +60,17 @@
 	group = bin
 	link_source = <LNK>
 	build_target = /
-	install_rule_name = 
-	install_flags = 
+	install_rule_name =
+	install_flags =
 	a_out_location = <SRC>
 	order = 0
 	responsible_project = cde_dt
 }
 
-#>>------------------------------
-# Defaults for: sun
-#<<------------------------------
-#
+XCOMM >>------------------------------
+XCOMM  Defaults for: sun
+XCOMM <<------------------------------
+XCOMM
 { sun : defaults
         install_target =
         fileset = CDE-RUN
@@ -89,12 +89,12 @@
         responsible_project = cde_dt
 }
 
-#>>------------------------------
-# Defaults for: standalone product
-#<<------------------------------
-#
+XCOMM >>------------------------------
+XCOMM  Defaults for: standalone product
+XCOMM <<------------------------------
+XCOMM
 { standalone : defaults
-	install_target = 
+	install_target =
 	fileset = CDE-RUN
 	type = file
 	status = di----
@@ -104,31 +104,31 @@
 	group = bin
 	link_source = <LNK>
 	build_target = /
-	install_rule_name = 
-	install_flags = 
+	install_rule_name =
+	install_flags =
 	a_out_location = <SRC>
 	order = 0
 	responsible_project = cde_dt
 }
 
-#>>------------------------------
-# Defaults for: nls internationalized files
-#<<------------------------------
-#
+XCOMM >>------------------------------
+XCOMM  Defaults for: nls internationalized files
+XCOMM <<------------------------------
+XCOMM
 { nls : defaults
-	install_target = 
+	install_target =
 	processor = 378
 	type = file
 	mode = 0444
 	owner = bin
 	group = bin
 }
-#>>-------------------------------------------------
-# Defaults for: everything else (identical to hpux)
-#<<-------------------------------------------------
-#
+XCOMM >>-------------------------------------------------
+XCOMM  Defaults for: everything else (identical to hpux)
+XCOMM <<-------------------------------------------------
+XCOMM
 { default : defaults
-	install_target = 
+	install_target =
 	fileset = CDE-RUN
 	type = file
 	status = di----
@@ -138,49 +138,49 @@
 	group = bin
 	link_source = <LNK>
 	build_target = /
-	install_rule_name = 
-	install_flags = 
+	install_rule_name =
+	install_flags =
 	a_out_location = <SRC>
 	order = 0
 	responsible_project = cde_dt
 }
 
-#
-#>>----------------------------- 
-# dtlogin
-#<<----------------------------- 
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM  dtlogin
+XCOMM <<-----------------------------
+XCOMM
 programs/dtlogin/config/Xfailsafe
 { default
 	install_target = /usr/dt/config/Xfailsafe
 	mode = 0555
 }
-#
+XCOMM
 programs/dtconfig/hp/dtrc
 { hpux
 	install_target = /usr/dt/bin/dtrc
 	mode = 0544
 }
-#
+XCOMM
 programs/dtconfig/hp/dtrc
 { hpV4
 	install_target = /usr/dt/bin/dtrc
 	mode = 0544
 }
-#
+XCOMM
 { hpV4
 	type = directory
-	install_target = /usr/dt/config/dtrc.d   
+	install_target = /usr/dt/config/dtrc.d
 	mode = 0555
 	status = ------
 }
-#
+XCOMM
 programs/dtconfig/hp/dtrc.dtlogin_st
-{ hpV4 
+{ hpV4
 	install_target = /usr/dt/config/dtrc.d/90_dtlogin_st
 	mode = 0544
 }
-#
+XCOMM
 programs/dtconfig/hp/dtrc.getty_wait
 { hpV4
 	install_target = /usr/dt/config/dtrc.d/10_getty_wait
@@ -191,294 +191,294 @@ programs/dtconfig/hp/dtrc.graph_conf
 	install_target = /usr/dt/config/dtrc.d/20_graph_conf
 	mode = 0544
 }
-#
+XCOMM
 programs/dtconfig/ibm/rc.dt
 { aix
         install_target = /usr/dt/bin/rc.dt
         mode = 0544
 }
-#
+XCOMM
 programs/dtlogin/config/Xconfig
 { default
 	install_target = /usr/dt/config/Xconfig
 }
-#
+XCOMM
 programs/dtlogin/config/Xreset
 { default
 	install_target = /usr/dt/config/Xreset
 	mode = 0544
 }
-#
+XCOMM
 programs/dtlogin/config/Xsetup
 { default
 	install_target = /usr/dt/config/Xsetup
 	mode = 0544
 }
-#
+XCOMM
 programs/dtlogin/config/Xservers
 { default
 	install_target = /usr/dt/config/Xservers
 }
-#
+XCOMM
 programs/dtlogin/config/Xaccess
 { default
 	install_target = /usr/dt/config/Xaccess
 }
-#
+XCOMM
 programs/dtlogin/config/Xstartup
 { default
 	install_target = /usr/dt/config/Xstartup
 	mode = 0544
 }
-#
+XCOMM
 programs/localized/C/config/Xresources
 { default
         install_target = /usr/dt/config/C/Xresources
 }
-#
+XCOMM
 programs/localized/C/config/sys.dtwmrc
 { default
         install_target = /usr/dt/config/C/sys.dtwmrc
 }
-#
+XCOMM
 programs/dtlogin/config/dtprofile
 { default
 	install_target = /usr/dt/config/sys.dtprofile
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/config/sys.resources
 { default
         install_target = /usr/dt/config/C/sys.resources
 }
-#
+XCOMM
 programs/localized/C/config/sys.session
 { default
         install_target = /usr/dt/config/C/sys.session
 }
-#
+XCOMM
 programs/localized/C/config/sys.font
 { default
         install_target = /usr/dt/config/C/sys.font
 }
-#
+XCOMM
 programs/dtconfig/sun/dtlogin.rc
-{ sun 
+{ sun
 	install_target = /usr/dt/config/dtlogin.rc
 	mode = 0555
 }
-#
+XCOMM
 programs/dtconfig/sun/dtlogin.xml
 { sun
 	install_target = /usr/dt/config/dtlogin.xml
 	mode = 0555
 }
-#
+XCOMM
 programs/dtconfig/sun/dtconfig
-{ sun 
+{ sun
 	install_target = /usr/dt/bin/dtconfig
 	mode = 0555
 }
-#
+XCOMM
 programs/dtconfig/hp/dtconfig
 { hpV4
 	install_target = /usr/dt/bin/dtconfig
 	mode = 0555
 }
-#
+XCOMM
 programs/dtconfig/hp/dtlogin.rc
 { hpV4
 	install_target = /sbin/init.d/dtlogin.rc
 	mode = 0555
 }
-#
+XCOMM
 /sbin/init.d/dtlogin.rc
 { hpV4
 	install_target = /sbin/rc2.d/K100dtlogin.rc
 	type = sym_link
 }
-#
+XCOMM
 /sbin/init.d/dtlogin.rc
 { hpV4
 	install_target = /sbin/rc3.d/S990dtlogin.rc
 	type = sym_link
 }
-#
-#
-#
-#>>----------------------------- 
-# dtconfig for AIX
-#<<----------------------------- 
-#
+XCOMM
+XCOMM
+XCOMM
+XCOMM >>-----------------------------
+XCOMM  dtconfig for AIX
+XCOMM <<-----------------------------
+XCOMM
 programs/dtconfig/ibm/dtconfig
 { aix
         install_target = /usr/dt/bin/dtconfig
 	mode = 0555
 }
 
-#
-#>>-----------------------------
-# app-defaults
-#<<-----------------------------
-#
-#
-#
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM  app-defaults
+XCOMM <<-----------------------------
+XCOMM
+XCOMM
+XCOMM
+XCOMM
 programs/localized/C/app-defaults/Dthello
 { default
 	install_target = /usr/dt/app-defaults/C/Dthello
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dtsession
 { default
         install_target = /usr/dt/app-defaults/C/Dtsession
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dtwm
 { default
         install_target = /usr/dt/app-defaults/C/Dtwm
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dtfile
 { default
         install_target = /usr/dt/app-defaults/C/Dtfile
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dtstyle
 { default
         install_target = /usr/dt/app-defaults/C/Dtstyle
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dtpad
 { default
         install_target = /usr/dt/app-defaults/C/Dtpad
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dtscreen
 { default
         install_target = /usr/dt/app-defaults/C/Dtscreen
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dticon
 { default
         install_target = /usr/dt/app-defaults/C/Dticon
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dtcalc
 { default
         install_target = /usr/dt/app-defaults/C/Dtcalc
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dtterm
 { default
         install_target = /usr/dt/app-defaults/C/Dtterm
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dt
 { default
         install_target = /usr/dt/app-defaults/C/Dt
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dtcreate
 { default
         install_target = /usr/dt/app-defaults/C/Dtcreate
 }
-#
+XCOMM
 programs/dtimsstart/Dtimsstart
 { default
         install_target = /usr/dt/app-defaults/C/Dtimsstart
 }
-#
+XCOMM
 programs/dtprintinfo/Dtprintinfo
 { default
         install_target = /usr/dt/app-defaults/C/Dtprintinfo
 }
-#
+XCOMM
 programs/dtappbuilder/src/ab/Dtbuilder
 { default
         install_target = /usr/dt/app-defaults/C/Dtbuilder
 }
-#
+XCOMM
 lib/DtWidget/UNIXbindings
 { default
         install_target = /usr/dt/app-defaults/C/UNIXbindings
 }
-#
-#>>----------------------------- 
-# dtsession
-#<<----------------------------- 
-#
-#
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM  dtsession
+XCOMM <<-----------------------------
+XCOMM
+XCOMM
+XCOMM
 programs/dtlogin/config/Xsession
 { default
 	install_target = /usr/dt/bin/Xsession
 	mode = 0555
 }
-#
+XCOMM
 programs/dtlogin/config/dtlslocale
 { aix
 	install_target = /usr/dt/bin/dtlslocale
 	mode = 0555
 }
-#
+XCOMM
 programs/dtsearchpath/0010.dtpaths
 { default
 	install_target = /usr/dt/config/Xsession.d/0010.dtpaths
 	mode = 0555
 }
-#
+XCOMM
 programs/dtimsstart/0020.dtims
 { default
         install_target = /usr/dt/config/Xsession.d/0020.dtims
         mode = 0555
 }
-#
+XCOMM
 programs/dtsearchpath/0030.dttmpdir
 { default
         install_target = /usr/dt/config/Xsession.d/0030.dttmpdir
         mode = 0555
 }
-#
+XCOMM
 programs/dtlogin/config/0060.dtsysenv
 { default
         install_target = /usr/dt/config/Xsession.d/0060.dtsysenv
         mode = 0555
 }
-#
+XCOMM
 programs/dtsession/sys.font.iso
 { default
 	install_target = /usr/dt/share/examples/sys.font.iso
 }
-#
+XCOMM
 
-#
-#>>----------------------------- 
-# dtprintinfo
-#<<----------------------------- 
-#
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM  dtprintinfo
+XCOMM <<-----------------------------
+XCOMM
+XCOMM
 programs/dtprintinfo/dtprintinfo
 { default
 	install_target = /usr/dt/bin/dtprintinfo
 	mode = 0555
 	owner = root
 }
-#
-#>>-----------------------------
-# dtimsstart configuration file
-#>>-----------------------------
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM  dtimsstart configuration file
+XCOMM >>-----------------------------
+XCOMM
 programs/dtimsstart/conf/start.conf
 { default
         install_target = /usr/dt/config/ims/start.conf
 }
 
-#
-#>>-----------------------------
-# dtfile configuration file
-#>>-----------------------------
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM  dtfile configuration file
+XCOMM >>-----------------------------
+XCOMM
 programs/localized/C/config/dtfile.config
 { default
         install_target = /usr/dt/config/C/dtfile.config
@@ -489,124 +489,124 @@ programs/util/scripts/convertvf
 	install_target = /usr/dt/bin/dtconvertvf
 	mode = 0555
 }
-#
+XCOMM
 programs/util/scripts/convertvf
 { hpV4
 	install_target = /usr/dt/bin/dtconvertvf
 	mode = 0555
 }
 
-#
-#>>------------------------------ 
-# dtpad
-#<<----------------------------- 
-#
-#programs/dtpad/adjust16
-#${ default
-#	install_target = /usr/dt/bin/adjust16
-#	mode = 0555
-#}
-#
+XCOMM
+XCOMM >>------------------------------
+XCOMM  dtpad
+XCOMM <<-----------------------------
+XCOMM
+XCOMM programs/dtpad/adjust16
+XCOMM ${ default
+XCOMM 	install_target = /usr/dt/bin/adjust16
+XCOMM 	mode = 0555
+XCOMM }
+XCOMM
 
 
-#
-#>>----------------------------- 
-# dtcreate client
-#<<----------------------------- 
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM  dtcreate client
+XCOMM <<-----------------------------
+XCOMM
 programs/dtcreate/dtcreate
 { default
 	install_target = /usr/dt/bin/dtcreate
 	mode = 0555
 }
-#
-# 
-#>>----------------------------- 
-# DT predefined actions
-#<<----------------------------- 
-#
+XCOMM
+XCOMM
+XCOMM >>-----------------------------
+XCOMM  DT predefined actions
+XCOMM <<-----------------------------
+XCOMM
 programs/dtsearchpath/dtappg/howto-customize
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Information/README
 }
-#
+XCOMM
 programs/dtsearchpath/dtappg/howto-customize
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/System_Admin/README
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Bitmap
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/CodeGen
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Spell
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xclipboard
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Diff
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Compress
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
-{ default 	
+{ default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/DttermConsole
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Wc
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/XclockDig 
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/XclockDig
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/DuSort 
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/DuSort
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Df
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xfd
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/DtwmrcEdit
@@ -624,692 +624,692 @@ programs/localized/C/types/action
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/ExecuteCmd
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Env
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xlsfonts
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Nm
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xwininfo
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xprop
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Make 
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Make
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xrefresh	
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xrefresh
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/ReloadActions
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/ReloadApps
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/DttermRlogin
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/DttermDtspcd
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/XtermRlogin
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/XtermDtspcd
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/RestorePanel	
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/RestorePanel
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Rm
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Grep
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xload
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Tar
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/TarList
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/TarUnpack
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/File	
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/File
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Uncompress	
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Uncompress
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Vi
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/DttermErrorlog
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xterm 
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xterm
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xdpyinfo
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xwd
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xwud 
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Xwud
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/DtImsMode
 	mode = 0555
 }
-# 
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtappbuild
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtcalc
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtcm
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtcreate
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtfile 
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtfile
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dticon
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dthelpview
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtmail
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtmanpageview
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/DtPrintManager
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtstyle
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtpad
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtterm 
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dtterm
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
-	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dttrash 
+	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Apps/Dttrash
 	mode = 0555
 }
-#
+XCOMM
 programs/localized/C/types/action
 { default
 	install_target = /usr/dt/appconfig/appmanager/C/Desktop_Tools/Dttypes
 	mode = 0555
 }
 
-# Additional actions from Antonis Tsolomitis desktop_approots package
+XCOMM  Additional actions from Antonis Tsolomitis desktop_approots package
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Education/gcompris
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Education/geogebra
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Education/stellarium
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Education/tuxpaint
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Games/dreamchess
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Games/eboard
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Games/gcompris
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Games/ktuberling
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Games/lbreakout2
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Games/powermanga
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Games/pychess
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Games/supertux
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Games/xboard
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Graphics/fontforge
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Graphics/gimp
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Graphics/inkscape
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Graphics/okular
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Graphics/xv
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Internet/chromium
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Internet/firefox
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Internet/nxclient
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Internet/skype
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Internet/thunderbird
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Media_Tools/amarok
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Media_Tools/brasero
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Media_Tools/k3b
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Media_Tools/k9copy
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Media_Tools/pavucontrol
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Media_Tools/rhythmbox
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Media_Tools/rosegarden
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Media_Tools/sound-juicer
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Media_Tools/vlc
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Media_Tools/xine
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Office/acroread
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Office/libreoffice-base
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Office/libreoffice-calc
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Office/libreoffice-draw
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Office/libreoffice-impress
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Office/libreoffice-main
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Office/libreoffice-math
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Office/libreoffice-writer
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Office/nedit
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Office/xournal
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/Office/xpdf
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/System/caja
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/System/engrampa
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/System/file-roller
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/System/firestarter
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/System/pgadmin
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/System/synaptic
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/System/virtualbox
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/System/wicd
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/TeX/acroread
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/TeX/emacs
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/TeX/gv
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/TeX/kile
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/TeX/mgv
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/TeX/TeX
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/TeX/xdvi
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/TeX/xournal
         mode = 0555
 }
 
-#
+XCOMM
 programs/localized/C/types/action
 { default
         install_target = /usr/dt/appconfig/appmanager/C/TeX/xpdf
@@ -1318,216 +1318,215 @@ programs/localized/C/types/action
 
 
 
-# dtlp
+XCOMM  dtlp
 programs/dtprintegrate/dtlp
 { default
         install_target = /usr/dt/bin/dtlp
         mode = 0555
 }
-#
-#
-#>>----------------------------- 
-# backdrop files 
-#<<----------------------------- 
-#
+XCOMM
+XCOMM
+XCOMM >>-----------------------------
+XCOMM  backdrop files
+XCOMM <<-----------------------------
+XCOMM
 programs/localized/C/palettes/desc.C
 { default
 	install_target = /usr/dt/share/palettes/desc.C
 }
-#
+XCOMM
 programs/localized/C/backdrops/desc.C
 { default
 	install_target = /usr/dt/share/backdrops/desc.C
 }
-#
+XCOMM
 programs/backdrops/Foreground.bm
 { default
 	install_target = /usr/dt/share/backdrops/Foreground.bm
 }
-#
+XCOMM
 programs/backdrops/Background.bm
 { default
 	install_target = /usr/dt/share/backdrops/Background.bm
 }
-#
+XCOMM
 programs/backdrops/NoBackdrop.pm
 { default
 	install_target = /usr/dt/share/backdrops/NoBackdrop.pm
 }
-#
+XCOMM
 programs/backdrops/Ankh.bm
 { default
 	install_target = /usr/dt/share/backdrops/Ankh.bm
 }
-#
+XCOMM
 programs/backdrops/BrickWall.bm
 { default
 	install_target = /usr/dt/share/backdrops/BrickWall.bm
 }
-#
+XCOMM
 programs/backdrops/Concave.pm
 { default
 	install_target = /usr/dt/share/backdrops/Concave.pm
 }
-#
+XCOMM
 programs/backdrops/Convex.pm
 { default
 	install_target = /usr/dt/share/backdrops/Convex.pm
 }
-#
+XCOMM
 programs/backdrops/Corduroy.pm
 { default
 	install_target = /usr/dt/share/backdrops/Corduroy.pm
 }
-#
+XCOMM
 programs/backdrops/Crochet.pm
 { default
 	install_target = /usr/dt/share/backdrops/Crochet.pm
 }
-#
+XCOMM
 programs/backdrops/InlayColor.pm
 { default
 	install_target = /usr/dt/share/backdrops/InlayColor.pm
 }
-#
+XCOMM
 programs/backdrops/InlayPlain.pm
 { default
 	install_target = /usr/dt/share/backdrops/InlayPlain.pm
 }
-#
+XCOMM
 programs/backdrops/KnitLight.pm
 { default
 	install_target = /usr/dt/share/backdrops/KnitLight.pm
 }
-#
+XCOMM
 programs/backdrops/Lattice.pm
 { default
 	install_target = /usr/dt/share/backdrops/Lattice.pm
 }
-#
+XCOMM
 programs/backdrops/LatticeBig.pm
 { default
 	install_target = /usr/dt/share/backdrops/LatticeBig.pm
 }
-#
+XCOMM
 programs/backdrops/Leaves.pm
 { default
 	install_target = /usr/dt/share/backdrops/Leaves.pm
 }
-#
+XCOMM
 programs/backdrops/OldChars.pm
 { default
 	install_target = /usr/dt/share/backdrops/OldChars.pm
 }
-#
+XCOMM
 programs/backdrops/Paver.pm
 { default
 	install_target = /usr/dt/share/backdrops/Paver.pm
 }
-#
+XCOMM
 programs/backdrops/Pebbles.pm
 { default
 	install_target = /usr/dt/share/backdrops/Pebbles.pm
 }
-#
+XCOMM
 programs/backdrops/PinStripe.pm
 { default
 	install_target = /usr/dt/share/backdrops/PinStripe.pm
 }
-#
+XCOMM
 programs/backdrops/RakedSand.bm
 { default
 	install_target = /usr/dt/share/backdrops/RakedSand.bm
 }
-#
+XCOMM
 programs/backdrops/RicePaper.pm
 { default
 	install_target = /usr/dt/share/backdrops/RicePaper.pm
 }
-#
+XCOMM
 programs/backdrops/SkyDark.pm
 { default
 	install_target = /usr/dt/share/backdrops/SkyDark.pm
 }
-#
+XCOMM
 programs/backdrops/SkyLight.pm
 { default
 	install_target = /usr/dt/share/backdrops/SkyLight.pm
 }
-#
+XCOMM
 programs/backdrops/Sprinkles.pm
 { default
 	install_target = /usr/dt/share/backdrops/Sprinkles.pm
 }
-#
-#
+XCOMM
+XCOMM
 programs/backdrops/SunLogo.pm
 { sun
 	install_target = /usr/dt/share/backdrops/SunLogo.pm
 }
-#
+XCOMM
 programs/backdrops/Toronto.bm
 { default
 	install_target = /usr/dt/share/backdrops/Toronto.bm
 }
-#
+XCOMM
 programs/backdrops/WaterDrops.pm
 { default
 	install_target = /usr/dt/share/backdrops/WaterDrops.pm
 }
-#
+XCOMM
 programs/backdrops/Wooly.pm
 { default
 	install_target = /usr/dt/share/backdrops/Wooly.pm
 }
-#
+XCOMM
 ./share/backdrops
 { default
 	install_target = /usr/dt/backdrops
 	type = sym_link
 }
-#
-# shell script
-#
+XCOMM
+XCOMM  shell script
+XCOMM
 programs/dtfile/dtfile_error
 { default
         install_target = /usr/dt/bin/dtfile_error
         mode = 0555
 }
-#
-#<<--------------------------------------------
-# The DT binaries follow 
-#>>--------------------------------------------
-# 
+XCOMM
+XCOMM <<--------------------------------------------
+XCOMM  The DT binaries follow
+XCOMM >>--------------------------------------------
+XCOMM
 programs/dtappbuilder/src/ab/dtbuilder
 { default
 	install_target = /usr/dt/bin/dtbuilder
 	mode = 0555
 }
-#
+XCOMM
 programs/dtappbuilder/src/abmf/dtcodegen
 { default
 	install_target = /usr/dt/bin/dtcodegen
 	mode = 0555
 }
-#
+XCOMM
 programs/dtfile/dtfile
 { default
         install_target = /usr/dt/bin/dtfile
 	mode = 0555
 }
-#
+XCOMM
 programs/dtfile/dtcopy/dtfile_copy
 { default
         install_target = /usr/dt/bin/dtfile_copy
 	mode = 0555
 }
-#
 #ifdef HAS_PAM_LIBRARY
+XCOMM
 programs/dtsession/dtsession
 { default
         install_target = /usr/dt/bin/dtsession
-	owner = root
         mode = 0555
 }
 #else
@@ -1538,49 +1537,49 @@ programs/dtsession/dtsession
         mode = 04555
 }
 #endif
-#
+XCOMM
 programs/dtsession/dtloadresources
 { default
         install_target = /usr/dt/bin/dtsession_res
         mode = 0555
 }
-#
+XCOMM
 programs/dtwm/dtwm
 { default
         install_target = /usr/dt/bin/dtwm
         mode = 0555
 }
-#
-# Prints the definition hierarchy of the front panel
-#
+XCOMM
+XCOMM  Prints the definition hierarchy of the front panel
+XCOMM
 programs/dtwm/dtfplist
 { default
         install_target = /usr/dt/bin/dtfplist
         mode = 0555
 }
-#
+XCOMM
 programs/dtlogin/dtlogin
 { default
         install_target = /usr/dt/bin/dtlogin
         mode = 0544
 	owner = root
 }
-#
+XCOMM
 programs/dtlogin/dtchooser
 { default
         install_target = /usr/dt/bin/dtchooser
         mode = 0544
         owner = root
 }
-#
+XCOMM
 programs/dtlogin/dtgreet
 { default
         install_target = /usr/dt/bin/dtgreet
         mode = 0544
 }
-#
-# Create hpterm link on hpux only
-#
+XCOMM
+XCOMM  Create hpterm link on hpux only
+XCOMM
 /usr/bin/X11/hpterm
 { hpux
         install_target = /usr/dt/bin/hpterm
@@ -1588,7 +1587,7 @@ programs/dtlogin/dtgreet
 	type = sym_link
 	mode = 04555
 }
-#
+XCOMM
 /usr/bin/X11/hpterm
 { hpV4
         install_target = /usr/dt/bin/hpterm
@@ -1596,19 +1595,19 @@ programs/dtlogin/dtgreet
 	type = sym_link
 	mode = 04555
 }
-#
+XCOMM
 /usr/bin/X11/aixterm
 { aix
         install_target = /usr/dt/bin/aixterm
 	type = sym_link
 }
-#
+XCOMM
 programs/dthello/dthello
 { default
         install_target = /usr/dt/bin/dthello
         mode = 0555
 }
-#
+XCOMM
 programs/dtaction/dtaction
 { default
         install_target = /usr/dt/bin/dtaction
@@ -1616,7 +1615,7 @@ programs/dtaction/dtaction
 	group = sys
         mode = 06555
 }
-#
+XCOMM
 programs/dtaction/dtaction
 { hpux
         install_target = /usr/dt/bin/dtaction
@@ -1624,7 +1623,7 @@ programs/dtaction/dtaction
 	group = sys
         mode = 06555
 }
-#
+XCOMM
 programs/dtaction/dtaction
 { hpV4
         install_target = /usr/dt/bin/dtaction
@@ -1632,7 +1631,7 @@ programs/dtaction/dtaction
 	group = sys
         mode = 06555
 }
-#
+XCOMM
 programs/dtaction/dtaction
 { aix
         install_target = /usr/dt/bin/dtaction
@@ -1640,7 +1639,7 @@ programs/dtaction/dtaction
 	group = sys
         mode = 06555
 }
-#
+XCOMM
 programs/dtaction/dtaction
 { sun
         install_target = /usr/dt/bin/dtaction
@@ -1648,166 +1647,166 @@ programs/dtaction/dtaction
 	group = sys
         mode = 06555
 }
-#
+XCOMM
 programs/dtpad/dtpad
 { default
         install_target = /usr/dt/bin/dtpad
         mode = 0555
 }
-#
+XCOMM
 programs/dtstyle/dtstyle
 { default
         install_target = /usr/dt/bin/dtstyle
         mode = 0555
 }
-#
+XCOMM
 programs/dtscreen/dtscreen
 { default
         install_target = /usr/dt/bin/dtscreen
         mode = 0555
 }
-#
+XCOMM
 programs/dticon/dticon
 { default
         install_target = /usr/dt/bin/dticon
         mode = 0555
 }
-#
+XCOMM
 programs/dtcalc/dtcalc
 { default
         install_target = /usr/dt/bin/dtcalc
         mode = 0555
 }
-#
+XCOMM
 programs/dtudcfonted/dtudcfonted
 { default
         install_target = /usr/dt/bin/dtudcfonted
         mode = 0555
 }
-#
+XCOMM
 programs/localized/C/app-defaults/Dtudcfonted
 { default
         install_target = /usr/dt/app-defaults/C/Dtudcfonted
 }
-#
+XCOMM
 programs/dtudcexch/dtudcexch
 { default
         install_target = /usr/dt/bin/dtudcexch
         mode = 0555
 }
-#
+XCOMM
 programs/dtudcfonted/dtaddcpf/dtaddcpf
 { default
         install_target = /usr/dt/lib/dtudcfonted/dtaddcpf
         mode = 0555
 }
-#
+XCOMM
 programs/dtudcfonted/dtbdftocpf/dtbdftocpf
 { default
         install_target = /usr/dt/lib/dtudcfonted/dtbdftocpf
         mode = 0555
 }
-#
+XCOMM
 programs/dtudcfonted/dtcpftobdf/dtcpftobdf
 { default
         install_target = /usr/dt/lib/dtudcfonted/dtcpftobdf
         mode = 0555
 }
-#
+XCOMM
 programs/dtudcfonted/dtcpftogpf/dtcpftogpf
 { default
         install_target = /usr/dt/lib/dtudcfonted/dtcpftogpf
         mode = 0555
 }
-#
+XCOMM
 programs/dtudcfonted/dtcpgpf/dtcpgpf
 { default
         install_target = /usr/dt/lib/dtudcfonted/dtcpgpf
         mode = 0555
 }
-#
+XCOMM
 programs/dtudcfonted/dtgpftobdf/dtgpftobdf
 { default
         install_target = /usr/dt/lib/dtudcfonted/dtgpftobdf
         mode = 0555
 }
-#
+XCOMM
 programs/dtudcfonted/dtgpftocpf/dtgpftocpf
 { default
         install_target = /usr/dt/lib/dtudcfonted/dtgpftocpf
         mode = 0555
 }
-#
+XCOMM
 programs/dtudcfonted/dtlsgpf/dtlsgpf
 { default
         install_target = /usr/dt/lib/dtudcfonted/dtlsgpf
         mode = 0555
 }
-#
+XCOMM
 programs/dtudcfonted/libfal/fonts.list
 { default
        install_target = /usr/dt/config/C/fonts.list
 }
-#
+XCOMM
 programs/dtterm/dtterm
 { default
         install_target = /usr/dt/bin/dtterm
         mode = 04555
 	owner = root
 }
-#
+XCOMM
 programs/dtterm/dtterm.ti
 { default
         install_target = /usr/dt/config/dtterm.ti
 }
-#
+XCOMM
 programs/dtsearchpath/dtsp/dtsp
 { default
         install_target = /usr/dt/bin/dtsearchpath
         mode = 0555
 }
-#
+XCOMM
 programs/dtsearchpath/dtappg/dtappg
 { default
         install_target = /usr/dt/bin/dtappgather
         mode = 04555
 	owner = root
 }
-#
+XCOMM
 programs/util/dttypes/dttypes
 { default
         install_target = /usr/dt/bin/dttypes
         mode = 0555
 }
-#
+XCOMM
 programs/dsdm/dsdm
 { default
 	install_target = /usr/dt/bin/dsdm
 	mode = 0555
 }
-#
+XCOMM
 programs/dtimsstart/dtimsstart
 { default
 	install_target = /usr/dt/bin/dtimsstart
 	mode = 0555
 }
-#
+XCOMM
 programs/dtpdm/dtpdm
 { default
 	install_target = /usr/dt/bin/dtpdm
 	mode = 0555
 }
-#
+XCOMM
 programs/dtpdmd/dtpdmd
 { default
 	install_target = /usr/dt/bin/dtpdmd
 	mode = 0555
 }
-#
-# CDE Calendar from SUN ...  Brent Ayers
-#
+XCOMM
+XCOMM  CDE Calendar from SUN ...  Brent Ayers
+XCOMM
 
-# executable files
+XCOMM  executable files
 
 programs/dtcm/server/rpc.cmsd
 { default
@@ -1860,16 +1859,16 @@ programs/dtdspmsg/dtdspmsg
         install_target = /usr/dt/bin/dtdspmsg
         mode = 0555
 }
-#
-# CDE mailer from SUN ...  Neil Katin
-#
-#
-# --------------------------
-# ---    Dtmail files    ---
-# --------------------------
-#
+XCOMM
+XCOMM  CDE mailer from SUN ...  Neil Katin
+XCOMM
+XCOMM
+XCOMM  --------------------------
+XCOMM  ---    Dtmail files    ---
+XCOMM  --------------------------
+XCOMM
 
-# executable files
+XCOMM  executable files
 programs/dtmail/dtmail/dtmail
 { default
         install_target = /usr/dt/bin/dtmail
@@ -1884,31 +1883,31 @@ programs/dtmail/dtmailpr/dtmailpr
         group = mail
 }
 
-# data typing
+XCOMM  data typing
 programs/localized/C/types/dtmail.dt
 { default
         install_target = /usr/dt/appconfig/types/C/dtmail.dt
 }
 
-# App-defaults
+XCOMM  App-defaults
 programs/localized/C/app-defaults/Dtmail
 { default
 	install_target = /usr/dt/app-defaults/C/Dtmail
 }
 
-#>>-----------------------------
-# the Front Panel configuration file
-# ------------------------------
-#
+XCOMM >>-----------------------------
+XCOMM  the Front Panel configuration file
+XCOMM  ------------------------------
+XCOMM
 programs/localized/C/types/dtwm.fp
 { default
         install_target = /usr/dt/appconfig/types/C/dtwm.fp
 }
 
-#>>-----------------------------
-# Action and filetype databases
-# ------------------------------
-#
+XCOMM >>-----------------------------
+XCOMM  Action and filetype databases
+XCOMM  ------------------------------
+XCOMM
 programs/localized/C/types/autoStart.dt
 { default
         install_target = /usr/dt/appconfig/types/C/autoStart.dt
@@ -1917,526 +1916,526 @@ programs/localized/C/types/uxstd.dt
 { default
         install_target = /usr/dt/appconfig/types/C/uxstd.dt
 }
-#
+XCOMM
 programs/localized/C/types/dt.dt
 { default
         install_target = /usr/dt/appconfig/types/C/dt.dt
 }
-#
+XCOMM
 programs/localized/C/types/develop.dt
 { default
         install_target = /usr/dt/appconfig/types/C/develop.dt
 }
-#
+XCOMM
 programs/localized/C/types/datatypes.dt
 { default
         install_target = /usr/dt/appconfig/types/C/datatypes.dt
 }
-#
+XCOMM
 programs/localized/C/types/dtappman.dt
 { default
         install_target = /usr/dt/appconfig/types/C/dtappman.dt
 }
-#
+XCOMM
 programs/localized/C/types/dtfile.dt
 { default
         install_target = /usr/dt/appconfig/types/C/dtfile.dt
 }
-#
+XCOMM
 programs/localized/C/types/dtpad.dt
 { default
         install_target = /usr/dt/appconfig/types/C/dtpad.dt
 }
-#
+XCOMM
 programs/localized/C/types/xclients.dt
 { default
         install_target = /usr/dt/appconfig/types/C/xclients.dt
 }
-#
+XCOMM
 programs/localized/C/types/print.dt
 { default
         install_target = /usr/dt/appconfig/types/C/print.dt
 }
-#
+XCOMM
 programs/localized/C/types/user-prefs.dt
 { default
         install_target = /usr/dt/appconfig/types/C/user-prefs.dt
 }
-#
+XCOMM
 programs/localized/C/types/dthelp.dt
 { default
         install_target = /usr/dt/appconfig/types/C/dthelp.dt
 }
-#
-#programs/localized/C/types/hp.dt
-#{ hpux
-#        install_target = /usr/dt/appconfig/types/C/hp.dt
-#}
-#
-#programs/localized/C/types/ibm.dt
-#{ aix
-#        install_target = /usr/dt/appconfig/types/C/ibm.dt
-#}
-#
+XCOMM
+XCOMM programs/localized/C/types/hp.dt
+XCOMM { hpux
+XCOMM         install_target = /usr/dt/appconfig/types/C/hp.dt
+XCOMM }
+XCOMM
+XCOMM programs/localized/C/types/ibm.dt
+XCOMM { aix
+XCOMM         install_target = /usr/dt/appconfig/types/C/ibm.dt
+XCOMM }
+XCOMM
 programs/localized/C/types/dtscreen.dt
 { default
 	install_target = /usr/dt/appconfig/types/C/dtscreen.dt
 }
-#
+XCOMM
 programs/localized/C/types/dtims.dt
 { default
 	install_target = /usr/dt/appconfig/types/C/dtims.dt
 }
-# 
+XCOMM
 programs/localized/C/types/dtbuilder.dt
 { default
 	install_target = /usr/dt/appconfig/types/C/dtbuilder.dt
 }
 
-# Additional actions from Antonis Tsolomitis desktop_approots package
+XCOMM  Additional actions from Antonis Tsolomitis desktop_approots package
 programs/localized/C/types/Education.dt
 { default
         install_target = /usr/dt/appconfig/types/C/Education.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/gcompris.dt
 { default
         install_target = /usr/dt/appconfig/types/C/gcompris.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/geogebra.dt
 { default
         install_target = /usr/dt/appconfig/types/C/geogebra.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/stellarium.dt
 { default
         install_target = /usr/dt/appconfig/types/C/stellarium.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/tuxpaint.dt
 { default
         install_target = /usr/dt/appconfig/types/C/tuxpaint.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/dreamchess.dt
 { default
         install_target = /usr/dt/appconfig/types/C/dreamchess.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/eboard.dt
 { default
         install_target = /usr/dt/appconfig/types/C/eboard.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/Games.dt
 { default
         install_target = /usr/dt/appconfig/types/C/Games.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/gcompris.dt
 { default
         install_target = /usr/dt/appconfig/types/C/gcompris.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/ktuberling.dt
 { default
         install_target = /usr/dt/appconfig/types/C/ktuberling.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/lbreakout2.dt
 { default
         install_target = /usr/dt/appconfig/types/C/lbreakout2.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/powermanga.dt
 { default
         install_target = /usr/dt/appconfig/types/C/powermanga.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/pychess.dt
 { default
         install_target = /usr/dt/appconfig/types/C/pychess.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/supertux.dt
 { default
         install_target = /usr/dt/appconfig/types/C/supertux.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/xboard.dt
 { default
         install_target = /usr/dt/appconfig/types/C/xboard.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/fontforge.dt
 { default
         install_target = /usr/dt/appconfig/types/C/fontforge.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/gimp.dt
 { default
         install_target = /usr/dt/appconfig/types/C/gimp.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/Graphics.dt
 { default
         install_target = /usr/dt/appconfig/types/C/Graphics.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/inkscape.dt
 { default
         install_target = /usr/dt/appconfig/types/C/inkscape.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/okular.dt
 { default
         install_target = /usr/dt/appconfig/types/C/okular.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/xv.dt
 { default
         install_target = /usr/dt/appconfig/types/C/xv.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/chromium.dt
 { default
         install_target = /usr/dt/appconfig/types/C/chromium.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/firefox.dt
 { default
         install_target = /usr/dt/appconfig/types/C/firefox.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/Internet.dt
 { default
         install_target = /usr/dt/appconfig/types/C/Internet.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/nxclient.dt
 { default
         install_target = /usr/dt/appconfig/types/C/nxclient.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/skype.dt
 { default
         install_target = /usr/dt/appconfig/types/C/skype.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/thunderbird.dt
 { default
         install_target = /usr/dt/appconfig/types/C/thunderbird.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/amarok.dt
 { default
         install_target = /usr/dt/appconfig/types/C/amarok.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/brasero.dt
 { default
         install_target = /usr/dt/appconfig/types/C/brasero.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/k3b.dt
 { default
         install_target = /usr/dt/appconfig/types/C/k3b.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/k9copy.dt
 { default
         install_target = /usr/dt/appconfig/types/C/k9copy.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/Media_Tools.dt
 { default
         install_target = /usr/dt/appconfig/types/C/Media_Tools.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/pavucontrol.dt
 { default
         install_target = /usr/dt/appconfig/types/C/pavucontrol.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/rhythmbox.dt
 { default
         install_target = /usr/dt/appconfig/types/C/rhythmbox.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/rosegarden.dt
 { default
         install_target = /usr/dt/appconfig/types/C/rosegarden.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/sound-juicer.dt
 { default
         install_target = /usr/dt/appconfig/types/C/sound-juicer.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/vlc.dt
 { default
         install_target = /usr/dt/appconfig/types/C/vlc.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/xine.dt
 { default
         install_target = /usr/dt/appconfig/types/C/xine.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/libreoffice-base.dt
 { default
         install_target = /usr/dt/appconfig/types/C/libreoffice-base.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/libreoffice-calc.dt
 { default
         install_target = /usr/dt/appconfig/types/C/libreoffice-calc.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/libreoffice-draw.dt
 { default
         install_target = /usr/dt/appconfig/types/C/libreoffice-draw.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/libreoffice-impress.dt
 { default
         install_target = /usr/dt/appconfig/types/C/libreoffice-impress.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/libreoffice-main.dt
 { default
         install_target = /usr/dt/appconfig/types/C/libreoffice-main.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/libreoffice-math.dt
 { default
         install_target = /usr/dt/appconfig/types/C/libreoffice-math.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/libreoffice-writer.dt
 { default
         install_target = /usr/dt/appconfig/types/C/libreoffice-writer.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/nedit.dt
 { default
         install_target = /usr/dt/appconfig/types/C/nedit.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/Office.dt
 { default
         install_target = /usr/dt/appconfig/types/C/Office.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/xournal.dt
 { default
         install_target = /usr/dt/appconfig/types/C/xournal.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/caja.dt
 { default
         install_target = /usr/dt/appconfig/types/C/caja.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/engrampa.dt
 { default
         install_target = /usr/dt/appconfig/types/C/engrampa.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/file-roller.dt
 { default
         install_target = /usr/dt/appconfig/types/C/file-roller.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/firestarter.dt
 { default
         install_target = /usr/dt/appconfig/types/C/firestarter.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/pgadmin.dt
 { default
         install_target = /usr/dt/appconfig/types/C/pgadmin.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/synaptic.dt
 { default
         install_target = /usr/dt/appconfig/types/C/synaptic.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/System.dt
 { default
         install_target = /usr/dt/appconfig/types/C/System.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/virtualbox.dt
 { default
         install_target = /usr/dt/appconfig/types/C/virtualbox.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/wicd.dt
 { default
         install_target = /usr/dt/appconfig/types/C/wicd.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/acroread.dt
 { default
         install_target = /usr/dt/appconfig/types/C/acroread.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/emacs.dt
 { default
         install_target = /usr/dt/appconfig/types/C/emacs.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/gv.dt
 { default
         install_target = /usr/dt/appconfig/types/C/gv.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/kile.dt
 { default
         install_target = /usr/dt/appconfig/types/C/kile.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/mgv.dt
 { default
         install_target = /usr/dt/appconfig/types/C/mgv.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/TeX.dt
 { default
         install_target = /usr/dt/appconfig/types/C/TeX.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/xdvi.dt
 { default
         install_target = /usr/dt/appconfig/types/C/xdvi.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/xournal.dt
 { default
         install_target = /usr/dt/appconfig/types/C/xournal.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/xpdf.dt
 { default
         install_target = /usr/dt/appconfig/types/C/xpdf.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/DisplayImage.dt
 { default
         install_target = /usr/dt/appconfig/types/C/DisplayImage.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/DisplayPDF.dt
 { default
         install_target = /usr/dt/appconfig/types/C/DisplayPDF.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/DisplayVideo.dt
 { default
         install_target = /usr/dt/appconfig/types/C/DisplayVideo.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/DisplayPS.dt
 { default
         install_target = /usr/dt/appconfig/types/C/DisplayPS.dt
 }
 
-#
+XCOMM
 programs/localized/C/types/videoTypes.dt
 { default
         install_target = /usr/dt/appconfig/types/C/videoTypes.dt
 }
 
 
-#
+XCOMM
 programs/localized/C/types/IconBrowse.dt
 { default
         install_target = /usr/dt/share/examples/types/C/IconBrowse.dt
 }
-#
+XCOMM
 programs/localized/C/types/miscActions.dt
 { default
         install_target = /usr/dt/share/examples/types/C/miscActions.dt
 }
-#
+XCOMM
 programs/localized/C/types/miscImages.dt
 { default
         install_target = /usr/dt/share/examples/types/C/miscImages.dt
 }
 
-#
+XCOMM
 programs/types/error.ds
 { default
 	install_target = /usr/dt/bin/dterror.ds
@@ -2448,55 +2447,55 @@ programs/types/error.ds
 	install_target = /usr/dt/examples
 	type = sym_link
 }
-#
-#>>----------------------------- 
-#
-# dtsearch
-#
-#<<----------------------------- 
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM
+XCOMM  dtsearch
+XCOMM
+XCOMM <<-----------------------------
+XCOMM
 programs/dtsr/dtsrclean
 { default
         install_target = /usr/dt/bin/dtsrclean
         mode = 0555
 }
-#
+XCOMM
 programs/dtsr/dtsrcreate
 { default
         install_target = /usr/dt/bin/dtsrcreate
         mode = 0555
 }
-#
+XCOMM
 programs/dtsr/dtsrdbrec
 { default
         install_target = /usr/dt/bin/dtsrdbrec
         mode = 0555
 }
-#
+XCOMM
 programs/dtsr/dtsrdelete
 { default
         install_target = /usr/dt/bin/dtsrdelete
         mode = 0555
 }
-#
+XCOMM
 programs/dtsr/dtsrhan
 { default
         install_target = /usr/dt/bin/dtsrhan
         mode = 0555
 }
-#
+XCOMM
 programs/dtsr/dtsrindex
 { default
         install_target = /usr/dt/bin/dtsrindex
         mode = 0555
 }
-#
+XCOMM
 programs/dtsr/dtsrkdump
 { default
         install_target = /usr/dt/bin/dtsrkdump
         mode = 0555
 }
-#
+XCOMM
 programs/dtsr/dtsrload
 { default
         install_target = /usr/dt/bin/dtsrload
@@ -2512,197 +2511,197 @@ programs/dtsr/dtsearch.dbd
         install_target = /usr/dt/infolib/etc/dtsr/dtsearch.dbd
         mode = 0555
 }
-#
-#>>----------------------------- 
-#
-# dtinfo
-#
-#<<----------------------------- 
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM
+XCOMM  dtinfo
+XCOMM
+XCOMM <<-----------------------------
+XCOMM
 programs/dtinfo/dtinfo/src/dtinfo
 { default
         install_target = /usr/dt/bin/dtinfo
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/clients/dtinfo_start/dtinfo_start
 { default
         install_target = /usr/dt/infolib/etc/dtinfo_start
         mode = 0555
 }
-#
-#
-#>>----------------------------- 
-#
-# dtinfogen
-#
-#<<----------------------------- 
-#
+XCOMM
+XCOMM
+XCOMM >>-----------------------------
+XCOMM
+XCOMM  dtinfogen
+XCOMM
+XCOMM <<-----------------------------
+XCOMM
 programs/dtinfo/dtinfogen/infolib/etc/dtinfogen
 { default
         install_target = /usr/dt/bin/dtinfogen
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/dtinfogen/infolib/etc/dtinfogen_worker
 { default
         install_target = /usr/dt/infolib/etc/dtinfogen_worker
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/dtinfogen/infolib/etc/MixedGen
 { default
         install_target = /usr/dt/infolib/etc/MixedGen
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/dtinfogen/infolib/etc/NCFGen
 { default
         install_target = /usr/dt/infolib/etc/NCFGen
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/dtinfogen/infolib/etc/NodeParser
 { default
         install_target = /usr/dt/infolib/etc/NodeParser
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/dtinfogen/infolib/etc/StyleUpdate
 { default
         install_target = /usr/dt/infolib/etc/StyleUpdate
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/dtinfogen/install/valBase
 { default
         install_target = /usr/dt/infolib/etc/valBase
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/dtinfogen/install/ChangeCaseTitle
 { default
         install_target = /usr/dt/infolib/etc/ChangeCaseTitle
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/dtinfogen/install/InstallBase
 { default
         install_target = /usr/dt/infolib/etc/InstallBase
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/dtinfogen/install/DeInstallBase
 { default
         install_target = /usr/dt/infolib/etc/DeInstallBase
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/dtinfogen/install/Librarian
 { default
         install_target = /usr/dt/infolib/etc/Librarian
         mode = 0555
 }
-#
+XCOMM
 programs/nsgmls/nsgmls
 { default
         install_target = /usr/dt/infolib/etc/nsgmls
         mode = 0555
 }
-#
-#>>----------------------------- 
-# 
-# MMDB
-#
-#<<----------------------------- 
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM
+XCOMM  MMDB
+XCOMM
+XCOMM <<-----------------------------
+XCOMM
 programs/dtinfo/dtinfogen/mmdb/src/dbdrv
 { default
         install_target = /usr/dt/infolib/etc/dbdrv
         mode = 0555
 }
-#
+XCOMM
 programs/dtinfo/dtinfogen/mmdb/StyleSheet/validator
 { default
         install_target = /usr/dt/infolib/etc/validator
         mode = 0555
 }
-#
-#>>----------------------------- 
-#
-# DtSearch entries 
-#
-#<<----------------------------- 
-#
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM
+XCOMM  DtSearch entries
+XCOMM
+XCOMM <<-----------------------------
+XCOMM
+XCOMM
 programs/localized/C/dtsr/eng.sfx
 { default
 	install_target = /usr/dt/infolib/etc/C/dtsr/eng.sfx
 }
-#
+XCOMM
 programs/localized/C/dtsr/eng.stp
 { default
 	install_target = /usr/dt/infolib/etc/C/dtsr/eng.stp
 }
-#
+XCOMM
 programs/localized/de_DE.UTF-8/dtsr/deu.sfx
 { default
 	install_target = /usr/dt/infolib/etc/de_DE.UTF-8/dtsr/deu.sfx
 }
-#
+XCOMM
 programs/localized/de_DE.UTF-8/dtsr/deu.stp
 { default
 	install_target = /usr/dt/infolib/etc/de_DE.UTF-8/dtsr/deu.stp
 }
-#
+XCOMM
 programs/localized/es_ES.UTF-8/dtsr/esp.sfx
 { default
 	install_target = /usr/dt/infolib/etc/es_ES.UTF-8/dtsr/esp.sfx
 }
-#
+XCOMM
 programs/localized/es_ES.UTF-8/dtsr/esp.stp
 { default
 	install_target = /usr/dt/infolib/etc/es_ES.UTF-8/dtsr/esp.stp
 }
-#
+XCOMM
 programs/localized/fr_FR.UTF-8/dtsr/fra.sfx
 { default
 	install_target = /usr/dt/infolib/etc/fr_FR.UTF-8/dtsr/fra.sfx
 }
-#
+XCOMM
 programs/localized/fr_FR.UTF-8/dtsr/fra.stp
 { default
 	install_target = /usr/dt/infolib/etc/fr_FR.UTF-8/dtsr/fra.stp
 }
-#
+XCOMM
 programs/localized/it_IT.UTF-8/dtsr/ita.sfx
 { default
 	install_target = /usr/dt/infolib/etc/it_IT.UTF-8/dtsr/ita.sfx
 }
-#
+XCOMM
 programs/localized/it_IT.UTF-8/dtsr/ita.stp
 { default
 	install_target = /usr/dt/infolib/etc/it_IT.UTF-8/dtsr/ita.stp
 }
-#
+XCOMM
 programs/localized/ja_JP.dt-eucJP/dtsr/jpn.knj
 { default
 	install_target = /usr/dt/infolib/etc/ja_JP.EUC-JP/dtsr/jpn.knj
 }
-#
-#>>----------------------------- 
-#
-# dtopen entries
-#
-#<<----------------------------- 
-#
-#
+XCOMM
+XCOMM >>-----------------------------
+XCOMM
+XCOMM  dtopen entries
+XCOMM
+XCOMM <<-----------------------------
+XCOMM
+XCOMM
 programs/dtopen/dtopen
 { default
 	install_target = /usr/dt/bin/dtopen
         mode = 0555
 }
-# Now the dtopen symlinks
+XCOMM  Now the dtopen symlinks
 ./dtopen
 { default
         install_target = /usr/dt/bin/dtopen_image
