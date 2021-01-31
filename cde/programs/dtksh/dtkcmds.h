@@ -50,6 +50,8 @@
 #define CONVERT_POSTPONED 0
 #define CONVERT_FAILED   -1
 
+#define ADDBUILTIN(a,b) sh_addbuiltin(a, ((int (*)__PROTO__((int, char*[], Shbltin_t*)))b), (void*) 0)
+
 extern Widget Toplevel;
 extern char str_nill[];
 extern wtab_t * DTKSHConversionWidget;
@@ -578,90 +580,112 @@ extern void FreeNestedVariables( void ) ;
 extern Namval_t * nopCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * dftCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * ehCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * transCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * scaleCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * arrowCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * comboCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * cmdCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * dAreaCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * dbtnCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * dtPrintSetupProcDisc(
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp);
 extern Namval_t * fselCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * listCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * pbtnCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * rcCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * sbarCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * swinCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * sboxCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * tbtnCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * textCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * textCreateDisc2( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern Namval_t * helpCreateDisc( 
                         Namval_t *np,
                         char *name,
+			int flags,
                         Namfun_t *fp) ;
 extern int * LockKshFileDescriptors( void ) ;
 extern void UnlockKshFileDescriptors( 

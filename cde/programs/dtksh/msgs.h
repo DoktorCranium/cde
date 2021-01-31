@@ -65,13 +65,13 @@ char * GetSharedMsg(
 # ifdef _NO_PROTO
 extern char *_DtGetMessage();
 # else  /* _NO_PROTO */
-extern char *_DtGetMessage(char *filename, int set, int n, char *s );
+extern char *_DtGetMessage(char *filename, char *s );
 # endif /* _NO_PROTO */
 
-# define GETMESSAGE(set, number, string)\
-    (_DtGetMessage(_CLIENT_CAT_NAME, set, number, string))
+# define GETMESSAGE(string)\
+    (_DtGetMessage(_CLIENT_CAT_NAME, string))
 #else
-# define GETMESSAGE(set, number, string)\
+# define GETMESSAGE(string)\
     string
 #endif
 
@@ -104,7 +104,7 @@ extern char *_DtGetMessage(char *filename, int set, int n, char *s );
 #define DT_USAGE_WIDGET_POS        25
 #define DT_USAGE_WIDGET_TIME       27
 #define DT_USAGE_WIDGET            28
-#define DT_ERROR                   29
+#define DTKSH_ERROR                29 /* ksh93 retroactively claimed DT_ERROR */
 #define DT_WARNING                 30
 #define DT_XK_FREE_NO_MEMBER       31
 #define DT_XK_PARSE_ERROR          32

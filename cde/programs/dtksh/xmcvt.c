@@ -31,7 +31,7 @@
 /*	actual or intended publication of such source code.     */
 
 
-#include	"shell.h" 
+#include "shell.h"
 #include <signal.h>
 #include <fcntl.h>
 #include <X11/X.h>
@@ -55,9 +55,7 @@
 #include <Tt/tttk.h>
 #include "hash.h"
 #include "stdio.h"
-#define NO_AST
 #include "dtksh.h"
-#undef NO_AST
 #include "xmksh.h"
 #include "XtCvtrs.h"
 #include "dtkcmds.h"
@@ -356,7 +354,7 @@ DtkshCvtStringToNamedValue(
 			return;
 		}
 	}
-	errmsg =strdup(GETMESSAGE(16,2, 
+	errmsg =strdup(GETMESSAGE(
              "DtkshCvtStringToNamedValue: Unable to convert the string '%s'"));
         errbuf = XtMalloc(strlen(errmsg) + strlen(value) + 10);
         sprintf(errbuf, errmsg, value);

@@ -49,11 +49,11 @@ SOFTWARE.
 
 /* Conversion.c - implementations of resource type conversion procs */
 
+#include	<stdio.h>
 #include	<X11/Xlib.h>
 #include	<X11/Intrinsic.h>
 #include	<X11/IntrinsicP.h>
 #include	<X11/StringDefs.h>
-#include	"stdio.h"
 #include	<X11/keysym.h>
 #include	<X11/Xlocale.h>
 #include        "msgs.h"
@@ -149,7 +149,7 @@ DtkshCvtStringToPixel(
             {
                char * errbuf;
 
-	       errmsg = GETMESSAGE(1, 1, 
+	       errmsg = GETMESSAGE(
                         "DtkshCvtStringToPixel: The color '%s' is not defined");
                errbuf = XtMalloc(strlen(errmsg) + strlen(str) + 10);
                sprintf(errbuf, errmsg, str);

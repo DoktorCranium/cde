@@ -43,7 +43,7 @@ extern struct menu_entry menu_entries[] ;  /* All the menu strings. */
 
 extern Vars v ;                 /* Calctool variables and options. */
 
-void init_mess             P(()) ;
+void init_mess(void);
 
 /*  The following are all the strings used by the dtcalc program.
  *  They are initialized in init_text() to the local language equivalents.
@@ -395,16 +395,16 @@ init_text(void)   /* Setup text strings depending upon language. */
   calc_res[(int) R_MENUBAR]  = DGET("postMenuBar") ;
   calc_res[(int) R_KEYS]     = DGET("keys") ;
 
-  STRCPY(v->con_names[0], LGET(GETMESSAGE(3, 119, "kilometers per hour <=> miles per hour."))) ;
-  STRCPY(v->con_names[1], LGET(GETMESSAGE(3, 120, "square root of 2."))) ;
-  STRCPY(v->con_names[2], LGET(GETMESSAGE(3, 121, "e."))) ;
-  STRCPY(v->con_names[3], LGET(GETMESSAGE(3, 122, "pi."))) ;
-  STRCPY(v->con_names[4], LGET(GETMESSAGE(3, 123, "centimeters <=> inch."))) ;
-  STRCPY(v->con_names[5], LGET(GETMESSAGE(3, 124, "degrees in a radian."))) ;
-  STRCPY(v->con_names[6], LGET(GETMESSAGE(3, 125, "2 ^ 20."))) ;
-  STRCPY(v->con_names[7], LGET(GETMESSAGE(3, 126, "grams <=> ounce."))) ;
-  STRCPY(v->con_names[8], LGET(GETMESSAGE(3, 127, "kilojoules <=> British thermal units."))) ;
-  STRCPY(v->con_names[9], LGET(GETMESSAGE(3, 128, "cubic centimeters <=> cubic inches."))) ;
+  strcpy(v->con_names[0], LGET(GETMESSAGE(3, 119, "kilometers per hour <=> miles per hour."))) ;
+  strcpy(v->con_names[1], LGET(GETMESSAGE(3, 120, "square root of 2."))) ;
+  strcpy(v->con_names[2], LGET(GETMESSAGE(3, 121, "e."))) ;
+  strcpy(v->con_names[3], LGET(GETMESSAGE(3, 122, "pi."))) ;
+  strcpy(v->con_names[4], LGET(GETMESSAGE(3, 123, "centimeters <=> inch."))) ;
+  strcpy(v->con_names[5], LGET(GETMESSAGE(3, 124, "degrees in a radian."))) ;
+  strcpy(v->con_names[6], LGET(GETMESSAGE(3, 125, "2 ^ 20."))) ;
+  strcpy(v->con_names[7], LGET(GETMESSAGE(3, 126, "grams <=> ounce."))) ;
+  strcpy(v->con_names[8], LGET(GETMESSAGE(3, 127, "kilojoules <=> British thermal units."))) ;
+  strcpy(v->con_names[9], LGET(GETMESSAGE(3, 128, "cubic centimeters <=> cubic inches."))) ;
 
 /* Keyboard equivalents for the dtcalc menu entries. */
 

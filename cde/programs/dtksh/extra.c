@@ -70,7 +70,7 @@ int
 ksh_eval(
         char *cmd )
 {
-        sh_eval(sfopen(NIL(Sfile_t*),cmd,"s"),0);
+        sh_eval(sfopen(NIL(Sfio_t*),cmd,"s"),0);
         sfsync(sh.outpool);
 	return(sh.exitval);
 }
@@ -153,4 +153,74 @@ printerrf(
 	   printf("%s: %s\n", cmd, buf);
         else
 	   printf("%s\n", buf);
+}
+
+/****************************************************************************
+ *
+ * The following two functions are ugly, but necessary.  Ksh reserves file
+ * descriptors 0 - 9 for use by shell scripts, and has intimate knowledge
+ * of how and when they were opened.  Unfortunately, certain dtksh functions
+ * (XtInitialize, catopen, ttdt_open, _DtActionInvoke, others) open file
+ * descriptors which are not known to ksh.  We can't let these file
+ * descriptors fall in the 0 - 9 range, because we can't afford to have
+ * the shell script overriding our file descriptors.  Therefore, any of
+ * our commands which open files must first lock our file descriptors 0 - 9,
+ * thus forcing the command to get a file descriptor out of the shell's
+ * range.  After the command has opened its file descriptor, it then needs
+ * to unlock file descriptors 0 - 9, so that the shell script will have
+ * access to them again.
+ *
+ **************************************************************************/
+
+
+/*
+ * Return a list of the file descriptors we had to open, to lock out file
+ * descriptors 0 - 9; this list should be freed (and the file descriptors
+ * closed) by calling UnlockkshFileDescriptors().
+ */
+
+int *LockKshFileDescriptors(void)
+{
+   int * fdList;
+   int i;
+   int fd, newfd;
+
+   fdList = (int *)malloc(sizeof(int) * 10);
+   for (i = 0; i < 10; i++)
+      fdList[i] = -1;
+
+   if ((fd = open("/dev/null", O_RDONLY)) >= 0)
+   {
+      if (fd < 10)
+      {
+         fdList[0] = fd;
+         for (i = 1; i < 10; i++)
+         {
+            if ((newfd = dup(fd)) < 10)
+               fdList[i] = newfd;
+            else
+            {
+	       close(newfd);
+               break;
+            }
+         }
+      }
+      else
+         close(fd);
+   }
+
+   return(fdList);
+}
+
+void UnlockKshFileDescriptors(int *fdList)
+{
+   int i;
+
+   for (i = 0; i < 10; i++)
+   {
+      if (fdList[i] != (-1))
+         close(fdList[i]);
+   }
+
+   free((char *)fdList);
 }

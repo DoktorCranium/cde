@@ -70,6 +70,7 @@ static char *CopyRt =
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <limits.h>
 #include <memory.h>
 #include <errno.h>
 #include <sys/types.h>
@@ -89,7 +90,11 @@ static char *CopyRt =
 
 /* for backwards compatibility */
 #ifndef _MAXNAMLEN
+#ifndef MAXNAMLEN
+#define _MAXNAMLEN NAME_MAX
+#else
 #define _MAXNAMLEN MAXNAMLEN
+#endif
 #endif
 
 static int	do_context, do_tree, do_summ, do_stats, do_validate, do_idlist;
@@ -882,11 +887,13 @@ ReadLocaleStrings(const char *file_name, int *ret_code) {
 
     i18nBuf = EscapeI18NChars(pBuf);
     if (i18nBuf != pBuf) {
-	free(pBuf);
+	pBuf = Tcl_Realloc(pBuf, 1 + strlen(i18nBuf));
+	strcpy(pBuf, i18nBuf);
+	free(i18nBuf);
     }
 
     *ret_code = 0;
-    return i18nBuf;
+    return pBuf;
 }
 
 static int TclReadLocaleStrings(ClientData  clientData,
@@ -1093,7 +1100,7 @@ ReadESIS(
     char	*buf, *i18nBuf;
     int		i, c, ncont;
     Element_t	*e;
-    Content_t	cont[5000];
+    Content_t	cont[5000] = {0};
 
     Malloc( LINESIZE+1, buf, char );
 

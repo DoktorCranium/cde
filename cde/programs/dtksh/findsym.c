@@ -30,74 +30,42 @@
 /*	The copyright notice above does not evidence any       */
 /*	actual or intended publication of such source code.    */
 
+#include "shell.h"
 #include "stdio.h"
 #include <sys/types.h>
 
-#ifdef DYNLIB
 #ifdef __aix
 #include <sys/ldr.h>
 #else
 #include <dlfcn.h>
 #endif
-/* from ksh93/include/ast/shell.h */
-extern void **sh_getliblist(void);
-#endif
-#ifdef HPUX_DYNLIB
-#include <dl.h>
-#endif
 
 #include <string.h>
 #include <search.h>
 #include <ctype.h>
-#include "xmdtksym.h"
 #include "msgs.h"
 
 /*
  * This function is currently only used to locate a widget class record,
- * as requested by a DtLoadWidget request.  In the future, if the exksh
- * commands are ever added back in, then it will also need to be able
- * to locate any arbitrary symbol.
+ * as requested by a DtLoadWidget request.
  */
 
-unsigned long
+void *
 fsym(
         char *str,
         int lib )
 {
-#ifdef DYNLIB
-   void ** liblist;
    int i = 0;
-   long addr;
-#endif
-#ifdef HPUX_DYNLIB
-   void *found;
-   shl_t handle;
-#endif
+   void * addr;
 
-#ifdef DYNLIB
-   if ((liblist = sh_getliblist()) == NULL)
-        return(NULL);
-
-   while (liblist[i])
+   if (liblist == NULL)
+      return (NULL);
+   while (liblist[i].dll)
    {
-      if (addr = dlsym(liblist[i], str))
-         return((unsigned long)addr);
+      if (addr = dlsym(liblist[i].dll, str))
+         return(addr);
       i++;
    }
-#else
-#ifdef HPUX_DYNLIB
-   handle = NULL;
-   if ((shl_findsym(&handle, str, TYPE_PROCEDURE, &found)) == 0)
-      return((unsigned long) found);
-   if ((shl_findsym(&handle, str, TYPE_DATA, &found)) == 0)
-      return((unsigned long) found);
-   handle = PROG_HANDLE;
-   if ((shl_findsym(&handle, str, TYPE_PROCEDURE, &found)) == 0)
-      return((unsigned long) found);
-   if ((shl_findsym(&handle, str, TYPE_DATA, &found)) == 0)
-      return((unsigned long) found);
-#endif
-#endif
 
    return(0);
 }
