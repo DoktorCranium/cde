@@ -61,7 +61,7 @@ dtksh_SOURCES = init.c \
 init.c:
 	cd ksh93; ./bin/package flat make CCFLAGS='$(SUIDEXECDEFINES) -g -D_std_malloc'
 	cp ./ksh93/src/cmd/ksh93/sh/init.c init.c
-	patch --posix init.c -i init.patch
+	$(PATCH) --posix init.c -i init.patch
 	./setup.sh
 
 
