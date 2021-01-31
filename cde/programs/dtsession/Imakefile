@@ -1,4 +1,10 @@
 XCOMM $TOG: Imakefile /main/22 1998/04/06 13:33:41 mgreess $
+#define IHaveSubdirs
+#define PassCDebugFlags 'CDEBUGFLAGS=$(CDEBUGFLAGS)'
+
+SUBDIRS = config
+MakeSubdirs($(SUBDIRS))
+DependSubdirs($(SUBDIRS))
 
 DEPEND_DEFINES = $(DEPENDDEFINES)
 DEFINES = -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
