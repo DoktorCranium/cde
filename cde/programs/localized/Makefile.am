@@ -1,9 +1,5 @@
 SUBDIRS = util C
 
-if JAPANESE
-SUBDIRS += ja_JP.dt-eucJP
-endif
-
 if GERMAN
 SUBDIRS += de_DE.UTF-8
 endif

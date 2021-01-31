@@ -217,13 +217,6 @@ AC_ARG_ENABLE([spanish],
 )
 AM_CONDITIONAL([SPANISH], [test -n "$enable_es"])
 
-AC_ARG_ENABLE([japanese],
-        AS_HELP_STRING([--enable-japanese], [Build Japanese locale (default=no, never tested)]),
-        [enable_jp="yes"], [enable_jp=""]
-)
-AM_CONDITIONAL([JAPANESE], [test -n "$enable_jp"])
-
-
 dnl hmmm...
 RM="rm -f"
 AC_SUBST(RM)
