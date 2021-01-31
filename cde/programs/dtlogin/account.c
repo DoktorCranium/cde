@@ -51,7 +51,7 @@
 #endif
 
 #include	<fcntl.h>
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+#if defined(__FreeBSD__) && OSMAJORVERSION > 8 || defined(HAS_PAM_LIBRARY)
 #include	<utmpx.h>
 #else
 #include	<utmp.h>
@@ -138,7 +138,7 @@ Account( struct display *d, char *user, char *line, pid_t pid,
         waitType exitcode )
 {
 #if !defined(CSRG_BASED) || defined(HAS_PAM_LIBRARY)
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+#ifdef HAS_PAM_LIBRARY
     struct utmpx utmp;		/* local struct for new entry	   	   */
     struct utmpx *u;		/* pointer to entry in utmp file	   */
 #else
@@ -187,7 +187,7 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 #ifdef sun
     return;
 #else
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+#ifdef HAS_PAM_LIBRARY
     bzero(&utmp, sizeof(struct utmpx));
 #else
     bzero(&utmp, sizeof(struct utmp));
@@ -196,7 +196,7 @@ Account( struct display *d, char *user, char *line, pid_t pid,
     strncpy(utmp.ut_id, d->utmpId, sizeof(u->ut_id) - 1);
     utmp.ut_type = LOGIN_PROCESS;
     
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+#ifdef HAS_PAM_LIBRARY
     setutxent();
     if ( (u = getutxid(&utmp)) == NULL ) u = &utmp;
 #else
@@ -212,7 +212,7 @@ Account( struct display *d, char *user, char *line, pid_t pid,
     if ((type == DEAD_PROCESS && pid != 0 && u->ut_pid != pid) ||
         (type == DEAD_PROCESS && u->ut_type == DEAD_PROCESS)	) {
 
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+#ifdef HAS_PAM_LIBRARY
 	endutxent();
 #else
 	endutent();
@@ -268,7 +268,7 @@ Account( struct display *d, char *user, char *line, pid_t pid,
     if (type) {
 	u->ut_type = type;
 	if (type == DEAD_PROCESS) {
-#if !(defined(__FreeBSD__) && OSMAJORVERSION > 8)
+#ifndef HAS_PAM_LIBRARY
 	    u->ut_exit.e_termination = waitSig(exitcode);
 	    u->ut_exit.e_exit = waitCode(exitcode);
 #endif
@@ -286,13 +286,13 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 #endif
  	}
  		    
-#if !(defined(__FreeBSD__) && OSMAJORVERSION > 8)
+#ifndef HAS_PAM_LIBRARY
 	if (type == USER_PROCESS)
 	    u->ut_exit.e_exit = (d->displayType.location == Local ? 1 : 0 );
 #endif
     }	
 
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+#ifdef HAS_PAM_LIBRARY
     (void) time(&u->ut_tv);
 #else
     (void) time(&u->ut_time);
@@ -306,14 +306,14 @@ Account( struct display *d, char *user, char *line, pid_t pid,
      *  to wtmp!)
      */
 
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+#ifdef HAS_PAM_LIBRARY
     pututxline(u);
 #else
     pututline(u);
 #endif
 
 
-#if !(defined(__FreeBSD__) && OSMAJORVERSION > 8)
+#ifndef HAS_PAM_LIBRARY
     /*
      *  write the same entry to wtmp...
      */

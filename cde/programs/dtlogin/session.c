@@ -66,7 +66,7 @@
 # include <signal.h>
 # include <X11/Xatom.h>
 # include <setjmp.h>
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
+#if defined(__FreeBSD__) && OSMAJORVERSION > 8 || defined(HAS_PAM_LIBRARY)
 # include <utmpx.h>
 #else
 # include <utmp.h>
