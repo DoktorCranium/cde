@@ -559,6 +559,9 @@ programs/dtspcd/Makefile
 
 programs/dtscreen/Makefile
 
+programs/dtksh/Makefile
+programs/dtksh/examples/Makefile
+
 programs/dtcm/Makefile
 programs/dtcm/libDtCmP/Makefile
 programs/dtcm/server/Makefile

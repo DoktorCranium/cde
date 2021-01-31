@@ -1,3 +1,9 @@
+MAINTAINERCLEANFILES = Makefile.in
+
+CLEANFILES = init.c FEATURE
+
+SUBDIRS = examples
+
 kshdir = ${libdir}/dtksh
 
 dist_ksh_SCRIPTS = DtFuncs.dtsh
@@ -8,41 +14,39 @@ if SOLARIS
 .NO_PARALLEL:
 endif
 
-SUBDIRS = examples ksh93
-KSH93OBJ = $(KSH93SRC)/ksh93.o
-KSH93LIBSHELL = $(KSH93SRC)/src/cmd/ksh93/libshell.a
+KSH93LIBSHELL = $(KSH93SRC)/lib/libshell.a
 
 bin_PROGRAMS = dtksh
 
 dtksh_CPPFLAGS = -I$(KSH93SRC)/include/ast -I$(KSH93SRC)/src/cmd/ksh93/include \
-	       -I$(KSH93SRC)/src/cmd/ksh93 -I${srcdir}/lib/DtPrint \
-	       -I${srcdir}/lib/DtHelp
-dtksh_LDADD = $(DTHELPLIB) $(DTWIDGETLIB) $(DTSVCLIB) $(DTPRINTLIB) $(TTLIB) \
-	      -lXm $(XTOOLLIB) ${X_LIB} $(KSH93SRC)/lib/libcmd.a  \
-	      $(KSH93SRC)/lib/libast.a -lm
+		 -I$(KSH93SRC)/src/cmd/ksh93 -I${srcdir}/lib/DtPrint \
+		 -I${srcdir}/lib/DtHelp '-DAST_VERSION=20111111' \
+		 -DSHOPT_STATS -DSHOPT_NAMESPACE -DSHOPT_2DMATCH \
+		 -DSHOPT_MULTIBYTE -DSHOPT_BGX -DSHOPT_AUDIT -D_PACKAGE_ast \
+		 -DSHOPT_DYNAMIC -D_BLD_shell -DSHOPT_KIA -DKSHELL \
+		 -DSHOPT_HISTEXPAND -DSHOPT_EDPREDICT -DSHOPT_ESH -DSHOPT_VSH \
+		 -DSHOPT_FIXEDARRAY '-DERROR_CONTEXT_T=Error_context_t' \
+		 -DSHOPT_SUID_EXEC -D_API_ast=20100309 -DSHOPT_BRACEPAT \
+		 -DBUILD_DTKSH
+
+dtksh_LDADD = $(DTCLIENTLIBS) -lXm pmain.o $(XTOOLLIB) ${X_LIB} \
+	      libshell.a $(KSH93SRC)/lib/libcmd.a $(KSH93SRC)/lib/libast.a \
+	      $(KSH93SRC)/lib/libdll.a -lm
 
 if LINUX
 dtksh_LDADD += -ldl
 endif
 
 if SOLARIS
-dtksh_CPPFLAGS += -DDYNLIB
-endif
-
-if HPUX
-dtksh_CFLAGS += -Wl,-E -DHPUX_DYNLIB -Wp,-H12000
-dtksh_LDADD += -lm -ldld
+dtksh_LDADD += -lsecdb -lsocket -lnsl
 endif
 
 if AIX
-dtksh_CPPFLAGS += -DDYNLIB -D_IBMRPC_
-dtksh_LDADD += -bE:dtksh.exp
+dtksh_CPPFLAGS += -D_IBMRPC_
+dtksh_LDFLAGS = -bE:dtksh.exp
 endif
 
-dtksh_SOURCES = \
-                userinit.c \
-                builtins.c \
-                aliases.c \
+dtksh_SOURCES = init.c \
                 widget.c \
                 dtkcvt.c \
                 dtkcmds.c \
@@ -51,23 +55,22 @@ dtksh_SOURCES = \
                 xmcmds.c \
                 xmwidgets.c \
                 extra.c \
-                xmdtksym.c \
                 findsym.c \
                 msgs.c
 
-all:: dtksh
+init.c:
+	cd ksh93; ./bin/package flat make CCFLAGS='$(SUIDEXECDEFINES) -g -D_std_malloc'
+	cp ./ksh93/src/cmd/ksh93/sh/init.c init.c
+	patch --posix init.c -i init.patch
+	./setup.sh
 
-$(KSH93SRC)/ksh93.o:
-        cd $(KSH93SRC); $(MAKE)
 
-# Must replace standard ksh tables of builtins and aliases
-# with our augmented versions.
+libshell.a: $(KSH93SLIBSHELL) dtksh-init.o
+	$(CP) $(KSH93LIBSHELL) libshell.a; \
+	ar d libshell.a init.o; \
+	$(AR) cq libshell.a dtksh-init.o
 
-libshell.a: $(KSH93SLIBSHELL) userinit.o builtins.o aliases.o
-        $(CP) $(KSH93LIBSHELL) libshell.a; \
-        ar d libshell.a userinit.o builtins.o aliases.o ; \
-        $(AR) libshell.a userinit.o builtins.o aliases.o
+clean-local:
+	cd ksh93 && ./bin/package clean
 
-clean::
-        @echo " Cleaning ksh directories"
-        $(SHELL) MakeClean
+DtFuncs.dtsh:
