@@ -50,11 +50,7 @@
 #include <sys/param.h>
 #include <pwd.h>
 #include <security/pam_appl.h>
-#if defined(__FreeBSD__) && OSMAJORVERSION > 8
 #include <utmpx.h>
-#else
-#include <utmp.h>
-#endif
 #include "PamSvc.h"
 
 /*
