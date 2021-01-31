@@ -1,14 +1,14 @@
-# $XConsortium: CDE-MIN.udb /main/6 1996/07/24 15:55:57 drk $
-#>>------------------------------
-# CDE-MIN.udb   CDE Runtime Support
-#--------------------------------
-#
-#>>------------------------------
-# Defaults for: hpux
-#<<------------------------------
-#
+XCOMM $XConsortium: CDE-MIN.udb /main/6 1996/07/24 15:55:57 drk $
+XCOMM>>------------------------------
+XCOMM CDE-MIN.udb   CDE Runtime Support
+XCOMM--------------------------------
+XCOMM
+XCOMM>>------------------------------
+XCOMM Defaults for: hpux
+XCOMM<<------------------------------
+XCOMM
 { hpux : defaults
-	install_target = 
+	install_target =
 	fileset = CDE-MIN
 	type = file
 	status = di----
@@ -18,18 +18,18 @@
 	group = bin
 	link_source = <LNK>
 	build_target = /
-	install_rule_name = 
-	install_flags = 
+	install_rule_name =
+	install_flags =
 	a_out_location = <SRC>
 	order = 0
 	responsible_project = cde_dt
 }
-#>>------------------------------
-# Defaults for: hpux 10.0
-#<<------------------------------
-#
+XCOMM>>------------------------------
+XCOMM Defaults for: hpux 10.0
+XCOMM<<------------------------------
+XCOMM
 { hpV4 : defaults
-	install_target = 
+	install_target =
 	fileset = CDE-MIN
 	type = file
 	status = di----
@@ -39,18 +39,18 @@
 	group = bin
 	link_source = <LNK>
 	build_target = /
-	install_rule_name = 
-	install_flags = 
+	install_rule_name =
+	install_flags =
 	a_out_location = <SRC>
 	order = 0
 	responsible_project = cde_dt
 }
-#>>------------------------------
-# Defaults for: aix
-#<<------------------------------
-#
+XCOMM>>------------------------------
+XCOMM Defaults for: aix
+XCOMM<<------------------------------
+XCOMM
 { aix : defaults
-	install_target = 
+	install_target =
 	fileset = CDE-MIN
 	type = file
 	status = di----
@@ -60,17 +60,17 @@
 	group = bin
 	link_source = <LNK>
 	build_target = /
-	install_rule_name = 
-	install_flags = 
+	install_rule_name =
+	install_flags =
 	a_out_location = <SRC>
 	order = 0
 	responsible_project = cde_dt
 }
 
-#>>------------------------------
-# Defaults for: sun
-#<<------------------------------
-#
+XCOMM>>------------------------------
+XCOMM Defaults for: sun
+XCOMM<<------------------------------
+XCOMM
 { sun : defaults
         install_target =
         fileset = CDE-MIN
@@ -89,12 +89,12 @@
         responsible_project = cde_dt
 }
 
-#>>------------------------------
-# Defaults for: standalone product
-#<<------------------------------
-#
+XCOMM>>------------------------------
+XCOMM Defaults for: standalone product
+XCOMM<<------------------------------
+XCOMM
 { standalone : defaults
-	install_target = 
+	install_target =
 	fileset = CDE-MIN
 	type = file
 	status = di----
@@ -104,31 +104,31 @@
 	group = bin
 	link_source = <LNK>
 	build_target = /
-	install_rule_name = 
-	install_flags = 
+	install_rule_name =
+	install_flags =
 	a_out_location = <SRC>
 	order = 0
 	responsible_project = cde_dt
 }
 
-#>>------------------------------
-# Defaults for: nls internationalized files
-#<<------------------------------
-#
+XCOMM>>------------------------------
+XCOMM Defaults for: nls internationalized files
+XCOMM<<------------------------------
+XCOMM
 { nls : defaults
-	install_target = 
+	install_target =
 	processor = 378
 	type = file
 	mode = 0444
 	owner = bin
 	group = bin
 }
-#>>-------------------------------------------------
-# Defaults for: everything else (identical to hpux)
-#<<-------------------------------------------------
-#
+XCOMM>>-------------------------------------------------
+XCOMM Defaults for: everything else (identical to hpux)
+XCOMM<<-------------------------------------------------
+XCOMM
 { default : defaults
-	install_target = 
+	install_target =
 	fileset = CDE-MIN
 	type = file
 	status = di----
@@ -138,49 +138,49 @@
 	group = bin
 	link_source = <LNK>
 	build_target = /
-	install_rule_name = 
-	install_flags = 
+	install_rule_name =
+	install_flags =
 	a_out_location = <SRC>
 	order = 0
 	responsible_project = cde_dt
 }
 
-#
-#>>----------------------------- 
-# the copyright message
-#<<----------------------------- 
-#
+XCOMM
+XCOMM>>-----------------------------
+XCOMM the copyright message
+XCOMM<<-----------------------------
+XCOMM
 copyright
 { default
 	install_target = /usr/dt/copyright
 	mode = 0644
 }
 
-#
-#>>----------------------------- 
-# the COPYING file
-#<<----------------------------- 
-#
+XCOMM
+XCOMM>>-----------------------------
+XCOMM the COPYING file
+XCOMM<<-----------------------------
+XCOMM
 COPYING
 { default
 	install_target = /usr/dt/COPYING
 	mode = 0644
 }
 
-#
-#>>----------------------------- 
-# the CONTRIBUTORS file
-#<<----------------------------- 
-#
+XCOMM
+XCOMM>>-----------------------------
+XCOMM the CONTRIBUTORS file
+XCOMM<<-----------------------------
+XCOMM
 CONTRIBUTORS
 { default
 	install_target = /usr/dt/CONTRIBUTORS
 	mode = 0644
 }
 
-#
-# PAM configuration file.
-#
+XCOMM
+XCOMM PAM configuration file.
+XCOMM
 lib/pam/libpam/pam.conf
 { sun
 	install_target = /usr/dt/config/sys.pam.conf
@@ -188,86 +188,82 @@ lib/pam/libpam/pam.conf
 	owner = root
 }
 
-#
-# A collection of script functions
-#
+XCOMM
+XCOMM A collection of script functions
+XCOMM
 programs/dtksh/DtFuncs.sh
 { default
         install_target = /usr/dt/lib/dtksh/DtFuncs.dtsh
 }
-#
+XCOMM
 programs/dtspcd/dtspcd
 { default
         install_target = /usr/dt/bin/dtspcd
         mode = 0555
 }
-#
+XCOMM
 programs/dtappintegrate/dtappintegrate
 { default
         install_target = /usr/dt/bin/dtappintegrate
         mode = 0555
 }
-#
+XCOMM
 programs/dtksh/dtksh
 { default
 	install_target = /usr/dt/bin/dtksh
 	mode = 0555
 }
-#
+XCOMM
 programs/dtksh/ksh93/bin/suid_exec
 { default
 	install_target = /usr/dt/bin/suid_exec
 	owner = root
 	mode = 0555
 }
-#
+XCOMM
 programs/dtksh/Dtksh
 { default
 	install_target = /usr/dt/app-defaults/C/Dtksh
 }
-#
+XCOMM
 programs/dtspcd/dtspcdenv
 { default
 	install_target = /usr/dt/config/dtspcdenv
 }
 
-#
-#>>----------------------------- 
-# dtexec client
-#<<----------------------------- 
-#
+XCOMM
+XCOMM>>-----------------------------
+XCOMM dtexec client
+XCOMM<<-----------------------------
+XCOMM
 programs/dtexec/dtexec
 { default
 	install_target = /usr/dt/bin/dtexec
 	mode = 0555
 }
 
-#
-#>>----------------------------- 
-# dtdbcache client
-#<<----------------------------- 
-#
+XCOMM
+XCOMM>>-----------------------------
+XCOMM dtdbcache client
+XCOMM<<-----------------------------
+XCOMM
 programs/dtdbcache/dtdbcache
 { default
 	install_target = /usr/dt/bin/dtdbcache
 	mode = 0555
 }
 
-#
-# PAM configuration files.
-#
+XCOMM
+XCOMM PAM configuration files.
+XCOMM
 #ifdef HAS_PAM_LIBRARY
 programs/dtlogin/config/pam.d.dtlogin
 { default
 	install_target = /usr/dt/config/pam.d.dtlogin
-	mode = 0644
-	owner = root
 }
-#
+XCOMM
 programs/dtsession/config/pam.d.dtsession
 { default
 	install_target = /usr/dt/config/pam.d.dtsession
-	mode = 0644
-	owner = root
 }
 #endif

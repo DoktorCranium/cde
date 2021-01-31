@@ -461,6 +461,26 @@ XCOMM
         install_target = /usr/dt/lib/libDtMmdb.so
 	type = sym_link
 }
+#ifdef HAS_PAM_LIBRARY
+XCOMM
+lib/DtPamSvc/libDtPamSvc.so.2.1
+{ linux
+    install_target = /usr/dt/lib/libDtPamSvc.so.2.1
+    mode = 0755
+}
+XCOMM
+./libDtPamSvc.so.2.1
+{ linux
+    install_target = /usr/dt/lib/libDtPamSvc.so.2
+    type = sym_link
+}
+XCOMM
+./libDtPamSvc.so.2.1
+{ linux
+    install_target = /usr/dt/lib/libDtPamSvc.so
+    type = sym_link
+}
+#endif
 
 
 XCOMM 
@@ -859,6 +879,20 @@ XCOMM
         install_target = /usr/dt/lib/libDtMmdb.so
         type = sym_link
 }
+#ifdef HAS_PAM_LIBRARY
+XCOMM
+lib/DtPamSvc/libDtPamSvc.so.2
+{ freebsd
+    install_target = /usr/dt/lib/libDtPamSvc.so.2
+    mode = 0555
+}
+XCOMM
+./libDtPamSvc.so.2
+{ freebsd
+    install_target = /usr/dt/lib/libDtPamSvc.so
+    type = sym_link
+}
+#endif
 
 XCOMM
 XCOMM
@@ -1046,4 +1080,23 @@ XCOMM
         install_target = /usr/dt/lib/libDtMmdb.so
         type = sym_link
 }
+#ifdef HAS_PAM_LIBRARY
 XCOMM
+lib/DtPamSvc/libDtPamSvc.so.2.1
+{ netbsd
+    install_target = /usr/dt/lib/libDtPamSvc.so.2.1
+    mode = 0755
+}
+XCOMM
+./libDtPamSvc.so.2.1
+{ netbsd
+    install_target = /usr/dt/lib/libDtPamSvc.so.2
+    type = sym_link
+}
+XCOMM
+./libDtPamSvc.so.2.1
+{ netbsd
+    install_target = /usr/dt/lib/libDtPamSvc.so
+    type = sym_link
+}
+#endif
