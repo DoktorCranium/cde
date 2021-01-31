@@ -1,5 +1,8 @@
 MAINTAINERCLEANFILES = Makefile.in
 
+# Can't build multi-core in here yet.
+.NOTPARALLEL:
+
 CLEANFILES = init.c FEATURE
 
 SUBDIRS = examples
