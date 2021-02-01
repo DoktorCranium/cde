@@ -28,6 +28,7 @@ LOCAL_CPP_DEFINES += -DFREEBSD
 
 #if defined(HasPamLibrary) && HasPamLibrary
 LOCAL_CPP_DEFINES += -DHAS_PAM_LIBRARY
+EXTRA_CPP_TARGETS += pam.d.dtlogin
 #ifdef PamAuthenticationModule
 PAM_AUTHENTICATION_MODULE=PamAuthenticationModule
 LOCAL_CPP_DEFINES += -DPAM_AUTHENTICATION_MODULE=$(PAM_AUTHENTICATION_MODULE)
@@ -56,8 +57,7 @@ CPP_TARGETS = \
 	Xstartup		current.session \
 	display.current.session	display.home.session \
 	dtlslocale		dtprofile \
-	home.session	pam.d.dtlogin \
-	$(EXTRA_CPP_TARGETS)
+	home.session	$(EXTRA_CPP_TARGETS)
 
 AllTarget($(CPP_TARGETS))
 
