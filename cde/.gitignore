@@ -2294,3 +2294,9 @@ programs/localized/*/config/0120.session
 programs/localized/*/config/0140.session
 programs/localized/*/config/0160.session
 
+# MSGCAT changes
+programs/dtdspmsg/MsgCat.c
+programs/dtexec/MsgCat.c
+programs/dtsr/MsgCat.c
+programs/localized/util/MsgCat.c
+
