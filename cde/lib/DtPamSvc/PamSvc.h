@@ -43,10 +43,6 @@
 
 #include <sys/types.h>
 
-#define PAM_LOGIN_MAXTRIES 5
-#define PAM_LOGIN_SLEEPTIME 4
-#define PAM_LOGIN_DISABLETIME 20
-
 #define DT_BAD_GID 29 /* Invalid Group ID */
 #define DT_INITGROUP_FAIL 30 /* group IDs init failed */
 #define DT_BAD_UID 31 /* Invaid User ID */
