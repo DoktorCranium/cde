@@ -48,9 +48,9 @@
 #include <errno.h>
 #include <dirent.h>
 #include <sys/param.h>
-#include <pwd.h>
 #include <security/pam_appl.h>
 #include <utmpx.h>
+#include <unistd.h>
 #include "PamSvc.h"
 
 /*
@@ -69,7 +69,6 @@ static char* create_devname(char* short_devname);
 static struct pam_conv pam_conv = {login_conv, NULL};
 static char *saved_user_passwd;
 static pam_handle_t *pamh = NULL;
-static int pam_auth_trys = 0;
 
 /****************************************************************************
  * PamInit
@@ -126,18 +125,8 @@ int _DtAuthentication ( char*   prog_name,
     status = PamInit(prog_name, user, line_dev, display_name);
 
     if (status == PAM_SUCCESS) {
-        struct passwd *pwd;
-
         saved_user_passwd = user_passwd;
         status = pam_authenticate( pamh, 0 );
-        pam_auth_trys++;
-
-        if (status != PAM_SUCCESS) {
-            sleep(PAM_LOGIN_SLEEPTIME);
-            if (pam_auth_trys > PAM_LOGIN_MAXTRIES) {
-                sleep(PAM_LOGIN_DISABLETIME);
-            }
-        }
     };
 
     if (status != PAM_SUCCESS) {
@@ -208,8 +197,8 @@ int _DtSetCred(char* prog_name, char* user, uid_t uid, gid_t gid)
     if (status == PAM_SUCCESS && setgid(gid) == -1)
         status = DT_BAD_GID;
 
-    if (status == PAM_SUCCESS &&
-            ( !user) || (initgroups(user, gid) == -1) )
+    if ((status == PAM_SUCCESS &&
+            !user) || (initgroups(user, gid) == -1))
         status = DT_INITGROUP_FAIL;
 
     if (status == PAM_SUCCESS)
