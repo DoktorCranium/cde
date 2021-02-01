@@ -1611,6 +1611,9 @@ localAuthenticate(
     char *service;
     struct passwd *pwent;
 
+    if (!(name && name[0])) name = NULL;
+    if (uid < 0) uid = 0;
+
     if (!(name || passwd)) return True;
     if (!passwd) return False;
     if (!(pwent = name ? getpwnam(name) : getpwuid(uid))) return False;
