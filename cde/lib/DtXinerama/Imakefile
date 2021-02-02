@@ -40,7 +40,7 @@ OBJS = DtXinerama.o
 INCLUDES = -I.
 
 XCOMM -fpic is required for static libDtXinerama to link with libDtSvc properly
-CCOPTIONS += -fpic
+CCOPTIONS += $(PICFLAGS)
 
 DependTarget()
 
