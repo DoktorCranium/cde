@@ -1357,7 +1357,9 @@ printVersion(
     /*** DTB_USER_CODE_START vvv Add C code below vvv ***/
     snoopStream << "ttsnoop: " << globalVersionString << endl;
     snoopStream << "tt_c.h: " << TT_VERSION << endl;
-    snoopStream << "libtt: " << _tt_lib_version << endl;
+
+    if (_tt_lib_version)
+        snoopStream << "libtt: " << _tt_lib_version << endl;
     /*** DTB_USER_CODE_END   ^^^ Add C code above ^^^ ***/
 }
 
