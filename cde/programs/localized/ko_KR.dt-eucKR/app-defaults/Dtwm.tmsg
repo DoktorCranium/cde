@@ -62,7 +62,7 @@ $ * Specify the default backdrop for all workspace. This backdrop will
 $ * be used unless overridden by those set in the next section.
 $ *
 $ * Dtwm*backdrop*image
-11 SkyLight
+11 KnitLight
 $ *
 $ *
 $ * Specify backdrops for individual workspaces. This names backdrops
@@ -71,7 +71,7 @@ $ * the default value above because the resources apply to specific
 $ * workspaces.
 $ *
 $ * Dtwm*ws0*backdrop*image: 
-12 SkyLight
+12 KnitLight
 $ * Dtwm*ws1*backdrop*image: 
 13 WaterDrops
 $ * Dtwm*ws2*backdrop*image: 
