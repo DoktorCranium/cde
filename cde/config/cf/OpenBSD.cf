@@ -1009,7 +1009,6 @@ CXXDEPENDINCLUDE != CcCmd -v -x c++ /dev/null -fsyntax-only \
 # define SharedLibXdmGreet		NO
 #endif
 
-#define HasFreetype2		NO
 #define HasExpat		NO
 #define	BuildXterm		BuildClients
 

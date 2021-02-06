@@ -218,16 +218,6 @@ XCOMM operating system:  OSName (OSMajorVersion./**/OSMinorVersion) (OSRelVersio
 # define ExpatDir                LocalBase
 #endif
 
-#ifndef HasFreetype2
-# define HasFreetype2            NO /* set this to YES once DragonFly ships FT218 */
-# define Freetype2Dir            LocalBase
-#endif
-
-#ifndef HasFontconfig
-# define HasFontconfig           YES
-# define FontconfigDir           X11Base
-#endif
-
 #ifndef HasLibpng
 # define HasLibpng               YES
 # define LibpngDir               LocalBase
@@ -329,12 +319,6 @@ XCOMM operating system:  OSName (OSMajorVersion./**/OSMinorVersion) (OSRelVersio
 #if UseElfFormat
 #ifndef PreloadFontSetup
 #define PreloadFontSetup        LD_PRELOAD="`(cd $(XENVLIBDIR); echo $(XFONTPRELOADPATTERN))`"
-#endif
-#ifndef PreloadFreetypeSetup
-#define PreloadFreetypeSetup    LD_PRELOAD="`(cd $(XENVLIBDIR); echo $(FT2PRELOADPATTERN))`"
-#endif
-#ifndef PreloadXFTSetup
-#define PreloadXFTSetup         LD_PRELOAD="`(cd $(XENVLIBDIR); echo $(FT2PRELOADPATTERN) $(XFTPRELOADPATTERN) $(XRENDERPRELOADPATTERN) $(FCPRELOADPATTERN))`"
 #endif
 #endif
 

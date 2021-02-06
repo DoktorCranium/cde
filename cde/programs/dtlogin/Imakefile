@@ -130,15 +130,6 @@ DEPXAUTHLIB =
 DEPXDMCPLIB = 
 #endif
 
-/* Add in freetype header locations, required for modern Motif libs */
-#ifdef LinuxArchitecture
-INCLUDES = -I/usr/include/freetype2
-#endif
-
-#if defined(BSDArchitecture)
-INCLUDES = -I$(XPROJECTROOT)/include/freetype2
-#endif
-
 /**************************************************************************
  *
  *  Source and object modules

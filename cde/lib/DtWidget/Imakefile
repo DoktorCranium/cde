@@ -14,15 +14,7 @@ XCOMM $XConsortium: Imakefile /main/8 1996/04/21 19:11:16 drk $
 #endif
 DEPEND_DEFINES = $(DEPENDDEFINES)
 DEFINES = DtWidgetDefines
-#if defined(LinuxArchitecture)
-INCLUDES = -I. -I/usr/include/freetype2
-#elif defined(FreeBSDArchitecture) || defined(OpenBSDArchitecture)
-INCLUDES = -I. -I$(XPROJECTROOT)/include/freetype2
-#elif defined(NetBSDArchitecture)
-INCLUDES = -I. -I$(XPROJECTROOT)/include -I$(XPROJECTROOT)/include/freetype2
-#else
 INCLUDES = -I.
-#endif
 
 #ifdef SharedDtWidgetReqs
 REQUIREDLIBS = SharedDtWidgetReqs
