@@ -63,6 +63,7 @@
 #include	<Xm/Xm.h>
 #include	<Xm/MessageB.h>
 #include	<Xm/TextF.h>
+#undef USE_XFT
 #include	<Xm/TextFP.h>
 #include	<Xm/PushBG.h>
 #include	<Xm/ToggleBG.h>

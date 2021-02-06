@@ -51,9 +51,6 @@ XCOMM operating system:  OSName (OSMajorVersion./**/OSMinorVersion./**/OSTeenyVe
 #ifndef HasGcc3
 # define HasGcc3                NO
 #endif
-#ifndef HasFreetype2
-# define HasFreetype2           NO
-#endif
 #ifndef HasExpat
 # define HasExpat               NO
 #endif

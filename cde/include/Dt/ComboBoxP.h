@@ -62,6 +62,7 @@ express or implied warranty.
 #include <X11/ShellP.h>
 #include <Xm/DrawnB.h>
 #include <Xm/ArrowB.h>
+#undef USE_XFT
 #include <Xm/TextFP.h>
 #include <Xm/Label.h>
 #include <Xm/Frame.h>

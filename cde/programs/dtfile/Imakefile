@@ -37,13 +37,7 @@ EXTRA_DEFINES = -DFILE_MAP_OPTIMIZE
 EXTRA_CCOPTIONS = -xF
 #endif
 
-#if defined(LinuxArchitecture)
-EXTRA_INCLUDES = -I/usr/include/freetype2
-EXTRA_DEFINES = -DFILE_MAP_OPTIMIZE
-#endif
-
-#if defined(BSDArchitecture)
-EXTRA_INCLUDES = -I$(XPROJECTROOT)/include/freetype2
+#if defined(LinuxArchitecture) || defined(BSDArchitecture)
 EXTRA_DEFINES = -DFILE_MAP_OPTIMIZE
 #endif
 

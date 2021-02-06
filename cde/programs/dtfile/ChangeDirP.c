@@ -62,6 +62,7 @@
 #include <Xm/Xm.h>
 #include <Xm/XmP.h>
 #include <Xm/DrawP.h>
+#undef USE_XFT
 #include <Xm/TextFP.h>
 #include <Xm/PushBG.h>
 #include <Xm/DragDrop.h>

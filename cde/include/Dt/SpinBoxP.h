@@ -54,6 +54,7 @@ express or implied warranty.
 #define _SpinBoxP_h
 
 #include <Xm/Label.h>
+#undef USE_XFT
 #include <Xm/TextFP.h>
 #include <Xm/ArrowB.h>
 #include <Xm/ManagerP.h>
