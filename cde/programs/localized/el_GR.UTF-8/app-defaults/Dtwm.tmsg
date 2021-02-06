@@ -61,7 +61,7 @@ $ ----------------------------------------------------------------------------
 $ Do not translate message 11.
 $ ----------------------------------------------------------------------------
 $ * Dtwm*backdrop*image
-11 SkyLight
+11 KnitLight
 $ *
 $ *
 $ * Specify backdrops for individual workspaces. This names backdrops
@@ -73,7 +73,7 @@ $ ----------------------------------------------------------------------------
 $ Do not translate messages 12-15.
 $ ----------------------------------------------------------------------------
 $ * Dtwm*ws0*backdrop*image: 
-12 SkyLight
+12 KnitLight
 $ * Dtwm*ws1*backdrop*image: 
 13 WaterDrops
 $ * Dtwm*ws2*backdrop*image: 

@@ -141,8 +141,8 @@ Dtwm*ws3*title:	%|nls-5-#Four#|
 !#
 !#   Defaults are no image at all (the normal root background).
 !###
-Dtwm*backdrop*image: %|nls-11-#SkyLight#|
-Dtwm*ws0*backdrop*image: %|nls-12-#SkyLight#|
+Dtwm*backdrop*image: %|nls-11-#KnitLight#|
+Dtwm*ws0*backdrop*image: %|nls-12-#KnitLight#|
 Dtwm*ws1*backdrop*image: %|nls-13-#WaterDrops#|
 Dtwm*ws2*backdrop*image: %|nls-14-#RicePaper#|
 Dtwm*ws3*backdrop*image: %|nls-15-#Pebbles#|
