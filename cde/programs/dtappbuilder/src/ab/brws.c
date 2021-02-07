@@ -1882,12 +1882,14 @@ setup_vwr_graphics(
 		GCForeground|GCBackground|GCGraphicsExposures|GCLineWidth, &gcvalues);
     }
 
-    if (!ui_handle->sm_font) 
-    {
+    if (!ui_handle->sm_font)
         ui_handle->sm_font = (XFontStruct *)XLoadQueryFont(dpy, sm_font_name);
-        XSetFont(dpy, ui_handle->normal_gc, ui_handle->sm_font->fid);
-        XSetFont(dpy, ui_handle->select_gc, ui_handle->sm_font->fid);
-    }
+
+    if (!ui_handle->sm_font)
+        ui_handle->sm_font = (XFontStruct *)XLoadQueryFont(dpy, XmDEFAULT_FONT);
+
+    XSetFont(dpy, ui_handle->normal_gc, ui_handle->sm_font->fid);
+    XSetFont(dpy, ui_handle->select_gc, ui_handle->sm_font->fid);
 }
 
 /*
