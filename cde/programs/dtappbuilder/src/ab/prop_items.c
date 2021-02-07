@@ -1026,8 +1026,8 @@ delete_selected_item(
 )
 {
     ABObj	current_obj;
-    ABObj       *iobj_list,
-		*new_iobj_list;
+    ABObj	*iobj_list;
+    ABObj	*new_iobj_list = NULL;
     int		num_items;
     int		select_pos;
     int		i, j;
