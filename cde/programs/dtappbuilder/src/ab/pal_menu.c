@@ -723,7 +723,7 @@ set_edit_menu_stateCB(
     BOOL		clipboard_full = False;
     WidgetList		menu_items;
     int			num_menu_items;
-    int			value;
+    XtArgVal	value;
     AB_EDIT_TYPE	item_key;
     int			i;
 
