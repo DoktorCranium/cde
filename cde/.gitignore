@@ -556,6 +556,7 @@ programs/dthelp/parser/pass1/parser/dthelp_htag1
 programs/dthelp/parser/pass1/parser/error
 programs/dthelp/parser/pass1/util/context
 programs/dthelp/parser/pass1/util/fclndir
+programs/dthelp/parser/helptag/dthelptag
 
 # programs/dtinfo
 programs/dtinfo/clients/dtinfo_start/dtinfo_start
