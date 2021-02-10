@@ -613,6 +613,8 @@ programs/fontaliases/freebsd/C/Makefile
 
 programs/dtdspmsg/Makefile
 
+programs/ttsnoop/Makefile
+
 programs/dtimsstart/Makefile
 
 programs/dtpdm/Makefile
