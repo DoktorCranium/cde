@@ -1684,7 +1684,7 @@ attrs_to_string(CSA_attribute * attrs, int num_attrs)
 	CSA_access_list  a_ptr;
 	char		*buffer = malloc(1);
 	char		tmp_buf[MAXNAMELEN];
-	int		advance_time;
+	time_t		advance_time;
 
 	buffer[0] = '\0';
         for (i = 0; i < num_attrs; i++) {
