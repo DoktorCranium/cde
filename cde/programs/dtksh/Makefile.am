@@ -1,9 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-# Can't build multi-core in here yet.
-.NOTPARALLEL:
-
-CLEANFILES = init.c FEATURE
+CLEANFILES = init.c FEATURE DtFuncs.dtsh
 
 SUBDIRS = examples
 
@@ -20,6 +17,8 @@ endif
 KSH93LIBSHELL = $(KSH93SRC)/lib/libshell.a
 
 bin_PROGRAMS = dtksh
+
+BUILT_SOURCES = init.c
 
 dtksh_CPPFLAGS = -I$(KSH93SRC)/include/ast -I$(KSH93SRC)/src/cmd/ksh93/include \
 		 -I$(KSH93SRC)/src/cmd/ksh93 -I${srcdir}/lib/DtPrint \
@@ -70,10 +69,11 @@ init.c:
 
 libshell.a: $(KSH93SLIBSHELL) dtksh-init.o
 	$(CP) $(KSH93LIBSHELL) libshell.a; \
-	ar d libshell.a init.o; \
+	$(AR) d libshell.a init.o; \
 	$(AR) cq libshell.a dtksh-init.o
 
 clean-local:
-	cd ksh93 && ./bin/package clean
+	cd ksh93 && ./bin/package flat clean
 
 DtFuncs.dtsh:
+	$(CP) DtFuncs.sh DtFuncs.dtsh

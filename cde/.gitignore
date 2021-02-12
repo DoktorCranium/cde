@@ -829,6 +829,7 @@ programs/dtinfo/tools/misc/treeres
 programs/dtksh/FEATURE
 programs/dtksh/dtksh
 programs/dtksh/init.c
+programs/dtksh/DtFuncs.dtsh
 programs/dtksh/examples/CallDataTest4
 programs/dtksh/examples/CallbackTest2
 programs/dtksh/examples/DtCursorTest2
