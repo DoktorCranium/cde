@@ -1922,6 +1922,12 @@ show_editor_view(Calendar *c, Glance glance) {
 	Editor		*e = (Editor *)c->editor;
 	Props_pu	*p = (Props_pu *)c->properties_pu;
 
+	if (get_data_version(c->cal_handle) <= CMS_VERS_2) {
+		backend_err_msg(c->frame, c->view->current_calendar,
+			CSA_E_NOT_SUPPORTED, p->xm_error_pixmap);
+		return;
+	}
+
 	if (!e->view_frame) {
 		e->cal = c;
 		e_build_view_popup(e);
