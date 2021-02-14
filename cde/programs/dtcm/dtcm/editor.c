@@ -1952,15 +1952,13 @@ show_editor_view(Calendar *c, Glance glance) {
 		XtFree(ident1);
 		XtFree(text);
 		XtFree(title);
-		XtUnmanageChild(e->view_form);
-		e->editor_view_is_up = False;
 	} else {
 		if (!editor_view_showing(e))
 			ds_position_popup(c->frame, e->view_frame,
 					  DS_POPUP_LOR);
-		XtManageChild(e->view_form);
-		e->editor_view_is_up = True;
 	}
+	XtManageChild(e->view_form);
+	e->editor_view_is_up = True;
 	/* if (e->frame) XtPopup(e->frame, XtGrabNone); */
 	if (e->view_frame) XtPopup(e->view_frame, XtGrabNone);
 }
