@@ -164,7 +164,7 @@ _csa_tick_to_iso8601(time_t tick, char *buf_out)
 {
 	struct tm	*time_str;
 	time_t		tk=tick;
-	char 		tz_orig[BUFSIZ];
+	char 		tz_orig[BUFSIZ], *s;
 	boolean_t	orig_tzset = B_FALSE;
         _Xgtimeparams   gmtime_buf;
 
@@ -197,7 +197,7 @@ _csa_tick_to_iso8601(time_t tick, char *buf_out)
 #endif /* !linux && !CSGRC_BASED */
 
 	/* format string forces fixed width (zero-padded) fields */
-	sprintf(buf_out, "%04d%02d%02dT%02d%02d%02dZ",
+	asprintf(&s, "%04d%02d%02dT%02d%02d%02dZ",
 		time_str->tm_year + 1900,
 		time_str->tm_mon + 1,
 		time_str->tm_mday,
@@ -205,7 +205,10 @@ _csa_tick_to_iso8601(time_t tick, char *buf_out)
 		time_str->tm_min,
 		time_str->tm_sec);
 
-	return (0);
+    strcpy(buf_out, s);
+    free(s);
+
+    return (0);
 }
 
 /*
@@ -258,7 +261,7 @@ _csa_iso8601_to_range(char *buf, time_t *start, time_t *end)
 int
 _csa_range_to_iso8601(time_t start, time_t end, char *buf)
 {
-    char tmpstr1[BUFSIZ], tmpstr2[BUFSIZ];
+    char tmpstr1[BUFSIZ], tmpstr2[BUFSIZ], *s;
 
     /* validate: ticks must be +ve, and end can't precede start */
     if ((start < 0) || (end < 0) || (end < start)) {
@@ -272,11 +275,15 @@ _csa_range_to_iso8601(time_t start, time_t end, char *buf)
         return (-1);
     }
 
-    if (sprintf(buf, "%s/%s", tmpstr1, tmpstr2) < 0) {
+    if (asprintf(&s, "%s/%s", tmpstr1, tmpstr2) < 0) {
+        free(s);
         return (-1);
     }
-    else
+    else {
+        strcpy(buf, s);
+        free(s);
         return(0);
+    }
 }
 
 static int
@@ -340,7 +347,11 @@ _csa_iso8601_to_duration(char *buf, time_t *sec)
 int
 _csa_duration_to_iso8601(time_t sec, char *buf)
 {
-   sprintf(buf, "%cPT%dS", (sec < 0) ? '-': '+', abs(sec));
-   return(0);
-}
+    char *s;
 
+    asprintf(&s, "%cPT%dS", (sec < 0) ? '-': '+', abs(sec));
+    strcpy(buf, s);
+    free(s);
+
+    return(0);
+}

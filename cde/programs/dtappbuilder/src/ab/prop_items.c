@@ -1026,8 +1026,8 @@ delete_selected_item(
 )
 {
     ABObj	current_obj;
-    ABObj       *iobj_list,
-		*new_iobj_list;
+    ABObj	*iobj_list;
+    ABObj	*new_iobj_list = NULL;
     int		num_items;
     int		select_pos;
     int		i, j;
@@ -1536,7 +1536,7 @@ set_edit_menu_stateCB(
     BOOL		clipboard_full = False;
     WidgetList		menu_items;
     int			num_menu_items;
-    int			item_key;
+    XtArgVal	item_key;
     int			i;
 
     listitem_exists = (pis->current_item != NULL);

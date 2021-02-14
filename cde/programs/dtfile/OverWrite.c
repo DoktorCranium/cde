@@ -1153,9 +1153,14 @@ create_replace_rename_dialog(Widget         parent_widget,
 
 
   XtFree(title);
-  XtFree(actions.actionList[1].label);
-  actions.actionList[1].label = orig_label;
+
+  if (actions.actionList[1].label != orig_label) {
+      XtFree(actions.actionList[1].label);
+      actions.actionList[1].label = orig_label;
+  }
+
   actions.actionList[1].msg_num = orig_msg_num;
+
   return;
 
 }  /* end create_replace_rename_dialog */
