@@ -77,6 +77,11 @@
 #include "dtbuilder.h"
 #include "palette_ui.h"
 
+#define MAX_SUBTYPES 30
+
+static int subtypes[MAX_SUBTYPES];
+static int subtype_item_cnt = 0;
+
 const int AB_max_item_height = 64;
 const int AB_max_item_width  = 256;
 
@@ -182,15 +187,30 @@ pal_enable_item_drag(
     int		subtype
 )
 {
-    static int st_subtype;
+    int i;
+    XtPointer psubtype;
 
-    st_subtype = subtype;
+    for (i = 0; i < MAX_SUBTYPES; ++i) if (subtypes[i] == subtype) break;
+
+    if (i == MAX_SUBTYPES) i = subtype_item_cnt++;
+
+    if (i >= MAX_SUBTYPES) {
+        if (util_get_verbosity() > 0)
+            fprintf(stderr, "pal_enable_item_drag: subtype table full\n");
+
+        return;
+    }
+
+    subtypes[i] = subtype;
+
+    psubtype = &subtypes[i];
+
     XtInsertEventHandler(widget, ButtonPressMask, FALSE,
-            palitem_select_event, (XtPointer)&st_subtype, XtListHead);
+            palitem_select_event, psubtype, XtListHead);
     XtInsertEventHandler(widget, ButtonReleaseMask, FALSE,
-            palitem_release_event, (XtPointer)&st_subtype, XtListHead);
+            palitem_release_event, psubtype, XtListHead);
     XtAddEventHandler(widget, EnterWindowMask|LeaveWindowMask, FALSE,
-	    palitem_update_type, (XtPointer)&st_subtype);
+	    palitem_update_type, psubtype);
 
     /* We need to keep track of the main palette widget
      * for drag-behavior purposes
