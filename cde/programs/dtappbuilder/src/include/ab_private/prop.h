@@ -292,7 +292,7 @@ extern void	prop_checkbox_init(
 		    Widget		checkbox,
 		    int			num_items,
 		    WidgetList		items,
-		    int			*item_keys,
+		    XtArgVal		*item_keys,
 		    Widget		changebar
 		);
 extern BOOL	prop_checkbox_get_value(
@@ -391,7 +391,7 @@ extern void	prop_footer_init(
     		    Widget              checkbox,
 		    int		        num_items,
 		    WidgetList		items,
-		    int		       *item_keys,
+		    XtArgVal		*item_keys,
 		    Widget	        field,
 		    Widget		changebar
 		);

@@ -679,7 +679,7 @@ prop_checkbox_init(
     Widget		checkbox,
     int			num_items,
     WidgetList		items,
-    int			*item_keys,
+    XtArgVal		*item_keys,
     Widget		changebar
 )
 {
@@ -694,7 +694,7 @@ prop_checkbox_init(
 
     for (i=0; i < num_items; i++)
     {
-	XtVaSetValues(items[i], XmNuserData, (XtArgVal)item_keys[i], NULL);
+	XtVaSetValues(items[i], XmNuserData, item_keys[i], NULL);
         XtAddCallback(items[i], XmNvalueChangedCallback,
                         propP_setting_chgCB, (XtPointer)changebar);
     }
@@ -1061,7 +1061,7 @@ prop_footer_init(
     Widget		checkbox,
     int			num_items,
     WidgetList		items,
-    int			*item_keys,
+    XtArgVal		*item_keys,
     Widget              field,
     Widget              changebar
 )
@@ -1083,7 +1083,7 @@ prop_footer_init(
 
     for (i=0; i < num_items; i++)
     {
-        XtVaSetValues(items[i], XmNuserData, (XtArgVal)item_keys[i], NULL);
+        XtVaSetValues(items[i], XmNuserData, item_keys[i], NULL);
         XtAddCallback(items[i], XmNvalueChangedCallback,
                         propP_setting_chgCB, (XtPointer)changebar);
     }
