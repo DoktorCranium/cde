@@ -190,8 +190,8 @@ list_initialize(
 
     obj_set_unique_name(obj, "list");
 
-    obj_set_num_rows(obj, 4);
-    obj_set_height(obj, -1);
+    obj_set_num_rows(obj, -1);
+    obj_set_height(obj, 100);
     obj_set_width(obj, list_init_width);
     obj_set_selection_mode(obj, AB_SELECT_BROWSE);
     obj_set_is_initially_visible(obj, True);
@@ -228,9 +228,10 @@ list_prop_init(
     DtbRevolvPropDialogInfo	rpd = &(dtb_revolv_prop_dialog);
     PropListSettingsRec    	*pls = &(prop_list_settings_rec[type]);
     Widget            		item[8];
-    int            		item_val[8];
+    XtArgVal		item_val[8];
+    XtPointer		item_ptr[8];
     Widget			item2[8];
-    int				item2_val[8];
+    XtArgVal			item2_val[8];
     int            		n, j;
     int				i;
 
@@ -306,12 +307,12 @@ list_prop_init(
         /* Label, Type, Position */
         n = 0;
         item[n] = cgen->labeltype_rbox_items.String_item;
-        item_val[n] = AB_LABEL_STRING; n++;
+        item_ptr[n] = AB_LABEL_STRING; n++;
         item[n] = cgen->labeltype_rbox_items.Graphic_item;
-        item_val[n] = AB_LABEL_GLYPH; n++;
+        item_ptr[n] = AB_LABEL_GLYPH; n++;
         prop_options_init(&(pls->label_type), cgen->labeltype_rbox_label,
                 cgen->labeltype_rbox, cgen->labeltype_rbox_menu,
-		n, item, (XtPointer*)item_val,
+		n, item, item_ptr,
                 cgen->labeltype_cb);
 
         prop_field_init(&(pls->label), cgen->label_field_label,
@@ -321,27 +322,27 @@ list_prop_init(
 
         n = 0;
         item[n] = cgen->labelpos_rbox_items.Above_item;
-        item_val[n] = AB_CP_NORTH; n++;
+        item_ptr[n] = AB_CP_NORTH; n++;
         item[n] = cgen->labelpos_rbox_items.Left_item;
-        item_val[n] = AB_CP_WEST; n++;
+        item_ptr[n] = AB_CP_WEST; n++;
         prop_options_init(&(pls->label_pos), cgen->labelpos_rbox_label,
                 cgen->labelpos_rbox, cgen->labelpos_rbox_menu,
-                n, item, (XtPointer*)item_val,
+                n, item, item_ptr,
                 cgen->labeltype_cb);
 
         /* Selection Mode */
         n = 0;
         item[n] = cgen->selmode_rbox_items.Single_Select_item;
-        item_val[n] = AB_SELECT_SINGLE; n++;
+        item_ptr[n] = AB_SELECT_SINGLE; n++;
         item[n] = cgen->selmode_rbox_items.Browse_Select_item;
-        item_val[n] = AB_SELECT_BROWSE; n++;
+        item_ptr[n] = AB_SELECT_BROWSE; n++;
         item[n] = cgen->selmode_rbox_items.Multiple_Select_item;
-        item_val[n] = AB_SELECT_MULTIPLE; n++;
+        item_ptr[n] = AB_SELECT_MULTIPLE; n++;
         item[n] = cgen->selmode_rbox_items.Browse_Multiple_Select_item;
-        item_val[n] = AB_SELECT_BROWSE_MULTIPLE; n++;
+        item_ptr[n] = AB_SELECT_BROWSE_MULTIPLE; n++;
         prop_options_init(&(pls->sel_mode), cgen->selmode_rbox_label,
                                 cgen->selmode_rbox, cgen->selmode_rbox_menu,
-                                n, item, (XtPointer*)item_val,
+                                n, item, item_ptr,
                                 cgen->selmode_cb);
 
 	/* Position */
@@ -354,11 +355,11 @@ list_prop_init(
 	/* Width */
         n = 0;
         item[n] = cgen->wpolicy_rbox_items.Longest_Item_item;
-        item_val[n] = SIZE_OF_CONTENTS_KEY; n++;
+        item_ptr[n] = SIZE_OF_CONTENTS_KEY; n++;
         item[n] = cgen->wpolicy_rbox_items.Fixed_item;
-        item_val[n] = SIZE_FIXED_KEY; n++;
+        item_ptr[n] = SIZE_FIXED_KEY; n++;
         prop_radiobox_init(&(pls->wth_policy), cgen->wpolicy_rbox_label,
-                cgen->wpolicy_rbox, n, item, (XtPointer*)item_val,
+                cgen->wpolicy_rbox, n, item, item_ptr,
                 cgen->wpolicy_cb);
 
         for(i=0; i < n; i++)
@@ -380,13 +381,13 @@ list_prop_init(
 
 	n = 0;
 	item[n] = cgen->hgt_opmenu_items.Lines_item;
-	item_val[n] = SIZE_IN_CHARS_KEY; n++;
+	item_ptr[n] = SIZE_IN_CHARS_KEY; n++;
 	item[n] = cgen->hgt_opmenu_items.Pixels_item;
-	item_val[n] = SIZE_IN_PIXELS_KEY; n++;
+	item_ptr[n] = SIZE_IN_PIXELS_KEY; n++;
 	prop_options_init(&(pls->hgt_metric), cgen->hgt_opmenu_label,
 			   cgen->hgt_opmenu,
 			   cgen->hgt_opmenu_menu,
-			   n, item, (XtPointer*)item_val,
+			   n, item, item_ptr,
 			   cgen->hgt_cb);
 
         /* Initial State */
