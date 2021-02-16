@@ -218,7 +218,8 @@ button_prop_init(
     DtbRevolvPropDialogInfo	rpd = &(dtb_revolv_prop_dialog);
     PropButtonSettingsRec      *pbs = &(prop_button_settings_rec[type]);
     Widget                      item[6];
-    int                         item_val[6];
+    XtArgVal                    item_val[6];
+    XtPointer                   item_ptr[6];
     int                         n;
     int				i;
 
@@ -292,13 +293,13 @@ button_prop_init(
         /* Button Type */
         n = 0;
         item[n] = cgen->buttontype_rbox_items.Push_item;
-        item_val[n] = AB_BUT_PUSH; n++;
+        item_ptr[n] = AB_BUT_PUSH; n++;
         item[n] = cgen->buttontype_rbox_items.Drawn_item;
-        item_val[n] = AB_BUT_DRAWN; n++;
+        item_ptr[n] = AB_BUT_DRAWN; n++;
         item[n] = cgen->buttontype_rbox_items.Menu_item;
-        item_val[n] = AB_BUT_MENU; n++;
+        item_ptr[n] = AB_BUT_MENU; n++;
         prop_radiobox_init(&(pbs->button_type), cgen->buttontype_rbox_label,
-                                cgen->buttontype_rbox, n, item, (XtPointer*)item_val,
+                                cgen->buttontype_rbox, n, item, item_ptr,
                                 cgen->buttontype_cb);
         for(i=0; i < n; i++)
             XtAddCallback(item[i], XmNvalueChangedCallback,
@@ -307,14 +308,14 @@ button_prop_init(
         /* Label Type */
         n = 0;
         item[n] = cgen->labeltype_rbox_items.String_item;
-        item_val[n] = AB_LABEL_STRING; n++;
+        item_ptr[n] = AB_LABEL_STRING; n++;
         item[n] = cgen->labeltype_rbox_items.Graphic_item;
-        item_val[n] = AB_LABEL_GLYPH; n++;
+        item_ptr[n] = AB_LABEL_GLYPH; n++;
         item[n] = cgen->labeltype_rbox_items.Arrow_item;
-        item_val[n] = AB_LABEL_ARROW_DOWN; n++;
+        item_ptr[n] = AB_LABEL_ARROW_DOWN; n++;
         prop_options_init(&(pbs->label_type), cgen->labeltype_rbox_label,
                         cgen->labeltype_rbox, cgen->labeltype_rbox_menu,
-			n, item, (XtPointer*)item_val,
+			n, item, item_ptr,
                         cgen->labeltype_cb);
         for(i=0; i < n; i++)
             XtAddCallback(item[i], XmNactivateCallback,
@@ -344,29 +345,29 @@ button_prop_init(
         /* Label Align */
         n = 0;
         item[n] = cgen->labelalign_opmenu_items.Left_item;
-        item_val[n] = AB_ALIGN_LEFT; n++;
+        item_ptr[n] = AB_ALIGN_LEFT; n++;
         item[n] = cgen->labelalign_opmenu_items.Centered_item;
-        item_val[n] = AB_ALIGN_CENTER; n++;
+        item_ptr[n] = AB_ALIGN_CENTER; n++;
         item[n] = cgen->labelalign_opmenu_items.Right_item;
-        item_val[n] = AB_ALIGN_RIGHT; n++;
+        item_ptr[n] = AB_ALIGN_RIGHT; n++;
         prop_options_init(&(pbs->label_align), cgen->labelalign_opmenu_label,
                 cgen->labelalign_opmenu, cgen->labelalign_opmenu_menu,
-                n, item, (XtPointer*)item_val,
+                n, item, item_ptr,
                 cgen->labelalign_cb);
 
         /* Arrow Direction */
         n = 0;
         item[n] = cgen->arrowdir_opmenu_items.Up_item;
-        item_val[n] = AB_LABEL_ARROW_UP; n++;
+        item_ptr[n] = AB_LABEL_ARROW_UP; n++;
         item[n] = cgen->arrowdir_opmenu_items.Down_item;
-        item_val[n] = AB_LABEL_ARROW_DOWN; n++;
+        item_ptr[n] = AB_LABEL_ARROW_DOWN; n++;
         item[n] = cgen->arrowdir_opmenu_items.Right_item;
-        item_val[n] = AB_LABEL_ARROW_RIGHT; n++;
+        item_ptr[n] = AB_LABEL_ARROW_RIGHT; n++;
         item[n] = cgen->arrowdir_opmenu_items.Left_item;
-        item_val[n] = AB_LABEL_ARROW_LEFT; n++;
+        item_ptr[n] = AB_LABEL_ARROW_LEFT; n++;
         prop_options_init(&(pbs->arrow_dir), cgen->arrowdir_opmenu_label,
                 cgen->arrowdir_opmenu, cgen->arrowdir_opmenu_menu,
-                n, item, (XtPointer*)item_val,
+                n, item, item_ptr,
                 cgen->arrowdir_cb);
 
         /* Menu Name Setting */
@@ -378,11 +379,11 @@ button_prop_init(
         /* Size Policy */
         n = 0;
         item[n] = cgen->sizepolicy_rbox_items.Size_of_Label_item;
-        item_val[n] = SIZE_OF_CONTENTS_KEY; n++;
+        item_ptr[n] = SIZE_OF_CONTENTS_KEY; n++;
         item[n] = cgen->sizepolicy_rbox_items.Fixed_item;
-        item_val[n] = SIZE_FIXED_KEY; n++;
+        item_ptr[n] = SIZE_FIXED_KEY; n++;
         prop_radiobox_init(&(pbs->size_policy), cgen->sizepolicy_rbox_label,
-                cgen->sizepolicy_rbox, n, item, (XtPointer*)item_val,
+                cgen->sizepolicy_rbox, n, item, item_ptr,
                 cgen->sizepolicy_cb);
 
         for(i=0; i < n; i++)
