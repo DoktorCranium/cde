@@ -1001,7 +1001,7 @@ object_button_press(
     {
 	bevent = (XButtonEvent*)event;
 
-	if (bevent->state == 0 &&
+	if ((bevent->state & ShiftMask) == 0 &&
 	    (bevent->button == 1 ||
 	    (AB_btn1_transfer != True && bevent->button == 2)))
 				/* MOVE, RESIZE or RUBBERBAND-SELECT */
@@ -1138,8 +1138,9 @@ interpose_button_event(
 			d_click->waiting = False;
 			object_invoke_props(widget, event, NULL, 0);
 		    }
-		    else if (bevent->state == 0) /* Start timing for double-click */
+		    else if ((bevent->state & ControlMask) == 0)
 		    {
+			/* Start timing for double-click */
 			event_cpy = *event;
 			d_click->waiting = True;
 			d_click->widget = widget;
