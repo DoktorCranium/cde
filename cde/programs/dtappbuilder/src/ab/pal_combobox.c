@@ -217,9 +217,10 @@ combo_box_prop_init(
     DtbRevolvPropDialogInfo	rpd = &(dtb_revolv_prop_dialog);
     PropComboboxSettingsRec    	*pcs = &(prop_combobox_settings_rec[type]);
     Widget            		item[6];
-    int            		item_val[6];
+    XtArgVal        		item_val[6];
+    XtPointer      		item_ptr[6];
     Widget			item2[6];
-    int				item2_val[6];
+    XtArgVal				item2_val[6];
     int            		i, n, j;
 
     if (type == AB_PROP_REVOLVING)
@@ -294,12 +295,12 @@ combo_box_prop_init(
         /* Label, Type, Position */
         n = 0;
         item[n] = cgen->labeltype_rbox_items.String_item;
-        item_val[n] = AB_LABEL_STRING; n++;
+        item_ptr[n] = AB_LABEL_STRING; n++;
         item[n] = cgen->labeltype_rbox_items.Graphic_item;
-        item_val[n] = AB_LABEL_GLYPH; n++;
+        item_ptr[n] = AB_LABEL_GLYPH; n++;
         prop_options_init(&(pcs->label_type), cgen->labeltype_rbox_label,
                        	cgen->labeltype_rbox, cgen->labeltype_rbox_menu,
-			n, item, (XtPointer*)item_val,
+			n, item, item_ptr,
                         cgen->labeltype_cb);
 
         prop_field_init(&(pcs->label), cgen->label_field_label,
@@ -309,22 +310,22 @@ combo_box_prop_init(
 
         n = 0;
         item[n] = cgen->labelpos_rbox_items.Above_item;
-        item_val[n] = AB_CP_NORTH; n++;
+        item_ptr[n] = AB_CP_NORTH; n++;
         item[n] = cgen->labelpos_rbox_items.Left_item;
-        item_val[n] = AB_CP_WEST; n++;
+        item_ptr[n] = AB_CP_WEST; n++;
         prop_options_init(&(pcs->label_pos), cgen->labelpos_rbox_label,
                 	cgen->labelpos_rbox, cgen->labelpos_rbox_menu,
-                	n, item, (XtPointer*)item_val,
+                    n, item, item_ptr,
                 	cgen->labeltype_cb);
 
         /* Read Only */
         n = 0;
         item[n] = cgen->comboboxtype_rbox_items.Static_item;
-        item_val[n] = True; n++;
+        item_ptr[n] = True; n++;
         item[n] = cgen->comboboxtype_rbox_items.Editable_item;
-        item_val[n] = False; n++;
+        item_ptr[n] = False; n++;
         prop_radiobox_init(&(pcs->combobox_type), cgen->comboboxtype_rbox_label,
-                       cgen->comboboxtype_rbox, n, item, (XtPointer*)item_val,
+                       cgen->comboboxtype_rbox, n, item, item_ptr,
                        cgen->comboboxtype_cb);
 
         /* Position */
@@ -338,11 +339,11 @@ combo_box_prop_init(
 	/* Width */
         n = 0;
         item[n] = cgen->wpolicy_rbox_items.Longest_Item_item;
-        item_val[n] = SIZE_OF_CONTENTS_KEY; n++;
+        item_ptr[n] = SIZE_OF_CONTENTS_KEY; n++;
         item[n] = cgen->wpolicy_rbox_items.Fixed_item;
-        item_val[n] = SIZE_FIXED_KEY; n++;
+        item_ptr[n] = SIZE_FIXED_KEY; n++;
         prop_radiobox_init(&(pcs->wth_policy), cgen->wpolicy_rbox_label,
-                cgen->wpolicy_rbox, n, item, (XtPointer*)item_val,
+                cgen->wpolicy_rbox, n, item, item_ptr,
                 cgen->wpolicy_cb);
 
         for(i=0; i < n; i++)
