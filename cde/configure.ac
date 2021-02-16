@@ -520,6 +520,12 @@ programs/dthelp/parser/pass1/build/Makefile
 programs/dthelp/parser/pass1/eltdef/Makefile
 programs/dthelp/parser/pass1/helptag/Makefile
 programs/dthelp/parser/pass1/parser/Makefile
+programs/dthelp/parser/canon1/Makefile
+programs/dthelp/parser/canon1/util/Makefile
+programs/dthelp/parser/canon1/build/Makefile
+programs/dthelp/parser/canon1/eltdef/Makefile
+programs/dthelp/parser/canon1/helptag/Makefile
+programs/dthelp/parser/canon1/parser/Makefile
 programs/dthelp/parser/helptag/Makefile
 
 programs/nsgmls/Makefile

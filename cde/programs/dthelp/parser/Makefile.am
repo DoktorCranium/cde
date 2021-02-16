@@ -1,5 +1,5 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = pass1 helptag
+SUBDIRS = pass1 canon1 helptag
 
-#NOTYET canon1 pass2
+#NOTYET pass2
