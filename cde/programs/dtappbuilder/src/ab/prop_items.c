@@ -226,10 +226,10 @@ prop_item_editor_init(
     Widget		add_button,
     int			add_count,
     WidgetList		add_item,
-    int			*add_enum,
+    XtArgVal		*add_enum,
     int			edit_count,
     WidgetList		edit_item,
-    int			*edit_enum,
+    XtArgVal		*edit_enum,
     PropFieldSetting    label_pfs, 
     PropOptionsSetting  label_type_pos, 
     Widget		label_graphic_hint,
@@ -289,13 +289,13 @@ prop_item_editor_init(
     /* Set Up Edit MenuButton */
     for(i = 0; i < add_count; i++)
     {
-	XtVaSetValues(add_item[i], XmNuserData, (XtArgVal)add_enum[i], NULL);
+	XtVaSetValues(add_item[i], XmNuserData, add_enum[i], NULL);
 	XtAddCallback(add_item[i], XmNactivateCallback,
 		add_itemCB, (XtPointer)pis);
     }
     for(i=0; i < edit_count; i++) 
     { 
-        XtVaSetValues(edit_item[i], XmNuserData, (XtArgVal)edit_enum[i], NULL); 
+        XtVaSetValues(edit_item[i], XmNuserData, edit_enum[i], NULL);
         XtAddCallback(edit_item[i], XmNactivateCallback, 
                 edit_itemCB, (XtPointer)pis); 
     }
