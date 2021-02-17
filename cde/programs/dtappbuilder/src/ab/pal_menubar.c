@@ -212,9 +212,10 @@ menubar_prop_init(
     DtbRevolvPropDialogInfo	rpd = &(dtb_revolv_prop_dialog);
     PropMenubarSettingsRec    	*pms = &(prop_menubar_settings_rec[type]);
     Widget            		item[6];
-    int            		item_val[6];
+    XtArgVal       		item_val[6];
+    XtPointer      		item_ptr[6];
     Widget			item2[6];
-    int				item2_val[6];
+    XtArgVal		item2_val[6];
     int            		i, n, j;
 
     if (type == AB_PROP_REVOLVING)
@@ -313,12 +314,12 @@ menubar_prop_init(
                 cgen->itemlabel_field, cgen->itemlist_cb);
         n = 0;
         item[n] = cgen->itemlabel_opmenu_items.String_item;
-        item_val[n] = AB_LABEL_STRING; n++;
+        item_ptr[n] = AB_LABEL_STRING; n++;
         item[n] = cgen->itemlabel_opmenu_items.Graphic_item;
-        item_val[n] = AB_LABEL_GLYPH; n++;
+        item_ptr[n] = AB_LABEL_GLYPH; n++;
         prop_options_init(&(pms->item_label_type), cgen->item_labeltype_label,
                 cgen->itemlabel_opmenu, cgen->itemlabel_opmenu_menu,
-                n, item, (XtPointer*)item_val, cgen->itemlist_cb);
+                n, item, item_ptr, cgen->itemlist_cb);
 
         for(i=0; i < n; i++)
             XtAddCallback(item[i], XmNactivateCallback,
