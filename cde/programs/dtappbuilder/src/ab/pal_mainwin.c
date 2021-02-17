@@ -199,7 +199,8 @@ mainwin_prop_init(
     DtbRevolvPropDialogInfo	rpd = &(dtb_revolv_prop_dialog);
     PropMainwinSettingsRec      *pms = &(prop_mainwin_settings_rec[type]);
     Widget                      item[6];
-    int                         item_val[6];
+    XtArgVal                    item_val[6];
+    XtPointer                   item_ptr[6];
     int                         i, n;
 
     if (type == AB_PROP_REVOLVING)
@@ -273,11 +274,11 @@ mainwin_prop_init(
         /* Resize Mode */
         n = 0;
         item[n] = cgen->resizemode_rbox_items.Adjustable_item;
-        item_val[n] = True; n++;
+        item_ptr[n] = True; n++;
         item[n] = cgen->resizemode_rbox_items.Fixed_item;
-        item_val[n] = False; n++;
+        item_ptr[n] = False; n++;
         prop_radiobox_init(&(pms->resize_mode), cgen->resizemode_rbox_label,
-                cgen->resizemode_rbox, n, item, (XtPointer*)item_val,
+                cgen->resizemode_rbox, n, item, item_ptr,
                 cgen->resizemode_cb);
 
         /* Icon Filename */
@@ -307,11 +308,11 @@ mainwin_prop_init(
         /* Size Policy */
         n = 0;
         item[n] = cgen->size_policy_rbox_items.Fit_Contents_item;
-        item_val[n] = SIZE_OF_CONTENTS_KEY; n++;
+        item_ptr[n] = SIZE_OF_CONTENTS_KEY; n++;
         item[n] = cgen->size_policy_rbox_items.Fixed_item;
-        item_val[n] = SIZE_FIXED_KEY; n++;
+        item_ptr[n] = SIZE_FIXED_KEY; n++;
         prop_radiobox_init(&(pms->size_policy), cgen->size_policy_rbox_label,
-                cgen->size_policy_rbox, n, item, (XtPointer*)item_val,
+                cgen->size_policy_rbox, n, item, item_ptr,
                 cgen->size_policy_cb);
 
         for(i=0; i < n; i++)
