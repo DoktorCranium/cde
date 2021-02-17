@@ -218,7 +218,8 @@ scale_prop_init(
     DtbRevolvPropDialogInfo	rpd = &(dtb_revolv_prop_dialog);
     PropScaleSettingsRec    	*pss = &(prop_scale_settings_rec[type]);
     Widget            		item[6];
-    int            		item_val[6];
+    XtArgVal       		item_val[6];
+    XtPointer      		item_ptr[6];
     int            		n;
     int				i;
 
@@ -290,13 +291,13 @@ scale_prop_init(
         /* Label, Type, Position */
         n = 0;
         item[n] = cgen->labeltype_opmenu_items.String_item;
-        item_val[n] = AB_LABEL_STRING; n++;
+        item_ptr[n] = AB_LABEL_STRING; n++;
         item[n] = cgen->labeltype_opmenu_items.Graphic_item;
-        item_val[n] = AB_LABEL_GLYPH; n++;
+        item_ptr[n] = AB_LABEL_GLYPH; n++;
         prop_options_init(&(pss->label_type), cgen->labeltype_opmenu_label,
                         cgen->labeltype_opmenu,
                         cgen->labeltype_opmenu_menu,
-                        n, item, (XtPointer*)item_val,
+                        n, item, item_ptr,
                         cgen->labeltype_cb);
  
         prop_field_init(&(pss->label), cgen->label_field_label, 
@@ -306,23 +307,23 @@ scale_prop_init(
  
         n = 0;
         item[n] = cgen->labelpos_opmenu_items.Left_item;
-        item_val[n] = AB_CP_WEST; n++;
+        item_ptr[n] = AB_CP_WEST; n++;
         item[n] = cgen->labelpos_opmenu_items.Above_item;
-        item_val[n] = AB_CP_NORTH; n++;
+        item_ptr[n] = AB_CP_NORTH; n++;
         prop_options_init(&(pss->label_pos), cgen->labelpos_opmenu_label,
                         cgen->labelpos_opmenu,
                         cgen->labelpos_opmenu_menu,
-                        n, item, (XtPointer*)item_val,
+                        n, item, item_ptr,
                         cgen->labeltype_cb);
 
         /* Scale Type */
         n = 0;
         item[n] = cgen->scaletype_rbox_items.Scale_item;
-        item_val[n] = False; n++;
+        item_ptr[n] = False; n++;
         item[n] = cgen->scaletype_rbox_items.Gauge_item;
-        item_val[n] = True; n++;
+        item_ptr[n] = True; n++;
         prop_radiobox_init(&(pss->scale_type), cgen->scaletype_rbox_label,
-                                cgen->scaletype_rbox, n, item, (XtPointer*)item_val,
+                                cgen->scaletype_rbox, n, item, item_ptr,
                                 cgen->scaletype_cb);
 
         /* Geometry */
@@ -336,11 +337,11 @@ scale_prop_init(
         /* Orientation */
         n = 0;
         item[n] = cgen->orient_rbox_items.Horizontal_item;
-        item_val[n] = AB_ORIENT_HORIZONTAL; n++;
+        item_ptr[n] = AB_ORIENT_HORIZONTAL; n++;
         item[n] = cgen->orient_rbox_items.Vertical_item;
-        item_val[n] = AB_ORIENT_VERTICAL; n++;
+        item_ptr[n] = AB_ORIENT_VERTICAL; n++;
         prop_radiobox_init(&(pss->orient), cgen->orient_rbox_label,
-                                cgen->orient_rbox, n, item, (XtPointer*)item_val,
+                                cgen->orient_rbox, n, item, item_ptr,
                                 cgen->orient_cb);
 
         for(i=0; i < n; i++)
@@ -350,16 +351,16 @@ scale_prop_init(
         /* Direction */
         n = 0;
         item[n] = cgen->dir_opmenu_items.Left_to_Right_item;
-        item_val[n] = AB_DIR_LEFT_TO_RIGHT; n++;
+        item_ptr[n] = AB_DIR_LEFT_TO_RIGHT; n++;
         item[n] = cgen->dir_opmenu_items.Right_to_Left_item;
-        item_val[n] = AB_DIR_RIGHT_TO_LEFT; n++;
+        item_ptr[n] = AB_DIR_RIGHT_TO_LEFT; n++;
         item[n] = cgen->dir_opmenu_items.Top_to_Bottom_item;
-        item_val[n] = AB_DIR_TOP_TO_BOTTOM; n++;
+        item_ptr[n] = AB_DIR_TOP_TO_BOTTOM; n++;
         item[n] = cgen->dir_opmenu_items.Bottom_to_Top_item;
-        item_val[n] = AB_DIR_BOTTOM_TO_TOP; n++;
+        item_ptr[n] = AB_DIR_BOTTOM_TO_TOP; n++;
         prop_options_init(&(pss->dir), cgen->dir_opmenu_label,
                 cgen->dir_opmenu, cgen->dir_opmenu_menu,
-                n, item, (XtPointer*)item_val,
+                n, item, item_ptr,
                 cgen->dir_cb);
 
 	for (i=0; i < n; i++)
