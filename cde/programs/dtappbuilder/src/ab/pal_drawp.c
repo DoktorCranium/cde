@@ -202,7 +202,8 @@ drawp_prop_init(
     DtbRevolvPropDialogInfo	rpd = &(dtb_revolv_prop_dialog);
     PropDrawpSettingsRec    	*pds = &(prop_drawp_settings_rec[type]);
     Widget			item[10];
-    int				item_val[10];
+    XtArgVal		item_val[10];
+    XtPointer		item_ptr[10];
     int				n, i;
 
     if (type == AB_PROP_REVOLVING)
@@ -272,13 +273,13 @@ drawp_prop_init(
 	/* Scrolling */
         n = 0;
         item[n] = cgen->scrolldisp_rbox_items.Never_item;
-        item_val[n] = AB_SCROLLBAR_NEVER; n++;
+        item_ptr[n] = AB_SCROLLBAR_NEVER; n++;
         item[n] = cgen->scrolldisp_rbox_items.Always_item;
-        item_val[n] = AB_SCROLLBAR_ALWAYS; n++;
+        item_ptr[n] = AB_SCROLLBAR_ALWAYS; n++;
         item[n] = cgen->scrolldisp_rbox_items.When_Needed_item;
-        item_val[n] = AB_SCROLLBAR_WHEN_NEEDED; n++;
+        item_ptr[n] = AB_SCROLLBAR_WHEN_NEEDED; n++;
         prop_radiobox_init(&(pds->scrolling), cgen->scrolldisp_rbox_label,
-                cgen->scrolldisp_rbox, n, item, (XtPointer*)item_val,
+                cgen->scrolldisp_rbox, n, item, item_ptr,
                 cgen->scroll_cb);
 
         for(i=0; i < n; i++)
@@ -288,18 +289,18 @@ drawp_prop_init(
         /* Border Frame */
         n = 0;
         item[n] = cgen->bframe_opmenu_items.None_item;
-        item_val[n] = AB_LINE_NONE; n++;
+        item_ptr[n] = AB_LINE_NONE; n++;
         item[n] = cgen->bframe_opmenu_items.Shadow_Out_item;
-        item_val[n] = AB_LINE_SHADOW_OUT; n++;
+        item_ptr[n] = AB_LINE_SHADOW_OUT; n++;
         item[n] = cgen->bframe_opmenu_items.Shadow_In_item;
-        item_val[n] = AB_LINE_SHADOW_IN; n++;
+        item_ptr[n] = AB_LINE_SHADOW_IN; n++;
         item[n] = cgen->bframe_opmenu_items.Etched_Out_item;
-        item_val[n] = AB_LINE_ETCHED_OUT; n++;
+        item_ptr[n] = AB_LINE_ETCHED_OUT; n++;
         item[n] = cgen->bframe_opmenu_items.Etched_In_item;
-        item_val[n] = AB_LINE_ETCHED_IN; n++;
+        item_ptr[n] = AB_LINE_ETCHED_IN; n++;
         prop_options_init(&(pds->frame), cgen->bframe_opmenu_label,
                             cgen->bframe_opmenu, cgen->bframe_opmenu_menu,
-                            n, item, (XtPointer*)item_val,
+                            n, item, item_ptr,
                             cgen->bframe_cb);
 
 	/* Menu Title */
