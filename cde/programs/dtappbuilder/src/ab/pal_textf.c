@@ -188,7 +188,8 @@ textf_prop_init(
     DtbRevolvPropDialogInfo	rpd = &(dtb_revolv_prop_dialog);
     PropTextfSettingsRec    	*pts = &(prop_textf_settings_rec[type]);
     Widget			item[10];
-    int				item_val[10];
+    XtArgVal		item_val[10];
+    XtPointer		item_ptr[10];
     int				n;
 
     if (type == AB_PROP_REVOLVING)
@@ -258,12 +259,12 @@ textf_prop_init(
         /* Label, Type, Position */
         n = 0;
         item[n] = cgen->labeltype_rbox_items.String_item;
-        item_val[n] = AB_LABEL_STRING; n++;
+        item_ptr[n] = AB_LABEL_STRING; n++;
         item[n] = cgen->labeltype_rbox_items.Graphic_item;
-        item_val[n] = AB_LABEL_GLYPH; n++;
+        item_ptr[n] = AB_LABEL_GLYPH; n++;
         prop_options_init(&(pts->label_type), cgen->labeltype_rbox_label,
                         cgen->labeltype_rbox, cgen->labeltype_rbox_menu,
-			n, item, (XtPointer*)item_val,
+			n, item, item_ptr,
                         cgen->labeltype_cb);
 
         prop_field_init(&(pts->label), cgen->label_field_label,
@@ -272,12 +273,12 @@ textf_prop_init(
 
         n = 0;
         item[n] = cgen->labelpos_rbox_items.Left_item;
-        item_val[n] = AB_CP_WEST; n++;
+        item_ptr[n] = AB_CP_WEST; n++;
         item[n] = cgen->labelpos_rbox_items.Above_item;
-        item_val[n] = AB_CP_NORTH; n++;
+        item_ptr[n] = AB_CP_NORTH; n++;
         prop_options_init(&(pts->label_pos), cgen->labelpos_rbox_label,
                         cgen->labelpos_rbox, cgen->labelpos_rbox_menu,
-                        n, item, (XtPointer*)item_val,
+                        n, item, item_ptr,
                         cgen->labeltype_cb);
 
         /* Menu Name */
@@ -290,11 +291,11 @@ textf_prop_init(
         /* Operation */
         n = 0;
         item[n] = cgen->op_rbox_items.Editable_item;
-        item_val[n] = False; n++;
+        item_ptr[n] = False; n++;
         item[n] = cgen->op_rbox_items.Read_Only_item;
-        item_val[n] = True; n++;
+        item_ptr[n] = True; n++;
         prop_radiobox_init(&(pts->op), cgen->op_rbox_label,
-                cgen->op_rbox, n, item, (XtPointer*)item_val,
+                cgen->op_rbox, n, item, item_ptr,
                 cgen->op_cb);
 
         /* Maximum Chars */
@@ -321,13 +322,13 @@ textf_prop_init(
 
 	n = 0;
 	item[n] = cgen->width_opmenu_items.Characters_item;
-	item_val[n] = SIZE_IN_CHARS_KEY; n++;
+	item_ptr[n] = SIZE_IN_CHARS_KEY; n++;
 	item[n] = cgen->width_opmenu_items.Pixels_item;
-	item_val[n] = SIZE_IN_PIXELS_KEY; n++;
+	item_ptr[n] = SIZE_IN_PIXELS_KEY; n++;
 	prop_options_init(&(pts->size_metric), cgen->width_opmenu_label,
 			   cgen->width_opmenu,
 			   cgen->width_opmenu_menu,
-			   n, item, (XtPointer*)item_val,
+			   n, item, item_ptr,
 			   cgen->width_cb);
 
 	/* Initial State */
