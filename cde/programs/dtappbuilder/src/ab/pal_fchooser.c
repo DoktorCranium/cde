@@ -198,7 +198,8 @@ fchooser_prop_init(
     DtbRevolvPropDialogInfo	rpd = &(dtb_revolv_prop_dialog);
     PropFchooserSettingsRec    	*pcs = &(prop_fchooser_settings_rec[type]);
     Widget            		item[6];
-    int            		item_val[6];
+    XtArgVal       		item_val[6];
+    XtPointer   		item_ptr[6];
     int            		n;
 
     if (type == AB_PROP_REVOLVING)
@@ -280,13 +281,13 @@ fchooser_prop_init(
         /* Search Pattern Type */
         n = 0;
         item[n] = cgen->pattern_type_rbox_items.Files_item;
-        item_val[n] = AB_FILE_REGULAR; n++;
+        item_ptr[n] = AB_FILE_REGULAR; n++;
         item[n] = cgen->pattern_type_rbox_items.Directories_item;
-        item_val[n] = AB_FILE_DIRECTORY; n++;
+        item_ptr[n] = AB_FILE_DIRECTORY; n++;
         item[n] = cgen->pattern_type_rbox_items.Both_item;
-        item_val[n] = AB_FILE_ANY; n++;
+        item_ptr[n] = AB_FILE_ANY; n++;
         prop_radiobox_init(&(pcs->pattern_type), cgen->pattern_type_rbox_label,
-                cgen->pattern_type_rbox, n, item, (XtPointer*)item_val,
+                cgen->pattern_type_rbox, n, item, item_ptr,
                 cgen->pattern_type_cb);
 
         /* Search Pattern */
