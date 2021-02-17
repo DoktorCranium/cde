@@ -232,7 +232,8 @@ custdlg_prop_init(
     DtbRevolvPropDialogInfo	rpd = &(dtb_revolv_prop_dialog);
     PropCustdlgSettingsRec    	*pcs = &(prop_custdlg_settings_rec[type]);
     Widget            		item[6];
-    int            		item_val[6];
+    XtArgVal       		item_val[6];
+    XtPointer      		item_ptr[6];
     int            		i, n;
 
     if (type == AB_PROP_REVOLVING)
@@ -302,10 +303,10 @@ custdlg_prop_init(
         /* Window Parent */
         n = 0;
         item[n] = cgen->winparent_opmenu_items.None_item;
-        item_val[n] = 0; n++;
+        item_ptr[n] = 0; n++;
         prop_obj_options_init(&(pcs->win_parent), cgen->winparent_opmenu_label,
                 cgen->winparent_opmenu, cgen->winparent_opmenu_menu,
-                n, item, (XtPointer*)item_val,
+                n, item, item_ptr,
                 cgen->winparent_cb, True, /* Display module */
                 &(pcs->current_obj), winparent_test_func);
 
@@ -316,11 +317,11 @@ custdlg_prop_init(
         /* Resize Mode */
         n = 0;
         item[n] = cgen->resizemode_rbox_items.Adjustable_item;
-        item_val[n] = True; n++;
+        item_ptr[n] = True; n++;
         item[n] = cgen->resizemode_rbox_items.Fixed_item;
-        item_val[n] = False; n++;
+        item_ptr[n] = False; n++;
         prop_radiobox_init(&(pcs->resize_mode), cgen->resizemode_rbox_label,
-                cgen->resizemode_rbox, n, item, (XtPointer*)item_val,
+                cgen->resizemode_rbox, n, item, item_ptr,
                 cgen->resizemode_cb);
 
         /* Window Areas */
@@ -337,31 +338,31 @@ custdlg_prop_init(
  	/* Default Button */
         n = 0;
         item[n] = cgen->defaultb_opmenu_items.None_item;
-        item_val[n] = 0; n++;
+        item_ptr[n] = 0; n++;
 	prop_obj_options_init(&(pcs->default_but), cgen->defaultb_opmenu_label,
 		cgen->defaultb_opmenu, cgen->defaultb_opmenu_menu,
-		n, item, (XtPointer*)item_val,
+		n, item, item_ptr,
 		cgen->default_button_cb, False, /* don't display module */
 		&(pcs->current_obj), button_test_func);
 
  	/* Help Button */
         n = 0;
         item[n] = cgen->helpb_opmenu_items.None_item;
-        item_val[n] = 0; n++;
+        item_ptr[n] = 0; n++;
 	prop_obj_options_init(&(pcs->help_but), cgen->helpb_opmenu_label,
 		cgen->helpb_opmenu, cgen->helpb_opmenu_menu,
-		n, item, (XtPointer*)item_val,
+		n, item, item_ptr,
 		cgen->help_button_cb, False, /* don't display module */
 		&(pcs->current_obj), button_test_func);
 
         /* Size Policy */
         n = 0;
         item[n] = cgen->size_policy_rbox_items.Fit_Contents_item;
-        item_val[n] = SIZE_OF_CONTENTS_KEY; n++;
+        item_ptr[n] = SIZE_OF_CONTENTS_KEY; n++;
         item[n] = cgen->size_policy_rbox_items.Fixed_item;
-        item_val[n] = SIZE_FIXED_KEY; n++;
+        item_ptr[n] = SIZE_FIXED_KEY; n++;
         prop_radiobox_init(&(pcs->size_policy), cgen->size_policy_rbox_label,
-                cgen->size_policy_rbox, n, item, (XtPointer*)item_val,
+                cgen->size_policy_rbox, n, item, item_ptr,
                 cgen->size_policy_cb);
 
         for(i=0; i < n; i++)
