@@ -6,10 +6,8 @@
 :element chooser
 (
 	:type			:dialog
-	:x			58
-	:y			506
-	:width			477
-	:height			196
+	:width			520
+	:height			215
 	:bg-color		"white"
 	:label			"tt_message_handler_set"
 	:resizable		:true
@@ -27,8 +25,8 @@
 	:container-type		:relative
 	:x			0
 	:y			0
-	:width			473
-	:height			192
+	:width			516
+	:height			211
 	:visible		:true
 	:border-frame		:shadow-in
 	:north-attachment	(:point 0 0)
@@ -45,7 +43,7 @@
 	:type			:list
 	:x			20
 	:y			10
-	:width			433
+	:width			476
 	:label-type		:string
 	:label			"Tt_messages"
 	:label-position		:north
@@ -66,7 +64,7 @@
 	:y			131
 	:label-type		:string
 	:label			"Tt_message:"
-	:label-position		:west
+	:label-position		:north
 	:num-columns		42
 	:max-length		80
 	:read-only		:false
@@ -80,7 +78,7 @@
 (
 	:type			:container
 	:container-type		:button-panel
-	:width			477
+	:width			520
 	:height			48
 	:visible		:true
 	:border-frame		:none
