@@ -1700,7 +1700,17 @@ write_list(GenCodeInfo genCodeInfo, ABObj list)
     int		i;
 
     write_convert_strings_to_xmstrings(genCodeInfo, list);
-    genCodeInfo->cur_func.create_obj = list;
+
+    /*
+     * genCodeInfo->cur_func.create_obj = list;
+     *
+     * TODO: Figure out the history of the above line.
+     * The original file contains this line.
+     * Actually, it breaks the hierarchy of widgets.
+     * Comment out it to make the list widget with a label to be rendered
+     * properly.
+     */
+
     write_create_widget_by_non_va_conv_func(
                 genCodeInfo, list, "XmCreateScrolledList", FALSE);
 
