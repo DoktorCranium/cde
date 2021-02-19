@@ -339,6 +339,7 @@ choiceOkayed(
     _DtTtChooserAction choice = (_DtTtChooserAction)ival;
     Widget label = dtb_ttsnoop_ttsnoop_win.ttsnoopWin_label;
     switch (choice) {
+	    void *pval;
 	    int ival, fd;
 	    Tt_message msg;
 	    Tt_pattern pat;
@@ -396,9 +397,9 @@ choiceOkayed(
 	    if (text == 0) {
 		    return;
 	    }
-	    ival = 0;
-	    sscanf( text, "%i", &ival );
-	    msg = (Tt_message) (intptr_t) ival;
+	    pval = NULL;
+	    sscanf( text, "%p", &pval );
+	    msg = (Tt_message) (intptr_t) pval;
 	    if (DtTtIndex( DTTT_MESSAGE, msg ) < 0) {
 		    return;
 	    }
@@ -431,9 +432,9 @@ choiceOkayed(
 	    if (text == 0) {
 		    return;
 	    }
-	    ival = 0;
-	    sscanf( text, "%i", &ival );
-	    pat = (Tt_pattern) (intptr_t) ival;
+	    pval = NULL;
+	    sscanf( text, "%p", &pval );
+	    pat = (Tt_pattern) (intptr_t) pval;
 	    if (DtTtIndex( DTTT_PATTERN, pat ) < 0) {
 		    return;
 	    }
@@ -465,9 +466,9 @@ choiceOkayed(
 	    if (text == 0) {
 		    return;
 	    }
-	    ival = 0;
-	    sscanf( text, "%i", &ival );
-	    pats = (Tt_pattern *) (intptr_t) ival;
+	    pval = NULL;
+	    sscanf( text, "%p", &pval );
+	    pats = (Tt_pattern *) (intptr_t) pval;
 	    if (DtTtIndex( DTTT_DTSESSION, pats ) < 0) {
 		    return;
 	    }
@@ -491,9 +492,9 @@ choiceOkayed(
 	    if (text == 0) {
 		    return;
 	    }
-	    ival = 0;
-	    sscanf( text, "%i", &ival );
-	    pats = (Tt_pattern *) (intptr_t) ival;
+	    pval = NULL;
+	    sscanf( text, "%p", &pval );
+	    pats = (Tt_pattern *) (intptr_t) pval;
 	    if (DtTtIndex( DTTT_DTFILE, pats ) < 0) {
 		    return;
 	    }
