@@ -559,7 +559,7 @@ _DtTtChoices(
 			std::ostringstream itemStream;
 			itemStream << (void *)dtTtMessages[ i ];
 			char *op = tt_message_op( dtTtMessages[ i ] );
-			if (! tt_is_err( tt_ptr_error( op ))) {
+			if (op && ! tt_is_err( tt_ptr_error( op ))) {
 				itemStream << " " << op;
 				tt_free( op );
 			}
