@@ -794,51 +794,51 @@ make_rect (
     {
         case NORTH:
             new_r->x = r->x;
-            new_r->y = y;
+            new_r->y = min(y, rect_bottom(r));
             new_r->width = r->width;
-            new_r->height = (r->y + r->height) - y;
+            new_r->height = max(0, r->y + r->height - y);
             break;
         case SOUTH:
             new_r->x = r->x;
             new_r->y = r->y;
             new_r->width = r->width;
-            new_r->height = y - r->y;
+            new_r->height = max(0, y - r->y);
             break;
         case EAST:
             new_r->x = r->x;
             new_r->y = r->y;
-            new_r->width = x - r->x;
+            new_r->width = max(0, x - r->x);
             new_r->height = r->height;
             break;
         case WEST:
-            new_r->x = x;
+            new_r->x = min(x, rect_right(r));
             new_r->y = r->y;
-            new_r->width = (r->x + r->width) - x;
+            new_r->width = max(0, r->x + r->width - x);
             new_r->height = r->height;
             break;
         case NORTH_EAST:
             new_r->x = r->x;
-            new_r->y = y;
-            new_r->width = x - r->x;
-            new_r->height = (r->y + r->height) - y;
+            new_r->y = min(y, rect_bottom(r));
+            new_r->width = max(0, x - r->x);
+            new_r->height = max(0, r->y + r->height - y);
             break;
         case NORTH_WEST:
-            new_r->x = x;
-            new_r->y = y;
-            new_r->width = (r->x + r->width) - x;
-            new_r->height = (r->y + r->height) - y;
+            new_r->x = min(x, rect_right(r));
+            new_r->y = min(y, rect_bottom(r));
+            new_r->width = max(0, r->x + r->width - x);
+            new_r->height = max(0, r->y + r->height - y);
             break;
         case SOUTH_EAST:
             new_r->x = r->x;
             new_r->y = r->y;
-            new_r->width = x - r->x;
-            new_r->height = y - r->y;
+            new_r->width = max(0, x - r->x);
+            new_r->height = max(0, y - r->y);
             break;
         case SOUTH_WEST:
-            new_r->x = x;
+            new_r->x = min(x, rect_right(r));
             new_r->y = r->y;
-            new_r->width = (r->x + r->width) - x;
-            new_r->height = y - r->y;
+            new_r->width = max(0, r->x + r->width - x);
+            new_r->height = max(0, y - r->y);
 	    break;
 	}
 }
