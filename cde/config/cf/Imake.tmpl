@@ -474,25 +474,13 @@ XCOMM the platform-specific parameters - edit site.def to change
 #define ArCmdBase ar
 #endif
 #ifndef ArCmd
-#if HasLargeTmp || SystemV4
-#define ArCmd ArCmdBase cq
-#else
-#define ArCmd ArCmdBase clq
-#endif
+#define ArCmd ArCmdBase -cq
 #endif
 #ifndef ArAddCmd
-#if HasLargeTmp || SystemV4
-#define ArAddCmd ArCmdBase ru
-#else
-#define ArAddCmd ArCmdBase rul
-#endif
+#define ArAddCmd ArCmdBase -ru
 #endif
 #ifndef ArExtCmd
-#if HasLargeTmp || SystemV4
-#define ArExtCmd ArCmdBase x
-#else
-#define ArExtCmd ArCmdBase xl
-#endif
+#define ArExtCmd ArCmdBase -x
 #endif
 #ifndef BootstrapCFlags
 #define BootstrapCFlags /**/
