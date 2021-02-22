@@ -2145,7 +2145,7 @@ name::									@@\
 	for i in dirs ;\						@@\
 	do \								@@\
 		echo verb "in $(CURRENT_DIR)/$$i..."; \			@@\
-		(cd $$i && LANG=lang $(MAKE) $(MFLAGS) flags subname);\ @@\
+		(cd $$i && LANG=lang $(MAKE) $(MFLAGS) flags subname) || exit;\ @@\
 	done
 #endif
 
@@ -2179,7 +2179,7 @@ name::									@@\
 	for i in dirs ;\						@@\
 	do \								@@\
 		echo verb "in $(CURRENT_DIR)/$$i..."; \			@@\
-		(cd $$i &&  $(MAKE) $(MFLAGS) flags subname); \		@@\
+		(cd $$i &&  $(MAKE) $(MFLAGS) flags subname) || exit; \		@@\
 	done
 #endif
 
