@@ -721,7 +721,7 @@ ui_size_to_row_col(
     XFontStruct  *font;
     unsigned long charwidth;
     unsigned long lineheight;
-    Dimension    pane_width, pane_height;
+    int pane_width, pane_height;
 
     if (XtIsSubclass(text, dtTermWidgetClass))
     	XtVaGetValues(text,
@@ -777,8 +777,8 @@ ui_size_to_row_col(
     pane_width  = width  - (vsb_width  + spacing) - (2*p_margin_w);
     pane_height = height - (hsb_height + spacing) - (2*p_margin_h);
 
-    *row_ptr = (int)((pane_height - (2*margin_h))/lineheight);
-    *col_ptr = (int)((pane_width  - (2*margin_w))/charwidth);
+    *row_ptr = (int)(max(0, pane_height - 2 * margin_h) / lineheight);
+    *col_ptr = (int)(max(0, pane_width  - 2 * margin_w) / charwidth);
 
     /* For some reason, above calculations result in rows being 1 too
      * large for a scrolled list widget; put in workaround until
