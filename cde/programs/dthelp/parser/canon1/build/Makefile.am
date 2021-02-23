@@ -1,5 +1,7 @@
 MAINTAINERCLEANFILES = Makefile.in
 
+.NOTPARALLEL:
+
 noinst_PROGRAMS = build
 
 HELPTAG       = ..
