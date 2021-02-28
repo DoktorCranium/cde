@@ -311,6 +311,12 @@ if test -z "$ac_cv_path_XRDB"; then
    MISSING_PROGS="xrdb ${MISSING_PROGS}"
 fi
 
+AC_PATH_PROG(PERL, perl)
+if test -z "$ac_cv_path_PERL"; then
+   MISSING_PROGS="perl ${MISSING_PROGS}"
+fi
+
+
 dnl we need to use cpp for some things, like tooltalk and other
 dnl runtime uses.  So look for the system's cpp.  NOTE: this is NOT
 dnl the CPP (gcc -E) set by AC_PROG_CPP.  At this point I don't know
@@ -635,6 +641,51 @@ programs/dtsr/Makefile
 
 programs/dtpdmd/Makefile
 
+programs/dtinfo/Makefile
+programs/dtinfo/tools/Makefile
+programs/dtinfo/tools/misc/Makefile
+programs/dtinfo/DtMmdb/Makefile
+programs/dtinfo/DtMmdb/api/Makefile
+programs/dtinfo/DtMmdb/btree/Makefile
+programs/dtinfo/DtMmdb/btree_berkeley/Makefile
+programs/dtinfo/DtMmdb/compression/Makefile
+programs/dtinfo/DtMmdb/diskhash/Makefile
+programs/dtinfo/DtMmdb/dstr/Makefile
+programs/dtinfo/DtMmdb/dti_excs/Makefile
+programs/dtinfo/DtMmdb/dynhash/Makefile
+programs/dtinfo/DtMmdb/hmphf/Makefile
+programs/dtinfo/DtMmdb/index/Makefile
+programs/dtinfo/DtMmdb/mgrs/Makefile
+programs/dtinfo/DtMmdb/misc/Makefile
+programs/dtinfo/DtMmdb/object/Makefile
+programs/dtinfo/DtMmdb/oliasdb/Makefile
+programs/dtinfo/DtMmdb/schema/Makefile
+programs/dtinfo/DtMmdb/storage/Makefile
+programs/dtinfo/DtMmdb/utility/Makefile
+programs/dtinfo/mmdb/Makefile
+programs/dtinfo/mmdb/api/Makefile
+programs/dtinfo/mmdb/btree/Makefile
+programs/dtinfo/mmdb/btree_berkeley/Makefile
+programs/dtinfo/mmdb/compression/Makefile
+programs/dtinfo/mmdb/diskhash/Makefile
+programs/dtinfo/mmdb/dstr/Makefile
+programs/dtinfo/mmdb/dti_excs/Makefile
+programs/dtinfo/mmdb/dynhash/Makefile
+programs/dtinfo/mmdb/hmphf/Makefile
+programs/dtinfo/mmdb/index/Makefile
+programs/dtinfo/mmdb/mgrs/Makefile
+programs/dtinfo/mmdb/misc/Makefile
+programs/dtinfo/mmdb/object/Makefile
+programs/dtinfo/mmdb/oliasdb/Makefile
+programs/dtinfo/mmdb/schema/Makefile
+programs/dtinfo/mmdb/storage/Makefile
+programs/dtinfo/mmdb/utility/Makefile
+programs/dtinfo/mmdb/HardCopy/Makefile
+programs/dtinfo/mmdb/dti_cc/Makefile
+programs/dtinfo/mmdb/StyleSheet/Makefile
+programs/dtinfo/clients/Makefile
+programs/dtinfo/clients/dtinfo_start/Makefile
+
 programs/types/Makefile
 
 programs/tttypes/Makefile
@@ -696,12 +747,3 @@ programs/localized/es_ES.UTF-8/appmanager/Makefile
 ])
 
 AC_OUTPUT
-
-dnl not currently building
-dnl programs/dthelp/parser/pass1/helptag/Makefile
-dnl programs/dthelp/parser/pass1/Makefile
-dnl programs/dthelp/parser/pass1/eltdef/Makefile
-dnl programs/dthelp/parser/pass1/build/Makefile
-dnl programs/dthelp/parser/Makefile
-dnl programs/dthelp/parser/canon1/Makefile
-dnl programs/dthelp/parser/pass2/Makefile

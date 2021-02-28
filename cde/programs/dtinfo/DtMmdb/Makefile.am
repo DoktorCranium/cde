@@ -15,10 +15,14 @@ lib_LTLIBRARIES = libDtMmdb.la
 
 libDtMmdb_la_SOURCES =
 
-libDtMmdb_la_LIBADD += libapi.la libbtree.la libbtree_berkeley.la \
-		       libcompression.la libdiskhash.la libdstr.la \
-		       libdti_excs.la libdynhash.la libhmphf.la libindex.la \
-		       libmgrs.la libmisc.la libobject.la liboliasdb.la \
-		       libschema.la libstorage.la libutility.la
+libDtMmdb_la_LIBADD = api/libapi.la btree/libbtree.la 
+		      btree_berkeley/libbtree_berkeley.la \
+		      compression/libcompression.la diskhash/libdiskhash.la \
+		      dstr/libdstr.la libdti_excs/libdti_excs.la \
+		      dynhash/libdynhash.la hmphf/libhmphf.la \
+		      index/libindex.la mgrs/libmgrs.la misc/libmisc.la \
+		      object/libobject.la oliasdb/liboliasdb.la \
+		      schema/libschema.la storage/libstorage.la \
+		      utility/libutility.la
 
 libDtMmdb_la_LDFLAGS = -version-info 2:1:0

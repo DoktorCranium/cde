@@ -2,6 +2,8 @@ MAINTAINERCLEANFILES = Makefile.in
 
 noinst_PROGRAMS = build
 
+.NOTPARALLEL:
+
 HELPTAG       = ..
 HELPTAGSRC    = $(HELPTAG)/helptag
 HELPPARSERSRC = $(HELPTAG)/parser

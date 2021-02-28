@@ -2,7 +2,7 @@ infolibdir = ${prefix}/infolib
 
 MAINTAINERCLEANFILES = Makefile.in
 
-infolib_PROGRAMS = mmdb.infolib.spec
+infolib_DATA = mmdb.infolib.spec
 
 noinst_LTLIBRARIES = liboliasdb.la
 

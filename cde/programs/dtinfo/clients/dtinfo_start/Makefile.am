@@ -2,11 +2,11 @@ MAINTAINERCLEANFILES = Makefile.in
 
 noinst_PROGRAMS = dtinfo_start
 
-dtinfo_start_CFLAGS = -I.
+BUILT_SOURCES = dtinfo_start.opnums
 
-dtinfo_start_LDADD = ${X_LIBS} $(LIBTT) $(LIBSVC) $(XTOOLLIB) -lXm
+dtinfo_start_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB) -lXm
 
-dtinfo_start.opnums: $(srcdir)/tttypes/dtinfo_start.opnums
+dtinfo_start.opnums: $(top_builddir)/programs/tttypes/dtinfo_start.opnums
 	$(RM) dtinfo_start.opnums
 	$(LN_S) $? $@
 

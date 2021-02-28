@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libdiskhask.la
+noinst_LTLIBRARIES = libdiskhash.la
 
 libdiskhash_la_CXXFLAGS = -DC_API -I.. -I../dti_excs
 
