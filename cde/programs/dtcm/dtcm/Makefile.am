@@ -44,3 +44,6 @@ dtcm_lookup_SOURCES = cm_lookup.c
 dtcm_editor_SOURCES = datefield.c     deskset.c       dssw.c \
 		      dtcm_editor.c   help.c          misc.c \
 		      reminders.c     rfp.c
+
+install-exec-hook:
+	mkdir -p /var/spool/calendar
