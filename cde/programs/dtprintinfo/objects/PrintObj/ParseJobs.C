@@ -53,6 +53,8 @@ extern "C" in_addr_t inet_addr(const char *);
 #include <ctype.h>
 #include <X11/Intrinsic.h>
 
+#include <string>
+
 #include "dtprintinfomsg.h"
 
 #ifdef NO_REGCOMP
@@ -342,6 +344,15 @@ void LocalPrintJobs(char *printer, char **job_list, int *n_jobs)
 
 #if defined(sun)
 
+// JET - this *really* needs to be re-written for sun
+
+// I tried to mitigate some of the more stupider code segments in
+// check_dir() for example, but...  It's a C++ file, yet someone who
+// does not appear to know C++ very well wrote this crap in... C, sort
+// of.
+
+#warning "This SUN local parser code is unsafe, please re-write"
+
 // SUN LOCAL PARSER, actually this gets the local information from the file
 // system, it should have the good performance since no processes (lpstat)
 // are needed.
@@ -438,6 +449,7 @@ void LocalPrintJobs(char *printer, char **return_job_list, int *return_n_jobs)
    SETEUID(getuid());
 }
 
+// JET - this whole function is atrocious and should be re-written in C++
 static void check_dir(char *printer, char *tmp_dir, StatusLineList *job_list,
                       int *n_jobs, int prev_n_jobs)
 {
@@ -466,11 +478,11 @@ static void check_dir(char *printer, char *tmp_dir, StatusLineList *job_list,
    char *spool_dir = new char[300];
 
    if (getenv("REQ_DIR"))
-      sprintf(request, getenv("REQ_DIR"), tmp_dir);
+       snprintf(request, sizeof(request), "%s/%s", getenv("REQ_DIR"), tmp_dir);
    else
-      sprintf(request, REQ_DIR, tmp_dir);
+       sprintf(request, sizeof(request), "%s", REQ_DIR, tmp_dir);
    req_len = strlen(request);
-   sprintf(spool_dir, SPOOL_DIR, tmp_dir);
+   snprintf(spool_dir, sizeof(spool_dir), "%s/%s", SPOOL_DIR, tmp_dir);
    spool_len = strlen(spool_dir);
 
    if (!(lp_tmp_dir = opendir(".")))
@@ -490,9 +502,13 @@ static void check_dir(char *printer, char *tmp_dir, StatusLineList *job_list,
 	 continue;
       if (strcmp(dir_struct->d_name + len - 2, "-0"))
 	 continue;
-      *(request + req_len) = '\0';
-      strcat(request + req_len, dir_struct->d_name);
-      if (!(req = fopen(request, "r")))
+
+//      *(request + req_len) = '\0';
+//      strcat(request + req_len, dir_struct->d_name);
+      std:string file_req(request);
+      file_req.append(dir_struct->d_name);
+
+      if (!(req = fopen(file_req.c_str(), "r")))
 	 continue;
       if (!(job = fopen(dir_struct->d_name, "r")))
        {
@@ -521,14 +537,19 @@ static void check_dir(char *printer, char *tmp_dir, StatusLineList *job_list,
 	       found = 0;
 	    break;
 	 case 'F':
-            *(spool_dir + spool_len) = '\0';
-            strncat(spool_dir, dir_struct->d_name, len - 1);
-	    strcat(spool_dir, "1");
-            if (strcmp(spool_dir, line + 2))
-	       strcpy(filename1, line + 2);
+         {
+//            *(spool_dir + spool_len) = '\0';
+//            strncat(spool_dir, dir_struct->d_name, len - 1);
+//            strcat(spool_dir, "1");
+            std::string spool_chk(spool_dir);
+            spool_chk.append(dir_struct->d_name);
+            spool_chk.append("1");
+            if (strcmp(spool_chk.c_str(), line + 2))
+                snprintf(filename1, sizeof(filename1), "%s", line + 2);
             else
 	       *filename1 = '\0';
-	    break;
+         }
+         break;
          case 'O':
             if (s = strrchr(line, ':'))
                *s = '\0';
