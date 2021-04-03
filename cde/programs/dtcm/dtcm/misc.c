@@ -639,7 +639,7 @@ cm_mbchar(char *str) {
           free(buf);
           buf = NULL;
      }
-     if ( *string == '\0' ) {
+     if ( string != NULL && *string == '\0' ) {
           free(string_head);
           string_head = NULL;
           string      = NULL;
@@ -652,7 +652,7 @@ cm_mbchar(char *str) {
                string += num_byte;
           }
      }
- 
+
      return buf;
 }
 
