@@ -1063,9 +1063,7 @@ abobj_set_num_columns(
 	    (obj_is_text(obj) || obj_is_term_pane(obj)))
 	{
 	    objxm_obj_set_ui_arg(subObj, AB_ARG_INT, XmNcolumns, num_cols);
-/*
-            obj_clear_flag(obj, InstantiatedFlag);
-*/
+	    if (obj_is_text(obj)) obj_clear_flag(obj, InstantiatedFlag);
             obj_clear_flag(subObj, InstantiatedFlag);
 	}
 	else if (obj_is_choice(obj))
