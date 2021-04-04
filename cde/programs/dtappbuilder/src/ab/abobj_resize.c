@@ -536,7 +536,7 @@ abobj_resize(
         if (trans_x < 0)
         {
             resize_rect.x = 0;
-            resize_rect.width += trans_x;
+            resize_rect.width = max(0, resize_rect.width + trans_x);
 
 	    if (obj_is_pane(obj) || obj_is_separator(obj)) /* If a pane, attach to parent's edge */
 		obj_set_attachment(xy_obj, AB_CP_WEST, AB_ATTACH_OBJ, obj_get_parent(xy_obj), 0);
@@ -555,7 +555,7 @@ abobj_resize(
         if (trans_y < 0)
         {
             resize_rect.y = 0;
-            resize_rect.height += trans_y;
+            resize_rect.height = max(0, resize_rect.height + trans_y);
 
             if (obj_is_pane(obj) || obj_is_separator(obj)) /* If a pane, attach to parent's edge */
                 obj_set_attachment(xy_obj, AB_CP_NORTH, AB_ATTACH_OBJ, obj_get_parent(xy_obj), 0);
@@ -573,7 +573,7 @@ abobj_resize(
 
         if (resize_rect.x + (short)resize_rect.width >= (short)p_rect.width)
         {
-            resize_rect.width = (short)p_rect.width - resize_rect.x - 1;
+            resize_rect.width = max(0, (short)p_rect.width - resize_rect.x - 1);
 
 	    if (obj_is_pane(obj) || obj_is_separator(obj)) /* If a pane, attach to parent's edge */ 
 		obj_set_attachment(xy_obj, AB_CP_EAST, AB_ATTACH_OBJ, obj_get_parent(xy_obj), 0);
@@ -589,7 +589,7 @@ abobj_resize(
 
         if (resize_rect.y + (short)resize_rect.height > (short)p_rect.height)
 	{
-            resize_rect.height = (short)p_rect.height - resize_rect.y - 1;
+            resize_rect.height = max(0, (short)p_rect.height - resize_rect.y - 1);
 
             if (obj_is_pane(obj) || obj_is_separator(obj)) /* If a pane, attach to parent's edge */
                 obj_set_attachment(xy_obj, AB_CP_SOUTH, AB_ATTACH_OBJ, obj_get_parent(xy_obj), 0); 
