@@ -46,8 +46,8 @@
 #include <netinet/in.h>
 #include <netdb.h>
 
-#define	LOG_HOST	"hpcvusj.cv.hp.com"
-#define	LOG_ADDR	"15.0.209.35"
+#define	LOG_HOST	"localhost"
+#define	LOG_ADDR	"127.0.0.1"
 #define	LOG_PORT	"4444"
 #define	WAIT_INTERVAL	5
 #define	RETRIES		5
@@ -301,7 +301,11 @@ doLog(int noFork, char *msg)
     }
 
     if (!noFork) {
+#ifdef _NFILE
 	for (i1 = 0; i1 < _NFILE; i1++) {
+#else
+	for (i1 = 0; i1 < sysconf(_SC_OPEN_MAX); i1++) {
+#endif
 	    if (i1 != s) {
 		(void) close(i1);
 	    }
