@@ -174,6 +174,8 @@ termp_initialize(
     {
     	obj_set_num_rows(obj, 6);
     	obj_set_num_columns(obj, 12);
+        obj_set_width(obj, termp_init_width);
+        obj_set_height(obj, termp_init_width);
     }
     obj_set_process_string(obj, "/bin/csh");
 

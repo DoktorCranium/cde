@@ -72,6 +72,16 @@ static void    	make_rect(
 		    RESIZE_DIR  dir
         	);
 
+static void
+make_rect_in_rect(
+    XRectangle    *pr,
+    XRectangle    *new_r,
+    XRectangle    *r,
+    int        	  x,
+    int        	  y,
+    RESIZE_DIR    dir
+);
+
 static void    	undo_resize(
 		    ABUndoRec	undo_rec
 		);
@@ -355,9 +365,9 @@ abobjP_resize_object_outline(
     static Widget      parent;
     static Window      rootwin;
     static Display     *dpy;
-    static XRectangle  orig_r, r;
+    static XRectangle  orig_r, r, p_rect;
     static int         last_x, last_y;
-    int                x,y;
+    int                x, y, x_tmp, y_tmp;
     char               buf[80];
 
     if (event->type == MotionNotify)
@@ -399,6 +409,16 @@ abobjP_resize_object_outline(
         rootwin = RootWindowOfScreen(XtScreen(xy_widget));
 
         x_get_widget_rect(xy_widget, &orig_r);
+
+        x_get_widget_rect(parent, &p_rect);
+
+        XTranslateCoordinates(dpy, XtWindow(parent),
+            rootwin, p_rect.x, p_rect.y, &x_tmp, &y_tmp,
+            &win);
+
+        p_rect.x = x_tmp;
+        p_rect.y = y_tmp;
+
 	if (obj_has_border_frame(obj)) /* We have a border-frame to deal with */
 	{
 	    XRectangle pane_r;
@@ -412,8 +432,8 @@ abobjP_resize_object_outline(
 	else
 	    border_w = 0;
 
-	orig_r.width--;
-	orig_r.height--;
+	if (orig_r.width > 0) orig_r.width--;
+	if (orig_r.height > 0) orig_r.height--;
 
         r = orig_r;
 
@@ -431,7 +451,7 @@ abobjP_resize_object_outline(
     }
     else     /* erase previous outline */    
     {
-        make_rect(&resize_rect, &r, last_x, last_y, dir);
+        make_rect_in_rect(&p_rect, &resize_rect, &r, last_x, last_y, dir);
         x_fullscreen_box(xy_widget, rootwin, 
                 resize_rect.x, resize_rect.y,
                 rect_right(&resize_rect), 
@@ -439,7 +459,7 @@ abobjP_resize_object_outline(
 
     }
 
-    make_rect(&resize_rect, &r, x, y, dir);
+    make_rect_in_rect(&p_rect, &resize_rect, &r, x, y, dir);
     x_fullscreen_box(xy_widget, rootwin, 
                 resize_rect.x, resize_rect.y,
                                 rect_right(&resize_rect), 
@@ -508,15 +528,15 @@ abobj_resize(
         XTranslateCoordinates(dpy, rootwin, XtWindow(parent),
                         orig_x , orig_y, &trans_x, &trans_y, &win);
 
-	resize_rect.width++;
-	resize_rect.height++;
+	resize_rect.width++; if (!resize_rect.width) --resize_rect.width;
+	resize_rect.height++; if (!resize_rect.height) --resize_rect.height;
 
         /* Ensure new geometry fits within parent
          */
         if (trans_x < 0)
         {
             resize_rect.x = 0;
-            resize_rect.width += trans_x;
+            resize_rect.width = max(0, resize_rect.width + trans_x);
 
 	    if (obj_is_pane(obj) || obj_is_separator(obj)) /* If a pane, attach to parent's edge */
 		obj_set_attachment(xy_obj, AB_CP_WEST, AB_ATTACH_OBJ, obj_get_parent(xy_obj), 0);
@@ -535,7 +555,7 @@ abobj_resize(
         if (trans_y < 0)
         {
             resize_rect.y = 0;
-            resize_rect.height += trans_y;
+            resize_rect.height = max(0, resize_rect.height + trans_y);
 
             if (obj_is_pane(obj) || obj_is_separator(obj)) /* If a pane, attach to parent's edge */
                 obj_set_attachment(xy_obj, AB_CP_NORTH, AB_ATTACH_OBJ, obj_get_parent(xy_obj), 0);
@@ -553,7 +573,7 @@ abobj_resize(
 
         if (resize_rect.x + (short)resize_rect.width >= (short)p_rect.width)
         {
-            resize_rect.width = (short)p_rect.width - resize_rect.x - 1;
+            resize_rect.width = max(0, (short)p_rect.width - resize_rect.x - 1);
 
 	    if (obj_is_pane(obj) || obj_is_separator(obj)) /* If a pane, attach to parent's edge */ 
 		obj_set_attachment(xy_obj, AB_CP_EAST, AB_ATTACH_OBJ, obj_get_parent(xy_obj), 0);
@@ -569,7 +589,7 @@ abobj_resize(
 
         if (resize_rect.y + (short)resize_rect.height > (short)p_rect.height)
 	{
-            resize_rect.height = (short)p_rect.height - resize_rect.y - 1;
+            resize_rect.height = max(0, (short)p_rect.height - resize_rect.y - 1);
 
             if (obj_is_pane(obj) || obj_is_separator(obj)) /* If a pane, attach to parent's edge */
                 obj_set_attachment(xy_obj, AB_CP_SOUTH, AB_ATTACH_OBJ, obj_get_parent(xy_obj), 0); 
@@ -794,53 +814,82 @@ make_rect (
     {
         case NORTH:
             new_r->x = r->x;
-            new_r->y = y;
+            new_r->y = min(y, rect_bottom(r));
             new_r->width = r->width;
-            new_r->height = (r->y + r->height) - y;
+            new_r->height = max(0, r->y + r->height - y);
             break;
         case SOUTH:
             new_r->x = r->x;
             new_r->y = r->y;
             new_r->width = r->width;
-            new_r->height = y - r->y;
+            new_r->height = max(0, y - r->y);
             break;
         case EAST:
             new_r->x = r->x;
             new_r->y = r->y;
-            new_r->width = x - r->x;
+            new_r->width = max(0, x - r->x);
             new_r->height = r->height;
             break;
         case WEST:
-            new_r->x = x;
+            new_r->x = min(x, rect_right(r));
             new_r->y = r->y;
-            new_r->width = (r->x + r->width) - x;
+            new_r->width = max(0, r->x + r->width - x);
             new_r->height = r->height;
             break;
         case NORTH_EAST:
             new_r->x = r->x;
-            new_r->y = y;
-            new_r->width = x - r->x;
-            new_r->height = (r->y + r->height) - y;
+            new_r->y = min(y, rect_bottom(r));
+            new_r->width = max(0, x - r->x);
+            new_r->height = max(0, r->y + r->height - y);
             break;
         case NORTH_WEST:
-            new_r->x = x;
-            new_r->y = y;
-            new_r->width = (r->x + r->width) - x;
-            new_r->height = (r->y + r->height) - y;
+            new_r->x = min(x, rect_right(r));
+            new_r->y = min(y, rect_bottom(r));
+            new_r->width = max(0, r->x + r->width - x);
+            new_r->height = max(0, r->y + r->height - y);
             break;
         case SOUTH_EAST:
             new_r->x = r->x;
             new_r->y = r->y;
-            new_r->width = x - r->x;
-            new_r->height = y - r->y;
+            new_r->width = max(0, x - r->x);
+            new_r->height = max(0, y - r->y);
             break;
         case SOUTH_WEST:
-            new_r->x = x;
+            new_r->x = min(x, rect_right(r));
             new_r->y = r->y;
-            new_r->width = (r->x + r->width) - x;
-            new_r->height = y - r->y;
+            new_r->width = max(0, r->x + r->width - x);
+            new_r->height = max(0, y - r->y);
 	    break;
 	}
+}
+
+/*
+ * calculate resize rect based on resize-direction & obj dimensions & a
+ * boundary.
+ */
+static void
+make_rect_in_rect(
+    XRectangle    *pr,
+    XRectangle    *new_r,
+    XRectangle    *r,
+    int        	  x,
+    int        	  y,
+    RESIZE_DIR    dir
+)
+{
+    int x_tmp, y_tmp;
+    int pr_right = rect_right(pr);
+    int pr_bottom = rect_bottom(pr);
+
+    if (x < pr->x) x_tmp = pr->x;
+    else if (x > pr_right) x_tmp = pr_right;
+    else x_tmp = x;
+
+    if (y < pr->y) y_tmp = pr->y;
+    else if (y > pr_bottom) y_tmp = pr_bottom;
+    else y_tmp = y;
+
+    make_rect(new_r, r, x_tmp, y_tmp, dir);
 }
 
 /*
