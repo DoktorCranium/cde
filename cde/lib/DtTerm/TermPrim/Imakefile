@@ -77,6 +77,9 @@ OBJS = \
 
 #include <Library.tmpl>
 
+#if defined(HasPtsDriver) && HasPtsDriver
+LinkFile(TermPrimGetPty.c,TermPrimGetPty-pts.c)
+#else
 /* These should be cleaned up.  Test SVR4Architecture? */
 #ifdef AlphaArchitecture
 LinkFile(TermPrimGetPty.c,TermPrimGetPty-bsd.c)
@@ -104,6 +107,7 @@ LinkFile(TermPrimGetPty.c,TermPrimGetPty-svr4.c)
 
 #ifdef BSDArchitecture
 LinkFile(TermPrimGetPty.c,TermPrimGetPty-bsd.c)
+#endif
 #endif
 
 SubdirLibraryRule($(OBJS))
