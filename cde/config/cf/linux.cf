@@ -303,5 +303,13 @@ XCOMM This is needed for CDE currently
 #define HasPamLibrary YES
 #endif
 
+#if !defined(HasPtsDriver)
+#define HasPtsDriver YES
+#endif
+
+#if !defined(HasUtempterLibrary)
+#define HasUtempterLibrary YES
+#endif
+
 #include <lnxDep.rules>
 #include <lnxLib.rules>
