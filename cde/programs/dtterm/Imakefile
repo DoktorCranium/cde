@@ -18,6 +18,10 @@ DEFINES = $(ARCHITECTURE_DEFINES) -DSUN_TERMINAL_SERVER
 EXTRA_DEFINES = -DBUILD_HPVUE -DHPVUE
 #endif	/* Build_HpVue */
 
+#if defined(HasUtempterLibrary) && HasUtempterLibrary
+EXTRA_DEFINES = -DHAS_UTEMPTER_LIBRARY
+#endif
+
 #ifdef SunArchitecture
 HELPLIB = $(DTSVCLIB) $(TTLIB)
 DEPHELPLIB = $(DEPDTSVCLIB) $(DEPTTLIB)
