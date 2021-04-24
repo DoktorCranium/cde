@@ -257,4 +257,12 @@ XCOMM to enable pam support
 #define PamAuthenticationModule /usr/local/lib/security/pam_pwauth_suid.so
 #endif
 
+#if !defined(HasPtsDriver)
+#define HasPtsDriver YES
+#endif
+
+#if !defined(HasUtempterLibrary)
+#define HasUtempterLibrary YES
+#endif
+
 #include <bsdLib.rules>
