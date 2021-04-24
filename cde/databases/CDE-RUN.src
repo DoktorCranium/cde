@@ -1747,13 +1747,22 @@ programs/dtudcfonted/libfal/fonts.list
 { default
        install_target = /usr/dt/config/C/fonts.list
 }
+#if defined(HAS_PTS_DRIVER) && defined(HAS_UTEMPTER_LIBRARY)
 XCOMM
+programs/dtterm/dtterm
+{ default
+        install_target = /usr/dt/bin/dtterm
+        mode = 0555
+	owner = root
+}
+#else
 programs/dtterm/dtterm
 { default
         install_target = /usr/dt/bin/dtterm
         mode = 04555
 	owner = root
 }
+#endif
 XCOMM
 programs/dtterm/dtterm.ti
 { default
