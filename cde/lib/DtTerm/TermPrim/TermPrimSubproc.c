@@ -573,8 +573,10 @@ _DtTermPrimSubprocExec(Widget		  w,
 	}
 		 
 	/* set our utmp entry... */
+#ifndef HAS_UTEMPTER_LIBRARY
 	(void) _DtTermPrimUtmpEntryCreate(w, getpid(),
 		((DtTermPrimitiveWidget)w)->term.tpd->utmpId);
+#endif
 
 	if (isDebugSet('T')) {
 #ifdef	BBA
@@ -652,7 +654,9 @@ _DtTermPrimSubprocExec(Widget		  w,
     /* assume that our child set up a utmp entry (since we have no way
      * for it to report to us) and add it to the list to cleanup)...
      */
+#ifndef HAS_UTEMPTER_LIBRARY
     _DtTermPrimUtmpAddEntry(((DtTermPrimitiveWidget)w)->term.tpd->utmpId);
+#endif
 
     return(pid);
 }

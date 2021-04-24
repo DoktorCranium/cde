@@ -40,7 +40,6 @@ SRCS = \
 	TermPrimScroll.c \
 	TermPrimSelect.c \
 	TermPrimSetPty.c \
-	TermPrimSetUtmp.c \
 	TermPrimSubproc.c \
 	TermPrimUtil.c    \
 	TermPrimVersion.c \
@@ -69,11 +68,17 @@ OBJS = \
 	TermPrimScroll.o \
 	TermPrimSelect.o \
 	TermPrimSetPty.o \
-	TermPrimSetUtmp.o \
 	TermPrimSubproc.o \
 	TermPrimUtil.o    \
 	TermPrimVersion.o \
 	TermPrimWMProtocols.o
+
+#if defined(HasUtempterLibrary) && HasUtempterLibrary
+EXTRA_DEFINES = -DHAS_UTEMPTER_LIBRARY
+#else
+SRCS += TermPrimSetUtmp.c
+OBJS += TermPrimSetUtmp.o
+#endif
 
 #include <Library.tmpl>
 
