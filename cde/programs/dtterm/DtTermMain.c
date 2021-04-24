@@ -840,7 +840,9 @@ SignalHandler
 {
     DebugF('s', 10, fprintf(stderr, ">>SignalHandler() starting\n"));
     _DtTermPrimPtyCleanup();
+#ifndef HAS_UTEMPTER_LIBRARY
     _DtTermPrimUtmpCleanup();
+#endif
     _DtTermPrimLogFileCleanup();
     DebugF('s', 10, fprintf(stderr, ">>SignalHandler() finished\n"));
     (void) exit(0);
