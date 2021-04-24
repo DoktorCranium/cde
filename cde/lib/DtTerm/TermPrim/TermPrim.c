@@ -82,6 +82,10 @@ extern char * _DtTermPrimGetMessage( char *filename, int set, int n, char *s );
 # include <sys/select.h>
 #endif
 
+#ifdef HAS_UTEMPTER_LIBRARY
+#include <utempter.h>
+#endif
+
 extern void TermReadKey(Widget w, XEvent *event, String *params,
 	Cardinal *num_params);
 static void ClassInitialize(void);
@@ -1068,7 +1072,9 @@ Initialize(Widget ref_w, Widget w, Arg *args, Cardinal *num_args)
     /*
     ** Initialize the utmp stuff...
     */
+#ifndef HAS_UTEMPTER_LIBRARY
     _DtTermPrimUtmpInit(w);
+#endif
     
     /* 
     ** Initialize the selection inforamtion
@@ -2478,8 +2484,12 @@ Realize(Widget w, XtValueMask *p_valueMask, XSetWindowAttributes *attributes)
 
     /* get the utmp line name to use for searching later... */
     if (tw->term.pty >= 0) {
+#ifdef HAS_UTEMPTER_LIBRARY
+	utempter_add_record(tw->term.pty, DisplayString(XtDisplay(w)));
+#else
 	tw->term.tpd->utmpId = _DtTermPrimUtmpGetUtLine(-1,
 		tw->term.ptySlaveName);
+#endif
     }
 
     /*
@@ -2620,11 +2630,15 @@ Destroy(Widget w)
     _DtTermPrimToggleSuidRoot(False);
 
     /* clean up our utmp entry... */
+#ifdef HAS_UTEMPTER_LIBRARY
+    utempter_remove_added_record();
+#else
     if (tw->term.tpd && tw->term.tpd->utmpId && *tw->term.tpd->utmpId) {
 	_DtTermPrimUtmpEntryDestroy(w, tw->term.tpd->utmpId);
 	(void) XtFree(tw->term.tpd->utmpId);
 	tw->term.tpd->utmpId = (char *) 0;
     }
+#endif
 
     /* close and release the...
      */

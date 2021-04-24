@@ -53,7 +53,6 @@ TERMPRIM_OBJS = \
 	TermPrim/TermPrimScroll.o \
 	TermPrim/TermPrimSelect.o \
 	TermPrim/TermPrimSetPty.o \
-	TermPrim/TermPrimSetUtmp.o \
 	TermPrim/TermPrimSubproc.o \
 	TermPrim/TermPrimUtil.o    \
 	TermPrim/TermPrimVersion.o \
@@ -77,6 +76,12 @@ TERMVIEW_OBJS = \
 	TermView/TermViewMenu.o \
 	TermView/TermViewGlobalDialog.o \
 	TermView/TermViewTerminalDialog.o
+
+#if defined(HasUtempterLibrary) && HasUtempterLibrary
+REQUIREDLIBS += -lutempter
+#else
+TERMPRIM_OBJS += TermPrim/TermPrimSetUtmp.o
+#endif
 
 OBJS = \
 	$(TERMPRIM_OBJS) \
