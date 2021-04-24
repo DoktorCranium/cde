@@ -38,6 +38,14 @@ UDB_CPP_UNDEF_LIST = -UhpV4 -Uhpux -Uaix -Usun -Uunix -Ulinux -Uopenbsd -Ufreebs
 UDB_CPP_DEF_LIST = -DHAS_PAM_LIBRARY
 #endif
 
+#if defined(HasPtsDriver) && HasPtsDriver
+UDB_CPP_DEF_LIST += -DHAS_PTS_DRIVER
+#endif
+
+#if defined(HasUtempterLibrary) && HasUtempterLibrary
+UDB_CPP_DEF_LIST += -DHAS_UTEMPTER_LIBRARY
+#endif
+
 #if defined UTF8_NLS_SUPPORT
 # define UTF8_NLS_SUPPORT_OPT -DUTF8_NLS_SUPPORT
 #else
