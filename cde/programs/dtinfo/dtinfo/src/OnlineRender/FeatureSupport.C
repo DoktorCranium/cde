@@ -621,7 +621,7 @@ CanvasRenderer::_dofont(const FeatureSet &fs, Symbol** symbols)
 	// if we still can't find one go with whatever.
 
 	else {
-	    xlfd = (char*)"-*-*-*-*-*-*-*-*-*-*-*-*-*";
+	    xlfd = strdup("-*-*-*-*-*-*-*-*-*-*-*-*-*");
 	}
 #ifdef FONT_DEBUG
 	fprintf(stderr, "resulting in \"%s\".\n", xlfd);
