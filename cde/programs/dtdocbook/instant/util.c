@@ -698,10 +698,32 @@ int Putc(
 )
 {
     int result;
+    int j;
     char *pc;
-    static char commandBuf[] = "OutputString \"      ";
+    char *tcl_str;
+    Tcl_DString tcl_dstr;
+    Tcl_Encoding tcl_enc;
+    static int i = 0;
+    static char argBuf[8];
+    static char commandBuf[] = "OutputString \"                 ";
 
     if (stream) {
+	argBuf[i++] = c;
+
+	mblen(NULL, 0);
+
+	if (mblen(argBuf, i) == -1) {
+	    if (i < MB_CUR_MAX) {
+		return c;
+	    }
+	    else {
+		i = 0;
+		fprintf(stderr,
+		    "An invalid multi-byte character was found in the input.");
+		return EOF;
+	    }
+	}
+
 	pc = &(commandBuf[14]);
 	switch (c) { /* escape those things that throw off tcl */
 	    case '{':
@@ -714,10 +736,13 @@ int Putc(
 	    case '\\':
 		*pc++ = '\\';
 	}
-	*pc++ = c;
+	for (j = 0; j < i; ++j) *pc++ = argBuf[j]; i = 0;
 	*pc++ = '"';
 	*pc++ = 0;
-	result = Tcl_Eval(interpreter, commandBuf);
+	tcl_enc = Tcl_GetEncoding(NULL, NULL);
+	tcl_str = Tcl_ExternalToUtfDString(tcl_enc, commandBuf, -1, &tcl_dstr);
+	result = Tcl_Eval(interpreter, tcl_str);
+	Tcl_DStringFree(&tcl_dstr);
 
 	if (result != TCL_OK) {
 	    fprintf(stderr,
@@ -754,6 +779,9 @@ int FPuts(
     const char *ps;
     int sLength;
     int result;
+    char *tcl_str;
+    Tcl_DString tcl_dstr;
+    Tcl_Encoding tcl_enc;
 
     if ((sLength = strlen(s)) == 0)
 	return 0; /* no need to call CheckOutputBuffer() */
@@ -782,7 +810,10 @@ int FPuts(
 	} while (*ps);
 	*pb++ = '"';
 	*pb = 0;
-	result = Tcl_Eval(interpreter, pBuff);
+	tcl_enc = Tcl_GetEncoding(NULL, NULL);
+	tcl_str = Tcl_ExternalToUtfDString(tcl_enc, pBuff, -1, &tcl_dstr);
+	result = Tcl_Eval(interpreter, tcl_str);
+	Tcl_DStringFree(&tcl_dstr);
 
 	if (result != TCL_OK) {
 	    fprintf(stderr,

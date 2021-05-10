@@ -81,6 +81,7 @@ static char *CopyRt =
 #include <fcntl.h>
 #include <unistd.h>
 #include <locale.h>
+#include <langinfo.h>
 #include "LocaleXlate.h"
 #include "XlationSvc.h"
 
@@ -121,10 +122,6 @@ static int DefaultOutputString(ClientData clientData,
 			       Tcl_Interp *interp,
 			       int argc,
 			       const char *argv[]);
-static int TclReadLocaleStrings(ClientData clientData,
-			        Tcl_Interp *interp,
-			        int argc,
-			        const char *argv[]);
 char		*GetOutFileBaseName();
 
 char *
@@ -209,16 +206,6 @@ main(
 		      0,
 		      0);
 
-    /* Add a function to read a localized set of data from a file.
-     * We'll make sure the munging takes place so we can parse it
-     * in Tcl and any strings we get will output properly when
-     * unmunged. */
-    Tcl_CreateCommand(interpreter,
-                      "ReadLocaleStrings",
-		      TclReadLocaleStrings,
-		      0,
-		      0);
-    
     ReadInstance(in_file);
 
     if (interactive) {
@@ -271,78 +258,6 @@ main(
     return 0;
 }
 
-
-/* Undo the munging done in EscapeI18NChars().
- *
- * The parameter may be modified.  It is returned for the convenience
- * of the caller.
- *
- * The algorithm here is:
- *
- *  get the next byte to write;
- *
- *      if the current byte is the chosen character:
- *
- *          get the next byte;
- *
- *          if the current byte is the chosen character:
- *
- *              get the next byte and zero out the 8th bit;
- *
- *              if the current byte is an ASCII "1", emit the chosen
- *              character and continue;
- *
- *              if the current byte is an ASCII "0", emit the chosen
- *              character with the 8th bit turned off and continue;
- *
- *              it's an internal error if we get here
- *
- *          emit the current byte with the 8th bit turned off and
- *          continue;
- *
- *      emit the current byte and continue;
- */
-static char *UnEscapeI18NChars(
-    char *source
-)
-{
-    unsigned char c;
-    char *buf;
-    unsigned char *to, *from;
-
-    if (MB_CUR_MAX != 1) {
-	from = (unsigned char*)source;
-	buf = malloc(strlen(source)+1);
-        to = (unsigned char *)buf;
-	while (c = *from++) {
-	    if (c == I18N_TRIGGER) {
-		c = *from++;
-		if (c == I18N_TRIGGER) {
-		    c = *from++ & ~0x80;
-		    if (c == '0') {
-			*to++ = I18N_TRIGGER & ~0x80;
-		    } else if (c == '1') {
-			*to++ = I18N_TRIGGER;
-		    } else {
-			fprintf(stderr,
-				"Error: Unexpected I18N transformation.\n");
-			exit(1);
-		    }
-		} else {
-		    *to++ = c & ~0x80;
-		}
-	    } else {
-		*to++ = c;
-	    }
-	}
-	*to = 0;
-	strcpy(source, buf);
-	free(buf);
-    }
-    return source;
-}
-
-
 static int DefaultOutputString(ClientData clientData,
 			       Tcl_Interp *interp,
 			       int argc,
@@ -375,43 +290,18 @@ static int DefaultOutputString(ClientData clientData,
      * any characters that will throw Tcl for a loop */
     *pString++ = '"';
     while (*pArgv) {
-        if (*pArgv & 0x80)
-        {
-            /* 8-bit data - need to encode since modern Tcl expects
-             * any "binary" (8-bit) data in strings to be proper UTF-8
-             * encoded.  We aren't doing that (yet), so convert any
-             * detected 8b characters into a \xNN format.
-             *
-             * This code should be unnecessary when we switch to UTF8.
-             */
-            char fmt[16];
-            snprintf(fmt, 16, "%02x", (int)*pArgv & 0xff);
-#if 0
-            fprintf(stderr, "JET: converted 0x%02x to '%s'\n",
-                    *pArgv, fmt);
-#endif
-            /* copy the 4 bytes into the string */
-            *pString++ = '\\';
-            *pString++ = 'x';
-            *pString++ = fmt[0];
-            *pString++ = fmt[1];
-            pArgv++;
-        }
-        else
-        {
-            switch (*pArgv) {
-                case '{':
-                case '}':
-                case '"':
-                case '\'':
-                case '[':
-                case ']':
-                case '$':
-                case '\\':
-                    *pString++ = '\\';
-            }
-            *pString++ = *pArgv++;
-        }
+	switch (*pArgv) {
+	    case '{':
+	    case '}':
+	    case '"':
+	    case '\'':
+	    case '[':
+	    case ']':
+	    case '$':
+	    case '\\':
+		*pString++ = '\\';
+	}
+	*pString++ = *pArgv++;
     }
     *pString++ = '"';
     *pString++ = 0;
@@ -753,187 +643,6 @@ FindEntity(
     return 0;
 }
 
-/* Check multibyte characters for inner bytes that don't have their
- * 8th bit set - e.g., this may happen in SJIS.  Rather than risk
- * having downstream code mistake that inner byte for an ASCII
- * character, we'll mung it here and undo the mung when we write the
- * character out in DefaultOutputString().
- *
- * A character buffer may be allocated and returned in this routine.
- * That buffer must be free'd by the caller if the return value of
- * this routine is different from its parameter.
- *
- * The algorithm here is:
- *
- *  get a character
- *
- *      if the length of the current character is 1:
- *
- *          if the current character has the 8th bit off, emit it
- *          and continue;
- *
- *          if the current character is the chosen 8-bit
- *          character, emit the chosen character twice and follow
- *          it with the ASCII character "1" or'd with the 8th bit
- *          and continue;
- *
- *          emit the character and continue;
- *
- *      if the length of the current character is greater than
- *      one, for each of the bytes in the character:
- *
- *          if the current byte is the chosen 8-bit character,
- *          emit the chosen character twice and follow it with the
- *          ASCII character "1" or'd with the 8th bit and
- *          continue;
- *
- *          if the current byte is the chosen character except the
- *          8th bit is off, emit the chosen character twice
- *          followed by the ASCII character "0" or'd with the 8th
- *          bit and continue;
- *
- *          if the current byte has the 8th bit set, emit it and
- *          continue;
- *
- *          emit the chosen character followed by the current byte
- *          or'd with the 8th bit.
- */
-static char *
-EscapeI18NChars(
-    char 	*source
-)
-{
-    char *retval;
-    unsigned char *from, *to;
-    int len;
-
-    if (MB_CUR_MAX == 1) {
-	return source;
-    } else {
-	/* worst case, the string will expand by a factor of 3 */
-	from = (unsigned char *)source;
-	retval = malloc(3 * strlen(source) + 1);
-	to = (unsigned char *)retval;
-	while (*from) {
-	    if ((len = mblen(from, MB_CUR_MAX)) < 0) {
-		fprintf(stderr,
-			"Bad multibyte character '%c' (0x%x) in source file\n",
-			*from,
-			*from);
-		from++;
-	    } else if ((len = mblen(from, MB_CUR_MAX)) == 1) {
-		if (*from & 0x80) {
-		    if (*from == I18N_TRIGGER) {
-			*to++ = I18N_TRIGGER;
-			*to++ = I18N_TRIGGER;
-			*to++ = '1' | 0x80;
-			from++;
-		    } else {
-			*to++ = *from++;
-		    }
-		} else {
-		    *to++ = *from++;
-		}
-	    } else {
-		while (--len >= 0) {
-		    if (*from == I18N_TRIGGER) {
-			*to++ = I18N_TRIGGER;
-			*to++ = I18N_TRIGGER;
-			*to++ = '1' | 0x80;
-			from++;
-		    } else if (*from == (I18N_TRIGGER & ~0x80)) {
-			*to++ = I18N_TRIGGER;
-			*to++ = I18N_TRIGGER;
-			*to++ = '0' | 0x80;
-			from++;
-		    } else if (*from & 0x80) {
-			*to++ = *from++;
-		    } else {
-			*to++ = I18N_TRIGGER;
-			*to++ = *from++ | 0x80;
-		    }
-		}
-	    }
-	}
-	*to = 0;
-    }
-    return retval;
-}
-
-
-static char *
-ReadLocaleStrings(const char *file_name, int *ret_code) {
-    int          fd;
-    char        *pBuf;
-    char        *i18nBuf;
-    off_t        size;
-    struct stat  stat_buf;
-
-    fd = open(file_name, O_RDONLY);
-    if (fd == -1) {
-	*ret_code = 1;
-	return NULL;
-    }
-
-    fstat(fd, &stat_buf);
-    size = stat_buf.st_size;
-    pBuf = Tcl_Alloc(size+1);
-    memset(pBuf, 0, size+1);
-
-    if (read(fd, pBuf, size) != size) {
-	*ret_code = 2;
-	return NULL;
-    }
-
-    i18nBuf = EscapeI18NChars(pBuf);
-    if (i18nBuf != pBuf) {
-	pBuf = Tcl_Realloc(pBuf, 1 + strlen(i18nBuf));
-	strcpy(pBuf, i18nBuf);
-	free(i18nBuf);
-    }
-
-    *ret_code = 0;
-    return pBuf;
-}
-
-static int TclReadLocaleStrings(ClientData  clientData,
-			        Tcl_Interp *interp,
-				int         argc,
-				const char       *argv[]) {
-    char *pBuf;
-    int   ret_code;
-    char  errorBuf[512];
-
-    if (argc > 2) {
-        Tcl_SetResult(interpreter, "Too many arguments", TCL_VOLATILE);
-        return TCL_ERROR;
-    }
-    if (argc < 2) {
-        Tcl_SetResult(interpreter, "Missing file name", TCL_VOLATILE);
-        return TCL_ERROR;
-    }
-
-    pBuf = ReadLocaleStrings(argv[1], &ret_code);
-
-    if (ret_code != 0) {
-	if (ret_code == 1) {
-	    sprintf(errorBuf,
-		    "Could not open locale strings file \"%s\" for reading",
-		    argv[1]);
-	}
-	if (ret_code == 2) {
-	    sprintf(errorBuf,
-		    "Error reading locale strings file \"%s\"",
-		    argv[1]);
-	}
-	Tcl_SetResult(interpreter, errorBuf, TCL_VOLATILE);
-	return TCL_ERROR;
-    }
-
-    Tcl_SetResult(interpreter, pBuf, TCL_DYNAMIC);
-    return TCL_OK;
-}
-
 /*  Accumulate lines up to the open tag.  Attributes, line number,
  *  entity info, notation info, etc., all come before the open tag.
  */
@@ -943,7 +652,6 @@ AccumElemInfo(
 )
 {
     char	buf[LINESIZE+1];
-    char	*i18nBuf;
     int		c;
     int		i, na;
     char	*cp, *atval;
@@ -972,8 +680,7 @@ AccumElemInfo(
     while (1) {
 	if ((c = getc(fp)) == EOF) break;
 	fgets(buf, LINESIZE, fp);
-	i18nBuf = EscapeI18NChars(buf);
-	stripNL(i18nBuf);
+	stripNL(buf);
 	switch (c) {
 	    case EOF:		/* End of input */
 		fprintf(stderr, "Error: Unexpectedly reached end of ESIS.\n");
@@ -981,7 +688,7 @@ AccumElemInfo(
 		break;
 
 	    case CMD_OPEN:	/* (gi */
-		e->gi = AddElemName(i18nBuf);
+		e->gi = AddElemName(buf);
 		if (na > 0) {
 		    Malloc(na, e->atts, Mapping_t);
 		    memcpy(e->atts, a, na*sizeof(Mapping_t));
@@ -1002,7 +709,7 @@ AccumElemInfo(
 
 	    case CMD_ATT:	/* Aname val */
 		i = 3;
-		tok = Split(i18nBuf, &i, 0);
+		tok = Split(buf, &i, 0);
 		if (!strcmp(tok[1], "IMPLIED")) break;	/* skip IMPLIED atts. */
 		if (!strcmp(tok[1], "CDATA") || !strcmp(tok[1], "TOKEN") ||
 		    !strcmp(tok[1], "ENTITY") ||!strcmp(tok[1], "NOTATION"))
@@ -1021,17 +728,17 @@ AccumElemInfo(
 		/* These lines come in 2 forms: "L123" and "L123 file.sgml".
 		 * Filename is given only at 1st occurrence. Remember it.
 		 */
-		if ((cp = strchr(i18nBuf, ' '))) {
+		if ((cp = strchr(buf, ' '))) {
 		    cp++;
 		    last_file = strdup(cp);
 		}
-		last_lineno = e->lineno = atoi(i18nBuf);
+		last_lineno = e->lineno = atoi(buf);
 		e->infile = last_file;
 		break;
 
 	    case CMD_DATA:	/* -data */
 		fprintf(stderr, "Error: Data in AccumElemInfo, line %d:\n%c%s\n",
-			e->lineno, c,i18nBuf);
+			e->lineno, c,buf);
 		/*return e;*/
 		exit(1);
 		break;
@@ -1043,23 +750,23 @@ AccumElemInfo(
 
 	    case CMD_EXT_ENT:	/* Eename typ nname */
 		i = 3;
-		tok = Split(i18nBuf, &i, 0);
+		tok = Split(buf, &i, 0);
 		ent.ename = strdup(tok[0]);
 		ent.type  = strdup(tok[1]);
 		ent.nname = strdup(tok[2]);
 		AddEntity(&ent);
 		break;
 	    case CMD_INT_ENT:	/* Iename typ text */
-		fprintf(stderr, "Error: Got CMD_INT_ENT in AccumElemInfo: %s\n", i18nBuf);
+		fprintf(stderr, "Error: Got CMD_INT_ENT in AccumElemInfo: %s\n", buf);
 		break;
 	    case CMD_SYSID:	/* ssysid */
-		ent.sysid = strdup(i18nBuf);
+		ent.sysid = strdup(buf);
 		break;
 	    case CMD_PUBID:	/* ppubid */
-		ent.pubid = strdup(i18nBuf);
+		ent.pubid = strdup(buf);
 		break;
 	    case CMD_FILENAME:	/* ffilename */
-		ent.fname = strdup(i18nBuf);
+		ent.fname = strdup(buf);
 		break;
 
 	    case CMD_CLOSE:	/* )gi */
@@ -1072,12 +779,9 @@ AccumElemInfo(
 	    case CMD_CONFORM:	/* C */
 	    default:
 		fprintf(stderr, "Error: Unexpected input in AccumElemInfo, %d:\n%c%s\n",
-			e->lineno, c,i18nBuf);
+			e->lineno, c,buf);
 		exit(1);
 		break;
-	}
-	if (i18nBuf != buf) {
-	    free(i18nBuf);
 	}
     }
     fprintf(stderr, "Error: End of AccumElemInfo - should not be here: %s\n",
@@ -1097,7 +801,7 @@ ReadESIS(
     int		depth
 )
 {
-    char	*buf, *i18nBuf;
+    char	*buf;
     int		i, c, ncont;
     Element_t	*e;
     Content_t	cont[5000] = {0};
@@ -1117,14 +821,10 @@ ReadESIS(
 
 	    case CMD_DATA:	/* -data */
 		fgets(buf, LINESIZE, fp);
-		i18nBuf = EscapeI18NChars(buf);
-		stripNL(i18nBuf);
-		cont[ncont].ch.data = strdup(i18nBuf);
+		stripNL(buf);
+		cont[ncont].ch.data = strdup(buf);
 		cont[ncont].type = CMD_DATA;
 		ncont++;
-		if (i18nBuf != buf) {
-		    free(i18nBuf);
-		}
 		break;
 
 	    case CMD_PI:	/* ?pi */
