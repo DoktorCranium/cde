@@ -7272,25 +7272,22 @@ Cdata(
 		/*
 		 * must finish up the character
 		 */
-		int  len = i + 1;
+		int len = 0;
+		myLen = strlen(string);
 
-		while (curLen < 0 && len - i < multiLen)
-		  {
-		    if (myLen <= len)
-		      {
-		        string = (char *) realloc(string, myLen + multiLen + 1);
-		        if (string == NULL)
-			    return -1;
-			myLen += multiLen;
-		      }
+		string = (char *) realloc(string, myLen + multiLen + 1);
+		if (string == NULL) return -1;
 
-                    string[len] = BufFileGet(my_struct->my_file);
-                    if (string[len++] == BUFFILEEOF)
-                            return -1;
+		while (curLen < 0 && len < multiLen) {
+		    string[myLen] = BufFileGet(my_struct->my_file);
 
-                    string[len] = '\0';
-                    curLen      = mblen (&string[i], multiLen);
-		  }
+		    if (string[myLen] == BUFFILEEOF) return -1;
+
+		    string[myLen + 1] = '\0';
+		    curLen = mblen(&string[i], multiLen);
+		    ++len;
+		    ++myLen;
+		}
 
 		if (curLen < 0)
 		    return -1;
