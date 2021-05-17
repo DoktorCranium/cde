@@ -167,6 +167,7 @@ do  {
     {
 	mbyte[length++] = c;
 	mbyte[length]   = 0;
+	mblen(NULL, 0);
 	if (mblen(mbyte,length) != -1) break; /* hurray! */
 	if (length == MB_CUR_MAX)
         { /* reached max without a hit */
