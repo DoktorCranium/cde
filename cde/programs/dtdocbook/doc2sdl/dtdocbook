@@ -1,5 +1,7 @@
 #!/bin/ksh
 
+export LC_CTYPE="${LANG}"
+
 # get the name of this command for errors, warnings and messages
 command_name=`basename $0`
 
@@ -86,6 +88,7 @@ do
     esac
 done
 
+default_charset='UTF-8'
 dbk_lib="${dbk_lib:-/usr/dt/dthelp/dtdocbook}"  # if no -t, use installed dir
 sgml_dir="${sgml_dir:-${dbk_lib}}"              # if no -s, use -t
 info_dir="${info_dir:-/usr/dt/infolib}"         # if no -i, use installed dir
@@ -99,12 +102,24 @@ if [[ ${#sgmls} -eq 0 ]] then                  # if no -S, use installed one
 fi
 sgmls="${sgmls:-${info_dir}/etc/sgmls}"         # if no -S, use installed one
 instant="${instant:-${dbk_lib}/instant}"        # if no -I, use installed one
-x_locale="${x_locale:-${dbk_lib}/xlate_locale}" # if no -L, use installed one
+x_locale="${x_locale:-${LANG}}"                 # if no -L, use installed one
 helptag2="${helptag2:-dthelp_htag2}"            # if no -H, use one in PATH
+
+if [[ "$x_locale" == *.* ]] then
+    x_lang="${x_locale%%.*}"
+    x_charset="${x_locale##*.}"
+
+    if [[ "$x_charset" != "$default_charset" ]] then
+        x_locale="${x_lang}.$default_charset"
+        echo "Warning: charset is changed to ${default_charset}."
+    fi
+else
+    x_locale="${x_locale}.$default_charset"
+fi
 
 # Set the environment variables for instant(1) to find its files
 export TPT_LIB="${dbk_lib}"
-export LOCALE_DIR="${dbk_lib}/$($x_locale)"
+export LOCALE_DIR="${dbk_lib}/${x_locale}"
 
 # Determine whether we are using sgmls or nsgmls
 parser=`basename $sgmls`
@@ -122,6 +137,9 @@ elif ([[ "$SGML_CATALOG_FILES" = "" ]]) then
     else
 	export SGML_CATALOG_FILES="${SGML_CATALOG_FILES}:${sgml_cat}/catalog"
 fi
+
+export SP_CHARSET_FIXED=1
+export SP_ENCODING="$default_charset"
 
 # Set the environment variable to be picked up inside instant(1) when it
 # goes to call Tcl.
