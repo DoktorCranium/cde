@@ -353,6 +353,7 @@ internal  _DtHelpCloseVolume
 internal  _DtHelpCommonHelpClean
 internal  _DtHelpCommonHelpInit
 internal  _DtHelpCopyDefaultList
+internal  _DtHelpCopyCasualList
 internal  _DtHelpDABuildSelection
 internal  _DtHelpDADestroyGraphic
 internal  _DtHelpDADestroyRegion

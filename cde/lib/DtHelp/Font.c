@@ -266,6 +266,7 @@ static  const char    *FontResources[] =
 static	Boolean		QuarksInited = FALSE;
 static	XrmQuark	StringFontQuark = 0;
 static	XrmName		DefaultFontQuarks[_DtHelpFontQuarkNumber];
+static	XrmName		CasualFontQuarks[_DtHelpFontQuarkNumber];
 static	XrmBinding	FontBindings[_DtHelpFontQuarkNumber] =
         { XrmBindLoosely, XrmBindLoosely, XrmBindLoosely, XrmBindLoosely,
           XrmBindLoosely, XrmBindLoosely, XrmBindLoosely };
@@ -674,6 +675,25 @@ _DtHelpCopyDefaultList (
 }
 
 /******************************************************************************
+ * Function:	void _DtHelpCopyCasualList (xrm_name)
+ *
+ * Parameters:	xrm_name	The quark list to fill out.
+ *
+ * Return Value: void
+ *
+ * Purpose:
+ *****************************************************************************/
+void
+_DtHelpCopyCasualList (
+    XrmName		 *xrm_list)
+{
+    int     n;
+
+    for (n = 0; n < _DT_HELP_FONT_END + 1; n++)
+        xrm_list[n] = CasualFontQuarks[n];
+}
+
+/******************************************************************************
  * Function:	void _DtHelpGetStringQuarks (xrm_name)
  *
  * Parameters:	xrm_name	The quark list to fill out.
@@ -744,6 +764,11 @@ __DtHelpFontDatabaseInit (
         DefaultFontQuarks[_DT_HELP_FONT_CHAR_SET] =
 						XrmStringToQuark ("ISO-8859-1");
         DefaultFontQuarks[_DT_HELP_FONT_END]      = 0;
+
+        for (n = 0; n < _DT_HELP_FONT_END; ++n)
+            CasualFontQuarks[n] = XrmStringToQuark("*");
+        CasualFontQuarks[_DT_HELP_FONT_END] = 0;
+
 	QuarksInited = True;
       }
     _DtHelpProcessUnlock();

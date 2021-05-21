@@ -78,6 +78,7 @@ extern "C" {
  *			Semi Public Routines
  ****************************************************************************/
 extern	void		 _DtHelpCopyDefaultList(XrmName *xrm_list);
+extern	void		 _DtHelpCopyCasualList(XrmName *xrm_list);
 extern	long		 __DtHelpDefaultFontIndexGet (
 				DtHelpDispAreaStruct	*pDAS);
 extern	void		 _DtHelpGetStringQuarks(XrmName *xrm_list);

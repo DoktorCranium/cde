@@ -849,9 +849,16 @@ ResolveFont (
     if (charset != NULL)
         xrmList[_DT_HELP_FONT_CHAR_SET] = XrmStringToQuark(charset);
 
-    if (NULL == xlfdSpec ||
-		_DtHelpGetExactFontIndex(pDAS,lang,charset,xlfdSpec,ret_idx)!=0)
+    if (NULL != xlfdSpec)
+	result = _DtHelpGetExactFontIndex(pDAS,lang,charset,xlfdSpec,ret_idx);
+
+    if (result)
         result = __DtHelpFontIndexGet (pDAS, xrmList, ret_idx);
+
+    if (result) {
+	_DtHelpCopyCasualList(xrmList);
+	result = __DtHelpFontIndexGet(pDAS, xrmList, ret_idx);
+    }
 
     return result;
 }
