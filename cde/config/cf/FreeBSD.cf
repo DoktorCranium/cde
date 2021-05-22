@@ -248,7 +248,9 @@ ICONVSYSLIB != if test -f /usr/local/include/iconv.h; then echo -liconv; else ec
 #define CDESharedRev		2
 
 #if !defined(HasPamLibrary)
-#define HasPamLibrary YES
+XCOMM See https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=253073
+XCOMM to enable pam support
+#define HasPamLibrary NO
 #endif
 
 #if !defined(PamAuthenticationModule)
