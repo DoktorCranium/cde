@@ -318,6 +318,7 @@ CXXDEPENDINCLUDE != CppCmd -x c++ -Wp,-v < /dev/null \
 #endif
 
 #if !defined(HasPamLibrary)
+XCOMM need to install pam-pwauth_suid package for this to work
 #define HasPamLibrary YES
 #endif
 
