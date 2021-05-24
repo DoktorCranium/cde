@@ -155,12 +155,36 @@ _DtCvChar (
     int            type,
     int		   count)
 {
-    wchar_t value = (wchar_t) -1;
+    int i, len;
+    char *ptr;
+    char str[MB_CUR_MAX];
+    wchar_t value;
 
-    if (0 == type)
-	value = *(((char *) p1) + count);
-    else
-	value = *(((wchar_t *) p1) + count);
+    if (0 == type) {
+	ptr = (char *) p1 + count;
+
+	if (MB_CUR_MAX > 1) {
+	    len = mbtowc(&value, ptr, MB_CUR_MAX);
+
+	    if (len == -1) {
+		for (i = 1; i < MB_CUR_MAX; ++i) {
+		    ptr -= i;
+
+		    if (ptr < (char *) p1) {
+			len = -1;
+			break;
+		    }
+
+		    len = mbtowc(&value, ptr, MB_CUR_MAX);
+		    if (len == -1) continue;
+		}
+
+		if (len == -1) value = (wchar_t) -1;
+	    }
+	}
+	else value = *ptr;
+    }
+    else value = *(((wchar_t *) p1) + count);
 
     return (value);
 }
