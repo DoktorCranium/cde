@@ -217,6 +217,8 @@ _DtCvStrcspn (
     int            type,
     int           *ret_len )
 {
+    int		   i, len1, len2;
+    char	   *p1, *p2;
     size_t         num;
     wchar_t	   widec[16];
     const wchar_t *wcp;
@@ -243,13 +245,54 @@ _DtCvStrcspn (
 
     if (0 == type)
       {
-	/*
-	 * no need to go through any hassle, just use the 3C function
-	 */
-	*ret_len = strcspn ((char *) s1, s2);
-	if ('\0' == ((char *) s1)[*ret_len])
+	if (MB_CUR_MAX > 1) {
+	    p1 = (char *) s1;
+
+	    while (*p1) {
+		len1 = mblen(p1, MB_CUR_MAX);
+
+		if (len1 == -1) {
+		    ++p1;
+		    continue;
+		}
+
+		p2 = (char *) s2;
+
+		while (*p2) {
+		    len2 = mblen(p2, MB_CUR_MAX);
+
+		    if (len2 == -1) {
+			++p2;
+			continue;
+		    }
+
+		    if (len1 == len2) {
+			for (i = 0; i < len2; ++i) if (p1[i] != p2[i]) break;
+
+			if (i == len2) {
+			    *ret_len = p1 - (char *) s1;
+			    return 0;
+			}
+		    }
+
+		    p2 += len2;
+		}
+
+		p1 += len1;
+	    }
+
+	    *ret_len = p1 - (char *) s1;
 	    return 1;
-	return 0;
+	}
+	else {
+	    /*
+	     * no need to go through any hassle, just use the 3C function
+	     */
+	    *ret_len = strcspn ((char *) s1, s2);
+	    if ('\0' == ((char *) s1)[*ret_len])
+		return 1;
+	    return 0;
+	}
       }
 
     /*
