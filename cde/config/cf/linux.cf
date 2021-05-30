@@ -258,6 +258,14 @@ TIRPCINC =
 # define LinuxMachineDefines	-D__alpha__
 #endif /* AlphaArchitecture */
 
+#ifdef RISCVArchitecture
+# ifndef OptimizedCDebugFlags
+#  define OptimizedCDebugFlags  DefaultGcc2i386Opt
+# endif
+# define LinuxMachineDefines    -D__riscv__
+# define LSBBitOrder             YES
+#endif /* RISCVArchitecture */
+
 #ifdef Mc68020Architecture
 # ifndef OptimizedCDebugFlags
 #  define OptimizedCDebugFlags	DefaultGcc2i386Opt
