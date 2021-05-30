@@ -38,7 +38,7 @@ DEFINES = -DDTLIB $(LOCAL_DEFINES) \
 	  -DOSMINORVERSION=OSMinorVersion \
 	  $(ICONV_INBUF_DEFINE) $(BIT_ORDER_DEFINES)
 
-#if defined(FreeBSDArchitecture)
+#if defined(FreeBSDArchitecture) || defined(OpenBSDArchitecture)
 JPEGLIB = -ljpeg
 #endif
 
