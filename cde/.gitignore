@@ -122,6 +122,8 @@ xmakefile
 # generated db files
 databases/*\.db
 databases/*\.tmp
+databases/CDE-MIN.udb
+databases/CDE-RUN.udb
 databases/CDE-C.udb
 databases/CDE-DE.udb
 databases/CDE-ES.udb
@@ -179,6 +181,7 @@ programs/dtsearchpath/dtsp/dtsp
 programs/dtsession/Dtsession
 programs/dtsession/dtloadresources
 programs/dtsession/dtsession
+programs/dtsession/config/pam.d.dtsession
 programs/dtspcd/dtspcd
 programs/dtspcd/dtspcdenv
 programs/dtsr/dtsrclean
@@ -959,6 +962,7 @@ programs/dtlogin/config/display.home.session
 programs/dtlogin/config/dtlslocale
 programs/dtlogin/config/dtprofile
 programs/dtlogin/config/home.session
+programs/dtlogin/config/pam.d.dtlogin
 
 # programs/dtprintinfo
 programs/dtprintinfo/dtprintinfo.msg
