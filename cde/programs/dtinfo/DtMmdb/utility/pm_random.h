@@ -72,7 +72,7 @@ public:
       v_new_seed = ( test > 0 ) ? test : test + 2147483647;
       return tmp;
    }; 
-   float rand_01() { return float(rand()) / 2147483647; };
+   float rand_01() { return float(rand()) / 2147483647.0; };
 
 
 private:
