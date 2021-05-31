@@ -4,7 +4,7 @@ bin_PROGRAMS = rpc.cmsd
 
 rpc_cmsd_CFLAGS = -I../../../lib/csa $(DT_INCDIR) $(CSA_INCDIR)
 
-rpc_cmsd_LDADD = $(LIBCSA) $(DTCLIENTLIBS) $(XTOOLLIB) 
+rpc_cmsd_LDADD = $(LIBCSA) $(DTCLIENTLIBS) $(TIRPCLIB) $(XTOOLLIB)
 
 if SOLARIS
 rpc_cmsd_CFLAGS += -xstrconst -Xc -v

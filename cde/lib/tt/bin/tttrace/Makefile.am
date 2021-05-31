@@ -6,7 +6,7 @@ bin_PROGRAMS = tttrace
 
 tttrace_CXXFLAGS = -I../../lib
 
-tttrace_LDADD = @LIBTT@ $(XTOOLLIB)
+tttrace_LDADD = @LIBTT@ $(TIRPCLIB) $(XTOOLLIB)
 
 if SOLARIS
 tttrace_LDADD += -ldl -lintl -lsocket -lnsl

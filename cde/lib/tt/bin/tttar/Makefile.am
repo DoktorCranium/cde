@@ -6,8 +6,8 @@ bin_PROGRAMS = tttar
 
 tttar_CXXFLAGS = -I../../lib $(TT_VERSION_DEFINE)
 
-tttar_LDADD = @LIBTT@ ../../slib/libstt.a ../../mini_isam/libisam.a \
-	$(XTOOLLIB)
+tttar_LDADD = ../../slib/libstt.a ../../mini_isam/libisam.a \
+	@LIBTT@ $(TIRPCLIB) $(XTOOLLIB)
 
 if SOLARIS
 tttar_LDADD += -ldl -lintl -lsocket -lnsl

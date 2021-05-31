@@ -17,7 +17,7 @@ tt_type_comp_CXXFLAGS = -I../../lib -I../../slib \
 tt_type_comp_SOURCES = mp_type_comp.C        mp_types_table.C \
 		frozen.mp_types_lex.C frozen.mp_types_gram.C
 
-tt_type_comp_LDADD = ../../slib/libstt.a $(LIBTT) $(XTOOLLIB)
+tt_type_comp_LDADD = ../../slib/libstt.a $(LIBTT) $(TIRPCLIB) $(XTOOLLIB)
 
 if SOLARIS
 tt_type_comp_LDADD += $(XTOOLLIB) -ldl -lintl -lsocket -lnsl
