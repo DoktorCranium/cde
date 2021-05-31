@@ -13,6 +13,10 @@ if OPENBSD
 libDtTerm_la_LIBADD += -lutil
 endif
 
+if FREEBSD
+libDtTerm_la_LIBADD += -lutil
+endif
+
 if SOLARIS
 libDtTerm_la_LIBADD += -ldl -lgen
 endif
