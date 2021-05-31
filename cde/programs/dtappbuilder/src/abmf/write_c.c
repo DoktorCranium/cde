@@ -350,9 +350,9 @@ write_func_def_params(
 	va_list	va_params
 )
 {
-#if defined(va_copy) || defined(CSRG_BASED)
+#if defined(va_copy)
 #define va_start_params() va_copy(params, va_params)
-#elif defined(__ppc) || defined(__linux__)
+#elif defined(__ppc) || defined(__linux__) || defined(CSRG_BASED)
 #define va_start_params() __va_copy(params, va_params)
 #else
 #define va_start_params() (params = va_params)

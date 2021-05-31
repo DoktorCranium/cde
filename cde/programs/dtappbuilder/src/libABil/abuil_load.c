@@ -43,7 +43,9 @@
  * This file contains the implementation of the uil load
  * component
  */
+#include <unistd.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
@@ -1173,7 +1175,9 @@ parse_uil(
    /*
     * Disable Uil specified signal handlers, grrr!
     */
+#ifdef SIGBUS
    signal( SIGBUS, SIG_DFL);
+#endif
 #ifdef SIGSYS
    signal( SIGSYS, SIG_DFL);
 #endif
