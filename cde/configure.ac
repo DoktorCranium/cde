@@ -192,6 +192,11 @@ AC_SUBST(LIBMMDB, '$(top_builddir)/lib/DtMmdb/libDtMmdb.la')
 AC_SUBST(LIBHELP, '$(top_builddir)/lib/DtHelp/libDtHelp.la')
 AC_SUBST(LIBCSA, '$(top_builddir)/lib/csa/libcsa.la')
 
+AC_SUBST(LIBPAMSVC, '$(top_builddir)/lib/DtPamSvc/libDtPamSvc.la')
+
+dnl we do not inclue the DtPamSvc library here as it is not needed
+dnl for everything.
+
 AC_SUBST(DTCLIENTLIBS, '$(LIBPRINT) $(LIBHELP) $(LIBWIDGET) $(LIBSVC) \
 $(LIBTT) $(LIBXIN)')
 
@@ -202,6 +207,8 @@ AC_SUBST(TT_INCDIR, '-I$(top_builddir)/include/Tt')
 AC_SUBST(XM_INCDIR, '-I$(top_builddir)/include/Xm')
 AC_SUBST(CSA_INCDIR, '-I$(top_builddir)/include/csa')
 AC_SUBST(SPC_INCDIR, '-I$(top_builddir)/include/SPC')
+
+dnl language enables
 
 AC_ARG_ENABLE([german],
         AS_HELP_STRING([--enable-german], [Build German locale (default=no)]),
@@ -370,7 +377,7 @@ fi
 
 dnl headers
 AC_HEADER_STDC
-AC_CHECK_HEADERS([locale.h])
+AC_CHECK_HEADERS([locale.h security/pam_appl.h])
 
 dnl libraries
 AC_CHECK_LIB(m, cosf)
@@ -437,6 +444,13 @@ else
   AC_SUBST(FREETYPE_LIBS)
 fi
 
+dnl figure out pam support
+
+AC_CHECK_LIB(pam, pam_start,
+             [SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DHAS_PAM_LIBRARY"])
+
+AM_CONDITIONAL([HAS_PAM_LIBRARY], [test "x$ac_cv_lib_pam_pam_start" = "xyes"])
+
 dnl Figure out TCL
 
 SC_PATH_TCLCONFIG
@@ -493,6 +507,8 @@ lib/tt/bin/ttdbserverd/Makefile
 lib/tt/bin/ttsession/Makefile
 
 lib/DtSvc/Makefile
+
+lib/DtPamSvc/Makefile
 
 lib/DtSearch/Makefile
 lib/DtSearch/raima/Makefile
@@ -571,6 +587,7 @@ programs/dtlogin/Makefile
 programs/dtlogin/config/Makefile
 
 programs/dtsession/Makefile
+programs/dtsession/config/Makefile
 
 programs/dthello/Makefile
 

@@ -4,6 +4,12 @@ bin_PROGRAMS = dtsession
 
 bin_SCRIPTS = dtsession_res
 
+if HAS_PAM_LIBRARY
+DTPAMSVCLIB = @LIBPAMSVC@
+else
+DTPAMSVCLIB =
+endif
+
 dtsession_CFLAGS = -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
           -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
 	  -Ddtsession
@@ -20,7 +26,7 @@ dtsession_SOURCES = SmMain.c SmHelp.c SmGlobals.c SmCommun.c		\
 	SmMigResources.h SmSave.h SmXrm.h
 
 
-dtsession_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
+dtsession_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB) $(DTPAMSVCLIB)
 
 if SOLARIS
 dtsession_SOURCES += OWsync.c
@@ -51,12 +57,15 @@ LOCAL_CPP_DEFINES = -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
 		    -DDTSM_CMD4="\"$(DTSM_CMD4)\"" \
 		    -DDTSM_CMD5="\"$(DTSM_CMD5)\""
 
+SUBDIRS =
+
 if LINUX
 LOCAL_CPP_DEFINES += -Dlinux -D__linux__
 endif
 
 if FREEBSD
 LOCAL_CPP_DEFINES += -DFREEBSD -D__FreeBSD__
+SUBDIRS += config
 endif
 
 if SOLARIS
@@ -69,6 +78,7 @@ endif
 
 if NETBSD
 LOCAL_CPP_DEFINES += -D__NetBSD__
+SUBDIRS += config
 endif
 
 if BSD
@@ -118,7 +128,13 @@ sys.session.ive: sys.session.src
 	$(GENCPP) -P -DXCOMM=# $(LOCAL_CPP_DEFINES) -DIVE $< > $@
 
 
+# systems without a PAM library need dtsession to be SUID root
+
 install-exec-hook:
 	chown root $(DESTDIR)$(bindir)/dtsession
+if HAS_PAM_LIBRARY
+	chmod 755 $(DESTDIR)$(bindir)/dtsession
+else
 	chmod 4755 $(DESTDIR)$(bindir)/dtsession
+endif
 

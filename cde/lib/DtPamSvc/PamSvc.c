@@ -51,6 +51,9 @@
 #include <security/pam_appl.h>
 #include <utmpx.h>
 #include <unistd.h>
+#if defined(__linux__)
+#include <grp.h>
+#endif
 #include "PamSvc.h"
 
 /*

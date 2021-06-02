@@ -4,12 +4,24 @@ AM_CPPFLAGS = -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
             -DCDE_LOGFILES_TOP=$(CDE_LOGFILES_TOP) \
 	    -DKORNSHELL=$(KSH)
 
+CPP_TARGETS = 0060.dtsysenv Dtlogin Xaccess Xconfig Xconfig.con	\
+	Xconfig.nc Xfailsafe Xreset Xresources Xresources.ive	\
+	Xservers Xservers.con Xservers.nc Xsession Xsession.ive	\
+	Xsetup Xstartup current.session display.current.session	\
+	display.home.session dtlslocale dtprofile home.session	\
+	sys.dtprofile
+
+
+
 if LINUX
 AM_CPPFLAGS += -DXPROJECTROOT="/usr" -Dlinux -D__linux__
 endif
 
 if FREEBSD
 AM_CPPFLAGS += -DFREEBSD -DXPROJECTROOT="/usr/local" -D__FreeBSD__
+PAM_AUTHENTICATION_MODULE = /usr/local/lib/security/pam_pwauth_suid.so
+AM_CPPFLAGS += -DPAM_AUTHENTICATION_MODULE=$(PAM_AUTHENTICATION_MODULE)
+CPP_TARGETS += pam.d.dtlogin
 endif
 
 if SOLARIS
@@ -22,19 +34,14 @@ endif
 
 if NETBSD
 AM_CPPFLAGS += -DXPROJECTROOT="/usr/X11R7" -D__NetBSD__
+PAM_AUTHENTICATION_MODULE = /usr/pkg/lib/security/pam_pwauth_suid.so
+AM_CPPFLAGS += -DPAM_AUTHENTICATION_MODULE=$(PAM_AUTHENTICATION_MODULE)
+CPP_TARGETS += pam.d.dtlogin
 endif
 
 if BSD
 AM_CPPFLAGS += -DCSRG_BASED
 endif
-
-
-CPP_TARGETS = 0060.dtsysenv Dtlogin Xaccess Xconfig Xconfig.con	\
-	Xconfig.nc Xfailsafe Xreset Xresources Xresources.ive	\
-	Xservers Xservers.con Xservers.nc Xsession Xsession.ive	\
-	Xsetup Xstartup current.session display.current.session	\
-	display.home.session dtlslocale dtprofile home.session	\
-	sys.dtprofile
 
 BUILT_SOURCES = $(CPP_TARGETS)
 CLEANFILES = $(CPP_TARGETS)
@@ -146,6 +153,10 @@ dtprofile: dtprofile.src
 	$(GENCPP) -P -DXCOMM=# $(AM_CPPFLAGS) $< > $@
 
 home.session: home.session.src
+	$(RM) $@
+	$(GENCPP) -P -DXCOMM=# $(AM_CPPFLAGS) $< > $@
+
+pam.d.dtlogin: pam.d.dtlogin.src
 	$(RM) $@
 	$(GENCPP) -P -DXCOMM=# $(AM_CPPFLAGS) $< > $@
 
