@@ -4,7 +4,7 @@ bin_PROGRAMS = dtpdmd
 
 dtpdmd_CFLAGS = -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\"
 
-dtpdmd_LDADD = $(XTOOLLIB)
+dtpdmd_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
 dtpdmd_LDADD += -ldl
