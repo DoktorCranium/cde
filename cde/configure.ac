@@ -1,4 +1,4 @@
-AC_INIT([cde-desktop], [2.3.1], [jon@radscan.com])
+AC_INIT([cde-desktop], [2.3.2], [jon@radscan.com])
 AC_CONFIG_HEADERS([include/autotools_config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
@@ -138,6 +138,8 @@ is_sparc=no
 is_mips=no
 is_arm=no
 is_ppc=no
+is_riscv=no
+is_aarch64=no
 
 case "${host_cpu}" in
 	i[3456]86*)
@@ -158,6 +160,12 @@ case "${host_cpu}" in
 	ppc* | powerpc*)
 		is_ppc=yes
 		;;
+	riscv*)
+		is_riscv=yes
+		;;
+	aarch64*)
+		is_aarch64=yes
+		;;
 esac
 
 AM_CONDITIONAL([I386], [test "$is_i386" = yes])
@@ -166,6 +174,8 @@ AM_CONDITIONAL([ARM], [test "$is_arm" = yes])
 AM_CONDITIONAL([SPARC], [test "$is_sparc" = yes])
 AM_CONDITIONAL([MIPS], [test "is_mips" = yes])
 AM_CONDITIONAL([PPC], [test "is_ppc" = yes])
+AM_CONDITIONAL([RISCV], [test "is_riscv" = yes])
+AM_CONDITIONAL([AARCH64], [test "is_aarch64" = yes])
 
 dnl our main libraries
 dnl we use single quotes so that $top_buildir is evaluated in the makefiles,
