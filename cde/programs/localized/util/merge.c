@@ -95,6 +95,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
+#include <unistd.h>
+#include <limits.h>
+#include <sys/types.h>
+
 #include <Dt/MsgCatP.h>
 
 /* [0] for primary, [1] for default */
