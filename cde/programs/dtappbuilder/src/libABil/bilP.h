@@ -47,7 +47,7 @@
 
 #include <stdio.h>
 #include <Dt/MsgCatP.h>
-#include <ab_private/bil_parse.h>
+#include <bil_parse.h>
 #include <ab/util_types.h>
 #include <ab_private/obj.h>
 #include "loadP.h"
