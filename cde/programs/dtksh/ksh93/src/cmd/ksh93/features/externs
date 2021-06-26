@@ -1,0 +1,135 @@
+set	prototyped
+hdr	nc,exec_attr
+mem	exception.name,_exception.name math.h
+lib	setreuid,setregid,nice,fork,spawnveg,fchdir
+lib	pathnative,pathposix,uwin_path,uwin_unpath,fts_notify
+lib	memcntl sys/mman.h
+lib	getexecuser,free_execattr exec_attr.h -lsecdb
+
+reference	unistd.h
+
+extern	nice		int	(int)
+extern	setreuid	int	(uid_t,uid_t)
+extern	setregid	int	(gid_t,gid_t)
+
+tst	note{ determining data alignment factor for arguments list }end output{
+	/*
+	 * Feature test to figure out if this OS does data alignment on
+	 * the arguments list of a process, and if so, at how many bits.
+	 * Outputs an appropriate #define ARG_ALIGN_BITS.
+	 * Without this, 'command -x' failed with E2BIG on macOS and Linux even
+	 * if all the arguments should fit in ARG_MAX based on their length.
+	 *
+	 * Strategy: first try to fill as many single-character arguments as
+	 * should fit in ARG_MAX without alignment. If that fails with E2BIG,
+	 * then start with a 2-byte alignment factor and keep doubling it
+	 * until we either succeed or exceed an absurdly large value.
+	 */
+
+	/* AST includes */
+	#include <ast.h>
+	#include <error.h>
+	#include <sfio.h>
+	#include <stak.h>
+	#include <wait.h>
+
+	/* Standard includes */
+	#include <errno.h>
+
+	#ifndef _lib_fork
+	#error requires fork(2)
+	#endif
+	#ifndef _lib_execve
+	#error requires execve(2)
+	#endif
+	#ifndef _lib_waitpid
+	#error requires waitpid(2)
+	#endif
+
+	int main(int argc,char *argv[])
+	{
+		int align_bytes = 0, envlen = 0, argmax, i;
+		pid_t childpid;
+
+		error_info.id="args list aligment test (parent)";
+		for(i=0; environ[i]; i++)
+			envlen += strlen(environ[i]) + 1;
+		argmax = strtoimax(astconf("ARG_MAX",NiL,NiL),NiL,0) - envlen - 1024;
+		if (argmax < 2048)
+		{
+			error(ERROR_ERROR|2, "argmax too small");
+			return 1;
+		}
+		while(1)
+		{
+			if(!(childpid = fork()))
+			{
+				/* child */
+				int bytec;
+
+				error_info.id="args list aligment test (child)";
+				argv = (char **)stakalloc((argmax / 2 + 1) * sizeof(char*));
+				argc = bytec = 0;
+				while(bytec < argmax)
+				{
+					if(argc==0)
+						argv[argc] = "/usr/bin/env";
+					else if(argc==1)
+						argv[argc] = "true";
+					else
+						argv[argc] = "x";
+					bytec += strlen(argv[argc]) + 1 + align_bytes;
+					if(align_bytes)
+						bytec += bytec % align_bytes;
+					argc++;
+				}
+				argv[argc] = (char*)0;
+				if(execve(argv[0], argv, environ) < 0)
+				{
+					if(errno == E2BIG)
+						return 1;
+					else
+					{
+						error(ERROR_SYSTEM|2, "execve failed");
+						return 2;
+					}
+				}
+				error(ERROR_SYSTEM|2, "[BUG] we should never get here!");
+				return 2;
+			}
+			else
+			{
+				/* parent */
+				int exitstatus;
+
+				if (waitpid(childpid,&i,0) < 0)
+				{
+					error(ERROR_SYSTEM|2, "waitpid failed");
+					return 1;
+				}
+				if (!WIFEXITED(i) || (exitstatus = WEXITSTATUS(i)) > 1)
+				{
+					error(ERROR_ERROR|2, "child process exited abnormally");
+					return 1;
+				}
+				if (exitstatus == 0)
+					break;	/* yay :) */
+				if (!align_bytes)
+					align_bytes = 2;
+				else
+					align_bytes *= 2;
+				if (align_bytes > 256)
+				{
+					error(ERROR_ERROR|2, "giving up");
+					return 1;
+				}
+			}
+		}
+		sfprintf(sfstdout,
+			"#define ARG_ALIGN_BYTES\t%d\t/* data alignment factor for arguments list */\n",
+			align_bytes);
+		return 0;
+	}
+}end fail{
+	echo "#define ARG_ALIGN_BYTES	16	/* BUG: arg list alignment factor test failed; assuming 16 */"
+}end
