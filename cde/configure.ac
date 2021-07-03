@@ -1,4 +1,4 @@
-AC_INIT([cde-desktop], [2.3.2], [jon@radscan.com])
+AC_INIT([cde-desktop], [2.4.0a], [https://sourceforge.net/projects/cdesktopenv])
 AC_CONFIG_HEADERS([include/autotools_config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
