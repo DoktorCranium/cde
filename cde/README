@@ -20,19 +20,12 @@ http://sourceforge.net/projects/cdesktopenv/
 
 Or via git:
 
-git clone --recursive git://git.code.sf.net/p/cdesktopenv/code cdesktopenv-code
+git clone git://git.code.sf.net/p/cdesktopenv/code cdesktopenv-code
 
 The git repository will always be more up to date than the
 downloadable tarballs we make available, so if you have problems,
 please try the latest version from git master.
 
-As of 2.3.2b, a new ksh93 submodule is used in place of the original
-ksh93 source code.  If you have already cloned the repo (without the
---recursive flag) you will need to update the ksh submode with
-something like:
-
-cd desktopenv-code
-git submodule update --init
 
 ************************************
 Installing this release:
