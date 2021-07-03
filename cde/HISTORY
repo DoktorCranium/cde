@@ -6,6 +6,258 @@ use 'git log', or peruse the commit history at:
 https://sourceforge.net/p/cdesktopenv/code/commit_browser
 
 #######################################################################
+### 2.4.0 (stable) 6/3/2021
+
+This release adds support (and converts) to UTF-8 encoding for all
+message catalogs.  The help and dtinfo stuff (being based on docbook
+2) is still using ISO8859-* encodings.
+
+This will also be the last release to use imake/Imakefiles for
+building.  Once released, the autotools-conversion branch will be
+merged into master shortly thereafter, and future releases will use
+autotools.
+
+The main highlights of this release:
+
+- Conversion of message catalogs to UTF-8
+
+- The ksh93 code used to build dtksh has been updated to something
+  from this century (hash: 66e1d446), and a lot of work has gone into
+  making it work with CDE's dtksh
+
+- Many build related warnings and bugs have been addressed as usual.
+
+- Linux (and some BSD's) support PAM and utempter allowing the removal
+  of the SUID root bit for dtsession and dtterm
+
+- Preliminary risc-v support
+
+- Preliminary support for the musl C library
+
+- many fixes related to old K&R code, new compiler versions and
+  other related fixes
+
+Here is the git "short" log:
+
+Chase (24):
+      dtksh: remove unused files and functions
+      dtkcmds.c: avoid c99 collision
+      dtksh: remove needless OS defines
+      extra.h: remove unused prototypes
+      dtksh: Turn dtksh aliases into builtins and discard BLT_SPC flag
+      dtksh: remove old ksh from repo
+      dtksh: add new ksh93 submodule
+      dtksh/examples: clean up scripts
+      dtksh: make new ksh submodule build
+      ksh: update to commit 092b90
+      dtkcmds.c: add extra field to discipline functions
+      dtksh: Use ksh93 translate over augmented version
+      ksh93: update to commit dd9bc2
+      Dtksh: fix callback segfault
+      dtksh: update to commit 67880e3
+      dtksh: use sh_addbuiltin instead of manually editing builtins.c
+      dtkcmds.c: use Empty macro instead of empty string
+      dtksh: use bin/package flat make instead of shell
+      use a patchfile to augment init.c instead of copying it entirely
+      dtksh/findsym.c: fix compiler warnings
+      dtksh/Imakefile: make patch obey POSIX
+      dtksh: make it build under openindiana
+      dtksh: use std malloc instead of ast malloc
+      dtksh: update ksh to commit 47468f (fix musl compiler errors)
+
+Edmond Orignac (1):
+      misc.c: in cm_mbchar check string!=NULL before dereferencing it
+
+Jon Trulson (54):
+      UTF-8 conversion: convert imports/motif/localized
+      Remove useless logs/ directory
+      UTF-8 conversion: programs/localized/de_DE
+      UTF-8 conversion: programs/localized/es_ES
+      UTF-8 conversion: programs/localized/fr_FR
+      UTF-8 conversion: programs/localized/it_IT
+      UTF-8 conversion: programs/localized/sv_SE
+      UTF-8 conversion: fixup database Imakefiles, config and gitignore
+      utf8 conversion: fix up seperation of locale and doc building
+      Fix .gitignore for ISO8859-1 docs
+      utf8 conversion: mostly working, help has issues
+      Merge branch 'master' into utf8-conversion-2
+      Merge branch 'master' into utf8-conversion-2
+      Merge branch 'master' into utf8-conversion
+      Merge branch 'master' into utf8-conversion
+      Merge branch 'master' into utf8-conversion
+      Merge branch 'master' into utf8-conversion, after 2.3.0a release
+      Merge branch 'master' into utf8-conversion after 2.3.1 release
+      dtinfo: link proper localized (utf8) dirs
+      site.def: add define guards around DtLocalesToBuild
+      gitignore: add infolib/etc UTF-8 locales
+      Set version to 2.3.1a (devel) for current master
+      linux.cf: always use bison
+      FreeBSD 12/libDtHelp: fix link errors with missing libjpeg
+      DtSvc: always use vsnprintf
+      dtsession, DtSvc: fix CVE-2020-2696/VU#308289
+      Add a new contrib/desktopentry-setlang/ mechanism
+      Revert "Add a new contrib/desktopentry-setlang/ mechanism"
+      desktopentry/README: Clarify that the login manager is responsible for setting language
+      dtksh: fix 32b/64b issues with XmTextGetString and XmTextFieldGetString
+      Convert uses of XKeycodeToKeysym (deprecated) to XkbKeycodeToKeysym
+      fix broken dev version number: 2.3.1a -> 2.3.2a
+      udbParseLib.awk: comment out some uneeded commands that cause warnings now
+      Merge branch 'master' into master-ksh93-upgrade
+      ksh93: re-add the ksh submodule at 47468f
+      Change version to 2.3.2b for the new ksh93 submodule merge
+      README: update clone instructions
+      ksh93: update to 66e1d446 from autotools branch
+      .gitignore: Add some MsgCat.c generated files
+      Merge /u/l-chang/cdesktopenv1/ branch master into master
+      Merge /u/low-power/cde-code/ branch remove-ar-l into master
+      videoTypes.dt: remove duplicate LABEL field
+      dtprintinfo: try to mitigate some stupid in ParseJob.C for sun
+      NetBSD.cf: add a link comment to list package needed for PAM support
+      FreeBSD.cf,DragonFly.cf: disable PAM support by default
+      Bump devel version to 2.3.2c
+      debin/control: add libpam and libutempter
+      .gitignore: update for PAM changes
+      Apply a patch from Roger Brown for risc-v and other minor fixes
+      Removed cde/programs/dtksh/ksh93 submodule at commit 66e1d446429543be0f9d47d9364e472932dc53f1
+      Squashed 'cde/programs/dtksh/ksh93/' content from commit 66e1d4464
+      Merge commit '12bbb66931feaac778ef4e47b67375ec9b58e839' as 'cde/programs/dtksh/ksh93'
+      Removed .gitmodules
+      README: fix clone instructions to no longer require --recursive
+
+Lev Kujawski (20):
+      Define _DtPLATFORM_MAX_LEN for C libraries (including musl) that do not provide the SVID SYS_NMLN definition. Use sizeof() to replace another #ifdef.
+      Rename functions within ToolTalk that conflict with the musl C library headers.
+      Hide FILE internals from the musl C library that conflict with the Desktop Korn Shell's SFIO.
+      On Linux, use the SVR4 (now POSIX) signal and locking interfaces instead of the non-standard BSD equivalents.
+      On Linux, use SVR4's (now POSIX) mktime() instead of BSD's non-standard timelocal().
+      Use the C99 standard va_copy if possible for compatibility with the musl C library.
+      Define time_t within AccessI.h by including <time.h>.
+      Fix incompatibilites between the Desktop Korn Shell and the musl C library:
+      imake: fix warnings on PowerPC builds
+      dtdocbook/instant: the musl C library does not define MAXNAMLEN
+      dtinfo: the musl C library requires the inclusion of the POSIX fcntl header
+      dtinfo: Include config.h for the definition of u_int
+      dtprintinfo: don't use rresvport() on Linux systems using the musl C library
+      config/cf/Imake.cf: Define AArch64Architecture on the BSDs.
+      dtinfo: rename the CATGETS macro to MCATGETS
+      Centralize catgets() calls through MsgCat
+      Avoid Global Offset Table (GOT) limits by enabling -fPIC on the BSDs.
+      Purge unused Freetype dependency from CDE
+      Switch default backdrop from SkyLight to KnitLight
+      Specify SPARC and SPARC64 as big endian platforms
+
+Liang Chang (69):
+      dtopen: fix the syntax errors of comment.
+      dtdocbook: fix a segmentation fault.
+      ttsnoop: fix a segfault that occurred when clicking "Version..." in the "Snoop" menu.
+      dtappbuilder: apply graceful degradation for font loading to avoid a segmentation fault.
+      dtappbuilder: fix a segmentation fault that occurred when clicking "Edit" in the "Revolving Property Editor".
+      dtappbuilder: fix a segmentation fault that occurred when repeating "Add Item" -> "Delete" -> "Add Item" in the "Revolving Property Editor".
+      dtappbuilder: fix a segmentation fault that occurred when clicking "Edit" in the "Menu Property Editor".
+      csa: replace sprintf with asprintf to avoid segfaults.
+      dtcm: fix a segfault when "Drag Appt" in the dtcm_editor.
+      dtcm: fix a segfault that occurred when opening the "Appointment List..." in the "View" menu.
+      dtfile: fix a segmentation fault that occurred when drag and drop file with the same name.
+      dtcm: Avoid to leave an unclosable window when there is no appointment in "Appointment List...".
+      dtappbuilder: ensure the subtypes of widgets are properly initialized.
+      dtappbuilder: ensure mouse operations are not interfering by key masks (e.g., Caps Lock, Num Lock, etc.) when editing (resize, double-click, etc.) widgets.
+      dtappbuilder: adjust data types to avoid type casting errors.
+      dtappbuilder: fix issues of property settings for text pane.
+      dtappbuilder: adjust data types to avoid type casting errors.
+      dtappbuilder: fix issues of property settings for list.
+      dtappbuilder: fix issues of property settings for button.
+      dtappbuilder: fix issues of property settings for choice.
+      dtappbuilder: fix issues of property settings for combo box.
+      dtappbuilder: fix issues of property settings for control pane.
+      dtappbuilder: fix issues of property settings for custom dialog.
+      dtappbuilder: fix issues of property settings for draw area pane.
+      dtappbuilder: fix issues of property settings for file selection dialog.
+      dtappbuilder: fix issues of property settings for group.
+      dtappbuilder: fix issues of property settings for label.
+      dtappbuilder: fix issues of property settings for main window.
+      dtappbuilder: fix issues of property settings for menu.
+      dtappbuilder: fix issues of property settings for menubar.
+      dtappbuilder: fix issues of property settings for scale.
+      dtappbuilder: fix issues of property settings for separator.
+      dtappbuilder: fix issues of property settings for spin box.
+      dtappbuilder: fix issues of property settings for term pane.
+      dtappbuilder: fix issues of property settings for text field.
+      dtappbuilder: fix the rendering glitch of the list widget which contains a label.
+      ttsnoop: adjust the text field on ttChooser.
+      ttsnoop: adjust data types to ensure the result of pointer comparison is correct.
+      ttsnoop: check the return value from tt_message_op to avoid a segmentation fault.
+      dtappbuilder: set limits on the resize rectangle to avoid rollover.
+      dtappbuilder: ensure the resize box always inside the main window to avoid the rendering glitch.
+      dtappbuilder: set the default size (in pixels) for terminal pane.
+      dtappbuilder: set the minimum limit for rows and columns to avoid rollover.
+      dtappbuilder: Fix a crash when resize a text pane. The crash is occurred when drag on the scrollbar to resize.
+      dtappbuilder: Fix unsigned integer rollover.
+      dtterm: Change the default log host to localhost. To check the log function, add -DLOG_USAGE to the Imakefile then build the dtterm. There are a logger in the util directory, run it to receive log messages.
+      dtinfo: Fix a segmentation fault. The return value from CanvasRenderer::_dofont is a pointer. It will be passed to the free function. Ensure that pointer always points to a dynamically allocated memory to avoid segmentation faults.
+      Add lib DtPamSvc.
+      Add PAM support to dtlogin.
+      dtlogin: get rid of some warnings.
+      Add PAM support to dtsession.
+      DtPamSvc: update Imakefile.
+      dtlogin: rename PAM config file.
+      dtsession: rename PAM config file.
+      Enable PAM support for dtlogin and dtsession.
+      dtlogin: use utmpx when PAM is enabled.
+      DtPamSvc: use utmpx.
+      dtsession: add rules for config dir into Imakefile.
+      databases: use "src" files to generate CDE-MIN.udb and CDE-RUN.udb.
+      dtlogin: add utmpx support to UtmpIdOpen.
+      dtsession: revise localAuthenticate.
+      DtPamSvc: Improve user experience.
+      dtlogin: revise the Imakefile for config.
+      DtTerm: Add pts driver support.
+      DtTerm: Add libutempter support for utmp/wtmp updates.
+      dtterm: Add libutempter support for utmp/wtmp updates.
+      databases: Install dtterm as an unprivileged program when PTS driver and libutempter are available.
+      FreeBSD.cf: Enable PTS driver and libutempter.
+      linux.cf: Enable PTS driver and libutempter.
+
+Marcin Cieślak (1):
+      dtdocbook/instant: fix buffer overlow on German umlaut in latin-1
+
+Nina Didenko (2):
+      installCDE: don't hardcode path to whoami
+      tt_type_comp: use CppCmd definition
+
+Peter Howkins (14):
+      all: remove deprecated sys_errlist[] and replace with ANSI C strerror()
+      dtstyle: Remove duplicate definition of NumOfPalettes that was a) wrong b) causing issues on recent compilers
+      dtcalc: Resolve gcc 10 errors about multiple definitions of global variables
+      dtappbbuilder: Resolve GCC 10 errors about multiple definitions of global variables
+      dtcreate: Resolve GCC 10 errors about multiple definitions of global variables
+      dticon: Resolve GCC 10 errors about multiple definitions of global variables
+      libDtSearch: Resolve GCC 10 errors about multiple definitions of global variables
+      dtudcfonted: Resolve GCC 10 errors about multiple definitions of global variables
+      dthelp: Resolve GCC 10 errors about multiple definitions of global variables
+      dtcreate: remove hacky solution to declaring and defining variables in .h files Split them into .c and .h like usual.y
+      dtcalc: Remove support for optional K&R prototypes to simplify code
+      dtcalc: remove some pointless macroing of function names to uppercase versionss
+      libcsa: Always use ANSI function prototypes
+      dtcm: Always use ANSI function prototypes
+
+WHR (2):
+      Break building on subdirectories make(1) failed
+      Remove uses of ar(1) option '-l'
+
+
+#######################################################################
+### 2.3.2 (stable) 1/14/2020
+
+The release corrects a potentially exploitable CVE (well, exploitable
+on solaris CDE, but unlikely to be exploitable with this CDE).  Fix
+the issues anyway.
+
+Jon Trulson (2):
+      dtsession, DtSvc: fix CVE-2020-2696/VU#308289
+      Prepare for 2.3.2 release: HISTORY and version number change
+
+
+#######################################################################
 ### 2.3.1 (stable) 11/15/2019
 
 This stable release comes from the 2.3.0a development release, and
