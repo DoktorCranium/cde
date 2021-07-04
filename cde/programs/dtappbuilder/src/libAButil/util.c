@@ -187,7 +187,17 @@ util_set_program_name_from_argv0(STRING argv0)
     util_get_file_name_from_path(argv0, progName, MAXPATHLEN);
     if (strlen(progName) > (size_t)0)
     {
-	util_set_program_name(progName);
+	STRING	progNameStart = progName;
+
+	/*
+	 * Remove the lt- prefix added by libtool to helper programs.
+	 */
+	if (strncmp(progNameStart, "lt-", 3) == 0)
+	{
+	    progNameStart += 3;
+	}
+
+	util_set_program_name(progNameStart);
     }
     return 0;
 }
