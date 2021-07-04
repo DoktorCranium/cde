@@ -34,7 +34,7 @@ AB_MAKEFILES = \
         Makefile.netbsd \
         Makefile.openbsd
 
-CLEANFILES = AB_MAKEFILES *.res *_ui.c *_ui.h .dtcodegen.log *.delta dtbuilder.c dtbuilder.msg
+CLEANFILES = $(AB_MAKEFILES) *.res *_ui.c *_ui.h .dtcodegen.log *.delta dtbuilder.c dtbuilder.msg
 
 SOURCES.msg = \
                 dtbuilder.msg   \
@@ -184,6 +184,7 @@ dtbuilder_SOURCES = dtb_utils.c \
 
 dtbuilder.msg: dtbuilder.msg.src
 	$(CP) $? $@ && chmod ug+w $@
+
 dtbuilder.c: dtbuilder.c.src
 	$(CP) $? $@ && chmod ug+w $@
 
