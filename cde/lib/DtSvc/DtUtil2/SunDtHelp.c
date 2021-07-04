@@ -163,8 +163,10 @@ int _DtHelpReturnSelectedWidgetId(
     status = pmySUNWProcList  || SUNWDtHelpdlopen();
     _DtSvcProcessUnlock();
 
-    if (!status)
-        return(NULL);
+    if (!status) {
+	*widget = NULL;
+	return(DtHELP_SELECT_ERROR);
+    }
 
     return ((*pmySUNWProcList->DtHelpReturnSelectedWidgetIdSym)(parent, cursor,
 							    widget));
