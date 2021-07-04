@@ -1,8 +1,0 @@
-XCOMM $TOG: Imakefile /main/3 1998/08/10 18:02:40 mgreess $
-#define IHaveSubdirs
-#define PassCDebugFlags 'CDEBUGFLAGS=$(CDEBUGFLAGS)' 'CXXDEBUGFLAGS=$(CXXDEBUGFLAGS)'
-
-SUBDIRS = codelibs
-
-MakeSubdirs($(SUBDIRS))
-DependSubdirs($(SUBDIRS))
