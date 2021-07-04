@@ -21,4 +21,8 @@ if SOLARIS
 libDtTerm_la_LIBADD += -ldl -lgen
 endif
 
+if HAS_UTEMPTER_LIBRARY
+libDtTerm_la_LIBADD += -lutempter
+endif
+
 libDtTerm_la_LDFLAGS = -version-info 2:1:0

@@ -377,7 +377,7 @@ fi
 
 dnl headers
 AC_HEADER_STDC
-AC_CHECK_HEADERS([locale.h security/pam_appl.h])
+AC_CHECK_HEADERS([locale.h security/pam_appl.h utempter.h])
 
 dnl libraries
 AC_CHECK_LIB(m, cosf)
@@ -450,6 +450,13 @@ AC_CHECK_LIB(pam, pam_start,
              [SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DHAS_PAM_LIBRARY"])
 
 AM_CONDITIONAL([HAS_PAM_LIBRARY], [test "x$ac_cv_lib_pam_pam_start" = "xyes"])
+
+dnl figure out utempter support
+
+AC_CHECK_LIB(utempter, utempter_add_record,
+             [SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DHAS_UTEMPTER_LIBRARY"])
+
+AM_CONDITIONAL([HAS_UTEMPTER_LIBRARY], [test "x$ac_cv_lib_utempter_utempter_add_record" = "xyes"])
 
 dnl Figure out TCL
 

@@ -8,6 +8,10 @@ if BSD
 dtterm_LDADD += -lutil
 endif
 
+if HAS_UTEMPTER_LIBRARY
+dtterm_LDADD += -lutempter
+endif
+
 dtterm_CFLAGS = -I$(top_builddir)/lib/DtTerm/TermPrim	\
 	-I$(top_builddir)/lib/DtTerm/Term			\
 	-I$(top_builddir)/lib/DtTerm/TermView	\
@@ -45,5 +49,7 @@ dtterm.ti: terminfoChecklist
 
 install-exec-hook:
 	chown root $(DESTDIR)$(bindir)/dtterm
+if !HAS_UTEMPTER_LIBRARY
 	chmod 4755 $(DESTDIR)$(bindir)/dtterm
+endif
 
