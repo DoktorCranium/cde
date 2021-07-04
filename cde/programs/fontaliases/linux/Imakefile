@@ -1,8 +1,0 @@
-XCOMM $XConsortium: Imakefile /main/1 1996/09/13 16:34:13 drk $
-#define IHaveSubdirs
-#define PassCDebugFlags  /**/
-
-SUBDIRS = C en_US.UTF-8
-
-MakeSubdirs($(SUBDIRS))
-DependSubdirs($(SUBDIRS))
