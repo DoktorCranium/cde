@@ -159,7 +159,7 @@ Dtbuilder*dtb_cgen_win_mainwindow_mainwin*menubar_Help_item_help_pulldown.On_Ite
 Dtbuilder*dtb_cgen_win_mainwindow_mainwin*menubar_Help_item_help_pulldown.Using_Help_item.mnemonic: %|nls-105-#U#|
 Dtbuilder*dtb_cgen_win_mainwindow_mainwin*menubar_Help_item_help_pulldown.About_Application_Builder_item.mnemonic: %|nls-106-#A#|
 Dtbuilder*dtb_cgen_win_mainwindow_mainwin*output_termp.subprocessCmd: %|nls-107-#/bin/cat#|
-Dtbuilder*dtb_cgen_win_mainwindow_mainwin*input_termp.subprocessCmd: %|nls-108-#/bin/csh#|
+Dtbuilder*dtb_cgen_win_mainwindow_mainwin*input_termp.subprocessCmd: %|nls-108-#/bin/sh#|
 
 ! Resource list for AppBuilder module conn
 !

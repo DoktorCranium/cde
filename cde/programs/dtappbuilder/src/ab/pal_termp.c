@@ -178,7 +178,7 @@ termp_initialize(
         obj_set_width(obj, termp_init_width);
         obj_set_height(obj, termp_init_width);
     }
-    obj_set_process_string(obj, "/bin/csh");
+    obj_set_process_string(obj, "/bin/sh");
 
     abobj_init_pane_position(obj);
 

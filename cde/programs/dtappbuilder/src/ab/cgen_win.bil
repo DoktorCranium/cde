@@ -332,7 +332,7 @@
 	:num-rows		27
 	:num-columns		82
 	:vscrollbar		:always
-	:process-string		"/bin/csh"
+	:process-string		"/bin/sh"
 	:active			:true
 	:visible		:true
 	:north-attachment	(:obj button_ctrl_panel 0)
