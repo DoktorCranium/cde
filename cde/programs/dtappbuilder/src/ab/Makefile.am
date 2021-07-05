@@ -1,5 +1,7 @@
 MAINTAINERCLEANFILES = Makefile.in
 
+.NOTPARALLEL:
+
 appdefaultsdir = ${prefix}/app-defaults/C
 
 ABINCLUDES = -I../include -I../include/ab_private -I../libABil
@@ -306,7 +308,7 @@ textp_ui.c + textp_ui.h + textp_stubs.c: $(PROJFILE).bip textp.bil
 
 else
 
-dtbuilder.h dtb_utils.c dtb_utils.h: dtbuilder.bip dtbuilder.c dtbuilder.msg
+dtbuilder.h dtb_utils.c dtb_utils.h: dtbuilder.bip |dtbuilder.c dtbuilder.msg
 	$(DTCODEGEN) -changed -merge -p dtbuilder.bip -main
 
 PROJFILE = dtbuilder
