@@ -6,15 +6,13 @@ lib_LTLIBRARIES = libDtWidget.la
 
 AM_CPPFLAGS = -DCDE_INSTALLATION_TOP=$(CDE_INSTALLATION_TOP) $(DT_INCDIR)
 
-libDtWidget_la_CFLAGS = -DI18N_MSG -DMULTIBYTE $(FREETYPE_CFLAGS)
+libDtWidget_la_CFLAGS = -DI18N_MSG -DMULTIBYTE
 
 libDtWidget_la_LDFLAGS = -version-info 2:1:0
 
-libDtWidget_la_LIBADD = $(FREETYPE_LIBS)
-
 if SOLARIS
 libDtWidget_la_CFLAGS += -DNO_REGCOMP
-libDtWidget_la_LIBADD += -lc -lw -lintl
+libDtWidget_la_LIBADD = -lc -lw -lintl
 endif
 
 

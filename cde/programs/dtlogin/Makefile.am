@@ -22,7 +22,7 @@ DEF_PM_PATH = $(CDE_CONFIGURATION_TOP)/appconfig/icons/%L/%B%M.pm:$(CDE_CONFIGUR
 AM_CFLAGS = -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
             -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
             -DCDE_LOGFILES_TOP=\"$(CDE_LOGFILES_TOP)\" \
-	    $(FREETYPE_CFLAGS) -DBINDIR=\"$(XBINDIR)\" \
+	    -DBINDIR=\"$(XBINDIR)\" \
 	    -DXDMDIR=\"$(XDMDIR)\" \
 	    -DKORNSHELL=$(KSH) -DUNIXCONN -DTCPCONN -DXDMCP
 
@@ -57,11 +57,11 @@ dtchooser_SOURCES = chooser.c dtchooser.c vglogo.c vgutil.c vgcallback.c \
 		    vglang.c
 
 dtlogin_LDADD = libresource.a @DTCLIENTLIBS@ -lXau -lXmu -lXext -lXdmcp \
-	$(FREETYPE_LIBS) $(XTOOLLIB) $(TIRPCLIB) $(DTPAMSVCLIB) $(PAM_LIB)
+	$(XTOOLLIB) $(TIRPCLIB) $(DTPAMSVCLIB) $(PAM_LIB)
 
-dtgreet_LDADD = $(DTCLIENTLIBS) $(FREETYPE_LIBS) $(XTOOLLIB)
+dtgreet_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
-dtchooser_LDADD = $(DTCLIENTLIBS) $(FREETYPE_LIBS) -lXmu -lXext -lXdmcp $(XTOOLLIB)
+dtchooser_LDADD = $(DTCLIENTLIBS) -lXmu -lXext -lXdmcp $(XTOOLLIB)
 
 
 if LINUX
