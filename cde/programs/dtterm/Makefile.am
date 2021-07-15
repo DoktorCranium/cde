@@ -47,6 +47,10 @@ dtterm.ti: terminfoChecklist
 	$(RM) $@
 	CPP="$(GENCPP)" $(SHELL) terminfoCreate < terminfoChecklist > $@
 
+
+install:
+	@TIC@ dtterm.ti
+
 install-exec-hook:
 	chown root $(DESTDIR)$(bindir)/dtterm
 if !HAS_UTEMPTER_LIBRARY

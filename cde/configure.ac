@@ -375,6 +375,9 @@ if test -z "$ac_cv_prog_PATCH"; then
    MISSING_PROGS="patch ${MISSING_PROGS}"
 fi
 
+dnl Used to check if program 'tic' is available to install terminfo files
+AC_CHECK_PROGS(TIC, tic, :)
+
 dnl headers
 AC_HEADER_STDC
 AC_CHECK_HEADERS([locale.h security/pam_appl.h utempter.h])
