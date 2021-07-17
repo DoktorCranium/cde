@@ -22,7 +22,7 @@
  */
 /* $XConsortium: main_c_api.c /main/5 1996/06/11 17:29:25 cde-hal $ */
 
-#include "oliasdb/Mmdb.h"
+#include "Dt/Mmdb.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
