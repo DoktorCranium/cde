@@ -755,6 +755,8 @@ programs/localized/es_ES.UTF-8/palettes/Makefile
 programs/localized/es_ES.UTF-8/msg/Makefile
 programs/localized/es_ES.UTF-8/appmanager/Makefile
 
+include/Makefile
+
 ])
 
 AC_OUTPUT
