@@ -22,21 +22,21 @@ endif
 
 dtwm_SOURCES = WmCDInfo.c      WmCDecor.c      WmCEvent.c \
                WmCPlace.c      WmColormap.c    WmError.c \
-               WmEvent.c       WmFeedback.c    WmFunction.c \
-               WmGraphics.c    WmIDecor.c      WmIPlace.c \
-               WmIconBox.c     WmImage.c       WmInitWs.c \
-               WmKeyFocus.c    WmMain.c        WmManage.c \
-               WmMenu.c        WmProperty.c    WmProtocol.c \
-               WmResCvt.c      WmResParse.c    WmResource.c \
-               WmSignal.c      WmWinConf.c     WmWinInfo.c \
-               WmWinList.c     WmWinState.c    WmMultiHead.c \
-	       Button.c        Callback.c      Clock.c \
-               DataBaseLoad.c  PanelS.c        Parse.c \
-               PopupMenu.c     Session.c       UI.c \
-               WmBackdrop.c    WmFP.c          WmHelp.c \
-               WmIPC.c         WmOL.c          WmParse.c \
-               WmParseP.c      WmPresence.c    WmWrkspace.c \
-               WmXSMP.c
+               WmEvent.c       WmEwmh.c        WmFeedback.c \
+               WmFunction.c    WmGraphics.c    WmIDecor.c \
+               WmIPlace.c      WmIconBox.c     WmImage.c \
+               WmInitWs.c      WmKeyFocus.c    WmMain.c \
+               WmManage.c      WmMenu.c        WmProperty.c \
+               WmProtocol.c    WmResCvt.c      WmResParse.c \
+               WmResource.c    WmSignal.c      WmWinConf.c \
+               WmWinInfo.c     WmWinList.c     WmWinState.c \
+               WmMultiHead.c   Button.c        Callback.c \
+               Clock.c         DataBaseLoad.c  PanelS.c \
+               Parse.c         PopupMenu.c     Session.c \
+               UI.c            WmBackdrop.c    WmFP.c \
+               WmHelp.c        WmIPC.c         WmOL.c \
+               WmParse.c       WmParseP.c      WmPresence.c \
+               WmWrkspace.c    WmXSMP.c
 
 dtfplist_SOURCES = Print.c Parse.c DataBaseLoad.c WmParse.c Session.c
 
