@@ -181,6 +181,7 @@ void SetClientStateWithEventMask (ClientData *pCD, int newState, Time setTime, u
 	     * WM_STATE property is set in WithdrawWindow.
 	     */
 
+	    XDeleteProperty (DISPLAY, pCD->client, wmGD.xa_NET_WM_STATE);
 	    UnManageWindow (pCD);
 	    break;
 	}
@@ -616,17 +617,29 @@ void ConfigureNewState (ClientData *pcd)
     }
     else
     {
-    /*
-     * Update client config to reflect underlying head, if MultiHead is active
-     */
-    if (WmHI = GetHeadInfo(pcd)) {
-        FrameToClient(pcd, &WmHI->x_org, &WmHI->y_org,
-                &WmHI->width, &WmHI->height);
-        pcd->maxX = WmHI->x_org;
-        pcd->maxY = WmHI->y_org;
-        pcd->maxWidth = WmHI->width;
-        pcd->maxHeight = WmHI->height;
-    }
+	if (pcd->isFullscreen && pcd->monitorSizeIsSet)
+	{
+	    pcd->maxX = pcd->monitorX;
+	    pcd->maxY = pcd->monitorY;
+	    pcd->maxWidth = pcd->monitorWidth;
+	    pcd->maxHeight = pcd->monitorHeight;
+
+	    FrameToClient(pcd, &pcd->maxX, &pcd->maxY, &pcd->maxWidth,
+			    &pcd->maxHeight);
+	}
+	else if (WmHI = GetHeadInfo(pcd)) {
+	    /*
+	     * Update client config to reflect underlying head, if MultiHead is
+	     * active
+	     */
+	    FrameToClient(pcd, &WmHI->x_org, &WmHI->y_org,
+			  &WmHI->width, &WmHI->height);
+	    pcd->maxX = WmHI->x_org;
+	    pcd->maxY = WmHI->y_org;
+	    pcd->maxWidth = WmHI->width;
+	    pcd->maxHeight = WmHI->height;
+	    free(WmHI);
+	}
 
 	XResizeWindow (DISPLAY, pcd->client,
 			   (unsigned int) pcd->maxWidth, 
