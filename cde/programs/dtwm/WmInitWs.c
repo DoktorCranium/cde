@@ -87,6 +87,7 @@ typedef struct
 #include "WmColormap.h"
 #include "WmError.h"
 #include "WmEvent.h"
+#include "WmEwmh.h"
 #include "WmFeedback.h"
 #include "WmFunction.h"
 #include "WmIDecor.h"
@@ -410,6 +411,7 @@ void InitWmGlobal (int argc, char *argv [], char *environ [])
      * Do (pre-toolkit) initialization:
      */
 
+    wmGD.tmpWindowContextType = XUniqueContext ();
     wmGD.windowContextType = XUniqueContext ();
     wmGD.screenContextType = XUniqueContext ();
 #ifndef	IBM_169380
@@ -1000,6 +1002,9 @@ void InitWmGlobal (int argc, char *argv [], char *environ [])
 
     /* setup window manager inter-client communications conventions handling */
     SetupWmICCC ();
+
+    /* setup EWMH handling */
+    SetupWmEwmh ();
 
     /*
      * Use the WM_SAVE_YOURSELF protocol

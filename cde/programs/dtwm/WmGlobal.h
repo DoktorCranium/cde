@@ -1628,6 +1628,13 @@ typedef struct _ClientData
     Window	clientBaseWin;			/* for matte & reparenting */
     int		xBorderWidth;			/* original X border width */
     FrameInfo	frameInfo;			/* frame geometry data */
+    Boolean	decorUpdated;			/* True => decoration updated */
+    Boolean	isFullscreen;			/* True => fullscreen */
+    Boolean	monitorSizeIsSet;		/* True => X, Y, W, H is set */
+    int		monitorX;			/* monitor X loc */
+    int		monitorY;			/* monitor Y loc */
+    int		monitorWidth;			/* monitor width */
+    int		monitorHeight;			/* monitor height */
 
     /* client window frame graphic data: */
 
@@ -1826,6 +1833,7 @@ typedef struct _WmGlobalData
     Widget	topLevelW1;             /* from which WM components hang */
     Boolean     confirmDialogMapped;    /* confirm dialog is mapped */
     XtAppContext	mwmAppContext;	/* application context for mwm */
+    XContext	tmpWindowContextType;	/* temporary window context */
     XContext	windowContextType;	/* window context for XSaveContext */
     XContext	screenContextType;	/* screen context for XSaveContext */
 #ifndef	IBM_169380
@@ -1927,6 +1935,9 @@ typedef struct _WmGlobalData
     Atom	xa_SM_CLIENT_ID;
     Atom	xa_WMSAVE_HINT;
 
+    Atom	xa_NET_WM_FULLSCREEN_MONITORS;
+    Atom	xa_NET_WM_STATE;
+    Atom	xa_NET_WM_STATE_FULLSCREEN;
 
     /* atoms used for workspace management: */
 
