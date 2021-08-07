@@ -2280,9 +2280,10 @@ void RegenerateClientFrame (ClientData *pcd)
     }
 
     /* resize base window */
-    XResizeWindow (DISPLAY, pcd->clientBaseWin, BaseWindowWidth (pcd),
-	   BaseWindowHeight (pcd));
-    
+    XMoveResizeWindow (DISPLAY, pcd->clientBaseWin,
+	BaseWindowX (pcd), BaseWindowY (pcd),
+	BaseWindowWidth (pcd), BaseWindowHeight (pcd));
+
     /* resize the stretcher windows */
     if (SHOW_RESIZE_CURSORS(pcd) && (decor & MWM_DECOR_RESIZEH)) {
 	XMoveResizeWindow (DISPLAY, 

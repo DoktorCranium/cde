@@ -113,3 +113,59 @@ WmHeadInfo_t *GetHeadInfo(const ClientData *pcd) {
     /* No valid screen */
     return NULL;
 }
+
+
+/*************************************<->*************************************
+ *
+ *  GetHeadInfoById (id)
+ *
+ *
+ *  Description:
+ *  -----------
+ *  Search for the head by ID.
+ *
+ *
+ *  Inputs:
+ *  ------
+ *
+ *
+ *  Outputs:
+ *  -------
+ *  Return = head metrics on success, NULL on failure.
+ *
+ *
+ *  Comments:
+ *  --------
+ *
+ *  Can fail if:
+ *
+ *  - MultiHead(eg. Xinerama) is not active
+ *  - malloc error
+ *  - id is less than 0
+ *
+ *************************************<->***********************************/
+WmHeadInfo_t *GetHeadInfoById(int id) {
+    WmHeadInfo_t *WmHI = NULL;
+
+    if (!DtXI)
+        DtXI = _DtXineramaInit(DISPLAY);
+
+    if (id < 0 || !DtXI)
+        return NULL;
+
+    if (!(WmHI = (WmHeadInfo_t *)malloc(sizeof(WmHeadInfo_t)))) {
+#ifdef DEBUG
+        fprintf(stderr, "(dtwm) _GetHeadInfoById: malloc failed\n");
+#endif
+
+        free(DtXI);
+        return NULL;
+    }
+
+    if (_DtXineramaGetScreen(DtXI, id,
+            &WmHI->width, &WmHI->height, &WmHI->x_org, &WmHI->y_org))
+        return WmHI;
+
+    free(WmHI);
+    return NULL;
+}

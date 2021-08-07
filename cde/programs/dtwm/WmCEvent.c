@@ -44,8 +44,10 @@
  */
 #include "WmCEvent.h"
 #include "WmCDecor.h"
+#include "WmCDInfo.h"
 #include "WmColormap.h"
 #include "WmEvent.h"
+#include "WmEwmh.h"
 #include "WmFeedback.h"
 #include "WmFunction.h"
 #include "WmIDecor.h"
@@ -508,6 +510,7 @@ Boolean HandleEventsOnSpecialWindows (XEvent *pEvent)
 {
     Boolean dispatchEvent = True;
     WmScreenData *pSD;
+    ClientData *pCD;
 
 
     /*
@@ -601,6 +604,15 @@ Boolean HandleEventsOnSpecialWindows (XEvent *pEvent)
 		     */
 
 		    dispatchEvent = WmDispatchWsEvent (pEvent);
+		}
+		break;
+	    }
+
+	    case ClientMessage:
+	    {
+		if (pCD = InitClientData (pEvent->xclient.window)) {
+		    ProcessEwmh (pCD, (XClientMessageEvent *) pEvent);
+		    dispatchEvent = False;
 		}
 		break;
 	    }
@@ -827,6 +839,22 @@ void HandleCPropertyNotify (ClientData *pCD, XPropertyEvent *propertyEvent)
 		    pCD->clientCmapFlagsInitialized = 0;
 		    ProcessColormapList (ACTIVE_PSD, pCD);
 		}
+	    }
+	    else if (propertyEvent->atom == wmGD.xa_MWM_HINTS) {
+		long suppliedReturn;
+		XSizeHints hintsReturn = {0};
+
+		XGetWMNormalHints (DISPLAY, pCD->client, &hintsReturn,
+				&suppliedReturn);
+
+		hintsReturn.flags |= P_MAX_SIZE;
+		hintsReturn.max_width = -1;
+		hintsReturn.max_height = -1;
+
+		XSetWMNormalHints (DISPLAY, pCD->client, &hintsReturn);
+
+		ProcessMwmHints (pCD);
+		SetClientOffset (pCD);
 	    }
 	    break;
 	}
@@ -2547,7 +2575,20 @@ void HandleClientMessage (ClientData *pCD, XClientMessageEvent *clientEvent)
 	}
 	else if (clientEvent->data.l[0] == NormalState)
 	{
-	    newState = NORMAL_STATE;
+	    if (pCD->isFullscreen)
+	    {
+		SetClientState (pCD, NORMAL_STATE, GetTimestamp ());
+		newState = MAXIMIZED_STATE;
+	    }
+	    else
+	    {
+		if (pCD->decorUpdated)
+		{
+		    SetClientState (pCD, MAXIMIZED_STATE, GetTimestamp ());
+		}
+
+		newState = NORMAL_STATE;
+	    }
 	}
 	if (!ClientInWorkspace (ACTIVE_WS, pCD))
 	{
@@ -2557,7 +2598,10 @@ void HandleClientMessage (ClientData *pCD, XClientMessageEvent *clientEvent)
 	SetClientState (pCD, newState, GetTimestamp ());
 
     }
-
+    else
+    {
+	ProcessEwmh (pCD, clientEvent);
+    }
 } /* END OF FUNCTION HandleClientMessage */
 
 

@@ -89,7 +89,7 @@ WmWorkspaceData *pIconBoxInitialWS;
 
 /*************************************<->*************************************
  *
- *  GetClientInfo (pSD, clientWindow, manageFlags)
+ *  InitClientData (clientWindow)
  *
  *
  *  Description:
@@ -100,13 +100,9 @@ WmWorkspaceData *pIconBoxInitialWS;
  *
  *  Inputs:
  *  ------
- *  pSD = pointer to screen data for screen that client lives in
- *
  *  clientWindow = window id for the client window that is to be managed
  *
- *  manageFlags = flags that indicate wm state info
  *
- * 
  *  Outputs:
  *  -------
  *  Return = pointer to an initialized client data structure for the
@@ -114,13 +110,23 @@ WmWorkspaceData *pIconBoxInitialWS;
  *
  *************************************<->***********************************/
 
-ClientData * 
-GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
-
+ClientData *
+InitClientData (Window clientWindow)
 {
     ClientData *pCD;
-    XSetWindowAttributes sAttributes;
 
+    if (!XFindContext (DISPLAY, clientWindow, wmGD.windowContextType,
+			    (caddr_t *)&pCD))
+    {
+	XDeleteContext(DISPLAY, clientWindow, wmGD.tmpWindowContextType);
+	return (pCD);
+    }
+
+    if (!XFindContext (DISPLAY, clientWindow, wmGD.tmpWindowContextType,
+			    (caddr_t *)&pCD))
+    {
+	return (pCD);
+    }
 
     /*
      * Allocate and initialize a client data structure:
@@ -133,13 +139,15 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
 	return (NULL);
     }
 
-    
+    XSaveContext (DISPLAY, clientWindow, wmGD.tmpWindowContextType,
+		    (caddr_t)pCD);
+
+
     /*
      * Initialize the data structure:
      */
 
     pCD->client = clientWindow;
-    pCD->clientID = ++(pSD->clientCounter);
     pCD->clientFlags = WM_INITIALIZATION;
     pCD->iconFlags = 0;
     pCD->thisIconBox = NULL;
@@ -200,7 +208,6 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
     pCD->maxWidth = pCD->maxWidthLimit = BIGSIZE;
     pCD->maxHeight = pCD->maxHeightLimit = BIGSIZE;
     pCD->maxConfig = FALSE;
-    pCD->pSD = pSD;
     pCD->dataType = CLIENT_DATA_TYPE;
     pCD->window_status = 0L;
 
@@ -209,6 +216,59 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
     pCD->clientEntry.pCD = NULL;
 
     pCD->smClientID = (String)NULL;
+
+    pCD->decorUpdated = False;
+    pCD->isFullscreen = False;
+    pCD->monitorSizeIsSet = False;
+
+    return (pCD);
+} /* END OF FUNCTION InitClientData */
+
+
+
+/*************************************<->*************************************
+ *
+ *  GetClientInfo (pSD, clientWindow, manageFlags)
+ *
+ *
+ *  Description:
+ *  -----------
+ *  This function is used to get client window data.
+ *
+ *
+ *  Inputs:
+ *  ------
+ *  pSD = pointer to screen data for screen that client lives in
+ *
+ *  clientWindow = window id for the client window that is to be managed
+ *
+ *  manageFlags = flags that indicate wm state info
+ *
+ *
+ *  Outputs:
+ *  -------
+ *  Return = pointer to an initialized client data structure for the
+ *           specified client window
+ *
+ *************************************<->***********************************/
+
+ClientData *
+GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
+
+{
+    ClientData *pCD;
+    XSetWindowAttributes sAttributes;
+
+    if (!(pCD = InitClientData (clientWindow)))
+    {
+	return (NULL);
+    }
+
+    XDeleteContext(DISPLAY, clientWindow, wmGD.tmpWindowContextType);
+
+    pCD->clientID = ++(pSD->clientCounter);
+    pCD->pSD = pSD;
+
 
      /*
      * Do special processing for client windows that are controlled by
@@ -3793,7 +3853,11 @@ ProcessMwmHints (ClientData *pCD)
     {
 	if (pHints->flags & MWM_HINTS_FUNCTIONS)
 	{
-	    if (pHints->functions & MWM_FUNC_ALL)
+	    if (pHints->functions == WM_FUNC_DEFAULT)
+	    {
+		pCD->clientFunctions = WM_FUNC_ALL;
+	    }
+	    else if (pHints->functions & WM_FUNC_DEFAULT)
 	    {
 		/* client indicating inapplicable functions */
 		pCD->clientFunctions &= ~(pHints->functions);
@@ -3822,7 +3886,11 @@ ProcessMwmHints (ClientData *pCD)
 
 	if (pHints->flags & MWM_HINTS_DECORATIONS)
 	{
-	    if (pHints->decorations & MWM_DECOR_ALL)
+	    if (pHints->decorations == WM_DECOR_DEFAULT)
+	    {
+		pCD->clientDecoration = WM_DECOR_ALL;
+	    }
+	    else if (pHints->decorations & WM_DECOR_DEFAULT)
 	    {
 		/* client indicating decorations to be removed */
 		pCD->clientDecoration &= ~(pHints->decorations);
@@ -3931,5 +3999,6 @@ ProcessMwmHints (ClientData *pCD)
     
     pCD->decor = pCD->clientDecoration;  /* !!! combine decor ... !!! */
 
+    pCD->decorUpdated = True;
 
 } /* END OF ProcessMwmHints */
