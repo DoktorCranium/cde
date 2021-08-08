@@ -25,6 +25,16 @@
 #ifndef _config_h
 #define _config_h 1
 
+#include <autotools_config.h> // determine endianess
+
+#if defined(WORDS_BIGENDIAN)
+# define OLIAS_BIG_ENDIAN
+# undef OLIAS_LITTLE_ENDIAN
+#else
+# define OLIAS_LITTLE_ENDIAN
+# undef OLIAS_BIG_ENDIAN
+#endif
+
 #ifdef OLIAS_LITTLE_ENDIAN
 # define MMDB_LITTLE_ENDIAN  // i386
 #else
