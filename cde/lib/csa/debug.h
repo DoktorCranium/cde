@@ -39,7 +39,7 @@
 #define DP(a)
 #endif /* CM_DEBUG */
 
-extern void		_DtCm_print_tick(long);
+extern void		_DtCm_print_tick(time_t t);
 
 extern void		_DtCm_print_errmsg(const char *);
 
