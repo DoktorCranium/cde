@@ -1008,6 +1008,7 @@ void WithdrawWindow (ClientData *pCD)
 	    }
 	}
 
+	XDeleteProperty (DISPLAY, pCD->client, wmGD.xa_NET_WM_STATE);
 	XUnmapWindow (DISPLAY, pCD->client);
 	XReparentWindow (DISPLAY, pCD->client, ROOT_FOR_CLIENT(pCD), x, y);
 

@@ -2575,9 +2575,11 @@ void HandleClientMessage (ClientData *pCD, XClientMessageEvent *clientEvent)
 	}
 	else if (clientEvent->data.l[0] == NormalState)
 	{
-	    if (pCD->isFullscreen)
+	    if (pCD->enterFullscreen)
 	    {
+		Boolean enterFullscreen = pCD->enterFullscreen;
 		SetClientState (pCD, NORMAL_STATE, GetTimestamp ());
+		pCD->enterFullscreen = enterFullscreen;
 		newState = MAXIMIZED_STATE;
 	    }
 	    else

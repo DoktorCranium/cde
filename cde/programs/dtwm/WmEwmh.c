@@ -149,16 +149,10 @@ static void ProcessNetWmStateFullscreen (ClientData *pCD, Boolean en)
 
     if (pHints != &hints) XFree (pHints);
 
-    pCD->isFullscreen = en;
+    pCD->enterFullscreen = en;
 
     XSendEvent (DISPLAY, ROOT_FOR_CLIENT (pCD), False, SubstructureRedirectMask,
 		(XEvent *) &clientMsgEvent);
-
-    if (en) XChangeProperty (DISPLAY, pCD->client, wmGD.xa_NET_WM_STATE,
-		    XA_ATOM, 32, PropModeReplace,
-		    (unsigned char *) &wmGD.xa_NET_WM_STATE_FULLSCREEN,
-		    1);
-    else XDeleteProperty (DISPLAY, pCD->client, wmGD.xa_NET_WM_STATE);
 } /* END OF FUNCTION ProcessNetWmStateFullscreen */
 
 

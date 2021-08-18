@@ -1629,7 +1629,7 @@ typedef struct _ClientData
     int		xBorderWidth;			/* original X border width */
     FrameInfo	frameInfo;			/* frame geometry data */
     Boolean	decorUpdated;			/* True => decoration updated */
-    Boolean	isFullscreen;			/* True => fullscreen */
+    Boolean	enterFullscreen;		/* True => enter fullscreen */
     Boolean	monitorSizeIsSet;		/* True => X, Y, W, H is set */
     int		monitorX;			/* monitor X loc */
     int		monitorY;			/* monitor Y loc */

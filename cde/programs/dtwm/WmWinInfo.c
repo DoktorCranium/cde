@@ -218,7 +218,7 @@ InitClientData (Window clientWindow)
     pCD->smClientID = (String)NULL;
 
     pCD->decorUpdated = False;
-    pCD->isFullscreen = False;
+    pCD->enterFullscreen = False;
     pCD->monitorSizeIsSet = False;
 
     return (pCD);
