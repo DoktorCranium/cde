@@ -107,6 +107,91 @@ static Bevel_Count Bevels[] =
 
 /*************************************<->*************************************
  *
+ *  CreateTitleBarWindow (pcd)
+ *
+ *
+ *  Description:
+ *  -----------
+ *  Create title bar window.
+ *
+ *
+ *  Inputs:
+ *  ------
+ *  pcd		- pointer to client data record
+ *
+ *  Outputs:
+ *  -------
+ *  pcd		- modified
+ *
+ *
+ *  Comments:
+ *  --------
+ *
+ *************************************<->***********************************/
+
+static void CreateTitleBarWindow (ClientData *pcd)
+{
+    unsigned int 	 wclass;		/* window class */
+    unsigned long 	 attr_mask;
+    XSetWindowAttributes window_attribs;
+
+    /*
+     * Create title bar window. If the title bar has its own appearance,
+     * or if there is no border around the client area,
+     * then we need to create an input/output window to draw in. Otherwise
+     * we can use an input-only window (to clip the corner resize windows).
+     */
+    attr_mask = CWCursor;
+    window_attribs.cursor = wmGD.workspaceCursor;
+
+    if (DECOUPLE_TITLE_APPEARANCE(pcd))
+    {
+	/* title bar has a different appearance than rest of frame */
+	wclass = InputOutput;
+
+	/* need to handle exposure events */
+	attr_mask |= CWEventMask;
+	window_attribs.event_mask = ExposureMask;
+
+	/*
+	 * Use background pixmap if one is specified, otherwise set the
+	 * appropriate background color.
+	 */
+
+	if (CLIENT_TITLE_APPEARANCE(pcd).backgroundPixmap)
+	{
+	    attr_mask |= CWBackPixmap;
+	    window_attribs.background_pixmap =
+		    CLIENT_TITLE_APPEARANCE(pcd).backgroundPixmap;
+	}
+	else
+	{
+	    attr_mask |= CWBackPixel;
+	    window_attribs.background_pixel =
+		    CLIENT_TITLE_APPEARANCE(pcd).background;
+	}
+    }
+    else
+    {
+	/* title bar has same appearance as rest of frame */
+	wclass = InputOnly;
+    }
+
+    pcd->clientTitleWin = XCreateWindow(DISPLAY, pcd->clientFrameWin,
+					(int) pcd->frameInfo.upperBorderWidth,
+					(int) pcd->frameInfo.upperBorderWidth,
+					pcd->frameInfo.width -
+					2*pcd->frameInfo.upperBorderWidth,
+					pcd->frameInfo.titleBarHeight,
+					0,
+					CopyFromParent,wclass,CopyFromParent,
+					attr_mask, &window_attribs);
+}
+
+
+
+/*************************************<->*************************************
+ *
  *  FrameWindow (pcd)
  *
  *
@@ -341,7 +426,6 @@ void BaseWinExposureProc (ClientData *pcd)
 Boolean ConstructFrame (ClientData *pcd)
 {
     unsigned long 	 decoration = pcd->decor;
-    unsigned int 	 wclass;		/* window class */
     unsigned long 	 attr_mask;
     XSetWindowAttributes window_attribs;
     int 		 frmX, frmY;
@@ -414,60 +498,7 @@ Boolean ConstructFrame (ClientData *pcd)
 	CreateStretcherWindows (pcd);
     }
 
-    /* 
-     * Create title bar window. If the title bar has its own appearance,
-     * or if there is no border around the client area,
-     * then we need to create an input/output window to draw in. Otherwise
-     * we can use an input-only window (to clip the corner resize windows).
-     */
-    if (decoration & MWM_DECOR_TITLE) {
-
-	attr_mask = CWCursor;
-	window_attribs.cursor = wmGD.workspaceCursor;
-
-	if (DECOUPLE_TITLE_APPEARANCE(pcd)) 
-	{
-	    /* title bar has a different appearance than rest of frame */
-	    wclass = InputOutput;
-
-	    /* need to handle exposure events */
-	    attr_mask |= CWEventMask;
-	    window_attribs.event_mask = ExposureMask;
-
-	    /* 
-	     * Use background pixmap if one is specified, otherwise set the
-	     * appropriate background color. 
-	     */
-
-	    if (CLIENT_TITLE_APPEARANCE(pcd).backgroundPixmap)
-	    {
-		attr_mask |= CWBackPixmap;
-		window_attribs.background_pixmap =
-			    CLIENT_TITLE_APPEARANCE(pcd).backgroundPixmap;
-	    }
-	    else
-	    {
-		attr_mask |= CWBackPixel;
-		window_attribs.background_pixel = 
-			    CLIENT_TITLE_APPEARANCE(pcd).background;
-	    }
-	}
-	else 
-	{
-	    /* title bar has same appearance as rest of frame */
-	    wclass = InputOnly;
-	}
-
-	pcd->clientTitleWin = XCreateWindow(DISPLAY, pcd->clientFrameWin,
-				(int) pcd->frameInfo.upperBorderWidth, 
-				(int) pcd->frameInfo.upperBorderWidth, 
-				pcd->frameInfo.width - 
-				    2*pcd->frameInfo.upperBorderWidth, 
-				pcd->frameInfo.titleBarHeight, 
-				0, 
-				CopyFromParent,wclass,CopyFromParent,
-				attr_mask, &window_attribs);
-    }
+    if (decoration & MWM_DECOR_TITLE) CreateTitleBarWindow (pcd);
 
     /* generate gadget position search structure */
     if (!AllocateGadgetRectangles (pcd))
@@ -2272,8 +2303,9 @@ void RegenerateClientFrame (ClientData *pcd)
 
 
     /* resize title bar window */
-    if (decor & MWM_DECOR_TITLE)
+    if (decor & MWM_DECOR_TITLE && !pcd->clientTitleWin)
     {
+	CreateTitleBarWindow (pcd);
 	XResizeWindow (DISPLAY, pcd->clientTitleWin, 
 	   pcd->frameInfo.width - 2*pcd->frameInfo.upperBorderWidth, 
 	   pcd->frameInfo.titleBarHeight);
