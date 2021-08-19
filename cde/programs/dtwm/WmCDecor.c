@@ -2335,6 +2335,7 @@ void RegenerateClientFrame (ClientData *pcd)
     }
 
     /* recreate gadget rectangles */
+    AllocateGadgetRectangles (pcd);
     ComputeGadgetRectangles (pcd);
 
     /* regenerate the graphics */
