@@ -1332,6 +1332,8 @@ void CreateStretcherWindows (ClientData *pcd)
     unsigned long attr_mask;
 
     for (iWin = 0; iWin < STRETCH_COUNT; iWin++) {
+	if (pcd->clientStretchWin[iWin]) continue;
+
 	switch (iWin) {
 	    case STRETCH_NORTH_WEST:
 		    GetFramePartInfo (pcd, FRAME_RESIZE_NW, 
@@ -2301,16 +2303,6 @@ void RegenerateClientFrame (ClientData *pcd)
     XMoveResizeWindow (DISPLAY, pcd->clientFrameWin, pcd->frameInfo.x, 
 	   pcd->frameInfo.y, pcd->frameInfo.width, pcd->frameInfo.height);
 
-
-    /* resize title bar window */
-    if (decor & MWM_DECOR_TITLE && !pcd->clientTitleWin)
-    {
-	CreateTitleBarWindow (pcd);
-	XResizeWindow (DISPLAY, pcd->clientTitleWin, 
-	   pcd->frameInfo.width - 2*pcd->frameInfo.upperBorderWidth, 
-	   pcd->frameInfo.titleBarHeight);
-    }
-
     /* resize base window */
     XMoveResizeWindow (DISPLAY, pcd->clientBaseWin,
 	BaseWindowX (pcd), BaseWindowY (pcd),
@@ -2318,6 +2310,8 @@ void RegenerateClientFrame (ClientData *pcd)
 
     /* resize the stretcher windows */
     if (SHOW_RESIZE_CURSORS(pcd) && (decor & MWM_DECOR_RESIZEH)) {
+	CreateStretcherWindows (pcd);
+
 	XMoveResizeWindow (DISPLAY, 
 	    pcd->clientStretchWin[STRETCH_NORTH_WEST], 
 	    0, 0, pcd->frameInfo.cornerWidth, 
@@ -2366,6 +2360,15 @@ void RegenerateClientFrame (ClientData *pcd)
 	    pcd->frameInfo.height - 2*pcd->frameInfo.cornerHeight);
     }
 
+    /* resize title bar window */
+    if (decor & MWM_DECOR_TITLE && !pcd->clientTitleWin)
+    {
+	CreateTitleBarWindow (pcd);
+	XResizeWindow (DISPLAY, pcd->clientTitleWin,
+	   pcd->frameInfo.width - 2*pcd->frameInfo.upperBorderWidth,
+	   pcd->frameInfo.titleBarHeight);
+    }
+
     /* recreate gadget rectangles */
     AllocateGadgetRectangles (pcd);
     ComputeGadgetRectangles (pcd);
@@ -2378,6 +2381,8 @@ void RegenerateClientFrame (ClientData *pcd)
         SetFrameShape (pcd);
     }
 
+    /* map all subwindows of client frame */
+    XMapSubwindows(DISPLAY, pcd->clientFrameWin);
 } /* END OF FUNCTION  RegenerateClientFrame  */
 
 

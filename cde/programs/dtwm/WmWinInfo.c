@@ -113,6 +113,7 @@ WmWorkspaceData *pIconBoxInitialWS;
 ClientData *
 InitClientData (Window clientWindow)
 {
+    int i;
     ClientData *pCD;
 
     if (!XFindContext (DISPLAY, clientWindow, wmGD.windowContextType,
@@ -220,6 +221,8 @@ InitClientData (Window clientWindow)
     pCD->decorUpdated = False;
     pCD->enterFullscreen = False;
     pCD->monitorSizeIsSet = False;
+
+    for (i = 0; i < STRETCH_COUNT; ++i) pCD->clientStretchWin[i] = (Window)0L;
 
     return (pCD);
 } /* END OF FUNCTION InitClientData */
