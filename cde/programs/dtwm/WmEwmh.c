@@ -159,7 +159,57 @@ static void ProcessNetWmStateFullscreen (ClientData *pCD, Boolean en)
 
 /*************************************<->*************************************
  *
- *  ProcessEwmh (pCD, clientEvent)
+ *  ProcessNetWmNameNetWmIconName (pCD, atom)
+ *
+ *
+ *  Description:
+ *  -----------
+ *  This function retrieves the contents of the _NET_WM_NAME or
+ *  _NET_WM_ICON_NAME property on the cient window.
+ *
+ *
+ *  Inputs:
+ *  ------
+ *  pCD = pointer to client data structure
+ *  atom = _NET_WM_NAME or _NET_WM_ICON_NAME
+ *
+ *************************************<->***********************************/
+
+static void ProcessNetWmNameNetWmIconName (ClientData *pCD, Atom atom)
+{
+    Atom actualType;
+    int actualFormat;
+    unsigned long nitems;
+    unsigned long leftover;
+    unsigned char *netNameProp = NULL;
+    XTextProperty nameProp = {0};
+
+    if (XGetWindowProperty (DISPLAY, pCD->client, atom, 0L, 1000000L, False,
+			    wmGD.xa_UTF8_STRING, &actualType, &actualFormat,
+			    &nitems, &leftover, &netNameProp) != Success)
+	goto done;
+
+    if (actualType != wmGD.xa_UTF8_STRING) goto done;
+    if (actualFormat != 8) goto done;
+
+    if (Xutf8TextListToTextProperty (DISPLAY, (char **) &netNameProp, 1,
+			    XUTF8StringStyle, &nameProp) != Success) goto done;
+
+    if (atom == wmGD.xa_NET_WM_NAME)
+	XSetWMName (DISPLAY, pCD->client, &nameProp);
+    else if (atom == wmGD.xa_NET_WM_ICON_NAME)
+	XSetWMIconName (DISPLAY, pCD->client, &nameProp);
+
+done:
+    if (netNameProp) XFree (netNameProp);
+    if (nameProp.value) XFree ((char*) nameProp.value);
+} /* END OF FUNCTION ProcessNetWmNameNetWmIconName */
+
+
+
+/*************************************<->*************************************
+ *
+ *  HandleClientMessageEwmh (pCD, clientEvent)
  *
  *
  *  Description:
@@ -174,7 +224,7 @@ static void ProcessNetWmStateFullscreen (ClientData *pCD, Boolean en)
  *
  *************************************<->***********************************/
 
-void ProcessEwmh (ClientData *pCD, XClientMessageEvent *clientEvent)
+void HandleClientMessageEwmh (ClientData *pCD, XClientMessageEvent *clientEvent)
 {
     int i;
 
@@ -194,7 +244,36 @@ void ProcessEwmh (ClientData *pCD, XClientMessageEvent *clientEvent)
 	    }
 	}
     }
-} /* END OF FUNCTION ProcessEwmh */
+} /* END OF FUNCTION HandleClientMessageEwmh */
+
+
+
+/*************************************<->*************************************
+ *
+ *  HandlePropertyNotifyEwmh (pCD, clientEvent)
+ *
+ *
+ *  Description:
+ *  -----------
+ *  This function handles PropertyNotify events (indicating EWMH property
+ *  changes) that are reported to the client window.
+ *
+ *
+ *  Inputs:
+ *  ------
+ *  pCD = pointer to client data
+ *  clientEvent = pointer to a client message event on the root window
+ *
+ *************************************<->***********************************/
+
+void HandlePropertyNotifyEwmh (ClientData *pCD, XPropertyEvent *propertyEvent)
+{
+    if (propertyEvent->atom == wmGD.xa_NET_WM_NAME ||
+	propertyEvent->atom == wmGD.xa_NET_WM_ICON_NAME)
+    {
+	ProcessNetWmNameNetWmIconName (pCD, propertyEvent->atom);
+    }
+} /* END OF FUNCTION HandlePropertyNotifyEwmh */
 
 
 
@@ -217,18 +296,22 @@ void ProcessEwmh (ClientData *pCD, XClientMessageEvent *clientEvent)
 void SetupWmEwmh (void)
 {
     enum {
+	XA_UTF8_STRING,
 	XA_NET_SUPPORTED,
-	XA_NET_WM_NAME,
 	XA_NET_SUPPORTING_WM_CHECK,
+	XA_NET_WM_NAME,
+	XA_NET_WM_ICON_NAME,
 	XA_NET_WM_FULLSCREEN_MONITORS,
 	XA_NET_WM_STATE,
 	XA_NET_WM_STATE_FULLSCREEN
     };
 
     static char *atom_names[] = {
+	"UTF8_STRING",
 	_XA_NET_SUPPORTED,
-	_XA_NET_WM_NAME,
 	_XA_NET_SUPPORTING_WM_CHECK,
+	_XA_NET_WM_NAME,
+	_XA_NET_WM_ICON_NAME,
 	_XA_NET_WM_FULLSCREEN_MONITORS,
 	_XA_NET_WM_STATE,
 	_XA_NET_WM_STATE_FULLSCREEN
@@ -240,6 +323,9 @@ void SetupWmEwmh (void)
 
     XInternAtoms(DISPLAY, atom_names, XtNumber(atom_names), False, atoms);
 
+    wmGD.xa_UTF8_STRING = atoms[XA_UTF8_STRING];
+    wmGD.xa_NET_WM_NAME = atoms[XA_NET_WM_NAME];
+    wmGD.xa_NET_WM_ICON_NAME = atoms[XA_NET_WM_ICON_NAME];
     wmGD.xa_NET_WM_FULLSCREEN_MONITORS = atoms[XA_NET_WM_FULLSCREEN_MONITORS];
     wmGD.xa_NET_WM_STATE = atoms[XA_NET_WM_STATE];
     wmGD.xa_NET_WM_STATE_FULLSCREEN = atoms[XA_NET_WM_STATE_FULLSCREEN];
@@ -249,8 +335,8 @@ void SetupWmEwmh (void)
 	childWindow = XCreateSimpleWindow(DISPLAY, wmGD.Screens[scr].rootWindow,
 			-1, -1, 1, 1, 0, 0, 0);
 
-	XChangeProperty(DISPLAY, childWindow, atoms[XA_NET_WM_NAME], None, 32,
-			        PropModeReplace, "DTWM", 5);
+	XChangeProperty(DISPLAY, childWindow, atoms[XA_NET_WM_NAME],
+			atoms[XA_UTF8_STRING], 8, PropModeReplace, "DTWM", 5);
 
 	XChangeProperty(DISPLAY, childWindow,
 			atoms[XA_NET_SUPPORTING_WM_CHECK], XA_WINDOW, 32,
@@ -262,6 +348,6 @@ void SetupWmEwmh (void)
 
 	XChangeProperty(DISPLAY, wmGD.Screens[scr].rootWindow,
 			atoms[XA_NET_SUPPORTED], XA_ATOM, 32, PropModeReplace,
-			(unsigned char *)&atoms[XA_NET_SUPPORTING_WM_CHECK], 4);
+			(unsigned char *)&atoms[XA_NET_SUPPORTING_WM_CHECK], 6);
     }
 } /* END OF FUNCTION SetupWmEwmh */

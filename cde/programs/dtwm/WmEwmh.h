@@ -30,14 +30,17 @@
 #define _NET_WM_STATE_ADD	1
 #define _NET_WM_STATE_TOGGLE	2
 
-#define _XA_NET_SUPPORTED              	"_NET_SUPPORTED"
-#define _XA_NET_WM_NAME			"_NET_WM_NAME"
+#define _XA_NET_SUPPORTED		"_NET_SUPPORTED"
 #define _XA_NET_SUPPORTING_WM_CHECK	"_NET_SUPPORTING_WM_CHECK"
-#define _XA_NET_WM_FULLSCREEN_MONITORS 	"_NET_WM_FULLSCREEN_MONITORS"
-#define _XA_NET_WM_STATE               	"_NET_WM_STATE"
-#define _XA_NET_WM_STATE_FULLSCREEN    	"_NET_WM_STATE_FULLSCREEN"
+#define _XA_NET_WM_NAME			"_NET_WM_NAME"
+#define _XA_NET_WM_ICON_NAME		"_NET_WM_ICON_NAME"
+#define _XA_NET_WM_FULLSCREEN_MONITORS	"_NET_WM_FULLSCREEN_MONITORS"
+#define _XA_NET_WM_STATE		"_NET_WM_STATE"
+#define _XA_NET_WM_STATE_FULLSCREEN	"_NET_WM_STATE_FULLSCREEN"
 
-void ProcessEwmh (ClientData *pCD, XClientMessageEvent *clientEvent);
+void HandleClientMessageEwmh (ClientData *pCD,
+		XClientMessageEvent *clientEvent);
+void HandlePropertyNotifyEwmh (ClientData *pCD, XPropertyEvent *propertyEvent);
 void SetupWmEwmh (void);
 
 #endif /* _Dt_WmEwmh_h_ */
