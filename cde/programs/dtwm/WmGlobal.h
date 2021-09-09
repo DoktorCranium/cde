@@ -1935,6 +1935,9 @@ typedef struct _WmGlobalData
     Atom	xa_SM_CLIENT_ID;
     Atom	xa_WMSAVE_HINT;
 
+    Atom	xa_UTF8_STRING;
+    Atom	xa_NET_WM_NAME;
+    Atom	xa_NET_WM_ICON_NAME;
     Atom	xa_NET_WM_FULLSCREEN_MONITORS;
     Atom	xa_NET_WM_STATE;
     Atom	xa_NET_WM_STATE_FULLSCREEN;
