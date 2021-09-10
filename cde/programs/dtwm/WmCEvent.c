@@ -611,7 +611,8 @@ Boolean HandleEventsOnSpecialWindows (XEvent *pEvent)
 	    case ClientMessage:
 	    {
 		if (pCD = InitClientData (pEvent->xclient.window)) {
-		    ProcessEwmh (pCD, (XClientMessageEvent *) pEvent);
+		    HandleClientMessageEwmh(pCD,
+				    (XClientMessageEvent *) pEvent);
 		    dispatchEvent = False;
 		}
 		break;
@@ -840,7 +841,8 @@ void HandleCPropertyNotify (ClientData *pCD, XPropertyEvent *propertyEvent)
 		    ProcessColormapList (ACTIVE_PSD, pCD);
 		}
 	    }
-	    else if (propertyEvent->atom == wmGD.xa_MWM_HINTS) {
+	    else if (propertyEvent->atom == wmGD.xa_MWM_HINTS)
+	    {
 		long suppliedReturn;
 		XSizeHints hintsReturn = {0};
 
@@ -855,6 +857,10 @@ void HandleCPropertyNotify (ClientData *pCD, XPropertyEvent *propertyEvent)
 
 		ProcessMwmHints (pCD);
 		SetClientOffset (pCD);
+	    }
+	    else
+	    {
+		HandlePropertyNotifyEwmh (pCD, propertyEvent);
 	    }
 	    break;
 	}
@@ -2602,7 +2608,7 @@ void HandleClientMessage (ClientData *pCD, XClientMessageEvent *clientEvent)
     }
     else
     {
-	ProcessEwmh (pCD, clientEvent);
+	HandleClientMessageEwmh (pCD, clientEvent);
     }
 } /* END OF FUNCTION HandleClientMessage */
 

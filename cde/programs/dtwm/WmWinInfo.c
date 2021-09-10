@@ -261,6 +261,7 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
 {
     ClientData *pCD;
     XSetWindowAttributes sAttributes;
+    XPropertyEvent propertyEvent;
 
     if (!(pCD = InitClientData (clientWindow)))
     {
@@ -420,6 +421,8 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
      */
 
     ProcessWmWindowTitle (pCD, TRUE);
+    propertyEvent.atom = wmGD.xa_NET_WM_NAME;
+    HandlePropertyNotifyEwmh (pCD, &propertyEvent);
 
 
     /*
@@ -427,6 +430,8 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
      */
 
     ProcessWmIconTitle (pCD, TRUE);
+    propertyEvent.atom = wmGD.xa_NET_WM_ICON_NAME;
+    HandlePropertyNotifyEwmh (pCD, &propertyEvent);
 
 
     /*
