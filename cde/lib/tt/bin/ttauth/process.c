@@ -478,25 +478,16 @@ static Bool ttauth_allowed = True;	/* if allowed to write auth file */
 static char *ttauth_filename = NULL;
 static Bool dieing = False;
 
-#ifdef SIGNALRETURNSINT
-#define _signal_t int
-#else
-#define _signal_t void
-#endif
-
 /* ARGSUSED */
-static _signal_t
+static void
 die(int sig)
 {
     dieing = True;
     exit (auth_finalize ());
     /* NOTREACHED */
-#ifdef SIGNALRETURNSINT
-    return -1;				/* for picky compilers */
-#endif
 }
 
-static _signal_t
+static void
 catchsig(int sig)
 {
 #ifdef SYSV
@@ -505,9 +496,6 @@ catchsig(int sig)
     if (verbose && ttauth_modified) printf ("\r\n");
     die (sig);
     /* NOTREACHED */
-#ifdef SIGNALRETURNSINT
-    return -1;				/* for picky compilers */
-#endif
 }
 
 static void

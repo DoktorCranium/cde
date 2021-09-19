@@ -161,11 +161,7 @@
 /* Utmp rec prefix */
 #define UTMPREC_PREFIX  "dt"
 
-#ifdef SIGNALRETURNSINT
-#define SIGVAL int
-#else
 #define SIGVAL void
-#endif
 
 
 #ifndef UID_NO_CHANGE

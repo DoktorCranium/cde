@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = ttauth
 
-ttauth_CFLAGS = -I../../slib -I../../lib -DSIGNALRETURNSINT
+ttauth_CFLAGS = -I../../slib -I../../lib
 
 ttauth_LDADD = @LIBTT@ $(X_LIBS)
 

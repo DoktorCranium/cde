@@ -70,11 +70,7 @@ extern int errno;
 # include <DtXinerama.h>
 #endif
 
-#ifdef SIGNALRETURNSINT
-#define SIGVAL int
-#else
 #define SIGVAL void
-#endif
 
 
 /****************************************************************************
