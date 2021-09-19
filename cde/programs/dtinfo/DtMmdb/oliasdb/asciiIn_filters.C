@@ -75,6 +75,7 @@ char* get_oid_2(info_lib* infolib_ptr, char* base_str, char* locator)
     const char *this_node_locator = x.locator();
 
     if ( strcmp( this_node_locator, locator) == 0 ) {
+        memset(oid_in_string_buf, 0, BUFSIZ);
         ostringstream strout(oid_in_string_buf, ios::out);
         x.its_oid().asciiOut(strout);
         int len = strout.str().size();
