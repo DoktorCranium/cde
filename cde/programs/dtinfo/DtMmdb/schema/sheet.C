@@ -354,7 +354,7 @@ int
 #if  schemaDEBUG
     char * schemas;
 
-    if ( schemas = getenv(" schemaDEBUG"))
+    if ( schemas = getenv("schemaDEBUG"))
     {
          scheman = * schemas;
         if ( scheman >= '0' &&  scheman <= '9')
