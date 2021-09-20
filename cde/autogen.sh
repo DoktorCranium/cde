@@ -6,7 +6,7 @@ test -z "$srcdir" && srcdir=.
 cd "$srcdir"
 
 libtoolize --force --automake
-aclocal
+aclocal -I m4
 autoconf -f
 autoheader
 automake --foreign  --include-deps --add-missing

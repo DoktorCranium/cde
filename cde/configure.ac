@@ -421,6 +421,9 @@ AC_CHECK_LIB(Xm, XmTextSetString, [XTOOLLIB="-lXm ${XTOOLLIB}"], ,
 XTOOLLIB="${EXTRA_INCS} ${EXTRA_LIBS} ${X_EXTRA_LIBS} ${XTOOLLIB}"
 AC_SUBST([XTOOLLIB])
 
+dnl iconv
+AM_ICONV
+
 dnl figure out pam support
 
 AC_CHECK_LIB(pam, pam_start,

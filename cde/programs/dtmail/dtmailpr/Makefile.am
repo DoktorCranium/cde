@@ -5,11 +5,7 @@ bin_PROGRAMS = dtmailpr
 dtmailpr_CXXFLAGS = -I../include -I../../dtcompat -I../../../. \
 		    -I$(srcdir)/lib
 
-dtmailpr_LDADD = ../libDtMail/libDtMail.a $(DTCLIENTLIBS) $(XTOOLLIB)
-
-if FREEBSD
-dtmailpr_LDADD += -liconv
-endif
+dtmailpr_LDADD = ../libDtMail/libDtMail.a $(DTCLIENTLIBS) $(XTOOLLIB) $(LTLIBICONV)
 
 # FIXME - solaris
 #if SOLARIS

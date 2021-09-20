@@ -45,6 +45,10 @@ static char sccsid[] = "$TOG: RFCMIME.c /main/11 1999/06/30 12:08:55 mgreess $";
  *   OBJECT CODE ONLY SOURCE MATERIALS
  */
 
+#ifdef HAVE_CONFIG_H
+#include <autotools_config.h>
+#endif
+
 #include <stdio.h>
 #include <errno.h>
 #include <unistd.h>
@@ -61,11 +65,7 @@ static char sccsid[] = "$TOG: RFCMIME.c /main/11 1999/06/30 12:08:55 mgreess $";
 #include <locale.h>
 #include <LocaleXlate.h>
 
-#ifdef ICONV_INBUF_CONST
-# define ICONV_INBUF_TYPE	const char **
-#else
-# define ICONV_INBUF_TYPE	char **
-#endif
+#define ICONV_INBUF_TYPE	ICONV_CONST char **
 
 #define WORKSIZE 1024*10	
 /*

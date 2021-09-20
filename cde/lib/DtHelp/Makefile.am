@@ -13,10 +13,10 @@ libDtHelp_la_CFLAGS = -I./il -I./jpeg -I../DtSvc/DtUtil2 -DDTLIB \
 		      -DCDE_CONFIGURATION_TOP='"$(CDE_CONFIGURATION_TOP)"' \
 		      @DT_INCDIR@ @DTI_INCDIR@
 
-libDtHelp_la_LIBADD = $(JPEGLIB) il/libil.la
+libDtHelp_la_LIBADD = $(JPEGLIB) il/libil.la $(LTLIBICONV)
 
 if SOLARIS
-libDtHelp_la_CFLAGS += -DICONV_INBUF_CONST=const -DLSB_BIT_ORDER
+libDtHelp_la_CFLAGS += -DLSB_BIT_ORDER
 libDtHelp_la_LIBADD += -lw -lgen -lm -lc
 endif
 
@@ -26,7 +26,6 @@ endif
 
 if BSD
 libDtHelp_la_CFLAGS += -DLSB_BIT_ORDER
-libDtHelp_la_LIBADD += -liconv
 endif
 
 

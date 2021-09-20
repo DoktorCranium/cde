@@ -38,6 +38,10 @@ $COPYRIGHT$:
 ==$END$==============================================================*/
 #endif
 
+#ifdef HAVE_CONFIG_H
+#include <autotools_config.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -523,11 +527,7 @@ cleanup:
    return ret;
 } /* count lines */
 
-#ifdef ICONV_INBUF_CONST
-# define ICONV_INBUF_TYPE	const char **
-#else
-# define ICONV_INBUF_TYPE	char **
-#endif
+#define ICONV_INBUF_TYPE	ICONV_CONST char **
 
 #define WORKSIZE 1024*10	/* 10k */
 

@@ -42,6 +42,9 @@
  **
  ****************************************************************************
  ************************************<+>*************************************/
+#ifdef HAVE_CONFIG_H
+#include <autotools_config.h>
+#endif
 /*
  * system includes
  */
@@ -70,11 +73,7 @@
 # define iconv_close(a)		(0)
 #endif
 
-#ifdef ICONV_INBUF_CONST
-# define ICONV_INBUF_TYPE	const char **
-#else
-# define ICONV_INBUF_TYPE	char **
-#endif
+#define ICONV_INBUF_TYPE	ICONV_CONST char **
 
 /**** Types ****/
 /* Private structure of the IconvContext.  Public

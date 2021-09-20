@@ -50,6 +50,10 @@
 #ifndef lint
 #endif
 
+#ifdef HAVE_CONFIG_H
+#include <autotools_config.h>
+#endif
+
 #include <stdio.h>
 #include <errno.h>
 #include <stdlib.h>
@@ -128,11 +132,7 @@ static int	      isFirstCall = ~0;
 static iconv_t        CD = (iconv_t)-1;
 static int	      amI_932 = ~0;
 
-#ifdef ICONV_INBUF_CONST
-# define ICONV_INBUF_TYPE	const char **
-#else
-# define ICONV_INBUF_TYPE	char **
-#endif
+#define ICONV_INBUF_TYPE	ICONV_CONST char **
 
 void _converter_( void *from, unsigned long from_len,
 			void **to,  unsigned long *to_len )
