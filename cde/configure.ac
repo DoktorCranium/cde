@@ -123,13 +123,10 @@ AM_CONDITIONAL([HPUX], [test "$build_hpux" = "yes"])
 dnl Add osmajor/minor version to cppflags.
 OSVERSION="-DOSMAJORVERSION=$OSMAJORVERSION -DOSMINORVERSION=$OSMINORVERSION"
 
-dnl set CSRG_BASED define for the BSD's.  Also, they use /usr/local
-dnl for a lot of things, so add that to the INCS and LIBS
+dnl set CSRG_BASED define for the BSD's.
 if test "$bsd" = "yes"
 then
         SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DCSRG_BASED"
-        EXTRA_INCS="-I/usr/local/include ${EXTRA_INCS}"
-        EXTRA_LIBS="-L/usr/local/lib ${EXTRA_LIBS}"
 fi
 
 is_x86_64=no
