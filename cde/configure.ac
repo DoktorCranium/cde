@@ -85,6 +85,9 @@ case "${host_os}" in
 		bsd=yes
                 OSMAJORVERSION=10
                 OSMINORVERSION=0
+                # fbsd needs the iconv plug to avoid conflict with libiconv
+                # and libc implementations.  We prefer the libc impl.
+                SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DLIBICONV_PLUG"
 		;;
 	openbsd*)
 		build_openbsd=yes
