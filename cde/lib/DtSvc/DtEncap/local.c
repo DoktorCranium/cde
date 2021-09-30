@@ -202,12 +202,7 @@ void local_channel_object_input_handler(void * client_data,
   timeout.tv_sec = 0;
   timeout.tv_usec = 0;
   
-#if defined(SVR4) || defined(__hpux) || defined(__OpenBSD__) || defined(__linux__)
-  select(max_fds, (fd_set*)&read_fd_vect, NULL, (fd_set*)&except_fd_vect, &timeout);
-#else
-  /* UX has select defined with int*, not fd_set* parms */
-  select(max_fds, (int*)&read_fd_vect, NULL, (int*)&except_fd_vect, &timeout);
-#endif
+  select(max_fds, &read_fd_vect, NULL, &except_fd_vect, &timeout);
   if(! (FD_ISSET(fd, &read_fd_vect) || FD_ISSET(fd, &except_fd_vect))) {
     return /* (FALSE) */;
   }
