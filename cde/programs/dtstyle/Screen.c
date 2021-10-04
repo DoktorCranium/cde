@@ -58,6 +58,7 @@
 #include <stdio.h>
 #include <signal.h>
 #include <errno.h>
+#include <ctype.h>
 
 #include <X11/Intrinsic.h>
 #include <X11/Xutil.h>

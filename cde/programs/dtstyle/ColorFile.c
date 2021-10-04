@@ -44,6 +44,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <fnmatch.h>
 
 #include <X11/Xlib.h>
 

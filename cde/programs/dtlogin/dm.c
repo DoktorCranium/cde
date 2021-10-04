@@ -59,6 +59,7 @@
 #else
 # include	<utmp.h>
 #endif
+# include	<signal.h>
 # include	<time.h>
 # include	<utime.h>
 # include	<pwd.h>

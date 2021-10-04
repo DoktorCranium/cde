@@ -60,6 +60,7 @@
 #include <sys/signal.h>
 #include <stdarg.h>
 #define Va_start(a,b) va_start(a,b)
+#include <unistd.h>
 
 #include <X11/Xlibint.h>
 #include <Xm/Xm.h>

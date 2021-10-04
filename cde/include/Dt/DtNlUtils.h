@@ -41,6 +41,7 @@
 #include <langinfo.h>
 #include <Dt/MsgCatP.h>
 #endif
+#include <ctype.h>
 
 #include <X11/Intrinsic.h>
 

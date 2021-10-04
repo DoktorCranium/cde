@@ -59,6 +59,7 @@
  */
 #include "SearchE.h"
 #include <ctype.h>
+#include <time.h>
 
 /******#define DEBUG_KWIC*********/
 /********#define DEBUG_FINDSTR_ITER***********/

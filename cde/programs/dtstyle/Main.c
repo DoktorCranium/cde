@@ -50,6 +50,7 @@
 /*+++++++++++++++++++++++++++++++++++++++*/
 
 #include "signal.h"
+#include <sys/wait.h>
 #ifdef TIME
 # include <time.h>
 #endif

@@ -107,6 +107,7 @@ in this Software without prior written authorization from the X Consortium.
 #include    <sys/socket.h>
 #include    <netinet/in.h>
 #include    <sys/ioctl.h>
+#include    <arpa/inet.h>
 
 /*
  * From Xm/XmStringI.h

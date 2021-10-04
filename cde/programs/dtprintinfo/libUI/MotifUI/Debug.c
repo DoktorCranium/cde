@@ -23,6 +23,7 @@
 /* $TOG: Debug.c /main/5 1998/04/06 13:32:19 mgreess $ */
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <signal.h>
 #include <errno.h>
 #include <X11/Intrinsic.h>

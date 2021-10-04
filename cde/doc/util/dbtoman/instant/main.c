@@ -97,6 +97,7 @@
 #include <sys/stat.h>
 #include <sys/file.h>
 #include <time.h>
+#include <unistd.h>
 
 #define STORAGE
 #include "general.h"

@@ -75,6 +75,7 @@
 #include <pwd.h>
 #include <dirent.h>
 #include <limits.h>
+#include <ctype.h>
 
 #ifdef SIA
 #include <sia.h>

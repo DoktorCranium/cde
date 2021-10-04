@@ -82,8 +82,10 @@
 #include <Xm/Xm.h>
 #include <Xm/XmP.h>
 #include <Xm/TextF.h>
+#include <stdlib.h>
 #include "externals.h"
 #include <string.h>
+#include <unistd.h>
 
 #include <Xm/DragC.h>
 #include <Dt/Dnd.h>

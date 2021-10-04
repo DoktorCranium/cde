@@ -58,6 +58,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <locale.h>
+#include <ctype.h>
 #include <Dt/MsgCatP.h>
 #include "msgfac_msg.h"
 

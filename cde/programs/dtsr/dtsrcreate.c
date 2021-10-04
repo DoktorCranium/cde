@@ -92,6 +92,7 @@
 #include <ctype.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <stdlib.h>
 #include <locale.h>
 #include "vista.h"
 

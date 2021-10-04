@@ -60,7 +60,7 @@
 #include    <dirent.h>
 #include    <Dt/MsgCatP.h>
 
-# include   <sys/signal.h>
+#include   <signal.h>
 
 # ifndef NULL
 #  define NULL 0

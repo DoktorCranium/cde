@@ -65,7 +65,7 @@
 #include <sys/stat.h>
 #endif	/* USE_TIOCCONS */
 
-#if defined(LINUX_ARCHITECTURE) || defined(OPENBSD_ARCHITECTURE)
+#if defined(LINUX_ARCHITECTURE) || defined(CSRG_BASED)
 #include <sys/ioctl.h>
 #endif /* LINUX_ARCHITECTURE */
 

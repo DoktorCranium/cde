@@ -46,11 +46,8 @@
 #include "TermPrimBufferP.h"
 #include <Xm/DropSMgr.h>
 #include <Xm/DropTrans.h>
-
-#if defined(OPENBSD_ARCHITECTURE)
 #include <ctype.h>
 #include <wctype.h>
-#endif
 
 /* This is for Sun's two button mouse */
 

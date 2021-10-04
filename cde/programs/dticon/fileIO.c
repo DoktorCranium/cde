@@ -61,6 +61,7 @@
 #include <Xm/FileSB.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include "externals.h"
 #include "main.h"
 

@@ -23,6 +23,8 @@
  * Floor, Boston, MA 02110-1301 USA
  */
 
+#include <stdlib.h>
+
 /*
  * Included Files:
  */
