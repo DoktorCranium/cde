@@ -170,11 +170,7 @@ static int generic_error_handler(Display *edpy, XErrorEvent *eevent)
  *
  *****************************************************************************/
 static void
-#if defined(__aix) || defined(__linux__)
 handle_SIGCLD(int sigNum)
-#else
-handle_SIGCLD(void)
-#endif /* __aix */
 {
     int exitStatus, i;
     pid_t pid;
