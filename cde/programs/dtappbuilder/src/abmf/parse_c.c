@@ -788,6 +788,7 @@ reverse_string(STRING buf)
  * Gets the next C segment from the file.
  */
 
+int
 get_seg(BFile file, CSeg cseg)
 {
     int		return_value = 0;

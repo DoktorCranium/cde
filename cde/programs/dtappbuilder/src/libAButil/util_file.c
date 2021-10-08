@@ -257,7 +257,7 @@ util_get_dir_name_from_path(
 #ifdef __cplusplus
 extern "C" {
 #endif
-    extern ftruncate(int filedes, off_t length);
+    extern int ftruncate(int filedes, off_t length);
 #ifdef __cplusplus
 } // extern "C"
 #endif

@@ -490,6 +490,7 @@ objlist_dup(ABObjList list)
 **************************************************************************/
 
 
+static int
 objlistP_shrink_array(ABObjList list, int sizeDiff)
 {
     int		return_value = 0;

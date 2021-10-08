@@ -221,6 +221,7 @@ int ConvertAddr (XdmcpNetaddr saddr, int *len, char **addr)
     return retval;
 }
 
+int
 addressEqual (XdmcpNetaddr a1, int len1, XdmcpNetaddr a2, int len2)
 {
     int partlen1, partlen2;

@@ -1359,6 +1359,7 @@ static void	load_into_bintree (
 /*                    MAIN                    */
 /*                                            */
 /**********************************************/
+int
 main (int argc, char **argv)
 {
     int			i;

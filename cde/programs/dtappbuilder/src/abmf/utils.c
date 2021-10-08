@@ -500,6 +500,7 @@ abmfP_assign_widget_names(ABObj root)
 }
 
 
+int
 abmfP_tree_set_written(ABObj root, BOOL written)
 {
     AB_TRAVERSAL        trav;
@@ -515,6 +516,7 @@ abmfP_tree_set_written(ABObj root, BOOL written)
 }
 
 
+int
 abmfP_obj_set_items_written(ABObj rootObj, BOOL written)
 {
     AB_TRAVERSAL        trav;

@@ -127,7 +127,7 @@ static unsigned char	key[8];
 static long		key[2];
 #endif
 
-static sumFile (char *name, long sum[2]);
+static int sumFile (char *name, long sum[2]);
 
 #ifdef HASXDMAUTH
 

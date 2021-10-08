@@ -246,7 +246,7 @@ write_assign_local_vars_for_icon(GenCodeInfo genCodeInfo, ABObj obj)
  * Assigns values to local variables to create the label for
  * this object
  */
-static
+static int
 write_assign_local_vars_for_label(GenCodeInfo genCodeInfo, ABObj obj)
 {
     File        codeFile = genCodeInfo->code_file;
@@ -369,7 +369,7 @@ write_assign_local_vars_for_label(GenCodeInfo genCodeInfo, ABObj obj)
  * Assigns values to local variables to create the Accelerator Text for
  * this object
  */
-static
+static int
 write_assign_local_vars_for_acceltext(GenCodeInfo genCodeInfo, ABObj obj)
 {
     File        codeFile = genCodeInfo->code_file;
@@ -409,7 +409,7 @@ write_assign_local_vars_for_acceltext(GenCodeInfo genCodeInfo, ABObj obj)
  * Assigns values to local variables to create the Value for this object
  * (valid only for text fields and text panes).
  */
-static
+static int
 write_assign_local_vars_for_value(GenCodeInfo genCodeInfo, ABObj obj)
 {
     File        codeFile = genCodeInfo->code_file;
@@ -447,7 +447,7 @@ write_assign_local_vars_for_value(GenCodeInfo genCodeInfo, ABObj obj)
  * Assigns values to local variables to create button label strings for 
  * file choosers
  */
-static
+static int
 write_assign_local_vars_for_fchooser(GenCodeInfo genCodeInfo, ABObj obj)
 {
     File        codeFile = genCodeInfo->code_file;

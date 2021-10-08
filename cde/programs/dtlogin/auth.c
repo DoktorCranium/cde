@@ -696,7 +696,7 @@ checkEntry (Xauth *auth)
 
 static int  doWrite;
 
-static
+static int
 writeAuth (FILE *file, Xauth *auth)
 {
     if (debugLevel >= 15) {	/* normally too verbose */

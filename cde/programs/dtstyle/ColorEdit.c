@@ -162,7 +162,7 @@ EditData edit;
 /* Internal Variables                    */
 /*+++++++++++++++++++++++++++++++++++++++*/
 static saveRestore save = {FALSE, 0, };
-static OldNewSame = False;
+static Boolean OldNewSame = False;
 
 /************************************************************************
  *  ColorEditor() - Create ColorEditor dialog first time up.

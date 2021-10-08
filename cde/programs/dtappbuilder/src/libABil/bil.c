@@ -2563,6 +2563,7 @@ bilP_tt_desktop_level_to_string(AB_TOOLTALK_LEVEL tt_level)
     return (string);
 }
 
+BIL_TOKEN
 bilP_default_button_to_token(AB_DEFAULT_BUTTON button)
 {
     BIL_TOKEN           token = AB_BIL_UNDEF;

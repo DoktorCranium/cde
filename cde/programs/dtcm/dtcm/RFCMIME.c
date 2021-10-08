@@ -965,6 +965,7 @@ base64size(const unsigned long len)
     return(b_len);
 }
 
+Encoding
 getEncodingType(const char * body,
                          const unsigned int len,
                          boolean_t strict_mime)

@@ -475,6 +475,7 @@ objxm_remove_arg(
 /*
  * Set attachment Resources for a Composite Object hierarchy
  */
+int
 objxm_comp_set_attachment_args(
     ABObj	obj,
     OBJXM_CONFIG_TYPE ctype

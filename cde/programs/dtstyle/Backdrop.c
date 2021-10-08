@@ -101,9 +101,9 @@ will not operate because there are no backdrop\nfiles available. Check $HOME/.dt
 
 static int CreateBackdropDialog( Widget parent) ;
 static void MoreBitmaps( void ) ;
-static ReadBitmaps( void ) ;
+static int ReadBitmaps( void ) ;
 static Boolean CreatePixmaps( void ) ;
-static ReadBitmapDirectory( char *dir ) ;
+static int ReadBitmapDirectory( char *dir ) ;
 static void DrawBitmap( 
                         Widget w,
                         XtPointer client_data,
@@ -557,7 +557,7 @@ cmpstringp(const void *p1, const void *p2)
  *      resource.
  *   4) Read the user's home directory /$HOME/.dt/backdrops.
  ************************************************************************/
-static 
+static int
      ReadBitmaps( void )
 {
   int            status;
@@ -686,7 +686,7 @@ CreatePixmaps( void )
  *   ReadBitmapDirectory()
  *           Create an array of bitmap names overriding duplicates
  ************************************************************************/
-static
+static int
 ReadBitmapDirectory( 
     char *dir )
 

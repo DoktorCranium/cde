@@ -583,6 +583,7 @@ abmfP_write_tooltalk_callback_begin(
 
 
 
+int
 abmfP_write_clear_proc_decl(
 		GenCodeInfo	genCodeInfo,
 		ABObj		obj
@@ -979,6 +980,7 @@ abmfP_write_file_footer(
     return 0;
 }
 
+int
 abmfP_write_msg_clear_proc_decl(
                 GenCodeInfo     genCodeInfo,
                 ABObj           module

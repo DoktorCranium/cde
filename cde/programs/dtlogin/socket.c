@@ -105,6 +105,7 @@ extern int	chooserFd;
 extern FD_TYPE	WellKnownSocketsMask;
 extern int	WellKnownSocketsMax;
 
+int
 CreateWellKnownSockets (void)
 {
     struct sockaddr_in	sock_addr;
@@ -154,6 +155,7 @@ CreateWellKnownSockets (void)
     FD_SET (chooserFd, &WellKnownSocketsMask);
 }
 
+int
 GetChooserAddr (char *addr, int *lenp)
 {
     struct sockaddr_in	in_addr;

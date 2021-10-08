@@ -40,7 +40,7 @@ M_WCHAR *m_cyclent(LOGICAL init, unsigned char *type, M_WCHAR **content, unsigne
 {
     static M_TRIE *current ;
     static M_TRIE *ancestor[M_NAMELEN + 1] ;
-    static length = 0 ;
+    static int length = 0 ;
     static M_WCHAR name[M_NAMELEN + 1] ;
 
     if (init) {

@@ -54,7 +54,7 @@
 # include	"dm.h"
 # include	"vgmsg.h"
 
-static receivedUsr1;
+static int receivedUsr1;
 
 
 
