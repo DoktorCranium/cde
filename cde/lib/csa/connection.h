@@ -72,7 +72,6 @@ typedef struct conn {
 	enum clnt_stat	stat;
 } _DtCm_Connection;
 
-#ifdef SunOS
 extern enum clnt_stat _DtCm_clnt_call(
 				_DtCm_Connection *conn,
 				u_long proc,
@@ -81,7 +80,6 @@ extern enum clnt_stat _DtCm_clnt_call(
 				xdrproc_t outproc,
 				caddr_t out,
 				struct timeval tout);
-#endif
 
 extern CSA_return_code _DtCm_add_registration(
 				_DtCm_Client_Info *ci,
@@ -107,10 +105,6 @@ extern CSA_return_code _DtCm_create_tcp_client(
 extern CSA_return_code _DtCm_get_server_rpc_version(char *host, int *vers);
 
 extern CSA_return_code _DtCm_clntstat_to_csastat(enum clnt_stat clntstat);
-
-extern enum clnt_stat _DtCm_clnt_call(_DtCm_Connection *conn,
-                u_long proc, xdrproc_t inproc, caddr_t in,
-                xdrproc_t outproc, caddr_t out, struct timeval tout);
 
 #endif
 
