@@ -54,6 +54,7 @@
 
 #include <X11/Intrinsic.h>
 #include <csa.h>
+#include <iso8601.h>
 #include <Dt/MsgCatP.h>
 #include <Xm/Xm.h>
 #include "util.h"
@@ -305,8 +306,6 @@ typedef struct {
 } Calendar;
 
 extern Calendar	*calendar;
-extern int _csa_iso8601_to_tick(char *, time_t*);
-extern int _csa_tick_to_iso8601(time_t, char *);
 
 #define MAXBUFLEN               4096
 

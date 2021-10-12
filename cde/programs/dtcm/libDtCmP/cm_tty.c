@@ -60,6 +60,7 @@ static  char sccsid[] = "@(#)cm_tty.c 1.91 95/07/27 Copyr 1993 Sun Microsystems,
 #include <Dt/MsgCatP.h>
 #include <sys/param.h>
 #include <sys/types.h>
+#include <iso8601.h>
 #include "cm_tty.h"
 #include "getdate.h"
 #include "util.h"
@@ -156,11 +157,6 @@ nl_catd catd_global;
 
 static char *new_appt_begin_delimiter = NULL;
 static char *new_appt_end_delimiter = NULL;
-
-extern int _csa_iso8601_to_tick(char *, time_t*);
-extern int _csa_tick_to_iso8601(time_t, char *);
-extern int _csa_iso8601_to_duration(char *, int*);
-extern int _csa_duration_to_iso8601(int, char *);
 
 /*******************************************************************************
 **

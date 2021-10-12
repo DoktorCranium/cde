@@ -71,7 +71,6 @@
 #endif /* SVR4 */
 
 #define ACCESS_NAME_LEN 25
-extern	int _csa_duration_to_iso8601(int, char *);
 extern void scrub_attr_list(Dtcm_appointment *);
 extern boolean_t compare_repeat_info(Dtcm_appointment *, RFP *, CSA_session_handle, int);
 extern void change_rule_for_this_one_only(Calendar *, Dtcm_appointment *, Dtcm_appointment *);

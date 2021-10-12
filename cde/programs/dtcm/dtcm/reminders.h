@@ -79,7 +79,7 @@ typedef enum {
 typedef struct {
 	Boolean			selected;
 	Time_scope_menu_op	scope;
-	int			scope_val;
+	time_t			scope_val;
 } Reminders_val;
 
 typedef struct {

@@ -84,8 +84,7 @@ extern int errno;
 #include "util.h"
 #include "cm_tty.h"
 
-extern int _csa_tick_to_iso8601(time_t, char *);
-extern int _csa_iso8601_to_tick(char *, time_t*);
+#include <iso8601.h>
 
 extern FILE 	*popen(const char *, const char *);
 extern int   	pclose(FILE *);

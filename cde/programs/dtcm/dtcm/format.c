@@ -59,6 +59,7 @@ static char sccsid[] = "@(#)format.c 1.27 95/01/19 Copyr 1991 Sun Microsystems, 
 #endif
 #include <Xm/Xm.h>
 #include <csa.h>
+#include <iso8601.h>
 #include "util.h"
 #include "cm_tty.h"
 #include "timeops.h"

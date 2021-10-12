@@ -60,14 +60,12 @@
 #include <Xm/Text.h>
 #include <Xm/ToggleBG.h>
 #include <Xm/ToggleB.h>
+#include <iso8601.h>
 #include "reminders.h"
 #include "props.h"
 #include "help.h"
 #include "props_pu.h"
 #include "util.h"
-
-extern	int _csa_duration_to_iso8601(int, char *);
-extern	int _csa_iso8601_to_duration(char *, int*);
 
 /*******************************************************************************
 **
