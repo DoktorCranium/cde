@@ -130,7 +130,7 @@ typedef struct Except_3 Except_3;
 typedef Except_3 *Exception_3;
 
 struct Id_3 {
-	long tick;
+	time_t tick;
 	long key;
 };
 typedef struct Id_3 Id_3;
@@ -188,7 +188,7 @@ typedef struct Apptid_3 Apptid_3;
 
 struct Reminder_3 {
 	struct Id_3 appt_id;
-	long tick;
+	time_t tick;
 	Attribute_3 attr;
 	struct Reminder_3 *next;
 };
@@ -249,16 +249,16 @@ struct Access_Args_3 {
 typedef struct Access_Args_3 Access_Args_3;
 
 struct Range_3 {
-	long key1;
-	long key2;
+	time_t key1;
+	time_t key2;
 	struct Range_3 *next;
 };
 typedef struct Range_3 Range_3;
 
 struct Keyrange_3 {
 	long key;
-	long tick1;
-	long tick2;
+	time_t tick1;
+	time_t tick2;
 	struct Keyrange_3 *next;
 };
 typedef struct Keyrange_3 Keyrange_3;
@@ -276,7 +276,7 @@ typedef enum Table_Args_Type_3 Table_Args_Type_3;
 struct Args_3 {
 	Table_Args_Type_3 tag;
 	union {
-		long tick;
+		time_t tick;
 		Apptid_3 apptid;
 		Uid_3 *key;
 		Appt_3 *appt;

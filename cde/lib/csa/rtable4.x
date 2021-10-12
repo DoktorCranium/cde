@@ -168,8 +168,8 @@ struct Access_Args_4 {
 };
 
 struct Range_4 {
-	long key1;		/* lower bound tick */
-	long key2;		/* upper bound tick */
+	time_t key1;		/* lower bound tick */
+	time_t key2;		/* upper bound tick */
 	struct Range_4 *next;
 };
 

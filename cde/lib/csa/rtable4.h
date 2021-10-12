@@ -264,8 +264,8 @@ struct Access_Args_4 {
 typedef struct Access_Args_4 Access_Args_4;
 
 struct Range_4 {
-	long key1;
-	long key2;
+	time_t key1;
+	time_t key2;
 	struct Range_4 *next;
 };
 typedef struct Range_4 Range_4;

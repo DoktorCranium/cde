@@ -317,7 +317,7 @@ struct cms_reminder_res {
 % */
 struct cms_reminder_args {
 	cms_name	cal;
-	long		tick;
+	time_t		tick;
 	CSA_uint32	num_names;
 	cms_attr_name	*names;
 };

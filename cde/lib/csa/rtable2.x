@@ -84,7 +84,7 @@ struct Apptid_2 {
 
 struct Reminder_2 {
 	struct Id_2	appt_id;	/* actual appt. key */
-	long		tick;		/* the happening tick */
+	time_t		tick;		/* the happening tick */
 	Attribute_2	attr;		/* (attr, value) */
 	struct Reminder_2	*next;
 };
@@ -139,8 +139,8 @@ struct Access_Args_2 {
 };
 
 struct Range_2 {
-	long key1;		/* lower bound tick */
-	long key2;		/* upper bound tick */
+	time_t key1;		/* lower bound tick */
+	time_t key2;		/* upper bound tick */
 	struct Range_2 *next;
 };
 

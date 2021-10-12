@@ -161,8 +161,8 @@ struct Access_Args_3 {
 };
 
 struct Range_3 {
-	long key1;		/* lower bound tick */
-	long key2;		/* upper bound tick */
+	time_t key1;		/* lower bound tick */
+	time_t key2;		/* upper bound tick */
 	struct Range_3 *next;
 };
 

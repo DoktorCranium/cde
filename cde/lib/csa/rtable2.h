@@ -153,7 +153,7 @@ typedef struct Apptid_2 Apptid_2;
 
 struct Reminder_2 {
 	struct Id_2 appt_id;
-	long tick;
+	time_t tick;
 	Attribute_2 attr;
 	struct Reminder_2 *next;
 };
@@ -215,8 +215,8 @@ struct Access_Args_2 {
 typedef struct Access_Args_2 Access_Args_2;
 
 struct Range_2 {
-	long key1;
-	long key2;
+	time_t key1;
+	time_t key2;
 	struct Range_2 *next;
 };
 typedef struct Range_2 Range_2;
@@ -233,7 +233,7 @@ typedef enum Table_Args_Type_2 Table_Args_Type_2;
 struct Args_2 {
 	Table_Args_Type_2 tag;
 	union {
-		long tick;
+		time_t tick;
 		Apptid_2 apptid;
 		Uid_2 *key;
 		Appt_2 *appt;
