@@ -397,6 +397,12 @@ AC_CHECK_LIB(tirpc, svc_register,
        TIRPCLIB=-ltirpc])
 AC_SUBST(TIRPCLIB)
 
+dnl check sizeof time_t for RPC
+AC_CHECK_SIZEOF([int])
+AC_CHECK_SIZEOF([long])
+AC_CHECK_SIZEOF([long long])
+AC_CHECK_SIZEOF([time_t])
+
 dnl jpeg
 AC_CHECK_LIB(jpeg, jpeg_read_header, [JPEGLIB="-ljpeg"],
              [AC_MSG_ERROR([libjpeg not found, please install it])],

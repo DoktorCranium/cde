@@ -32,6 +32,9 @@
  * xdr routines for xapia csa data structures
  */
 
+#ifdef HAVE_CONFIG_H
+#include <autotools_config.h>
+#endif
 #include <EUSCompat.h>
 #include "cm.h"
 #include "csa.h" 
@@ -44,10 +47,21 @@ bool_t xdr_time_t(XDR *xdrs, time_t *objp);
 /*
  * time_t is a typedef which is system dependent
  */
+#ifndef _xdr_time_t
+# if SIZEOF_INT == SIZEOF_TIME_T
+# define _xdr_time_t xdr_int
+# elif SIZEOF_LONG == SIZEOF_TIME_T
+# define _xdr_time_t xdr_long
+# elif SIZEOF_LONG_LONG == SIZEOF_TIME_T
+# define _xdr_time_t xdr_hyper
+# else
+# error "Unknown time_t size"
+# endif
+#endif
 bool_t
 xdr_time_t(XDR *xdrs, time_t *objp)
 {
-	if (!xdr_long(xdrs, objp))
+	if (!_xdr_time_t(xdrs, objp))
 		return (FALSE);
 	return (TRUE);
 }
