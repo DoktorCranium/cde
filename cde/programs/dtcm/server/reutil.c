@@ -230,7 +230,7 @@ WeekNumberToDay(
          * month.
          */
         if (date_tm->tm_mon != initial_month_number)
-                return ((Tick)NULL);
+                return (Tick)0;
 
         return (_date);
 }
