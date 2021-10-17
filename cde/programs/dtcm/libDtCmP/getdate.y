@@ -531,7 +531,7 @@ time_t cm_getdate(char *p, struct timeb *now)
 		lt = localtime(&tod);
 		now->time = lt->tm_sec;
 #ifdef __OpenBSD__
-		now->timezone = lt->tm_gmtoff / 60;
+		now->timezone = - lt->tm_gmtoff / 60;
 #else
 		now->timezone = timezone/60;
 #endif

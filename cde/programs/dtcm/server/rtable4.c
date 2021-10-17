@@ -1423,7 +1423,7 @@ _DtCm_rtable_gmtoff_4_svc(void *args, struct svc_req *svcrq)
 #if defined(CSRG_BASED)
 	ctime = time(NULL);
 	t = localtime(&ctime);
-	gmtoff = t->tm_gmtoff;
+	gmtoff = - t->tm_gmtoff;
 #else
 	gmtoff = timezone;
 #endif

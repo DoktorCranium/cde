@@ -986,7 +986,7 @@ gmt_off(void)
 
         t       = now();
         tm      = *_XLocaltime(&t, localtime_buf);
-        gmt = tm.tm_gmtoff;
+        gmt = - tm.tm_gmtoff;
 #endif /* SVR4 */
         return(gmt);
 }
