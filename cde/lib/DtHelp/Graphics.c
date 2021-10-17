@@ -99,7 +99,7 @@ static char rcs_id[]="$XConsortium: Graphics.c /main/23 1996/12/06 11:12:54 cde-
 #include <Xm/Xm.h>
 #include <Xm/XmPrivate.h>
 #include <Dt/Dts.h>
-#include <Dt/xpm.h>
+#include <X11/xpm.h>
 
 #include "bufioI.h"
 #include "Access.h"
@@ -1681,11 +1681,11 @@ myXpmReadFileToPixmap(
     if (stream->type == _DtGrFILE)
     {
         if (stream->source.file.uncompressed_filename != NULL)
-            ErrorStatus = _DtXpmReadFileToImage(display, 
+            ErrorStatus = XpmReadFileToImage(display,
                                     stream->source.file.uncompressed_filename, 
                                     imageptr, shapeimageptr, attributes);
         else
-            ErrorStatus = _DtXpmReadFileToImage(display, 
+            ErrorStatus = XpmReadFileToImage(display,
                                     stream->source.file.filename, 
                                     imageptr, shapeimageptr, attributes);
     }
