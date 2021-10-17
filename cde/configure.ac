@@ -416,6 +416,8 @@ AC_CHECK_LIB(X11, XOpenDisplay, [XTOOLLIB="-lX11"], ,
                   [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_CHECK_LIB(Xau, XauReadAuth, [XTOOLLIB="-lXau ${XTOOLLIB}"], ,
                   [${EXTRA_INCS} ${EXTRA_LIBS}])
+AC_CHECK_LIB(Xpm, XpmLibraryVersion, [XTOOLLIB="-lXpm ${XTOOLLIB}"], ,
+                  [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_CHECK_LIB(Xt, XtInitialize, [XTOOLLIB="-lXt ${XTOOLLIB}"], ,
                  [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_CHECK_LIB(ICE, IceCloseConnection, [XTOOLLIB="-lICE ${XTOOLLIB}"], ,
