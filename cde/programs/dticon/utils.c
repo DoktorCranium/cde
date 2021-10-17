@@ -837,6 +837,12 @@ Transfer_Back_Image(
   max_x = ((x1 > x2) ? x1 : x2);
   max_y = ((y1 > y2) ? y1 : y2);
 
+/*** make sure min_x and min_y are within icon ***/
+  if (min_x < 0)
+    min_x = 0;
+  if (min_y < 0)
+    min_y = 0;
+
 /*** make sure max_x and max_y are within icon ***/
   if (max_x >= icon_width)
     max_x = icon_width-1;
