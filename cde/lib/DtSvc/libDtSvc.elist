@@ -278,12 +278,6 @@ private _DtWsmSelectionNameForScreen
 private _DtWsmSetBackdropSearchPath
 private _DtWsmSetDtWmHints
 private _DtWsmSetWorkspaceTitle
-private _DtXpmCreatePixmapFromData
-private _DtXpmFreeAttributes
-private _DtXpmReadFileToImage
-private _DtXpmReadFileToPixmap
-private _DtXpmWriteFileFromImage
-private _DtXpmWriteFileFromPixmap
 private _Dt_NextChar
 private _Dt_PrevChar
 private _Dt_isspace
