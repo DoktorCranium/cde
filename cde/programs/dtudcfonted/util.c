@@ -34,6 +34,7 @@
 
 #include <stdlib.h>
 #include <wchar.h>
+#include <X11/xpm.h>
 #include <Xm/XmAll.h>
 #include <Xm/RowColumn.h>
 #include <Xm/MainW.h>
@@ -51,7 +52,6 @@ void _unmap( Widget w, XtPointer closure, XtPointer call_data);
 
 extern Resource resource ;
 
-#include "xpm.h"
 #include "pixmaps/Pencil.pm"
 #include "pixmaps/Line.pm"
 #include "pixmaps/Rectangle.pm"
@@ -59,11 +59,7 @@ extern Resource resource ;
 #include "pixmaps/Eraser.pm"
 #include "pixmaps/SelectArea.pm"
 
-#ifdef XPM
 #define ReadXpm XpmCreatePixmapFromData
-#else
-#define ReadXpm _DtXpmCreatePixmapFromData
-#endif
 #define NUMPIX 6
 
 #include "pixmaps/arrow.pm"

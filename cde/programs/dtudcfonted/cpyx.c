@@ -38,6 +38,7 @@
 #include<X11/Xlib.h>
 #include<X11/Xutil.h>
 #include<X11/Xatom.h>
+#include<X11/xpm.h>
 
 #include <Xm/XmAll.h>
 
@@ -54,12 +55,7 @@ extern XtPointer _XmStringUngenerate (XmString string,
 #include "selectxlfd.h"
 #include "xoakufont.h"
 
-#include "xpm.h"
-#ifdef XPM
 #define ReadXpm XpmCreatePixmapFromData
-#else
-#define ReadXpm _DtXpmCreatePixmapFromData
-#endif
 #include "pixmaps/arrow.pm"
 
 static Widget	CreateCopyXLFD(Widget Top);
