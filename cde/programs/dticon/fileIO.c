@@ -326,7 +326,7 @@ Read_File(
 /*** try to read the XPM/XBM file, in the order ***/
 /*** specified by the 'first' format.           ***/
   if (first == FORMAT_XPM) {
-    status = _DtXpmReadFileToPixmap(dpy, tablet_win,
+    status = XpmReadFileToPixmap(dpy, tablet_win,
                 fname, &pix_ret, &shape_ret, &xpm_ReadAttribs);
 
 #ifdef DEBUG
@@ -335,7 +335,7 @@ Read_File(
       XDestroyImage(debug_image);
     if (debug_shape)
       XDestroyImage(debug_shape);
-    debug_status = _DtXpmReadFileToImage(dpy, fname,
+    debug_status = XpmReadFileToImage(dpy, fname,
                 &debug_image, &debug_shape, &xpm_ReadAttribs);
    }
 #endif
@@ -361,7 +361,7 @@ Read_File(
     status = XReadBitmapFile(dpy, tablet_win, fname,
                 &width_ret, &height_ret, &pix_ret, &x_hot, &y_hot);
     if (status != BitmapSuccess) {
-      status = _DtXpmReadFileToPixmap(dpy, tablet_win,
+      status = XpmReadFileToPixmap(dpy, tablet_win,
                 fname, &pix_ret, &shape_ret, &xpm_ReadAttribs);
       if (status != XpmSuccess) {
 #ifdef DEBUG
@@ -515,11 +515,11 @@ Write_File(
   if (debug)
     Dump_AttribStruct(&xpm_WriteAttribs);
 #endif
-    status = _DtXpmWriteFileFromPixmap(dpy, fname, color_icon, 0,
+    status = XpmWriteFileFromPixmap(dpy, fname, color_icon, 0,
                                 &xpm_WriteAttribs);
 
 /*******
-    status = _DtXpmWriteFileFromPixmap(dpy, fname, color_icon, NULL, NULL);
+    status = XpmWriteFileFromPixmap(dpy, fname, color_icon, NULL, NULL);
 ********/
     if (status != XpmSuccess) {
 #ifdef DEBUG

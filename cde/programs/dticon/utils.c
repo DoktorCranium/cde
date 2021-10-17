@@ -241,46 +241,46 @@ Create_Gfx_Labels(
   xpm_ReadAttribs.colorsymbols = colorSymbols;
   xpm_ReadAttribs.numsymbols = NUM_PENS;
 
-  status = _DtXpmCreatePixmapFromData(dpy, root, Circle, &circlePix, &mask,
+  status = XpmCreatePixmapFromData(dpy, root, Circle, &circlePix, &mask,
                                 &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,2, "Cannot initialize button icon for circle"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, CircleSolid, &circleSolidPix,
+  status = XpmCreatePixmapFromData(dpy, root, CircleSolid, &circleSolidPix,
                                 &mask, &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,4, "Cannot initialize button icon for solid circle"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, Connected, &polylinePix, &mask,
+  status = XpmCreatePixmapFromData(dpy, root, Connected, &polylinePix, &mask,
                                 &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,6, "Cannot initialize button icon for polyline"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, ConnectedClosed, &polygonPix,
+  status = XpmCreatePixmapFromData(dpy, root, ConnectedClosed, &polygonPix,
                                 &mask, &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,8, "Cannot initialize button icon for polygon"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, ConnecClosedSolid,
+  status = XpmCreatePixmapFromData(dpy, root, ConnecClosedSolid,
                         &polygonSolidPix, &mask, &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,10, "Cannot initialize button icon for solid polygon"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, Ellipse, &ellipsePix, &mask,
+  status = XpmCreatePixmapFromData(dpy, root, Ellipse, &ellipsePix, &mask,
                                 &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,12, "Cannot initialize button icon for ellipse"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, EllipseSolid, &ellipseSolidPix,
+  status = XpmCreatePixmapFromData(dpy, root, EllipseSolid, &ellipseSolidPix,
                                 &mask, &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,14, "Cannot initialize button icon for solid ellipse"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, Eraser, &eraserPix, &mask,
+  status = XpmCreatePixmapFromData(dpy, root, Eraser, &eraserPix, &mask,
                                 &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,16, "Cannot initialize button icon for eraser"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, Line, &linePix, &mask,
+  status = XpmCreatePixmapFromData(dpy, root, Line, &linePix, &mask,
                                 &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,18, "Cannot initialize button icon for line"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, PaintBucket, &floodPix, &mask,
+  status = XpmCreatePixmapFromData(dpy, root, PaintBucket, &floodPix, &mask,
                                 &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,20, "Cannot initialize button icon for flood"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, Pencil, &pointPix, &mask,
+  status = XpmCreatePixmapFromData(dpy, root, Pencil, &pointPix, &mask,
                                 &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,22, "Cannot initialize button icon for point"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, Rectangle, &rectPix, &mask,
+  status = XpmCreatePixmapFromData(dpy, root, Rectangle, &rectPix, &mask,
                                 &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,24, "Cannot initialize button icon for rectangle"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, RectangleSolid, &rectSolidPix,
+  status = XpmCreatePixmapFromData(dpy, root, RectangleSolid, &rectSolidPix,
                                 &mask, &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,26, "Cannot initialize button icon for solid rectangle"));
-  status = _DtXpmCreatePixmapFromData(dpy, root, SelectArea, &selectPix, &mask,
+  status = XpmCreatePixmapFromData(dpy, root, SelectArea, &selectPix, &mask,
                                 &xpm_ReadAttribs);
   if (status != XpmSuccess) Abort(GETSTR(10,28, "Cannot initialize button icon for select"));
 

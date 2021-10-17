@@ -29,7 +29,7 @@
 *      Novell, Inc.
 **********************************************************************/
 #include <Xm/Xm.h>
-#include <Dt/xpm.h>
+#include <X11/xpm.h>
 #include "constants.h"
 
 char *black_string="black";
