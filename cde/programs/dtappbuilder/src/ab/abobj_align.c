@@ -52,6 +52,7 @@
 #include <X11/Intrinsic.h>
 #include <X11/Composite.h>
 #include <X11/Shell.h>
+#include <X11/xpm.h>
 #include <Xm/Xm.h>
 #include <Xm/CascadeB.h>
 #include <Xm/ScrolledW.h>
@@ -61,7 +62,6 @@
 #include "dtb_utils.h"
 #include <ab_private/trav.h>
 #include <ab_private/proj.h>
-#include <Dt/xpm.h>		/* will this be in include/Dt? */
 #include "abobjP.h"
 
 

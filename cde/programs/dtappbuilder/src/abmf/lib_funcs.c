@@ -70,6 +70,7 @@
 #include <stdlib.h>
 #include <Tt/tttk.h>
 #include <X11/Intrinsic.h>
+#include <X11/xpm.h>
 #include <Xm/XmStrDefs.h>
 #include <Xm/Xm.h>
 #include <Xm/Form.h>
@@ -80,7 +81,6 @@
 #include <Dt/HelpDialog.h>
 #include <Dt/HelpQuickD.h>
 #include <Dt/Session.h>
-#include <Dt/xpm.h>		/* doesn't exist in CDE, but OK for testing */
 
 
 /*
@@ -906,7 +906,7 @@ dtb_set_label_from_xpm_data(
         window = RootWindowOfScreen(screen);
     }
 
-    status = _DtXpmCreatePixmapFromData(
+    status = XpmCreatePixmapFromData(
             display,
             window,
             xpmData,

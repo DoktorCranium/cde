@@ -60,6 +60,7 @@
 #include <X11/Composite.h>
 #include <X11/Shell.h>
 #include <X11/cursorfont.h>
+#include <X11/xpm.h>
 #include <Xm/XmAll.h>
 /*
 #include <Xm/Protocols.h>
@@ -83,7 +84,6 @@
 #include <ab_private/ui_util.h>
 #include <ab_private/objxm.h>
 #include <ab_private/ab.h>
-#include <Dt/xpm.h>		/* will this be in include/Dt? */
 #include "dtbuilder.h"
 #include "dtb_utils.h"
 

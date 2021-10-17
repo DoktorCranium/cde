@@ -628,7 +628,7 @@ static LibFuncRec abmfP_lrc_set_label_from_xpm_data =
     "        window = RootWindowOfScreen(screen);\n"
     "    }\n"
     "\n"
-    "    status = _DtXpmCreatePixmapFromData(\n"
+    "    status = XpmCreatePixmapFromData(\n"
     "            display,\n"
     "            window,\n"
     "            xpmData,\n"
