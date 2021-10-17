@@ -39,13 +39,8 @@
 #include <X11/cursorfont.h>
 #include <X11/IntrinsicP.h>
 
-#ifdef NO_CDE
-#include "xpm.h"
-#include <X11/keysym.h>
-#else
-#include <Dt/xpm.h>
+#include <X11/xpm.h>
 #include <Dt/Help.h>
-#endif
 
 #include <Dt/HourGlass.h>
 
@@ -715,19 +710,11 @@ void MotifUI::GetPixmaps(Widget w,
     {
       XpmAttributes attributes;
       memset((char *)&attributes, 0, sizeof(XpmAttributes));
-#ifdef NO_CDE
       XpmReadFileToPixmap(display, root, s, pixmap, &_mask, &attributes);
-#else
-      _DtXpmReadFileToPixmap(display, root, s, pixmap, &_mask, &attributes);
-#endif
 
       if (_mask)
          FillBackground(w, *pixmap, _mask);
-#ifdef NO_CDE
       XpmFreeAttributes(&attributes);
-#else
-      _DtXpmFreeAttributes(&attributes);
-#endif
     }
    else
     {
