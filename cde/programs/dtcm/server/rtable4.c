@@ -86,6 +86,12 @@
 #include "delete.h"
 #include "update.h"
 
+#define XOS_USE_NO_LOCKING
+#define X_INCLUDE_TIME_H
+#if defined(__linux__)
+#undef SVR4
+#endif
+#include <X11/Xos_r.h>
 
 extern	int	debug;
 extern	char	*pgname;
@@ -1413,6 +1419,7 @@ _DtCm_rtable_gmtoff_4_svc(void *args, struct svc_req *svcrq)
 #if !defined(CSRG_BASED)
 	extern long timezone;
 #else
+	_Xltimeparams	 localtime_buf;
 	time_t ctime;
 	struct tm *t;
 #endif
@@ -1422,7 +1429,7 @@ _DtCm_rtable_gmtoff_4_svc(void *args, struct svc_req *svcrq)
 
 #if defined(CSRG_BASED)
 	ctime = time(NULL);
-	t = localtime(&ctime);
+	t = _XLocaltime(&ctime, localtime_buf);
 	gmtoff = - t->tm_gmtoff;
 #else
 	gmtoff = timezone;
