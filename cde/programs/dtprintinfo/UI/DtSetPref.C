@@ -273,7 +273,7 @@ void DtSetPref::Apply()
       _previous_update_interval = update_interval->Value();
       if (_callback)
          (*_callback)(_callback_data, UPDATE_INTERVAL_CHANGED,
-		     (char *) _previous_update_interval);
+                      (char *) ((long)_previous_update_interval));
     }
    if (mainw->findD)
       mainw->findD->UpdateMatchAnyUser();
