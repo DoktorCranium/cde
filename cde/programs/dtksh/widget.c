@@ -33,6 +33,7 @@
 #include "name.h"
 #include "shell.h"
 #include <string.h>
+#include <dlfcn.h>
 #include <X11/Intrinsic.h>
 #include <X11/IntrinsicP.h>
 #include <X11/Shell.h>
@@ -575,6 +576,32 @@ fixupresources(
                 hashput(res, fixups[i].name, (char *)resource);
         }
 }
+
+/*
+ * This function is currently only used to locate a widget class record,
+ * as requested by a DtLoadWidget request.
+ */
+
+static void *
+fsym(
+        char *str,
+        int lib )
+{
+   int i = 0;
+   void * addr;
+
+   if (liblist == NULL)
+      return (NULL);
+   while (liblist[i].dll)
+   {
+      if (addr = dlsym(liblist[i].dll, str))
+         return(addr);
+      i++;
+   }
+
+   return(0);
+}
+
 
 int
 do_DtLoadWidget(

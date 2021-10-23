@@ -57,7 +57,6 @@ dtksh_SOURCES = init.c \
                 xmcmds.c \
                 xmwidgets.c \
                 extra.c \
-                findsym.c \
                 msgs.c
 
 init.c:
