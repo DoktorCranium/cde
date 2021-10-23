@@ -831,7 +831,7 @@ ButtonCallback(
 	{
 		cb_data.reason = XmCR_DIALOG_BUTTON;
 		cb_data.event = b_cb_data->event;
-		cb_data.button_position = (int) client_data;
+		cb_data.button_position = (int) ((long)client_data);
 		cb_data.button = g;
 		XtCallCallbackList ((Widget) mgr, cb_list, &cb_data);
 	}
