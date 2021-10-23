@@ -51,6 +51,9 @@
 static char sccsid[] = "@(#)timeops.c 1.13 95/05/02 Copyr 1991 Sun Microsystems, Inc.";
 #endif
 
+#ifdef HAVE_CONFIG_H
+#include <autotools_config.h>
+#endif
 #include <EUSCompat.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -1007,7 +1010,7 @@ init_time(void)
 	_Xltimeparams localtime_buf;
 	_Xgtimeparams gmtime_buf;
 
-#ifdef SVR4
+#if (defined(SVR4) || HAVE_DECL_TIMEZONE) && !defined(HAVE_TM_TM_GMTOFF)
 	/* Fix for QAR 31607 */
 	tzset();
 	if (getenv("TZ") == NULL){

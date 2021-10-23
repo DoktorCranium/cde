@@ -32,6 +32,9 @@
  * version 4 of calendar manager rpc protocol functions.
  */
 
+#ifdef HAVE_CONFIG_H
+#include <autotools_config.h>
+#endif
 #include <EUSCompat.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -1416,8 +1419,10 @@ extern long *
 _DtCm_rtable_gmtoff_4_svc(void *args, struct svc_req *svcrq)
 {
 	static long gmtoff;
-#if !defined(CSRG_BASED)
+#if !defined(HAVE_STRUCT_TM_TM_GMTOFF)
+# if  !HAVE_DECL_TIMEZONE
 	extern long timezone;
+# endif
 #else
 	_Xltimeparams	 localtime_buf;
 	time_t ctime;
@@ -1427,7 +1432,7 @@ _DtCm_rtable_gmtoff_4_svc(void *args, struct svc_req *svcrq)
 	if (debug)
 		fprintf(stderr, "_DtCm_rtable_gmtoff_4_svc called\n");
 
-#if defined(CSRG_BASED)
+#if defined(HAVE_STRUCT_TM_TM_GMTOFF)
 	ctime = time(NULL);
 	t = _XLocaltime(&ctime, localtime_buf);
 	gmtoff = - t->tm_gmtoff;

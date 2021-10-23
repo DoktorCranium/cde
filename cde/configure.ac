@@ -403,6 +403,9 @@ AC_CHECK_SIZEOF([long])
 AC_CHECK_SIZEOF([long long])
 AC_CHECK_SIZEOF([time_t])
 
+AC_CHECK_DECLS([timezone])
+AC_CHECK_MEMBERS([struct tm.tm_gmtoff])
+
 dnl jpeg
 AC_CHECK_LIB(jpeg, jpeg_read_header, [JPEGLIB="-ljpeg"],
              [AC_MSG_ERROR([libjpeg not found, please install it])],

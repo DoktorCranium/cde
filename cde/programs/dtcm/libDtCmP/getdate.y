@@ -40,6 +40,9 @@ static  char sccsid[] = "@(#)getdate.y 1.10 94/11/07 Copyr 1993 Sun Microsystems
 	/*	University of North Carolina at Chapel Hill	*/
 	/*	@(#)getdate.y	2.6	4/20/84	*/
 
+#ifdef HAVE_CONFIG_H
+#include <autotools_config.h>
+#endif
 #include <EUSCompat.h>
 #include <ctype.h>
 #include <string.h>
@@ -67,7 +70,7 @@ static  char sccsid[] = "@(#)getdate.y 1.10 94/11/07 Copyr 1993 Sun Microsystems
 #define STANDARD 2
 #define MAYBE    3
 
-#ifdef SVR4
+#if defined(SVR4) && !HAVE_DECL_TIMEZONE
 extern long timezone;
 #endif
 
@@ -526,11 +529,11 @@ time_t cm_getdate(char *p, struct timeb *now)
 	lptr = p;
 	if (now == ((struct timeb *) NULL)) {
 		now = &ftz;
-#if defined(SVR4) || defined(__OpenBSD__)
+#if defined(SVR4) || HAVE_DECL_TIMEZONE || defined(HAVE_TM_TM_GMTOFF)
 		tod = time(0);
 		lt = localtime(&tod);
 		now->time = lt->tm_sec;
-#ifdef __OpenBSD__
+#ifdef HAVE_TM_TM_GMTOFF
 		now->timezone = - lt->tm_gmtoff / 60;
 #else
 		now->timezone = timezone/60;
