@@ -68,7 +68,7 @@ find_lib(_Tt_string &cpath, _Tt_string &libname, _Tt_string &fullpath)
 	fullpath = cpath.cat("/").cat(libname);
 	if (stat((char *)fullpath, &st) == 0) {
 		result = 1;
-	} else if (!(cdir = opendir((char *)cpath))) {
+	} else if ((cdir = opendir((char *)cpath))) {
 		// need to find a version in cpath if possible
 		max_vmajor = -1;
 		max_vminor = -1;
