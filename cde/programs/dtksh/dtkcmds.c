@@ -53,8 +53,10 @@
 #include <Dt/Action.h>
 #include <Dt/Dts.h>
 #include <Dt/Print.h>
+#include <Dt/Session.h>
 #include <Tt/tttk.h>
 #include <Tt/tt_c.h>
+#include "XtCvtrs.h"
 #include "hash.h"
 #include "stdio.h"
 #include "defs.h"
@@ -6297,7 +6299,7 @@ TtFileCB(
 	int sameProcId )
 {
    Ttdt_file_cb_data *cdata = (Ttdt_file_cb_data *)clientData;
-   int results;
+   long int results;
    char strBuf[25];
    Namval_t * msgVar;
    Namval_t * opVar;
@@ -8543,11 +8545,11 @@ rcCreateDisc(
       np2 = ProcessWidgetHandle(cbData->widget, np, token, fp);
    }
    else if ((strcmp(token, "DATA") == 0) && (cbData->reason == XmCR_ACTIVATE))
-      np2 = ProcessIntValue((int)cbData->data, np, token, fp, "0x%x", NULL);
+       np2 = ProcessIntValue((int)((long)cbData->data), np, token, fp, "0x%x", NULL);
    else if ((strcmp(token, "CALLBACKSTRUCT") == 0) && 
             (cbData->reason == XmCR_ACTIVATE))
    {
-      np2 = ProcessIntValue((int)cbData->callbackstruct, np, token,fp,"0x%x", 
+       np2 = ProcessIntValue((int)((long)cbData->callbackstruct), np, token,fp,"0x%x", 
                             NULL);
    }
    else
