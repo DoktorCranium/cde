@@ -246,7 +246,7 @@ void XdmGetXdmcpAuth (struct protoDisplay *pdpy, unsigned short authorizationNam
 		 'a' <= c && c <= 'f' ? c - 'a' + 10 : \
 		 'A' <= c && c <= 'F' ? c - 'A' + 10 : -1)
 
-static
+static int
 HexToBinary (char *key)
 {
     char    *out, *in;
@@ -276,7 +276,7 @@ HexToBinary (char *key)
  * routine accepts either plain ascii strings for keys, or hex-encoded numbers
  */
 
-XdmGetKey (struct protoDisplay *pdpy, ARRAY8Ptr displayID)
+int XdmGetKey (struct protoDisplay *pdpy, ARRAY8Ptr displayID)
 {
     FILE    *keys;
     char    line[1024], id[1024], key[1024];
@@ -315,7 +315,7 @@ XdmGetKey (struct protoDisplay *pdpy, ARRAY8Ptr displayID)
 }
 
 /*ARGSUSED*/
-XdmCheckAuthentication (struct protoDisplay *pdpy, ARRAY8Ptr displayID,
+int XdmCheckAuthentication (struct protoDisplay *pdpy, ARRAY8Ptr displayID,
                         ARRAY8Ptr authenticationName, ARRAY8Ptr authenticationData)
 {
     XdmAuthKeyPtr   incoming;
