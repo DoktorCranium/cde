@@ -241,6 +241,8 @@ DtTtNth(
 	    case DTTT_OP:
 		return tttk_op_string( (Tttk_op)(n+1) );
 	}
+
+        return 0;
 }
 
 void *
@@ -337,6 +339,8 @@ DtTtIndex(
 		}
 		return -1;
 	}
+
+        return 0;
 }
 
 Tt_status
@@ -608,6 +612,8 @@ _DtTtChoices(
 		}
 		return items;
 	}
+
+        return 0;
 }
 
 #if defined(aix)
