@@ -42,6 +42,7 @@
  *		be misrepresented as being the original software.
  */
 #include <stdio.h>
+#include <string.h>
 #include <tptregexp.h>
 #include "regmagic.h"
 
@@ -62,7 +63,6 @@ tpt_regsub(regexp *prog, char *source, char *dest)
 	char c;
 	int no;
 	int len;
-	extern char *strncpy();
 
 	if (prog == NULL || source == NULL || dest == NULL) {
 		tpt_regerror("NULL parm to regsub");
