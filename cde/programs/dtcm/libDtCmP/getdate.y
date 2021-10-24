@@ -529,7 +529,7 @@ time_t cm_getdate(char *p, struct timeb *now)
 	lptr = p;
 	if (now == ((struct timeb *) NULL)) {
 		now = &ftz;
-#if defined(SVR4) || HAVE_DECL_TIMEZONE || defined(HAVE_TM_TM_GMTOFF)
+#if defined(SVR4) || (HAVE_DECL_TIMEZONE && !defined(__FreeBSD__)) || defined(HAVE_TM_TM_GMTOFF)
 		tod = time(0);
 		lt = localtime(&tod);
 		now->time = lt->tm_sec;

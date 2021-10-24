@@ -1010,7 +1010,7 @@ init_time(void)
 	_Xltimeparams localtime_buf;
 	_Xgtimeparams gmtime_buf;
 
-#if (defined(SVR4) || HAVE_DECL_TIMEZONE) && !defined(HAVE_TM_TM_GMTOFF)
+#if defined(SVR4)
 	/* Fix for QAR 31607 */
 	tzset();
 	if (getenv("TZ") == NULL){
