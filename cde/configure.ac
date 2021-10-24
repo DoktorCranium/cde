@@ -404,8 +404,10 @@ AC_CHECK_SIZEOF([long long])
 AC_CHECK_SIZEOF([time_t])
 
 AC_STRUCT_TIMEZONE
-AC_CHECK_DECLS([timezone])
-AC_CHECK_MEMBERS([struct tm.tm_gmtoff])
+AC_CHECK_DECLS([timezone],,,
+        [#include <time.h>])
+AC_CHECK_MEMBERS([struct tm.tm_gmtoff],,,
+        [#include <time.h>])
 
 dnl jpeg
 AC_CHECK_LIB(jpeg, jpeg_read_header, [JPEGLIB="-ljpeg"],
