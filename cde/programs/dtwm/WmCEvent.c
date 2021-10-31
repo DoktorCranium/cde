@@ -611,9 +611,17 @@ Boolean HandleEventsOnSpecialWindows (XEvent *pEvent)
 	    case ClientMessage:
 	    {
 		if (pCD = InitClientData (pEvent->xclient.window)) {
-		    HandleClientMessageEwmh(pCD,
-				    (XClientMessageEvent *) pEvent);
-		    dispatchEvent = False;
+		    XClientMessageEvent *clientEvent = pEvent;
+
+		    if (clientEvent->message_type ==
+			wmGD.xa__NET_WM_FULLSCREEN_MONITORS)
+		    {
+			ProcessNetWmFullscreenMonitors (pCD,
+			    clientEvent->data.l[0], clientEvent->data.l[1],
+			    clientEvent->data.l[2], clientEvent->data.l[3]);
+
+			dispatchEvent = False;
+		    }
 		}
 		break;
 	    }
@@ -858,9 +866,13 @@ void HandleCPropertyNotify (ClientData *pCD, XPropertyEvent *propertyEvent)
 		ProcessMwmHints (pCD);
 		SetClientOffset (pCD);
 	    }
-	    else
+	    else if (propertyEvent->atom == wmGD.xa__NET_WM_NAME)
 	    {
-		HandlePropertyNotifyEwmh (pCD, propertyEvent);
+		ProcessNetWmName (pCD);
+	    }
+	    else if (propertyEvent->atom == wmGD.xa__NET_WM_ICON_NAME)
+	    {
+		ProcessNetWmIconName (pCD);
 	    }
 	    break;
 	}
@@ -2581,22 +2593,7 @@ void HandleClientMessage (ClientData *pCD, XClientMessageEvent *clientEvent)
 	}
 	else if (clientEvent->data.l[0] == NormalState)
 	{
-	    if (pCD->enterFullscreen)
-	    {
-		Boolean enterFullscreen = pCD->enterFullscreen;
-		SetClientState (pCD, NORMAL_STATE, GetTimestamp ());
-		pCD->enterFullscreen = enterFullscreen;
-		newState = MAXIMIZED_STATE;
-	    }
-	    else
-	    {
-		if (pCD->decorUpdated)
-		{
-		    SetClientState (pCD, MAXIMIZED_STATE, GetTimestamp ());
-		}
-
-		newState = NORMAL_STATE;
-	    }
+	    newState = NORMAL_STATE;
 	}
 	if (!ClientInWorkspace (ACTIVE_WS, pCD))
 	{
@@ -2606,9 +2603,16 @@ void HandleClientMessage (ClientData *pCD, XClientMessageEvent *clientEvent)
 	SetClientState (pCD, newState, GetTimestamp ());
 
     }
-    else
+    else if (clientEvent->message_type == wmGD.xa__NET_WM_FULLSCREEN_MONITORS)
     {
-	HandleClientMessageEwmh (pCD, clientEvent);
+	ProcessNetWmFullscreenMonitors (pCD,
+	    clientEvent->data.l[0], clientEvent->data.l[1],
+	    clientEvent->data.l[2], clientEvent->data.l[3]);
+    }
+    else if (clientEvent->message_type == wmGD.xa__NET_WM_STATE)
+    {
+	ProcessNetWmState (pCD, clientEvent->data.l[0], clientEvent->data.l[1],
+	    clientEvent->data.l[2]);
     }
 } /* END OF FUNCTION HandleClientMessage */
 

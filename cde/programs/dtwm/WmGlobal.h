@@ -1628,8 +1628,7 @@ typedef struct _ClientData
     Window	clientBaseWin;			/* for matte & reparenting */
     int		xBorderWidth;			/* original X border width */
     FrameInfo	frameInfo;			/* frame geometry data */
-    Boolean	decorUpdated;			/* True => decoration updated */
-    Boolean	enterFullscreen;		/* True => enter fullscreen */
+    Boolean	isFullscreen;			/* True => fullscreen */
     Boolean	monitorSizeIsSet;		/* True => X, Y, W, H is set */
     int		monitorX;			/* monitor X loc */
     int		monitorY;			/* monitor Y loc */
@@ -1936,11 +1935,13 @@ typedef struct _WmGlobalData
     Atom	xa_WMSAVE_HINT;
 
     Atom	xa_UTF8_STRING;
-    Atom	xa_NET_WM_NAME;
-    Atom	xa_NET_WM_ICON_NAME;
-    Atom	xa_NET_WM_FULLSCREEN_MONITORS;
-    Atom	xa_NET_WM_STATE;
-    Atom	xa_NET_WM_STATE_FULLSCREEN;
+    Atom	xa__NET_WM_NAME;
+    Atom	xa__NET_WM_ICON_NAME;
+    Atom	xa__NET_WM_FULLSCREEN_MONITORS;
+    Atom	xa__NET_WM_STATE;
+    Atom	xa__NET_WM_STATE_FULLSCREEN;
+    Atom	xa__NET_WM_STATE_MAXIMIZED_VERT;
+    Atom	xa__NET_WM_STATE_MAXIMIZED_HORZ;
 
     /* atoms used for workspace management: */
 

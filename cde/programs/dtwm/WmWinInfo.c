@@ -56,6 +56,7 @@
 #include "WmCDecor.h"
 #include "WmCPlace.h"
 #include "WmError.h"
+#include "WmEwmh.h"
 #include "WmIDecor.h"
 #include "WmIPlace.h"
 #include "WmIconBox.h"
@@ -218,8 +219,7 @@ InitClientData (Window clientWindow)
 
     pCD->smClientID = (String)NULL;
 
-    pCD->decorUpdated = False;
-    pCD->enterFullscreen = False;
+    pCD->isFullscreen = False;
     pCD->monitorSizeIsSet = False;
 
     for (i = 0; i < STRETCH_COUNT; ++i) pCD->clientStretchWin[i] = (Window)0L;
@@ -261,7 +261,6 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
 {
     ClientData *pCD;
     XSetWindowAttributes sAttributes;
-    XPropertyEvent propertyEvent;
 
     if (!(pCD = InitClientData (clientWindow)))
     {
@@ -421,8 +420,7 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
      */
 
     ProcessWmWindowTitle (pCD, TRUE);
-    propertyEvent.atom = wmGD.xa_NET_WM_NAME;
-    HandlePropertyNotifyEwmh (pCD, &propertyEvent);
+    ProcessNetWmName (pCD);
 
 
     /*
@@ -430,8 +428,7 @@ GetClientInfo (WmScreenData *pSD, Window clientWindow, long manageFlags)
      */
 
     ProcessWmIconTitle (pCD, TRUE);
-    propertyEvent.atom = wmGD.xa_NET_WM_ICON_NAME;
-    HandlePropertyNotifyEwmh (pCD, &propertyEvent);
+    ProcessNetWmIconName (pCD);
 
 
     /*
@@ -3861,7 +3858,11 @@ ProcessMwmHints (ClientData *pCD)
     {
 	if (pHints->flags & MWM_HINTS_FUNCTIONS)
 	{
-	    if (pHints->functions == WM_FUNC_DEFAULT)
+	    if (pHints->functions == WM_FUNC_NONE)
+	    {
+		pCD->clientFunctions = WM_FUNC_NONE;
+	    }
+	    else if (pHints->functions == WM_FUNC_DEFAULT)
 	    {
 		pCD->clientFunctions = WM_FUNC_ALL;
 	    }
@@ -3873,7 +3874,7 @@ ProcessMwmHints (ClientData *pCD)
 	    else
 	    {
 		/* client indicating applicable functions */
-		pCD->clientFunctions &= pHints->functions;
+		pCD->clientFunctions |= pHints->functions;
 	    }
 #if 0
 	    if (!(pCD->clientFlags & GOT_DT_WM_HINTS) &&
@@ -3894,7 +3895,11 @@ ProcessMwmHints (ClientData *pCD)
 
 	if (pHints->flags & MWM_HINTS_DECORATIONS)
 	{
-	    if (pHints->decorations == WM_DECOR_DEFAULT)
+	    if (pHints->decorations == WM_DECOR_NONE)
+	    {
+		pCD->clientDecoration = WM_DECOR_NONE;
+	    }
+	    else if (pHints->decorations == WM_DECOR_DEFAULT)
 	    {
 		pCD->clientDecoration = WM_DECOR_ALL;
 	    }
@@ -3906,7 +3911,7 @@ ProcessMwmHints (ClientData *pCD)
 	    else
 	    {
 		/* client indicating decorations to be added */
-		pCD->clientDecoration &= pHints->decorations;
+		pCD->clientDecoration |= pHints->decorations;
 	    }
 
 	    /*
@@ -4007,6 +4012,5 @@ ProcessMwmHints (ClientData *pCD)
     
     pCD->decor = pCD->clientDecoration;  /* !!! combine decor ... !!! */
 
-    pCD->decorUpdated = True;
 
 } /* END OF ProcessMwmHints */

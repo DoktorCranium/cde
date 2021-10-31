@@ -604,21 +604,27 @@ static void SetupWindowStateWithEventMask (ClientData *pCD, int newState,
 
 void ConfigureNewState (ClientData *pcd)
 {
-    WmHeadInfo_t *WmHI = NULL;
-
-    if (pcd->maxConfig)
+    if (pcd->maxConfig && !pcd->isFullscreen)
     {
 	pcd->maxConfig = FALSE;
 	RegenerateClientFrame(pcd);
 	XResizeWindow (DISPLAY, pcd->client,
 			   (unsigned int) pcd->clientWidth, 
 			   (unsigned int) pcd->clientHeight);
-
-	XDeleteProperty (DISPLAY, pcd->client, wmGD.xa_NET_WM_STATE);
     }
     else
     {
-	if (pcd->enterFullscreen && pcd->monitorSizeIsSet)
+	long decor;
+	WmHeadInfo_t *WmHI;
+
+	if (pcd->isFullscreen)
+	{
+	    decor = pcd->decor;
+	    pcd->decor = WM_DECOR_NONE;
+	    SetClientOffset (pcd);
+	}
+
+	if (pcd->isFullscreen && pcd->monitorSizeIsSet)
 	{
 	    pcd->maxX = pcd->monitorX;
 	    pcd->maxY = pcd->monitorY;
@@ -648,14 +654,12 @@ void ConfigureNewState (ClientData *pcd)
 	pcd->maxConfig = TRUE;
 	RegenerateClientFrame(pcd);
 
-	if (pcd->enterFullscreen)
-	    XChangeProperty (DISPLAY, pcd->client, wmGD.xa_NET_WM_STATE,
-			    XA_ATOM, 32, PropModeReplace,
-			    (unsigned char *) &wmGD.xa_NET_WM_STATE_FULLSCREEN,
-			    1);
+	if (pcd->isFullscreen)
+	{
+	    pcd->decor = decor;
+	    SetClientOffset (pcd);
+	}
     }
-
-    pcd->enterFullscreen = False;
 
     SendConfigureNotify (pcd);
 

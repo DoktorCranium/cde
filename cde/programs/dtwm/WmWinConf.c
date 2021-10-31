@@ -1934,12 +1934,6 @@ void ProcessNewConfiguration (ClientData *pCD, int x, int y, unsigned int width,
 	newMax = True;
     }
 
-    if (pCD->decorUpdated)
-    {
-	changedValues = CWWidth | CWHeight;
-	pCD->decorUpdated = False;
-    }
-
     /*
      * If the configuration has changed, update client data
      * 

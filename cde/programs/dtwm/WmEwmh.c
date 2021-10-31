@@ -23,50 +23,163 @@
  * Floor, Boston, MA 02110-1301 USA
  */
 
-/*
- * Included Files:
- */
+#include <stdlib.h>
 
 #include "WmGlobal.h"
+#include "WmEvent.h"
 #include "WmEwmh.h"
-
-/*
- * include extern functions
- */
-
 #include "WmMultiHead.h"
 #include "WmProperty.h"
+#include "WmWinState.h"
+#include "WmWrkspace.h"
 
+static unsigned long GetWindowProperty (Window w, Atom property, Atom reqType,
+    unsigned char **propReturn)
+{
+    Atom actualType;
+    int actualFormat;
+    unsigned long nitems;
+    unsigned long leftover;
 
-
-/*************************************<->*************************************
- *
- *  ProcessNetWmFullscreenMonitors (pCD, top, bottom, left, right)
- *
- *
- *  Description:
- *  -----------
- *  This function retrieves the contents of the _NET_WM_FULLSCREEN_MONITORS
- *  message.
- *
- *
- *
- *  Inputs:
- *  ------
- *  pCD = pointer to client data
- *  top = the monitor whose top edge defines the top edge of the fullscreen
- *        window
- *  bottom = the monitor whose bottom edge defines the bottom edge of the
- *           fullscreen window
- *  left = the monitor whose left edge defines the left edge of the fullscreen
- *         window
- *  right = the monitor whose right edge defines the right edge of the
- *          fullscreen window
- *
- *************************************<->***********************************/
+    if (XGetWindowProperty (DISPLAY, w, property, 0L, 1000000L, False, reqType,
+			    &actualType, &actualFormat, &nitems, &leftover,
+			    propReturn) != Success) goto err;
 
-static void ProcessNetWmFullscreenMonitors (ClientData *pCD,
-		long top, long bottom, long left, long right)
+    if (actualType != reqType) goto err;
+
+    return nitems;
+
+err:
+    XFree (*propReturn);
+    return 0;
+}
+
+static void UpdateNetWmState (ClientData *pCD)
+{
+    unsigned long nitems;
+    unsigned long natoms = 0;
+    Atom *netWmState;
+    Atom *atoms;
+
+    nitems = GetWindowProperty (pCD->client, wmGD.xa__NET_WM_STATE, XA_ATOM,
+		    (unsigned char **) &netWmState);
+
+    atoms = malloc ((nitems + 2) * sizeof (Atom)); if (!atoms) goto done;
+
+    for (int i = 0; i < nitems; ++i)
+	if (netWmState[i] == wmGD.xa__NET_WM_STATE_FULLSCREEN ||
+	    netWmState[i] == wmGD.xa__NET_WM_STATE_MAXIMIZED_VERT ||
+	    netWmState[i] == wmGD.xa__NET_WM_STATE_MAXIMIZED_HORZ)
+	    continue;
+	else
+	    atoms[natoms++] = netWmState[i];
+
+    if (pCD->maxConfig)
+    {
+	if (pCD->isFullscreen)
+	{
+	    atoms[natoms++] = wmGD.xa__NET_WM_STATE_FULLSCREEN;
+	}
+	else
+	{
+	    atoms[natoms++] = wmGD.xa__NET_WM_STATE_MAXIMIZED_VERT;
+	    atoms[natoms++] = wmGD.xa__NET_WM_STATE_MAXIMIZED_HORZ;
+	}
+    }
+
+    XChangeProperty (DISPLAY, pCD->client, wmGD.xa__NET_WM_STATE, XA_ATOM, 32,
+		    PropModeReplace, (unsigned char *) atoms, natoms);
+
+done:
+    XFree (netWmState);
+    XFree (atoms);
+}
+
+static void ProcessNetWmStateFullscreen (ClientData *pCD, long action)
+{
+    switch (action)
+    {
+	case _NET_WM_STATE_REMOVE:
+	    if (!pCD->isFullscreen) return;
+	    pCD->isFullscreen = False;
+	    break;
+	case _NET_WM_STATE_ADD:
+	    if (pCD->isFullscreen) return;
+	    pCD->isFullscreen = True;
+	    break;
+	case _NET_WM_STATE_TOGGLE:
+	    pCD->isFullscreen = !pCD->isFullscreen;
+	    break;
+	default:
+	    return;
+    }
+
+    SetClientState (pCD, NORMAL_STATE, GetTimestamp ());
+
+    if (pCD->isFullscreen)
+	SetClientState (pCD, MAXIMIZED_STATE, GetTimestamp ());
+}
+
+static void ProcessNetWmStateMaximized (ClientData *pCD, long action)
+{
+    int newState;
+
+    switch (action)
+    {
+	case _NET_WM_STATE_REMOVE:
+	    if (pCD->clientState != MAXIMIZED_STATE) return;
+	    newState = NORMAL_STATE;
+	    break;
+	case _NET_WM_STATE_ADD:
+	    if (pCD->clientState == MAXIMIZED_STATE) return;
+	    newState = MAXIMIZED_STATE;
+	    break;
+	case _NET_WM_STATE_TOGGLE:
+	    newState = pCD->clientState == MAXIMIZED_STATE ?
+		NORMAL_STATE : MAXIMIZED_STATE;
+	    break;
+	default:
+	    return;
+    }
+
+    SetClientState (pCD, newState, GetTimestamp ());
+}
+
+static void ProcessNetWmNameNetWmIconName (ClientData *pCD, Atom name)
+{
+    unsigned long nitems;
+    unsigned char *netNameProp;
+    XTextProperty nameProp = {0};
+
+    nitems = GetWindowProperty(pCD->client, name, wmGD.xa_UTF8_STRING,
+		    &netNameProp);
+
+    if (!nitems) goto done;
+
+    if (Xutf8TextListToTextProperty (DISPLAY, (char **) &netNameProp, 1,
+			    XUTF8StringStyle, &nameProp) != Success) goto done;
+
+    if (name == wmGD.xa__NET_WM_NAME)
+	XSetWMName (DISPLAY, pCD->client, &nameProp);
+    else if (name == wmGD.xa__NET_WM_ICON_NAME)
+	XSetWMIconName (DISPLAY, pCD->client, &nameProp);
+
+done:
+    XFree (netNameProp);
+    XFree ((char*) nameProp.value);
+}
+
+/**
+* @brief Processes the _NET_WM_FULLSCREEN_MONITORS protocol.
+*
+* @param pCD
+* @param top
+* @param bottom
+* @param left
+* @param right
+*/
+void ProcessNetWmFullscreenMonitors (ClientData *pCD,
+    long top, long bottom, long left, long right)
 {
     WmHeadInfo_t *pHeadInfo;
 
@@ -103,251 +216,123 @@ static void ProcessNetWmFullscreenMonitors (ClientData *pCD,
     free(pHeadInfo);
 
     pCD->monitorSizeIsSet = True;
-} /* END OF FUNCTION ProcessNetWmFullscreenMonitors */
+}
 
-
-
-/*************************************<->*************************************
- *
- *  ProcessNetWmStateFullscreen (pCD, en)
- *
- *
- *  Description:
- *  -----------
- *  This function retrieves the contents of the _NET_WM_STATE_FULLSCREEN
- *  message.
- *
- *
- *
- *  Inputs:
- *  ------
- *  pCD = pointer to client data
- *  en = enable fullscreen
- *
- *************************************<->***********************************/
-
-static void ProcessNetWmStateFullscreen (ClientData *pCD, Boolean en)
+/**
+* @brief Processes the _NET_WM_STATE client message.
+*
+* @param pCD
+* @param action
+* @param firstProperty
+* @param secondProperty
+*/
+void ProcessNetWmState (ClientData *pCD, long action,
+    long firstProperty, long secondProperty)
 {
-    PropMwmHints hints = {0};
-    PropMwmHints *pHints = GetMwmHints (pCD);
-    XClientMessageEvent clientMsgEvent = {
-        .type = ClientMessage,
-        .window = pCD->client,
-        .message_type = wmGD.xa_WM_CHANGE_STATE,
-        .format = 32,
-        .data.l[0] = NormalState
-    };
+    if (pCD->clientState & UNSEEN_STATE) return;
 
-    if (!pHints) pHints = &hints;
+    if (firstProperty  == wmGD.xa__NET_WM_STATE_MAXIMIZED_VERT &&
+	secondProperty == wmGD.xa__NET_WM_STATE_MAXIMIZED_HORZ ||
+	firstProperty  == wmGD.xa__NET_WM_STATE_MAXIMIZED_HORZ &&
+	secondProperty == wmGD.xa__NET_WM_STATE_MAXIMIZED_VERT)
+	ProcessNetWmStateMaximized (pCD, action);
+    else if (firstProperty  == wmGD.xa__NET_WM_STATE_FULLSCREEN ||
+	     secondProperty == wmGD.xa__NET_WM_STATE_FULLSCREEN)
+	ProcessNetWmStateFullscreen (pCD, action);
 
-    pHints->flags |= MWM_HINTS_DECORATIONS;
-    pHints->decorations = en ? WM_DECOR_NONE : WM_DECOR_DEFAULT;
+    if (!ClientInWorkspace (ACTIVE_WS, pCD))
+	SetClientState (pCD, pCD->clientState | UNSEEN_STATE, GetTimestamp ());
 
-    XChangeProperty (DISPLAY, pCD->client, wmGD.xa_MWM_HINTS, wmGD.xa_MWM_HINTS,
-		     32, PropModeReplace, (unsigned char *) pHints,
-		     sizeof (PropMwmHints) / sizeof (long));
+    UpdateNetWmState (pCD);
+}
 
-    if (pHints != &hints) XFree (pHints);
-
-    pCD->enterFullscreen = en;
-
-    XSendEvent (DISPLAY, ROOT_FOR_CLIENT (pCD), False, SubstructureRedirectMask,
-		(XEvent *) &clientMsgEvent);
-} /* END OF FUNCTION ProcessNetWmStateFullscreen */
-
-
-
-/*************************************<->*************************************
- *
- *  ProcessNetWmNameNetWmIconName (pCD, atom)
- *
- *
- *  Description:
- *  -----------
- *  This function retrieves the contents of the _NET_WM_NAME or
- *  _NET_WM_ICON_NAME property on the cient window.
- *
- *
- *  Inputs:
- *  ------
- *  pCD = pointer to client data structure
- *  atom = _NET_WM_NAME or _NET_WM_ICON_NAME
- *
- *************************************<->***********************************/
-
-static void ProcessNetWmNameNetWmIconName (ClientData *pCD, Atom atom)
+/**
+* @brief Processes the _NET_WM_NAME property.
+*
+* @param pCD
+*/
+void ProcessNetWmName (ClientData *pCD)
 {
-    Atom actualType;
-    int actualFormat;
-    unsigned long nitems;
-    unsigned long leftover;
-    unsigned char *netNameProp = NULL;
-    XTextProperty nameProp = {0};
+    ProcessNetWmNameNetWmIconName (pCD, wmGD.xa__NET_WM_NAME);
+}
 
-    if (XGetWindowProperty (DISPLAY, pCD->client, atom, 0L, 1000000L, False,
-			    wmGD.xa_UTF8_STRING, &actualType, &actualFormat,
-			    &nitems, &leftover, &netNameProp) != Success)
-	goto done;
-
-    if (actualType != wmGD.xa_UTF8_STRING) goto done;
-    if (actualFormat != 8) goto done;
-
-    if (Xutf8TextListToTextProperty (DISPLAY, (char **) &netNameProp, 1,
-			    XUTF8StringStyle, &nameProp) != Success) goto done;
-
-    if (atom == wmGD.xa_NET_WM_NAME)
-	XSetWMName (DISPLAY, pCD->client, &nameProp);
-    else if (atom == wmGD.xa_NET_WM_ICON_NAME)
-	XSetWMIconName (DISPLAY, pCD->client, &nameProp);
-
-done:
-    if (netNameProp) XFree (netNameProp);
-    if (nameProp.value) XFree ((char*) nameProp.value);
-} /* END OF FUNCTION ProcessNetWmNameNetWmIconName */
-
-
-
-/*************************************<->*************************************
- *
- *  HandleClientMessageEwmh (pCD, clientEvent)
- *
- *
- *  Description:
- *  -----------
- *  This function retrieves the contents of the EWMH message.
- *
- *
- *  Inputs:
- *  ------
- *  pCD = pointer to client data
- *  clientEvent = pointer to a client message event on the root window
- *
- *************************************<->***********************************/
-
-void HandleClientMessageEwmh (ClientData *pCD, XClientMessageEvent *clientEvent)
+/**
+* @brief Processes the _NET_WM_ICON_NAME property.
+*
+* @param pCD
+*/
+void ProcessNetWmIconName (ClientData *pCD)
 {
-    int i;
+    ProcessNetWmNameNetWmIconName (pCD, wmGD.xa__NET_WM_ICON_NAME);
+}
 
-    if (clientEvent->message_type == wmGD.xa_NET_WM_FULLSCREEN_MONITORS)
-    {
-	ProcessNetWmFullscreenMonitors (pCD,
-			clientEvent->data.l[0], clientEvent->data.l[1],
-			clientEvent->data.l[2], clientEvent->data.l[3]);
-    }
-    else if (clientEvent->message_type == wmGD.xa_NET_WM_STATE)
-    {
-	for (i = 1; i < 3; ++i)
-	{
-	    if (clientEvent->data.l[i] == wmGD.xa_NET_WM_STATE_FULLSCREEN)
-	    {
-		ProcessNetWmStateFullscreen (pCD, clientEvent->data.l[0]);
-	    }
-	}
-    }
-} /* END OF FUNCTION HandleClientMessageEwmh */
-
-
-
-/*************************************<->*************************************
- *
- *  HandlePropertyNotifyEwmh (pCD, clientEvent)
- *
- *
- *  Description:
- *  -----------
- *  This function handles PropertyNotify events (indicating EWMH property
- *  changes) that are reported to the client window.
- *
- *
- *  Inputs:
- *  ------
- *  pCD = pointer to client data
- *  clientEvent = pointer to a client message event on the root window
- *
- *************************************<->***********************************/
-
-void HandlePropertyNotifyEwmh (ClientData *pCD, XPropertyEvent *propertyEvent)
-{
-    if (propertyEvent->atom == wmGD.xa_NET_WM_NAME ||
-	propertyEvent->atom == wmGD.xa_NET_WM_ICON_NAME)
-    {
-	ProcessNetWmNameNetWmIconName (pCD, propertyEvent->atom);
-    }
-} /* END OF FUNCTION HandlePropertyNotifyEwmh */
-
-
-
-/*************************************<->*************************************
- *
- *  SetupWmEwmh ()
- *
- *
- *  Description:
- *  -----------
- *  This function sets up the window manager handling of the EWMH.
- *
- *
- *  Outputs:
- *  -------
- *  (wmGD) = Atoms id's are setup.
- *
- *************************************<->***********************************/
-
+/**
+* @brief Sets up the window manager handling of the EWMH.
+*/
 void SetupWmEwmh (void)
 {
     enum {
 	XA_UTF8_STRING,
-	XA_NET_SUPPORTED,
-	XA_NET_SUPPORTING_WM_CHECK,
-	XA_NET_WM_NAME,
-	XA_NET_WM_ICON_NAME,
-	XA_NET_WM_FULLSCREEN_MONITORS,
-	XA_NET_WM_STATE,
-	XA_NET_WM_STATE_FULLSCREEN
+	XA__NET_SUPPORTED,
+	XA__NET_SUPPORTING_WM_CHECK,
+	XA__NET_WM_NAME,
+	XA__NET_WM_ICON_NAME,
+	XA__NET_WM_FULLSCREEN_MONITORS,
+	XA__NET_WM_STATE,
+	XA__NET_WM_STATE_FULLSCREEN,
+	XA__NET_WM_STATE_MAXIMIZED_VERT,
+	XA__NET_WM_STATE_MAXIMIZED_HORZ
     };
 
     static char *atom_names[] = {
 	"UTF8_STRING",
-	_XA_NET_SUPPORTED,
-	_XA_NET_SUPPORTING_WM_CHECK,
-	_XA_NET_WM_NAME,
-	_XA_NET_WM_ICON_NAME,
-	_XA_NET_WM_FULLSCREEN_MONITORS,
-	_XA_NET_WM_STATE,
-	_XA_NET_WM_STATE_FULLSCREEN
+	_XA__NET_SUPPORTED,
+	_XA__NET_SUPPORTING_WM_CHECK,
+	_XA__NET_WM_NAME,
+	_XA__NET_WM_ICON_NAME,
+	_XA__NET_WM_FULLSCREEN_MONITORS,
+	_XA__NET_WM_STATE,
+	_XA__NET_WM_STATE_FULLSCREEN,
+	_XA__NET_WM_STATE_MAXIMIZED_VERT,
+	_XA__NET_WM_STATE_MAXIMIZED_HORZ
     };
 
-    int scr;
     Window childWindow;
     Atom atoms[XtNumber(atom_names) + 1];
 
     XInternAtoms(DISPLAY, atom_names, XtNumber(atom_names), False, atoms);
 
     wmGD.xa_UTF8_STRING = atoms[XA_UTF8_STRING];
-    wmGD.xa_NET_WM_NAME = atoms[XA_NET_WM_NAME];
-    wmGD.xa_NET_WM_ICON_NAME = atoms[XA_NET_WM_ICON_NAME];
-    wmGD.xa_NET_WM_FULLSCREEN_MONITORS = atoms[XA_NET_WM_FULLSCREEN_MONITORS];
-    wmGD.xa_NET_WM_STATE = atoms[XA_NET_WM_STATE];
-    wmGD.xa_NET_WM_STATE_FULLSCREEN = atoms[XA_NET_WM_STATE_FULLSCREEN];
+    wmGD.xa__NET_WM_NAME = atoms[XA__NET_WM_NAME];
+    wmGD.xa__NET_WM_ICON_NAME = atoms[XA__NET_WM_ICON_NAME];
+    wmGD.xa__NET_WM_FULLSCREEN_MONITORS = atoms[XA__NET_WM_FULLSCREEN_MONITORS];
+    wmGD.xa__NET_WM_STATE = atoms[XA__NET_WM_STATE];
+    wmGD.xa__NET_WM_STATE_FULLSCREEN = atoms[XA__NET_WM_STATE_FULLSCREEN];
+    wmGD.xa__NET_WM_STATE_MAXIMIZED_VERT =
+	atoms[XA__NET_WM_STATE_MAXIMIZED_VERT];
+    wmGD.xa__NET_WM_STATE_MAXIMIZED_HORZ =
+	atoms[XA__NET_WM_STATE_MAXIMIZED_HORZ];
 
-    for (scr = 0; scr < wmGD.numScreens; scr++)
+    for (int scr = 0; scr < wmGD.numScreens; ++scr)
     {
 	childWindow = XCreateSimpleWindow(DISPLAY, wmGD.Screens[scr].rootWindow,
 			-1, -1, 1, 1, 0, 0, 0);
 
-	XChangeProperty(DISPLAY, childWindow, atoms[XA_NET_WM_NAME],
-			atoms[XA_UTF8_STRING], 8, PropModeReplace, "DTWM", 5);
+	XChangeProperty(DISPLAY, childWindow, atoms[XA__NET_WM_NAME],
+			atoms[XA_UTF8_STRING], 8, PropModeReplace,
+			DT_WM_RESOURCE_NAME, 5);
 
 	XChangeProperty(DISPLAY, childWindow,
-			atoms[XA_NET_SUPPORTING_WM_CHECK], XA_WINDOW, 32,
+			atoms[XA__NET_SUPPORTING_WM_CHECK], XA_WINDOW, 32,
 			PropModeReplace, (unsigned char *)&childWindow, 1);
 
 	XChangeProperty(DISPLAY, wmGD.Screens[scr].rootWindow,
-			atoms[XA_NET_SUPPORTING_WM_CHECK], XA_WINDOW, 32,
+			atoms[XA__NET_SUPPORTING_WM_CHECK], XA_WINDOW, 32,
 			PropModeReplace, (unsigned char *)&childWindow, 1);
 
 	XChangeProperty(DISPLAY, wmGD.Screens[scr].rootWindow,
-			atoms[XA_NET_SUPPORTED], XA_ATOM, 32, PropModeReplace,
-			(unsigned char *)&atoms[XA_NET_SUPPORTING_WM_CHECK], 6);
+			atoms[XA__NET_SUPPORTED], XA_ATOM, 32, PropModeReplace,
+			(unsigned char *)&atoms[XA__NET_SUPPORTING_WM_CHECK],
+			8);
     }
-} /* END OF FUNCTION SetupWmEwmh */
+}
