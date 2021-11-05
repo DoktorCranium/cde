@@ -2310,3 +2310,7 @@ programs/dtexec/MsgCat.c
 programs/dtsr/MsgCat.c
 programs/localized/util/MsgCat.c
 
+# Some font changes for linux/en_US
+programs/fontaliases/linux/en_US.UTF-8/fonts.alias
+programs/fontaliases/linux/en_US.UTF-8/mk_fonts_alias
+programs/fontaliases/linux/en_US.UTF-8/test_fonts_alias
