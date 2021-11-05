@@ -26,18 +26,26 @@
 #ifndef _Dt_WmEwmh_h_
 #define _Dt_WmEwmh_h_
 
-#define _NET_WM_STATE_REMOVE	0
-#define _NET_WM_STATE_ADD	1
-#define _NET_WM_STATE_TOGGLE	2
+#define _NET_WM_STATE_REMOVE 0
+#define _NET_WM_STATE_ADD 1
+#define _NET_WM_STATE_TOGGLE 2
 
-#define _XA_NET_SUPPORTED              	"_NET_SUPPORTED"
-#define _XA_NET_WM_NAME			"_NET_WM_NAME"
-#define _XA_NET_SUPPORTING_WM_CHECK	"_NET_SUPPORTING_WM_CHECK"
-#define _XA_NET_WM_FULLSCREEN_MONITORS 	"_NET_WM_FULLSCREEN_MONITORS"
-#define _XA_NET_WM_STATE               	"_NET_WM_STATE"
-#define _XA_NET_WM_STATE_FULLSCREEN    	"_NET_WM_STATE_FULLSCREEN"
+#define _XA__NET_SUPPORTED "_NET_SUPPORTED"
+#define _XA__NET_SUPPORTING_WM_CHECK "_NET_SUPPORTING_WM_CHECK"
+#define _XA__NET_WM_NAME "_NET_WM_NAME"
+#define _XA__NET_WM_ICON_NAME "_NET_WM_ICON_NAME"
+#define _XA__NET_WM_FULLSCREEN_MONITORS "_NET_WM_FULLSCREEN_MONITORS"
+#define _XA__NET_WM_STATE "_NET_WM_STATE"
+#define _XA__NET_WM_STATE_FULLSCREEN "_NET_WM_STATE_FULLSCREEN"
+#define _XA__NET_WM_STATE_MAXIMIZED_VERT "_NET_WM_STATE_MAXIMIZED_VERT"
+#define _XA__NET_WM_STATE_MAXIMIZED_HORZ "_NET_WM_STATE_MAXIMIZED_HORZ"
 
-void ProcessEwmh (ClientData *pCD, XClientMessageEvent *clientEvent);
+void ProcessNetWmFullscreenMonitors (ClientData *pCD,
+    long top, long bottom, long left, long right);
+void ProcessNetWmState (ClientData *pCD, long action,
+    long firstProperty, long secondProperty);
+void ProcessNetWmName (ClientData *pCD);
+void ProcessNetWmIconName (ClientData *pCD);
 void SetupWmEwmh (void);
 
 #endif /* _Dt_WmEwmh_h_ */

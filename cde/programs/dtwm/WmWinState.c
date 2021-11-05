@@ -181,7 +181,6 @@ void SetClientStateWithEventMask (ClientData *pCD, int newState, Time setTime, u
 	     * WM_STATE property is set in WithdrawWindow.
 	     */
 
-	    XDeleteProperty (DISPLAY, pCD->client, wmGD.xa_NET_WM_STATE);
 	    UnManageWindow (pCD);
 	    break;
 	}
@@ -605,9 +604,7 @@ static void SetupWindowStateWithEventMask (ClientData *pCD, int newState,
 
 void ConfigureNewState (ClientData *pcd)
 {
-    WmHeadInfo_t *WmHI = NULL;
-
-    if (pcd->maxConfig)
+    if (pcd->maxConfig && !pcd->isFullscreen)
     {
 	pcd->maxConfig = FALSE;
 	RegenerateClientFrame(pcd);
@@ -617,6 +614,16 @@ void ConfigureNewState (ClientData *pcd)
     }
     else
     {
+	long decor;
+	WmHeadInfo_t *WmHI;
+
+	if (pcd->isFullscreen)
+	{
+	    decor = pcd->decor;
+	    pcd->decor = WM_DECOR_NONE;
+	    SetClientOffset (pcd);
+	}
+
 	if (pcd->isFullscreen && pcd->monitorSizeIsSet)
 	{
 	    pcd->maxX = pcd->monitorX;
@@ -646,7 +653,14 @@ void ConfigureNewState (ClientData *pcd)
 			   (unsigned int) pcd->maxHeight);
 	pcd->maxConfig = TRUE;
 	RegenerateClientFrame(pcd);
+
+	if (pcd->isFullscreen)
+	{
+	    pcd->decor = decor;
+	    SetClientOffset (pcd);
+	}
     }
+
     SendConfigureNotify (pcd);
 
     /*

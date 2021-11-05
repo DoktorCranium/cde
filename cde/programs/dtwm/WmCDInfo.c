@@ -989,7 +989,8 @@ int IdentifyFramePart (ClientData *pCD, int x, int y)
 
     if (decor & MWM_DECOR_TITLE)
     {
-	if ( (x >= pCD->titleRectangle.x) &&
+	if ( pCD->pTitleGadgets &&
+	     (x >= pCD->titleRectangle.x) &&
 	     (x <  (int)pCD->titleRectangle.x + (int)pCD->titleRectangle.width) &&
 	     (y >= pCD->titleRectangle.y) &&
 	     (y <  (int)pCD->titleRectangle.y + (int)pCD->titleRectangle.height) )
@@ -1002,7 +1003,7 @@ int IdentifyFramePart (ClientData *pCD, int x, int y)
 
     /* try resize border */
 
-    if (decor & MWM_DECOR_RESIZEH)
+    if (decor & MWM_DECOR_RESIZEH && pCD->pTitleGadgets)
     {
 	rval = GadgetID(x, y, pCD->pResizeGadgets, STRETCH_COUNT);
     }
