@@ -124,6 +124,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <wchar.h>
 #include <sys/stat.h>
 
 #define X_INCLUDE_STRING_H
@@ -170,8 +171,9 @@ int		debugging_search_wordtree =	FALSE;
 int             debugging_teskey =		FALSE;
 int             debugging_paice =		FALSE;
 static int	*paice_charmap;
-static UCHAR	paicebuf [DtSrMAXWIDTH_HWORD + 2];
+static char	paicebuf [DtSrMAXWIDTH_HWORD + 2];
 static int	paicelen;
+static int	paicewcsl;
 static int	word_is_intact;
 
 /* Language strings correspond to DtSrLa.. constants.  */
@@ -230,7 +232,7 @@ static char	*language_name (DtSrINT16 langno)
  * Returns TRUE if successful search, else FALSE.
  * See also search_wordtree_jpn() in jpn.c
  */
-static int	search_wordtree (WORDTREE *wordtree, UCHAR *wordstring)
+static int	search_wordtree (WORDTREE *wordtree, char *wordstring)
 {
     static int     	direction;
     static WORDTREE	*node;
@@ -240,7 +242,7 @@ static int	search_wordtree (WORDTREE *wordtree, UCHAR *wordstring)
 	    wordstring);
     /* MAIN SEARCH LOOP: binary tree search */
     for (node = wordtree;  node != NULL;  ) {
-	if ((direction = strcmp ((char *) wordstring, node->word)) == 0) {
+	if ((direction = strcmp (wordstring, node->word)) == 0) {
 	    if (debugging_search_wordtree)
 		fprintf (aa_stderr, "  HIT!\n");
 	    return TRUE;
@@ -258,6 +260,61 @@ static int	search_wordtree (WORDTREE *wordtree, UCHAR *wordstring)
 	fprintf (aa_stderr, "  MISS.\n");
     return FALSE;
 }  /* search_wordtree() */
+
+
+static int euro_mbtowc (wchar_t *pwc, const char *p, const char *s)
+{
+    int len;
+
+    mbtowc (NULL, NULL, 0);
+    len = mbtowc (pwc, p, 1);
+
+    if (len < 0 && p > s) {
+	mbtowc (NULL, NULL, 0);
+	len = mbtowc (pwc, p - 1, 2);
+    }
+
+    if (len < 0 || *pwc > 0xFF) *pwc = 0x100;
+
+    return len;
+}
+
+
+static char *euro_wctomb (int c, char *outp, int len)
+{
+    wchar_t wc = c & 0xFF;
+    if (len > 1) wctomb (outp, wc);
+    else *outp = wc;
+    return outp + len;
+}
+
+
+static int euro_readchar (READCFP cofunction, void *cofunction_arg, char *outp,
+    wchar_t *pwc)
+{
+    int len = 1;
+
+    *pwc = 0;
+
+    *outp = cofunction (cofunction_arg);
+
+    if (!(*outp)) goto done;
+
+    mbtowc (NULL, NULL, 0);
+
+    if (mbtowc (pwc, outp, 1) >= 0) goto done;
+
+    *(outp + 1) = cofunction (NULL);
+    mbtowc (NULL, NULL, 0);
+    len = mbtowc (pwc, outp, 2);
+
+    if (len < 0 || *pwc > 0xFF) *pwc = 0x100;
+
+    len = 2;
+
+done:
+    return len;
+}
 
 
 /************************************************/
@@ -312,10 +369,10 @@ char	*teskey_parser (PARG *parg)
     static READCFP	cofunction;
     static void		*cofunction_arg;
     static DBLK		*dblk =		NULL;
-    static UCHAR	*outbuf =	NULL;
+    static char		*outbuf =	NULL;
     static size_t	outbufsz =	0;
-    static UCHAR	*endmaxword;	/* end largest possible output word */
-    static UCHAR	*outp;		/* next loc in outbuf */
+    static char		*endmaxword;	/* end largest possible output word */
+    static char		*outp;		/* next loc in outbuf */
     static int		*charmap;
     static int		minwordsz, maxwordsz;
     static int		wordlen;
@@ -324,6 +381,8 @@ char	*teskey_parser (PARG *parg)
     static long		*offsetp, readcount, candidate_offset;
     static int		is_hiliting;
     static int		add_msgs;
+    static int		len;
+    static wchar_t	wc;
 
     /* If first call for current text block... */
     if (parg) {
@@ -376,8 +435,12 @@ char	*teskey_parser (PARG *parg)
 READ_ANOTHER_WORD:
     outp = outbuf;
     tpstate = BETW_WORDS;
-    while ((*outp = cofunction (cofunction_arg))) {
-	readcount++;
+    for (;;) {
+	len = euro_readchar (cofunction, cofunction_arg, outp, &wc);
+
+	if (!wc) break;
+
+	readcount += len;
 	cofunction_arg = NULL;
 
 	/*------------- BETW_WORDS State ------------
@@ -387,15 +450,14 @@ READ_ANOTHER_WORD:
 	    /*
 	     * Discard nonconcordable chars between words.
 	     */
-	    if ((charmap[*outp] & NON_CONCORD) != 0)
+	    if ((charmap[wc] & NON_CONCORD) != 0)
 		continue;
 	    /*
 	     * Fully concordable char is definite start of new word.
 	     * Convert to uppercase and go get next char.
 	     */
-	    if ((charmap[*outp] & CONCORDABLE) != 0) {
-		*outp = charmap[*outp] & 0x00ff;
-		outp++;
+	    if ((charmap[wc] & CONCORDABLE) != 0) {
+		outp = euro_wctomb (charmap[wc], outp, len);
 		candidate_offset = readcount;
 		tpstate = IN_WORD;
 		continue;
@@ -407,18 +469,18 @@ READ_ANOTHER_WORD:
 	     * to uppercase and go get next char.
 	     * Otherwise discard just like non_concord.
 	     */
-	    outp++;
-	    if ((*outp = cofunction(NULL)))
-		readcount++;
-	    if ((charmap[*outp] & CONCORDABLE) != 0) {
-		*outp = charmap[*outp] & 0x00ff;
-		outp++;
-		candidate_offset = readcount - 1;
+	    outp += len;
+	    len = euro_readchar (cofunction, NULL, outp, &wc);
+	    readcount += len;
+
+	    if ((charmap[wc] & CONCORDABLE) != 0) {
+		outp = euro_wctomb (charmap[wc], outp, len);
+		candidate_offset = readcount - len;
 		tpstate = IN_WORD;
 		continue;
 	    }
 	    else {
-		outp--;
+		outp -= len;
 		continue;
 	    }
 	} /* endif BETW_WORDS */
@@ -431,10 +493,9 @@ READ_ANOTHER_WORD:
 	 * Non_concords treatment depends on next char.
 	 */
 	else if (tpstate == IN_WORD) {
-	    if ((charmap[*outp] & CONCORDABLE) != 0) {
+	    if ((charmap[wc] & CONCORDABLE) != 0) {
 		if (outp < endmaxword) {
-		    *outp = charmap[*outp] & 0x00ff;
-		    outp++;
+		    outp = euro_wctomb (charmap[wc], outp, len);
 		}
 		else {
 		    tpstate = TOO_LONG;
@@ -457,18 +518,18 @@ READ_ANOTHER_WORD:
 		}
 		continue;
 	    }
-	    if ((charmap[*outp] & NON_CONCORD) != 0) {
+	    if ((charmap[wc] & NON_CONCORD) != 0) {
 		*outp = '\0';
 		break;
 	    }
 	    /* Must be opt_concord... */
-	    outp++;
-	    if ((*outp = cofunction(NULL)))
-		readcount++;
-	    if ((charmap[*outp] & CONCORDABLE) != 0) {
+	    outp += len;
+	    len = euro_readchar (cofunction, NULL, outp, &wc);
+	    readcount += len;
+
+	    if ((charmap[wc] & CONCORDABLE) != 0) {
 		if (outp < endmaxword) {
-		    *outp = charmap[*outp] & 0x00ff;	/* uppercase */
-		    outp++;
+		    outp = euro_wctomb (charmap[wc], outp, len);
 		}
 		else {
 		    tpstate = TOO_LONG;
@@ -482,7 +543,8 @@ READ_ANOTHER_WORD:
 		continue;
 	    }
 	    else {	/* next char NOT concordable...*/
-		*(--outp) = '\0';
+		outp -= len;
+		*outp = '\0';
 		break;
 	    }
 	} /* endif IN_WORD */
@@ -494,7 +556,7 @@ READ_ANOTHER_WORD:
 	 * can get between words again with a clear non_concord.
 	 */
 	else if (tpstate == TOO_LONG) {
-	    if ((charmap[*outp] & NON_CONCORD) != 0) {
+	    if ((charmap[wc] & NON_CONCORD) != 0) {
 		outp = outbuf;
 		tpstate = BETW_WORDS;
 	    }
@@ -524,7 +586,7 @@ READ_ANOTHER_WORD:
 	return NULL;
     }
 
-    wordlen = strlen ((char *) outbuf);
+    wordlen = strlen (outbuf);
     candidate_offset--;	/* token offset is one less than number of reads */
     if (debugging_teskey)
 	fprintf (aa_stderr, "teskey: ofs=%3ld \"%s\"",
@@ -586,7 +648,7 @@ GOOD_WORD:
 	fprintf (aa_stderr, ", ...good word\n");
     if (offsetp)
 	*offsetp = candidate_offset;
-    return (char *) outbuf;
+    return outbuf;
 } /* teskey_parser() */
 
 
@@ -602,10 +664,13 @@ GOOD_WORD:
  */
 int	is_concordable (char *word, int *charmap)
 {
-    UCHAR	*cptr;
-    for (cptr = (UCHAR *)word;  *cptr != 0;  cptr++)
-	if ((charmap[*cptr] & NON_CONCORD) != 0)
+    char	*cptr;
+    wchar_t	wc;
+    for (cptr = word;  *cptr != 0;  cptr++) {
+	euro_mbtowc (&wc, cptr, word);
+	if ((charmap[wc] & NON_CONCORD) != 0)
 	    break;
+    }
     return (*cptr == 0);
 } /* is_concordable() */
 
@@ -1087,6 +1152,8 @@ static int      load_paice_suffixes (DBLK *dblk, DBLK *dblist)
     int		must_be_intact, is_last_rule;
     UCHAR	remove_count;
     int		lineno, errcount;
+    int		len;
+    wchar_t	wc;
     _Xstrtokparams	strtok_buf;
 
     dblk->stem_extra = NULL;	/* just to be sure */
@@ -1183,9 +1250,11 @@ static int      load_paice_suffixes (DBLK *dblk, DBLK *dblist)
 	if ((suffix = (UCHAR *)_XStrtok(readbuf, SFX_DELIMS, strtok_buf)) == NULL)
 	    continue;
 
-	for (cptr = suffix;  cptr;  cptr++)
-	    if ((dblk->charmap[*cptr] & NUMERAL) == 0)
+	for (cptr = suffix;  cptr;  cptr++) {
+	    euro_mbtowc (&wc, (char *)cptr, (char *)suffix);
+	    if ((dblk->charmap[wc] & NUMERAL) == 0)
 		break;
+	}
 	if (*cptr == '\0')
 	    continue;
 
@@ -1252,8 +1321,11 @@ BAD_RULE:
 	prule->remove_count =	remove_count;
 	prule->is_last_rule =	is_last_rule;
 	if (apndstr) {
-	    prule->apndstr =	(UCHAR *) strdup ((char*)apndstr);
-	    prule->aplen =	strlen ((char*)apndstr);
+	    len = mbstowcs (NULL, (char *)apndstr, 0);
+	    if (len != -1) {
+		prule->apndstr =	(UCHAR *) strdup ((char*)apndstr);
+		prule->aplen =		len;
+	    }
 	}
 
 	prule_link = &rules_table[suffix[0]];
@@ -1292,7 +1364,8 @@ BAD_RULE:
  */
 static int	is_matching_rule (PRULE *rule)
 {
-    static UCHAR	*ptr;
+    static char		*ptr;
+    static wchar_t	wc;
     static int		i, j;
 
     if (debugging_paice)
@@ -1328,7 +1401,7 @@ static int	is_matching_rule (PRULE *rule)
      * Used to algorithmically test remaining stem length
      * after tentative application of rule.
      */
-    i = paicelen - (rule->remove_count - rule->aplen);
+    i = paicewcsl - (rule->remove_count - rule->aplen);
 
     if (i <= 1) {
 	if (debugging_paice)
@@ -1337,7 +1410,11 @@ static int	is_matching_rule (PRULE *rule)
     }
 
     if (i == 2) {
-	if (IS_VOWEL (paicebuf[0])) {
+	euro_mbtowc (&wc, paicebuf, paicebuf);
+
+	if (!IS_VOWEL (wc)) euro_mbtowc (&wc, paicebuf + 1, paicebuf);
+
+	if (IS_VOWEL (wc)) {
 	    if (debugging_paice)
 		fputs (", and short vowel stem valid.\n", aa_stderr);
 	    return TRUE;
@@ -1355,13 +1432,15 @@ static int	is_matching_rule (PRULE *rule)
      * Otherwise it's not.
      */
     for (j=0;  j<i;  j++) {
-	if (IS_VOWEL (paicebuf[j])) {
+	euro_mbtowc (&wc, &paicebuf[j], paicebuf);
+
+	if (IS_VOWEL (wc)) {
 GOOD_STEM:
 	    if (debugging_paice)
 		fputs (", and remaining stem valid.\n", aa_stderr);
 	    return TRUE;
 	}
-	if (j > 0  &&  paicebuf[j] == 'Y')
+	if (j > 0  && wc == L'Y')
 	    goto GOOD_STEM;
     }
 
@@ -1389,7 +1468,8 @@ GOOD_STEM:
  */
 static char	*paice_stemmer (char *wordin, DBLK *dblk)
 {
-    UCHAR	finalc;
+    wchar_t	finalwc;
+    int		len;
     PRULE	*rule, **rules_table;
 
     if (wordin == NULL)
@@ -1409,24 +1489,31 @@ static char	*paice_stemmer (char *wordin, DBLK *dblk)
      * prefix ^O that identifies a stem.  (But this
      * stemmer doesn't actually insert the ^O now.)
      */
-    strncpy ((char*)paicebuf, wordin, DtSrMAXWIDTH_HWORD);
-    paicebuf [DtSrMAXWIDTH_HWORD - 2] = 0;
+    strncpy (paicebuf, wordin, DtSrMAXWIDTH_HWORD);
+
+    if (mblen (&paicebuf[DtSrMAXWIDTH_HWORD - 2], 1) == -1 &&
+	mblen (&paicebuf[DtSrMAXWIDTH_HWORD - 3], 2) != -1)
+	paicebuf[DtSrMAXWIDTH_HWORD - 3] = 0;
+    else paicebuf[DtSrMAXWIDTH_HWORD - 2] = 0;
+
     paice_charmap =	dblk->charmap;
     word_is_intact = 	TRUE;
 
     for (;;) { /*-------- Main Stemming Loop ---------*/
 
-	paicelen = strlen ((char*)paicebuf);
-	finalc = *(paicebuf + paicelen - 1);
+	paicelen = strlen (paicebuf);
+	paicewcsl = mbstowcs (NULL, paicebuf, 0);
+	len = euro_mbtowc (&finalwc, paicebuf + paicelen - 1, paicebuf);
+
 	if (debugging_paice) {
-	    fprintf (aa_stderr,
-		"paice: '%s', rules list '%c' for database '%s'\n",
-		paicebuf, finalc, dblk->name);
+	    fwprintf (aa_stderr,
+		L"paice: '%s', rules list '%lc' for database '%s'\n",
+		paicebuf, finalwc, dblk->name);
 	    fflush (aa_stderr);
 	}
 
 	/* Look for a matching rule */
-	if ((rule = rules_table [finalc]) == NULL) {
+	if ((rule = rules_table [finalwc]) == NULL) {
 	    if (debugging_paice)
 		fputs ("  list is null, stop.\n", aa_stderr);
 	    break;
@@ -1438,8 +1525,8 @@ static char	*paice_stemmer (char *wordin, DBLK *dblk)
 	}
 	if (rule == NULL) {
 	    if (debugging_paice)
-		fprintf (aa_stderr, "  rules list '%c' is exhausted, stop.\n",
-		    finalc);
+		fwprintf (aa_stderr,
+		    L"  rules list '%lc' is exhausted, stop.\n", finalwc);
 	    break;
 	}
 
@@ -1452,10 +1539,11 @@ static char	*paice_stemmer (char *wordin, DBLK *dblk)
 	    break;
 	}
 
-	paicebuf [paicelen - rule->remove_count] = 0;
+	paicebuf [paicelen - len * rule->remove_count] = 0;
 	if (rule->aplen)
-	    strcat ((char*)paicebuf, (char*)rule->apndstr);
-	paicelen = strlen ((char*)paicebuf);
+	    strcat (paicebuf, (char*)rule->apndstr);
+	paicelen = strlen (paicebuf);
+	paicewcsl = mbstowcs (NULL, paicebuf, 0);
 	word_is_intact = FALSE;	 /* we've removed at least 1 suffix */
 	if (debugging_paice)
 	    fprintf (aa_stderr, "--> '%s'", paicebuf);
@@ -1478,7 +1566,7 @@ static char	*paice_stemmer (char *wordin, DBLK *dblk)
 	fprintf (aa_stderr, "  final stem: '%s'\n", paicebuf);
 	fflush (aa_stderr);
     }
-    return (char *) paicebuf;
+    return paicebuf;
 } /* paice_stemmer() */
 
 
@@ -1498,9 +1586,9 @@ char	*null_stemmer (char *word, DBLK *dblk)
 	return "";
     if (*word == '\0')
 	return "";
-    strncpy ((char *)paicebuf, word, DtSrMAXWIDTH_HWORD);
+    strncpy (paicebuf, word, DtSrMAXWIDTH_HWORD);
     paicebuf [DtSrMAXWIDTH_HWORD-1] = 0;
-    return (char *) paicebuf;
+    return paicebuf;
 } /* null_stemmer() */
 
 
@@ -1514,11 +1602,15 @@ char	*null_stemmer (char *word, DBLK *dblk)
  */
 static char	*euro_lstrupr (char *string, DBLK *dblk)
 {
-    static int		*charmap;
-    static UCHAR	*s;
+    static int		*charmap, len;
+    static char		*s;
+    static wchar_t	wc;
     charmap = dblk->charmap;
-    for (s=(UCHAR *)string;  *s;  s++)
-	*s = charmap[*s] & 0xff;
+    for (s = string;  *s;  s++) {
+	len = euro_mbtowc (&wc, s, string);
+	*s = charmap[wc] & 0xFF;
+	if (len > 1) wctomb (s - 1, *s);
+    }
     return string;
 }
 

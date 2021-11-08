@@ -129,8 +129,6 @@
 #include <sys/stat.h>
 
 #define PROGNAME	"JPN"
-#define SS2_CHAR	0x8E	/* Single Shift char for Code Set 2 */
-#define SS3_CHAR	0x8F	/* Single Shift char for Code Set 3 */
 #define EXT_KATAKANA	".ktk"
 #define EXT_KANJI	".knj"
 #define SUBSTRBUFSZ	100
@@ -277,23 +275,7 @@ static char	*display_jstate (int js)
  */
 static int	read_jchar (void)
 {
-    /* Jstates table for EUC Set 1 (JIS 0208) */
-    static int  jstates_set1 [] = {
-	JS_DISCARD,	JS_DISCARD,	JS_DISCARD,	/* 0 - 2 */
-	JS_ROMAN,	JS_DISCARD,	JS_KATAKANA,	/* 3 - 5 */
-	JS_GREEK,	JS_CYRILLIC,	JS_DISCARD	/* 6 - 8 */
-    };
-
-    /* Jstates table for EUC Set 3 (JIS 0212).
-     * Row 5 is presumed to be katakana because
-     * of four new unapproved katakana characters.
-     */
-    static int  jstates_set3 [] = {
-	JS_DISCARD,	JS_DISCARD,	JS_DISCARD,	/* 0 - 2 */
-	JS_DISCARD,	JS_DISCARD,	JS_KATAKANA,	/* 3 - 5 */
-	JS_GREEK,	JS_CYRILLIC,	JS_DISCARD,	/* 6 - 8 */
-	JS_ALPHA,	JS_ALPHA,	JS_ALPHA	/* 9 - 11 */
-    };
+    char str1[8], str2[8];
 
     if (readchar_arg) {
 	jchar[0] = readchar (readchar_arg);
@@ -305,75 +287,78 @@ static int	read_jchar (void)
 	return (jstate = JS_ETX);
     readcount++;
 
-    /* Set 1 (JIS 0208) */
-    if (jchar[0] >= 0xA1 && jchar[0] <= 0xFE) {
-	jcharlen = 2;
-	if (jchar[0] > 0xA8)
-	    jstate = JS_KANJI;
-	else
-	    jstate = jstates_set1 [(jchar[0] & 0x7F) - 32];
-	if ((jchar[1] = readchar (NULL)))
-	    readcount++;
-	else
-	    jstate = JS_ETX;
-	return jstate;
-    } 
-
-    /* Set 0 (ASCII) */
-    if (jchar[0] < 0x80) {
-	jcharlen = 1;
-	return (jstate = JS_ASCII);
+    for (jcharlen = 1; jcharlen < MB_CUR_MAX; ++jcharlen) {
+	jchar[jcharlen] = 0;
+	if (mblen ((char *) jchar, MB_CUR_MAX) != -1) break;
+	if ((jchar[jcharlen] = readchar (NULL))) readcount++;
     }
 
-    /* Set 3 (JIS 0212) */
-    if (jchar[0] == SS3_CHAR) {
-	jcharlen = 3;
-	/*
-	 * Hop over the single shift char to get the first JIS byte.
-	 * Make sure first JIS byte is in proper
-	 * range to avoid indexing outside of table.
-	 */
-	if ((jchar[1] = readchar (NULL)) == 0)
-	    return (jstate = JS_ETX);
-	readcount++;
-	if (jchar[1] < 0xA1)
-	    return (jstate = JS_DISCARD);
-	if (jchar[1] > 0xAA)
-	    jstate = JS_KANJI;
-	else
-	    jstate = jstates_set3 [(*jchar & 0x7F) - 32];
-
-	if ((jchar[2] = readchar (NULL)) == 0)
-	    return (jstate = JS_ETX);
-	readcount++;
-	/* JS_ALPHA chars ('miscellaneous alphabetic chars' of
-	 * rows 9 - 11) are compatible with several other jstates,
-	 * so adjust as necessary.
-	 */
-	if (jstate == JS_ALPHA  &&
-		((last_jstate & JS_ALPHA_COMPATIBLE) != 0))
-	    jstate = last_jstate;
-	else if (last_jstate == JS_ALPHA  &&
-		((jstate & JS_ALPHA_COMPATIBLE) != 0))
-	    last_jstate = jstate;
-	return jstate;
-    }
-
-    /* Set 2 (half-width katakana) */
-    if (jchar[0] == SS2_CHAR) {
-	jcharlen = 2;
-	jstate = JS_HALFKATA;
-	if ((jchar[1] = readchar (NULL)))
-	    readcount++;
-	else
-	    jstate = JS_ETX;
-	return jstate;
-    }
-
-    /* If first jchar doesn't match expected EUC coding,
+    /* If jchar is an invalid multibyte sequence,
      * discard it until we get back into sync.
      */
-    jcharlen = 1;
+    if (jcharlen == MB_CUR_MAX) return (jstate = JS_DISCARD);
+
+    if (jcharlen == 1) {
+	if (jchar[0] < 0x80) {
+	    jcharlen = 1;
+	    jstate = JS_ASCII;
+	}
+	else jstate = JS_DISCARD;
+
+	return jstate;
+    }
+
+    if (jcharlen == 2) {
+	str1[0] = 0xC2;
+	str1[1] = 0x80;
+	str1[2] = 0;
+
+	str2[0] = 0xDF;
+	str2[1] = 0xBF;
+	str2[2] = 0;
+
+	if (strcmp ((char *) jchar, str1) >= 0 &&
+	    strcmp ((char *) jchar, str2) <= 0)
+	    jstate = JS_ROMAN;
+	else jstate = JS_DISCARD;
+
+	return jstate;
+    }
+
+    if (jcharlen == 3) {
+	str1[0] = 0xE4;
+	str1[1] = 0xB8;
+	str1[2] = 0x80;
+	str1[3] = 0;
+
+	str2[0] = 0xE9;
+	str2[1] = 0xBF;
+	str2[2] = 0xBF;
+	str2[3] = 0;
+
+	if (strcmp ((char *) jchar, str1) >= 0 &&
+	    strcmp ((char *) jchar, str2) <= 0)
+	    jstate = JS_KANJI;
+	else {
+	    str1[0] = 0xEF;
+	    str1[1] = 0xBD;
+	    str1[2] = 0xA6;
+	    str1[3] = 0;
+
+	    str2[0] = 0xEF;
+	    str2[1] = 0xBE;
+	    str2[2] = 0x9F;
+	    str2[3] = 0;
+
+	    if (strcmp ((char *) jchar, str1) >= 0 &&
+		strcmp ((char *) jchar, str2) <= 0)
+		jstate = JS_HALFKATA;
+	    else jstate = JS_DISCARD;
+	}
+
+	return jstate;
+    }
+
     return (jstate = JS_DISCARD);
 } /* read_jchar() */
 
@@ -401,7 +386,7 @@ static UCHAR	*kanji_compounder (void)
     static UCHAR	*mysubstrp =	NULL;
     static UCHAR	*mysubstrend =	NULL;
     static UCHAR	*op, *ss;
-    static int		i;
+    static int		i, j, mbl;
 
     if (is_new_substring) {
 	is_new_substring = FALSE;
@@ -420,7 +405,7 @@ static UCHAR	*kanji_compounder (void)
 	    return NULL;
 	if (++clen > MAX_KANJI_CLEN) {
 	    clen = 1;
-	    mysubstrp += (*mysubstrp == SS3_CHAR)? 3 : 2;
+	    mysubstrp += mblen ((char *)mysubstrp, MB_CUR_MAX);
 	}
     }
 
@@ -437,15 +422,13 @@ static UCHAR	*kanji_compounder (void)
 	    /* Are there enough jchars left in substring? */
 	    if (ss >= mysubstrend) {
 		clen = 1;
-		mysubstrp += (*mysubstrp == SS3_CHAR)? 3 : 2;
+		mysubstrp += mblen ((char *)mysubstrp, MB_CUR_MAX);
 		i = 0;		/* indicates assembly failure */
 		break;		/* breaks the for loop */
 	    }
 	    /* Assemble one jchar into outbuf */
-	    if (*ss == SS3_CHAR)
-		*op++ = *ss++;
-	    *op++ = *ss++;
-	    *op++ = *ss++;
+	    mbl = mblen ((char *)ss, MB_CUR_MAX);
+	    for (j = 0; j < mbl; ++j) *op++ = *ss++;
 	}
 	/* Did word assembly succeed? */
 	if (i >= clen) {
@@ -498,7 +481,7 @@ static UCHAR	*search_kanjitree (void)
 
 	/* Return first substr jchar as next token */
 	last_node = NULL;	/* NULL = tree not searched yet */
-	jcharlen = (*substrp == SS3_CHAR)? 3 : 2;
+	jcharlen = mblen ((char *)substrp, MB_CUR_MAX);
 	strncpy ((char*)outbuf, (char*)substrp, jcharlen);
 	outbuf [jcharlen] = 0;
 	if (offsetp)
@@ -524,7 +507,7 @@ EXHAUSTED_TREE:
 	    all_done = TRUE;
 	    return NULL;
 	}
-	jcharlen = (*substrp == SS3_CHAR)? 3 : 2;
+	jcharlen = mblen ((char *)substrp, MB_CUR_MAX);
 	strncpy ((char*)outbuf, (char*)substrp, jcharlen);
 	outbuf [jcharlen] = 0;
 	if (offsetp)
@@ -735,6 +718,8 @@ ENTIRE_SUBSTR_IS_WORD:
 	"%s Program Error: Unknown jstate %d.\n") ,
 	PROGNAME"246", last_jstate);
     DtSearchExit (46);
+
+    return NULL;
 } /* parse_substring() */
 
 
