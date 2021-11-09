@@ -772,6 +772,14 @@ programs/localized/es_ES.UTF-8/palettes/Makefile
 programs/localized/es_ES.UTF-8/msg/Makefile
 programs/localized/es_ES.UTF-8/appmanager/Makefile
 
+doc/Makefile
+doc/util/Makefile
+doc/util/dbtoman/Makefile
+doc/util/dbtoman/instant/Makefile
+
+doc/C/Makefile
+
+
 include/Makefile
 
 ])

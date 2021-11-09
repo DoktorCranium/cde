@@ -1,10 +1,7 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = util C
-
-if JAPANESE
-SUBDIRS += ja_JP.dt-eucJP
-endif
+#SUBDIRS = util C
+SUBDIRS = util 
 
 if GERMAN
 SUBDIRS += de_DE.ISO8859-1
@@ -19,12 +16,13 @@ SUBDIRS += es_ES.ISO8859-1
 endif
 
 if ITALIAN
-SUBDIRS = it_IT.ISO8859-1
+SUBDIRS += it_IT.ISO8859-1
 endif
 
-all::
-	$(RM) -r tmp
-	$(MKDIR_P) tmp
+# JET - these are related to dtinfogen which should be tackled later
+#all::
+#	$(RM) -r tmp
+#	$(MKDIR_P) tmp
 
-clean::
-	$(RM) -r tmp
+#clean::
+#	$(RM) -r tmp
