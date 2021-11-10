@@ -1,7 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-#SUBDIRS = util C
-SUBDIRS = util 
+SUBDIRS = util C
 
 if GERMAN
 SUBDIRS += de_DE.ISO8859-1

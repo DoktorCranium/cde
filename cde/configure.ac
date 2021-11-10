@@ -780,6 +780,17 @@ doc/util/dbtoman/instant/Makefile
 doc/C/Makefile
 doc/C/help/Makefile
 
+doc/de_DE.ISO8859-1/Makefile
+doc/de_DE.ISO8859-1/help/Makefile
+
+doc/es_ES.ISO8859-1/Makefile
+doc/es_ES.ISO8859-1/help/Makefile
+
+doc/fr_FR.ISO8859-1/Makefile
+doc/fr_FR.ISO8859-1/help/Makefile
+
+doc/it_IT.ISO8859-1/Makefile
+doc/it_IT.ISO8859-1/help/Makefile
 
 include/Makefile
 

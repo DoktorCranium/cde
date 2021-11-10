@@ -1,6 +1,5 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = help guides
+SUBDIRS = help
+# notyet SUBDIRS = help guides
 
-clean::
-        $(RM) -r help-sdl cde.dti

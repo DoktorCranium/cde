@@ -1,6 +1,6 @@
 # build some SDL docs for the help system
 
-BUILT_SOURCES = Appmanager.sdl AppBuilder.sdl Calculator.sdl		\
+BUILT_SOURCES = Appmanager.sdl $(APPBUILDER) Calculator.sdl		\
     Calendar.sdl CreatAct.sdl Filemgr.sdl FPanel.sdl Help4Help.sdl	\
     Iconed.sdl Infomgr.sdl Intromgr.sdl LibDtPrint.sdl Loginmgr.sdl	\
     Mailer.sdl Printmgr.sdl PrnSetup.sdl Stylemgr.sdl Terminal.sdl	\
