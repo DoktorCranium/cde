@@ -728,6 +728,8 @@ programs/dtdocbook/lib/Makefile
 programs/dtdocbook/lib/tptregexp/Makefile
 programs/dtdocbook/instant/Makefile
 programs/dtdocbook/xlate_locale/Makefile
+programs/dtdocbook/doc2sdl/Makefile
+programs/dtdocbook/doc2sdl/SGML/Makefile
 
 programs/localized/Makefile
 programs/localized/util/Makefile
