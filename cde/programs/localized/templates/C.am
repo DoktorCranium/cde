@@ -2,4 +2,4 @@
 #  variable for the C locale.
 
 LANG=C
-SOURCE_LANG=C
+HELP_LANG=C

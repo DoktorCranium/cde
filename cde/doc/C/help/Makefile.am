@@ -1,20 +1,9 @@
-include ../../../programs/localized/templates/C.tmpl
-include ../../common/help/Appmanager.tmpl
-include ../../common/help/AppBuilder.tmpl
-include ../../common/help/Calculator.tmpl
-include ../../common/help/Calendar.tmpl
-include ../../common/help/CreatAct.tmpl
-include ../../common/help/FPanel.tmpl
-include ../../common/help/Filemgr.tmpl
-include ../../common/help/Help4Help.tmpl
-include ../../common/help/Iconed.tmpl
-include ../../common/help/Infomgr.tmpl
-include ../../common/help/Intromgr.tmpl
-include ../../common/help/LibDtPrint.tmpl
-include ../../common/help/Loginmgr.tmpl
-include ../../common/help/Mailer.tmpl
-include ../../common/help/Printmgr.tmpl
-include ../../common/help/PrnSetup.tmpl
-include ../../common/help/Stylemgr.tmpl
-include ../../common/help/Terminal.tmpl
-include ../../common/help/Textedit.tmpl
+MAINTAINERCLEANFILES = Makefile.in
+
+# FIXME dtdocbook needs to be fixed to allow parallel building here
+.NOTPARALLEL:
+
+# this sets the LANG and HELP_LANG variables
+include $(top_srcdir)/programs/localized/templates/C.am
+# this does all the work
+include $(top_srcdir)/doc/common/help/sdl-docs.am

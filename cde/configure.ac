@@ -778,6 +778,7 @@ doc/util/dbtoman/Makefile
 doc/util/dbtoman/instant/Makefile
 
 doc/C/Makefile
+doc/C/help/Makefile
 
 
 include/Makefile
