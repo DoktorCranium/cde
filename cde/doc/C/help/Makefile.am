@@ -11,3 +11,8 @@ APPBUILDER = AppBuilder.sdl
 include $(top_srcdir)/programs/localized/templates/C.am
 # this does all the work
 include $(top_srcdir)/doc/common/help/sdl-docs.am
+
+# need to setup a symlink for the en_US locale to point toward C
+install-data-hook:
+	$(RM) $(DESTDIR)$(CDE_INSTALLATION_TOP)/appconfig/help/en_US.UTF-8
+	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/appconfig/help/ && $(LN_S) C en_US.UTF-8
