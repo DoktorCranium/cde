@@ -1,8 +1,5 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-# FIXME dtdocbook needs to be fixed to allow parallel building here
-.NOTPARALLEL:
-
 # This is only available for the C locale, it will be blank for other
 # languages
 APPBUILDER = AppBuilder.sdl
