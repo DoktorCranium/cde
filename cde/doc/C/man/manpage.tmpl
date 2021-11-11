@@ -1,3 +1,0 @@
-$(MANTARGET): $(MANSRC) cdedecl.sgm ../guides/man/SEntity.sgm ../guides/common/ManLinks.sgm ../m-guides/common/ManLinks.sgm
-	$(RM) $@
-	$(DBENVSETUP) $(KSH) $(DBTOMAN) $(DBOPTS) cdedecl.sgm $(MANSRC) $@
