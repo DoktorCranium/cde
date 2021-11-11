@@ -11,6 +11,8 @@ APPBUILDER = AppBuilder.sdl
 include $(top_srcdir)/programs/localized/templates/C.am
 # this does all the work
 include $(top_srcdir)/doc/common/help/sdl-docs.am
+# install all of the extra assets
+include $(top_srcdir)/doc/common/help/sdl-data.am
 
 # need to setup a symlink for the en_US locale to point toward C
 install-data-hook:

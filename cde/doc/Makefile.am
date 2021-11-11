@@ -18,10 +18,3 @@ if ITALIAN
 SUBDIRS += it_IT.ISO8859-1
 endif
 
-# JET - these are related to dtinfogen which should be tackled later
-#all::
-#	$(RM) -r tmp
-#	$(MKDIR_P) tmp
-
-#clean::
-#	$(RM) -r tmp
