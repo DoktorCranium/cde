@@ -94,9 +94,12 @@ static char	*each_A = 0;	/* last seen _eachatt */
 static char	*each_C = 0;	/* last seen _eachcon */
 
 /* forward references */
-void	ChaseIDRefs(Element_t *, char *, char *, FILE *);
-void	Find(Element_t *, int, char **, FILE *);
-void	GetIDREFnames();
+void ChaseIDRefs(Element_t *, char *, char *, FILE *);
+void Find(Element_t *, int, char **, FILE *);
+void GetIDREFnames();
+void ExpandVariables(char *in, char *out, Element_t *e);
+void CALStable(Element_t *e, FILE *fp, char **av, int ac);
+
 
 /* ______________________________________________________________________ */
 /*  Handle "special" variable - read file, run command, do action, etc.

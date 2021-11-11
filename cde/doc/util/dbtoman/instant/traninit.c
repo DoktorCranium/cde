@@ -99,7 +99,8 @@
 #endif
 
 /* forward references */
-void	RememberTransSpec(Trans_t *, int);
+void RememberTransSpec(Trans_t *, int);
+void ExpandVariables(char *in, char *out, Element_t *e);
 
 /* ______________________________________________________________________ */
 /*  Read the translation specs from the input file, storing in memory.
