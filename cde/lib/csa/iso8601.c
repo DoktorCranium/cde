@@ -28,6 +28,10 @@
  *  (c) Copyright 1993, 1994 Sun Microsystems, Inc.
  */
 
+#if defined(__linux__) || defined(CSRG_BASED)
+# define _GNU_SOURCE
+#endif
+
 #include <EUSCompat.h>
 #define XOS_USE_NO_LOCKING
 #define X_INCLUDE_TIME_H
