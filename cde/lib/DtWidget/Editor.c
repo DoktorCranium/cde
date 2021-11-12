@@ -50,6 +50,10 @@
 **      Include Files
 */
 
+#ifndef _XOPEN_SOURCE
+#define _XOPEN_SOURCE 600
+#endif
+
 #include <ctype.h>
 #include <stdlib.h>
 
@@ -62,13 +66,10 @@
 #  include <wchar.h>
 # endif
 # include <libintl.h>
-#elif defined(__linux__)
-# include <wctype.h>
-# define NO_putwc
-#elif defined(CSRG_BASED)
+#elif defined(__linux__) || defined(CSRG_BASED)
 # include <wctype.h>
 # include <wchar.h>
-#endif /* linux */
+#endif /* linux || CSRG_BASED */
 
 #include <sys/wait.h>
 #include "signal.h"
