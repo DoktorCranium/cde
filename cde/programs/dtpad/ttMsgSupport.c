@@ -56,9 +56,16 @@
 **
 **************************************************************************
 **********************************<+>*************************************/
+
+/* for asprintf */
+#if defined(__linux__) || defined(CSRG_BASED)
+# define _GNU_SOURCE
+#endif
+
 #include "dtpad.h"
 #include <dirent.h>
 #include <Dt/DtpadM.h>
+#include <Dt/HourGlass.h>
 
 #define TIMEOUT_FACTOR	1000
 

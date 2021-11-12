@@ -57,6 +57,8 @@
 #include "signal.h"
 #include "X11/Xutil.h"
 #include <X11/StringDefs.h>
+#include <Dt/HourGlass.h>
+#include <Dt/Wsm.h>
 
 #ifndef NO_MESSAGE_CATALOG
 # define TRUE 1

@@ -100,6 +100,8 @@
 #include <sys/wait.h>
 #include <Xm/MwmUtil.h>
 #include <Dt/EnvControlP.h>
+#include <Dt/Lock.h>
+#include <Dt/Action.h>
 #include <Dt/DtpadM.h>
 #include <Dt/MsgCatP.h>
 #include "X11/Xutil.h"
@@ -120,6 +122,9 @@
 static const char catalogName[] = "dtpad";
 # define _DTPAD_CAT_NAME catalogName
 #endif
+
+void SetWorkSpaceHints(Widget shell, char *workspaces);
+
 
 
 /************************************************************************

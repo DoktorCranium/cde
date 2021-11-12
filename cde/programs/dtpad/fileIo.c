@@ -57,6 +57,7 @@
 #include <sys/wait.h>
 #include <Xm/TextF.h>
 #include <Xm/LabelG.h>
+#include <Dt/HourGlass.h>
 
 
 /************************************************************************

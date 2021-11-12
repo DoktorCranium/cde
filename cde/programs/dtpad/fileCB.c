@@ -58,12 +58,16 @@
 **********************************<+>*************************************/
 #include <Dt/DtpadM.h>
 #include <Dt/Action.h>
+#include <Dt/HourGlass.h>
 
 #include <Xm/XmPrivate.h> /* _XmStringUngenerate */
 
 #include "dtpad.h"
 
 extern int numActivePads;  /* declared in main.c */
+
+void TTfailPendingSave(Editor *pPad);
+void SetSaveAsDirAndFile(Editor *pPad);
 
 
 /************************************************************************
