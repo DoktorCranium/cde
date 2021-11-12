@@ -34,6 +34,10 @@
 ** This file contains the multi-byte character versions of the render routines.
 */
 
+#ifndef _XOPEN_SOURCE
+#define _XOPEN_SOURCE 600
+#endif
+
 #include "TermHeader.h"
 #include "TermPrimDebug.h"
 #include "TermPrimP.h"

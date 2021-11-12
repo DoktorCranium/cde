@@ -32,6 +32,10 @@
 
 #define	USE_MEMCPY	/* use memcpy for line movement... */
 
+#ifndef _XOPEN_SOURCE
+#define _XOPEN_SOURCE 600
+#endif
+
 #include <stdlib.h>
 #include <wchar.h>
 #include <Xm/Xm.h>

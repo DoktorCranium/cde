@@ -30,9 +30,11 @@
  * (c) Copyright 1996 Hitachi.						*
  */
 
+
 #include "TermHeader.h"
 #include "TermPrimOSDepI.h"
 #include "TermPrimDebug.h"
+
 #include <fcntl.h>
 #ifdef  ALPHA_ARCHITECTURE
 #include <sys/ioctl.h>
@@ -85,6 +87,10 @@
 #include <errno.h>
 #include <signal.h>
 #include <Xm/Xm.h>
+
+#include <Dt/Term.h>
+#include "TermPrimUtil.h"
+
 
 #define XTTYMODE_intr    0
 #define XTTYMODE_quit    1

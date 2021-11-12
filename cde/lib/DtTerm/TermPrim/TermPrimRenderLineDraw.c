@@ -27,6 +27,10 @@
  * (c) Copyright 1993, 1994 Novell, Inc.                                *
  */
 
+#ifndef _XOPEN_SOURCE
+#define _XOPEN_SOURCE 600
+#endif
+
 #include <stdlib.h>
 #include <wchar.h>
 
