@@ -580,7 +580,7 @@ CanvasRenderer::_dofont(const FeatureSet &fs, Symbol** symbols)
 		len = strlen(font);
 		xlfd = (char*)realloc(xlfd, slen + len + 3);
 		*((char *) memcpy(xlfd + slen, ",", 1) + 1) = '\0';
-		*((char *) memcpy(xlfd + slen + 1, ",", len) + len) = '\0';
+		*((char *) memcpy(xlfd + slen + 1, font, len) + len) = '\0';
 	    }
 	    // otherwise, just dup the font streing
 	    else {
