@@ -335,39 +335,12 @@ DtSR_SearchResultsEntry::create_matches()
 
     const char* parseout = NULL;
 
-    // hack! overwrite f_language, since austext's value is wrong
-    // In future, the next lines should be removed.
-    const char* lang = getenv("LANG");
-    if (lang && !strncmp(lang, "ja", strlen("ja")))
-	f_language = DtSrLaJPN;
-    else
-	f_language = DtSrLaENG;
-	
-    if (f_language == DtSrLaJPN) { // do not trust DtSearchHighlight!
-	int count        = f_search_res->stems(f_dbn)->count();
-
-	ostringstream stemsbuf;
-	for (int i = 0; i < count; i++) {
-	    stemsbuf << (f_search_res->stems(f_dbn)->stems())[i] << '\n';
-	}
-	string stemsbstr = stemsbuf.str();
-	char* stems = (char*)stemsbstr.c_str();
-
-	parseout = StringParser::hilite(text, count, stems);
-
-	assert( parseout != NULL );
-
-	delete[] stems;
-    }
-    else {
-
-	static DtSR_SearchEngine& search_engine = DtSR_SearchEngine::search_engine();
-	if (DtSearchHighlight(
-		search_engine.char_db_name(f_dbn),
-		text, &kwics, &n_kwics, stype,
-		(char*)f_search_res->stems(f_dbn)->stems(),
-		f_search_res->stems(f_dbn)->count()) != DtSrOK) {
-
+    static DtSR_SearchEngine& search_engine = DtSR_SearchEngine::search_engine();
+    if (DtSearchHighlight(
+	search_engine.char_db_name(f_dbn),
+	text, &kwics, &n_kwics, stype,
+	(char*)f_search_res->stems(f_dbn)->stems(),
+	f_search_res->stems(f_dbn)->count()) != DtSrOK) {
 	    fprintf(stderr, "(ERROR) DtSearchHighlight failed\n");
 #ifdef DEBUG
 	    abort();
@@ -375,12 +348,10 @@ DtSR_SearchResultsEntry::create_matches()
 	}
 
 #ifdef DEBUG
-	fprintf(stderr, "(DEBUG) %ld hit found in %s\n", n_kwics, (char*)f_id);
+    fprintf(stderr, "(DEBUG) %ld hit found in %s\n", n_kwics, (char*)f_id);
 #endif
-    }
 
-    UAS_Pointer<UAS_List<UAS_TextRun> >
-				matches = new UAS_List<UAS_TextRun>;
+    UAS_Pointer<UAS_List<UAS_TextRun>> matches = new UAS_List<UAS_TextRun>;
 
     // convert kwics to textrun
     string textrbstr;
@@ -425,7 +396,7 @@ DtSR_SearchResultsEntry::create_matches()
 
 	    int scanned = 0;
 	    if (*cursor == '\n' || *cursor == '\t' || *cursor == ' '  ||
-		*cursor == 0x0D || (unsigned char)*cursor == 0xA0) {
+		*cursor == 0x0D) {
 		scanned++;
 	    }
 	    else if (*cursor == ShiftIn || *cursor == ShiftOut) {
@@ -436,12 +407,20 @@ DtSR_SearchResultsEntry::create_matches()
 		scanned++;
 	    }
 	    else {
-		scanned = mblen(cursor, MB_CUR_MAX);
-		vcc++;
+		int mbl = mblen(cursor, MB_CUR_MAX);
 
-		/* skip one byte in case of failure */
-		if (scanned < 0)
-		    scanned = 1;
+		if ((mbl == 1 && (unsigned char) cursor[0] == 0xA0) ||
+		    (mbl == 2 && (unsigned char) cursor[0] == 0xC2 &&
+				 (unsigned char) cursor[1] == 0xA0)) {
+		    scanned++;
+		}
+		else {
+		    scanned = mbl;
+		    vcc++;
+
+		    /* skip one byte in case of failure */
+		    if (scanned < 0) scanned = 1;
+		}
 	    }
 
 	    off -= scanned;
