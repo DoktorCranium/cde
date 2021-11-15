@@ -10,8 +10,8 @@ if SOLARIS
 dticon_LDADD += -ldl
 endif
 
-dticon_SOURCES = dtIconShell.c event.c fileIO.c fileIODialog.c	\
-                 globals.c graphics.c help.c image.c main.c	\
-                 newIconDialog.c process.c queryDialog.c	\
-                 stdErrDialog.c utils.c constants.h externals.h	\
-                 help.h main.h
+dticon_SOURCES = dtIconShell.c event.c event.h fileIO.c fileIO.h	\
+                 fileIODialog.c globals.c graphics.c graphics.h		\
+                 help.c image.c image.h main.c newIconDialog.c		\
+                 process.c queryDialog.c stdErrDialog.c utils.c		\
+                 utils.h constants.h externals.h help.h main.h

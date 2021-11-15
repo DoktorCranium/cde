@@ -28,6 +28,9 @@
 *  (c) Copyright 1993, 1994 Unix System Labs, Inc., a subsidiary of
 *      Novell, Inc.
 **********************************************************************/
+
+#pragma once
+
 #include "externals.h"
 
 /* help index flags */
@@ -158,3 +161,15 @@
 
 #define HELP_VOLUME                     "Iconed"
 #define HELP_HELP_VOLUME                "Help4Help"
+
+/* help.c */
+void AssignHelpCallbacks(void);
+void HelpTriggerCB(Widget w, caddr_t client_data, caddr_t call_data);
+void HelpOnItemCB(Widget w, caddr_t client_data, caddr_t call_data);
+void HelpHyperlinkCB(Widget w, caddr_t client_data_unused, caddr_t call_data);
+void HelpCloseCB(Widget w, caddr_t client_data, caddr_t call_data_unused);
+void HelpSetVolAndLocation(int topic);
+void DisplayHelp(char *helpVolume, char *locationId);
+void DisplayNewHelp(char *helpVolume, char *locationId);
+void DisplayHelpDialog(Widget helpDialog, char *helpVolume, char *locationId);
+Widget CreateHelpDialog(HelpStruct *pHelp);

@@ -41,6 +41,7 @@
 #include <Xm/MessageB.h>
 #include "main.h"
 #include "externals.h"
+#include "process.h"
 
 #define    RES_CONVERT( res_name, res_value) \
     XtVaTypedArg, (res_name), XmRString, (res_value), strlen(res_value) + 1

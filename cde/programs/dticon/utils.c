@@ -86,11 +86,19 @@
 #include <Xm/XmP.h>
 #include <Xm/MessageB.h>
 #include <Xm/VendorSEP.h>
+#include <Xm/ToggleB.h>
+#include <Dt/Dt.h>
 #include <Dt/UserMsg.h>
 #include <Xm/DragC.h>
 #include <Dt/Dnd.h>
+#include <Dt/Session.h>
 #include "externals.h"
 #include "main.h"
+#include "process.h"
+#include "fileIO.h"
+#include "graphics.h"
+#include "image.h"
+
 /* Copied from Xm/BaseClassI.h */
 extern XmWidgetExtData _XmGetWidgetExtData( 
                         Widget widget,
@@ -149,14 +157,6 @@ void Init_Icons(
 int PixelTableLookup(
                 Pixel pixelIn,
                 Boolean allocNew);
-extern void *Process_DropCheckOp(
-                Widget,
-                XtPointer,
-                XtPointer);
-extern void *Process_DropOp(
-                Widget,
-                XtPointer,
-                XtPointer);
 extern void Repaint_Tablet(Window, int, int, int, int);
 extern void Init_Widget_List(void);
 extern void Init_Pen_Colors(Widget);

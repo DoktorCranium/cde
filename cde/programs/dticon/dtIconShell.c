@@ -63,8 +63,17 @@
         Includes, Defines, and Global variables from the Declarations Editor:
 *******************************************************************************/
 
+void ProcessTabletEvent(
+    Widget w,
+    XEvent *xptr,
+    String *params,
+    Cardinal num_params ); // event.c
+
+
 #include "externals.h"
 #include "main.h"
+#include "utils.h"
+#include "process.h"
 
 #define    RES_CONVERT( res_name, res_value) \
     XtVaTypedArg, (res_name), XmRString, (res_value), strlen(res_value) + 1

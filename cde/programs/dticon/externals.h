@@ -28,6 +28,9 @@
 *  (c) Copyright 1993, 1994 Unix System Labs, Inc., a subsidiary of
 *      Novell, Inc.
 **********************************************************************/
+
+#pragma once
+
 #include <Xm/Xm.h>
 #include <X11/xpm.h>
 #include "constants.h"

@@ -49,6 +49,8 @@
 
 #include "main.h"
 #include "externals.h"
+#include "process.h"
+
 
 /*******************************************************************************
     Includes, Defines, and Global variables from the Declarations Editor:

@@ -89,14 +89,23 @@
 
 #include <Xm/DragC.h>
 #include <Dt/Dnd.h>
+#include <Dt/Connect.h>
 
 #include <Dt/HelpDialog.h>
 #include "main.h"
+#include "utils.h"
+#include "process.h"
+#include "graphics.h"
+#include "image.h"
+#include "fileIO.h"
 
 #ifdef __TOOLTALK
 #include <Tt/tttk.h>
 extern void ReplyToMessage( );
 extern Tt_message replyMsg;
+
+int edit_notifier(char* fname, Tt_message msg, int clear);
+
 #endif
 
 static void Do_DropCheckOp(DtDndTransferCallback);
@@ -776,11 +785,6 @@ Process_GridState( void )
  * Purpose:  Convert the "object" received from bms to a full path name    *
  *           note:  I am making BIG assumptions about the format of the    *
  *                  file I am getting from dtfile. "<host> - <path>"      *
- * WARNING:  I have used an Xe function directly (XeIsLocalHostP), rather  *
- *           than include Dt/Connect.h, which was causing bad things to    *
- *           happen at build time, probably because dticon is not ansi-   *
- *           clean (it tried to get c++ version of /usr/include/stdlib.h?) *
- *           It's simply too late to clean up the ansi... (the bell tolls) *
  *                                                                         *
  ***************************************************************************/
 static char *
@@ -799,7 +803,7 @@ ConvertDropName( char *objects)
 
     /* check if same host */
     tmp[0] = '\0';
-    if ((Boolean)XeIsLocalHostP(host))
+    if (DtIsLocalHostP(host))
     {
         char *slash = NULL;
         tmp[0] = ' ';

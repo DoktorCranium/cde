@@ -54,9 +54,12 @@
  **  implied warranty.
  **
  ******************************************************************************/
-#include <Xm/Xm.h>
+#include <stdlib.h>
 #include <math.h>
+#include <Xm/Xm.h>
 #include "externals.h"
+#include "utils.h"
+#include "process.h"
 
 extern GC scratch_gc;
 

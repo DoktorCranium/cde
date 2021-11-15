@@ -40,6 +40,7 @@
 #include <Xm/MwmUtil.h>
 #include "main.h"
 #include "externals.h"
+#include "process.h"
 
 #include <Xm/MessageB.h>
 

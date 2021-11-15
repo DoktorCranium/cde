@@ -61,6 +61,11 @@
 #include <Xm/Xm.h>
 #include "externals.h"
 #include "main.h"
+#include "utils.h"
+#include "process.h"
+#include "fileIO.h"
+#include "graphics.h"
+#include "image.h"
 
 #ifdef DEBUG
 extern Widget iconForm;

@@ -66,6 +66,7 @@
 #include <Dt/HelpDialog.h>
 #include "help.h"
 #include "main.h"
+#include "utils.h"
 
 extern Widget circleButton, editMenu_addHS_pb, editMenu_clear_pb;
 extern Widget editMenu_copy_pb, editMenu_cut_pb, editMenu_deleteHS_pb;

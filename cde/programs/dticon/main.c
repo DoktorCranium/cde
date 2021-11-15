@@ -50,6 +50,11 @@
 #include <Dt/UserMsg.h>
 #include "externals.h"
 #include "main.h"
+#include "help.h"
+#include "event.h"
+#include "utils.h"
+#include "process.h"
+
 
 #ifdef __TOOLTALK
 #include <Tt/tttk.h>
@@ -63,7 +68,11 @@ Tt_message ProcessToolTalkMediaMessage( );
 extern void ProcessAppArgs();
 void send_tt_saved();
 #define dticon_ptype "DT_Icon_Editor"
+
+int edit_notifier(char* fname, Tt_message msg, int clear);
+
 #endif
+
 
 #define ERROR           -1
 #define NO_ERROR        0

@@ -54,8 +54,11 @@
  ******************************************************************************/
 #include <stdio.h>
 #include "externals.h"
+#include "utils.h"
+#include "process.h"
+#include "image.h"
 
-int flood_min_x, flood_min_y, flood_max_x, flood_max_y;
+static int flood_min_x, flood_min_y, flood_max_x, flood_max_y;
 
 
 /***************************************************************************

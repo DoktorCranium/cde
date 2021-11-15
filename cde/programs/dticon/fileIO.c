@@ -59,11 +59,14 @@
 #include <Xm/Xm.h>
 #include <Xm/TextF.h>
 #include <Xm/FileSB.h>
+#include <Xm/ToggleBG.h>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include "externals.h"
 #include "main.h"
+#include "utils.h"
+#include "process.h"
 
 #ifdef __TOOLTALK
 #include <Tt/tttk.h>
@@ -87,7 +90,6 @@ unsigned int width_ret, height_ret;
 extern GC scratch_gc;
 
 extern void PixelTableClear();
-extern int PixelTableLookup();
 extern void send_tt_saved();
 extern void Display_XPMFile(int, int);
 extern void Display_XBMFile(int, int);
