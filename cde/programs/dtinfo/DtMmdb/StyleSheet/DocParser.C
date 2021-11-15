@@ -652,7 +652,10 @@ DocParser::read_data(istream &input, ostringstream &output)
 		c = '&' ;
 	      else
 		if (!strcmp(tmpbuf, "nbsp")) // non-break space 
-		  c = (char)0xA0 ;
+		  {
+		    if (MB_CUR_MAX > 1) output << 0xC2;
+		    c = (char)0xA0;
+		  }
 		else
 		  c = ' ';
 
