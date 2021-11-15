@@ -73,6 +73,7 @@
 #include <sys/signal.h>
 #include <Xm/Xm.h>
 #include <Dt/GetDispRes.h>
+#include <Dt/HourGlass.h>
 #include <limits.h>
 #include <locale.h>
 #ifndef NO_MESSAGE_CATALOG
