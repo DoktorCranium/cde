@@ -48,6 +48,7 @@
 #include <Dt/Icon.h>
 #include "Button.h"
 #include <Dt/GetDispRes.h>
+#include <Dt/HourGlass.h>
 
 #include <Xm/Form.h>
 #include <Xm/ToggleBG.h>

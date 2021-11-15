@@ -44,6 +44,8 @@
 #include <Xm/BulletinB.h>
 #include <Xm/MessageB.h>
 
+#include <Dt/HourGlass.h>
+
 #define MOVE_OUTLINE_WIDTH	2
 #define FEEDBACK_BEVEL		2
 
