@@ -38,6 +38,7 @@
 # include "dm.h"
 # include <signal.h>
 # include <X11/Xatom.h>
+# include <X11/Xmu/Error.h>
 # include <setjmp.h>
 #if defined(__FreeBSD__) && OSMAJORVERSION > 8
 # include <utmpx.h>
@@ -56,6 +57,8 @@ void GetSysParms( char **tzpp, char **fhpp, char **ftpp );
 static int PathInPList(char *path, char **fplist, int listlen);
 static int PathInZList(char *path, char *fplist, int listlen);
 static int SeparateParts( char **path );
+
+void GenerateAuthData(char *auth, int len); // genauth.c
 
 
 static void

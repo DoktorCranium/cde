@@ -59,13 +59,12 @@
 #include    <string.h>
 #include    <dirent.h>
 #include    <Dt/MsgCatP.h>
-
+#include    <X11/Xutil.h>
+#include    <X11/Intrinsic.h>
+#include    <X11/StringDefs.h>
+#include    <X11/Xmu/SysUtil.h>
+#include    <Dt/HourGlass.h>
 #include   <signal.h>
-
-# ifndef NULL
-#  define NULL 0
-# endif
-
 
 # include	"dm.h"
 # include	"vgmsg.h"
@@ -86,13 +85,13 @@ char    languageList[LANGLISTSIZE];     /* global list of languages     */
  *
  ***************************************************************************/
 
-static char * makeEnv( 
+static char * makeEnv(
                         char *name,
                         char *value) ;
 
 static SIGVAL MakeLangAbort(
 			int arg	);
-			
+
 static int MatchesFileSuffix(const char *filename, const char *suffix);
 
 static void   ScanNLSDir(
@@ -134,7 +133,7 @@ ReadCatalog( int set_num, int msg_num, char *def_str )
       {
         curNlsPath = NULL;
       }
- 
+
      /*
       * 7 is "NLSPATH"
       * 1 is "="
@@ -153,7 +152,7 @@ ReadCatalog( int set_num, int msg_num, char *def_str )
       }
 
       newNlsPath = malloc(newNlsPathLen);  /* placed in environ, do not free */
-      
+
       if (curNlsPath != NULL)
       {
         sprintf(newNlsPath, "NLSPATH=%s:%s", curNlsPath, NLS_PATH_STRING);
@@ -162,12 +161,12 @@ ReadCatalog( int set_num, int msg_num, char *def_str )
       {
         sprintf(newNlsPath, "NLSPATH=%s", NLS_PATH_STRING);
       }
-     
+
      /*
-      * Store new NLSPATH in environment. Note this memory cannot be freed 
+      * Store new NLSPATH in environment. Note this memory cannot be freed
       */
       putenv(newNlsPath);
-  
+
      /*
       * Open message catalog. Note, if invalid descriptor returned (ie
       * msg catalog could not be opened), subsequent call to catgets() using
@@ -186,7 +185,7 @@ printEnv( char **e )
 		Debug ("    %s\n", *e++);
 }
 
-static char * 
+static char *
 makeEnv( char *name, char *value )
 {
 	char	*result;
@@ -208,7 +207,7 @@ makeEnv( char *name, char *value )
 	return result;
 }
 
-char * 
+char *
 getEnv( char **e, char *name )
 {
     int	l = strlen (name);
@@ -224,7 +223,7 @@ getEnv( char **e, char *name )
     return 0;
 }
 
-char ** 
+char **
 setEnv( char **e, char *name, char *value )
 {
     char	**new, **old;
@@ -282,7 +281,7 @@ freeEnv (char **env)
 
 # define isblank(c)	((c) == ' ' || c == '\t')
 
-char ** 
+char **
 parseArgs( char **argv, char *string )
 {
 	char	*word;
@@ -357,26 +356,26 @@ CleanUpChild( void )
 	CloseOnFork ();
 }
 
-char * * 
+char * *
 parseEnv( char **e, char *string )
 {
 
     char *s1, *s2, *t1, *t2;
-    
+
     s1 = s2 = strdup(string);
-    
+
     while ((t1 = strtok(s1," \t")) != NULL ) {
 	if ( (t2 = strchr(t1,'=')) != NULL ) {
 	    *t2++ = '\0';
 	    e = setEnv(e, t1, t2);
 	}
-	
+
 	s1 = NULL;
     }
 
     free(s2);
     return (e);
-}    
+}
 
 /*************************************<->*************************************
  *
@@ -392,7 +391,7 @@ parseEnv( char **e, char *string )
  *  ------
  *  dpy	= display
  *  w   = window
- * 
+ *
  *  Outputs:
  *  -------
  *  None
@@ -400,16 +399,16 @@ parseEnv( char **e, char *string )
  *  Comments:
  *  --------
  *  None. (None doesn't count as a comment)
- * 
+ *
  *************************************<->***********************************/
 
-void 
+void
 SetHourGlassCursor( Display *dpy, Window w )
 {
     Cursor	cursor;
-    
+
     XUndefineCursor(dpy, w);
-    
+
     cursor = _DtGetHourGlassCursor(dpy);
 
     XDefineCursor(dpy, w, cursor);
@@ -424,7 +423,7 @@ SetHourGlassCursor( Display *dpy, Window w )
  *
  *  Generate the list of languages installed on the host.
  *  Result is stored the global array "languageList"
- *  
+ *
  ***************************************************************************/
 
 #define DELIM		" \t"   /* delimiters in language list		   */
@@ -451,7 +450,7 @@ MakeLangList( void )
     /*
      *  build language list from set of languages installed on the host...
      *  Wrap a timer around it so it doesn't hang things up too long.
-     *  langListTimeout resource  by default is 30 seconds to scan NLS dir. 
+     *  langListTimeout resource  by default is 30 seconds to scan NLS dir.
      */
 
     p = languageList;
@@ -512,7 +511,7 @@ MakeLangList( void )
 
     free(savelist);
 
-}        
+}
 
 
 static int
@@ -521,7 +520,7 @@ MatchesFileSuffix(const char *filename, const char *suffix)
     int		retval = 0;
 #if defined(_AIX) || defined(SVR4) || defined(__linux__) || defined(CSRG_BASED)
     int		different = 1;
-	     
+
     /*
      * The assumption here is that the use of strrstr is
      * to determine if "dp->d_name" ends in ".cat".
@@ -543,7 +542,7 @@ MatchesFileSuffix(const char *filename, const char *suffix)
  *  Scan a directory structure to see if it contains an installed language.
  *  If so, the name of the language is appended to a global list of languages.
  *
- *  Scan method and scan directory will vary by platform. 
+ *  Scan method and scan directory will vary by platform.
  *
  ***************************************************************************/
 
@@ -610,7 +609,7 @@ ScanNLSDir(char *dirname)
     struct stat	statb;
 
     char buf[1024];
-    
+
     /*
      *  Scan input directory, looking for a LOCALE file. If a sub-directory
      *  is found, recurse down into it...
@@ -664,7 +663,7 @@ ScanNLSDir(char *dirname)
 
 		continue;
 	    }
-	
+
 	    /*
 	     *  if this file is a directory, scan it also...
 	     */
@@ -687,12 +686,12 @@ ScanNLSDir(char *dirname)
 {
     DIR *dirp;
     struct dirent *dp;
-    char* locale; 
+    char* locale;
     char locale_path[MAXPATHLEN];
     struct stat locale_stat;
     int retval;
 
-    /* 
+    /*
      * To determin the fully installed locale list, check several locations.
      */
     if(NULL != (dirp = opendir(dirname)))
@@ -789,8 +788,8 @@ setLang( struct display *d, char **env , char *langptr)
     int   s = 0;
     char *element = NULL;
     int   set_def_lang = FALSE;
- 
- 
+
+
     if (NULL != langptr)
       Debug("setLang():  langlist = %s\n", langptr);
     else
@@ -811,13 +810,13 @@ setLang( struct display *d, char **env , char *langptr)
             }
             else
               set_def_lang = TRUE;
- 
+
             s += strlen(element) +1;
             element = strtok(langlist+s, DELIM);
         }
     } else
       set_def_lang = TRUE;
- 
+
     if (set_def_lang) {
         env = setEnv(env, "LANG", "C");
         d->language = strdup("C");
@@ -838,4 +837,3 @@ localHostname (void)
     }
     return localHostbuf;
 }
-

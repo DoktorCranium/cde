@@ -94,6 +94,8 @@ from the X Consortium.
 static char	auth_name[256];
 static int	auth_name_len;
 
+void GenerateAuthData(char *auth, int len); // genauth.c
+
 void
 XdmPrintDataHex(const char *s, const char *a, int l)
 {

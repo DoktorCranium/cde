@@ -67,6 +67,8 @@
 #include	<Xm/TextFP.h>
 #include	<Xm/PushBG.h>
 #include	<Xm/ToggleBG.h>
+#include	<Xm/RowColumn.h>
+#include        <X11/Xlib.h>
 #include    <Dt/IconFile.h>
 #include    <Dt/Icon.h>
 #include	<pwd.h>
@@ -1069,7 +1071,7 @@ PostMenuCB( Widget w, XtPointer client_data, XtPointer call_data )
     if (p->reason == XmCR_ARM       	&&
 	p->event->type == ButtonPress) {
 
-	XmMenuPosition(options_menu, p->event);
+	XmMenuPosition(options_menu, (XButtonPressedEvent *)p->event);
 	XtManageChild(options_menu);
     }
 }

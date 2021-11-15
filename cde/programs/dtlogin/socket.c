@@ -105,6 +105,9 @@ extern int	chooserFd;
 extern FD_TYPE	WellKnownSocketsMask;
 extern int	WellKnownSocketsMax;
 
+void registerHostname (char *name, int namelen); // xdmcp.c
+
+
 int
 CreateWellKnownSockets (void)
 {

@@ -64,6 +64,9 @@
 #include	"rgy_base.h"
 #endif
 
+#if defined(HAS_PAM_LIBRARY)
+# include <pam_svc.h>
+#endif
 
 /***************************************************************************
  *
@@ -126,9 +129,9 @@ static struct lastlogin last_login;
  *
  *  Account
  *
- *  update utmp/wtmp files.  
+ *  update utmp/wtmp files.
  ***************************************************************************/
-void 
+void
 Account( struct display *d, char *user, char *line, pid_t pid,
 #if NeedWidePrototypes
         int type,
@@ -149,7 +152,7 @@ Account( struct display *d, char *user, char *line, pid_t pid,
     char	buf[32];
     char* user_str = user ? user : "NULL";
     char* line_str = line ? line : "NULL";
-            
+
 #ifdef __PASSWD_ETC
     struct rtmp rtmp;
     struct rtmp *r;
@@ -158,9 +161,9 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 #endif
 
     if (d->utmpId == NULL) return;
-    
+
     switch (type) {
-    
+
     case INIT_PROCESS:	strcpy(buf, "INIT_PROCESS");	break;
     case LOGIN_PROCESS:	strcpy(buf, "LOGIN_PROCESS");	break;
     case USER_PROCESS:	strcpy(buf, "USER_PROCESS");	break;
@@ -172,14 +175,14 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 	   d->utmpId, user_str, line_str, pid, buf);
 
 #ifdef PAM
-    PamAccounting("dtlogin", d->name, d->utmpId, user, 
+    PamAccounting("dtlogin", d->name, d->utmpId, user,
 		        line, pid, type, exitcode);
 #elif defined(HAS_PAM_LIBRARY)
     _DtAccounting("dtlogin", d->name, d->utmpId, user,
 		        line, pid, type, exitcode);
 #else
 #   ifdef SUNAUTH
-       solaris_accounting("dtlogin", d->name, d->utmpId, user, 
+       solaris_accounting("dtlogin", d->name, d->utmpId, user,
 		           line, pid, type, exitcode);
 #   endif
 #endif
@@ -195,7 +198,7 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 
     strncpy(utmp.ut_id, d->utmpId, sizeof(u->ut_id) - 1);
     utmp.ut_type = LOGIN_PROCESS;
-    
+
 #ifdef HAS_PAM_LIBRARY
     setutxent();
     if ( (u = getutxid(&utmp)) == NULL ) u = &utmp;
@@ -229,7 +232,7 @@ Account( struct display *d, char *user, char *line, pid_t pid,
      *        determine if restricted user licenses have been exceeded.
      *	      Currently, an unlimited number of foreign displays can log in.
      */
-     
+
     if (user) snprintf(u->ut_user, sizeof(u->ut_user), "%s", user);
     if (line) {
 #ifdef _AIX
@@ -259,7 +262,7 @@ Account( struct display *d, char *user, char *line, pid_t pid,
         }
 	else
              snprintf(u->ut_line, sizeof(u->ut_line), "%s", line);
-	     
+
 #else
              snprintf(u->ut_line, sizeof(u->ut_line), "%s", line);
 #endif
@@ -285,21 +288,26 @@ Account( struct display *d, char *user, char *line, pid_t pid,
  	    u->ut_addr = 0;
 #endif
  	}
- 		    
+
 #ifndef HAS_PAM_LIBRARY
 	if (type == USER_PROCESS)
 	    u->ut_exit.e_exit = (d->displayType.location == Local ? 1 : 0 );
 #endif
-    }	
+    }
 
 #ifdef HAS_PAM_LIBRARY
-    (void) time(&u->ut_tv);
+    {
+        struct timeval tmp_tv;
+        (void) gettimeofday(&tmp_tv, NULL);
+        u->ut_tv.tv_sec = (int32_t)tmp_tv.tv_sec;
+        u->ut_tv.tv_usec = (int32_t)tmp_tv.tv_usec;
+    }
 #else
     (void) time(&u->ut_time);
 #endif
 
-    /* 
-     * write to utmp...  
+    /*
+     * write to utmp...
      *
      * (Do not close utmp yet. If "u" points to the static structure, it is
      *  cleared upon close. This does not bode well for the following write
@@ -329,7 +337,7 @@ Account( struct display *d, char *user, char *line, pid_t pid,
     /*
      *  close utmp...
      */
-     
+
     endutent();
 #else
     endutxent();
@@ -380,7 +388,7 @@ Account( struct display *d, char *user, char *line, pid_t pid,
 	}
 
 	Debug("logging lastlogin entry (user=%s)\n",user);
-	dt_lastlogin(user,&last_login); 
+	dt_lastlogin(user,&last_login);
 	free(last_login.stty);
 	free(last_login.shost);
     }
@@ -400,10 +408,10 @@ Account( struct display *d, char *user, char *line, pid_t pid,
  *  see if a particular utmp ID is available
  *
  * return codes:  0 = ID is in use
- *		  1 = ID is open 
+ *		  1 = ID is open
  ***************************************************************************/
 
-int 
+int
 UtmpIdOpen( char *utmpId )
 {
     int    status = 1;		/* return code				   */
@@ -426,7 +434,7 @@ UtmpIdOpen( char *utmpId )
 	    break;
 	}
     }
-    
+
 #ifdef HAS_PAM_LIBRARY
     endutxent();
 #else
@@ -446,8 +454,8 @@ struct lastlogin * llogin;
 	char *tmp_char;
 	char *tmp_int;
 	/*
-	 * We are loading all the lastlogin info into a struct and then dealing 
-	 * with that so if the technique of storing the values is redone it 
+	 * We are loading all the lastlogin info into a struct and then dealing
+	 * with that so if the technique of storing the values is redone it
 	 * will be easy
 	 */
 	/* set id back to root */
@@ -503,4 +511,3 @@ struct lastlogin * llogin;
 	enduserdb();
 }
 #endif
-

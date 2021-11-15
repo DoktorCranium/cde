@@ -92,6 +92,8 @@ from the X Consortium.
 static char	auth_name[256];
 static int	auth_name_len;
 
+void GenerateAuthData (char *auth, int len); // genauth.c
+
 #if NeedWidePrototypes
 int MitInitAuth (unsigned int name_len, char *name)
 #else

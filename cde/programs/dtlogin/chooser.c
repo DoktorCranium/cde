@@ -209,6 +209,12 @@ static int  pingTry;
 static XdmcpBuffer	directBuffer, broadcastBuffer;
 static XdmcpBuffer	buffer;
 
+// dtchooser.c
+void MakeBackground(void);
+void MakeButtons(void);
+void MakeChooser(void);
+
+
 
 /* ARGSUSED */
 static void

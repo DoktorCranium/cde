@@ -141,6 +141,16 @@ int	WellKnownSocketsMax;
 
 #define pS(s)	((s) ? ((char *) (s)) : "empty string")
 
+/* choose.c */
+int RememberIndirectClient(ARRAY8Ptr clientAddress, CARD16 connectionType);
+void ForgetIndirectClient(ARRAY8Ptr clientAddress, CARD16 connectionType);
+int IsIndirectClient(ARRAY8Ptr clientAddress, CARD16 connectionType);
+ARRAY8Ptr IndirectChoice(ARRAY8Ptr clientAddress, CARD16 connectionType);
+int ProcessChooserSocket(int fd);
+void RunChooser(struct display *d);
+
+void LoadDMResources(void); // resource.c
+
 void
 DestroyWellKnownSockets (void)
 {

@@ -86,6 +86,7 @@
 
 #if defined(PAM) || defined(HAS_PAM_LIBRARY)
 #include	<security/pam_appl.h>
+#include        "pam_svc.h"
 #endif
 
 #ifdef _AIX

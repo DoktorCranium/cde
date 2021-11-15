@@ -57,9 +57,11 @@
 # include <string.h>
 
 
-  void CleanUpName( char *src, char *dst, int len) ;
-  static char * getFullFileName(char *name, int special, char * lang);
-  extern char * qualifyWithFirst(char *, char *);
+void CleanUpName( char *src, char *dst, int len) ;
+static char * getFullFileName(char *name, int special, char * lang);
+extern char * qualifyWithFirst(char *, char *);
+
+void GetSysParms(char **tzpp, char **fhpp, char **ftpp); // fontpath.c
 
 /* XtOffset() hack for ibmrt BandAidCompiler */
 

@@ -70,6 +70,11 @@
 
 static char *Print8Address (ARRAY8Ptr   Address);
 
+int LoadXloginResources(struct display *d); // session.c
+void GetSysParms(char **tzpp, char **fhpp, char **ftpp); // fontpath.c
+int GetChooserAddr(char *addr, int *lenp); // socket.c
+int NetaddrFamily(XdmcpNetaddr netaddrp); // netaddr.c
+
 
 static int
 FormatBytes (

@@ -94,7 +94,6 @@ from the X Consortium.
 # include   <X11/Xauth.h>
 # include   <X11/Xos.h>
 # include   "dm.h"
-
 #include <errno.h>
 
 #ifdef X_NOT_STDC_ENV
@@ -131,11 +130,16 @@ static int sumFile (char *name, long sum[2]);
 
 #ifdef HASXDMAUTH
 
+// Most of this comes from XDMCP's Wrap.h header
+
 typedef unsigned char auth_cblock[8];	/* block size */
 
 typedef struct auth_ks_struct { auth_cblock _; } auth_wrapper_schedule[16];
 
-extern void _XdmcpWrapperToOddParity();
+void _XdmcpWrapperToOddParity();
+void _XdmcpAuthSetup (auth_cblock key, auth_wrapper_schedule schedule);
+void _XdmcpAuthDoIt (auth_cblock input, auth_cblock output,
+                     auth_wrapper_schedule schedule, int edflag);
 
 static void
 longtochars (long l, unsigned char *c)

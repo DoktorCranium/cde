@@ -142,6 +142,9 @@ int TitleLen;
 
 static int parent_pid = -1;	/* PID of parent dtlogin process */
 
+void init_session_id(void); // xdmcp.c
+void RunChooser(struct display  *d); // RunChooser.c
+
 
 /***************************************************************************/
 

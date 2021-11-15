@@ -65,6 +65,7 @@
 # include "vgmsg.h"
 # include <signal.h>
 # include <X11/Xatom.h>
+# include <X11/Xmu/Error.h>
 # include <setjmp.h>
 #if defined(__FreeBSD__) && OSMAJORVERSION > 8 || defined(HAS_PAM_LIBRARY)
 # include <utmpx.h>
@@ -76,6 +77,7 @@
 #include <dirent.h>
 #include <limits.h>
 #include <ctype.h>
+#include <grp.h>
 
 #ifdef SIA
 #include <sia.h>
@@ -109,6 +111,8 @@
 #ifdef HAS_PAM_LIBRARY
 #include <PamSvc.h>
 #endif
+
+int ApplyFontPathMods(struct display *d, Display *dpy); // fontpath.c
 
 #ifdef SIA
 
@@ -221,6 +225,7 @@ static int session_execve(char *path, char *argv[], char *envp[]);
 static void LoadAltDtsResources( struct display *d);
 char * _ExpandLang(char *string, char *lang);
 
+void freeEnv (char **env); // util.c
 
 
 /***************************************************************************
@@ -265,7 +270,7 @@ catchAlrm( int arg )
 
 #if defined(__STDC__)
 static int
-FileNameCompare (const char *a, const char *b)
+FileNameCompare (const void *a, const void *b)
 #else
 static int
 FileNameCompare (char *a, char *b)
