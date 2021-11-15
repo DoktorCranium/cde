@@ -98,6 +98,13 @@
 #define SAVER_HEIGHT        238
 #define SAVER_WIDTH         298
 
+/* Struct to hold name and detailed description of savers, so an
+ * array of these can be sorted later */
+typedef struct {
+	  char *saverActionName;
+	  char *saverActionDesc;
+} SaverSub;
+
 /*+++++++++++++++++++++++++++++++++++++++*/
 /* Internal Functions                    */
 /*+++++++++++++++++++++++++++++++++++++++*/
@@ -160,7 +167,7 @@ static void no_svr_ext_ButtonCB(Widget w,
 		     XtPointer client_data,
 		     XtPointer call_data) ;
 
-static XmString * MakeListStrings(char **list ) ;
+static XmString * MakeListStrings(SaverSub *list ) ;
 
 static  void FreeListStrings(XmString *xmlist,
 			     int count) ;
@@ -236,8 +243,7 @@ static saveRestore save = {FALSE, 0,};
 typedef struct {
   char    *saversList;                  /* list of available savers */
   char    *selsaversList;               /* list of selected savers */
-  char   **saverActionNames;            /* array of saver names */
-  char   **saverActionDesc;             /* array of saver action descriptions */
+  SaverSub *subList;                    /* array of saver names and action descriptions */
   char   **selsaverActionNames;         /* array of originally selected saver names */
   int     *selPositions;                /* array of currently selected saver positions */
   int     *origSelPositions;            /* array of originally selected saver positions */
@@ -256,23 +262,39 @@ typedef struct {
 static Savers savers; 
 
 
+/**
+ * comparison function, for qsort, to alphabetically sort
+ * screensaver structs
+ *
+ * @param a First element to check
+ * @param b Second element to check
+ * @returns 0, negative or positive to indicate difference
+ */
+static int
+savernamesort(const void *a, const void *b)
+{
+	const SaverSub *aa = a;
+	const SaverSub *bb = b;
 
+	return strcmp(aa->saverActionDesc, bb->saverActionDesc);
+}
 
 /*++++++++++++++++++++++++++++++++++++++++*/
 /* build_saverList                        */
 /* parses a space separated list of       */
 /* savers to build a an array of saver    */
-/* names. Returns the array and the saver */
-/* count.                                 */
+/* names and saver descriptions.          */
+/* Returns the array and the saver count. */
 /*++++++++++++++++++++++++++++++++++++++++*/
 
-char ** 
-build_saverList(char * str, 
+SaverSub *
+build_saverList(char * str,
 		 int * count)
 {
    char tokenSep[] = " ";
    char * token;
-   char ** saverList = NULL;
+   char *tmpstr;
+   SaverSub *saverList = NULL;
    int i = 0;
    char * tmpStr, *tmpStr2;
    int len = strlen(str);
@@ -293,7 +315,7 @@ build_saverList(char * str,
    if (i == 0)
        return (NULL);
 
-   saverList = (char **) XtCalloc(1, i * sizeof(char *));
+   saverList = (SaverSub *) XtCalloc(1, i * sizeof(SaverSub));
    if( saverList )
      {
        strcpy(tmpStr, str); 
@@ -305,8 +327,23 @@ build_saverList(char * str,
 	 {
 	   if (DtActionExists(token))
 	     {
-	       saverList[*count] = (char *) XtCalloc(1, strlen( token ) + 1);
-	       strcpy(saverList[*count], token);
+	       saverList[*count].saverActionName = (char *) XtCalloc(1, strlen( token ) + 1);
+	       strcpy(saverList[*count].saverActionName, token);
+
+	       // Find the savers description, if not found, use the name again
+	       tmpstr = DtActionDescription(saverList[*count].saverActionName);
+	       if (tmpstr == NULL)
+	         {
+	           saverList[*count].saverActionDesc = (char *) XtMalloc(strlen(saverList[*count].saverActionName) + 1);
+	           strcpy(saverList[*count].saverActionDesc, saverList[*count].saverActionName);
+	         }
+               else
+	         {
+	           saverList[*count].saverActionDesc = (char *) XtMalloc(strlen(tmpstr) + 1);
+	           strcpy(saverList[*count].saverActionDesc, tmpstr);
+	         }
+	       XtFree((char *) tmpstr);
+
 	       ++(*count);
 	     }
 	   tmpStr += strlen(token);
@@ -371,39 +408,6 @@ build_selsaverList(char * envStr,
    XtFree ((char *) tmpStr);
    return(saverList);
  }
-
-/*+++++++++++++++++++++++++++++++++++++++*/
-/* build_saverDesc                       */
-/*+++++++++++++++++++++++++++++++++++++++*/
-
-char ** 
-build_saverDesc(char ** names, 
-		 int count)
-{
-  char          **saverDesc = NULL;
-  char           *tmpstr;
-  int             i;
-
-  saverDesc = (char **) XtCalloc(1, count * sizeof(char *));
-
-  for (i=0; i<count; i++)
-    {
-      tmpstr = DtActionDescription(savers.saverActionNames[i]); 
-      if (tmpstr == NULL)
-	{
-	  saverDesc[i] = (char *) XtMalloc(strlen(savers.saverActionNames[i]) + 1);
-	  strcpy(saverDesc[i], savers.saverActionNames[i]);
-	}
-      else
-	{	  
-	  saverDesc[i] = (char *) XtMalloc(strlen(tmpstr) + 1);
-	  strcpy(saverDesc[i], tmpstr);
-	}
-      XtFree((char *) tmpstr);
-    }
-  return(saverDesc);  
-}
-  
 
 /*+++++++++++++++++++++++++++++++++++++++*/
 /* build_selectedList                    */
@@ -521,8 +525,7 @@ build_screenDialog(
     savers.selsaverActionNames = NULL;
     savers.selPositions = NULL;
     savers.selsaversList = NULL;
-    savers.saverActionNames = NULL;
-    savers.saverActionDesc = NULL;
+    savers.subList = NULL;
     savers.current_saver = NULL;
     savers.current_saverDesc = NULL;
     savers.current_position = 0;
@@ -722,10 +725,15 @@ build_screenDialog(
 	savers.saverCount = 0;
 	savers.selsaverCount=0;
     } else {
-	savers.saverActionNames = build_saverList(savers.saversList, &savers.saverCount);
-	savers.saverActionDesc = build_saverDesc(savers.saverActionNames, savers.saverCount);
+      savers.subList = build_saverList(savers.saversList, &savers.saverCount);
+
+      /* Sort the savers into alphabetical order based on the saver's description */
+      if(savers.saverCount > 1) {
+         qsort(savers.subList, savers.saverCount, sizeof(SaverSub), savernamesort);
+      }
+
 	/* convert to XmString */ 
-	listStrings = MakeListStrings(savers.saverActionDesc); 
+	listStrings = MakeListStrings(savers.subList);
 	XmListAddItems (screen.saverList, listStrings, savers.saverCount, 0); 
 	XtAddCallback (screen.saverList, XmNmultipleSelectionCallback, 
 		       ListCB, (XtPointer)NULL);
@@ -749,7 +757,7 @@ build_screenDialog(
 	    /* determine if this selected saver matches one in valid saver list */
 	    for (m=0; (m < savers.saverCount) && 
 	              ((sel_found = strcmp(savers.selsaverActionNames[n],
-			                   savers.saverActionNames[m])) != 0); m++) {}
+			                   savers.subList[m].saverActionName)) != 0); m++) {}
 	    if (sel_found == 0) {
 	      XmListSelectPos (screen.saverList, m+1, False);
 	      savers.selPositions[n]=m+1;
@@ -776,16 +784,16 @@ build_screenDialog(
 	/* if there are still savers selected that match valid saver names */ 
 	if (savers.selsaverCount) {
 	  /* set current saver to first selection */
-	  savers.current_saver = savers.saverActionNames[savers.selPositions[0] - 1];
-	  savers.current_saverDesc = savers.saverActionDesc[savers.selPositions[0] - 1];
+	  savers.current_saver = savers.subList[savers.selPositions[0] - 1].saverActionName;
+	  savers.current_saverDesc = savers.subList[savers.selPositions[0] - 1].saverActionDesc;
 	  savers.current_position = savers.selPositions[0];
 	} else {
 	  /* highlight last saver */
 	  XmListSelectPos (screen.saverList, savers.saverCount, False);   
 
 	  /* set current saver to last one */
-	  savers.current_saver = savers.saverActionNames[savers.saverCount - 1]; 
-	  savers.current_saverDesc = savers.saverActionDesc[savers.saverCount - 1]; 
+	  savers.current_saver = savers.subList[savers.saverCount - 1].saverActionName;
+	  savers.current_saverDesc = savers.subList[savers.saverCount - 1].saverActionDesc;
 
 	  savers.selPositions = (int *) XtMalloc(sizeof(int));
 	  savers.selPositions[0] = savers.saverCount;
@@ -2460,7 +2468,7 @@ ButtonCB(
 	  
 	  for (i=0; i<savers.selsaverCount; i++)
 	    {
-	      char *tmp = savers.saverActionNames[savers.selPositions[i] - 1];
+	      char *tmp = savers.subList[savers.selPositions[i] - 1].saverActionName;
 	      savers.selsaverActionNames[i] = (char *) XtMalloc(strlen(tmp) + 1);
 	      strcpy(savers.selsaverActionNames[i], tmp);
 	    }			
@@ -2564,8 +2572,8 @@ ButtonCB(
 	    for (i=0; i<savers.orig_selsaverCount; i++)
 	      XmListSelectPos(screen.saverList, savers.origSelPositions[i], False);
 	    /* set the current saver to be the first saver in the selected list */
-	    savers.current_saver = savers.saverActionNames[savers.origSelPositions[0] - 1];
-	    savers.current_saverDesc = savers.saverActionDesc[savers.origSelPositions[0] - 1];
+	    savers.current_saver = savers.subList[savers.origSelPositions[0] - 1].saverActionName;
+	    savers.current_saverDesc = savers.subList[savers.origSelPositions[0] - 1].saverActionDesc;
 	    savers.current_position = savers.origSelPositions[0];
 	  }
 
@@ -2666,7 +2674,7 @@ no_svr_ext_ButtonCB(
 	  
 	  for (i=0; i<savers.selsaverCount; i++)
 	    {
-	      char *tmp = savers.saverActionNames[savers.selPositions[i] - 1];
+	      char *tmp = savers.subList[savers.selPositions[i] - 1].saverActionName;
 	      savers.selsaverActionNames[i] = (char *) XtMalloc(strlen(tmp) + 1);
 	      strcpy(savers.selsaverActionNames[i], tmp);
 	    }			
@@ -2800,8 +2808,8 @@ no_svr_ext_ButtonCB(
 	  for (i=0; i<savers.orig_selsaverCount; i++)
 	    XmListSelectPos(screen.saverList, savers.origSelPositions[i], False);
 	  /* set the current saver to be the first saver in the selected list */
-	  savers.current_saver = savers.saverActionNames[savers.origSelPositions[0] - 1];
-	  savers.current_saverDesc = savers.saverActionDesc[savers.origSelPositions[0] - 1];
+	  savers.current_saver = savers.subList[savers.origSelPositions[0] - 1].saverActionName;
+	  savers.current_saverDesc = savers.subList[savers.origSelPositions[0] - 1].saverActionDesc;
 	  savers.current_position = savers.origSelPositions[0];
 	}
 
@@ -2926,7 +2934,7 @@ saveScreen(
 /*           Make XmStrings from the saver names, to pass into list.    */ 
 /************************************************************************/
 static XmString * 
-MakeListStrings( char ** list )
+MakeListStrings( SaverSub * list )
 {
     int   i;
     XmString      *xmList;
@@ -2935,7 +2943,7 @@ MakeListStrings( char ** list )
 
     for (i = 0; i < savers.saverCount; i++)
     {
-        xmList[i] = XmStringCreateLocalized (list[i]);
+        xmList[i] = XmStringCreateLocalized (list[i].saverActionDesc);
     }
 
     return (xmList);
@@ -2991,8 +2999,8 @@ ListCB(
 	XtFree ((char *) savers.selPositions);
       savers.selPositions = (int *) XtMalloc(sizeof(int));
       savers.selPositions[0] = cb->item_position;
-      savers.current_saver = savers.saverActionNames[savers.selPositions[0] - 1];
-      savers.current_saverDesc = savers.saverActionDesc[savers.selPositions[0] - 1];
+      savers.current_saver = savers.subList[savers.selPositions[0] - 1].saverActionName;
+      savers.current_saverDesc = savers.subList[savers.selPositions[0] - 1].saverActionDesc;
       return;
     }
  
@@ -3050,8 +3058,8 @@ ListCB(
 		XSync(style.display, False);
 		savers.saverstate = NULL;
 	      }
-	    savers.current_saver = savers.saverActionNames[i-1];
-	    savers.current_saverDesc = savers.saverActionDesc[i-1];
+	    savers.current_saver = savers.subList[i - 1].saverActionName;
+	    savers.current_saverDesc = savers.subList[i - 1].saverActionDesc;
 	    savers.current_position = i;
 	    XtVaSetValues(screen.saverArea, XmNbackground, savers.black, NULL);   
 	    savers.saverstate = _DtSaverStart(style.display, &screen.saverArea,
@@ -3080,8 +3088,8 @@ ListCB(
   XtVaSetValues(screen.saverArea, XmNbackground, savers.black, NULL);   
   
   savers.current_position = cb->item_position;  
-  savers.current_saver = savers.saverActionNames[savers.current_position - 1];
-  savers.current_saverDesc = savers.saverActionDesc[savers.current_position - 1];
+  savers.current_saver = savers.subList[savers.current_position - 1].saverActionName;
+  savers.current_saverDesc = savers.subList[savers.current_position - 1].saverActionDesc;
   savers.saverstate = _DtSaverStart(style.display, &screen.saverArea, 1,
 				   savers.current_saver, style.screenDialog);
   /* update the preview label with the current running saver */  
