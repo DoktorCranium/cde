@@ -59,6 +59,8 @@
 #include <Xm/SeparatoG.h>
 #include <Xm/VendorSEP.h>
 #include <Xm/MessageB.h>
+#include <Xm/ComboBox.h>
+#include <Xm/List.h>
 
 #include <Dt/DialogBox.h>
 #include <Dt/Icon.h>

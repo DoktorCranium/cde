@@ -72,8 +72,18 @@
 
 #include <Dt/HourGlass.h>
 #include <Dt/UserMsg.h>
-    
+
 #include "Main.h"
+#include "ColorMain.h"
+#include "Backdrop.h"
+#include "Keyboard.h"
+#include "Mouse.h"
+#include "Audio.h"
+#include "Screen.h"
+#include "Dtwm.h"
+#include "Startup.h"
+#include "I18nMain.h"
+
 #include "Help.h"
 #include "SaveRestore.h"
 

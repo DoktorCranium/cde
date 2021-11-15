@@ -76,6 +76,10 @@
 /*+++++++++++++++++++++++++++++++++++++++*/
 #include "Dtwm.h"
 
+// DtUtil1/WmRestart.c
+int _DtWmRestartNoConfirm (Display *display, Window root);
+
+
 /*+++++++++++++++++++++++++++++++++++++++*/
 /* Local #defines                        */
 /*+++++++++++++++++++++++++++++++++++++++*/

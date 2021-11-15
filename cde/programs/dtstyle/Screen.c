@@ -72,6 +72,8 @@
 #include <Dt/TitleBox.h>
 #include <Dt/Message.h>
 #include <Dt/HourGlass.h>
+#include <Dt/Wsm.h>
+#include <Dt/GetDispRes.h>
 
 #include "Help.h"
 #include "Main.h"

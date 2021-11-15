@@ -232,6 +232,13 @@ extern void HelpCloseCB(
                             Widget w,
                             caddr_t client_data,
                             caddr_t call_data ) ;
+extern void Help(
+    char *helpVolume,
+    char *locationId);
+
+extern void DisplayHelp(
+    char *helpVolume,
+    char *locationId);
 
 
 #endif /*  _font_h */

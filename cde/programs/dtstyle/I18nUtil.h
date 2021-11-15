@@ -69,5 +69,13 @@
 	for ((p)++; *(p) && !is_white(*(p)); (p)++) ; *(p)++ = 0; skip_white(p)
 
 
+void start_tag_line(char  *fname);
+int read_tag_line(FILE *fp, char **tagp, char **valp);
+int str_to_int(char *ptr, int  *val);
+
+
+
+
+
 #endif /* _i18nUtil_h */
 /* DON'T ADD ANYTHING AFTER THIS #endif */

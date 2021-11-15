@@ -60,6 +60,8 @@
 #include <Dt/DialogBox.h>
 #include <Dt/TitleBox.h>
 
+#include <Dt/Wsm.h>
+
 #include <Dt/UserMsg.h>
 
 #include "Help.h"

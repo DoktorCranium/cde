@@ -70,6 +70,7 @@
 #include <Dt/TitleBox.h>
 
 #include <Dt/HourGlass.h>
+#include <Dt/Wsm.h>
 
 #include "Help.h"
 #include "Main.h"
@@ -77,6 +78,7 @@
 #include "ColorMain.h"
 #include "ColorFile.h"
 #include "ColorEdit.h"
+#include "ColorPalette.h"
 
 #ifdef sun
 #include "OWsync.h"
@@ -85,6 +87,8 @@
 /*+++++++++++++++++++++++++++++++++++++++*/
 /* include extern functions              */
 /*+++++++++++++++++++++++++++++++++++++++*/
+
+
 
 
 /*+++++++++++++++++++++++++++++++++++++++*/

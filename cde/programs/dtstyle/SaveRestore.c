@@ -62,6 +62,7 @@
 
 #include <Dt/HourGlass.h>
 #include <Dt/UserMsg.h>
+#include <Dt/Session.h>
 
 #include "Main.h"
 
@@ -69,6 +70,9 @@
 /* include extern functions              */
 /*+++++++++++++++++++++++++++++++++++++++*/
 #include "SaveRestore.h"
+#include "Protocol.h"
+#include "Dtwm.h"
+#include "MainWin.h"
 
 /*+++++++++++++++++++++++++++++++++++++++*/
 /* Local #defines                        */

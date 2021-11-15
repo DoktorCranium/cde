@@ -72,6 +72,7 @@
 #include <Dt/HourGlass.h>
 #include <Dt/Wsm.h>
 #include <Dt/UserMsg.h>
+#include <Dt/WsmP.h>
 
 #include "Help.h"
 #include "Main.h"
@@ -81,6 +82,7 @@
 /* include extern functions              */
 /*+++++++++++++++++++++++++++++++++++++++*/
 #include "Backdrop.h"
+#include "Dtwm.h"
 
 
 /*+++++++++++++++++++++++++++++++++++++++*/
@@ -1233,13 +1235,13 @@ saveBackdrop(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-        sprintf(bufr, "%s*backdropsDialog.x: %d\n", bufr, x);
-        sprintf(bufr, "%s*backdropsDialog.y: %d\n", bufr, y);
-        sprintf(bufr, "%s*backdropsDialog.width: %d\n", bufr, width);
-        sprintf(bufr, "%s*backdropsDialog.height: %d\n", bufr, height);
-        sprintf(bufr, "%s*backdropsDialog.selectedItemNum: %d\n", bufr, 
+        snprintf(bufr, 1024, "%s*backdropsDialog.x: %d\n", bufr, x);
+        snprintf(bufr, 1024, "%s*backdropsDialog.y: %d\n", bufr, y);
+        snprintf(bufr, 1024, "%s*backdropsDialog.width: %d\n", bufr, width);
+        snprintf(bufr, 1024, "%s*backdropsDialog.height: %d\n", bufr, height);
+        snprintf(bufr, 1024, "%s*backdropsDialog.selectedItemNum: %d\n", bufr,
                 backdrops.selected);
-        sprintf(bufr, "%s*backdropsDialog.selectedItem: %s\n", bufr, 
+        snprintf(bufr, 1024, "%s*backdropsDialog.selectedItem: %s\n", bufr,
                 backdrops.bitmapNames[backdrops.selected]);
         if(-1 == write (fd, bufr, strlen(bufr))) {
 			perror(strerror(errno));

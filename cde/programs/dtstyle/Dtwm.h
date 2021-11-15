@@ -38,8 +38,8 @@
  **
  ****************************************************************************
  ************************************<+>*************************************/
-#ifndef _screen_h
-#define _screen_h
+#ifndef _dtwm_h
+#define _dtwm_h
 
 /* External Interface */
 
@@ -49,5 +49,5 @@ extern void restoreDtwm( Widget shell, XrmDatabase db) ;
 extern void saveDtwm( int fd) ;
 
 
-#endif /* _screen_h */
+#endif /* _dtwm_h */
 /* DON'T ADD ANYTHING AFTER THIS #endif */

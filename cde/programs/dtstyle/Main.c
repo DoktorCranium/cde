@@ -69,6 +69,7 @@
 #include <Xm/XmP.h>
 #include <Xm/MessageB.h>
 
+#include <Dt/Dt.h>
 #include <Dt/GetDispRes.h>
 #include <Dt/EnvControlP.h>
 #include <Dt/Message.h>
@@ -77,12 +78,19 @@
 #include <Dt/Wsm.h>
 #include <Dt/DtNlUtils.h>
 #include <Dt/DtosP.h>
+#include <Dt/Lock.h>
 
 #include "MainWin.h"
 #include "ColorMain.h"
 #include "ColorFile.h"
 #include "Resource.h"
 #include "Protocol.h"
+#include "SaveRestore.h"
+#include "ColorPalette.h"
+
+void loadDatabase(void); // ColorMain.c
+void ListenForWorkspaceChange(void); // Protocol.c
+
 
 /*+++++++++++++++++++++++++++++++++++++++*/
 /* include extern functions              */

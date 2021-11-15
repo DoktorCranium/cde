@@ -196,11 +196,7 @@ void
 ReadPalette(
         char *directory,
         char *in_filename,
-#if NeedWidePrototypes
         int length )
-#else
-        short length )
-#endif
 {
    char *filename;
    int  i, fd, nbytes;

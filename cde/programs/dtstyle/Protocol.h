@@ -91,6 +91,10 @@ extern void SmNewFontSettings(
 
 extern void SmNewPreeditSettings( 
                                 char *preeditResourceString) ;
+extern void SmDefaultPointerSettings(void);
+void SmNewSaverTime(int saverTime);
+void SmNewSaverSettings(int saverTime, int lockTime, int cycleTime,
+                        char *selsaversList);
 
 
 #endif /* _protocol_h */

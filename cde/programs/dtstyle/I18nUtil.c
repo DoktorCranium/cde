@@ -26,7 +26,7 @@
  * (c) Copyright 1996 Hewlett-Packard Company.
  * (c) Copyright 1996 International Business Machines Corp.
  * (c) Copyright 1996 Sun Microsystems, Inc.
- * (c) Copyright 1996 Novell, Inc. 
+ * (c) Copyright 1996 Novell, Inc.
  * (c) Copyright 1996 FUJITSU LIMITED.
  * (c) Copyright 1996 Hitachi.
  */
@@ -68,7 +68,7 @@ static char *trim_line (char * );
 /*+++++++++++++++++++++++++++++++++++++++*/
 /* Internal Variables                    */
 /*+++++++++++++++++++++++++++++++++++++++*/
- 
+
 	/* ********  file reading  ******** */
 
 static int	tag_line_num = 0;
@@ -86,7 +86,7 @@ void	start_tag_line(
 	tag_linebuf[0] = 0;
 	tag_file = fname;
     } else {
-	if (tag_linebuf) 
+	if (tag_linebuf)
 	    XtFree(tag_linebuf);
 	tag_linebuf = tag_file = 0;
     }
@@ -95,7 +95,7 @@ void	start_tag_line(
 
 int	read_tag_line(
     FILE	*fp,
-    char	**tagp, 
+    char	**tagp,
     char        **valp
 )
 {
@@ -137,7 +137,7 @@ trim_line(
     return ptr;		/* return lastp > ptr ? ptr : NULL; */
 }
 
-int	
+int
 str_to_int(
     char *ptr,
     int  *val
@@ -155,7 +155,7 @@ str_to_int(
 }
 
 
-Bool	
+Bool
 str_to_bool(
     char  *ptr,
     Bool  def_val
@@ -184,4 +184,3 @@ str_to_bool(
     }
     return def_val;
 }
-

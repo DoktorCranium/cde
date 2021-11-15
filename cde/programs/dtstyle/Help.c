@@ -50,6 +50,8 @@
 #include <Dt/Help.h>
 #include <Dt/HelpDialog.h>
 
+#include <Dt/Wsm.h>
+
 #include "Main.h"
 #include "Help.h"
 

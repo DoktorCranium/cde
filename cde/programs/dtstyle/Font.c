@@ -64,11 +64,14 @@
 #include <Dt/Message.h>
 #include <Dt/SessionM.h>
 #include <Dt/HourGlass.h>
-
+#include <Dt/Wsm.h>
+#include <Dt/GetDispRes.h>
 #include <string.h>
 #include <errno.h>
 #include "Help.h"
 #include "Main.h"
+#include "Resource.h"
+#include "Protocol.h"
 #include "SaveRestore.h"
 
 /*+++++++++++++++++++++++++++++++++++++++*/

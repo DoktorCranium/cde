@@ -58,6 +58,7 @@
 
 #include <Dt/Message.h>
 #include <Dt/HourGlass.h>
+#include <Dt/Wsm.h>
 
 #include "Help.h"
 #include "Main.h"

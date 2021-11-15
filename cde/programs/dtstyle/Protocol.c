@@ -64,6 +64,7 @@
 #include "MainWin.h"
 #include "SaveRestore.h"
 #include "Main.h"
+#include "Backdrop.h"
 
 #include <Dt/Message.h>
 #include <Dt/UserMsg.h>

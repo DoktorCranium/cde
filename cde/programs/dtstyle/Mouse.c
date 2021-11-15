@@ -59,6 +59,8 @@
 #include <Dt/SessionM.h>
 #include <Dt/HourGlass.h>
 #include <Dt/UserMsg.h>
+#include <Dt/Wsm.h>
+#include <Dt/Session.h>
 
 #include "Help.h"
 #include "Main.h"
@@ -68,6 +70,8 @@
 /* include extern functions              */
 /*+++++++++++++++++++++++++++++++++++++++*/
 #include "Mouse.h"
+#include "Protocol.h"
+
 
 /*+++++++++++++++++++++++++++++++++++++++*/
 /* Local #defines                        */
