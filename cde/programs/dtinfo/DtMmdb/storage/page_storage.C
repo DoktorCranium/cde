@@ -104,7 +104,8 @@ debug(cerr, int(log_store));
 
    if ( status == DISABLED && log_store ) {
       delete log_store;
-      del_file(form("%s.log", name), path);
+      if ( exist_file(form("%s.log", name), path) )
+        del_file(form("%s.log", name), path);
    }
    delete log_index;
 }
