@@ -91,6 +91,7 @@
 #include <Dt/Dt.h>
 #include <Dt/Wsm.h>
 #include <Dt/EnvControlP.h>
+#include <Dt/Session.h>
 #endif  /* HPVUE */ 
 
 /* From Xm/BaseClassI.h */
@@ -101,6 +102,26 @@ extern XmWidgetExtData _XmGetWidgetExtData(
 #else
                         unsigned char extType) ;
 #endif /* NeedWidePrototypes */
+
+/* extern forward declarations */
+void _DtTermViewMenuToggleMenuBar(Widget w);
+void _DtTermPrimPtyCleanup(void);
+void _DtTermPrimLogFileCleanup(void);
+void _XmVirtKeysInitialize(Widget widget);
+int FinishToolTalkInit(Widget topLevel);
+#if defined(SUN_TERMINAL_SERVER)
+Boolean ServerStartSession(Widget topLevel, int argc, char **argv,
+                           Boolean loginShell, char **commandToExec);
+#endif
+
+#ifdef SUN_TERMINAL_SERVER
+Boolean
+#else
+static void
+#endif /* SUN_TERMINAL_SERVER */
+CreateInstance(Widget topLevelWidget, char *name, Arg *arglist,
+               int argcnt, Boolean enableCloneCallback);
+
 
 /* forward declarations... */
 static void activateCallback(

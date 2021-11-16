@@ -82,6 +82,15 @@ HandleTtRequest(Tt_message msg, Tt_pattern pat);
 static void
 dttermNewHandler(Tt_message msg);
 
+#ifdef SUN_TERMINAL_SERVER
+Boolean
+#else
+static void
+#endif /* SUN_TERMINAL_SERVER */
+CreateInstance(Widget topLevelWidget, char *name, Arg *arglist,
+               int argcnt, Boolean enableCloneCallback);
+
+
 #ifdef  TIMEOUT
 static void TimeOut(XtPointer clientData, XtIntervalId *id);
 #endif  /* TIMEOUT */
