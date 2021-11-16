@@ -77,6 +77,10 @@ static int print_startup_time(ABProfiledInterval totalTime);
 static ABProfiledIntervalRec	startupTime;
 #endif /* DEBUG/performance */
 
+void ab_set_busy_cursor(BOOL on); // ab_utils.c
+int abobj_instantiate_tree(ABObj root, BOOL manage_last); // abobj_util.c
+
+
 /*****************************************************************************
 **                                                                          **
 **       Private Function Declarations                                      **

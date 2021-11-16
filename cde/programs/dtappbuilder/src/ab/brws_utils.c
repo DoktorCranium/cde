@@ -46,6 +46,7 @@
 #include <X11/Xlib.h>
 #include <Xm/Xm.h>
 #include <Xm/DrawingA.h>
+#include <Xm/ScrollBar.h>
 #include <ab_private/util.h>
 #include <ab_private/obj.h>
 #include <ab_private/trav.h>

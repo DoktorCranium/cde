@@ -66,6 +66,10 @@
 
 #define	SELECT_OBJ_KEY	"__selected__"
 
+// obj_fields.c
+int obj_get_textpane_width(ABObj obj);
+int obj_get_textpane_height(ABObj obj);
+
 
 /*************************************************************************
 **                                                                      **

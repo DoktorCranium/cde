@@ -57,6 +57,7 @@
 #include "stubs_c_fileP.h"
 #include "lib_func_stringsP.h"
 #include "proj_c_fileP.h"
+#include "connectP.h"
 
 /*************************************************************************
 **                                                                      **

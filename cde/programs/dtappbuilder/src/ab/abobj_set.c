@@ -71,6 +71,10 @@
 
 static BOOL	save_needed_enabled = TRUE;
 
+// obj_fields.c
+int obj_get_textpane_width(ABObj obj);
+int obj_get_textpane_height(ABObj obj);
+
 /*************************************************************************
 **                                                                      **
 **       Private Function Declarations 					**
