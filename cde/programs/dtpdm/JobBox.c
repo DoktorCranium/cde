@@ -33,6 +33,8 @@
  * (c) Copyright 1996 FUJITSU LIMITED.
  * (c) Copyright 1996 Hitachi.
  */
+
+#include <Xm/ToggleBG.h>
 #include <Dt/PrintDlgMgrP.h>
 
 #include "JobBox.h"
