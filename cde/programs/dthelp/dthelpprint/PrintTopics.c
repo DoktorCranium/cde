@@ -38,6 +38,10 @@ $COPYRIGHT$:
 ==$END$==============================================================*/
 #endif
 
+#ifndef _XOPEN_SOURCE
+# define _XOPEN_SOURCE 600
+#endif
+
 #ifdef HAVE_CONFIG_H
 #include <autotools_config.h>
 #endif
@@ -71,13 +75,21 @@ $COPYRIGHT$:
 #include "Dt/LocaleXlate.h" /* from libDtHelp */
 #include "DtI/bufioI.h" /* from libDtHelp; required for AccessI.h */
 #include "DtI/FileUtilsI.h" /* from libDtHelp */
+#include "DtI/Access.h" /* from libDtHelp */
+#include "DtI/AccessI.h" /* from libDtHelp */
 #include "GenUtilsP.h" /* from libDtHelp */
 #include "HelpXlate.h" /* from libDtHelp */
+#include "ObsoleteP.h" /* from libDtHelp */
 
-/*#include "AccessI.h" ** from libDtHelp */
-/* I can't include AccessI.h because it redefines the Boolean type,
-which is also defined in Xt/Intrisincs.h.  I'm just including the
-prototypes from AccessI.h here. */
+// lib/DtHelp/FormatTerm.c
+int _DtHelpTermCreateCanvas(int maxColumns, _DtCvHandle *ret_canvas);
+int _DtHelpTermGetTopicData(_DtCvHandle canvasHandle,
+                            _DtHelpVolumeHdl volHandle,
+                            char *locationId,
+                            char ***helpList,
+                            DtHelpHyperLines **hyperList);
+
+
 extern char * _DtHelpCeGetVolumeLocale(VolumeHandle helpVolumeHandle);
 extern const char * _DtHelpCeGetVolumeCharSet(VolumeHandle helpVolumeHandle);
 

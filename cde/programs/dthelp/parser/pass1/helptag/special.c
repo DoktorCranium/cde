@@ -121,6 +121,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <strings.h>
 
 typedef wchar_t M_WCHAR;
 
@@ -146,9 +147,9 @@ if (argc < 3)
     { /*  Either one argument or none; not more */
     if (argc == 2)
 	{
-	if (!stricmp(argv[1], "b")) both = TRUE;
-	else if (!stricmp(argv[1], "s")) spec = TRUE;
-	else if (!stricmp(argv[1], "c")) coll = TRUE;
+	if (!strcasecmp(argv[1], "b")) both = TRUE;
+	else if (!strcasecmp(argv[1], "s")) spec = TRUE;
+	else if (!strcasecmp(argv[1], "c")) coll = TRUE;
 	else error = TRUE;
 	}
     else both = TRUE;

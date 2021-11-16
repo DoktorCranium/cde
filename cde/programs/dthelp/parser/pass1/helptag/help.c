@@ -28,9 +28,12 @@
 
 #include "userinc.h"
 #include "globdec.h"
+#include "proto.h"
 
 #include "LocaleXlate.h"
 #include "XlationSvc.h"
+
+void m_mberr1(char *text, const char *arg);
 
 void assert_hometopic_exists(void)
 {

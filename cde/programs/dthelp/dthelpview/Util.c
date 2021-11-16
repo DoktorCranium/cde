@@ -64,6 +64,7 @@
 
 
 #include <DtI/HelposI.h>
+#include <DtI/HourGlassI.h>
 /* Local Includes */
 #include "Main.h"
 #include "UtilI.h"

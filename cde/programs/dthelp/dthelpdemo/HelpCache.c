@@ -71,8 +71,6 @@ static Boolean GetFromCache(
     Widget parent,
     CacheListStruct **pCurrentNode);
 
-
-
 /* Global Main Help Dialog Widget */
 static Widget helpMain=NULL;
 static Widget versionMain=NULL;
@@ -443,7 +441,7 @@ void DisplayMan(
     }
   else
     {
-       TurnOnHourGlass(manWidget);
+       _DtHelpTurnOnHourGlass(manWidget);
   
        /* We already have a quick help dialog so re-use it */
        n = 0;
@@ -462,7 +460,7 @@ void DisplayMan(
        XtManageChild(manWidget); 
        XtMapWidget(XtParent(manWidget));    
        XRaiseWindow(XtDisplay(parent), XtWindow(XtParent(manWidget)));
-       TurnOffHourGlass(manWidget);       
+       _DtHelpTurnOffHourGlass(manWidget);       
 
      }
 

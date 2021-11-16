@@ -56,11 +56,19 @@
 #include <Xm/Form.h>
 #include <Xm/Scale.h>
 #include <Xm/ToggleBG.h>
+#include <Xm/ToggleB.h>
 #include <Xm/RowColumn.h>
 #include <Xm/LabelG.h>
 
 /* DtHelp include header file section */
 #include <Dt/HelpQuickD.h>
+#include <DtI/HourGlassI.h>
+
+// HourGlass.c
+// Need to find out why these are used here rather than the ones in
+// DtI/HourGlassI.h
+void TurnOnHourGlass(Widget w);
+void TurnOffHourGlass(Widget w);
 
 /* Local header file include section */
 #include "Main.h"

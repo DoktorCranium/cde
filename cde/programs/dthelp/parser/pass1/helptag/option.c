@@ -26,6 +26,8 @@
 #include "userinc.h"
 #include "globdec.h"
 
+void m_mberr1(char *text, const char *arg);
+
 #if defined(hpux) || defined(_AIX) || defined(sun)
 /* get definition of getenv(3c) for getting of environment variables */
 #include <stdlib.h>

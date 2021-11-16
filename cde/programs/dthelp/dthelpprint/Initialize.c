@@ -46,6 +46,7 @@ $COPYRIGHT$:
 #include <sys/stat.h>  /* mkdir */
 #include <sys/types.h>
 
+#include "StringFuncsI.h"
 
 #include <X11/Xlibint.h>  /* _XGetHostname() */
 #include <X11/Xos.h>     /* FIX: remove? */
