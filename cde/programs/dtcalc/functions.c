@@ -42,6 +42,9 @@
 #endif
 #include "calctool.h"
 
+int matherr(struct exception *exc); // calctool.c
+
+
 extern char *base_str[] ;       /* Strings for each base value. */
 extern char *dtype_str[] ;      /* Strings for each display mode value. */
 extern char *mode_str[] ;       /* Strings for each mode value. */

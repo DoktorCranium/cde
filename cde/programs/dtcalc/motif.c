@@ -112,6 +112,7 @@ extern XmWidgetExtData _XmGetWidgetExtData(
 #include "ds_popup.h"
 #include "ds_xlib.h"
 
+Pixmap _DtGetMask(Screen *screen, char *image_name); // DtSvc/DtUtil2/XmWrap.c
 
 ApplicationArgs application_args;
 XVars X;
@@ -3215,9 +3216,9 @@ write_cf_value(Widget widget, XtPointer client_data, XtPointer call_data)
   if ((strcmp(X->cfval, "") == 0) || X->cfval[0] < '0' || X->cfval[0] > '9' ||
                                      X->cfno < 0 || X->cfno > 9)
     {
-      sprintf(str, "%s", (X->CFtype == M_CON) ? vstrs[(int) V_LCON]
+      snprintf(str, MAXLINE, "%s", (X->CFtype == M_CON) ? vstrs[(int) V_LCON]
                                    : vstrs[(int) V_LFUN]) ;
-      sprintf(message, "%s\n%s", str, vstrs[(int) V_RANGE]) ;
+      snprintf(message, MAXLINE, "%s\n%s", str, vstrs[(int) V_RANGE]) ;
       do_continue_notice(X->CFframe, message) ;
       return ;
     }
@@ -3234,10 +3235,10 @@ write_cf_value(Widget widget, XtPointer client_data, XtPointer call_data)
     }
   if (X->cfexists)
     {
-      sprintf(str, mess[(int) MESS_CON],
+      snprintf(str, MAXLINE, mess[(int) MESS_CON],
                    (X->CFtype == M_CON) ? vstrs[(int) V_UCON]
                                         : vstrs[(int) V_UFUN], X->cfno) ;
-      sprintf(message, "%s\n%s", str, vstrs[(int) V_OWRITE]) ;
+      snprintf(message, MAXLINE, "%s\n%s", str, vstrs[(int) V_OWRITE]) ;
       XtUnmanageChild(X->CFframe) ;
       do_confirm_notice(X->CFframe, message) ;
     }
