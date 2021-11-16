@@ -1413,10 +1413,10 @@ SaveCustomizeSettings( void )
 	{
 	    sscanf(ptrRet, "%d %s %d %d %s",
 		   &smToSet.numButton,
-		   &tmpMap,
+		   tmpMap,
 		   &smSettings.accelNum,
 		   &smSettings.threshold,
-		   &smToSet.dClickBuf);
+		   smToSet.dClickBuf);
 	    smSettings.accelDenom = 1;
 
 	    tmpKey = strtok(tmpMap, "_");
