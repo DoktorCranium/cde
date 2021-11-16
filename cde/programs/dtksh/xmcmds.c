@@ -99,6 +99,7 @@
 #include <Xm/ToggleB.h>
 #include <Xm/ToggleBG.h>
 
+#include <Dt/Dt.h>
 #include <Dt/HelpDialog.h>
 #include <Dt/HelpQuickD.h>
 #include <Dt/Print.h>

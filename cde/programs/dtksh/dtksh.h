@@ -153,5 +153,7 @@ typedef struct {
 	String verifyPrinterProcCommand;
 } ProcInfo_t;
 
+void dtksh_init(void);
+
 #endif /* _Dtksh_dtksh_h */
 /* DON'T ADD ANYTHING AFTER THIS #endif */
