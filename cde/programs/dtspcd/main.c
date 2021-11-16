@@ -41,7 +41,11 @@
 #include <pwd.h>
 #include <errno.h>
 #include <signal.h>
+
 #include <unistd.h>			/* initgroups() */
+#include <sys/types.h>
+#include <grp.h>
+
 #include <string.h>
 #include <libgen.h>			/* basename() */
 #include <sys/param.h>			/* MAXPATHLEN */
