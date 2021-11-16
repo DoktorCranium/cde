@@ -109,6 +109,8 @@
 #include <time.h>
 #include <locale.h>
 
+char    *strupr(char *); // lib/DtSearch/dtsrve.c
+
 #define PROGNAME	"DTSRHAN"
 #define	MS_chandel	5
 #define RECS_PER_DOT	10L

@@ -104,6 +104,8 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 
+void init_user_interrupt(void); // lib/DtSearch/userint.c
+
 #define PROGNAME        "DTSRLOAD"
 #define RECS_PER_DOT    20
 #define TERMINATE_LINE  if (dotcount>0) { putchar('\n'); }

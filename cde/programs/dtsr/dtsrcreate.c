@@ -96,6 +96,8 @@
 #include <locale.h>
 #include "vista.h"
 
+char *ensure_end_slash (char *pathstr); // lib/DtSearch/lang.c
+
 #define PROGNAME		"DTSRCREATE"
 #define	DEFAULT_MINWORD		(MINWIDTH_TOKEN + 1)
 #define	STANDARD_MAXWORD	(DtSrMAXWIDTH_HWORD - 1)

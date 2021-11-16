@@ -129,6 +129,10 @@ extern void     read_wordstr (struct or_hwordrec * glob_word, int vista_num);
 extern void     write_wordstr (struct or_hwordrec * glob_word, int vista_num);
 extern void     fill_data1 (char *ch);
 
+// lib/DtSearch/vstfunct.c
+void fillnew_wordrec (struct or_hwordrec * glob_word, int vista_num);
+void init_user_interrupt(void); // lib/DtSearch/userint.c
+
 #define PROGNAME	"DTSRINDEX"
 
 #define BATCH_SIZE	10000L
