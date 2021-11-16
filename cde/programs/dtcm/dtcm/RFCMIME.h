@@ -31,6 +31,10 @@
  *   OBJECT CODE ONLY SOURCE MATERIALS
  */
 
+#pragma once
+
+#include <EUSCompat.h>
+
 typedef enum {
 	MIME_7BIT,
 	MIME_8BIT,
@@ -42,3 +46,18 @@ typedef enum {
 	CURRENT_TO_INTERNET,
 	INTERNET_TO_CURRENT
 	} Direction;
+
+
+/* RFCMIME.c */
+void DtXlateOpToStdLocale(char *operation, char *opLocale, char **ret_stdLocale, char **ret_stdLang, char **ret_stdSet);
+void DtXlateStdToOpLocale(char *operation, char *stdLocale, char *stdLang, char *stdCodeSet, char *dflt_opLocale, char **ret_opLocale);
+char *targetTagName(void);
+void getCharSet(char *charset);
+void md5PlainText(const char *bp, const unsigned long len, unsigned char *digest);
+int CvtStr(char *charSet, void *from, unsigned long from_len, void **to, unsigned long *to_len, Direction dir);
+unsigned int base64size(const unsigned long len);
+Encoding getEncodingType(const char *body, const unsigned int len, boolean_t strict_mime);
+void writeContentHeaders(char *hdr_buf, const char *type, const Encoding enc, const char *digest, int isAllASCII);
+void writeBase64(char *buf, const char *bp, const unsigned long len);
+void writeQPrint(char *buf, const char *bp, const unsigned long bp_len, int is_Special);
+void rfc1522cpy(char *buf, const char *value);

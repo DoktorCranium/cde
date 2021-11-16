@@ -47,6 +47,8 @@
 #include "misc.h"
 #include "rfp.h"
 #include "props_pu.h"
+// lib/csa/attr.c
+#include "attr.h"
 #ifdef SVR4
 #include <sys/param.h>
 #endif /* SVR4 */

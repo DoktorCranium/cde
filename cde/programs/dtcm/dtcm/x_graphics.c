@@ -33,13 +33,11 @@
 
 #include <EUSCompat.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <ctype.h>
 #include <locale.h>
-#ifdef SVR4
-#include <unistd.h>
-#endif /* SVR4 */
 #include <sys/stat.h>
 #include <sys/param.h>
 #include "util.h"
@@ -55,6 +53,7 @@
 #include "format.h"
 #include "deskset.h"
 #include "print.h"
+#include "RFCMIME.h"
 
 #include <X11/Intrinsic.h>
 #if 0 && defined(PRINTING_SUPPORTED)
@@ -67,6 +66,13 @@
 #if 0 && defined(PRINTING_SUPPORTED)
 #include <Xm/Print.h>
 #endif /* PRINTING_SUPPORTED */
+
+// cm_18n.c
+void _converter_( void *from, unsigned long from_len,
+                  void **to,  unsigned long *to_len );
+// monthglance.c
+void get_time_str (Dtcm_appointment *appt, char *buf);
+
 
 #define XOS_USE_XT_LOCKING
 #define X_INCLUDE_TIME_H

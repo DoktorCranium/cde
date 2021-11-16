@@ -77,4 +77,6 @@ extern boolean_t	set_resource(Resource**, char*, char*,
 							char*, char*);
 extern boolean_t	set_resource_by_val(Resource**, char*, char*);
 
+extern void free_resources(Resource *r);
+
 #endif

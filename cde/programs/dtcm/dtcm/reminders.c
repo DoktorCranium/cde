@@ -67,6 +67,11 @@
 #include "props_pu.h"
 #include "util.h"
 
+// misc.c
+extern void _i18n_WidestWidget(int num, Widget *ret, Dimension *dim, ...);
+extern void _i18n_HighestWidgetAdjust(int num, Widget *ret,
+                                      Dimension *dim, ...);
+
 /*******************************************************************************
 **
 **  Static functions local to reminders.c only

@@ -67,7 +67,7 @@ static const char       CONTINUATION    = '\\';
 /*
 **  free_resources will step the list of resources and free the allocated space
 */
-extern void
+void
 free_resources(Resource *r) {
 	if (r) {
 		free_resources(r->next);

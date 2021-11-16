@@ -66,6 +66,9 @@
 #include <X11/Xos_r.h>
 
 static void layout_labels(Widget, Widget, Widget, Widget);
+// misc.c
+extern void _i18n_WidestWidget(int num, Widget *ret, Dimension *dim, ...);
+extern void _i18n_HighestWidget(int num, Widget *ret, Dimension *dim, ...);
 
 extern caddr_t
 make_find(Calendar *c)

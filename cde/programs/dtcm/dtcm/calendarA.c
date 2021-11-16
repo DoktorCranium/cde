@@ -151,7 +151,6 @@ extern int errno;
 #define NL_CAT_LOCALE       0
 #endif
 
-
 extern time_t timelocal();	/* LINT */
 extern char * getlogin();	/* LINT */
 extern void(*sigset())();
@@ -192,6 +191,9 @@ static void logon_retry(XtPointer data, XtIntervalId *dummy);
 static int newXErrorHandler(Display *, XErrorEvent *);
 
 static int (*oldXErrorHandler)(Display *, XErrorEvent *);
+
+// cmtt.c
+void DieFromToolTalkError(Calendar *c, char *errfmt, Tt_status status);
 
 void init_strings();
 

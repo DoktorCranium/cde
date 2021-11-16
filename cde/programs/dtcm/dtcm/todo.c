@@ -80,6 +80,11 @@ extern boolean_t compare_repeat_info(Dtcm_appointment *, RFP *, CSA_session_hand
 extern void change_rule_for_this_one_only(Calendar *, Dtcm_appointment *, Dtcm_appointment *);
 extern Dimension ComputeMaxWidth(Widget, Widget, Widget, Widget);
 
+// misc.c
+extern void _i18n_WidestWidget(int num, Widget *ret, Dimension *dim, ...);
+extern void _i18n_HighestWidget(int num, Widget *ret, Dimension *dim, ...);
+
+
 /*******************************************************************************
 **
 **  Functions static to todo.c

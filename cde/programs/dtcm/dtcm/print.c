@@ -64,6 +64,7 @@
 #include "print.h"
 #include "todo.h"
 #include "help.h"
+#include "x_graphics.h"
 
 /* needed for view-specific print routines */
 #include "dayglance.h"

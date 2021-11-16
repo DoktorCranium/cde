@@ -44,6 +44,7 @@
 #include <Xm/SeparatoG.h>
 #include <Xm/Text.h>
 #include <Xm/ToggleBG.h>
+#include <Xm/ToggleB.h>
 #include <Xm/MwmUtil.h>
 #include <Xm/ComboBox.h>
 #include <Dt/HourGlass.h>

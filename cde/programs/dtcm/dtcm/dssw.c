@@ -70,6 +70,10 @@ static  char sccsid[] = "@(#)dssw.c 1.58 95/08/07 Copyr 1993 Sun Microsystems, I
 #endif /* SVR4 */
 
 extern Dimension ComputeMaxWidth(Widget, Widget, Widget, Widget);
+// misc.c
+extern void _i18n_WidestWidget(int num, Widget *ret, Dimension *dim, ...);
+extern void _i18n_HighestWidgetAdjust(int num, Widget *ret,
+                                      Dimension *dim, ...);
 
 
 /*******************************************************************************
