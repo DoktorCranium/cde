@@ -37,6 +37,8 @@
 #define TAGDOTOPT "helptag.opt"
 #define DOTOPT ".opt"
 
+void m_mberr1(char *text, const char *arg);
+
 void options(LOGICAL filelenonly)
 {
 int i;
