@@ -165,12 +165,12 @@ AppManagerDirectory::AppManagerDirectory
 		    dir.replace("/dt","");
 		    if (!user->OS()->isDirectory(dir)) {  // does /var exist?
 			user->OS()->MakeDirectory(dir,0755);
-			user->OS()->changeOwnerGroup(dir,"root","other");
+			user->OS()->changeOwnerGroup(dir,"root","bin");
 			user->OS()->changePermissions(dir,0755);
 		    }
 		    dir += "/dt";
 		    user->OS()->MakeDirectory(dir,0755);
-		    user->OS()->changeOwnerGroup(dir,"root","other");
+		    user->OS()->changeOwnerGroup(dir,"root","bin");
 		    user->OS()->changePermissions(dir,0755);
 		}
 		dir += "/appconfig";
@@ -192,7 +192,7 @@ AppManagerDirectory::AppManagerDirectory
     CString tmp("/var/dt/tmp/");
     if (!user->OS()->isDirectory(tmp)) {  // does tmp exist?
 	user->OS()->MakeDirectory(tmp,0755);
-	user->OS()->changeOwnerGroup(tmp,"root","other");
+	user->OS()->changeOwnerGroup(tmp,"root","bin");
 	user->OS()->changePermissions(tmp,0755);
     }
 
