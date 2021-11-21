@@ -80,23 +80,3 @@ fi
     fi
   fi
 #endif
-
-#ifdef HAS_PAM_LIBRARY
-#ifdef __FreeBSD__
-#define PAM_D /usr/local/etc/pam.d
-#else
-#define PAM_D /etc/pam.d
-#endif
-
-for i in CDE_INSTALLATION_TOP/config/pam.d.*
-do
-  conf=PAM_D/${i##*.}
-
-  if [ ! -f $conf ]; then
-    if [ -f $i ]; then
-      /bin/cp $i $conf
-      /bin/chmod 644 $conf
-    fi
-  fi
-done
-#endif

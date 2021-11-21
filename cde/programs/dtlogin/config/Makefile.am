@@ -13,15 +13,28 @@ CPP_TARGETS = 0060.dtsysenv Dtlogin Xaccess Xconfig Xconfig.con	\
 
 
 
+if HAS_PAM_LIBRARY
+CPP_TARGETS += pam/dtlogin
+dist_pam_DATA = pam/dtlogin
+if FREEBSD
+pamdir = /usr/local/etc/pam.d
+PAM_AUTHENTICATION_MODULE = /usr/local/lib/security/pam_pwauth_suid.so
+AM_CPPFLAGS += -DPAM_AUTHENTICATION_MODULE=$(PAM_AUTHENTICATION_MODULE)
+else
+pamdir = /etc/pam.d
+if NETBSD
+PAM_AUTHENTICATION_MODULE = /usr/pkg/lib/security/pam_pwauth_suid.so
+AM_CPPFLAGS += -DPAM_AUTHENTICATION_MODULE=$(PAM_AUTHENTICATION_MODULE)
+endif
+endif
+endif
+
 if LINUX
 AM_CPPFLAGS += -DXPROJECTROOT="/usr" -Dlinux -D__linux__
 endif
 
 if FREEBSD
 AM_CPPFLAGS += -DFREEBSD -DXPROJECTROOT="/usr/local" -D__FreeBSD__
-PAM_AUTHENTICATION_MODULE = /usr/local/lib/security/pam_pwauth_suid.so
-AM_CPPFLAGS += -DPAM_AUTHENTICATION_MODULE=$(PAM_AUTHENTICATION_MODULE)
-CPP_TARGETS += pam.d.dtlogin
 endif
 
 if SOLARIS
@@ -34,9 +47,6 @@ endif
 
 if NETBSD
 AM_CPPFLAGS += -DXPROJECTROOT="/usr/X11R7" -D__NetBSD__
-PAM_AUTHENTICATION_MODULE = /usr/pkg/lib/security/pam_pwauth_suid.so
-AM_CPPFLAGS += -DPAM_AUTHENTICATION_MODULE=$(PAM_AUTHENTICATION_MODULE)
-CPP_TARGETS += pam.d.dtlogin
 endif
 
 if BSD
@@ -156,7 +166,7 @@ home.session: home.session.src
 	$(RM) $@
 	$(GENCPP) -P -DXCOMM=# $(AM_CPPFLAGS) $< > $@
 
-pam.d.dtlogin: pam.d.dtlogin.src
+pam/dtlogin: pam/dtlogin.src
 	$(RM) $@
 	$(GENCPP) -P -DXCOMM=# $(AM_CPPFLAGS) $< > $@
 
