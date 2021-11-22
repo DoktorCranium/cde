@@ -168,6 +168,7 @@ programs/dtimsstart/dtimsstart
 programs/dtlogin/dtchooser
 programs/dtlogin/dtgreet
 programs/dtlogin/dtlogin
+programs/dtlogin/config/pam/dtlogin
 programs/dtmail/dtmail/dtmail
 programs/dtmail/dtmailpr/dtmailpr
 programs/dtpad/dtpad
@@ -184,7 +185,7 @@ programs/dtsession/Dtsession
 programs/dtsession/dtloadresources
 programs/dtsession/dtsession
 programs/dtsession/dtsession_res
-programs/dtsession/config/pam.d.dtsession
+programs/dtsession/config/pam/dtsession
 programs/dtspcd/dtspcd
 programs/dtspcd/dtspcdenv
 programs/dtsr/dtsrclean
@@ -965,7 +966,6 @@ programs/dtlogin/config/display.home.session
 programs/dtlogin/config/dtlslocale
 programs/dtlogin/config/dtprofile
 programs/dtlogin/config/home.session
-programs/dtlogin/config/pam.d.dtlogin
 
 # programs/dtprintinfo
 programs/dtprintinfo/dtprintinfo.msg
