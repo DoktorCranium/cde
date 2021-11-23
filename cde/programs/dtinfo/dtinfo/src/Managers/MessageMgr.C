@@ -222,13 +222,19 @@ MessageMgr::show_it(Widget dialog)
 
   f_popped_up = True;
   f_pressed_ok = False;
- 
+
+  Boolean sensitive = XtIsSensitive(shell);
+
+  XtSetSensitive(shell, False);
+
   XEvent event;
   while(f_popped_up)
   {
     XtAppNextEvent (window_system().app_context(), &event);
     XtDispatchEvent (&event);
   }
+
+  XtSetSensitive(shell, sensitive);
 }
 
 void
