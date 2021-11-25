@@ -42,7 +42,7 @@
 #endif
 #include "calctool.h"
 
-int matherr(struct exception *exc); // calctool.c
+void matherr(void); // calctool.c
 
 
 extern char *base_str[] ;       /* Strings for each base value. */
@@ -690,7 +690,7 @@ do_factorial(int *MPval, int *MPres)     /* Calculate the factorial of MPval. */
         }
       mpcim(&i, MPa) ;
       mpcmi(MP1, &i) ;
-      if (!i) matherr((struct exception *) NULL) ;
+      if (!i) matherr() ;
       else
         while (i > 0)
           {
@@ -700,7 +700,7 @@ do_factorial(int *MPval, int *MPres)     /* Calculate the factorial of MPval. */
             i-- ;
           }
     }
-  else matherr((struct exception *) NULL) ;
+  else matherr() ;
   mpstr(MPa, MPres) ;
 }
 

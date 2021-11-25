@@ -1214,38 +1214,11 @@ make_number(int *MPnumber, BOOLEAN mkFix)
 }
 
 
-/*ARGSUSED*/
 /* Default math library exception handling routine. */
-int
-matherr(struct exception *exc)
+void
+matherr(void)
 {
-#if 0
-  char msg[100];
-  
-  if (exc) {
-	  strcpy(msg, exc->name);
-	  strcat(msg, ": ");
-	  if(exc->type == DOMAIN)
-	     strcat(msg, "DOMAIN ");
-	  else if(exc->type == SING)
-	     strcat(msg, "SING ");
-	  else if(exc->type == OVERFLOW)
-	     strcat(msg, "OVERFLOW ");
-	  else if(exc->type == UNDERFLOW)
-	     strcat(msg, "UNDERFLOW ");
-	  else if(exc->type == TLOSS)
-	     strcat(msg, "TLOSS ");
-	  else if(exc->type == PLOSS)
-	     strcat(msg, "PLOSS ");
-	  
-	  strcat(msg, vstrs[(int) V_ERROR]);
-
-	  _DtSimpleError (v->appname, DtWarning, NULL, msg);
-  }
-#endif
-
   doerr(vstrs[(int) V_ERROR]) ;
-  return(1) ;                     /* Value ignored. */
 }
 
 /* Convert string into an MP number. */
