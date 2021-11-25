@@ -88,6 +88,8 @@ typedef struct Xobject {            /* Motif/Xlib graphics object. */
 typedef struct Xobject *XVars ;
 
 extern XVars X ;
+extern XtIntervalId timerId;
+extern Boolean ignore_event;
 
 #ifndef CDE_INSTALLATION_TOP
 #define CDE_INSTALLATION_TOP "/usr/dt"

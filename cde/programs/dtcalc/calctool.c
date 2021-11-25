@@ -37,6 +37,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
 #include <sys/types.h>
 #include <sys/file.h>
 #include <sys/param.h>
@@ -45,74 +46,60 @@
 #include "patchlevel.h"
 #include "calctool.h"
 #include "ds_common.h"
+#include "calctool.h"
+#include "text.h"
 
-time_t time() ;
-
-double max_fix[4] = {
+static double max_fix[4] = {
           6.871947674e+10, 3.245185537e+32,
           1.000000000e+36, 2.230074520e+43
 } ;
-double min_fix0[4] = {
+static double min_fix0[4] = {
           2.500000000e-1, 3.750000000e-1,
           1.000000000e-1, 4.375000000e-1
 } ;
-double min_fix1[4] = {
+static double min_fix1[4] = {
           1.250000000e-1, 4.687500000e-2,
           1.000000000e-2, 2.734375000e-2
 } ;
-double min_fix2[4] = {
+static double min_fix2[4] = {
           6.250000000e-2, 5.859375000e-3,
           1.000000000e-3, 1.708984375e-3
 } ;
-double min_fix3[4] = {
+static double min_fix3[4] = {
           3.125000000e-2, 7.324218750e-4,
           1.000000000e-4, 1.068115234e-4
 } ;
-double min_fix4[4] = {
+static double min_fix4[4] = {
           1.562500000e-2, 9.155273437e-5,
           1.000000000e-5, 6.675720215e-6
 } ;
-double min_fix5[4] = {
+static double min_fix5[4] = {
           7.812500000e-3, 1.144409180e-5,
           1.000000000e-6, 4.172325134e-7
 } ;
-double min_fix6[4] = {
+static double min_fix6[4] = {
           6.906250000e-3, 1.430511475e-6,
           1.000000000e-7, 2.607703209e-8
 } ;
-double min_fix7[4] = {
+static double min_fix7[4] = {
           1.953125000e-3, 1.788139343e-7,
           1.000000000e-8, 1.629814506e-9
 } ;
-double min_fix8[4] = {
+static double min_fix8[4] = {
           9.765625000e-4, 2.235174179e-8,
           1.000000000e-9, 1.018634066e-10
 } ;
-double min_fix9[4] = {
+static double min_fix9[4] = {
           4.882812500e-4, 2.793967724e-9,
           1.000000000e-10, 6.366462912e-12
 } ;
 
-extern char *base_str[] ;       /* Strings for each base value. */
-extern char *cmdstr[] ;         /* Strings for each command line option. */
-extern char *dtype_str[] ;      /* Strings for each display mode value. */
-extern char *lstrs[] ;          /* Labels for various Motif items. */
-extern char *mess[] ;           /* Message strings. */
-extern char *mode_str[] ;       /* Strings for each mode value. */
-extern char *opts[] ;           /* Command line option strings. */
-extern char *ttype_str[] ;      /* Strings for each trig type value. */
-extern char *ustrs[] ;          /* Usage message strings. */
-extern char *vstrs[] ;          /* Various strings. */
-
-char digits[] = "0123456789ABCDEF" ;
-int basevals[4] = { 2, 8, 10, 16 } ;
-
-int left_pos[BCOLS]  = { 3, 2, 1, 0 } ;  /* Left positions. */
-int right_pos[BCOLS] = { 0, 1, 2, 3 } ;  /* "Right" positions. */
+static char digits[] = "0123456789ABCDEF" ;
+static int basevals[4] = { 2, 8, 10, 16 } ;
 
 /* Valid keys when an error condition has occurred. */
 /*                            MEM  KEYS clr     clr     QUIT REDRAW */
-char validkeys[MAXVKEYS]  = { 'm', 'k', '\177', '\013', 'q', '\f' } ;
+static char validkeys[MAXVKEYS]  = { 'm', 'k', '\177', '\013', 'q', '\f' } ;
 
 Vars v ;            /* Calctool variables and options. */
 

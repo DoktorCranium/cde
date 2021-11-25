@@ -41,21 +41,7 @@
 #include <ieeefp.h>
 #endif
 #include "calctool.h"
-
-void matherr(void); // calctool.c
-
-
-extern char *base_str[] ;       /* Strings for each base value. */
-extern char *dtype_str[] ;      /* Strings for each display mode value. */
-extern char *mode_str[] ;       /* Strings for each mode value. */
-extern char *ttype_str[] ;      /* Strings for each trig type value. */
-extern char *vstrs[] ;          /* Various strings. */
-
-extern struct button buttons[] ;           /* Calculator button values. */
-extern struct button mode_buttons[] ;      /* Special "mode" buttons. */
-extern struct menu_entry menu_entries[] ;  /* All the menu strings. */
-
-extern Vars v ;                 /* Calctool variables and options. */
+#include "text.h"
 
 double mods[] = { 1.0, 1.0e-1, 1.0e-2, 1.0e-3, 1.0e-4,
                   1.0e-5, 1.0e-6, 1.0e-7, 1.0e-8, 1.0e-9,

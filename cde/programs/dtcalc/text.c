@@ -36,14 +36,7 @@
 #include "calctool.h"
 #include "ds_common.h"
 
-extern struct button buttons[] ;           /* Calculator button values. */
-extern struct button mode_buttons[] ;      /* Special "mode" buttons. */
-extern struct menu cmenus[] ;              /* Calculator menus. */
-extern struct menu_entry menu_entries[] ;  /* All the menu strings. */
-
-extern Vars v ;                 /* Calctool variables and options. */
-
-void init_mess(void);
+static void init_mess(void);
 
 /*  The following are all the strings used by the dtcalc program.
  *  They are initialized in init_text() to the local language equivalents.
@@ -630,7 +623,7 @@ init_text(void)   /* Setup text strings depending upon language. */
 
 }
 
-void
+static void
 init_mess(void)   /* Setup text strings depending upon language. */
 {
   int i ;

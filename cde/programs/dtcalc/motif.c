@@ -111,12 +111,14 @@ extern XmWidgetExtData _XmGetWidgetExtData(
 #include "ds_common.h"
 #include "ds_popup.h"
 #include "ds_xlib.h"
+#include "text.h"
 
 Pixmap _DtGetMask(Screen *screen, char *image_name); // DtSvc/DtUtil2/XmWrap.c
 
 ApplicationArgs application_args;
 XVars X;
-Boolean colorSrv;
+Boolean ignore_event = False;
+XtIntervalId timerId = 0;
 
 static XtResource resources[] =
 {
@@ -152,17 +154,15 @@ static XtResource resources[] =
    },
 };
 
-char DTCALC_CLASS_NAME[] = "Dtcalc";
+static char DTCALC_CLASS_NAME[] = "Dtcalc";
 
-extern char *opts[] ;           /* Command line option strings. */
+static Widget modeArry[3];
+static XmPixelSet    pixels[XmCO_MAX_NUM_COLORS];
+static Pixel white_pixel;
+static Pixel black_pixel;
+static Boolean BlackWhite = False;
 
-Widget modeArry[3];
-XmPixelSet    pixels[XmCO_MAX_NUM_COLORS];
-Pixel white_pixel;
-Pixel black_pixel;
-Boolean BlackWhite = False;
-
-char * dt_path = NULL;
+static char * dt_path = NULL;
 
 static Widget funBtn = NULL;
 static Widget constBtn = NULL;
@@ -175,11 +175,10 @@ static Atom saveatom ;
 static Atom command_atom ;
 static Atom wm_state_atom;
 
-Boolean ignore_event = False;
-XtIntervalId timerId = 0;
-
 static int lastArmed[10];
 static int countArmed = 0;
+
+static Boolean colorSrv;
 
 /*  Structure used on a save session to see if a dt is iconic  */
 typedef struct
@@ -235,27 +234,7 @@ static void create_menu_bar(Widget parent);
 static void init_colors(void);
 static void create_popup(Widget parent);
 
-
-extern char **environ ;
-
-extern char *base_str[] ;       /* Strings for each base value. */
-extern char *calc_res[] ;       /* Calctool X resources. */
-extern char *dtype_str[] ;      /* Strings for each display mode value. */
-extern char *lstrs[] ;          /* Labels for various Motif items. */
-extern char *mess[] ;           /* Message strings. */
-extern char *mode_str[] ;       /* Strings for each mode value. */
-extern char *pstrs[] ;          /* Property sheet strings. */
-extern char *ttype_str[] ;      /* Strings for each trig type value. */
-extern char *vstrs[] ;          /* Various strings. */
-
-extern struct button buttons[] ;           /* Calculator button values. */
-extern struct button mode_buttons[] ;      /* Calculator mode button values. */
-extern struct menu cmenus[] ;              /* Calculator menus. */
-extern struct menu_entry menu_entries[] ;  /* All the menu strings. */
-
-extern Vars v ;                 /* Calctool variables and options. */
-
-char translations_return[] = "<Key>Return:ManagerGadgetSelect()";
+static char translations_return[] = "<Key>Return:ManagerGadgetSelect()";
 static Boolean NoDisplay=False;
 
 extern XtPointer _XmStringUngenerate (

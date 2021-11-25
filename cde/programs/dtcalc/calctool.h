@@ -442,11 +442,14 @@ struct button {
   char *resname ;           /* Button resource name. */
   void (*func)() ;          /* Function to obey on button press. */
 } ;
+extern struct button buttons[] ;           /* Calculator button values. */
+extern struct button mode_buttons[] ;      /* Special "mode" buttons. */
 
 struct menu_entry {
   char *str ;               /* Menu entry string to be displayed. */
   char val ;                /* Value when selected. */
 } ;
+extern struct menu_entry menu_entries[] ;  /* All the menu strings. */
 
 struct menu {
   char *title ;             /* Menu title. */
@@ -454,6 +457,7 @@ struct menu {
   int  mindex ;             /* Index into menu string array. */
   int  defval ;             /* Default menu item position (from 1). */
 } ;
+extern struct menu cmenus[] ;              /* Calculator menus. */
 
 struct calcVars {                     /* Calctool variables and options. */
   char *appname ;                     /* Application name for resources. */
@@ -539,6 +543,11 @@ struct calcVars {                     /* Calctool variables and options. */
 extern struct calcVars CalcVars;
 
 typedef struct calcVars *Vars ;
+extern Vars v ;                 /* Calctool variables and options. */
+
+extern void matherr(void); // calctool.c
+
+
 
 /*  Structure, resource definitions, for View's optional parameters.  */
 typedef struct
@@ -754,10 +763,7 @@ void mpunfl(int *);
 void Help(char *, char *);
 void HelpRequestCB(Widget, caddr_t, caddr_t);
 void HelpModeCB(Widget, caddr_t, caddr_t);
-void HelpCloseCB(Widget, caddr_t, caddr_t);
-void HelpHyperlinkCB(Widget, caddr_t, caddr_t);
 void DisplayHelp(char *, char *);
-void CenterMsgCB(Widget, XtPointer, XtPointer);
 void HelpHelp(void);
 void SetWmHnts(void);
 

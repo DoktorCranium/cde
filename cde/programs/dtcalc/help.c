@@ -43,19 +43,10 @@
 #include <stdint.h>
 #include "calctool.h"
 #include "motif.h"
+#include "text.h"
 
 #define  DIALOG_MWM_FUNC MWM_FUNC_MOVE | MWM_FUNC_CLOSE
 
-extern char *base_str[] ;       /* Strings for each base value. */
-extern char *dtype_str[] ;      /* Strings for each display mode value. */
-extern char *mode_str[] ;       /* Strings for each mode value. */
-extern char *ttype_str[] ;      /* Strings for each trig type value. */
-extern Vars v ;                 /* Calctool variables and options. */
-extern struct button buttons[] ;           /* Calculator button values. */
-
-
-extern Boolean ignore_event;
-extern XtIntervalId timerId;
 extern void _DtChildPosition(Widget, Widget, Position *, Position *);
 
 typedef struct _helpStruct {
@@ -67,6 +58,10 @@ typedef struct _helpStruct {
 
 static Widget GetHelpDialog(void);
 static void UnmanageCB(Widget, XtPointer, XtPointer) ;
+static void CenterMsgCB(Widget, XtPointer, XtPointer);
+static void HelpHyperlinkCB(Widget, caddr_t, caddr_t);
+static void HelpCloseCB(Widget, caddr_t, caddr_t);
+
 
 void
 Help(char *helpVolume, char *locationId)
@@ -118,7 +113,7 @@ Help(char *helpVolume, char *locationId)
 
 }
 
-void
+static void
 HelpCloseCB(Widget widget, caddr_t client_data, caddr_t call_data)
 {
 
@@ -135,7 +130,7 @@ HelpCloseCB(Widget widget, caddr_t client_data, caddr_t call_data)
   X->helpMapped = False;
 }
 
-void 
+static void 
 HelpHyperlinkCB(Widget widget, caddr_t client_data, caddr_t call_data)
 {
   DtHelpDialogCallbackStruct *pHyper = (DtHelpDialogCallbackStruct *) call_data;
@@ -534,7 +529,7 @@ UnmanageCB(Widget  widget, XtPointer client_data, XtPointer call_data)
     XtUnmanageChild(widget);
 }
 
-void
+static void
 CenterMsgCB (Widget widget, XtPointer client_data, XtPointer call_data)
 {
     int n;

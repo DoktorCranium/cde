@@ -53,6 +53,7 @@
 #include <math.h>
 #include "calctool.h"
 #include <Dt/Dt.h>
+#include "text.h"
 
 struct {
   int b, t, m, mxr, r[MP_SIZE] ;
@@ -77,12 +78,6 @@ static int c_n1   = -1 ;
 static int c__239 = 239 ;
 static int c__7   = 7 ;
 static int c__16  = 16 ;
-
-extern char *mpstrs[] ;         /* MP errors (visible with -D option). */
-extern char *vstrs[] ;          /* Various strings. */
-
-extern Vars v ;                 /* Calctool variables and options. */
-
 
 void
 mpabs(int *x, int *y)
