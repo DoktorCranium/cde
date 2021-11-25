@@ -176,7 +176,7 @@ ProcessTabletEvent(
                              Prev_x = xGrid;
                              Prev_y = yGrid;
                              tmpstr[0] = '\0';
-                             sprintf(tmpstr, "%dx%d", xGrid, yGrid);
+                             snprintf(tmpstr, sizeof(tmpstr), "%dx%d", xGrid, yGrid);
                              str= XmStringCreateLocalized (tmpstr);
                              XtVaSetValues (coordinateText, XmNlabelString, str, NULL);
                              XmStringFree(str);

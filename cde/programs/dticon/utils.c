@@ -2337,12 +2337,12 @@ SaveSession( void )
     x -= vendorExt->vendor.xOffset;
     y -= vendorExt->vendor.yOffset;
 
-    sprintf(bufr, "%s*x: %d\n", bufr, x);
-    sprintf(bufr, "%s*y: %d\n", bufr, y);
-    sprintf(bufr, "%s*width: %d\n", bufr, width);
-    sprintf(bufr, "%s*height: %d\n", bufr, height);
+    snprintf(bufr, sizeof(bufr), "%s*x: %d\n", bufr, x);
+    snprintf(bufr, sizeof(bufr), "%s*y: %d\n", bufr, y);
+    snprintf(bufr, sizeof(bufr), "%s*width: %d\n", bufr, width);
+    snprintf(bufr, sizeof(bufr), "%s*height: %d\n", bufr, height);
     if (last_fname[0] != '\0')
-        sprintf(bufr, "%s*file: %s\n", bufr, last_fname);
+        snprintf(bufr, sizeof(bufr), "%s*file: %s\n", bufr, last_fname);
 
     if(-1 == write (fd, bufr, strlen(bufr))) {
 	fprintf(stderr, "write() to session failed\n");
