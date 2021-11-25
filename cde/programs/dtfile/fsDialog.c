@@ -209,7 +209,7 @@ configFileOK(void)
    {
       msg1 = GETMESSAGE(21, 22, "Cannot open file manager configuration file: ");
       msg2 = strerror(errno);
-      sprintf(g_errorMessage,"%s%s\n   %s\n",msg1,fname,msg2);
+      snprintf(g_errorMessage, sizeof(g_errorMessage), "%s%s\n   %s\n",msg1,fname,msg2);
       _DtSimpleError (application_name, DtError, NULL, g_errorMessage, NULL);
       return FALSE;
    }
@@ -339,7 +339,7 @@ readConfigFile(const String      fsType,
    {
       msg1 = GETMESSAGE(21, 22, "Cannot open file manager configuration file: ");
       msg2 = strerror(errno);
-      sprintf(g_errorMessage,"%s%s\n   %s\n",msg1,fname,msg2);
+      snprintf(g_errorMessage, sizeof(g_errorMessage), "%s%s\n   %s\n",msg1,fname,msg2);
       _DtSimpleError (application_name, DtError, NULL, g_errorMessage, NULL);
       return;
    }

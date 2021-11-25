@@ -2575,7 +2575,7 @@ SaveSession(
 {
    static char * name_list[] = { DTFILE_CLASS_NAME, NULL, NULL, NULL,
                                  NULL, NULL};
-   char view_number[11];
+   char view_number[12];
    char number[5];
    char workspaceNumber[11];
    int fd;
@@ -2639,13 +2639,13 @@ SaveSession(
    if (trashFileMgrData)
    {
       if (trashFileMgrData->file_mgr_rec)
-         (void) sprintf (view_number, "%d", view_count + 1);
+         (void) snprintf (view_number, sizeof(view_number), "%d", view_count + 1);
       else
-         (void) sprintf (view_number, "%d", view_count);
+         (void) snprintf (view_number, sizeof(view_number), "%d", view_count);
    }
    else
    {
-      (void) sprintf (view_number, "%d", view_count);
+      (void) snprintf (view_number, sizeof(view_number), "%d", view_count);
    }
    (void) write (fd, view_number, strlen (view_number));
    (void) write (fd, "\n#\n", strlen ("\n#\n"));
@@ -2817,7 +2817,7 @@ SaveSession(
       /* Save each of the secondary help dialogs */
       for (j = 0; j < workspaceInfo->secondaryHelpDialogCount; j++)
       {
-         sprintf(number, "%d", j + 1);
+         snprintf(number, sizeof(number), "%d", j + 1);
          _DtWriteDialogData(workspaceInfo->secondaryHelpDialogList[j],
                            fd, name_list);
       }
@@ -2825,7 +2825,7 @@ SaveSession(
       /* Save the primary help dialog window */
       if (workspaceInfo->primaryHelpDialog)
       {
-         sprintf(number, "%d", 0);
+         snprintf(number, sizeof(number), "%d", 0);
          _DtWriteDialogData(workspaceInfo->primaryHelpDialog,
                            fd, name_list);
       }
