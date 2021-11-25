@@ -131,10 +131,10 @@ SaveMain(
 	width = XtWidth(XtParent(pPad->mainWindow));
 	height = XtHeight(XtParent(pPad->mainWindow));
 
-        sprintf(bufr, "%s*mainWindow%d.x: %d\n", bufr, padNum, x);
-        sprintf(bufr, "%s*mainWindow%d.y: %d\n", bufr, padNum, y);
-        sprintf(bufr, "%s*mainWindow%d.width: %d\n", bufr, padNum, width);
-        sprintf(bufr, "%s*mainWindow%d.height: %d\n", bufr, padNum, height);
+        snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.x: %d\n", bufr, padNum, x);
+        snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.y: %d\n", bufr, padNum, y);
+        snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.width: %d\n", bufr, padNum, width);
+        snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.height: %d\n", bufr, padNum, height);
 
         wm_state_atom = XmInternAtom (XtDisplay(pPad->app_shell), "WM_STATE", 
                                       False);
@@ -146,27 +146,27 @@ SaveMain(
                             &nitems, &leftover, (unsigned char **) &wm_state);
 
         /* Write out if iconified our not */
-        sprintf(bufr, "%s*mainWindow%d.iconify: ", bufr, padNum);
+        snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.iconify: ", bufr, padNum);
 
         if (wm_state->state == IconicState)
-          sprintf (bufr, "%sTrue\n", bufr);
+          snprintf(bufr, sizeof(bufr), "%sTrue\n", bufr);
         else
-          sprintf (bufr, "%sFalse\n", bufr);
+          snprintf(bufr, sizeof(bufr), "%sFalse\n", bufr);
 
 	if(DtWsmGetWorkspacesOccupied(XtDisplay(pPad->app_shell), 
 				  XtWindow(pPad->app_shell), &pWsPresence,
 				  &numInfo) == Success)
 	{
 	    int i;
-	    sprintf(bufr, "%s*mainWindow%d.workspaceList: ", bufr, padNum);
+	    snprintf(bufr, sizeof(bufr), "%s*mainWindow%d.workspaceList: ", bufr, padNum);
 	    for(i = 0; i < numInfo; i++)
 	    {
 	        char *name =  XGetAtomName(XtDisplay(pPad->app_shell),
 					   pWsPresence[i]);
-		sprintf(bufr, "%s %s", bufr, name);
+		snprintf(bufr, sizeof(bufr), "%s %s", bufr, name);
 		XtFree(name);
 	    }
-	    sprintf(bufr, "%s\n", bufr);
+	    snprintf(bufr, sizeof(bufr), "%s\n", bufr);
 	    XtFree((char *)pWsPresence);
 	}
 
