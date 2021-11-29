@@ -1,8 +1,10 @@
+%option noyywrap
+
 %{
 /* $XConsortium: gr_type.l /main/3 1996/11/19 16:55:02 drk $ */
 
 #include <assert.h>
-#include <stream.h>
+#include <sstream>
 
 #ifdef DEBUG
 #include "oliasdb/olias_consts.h"

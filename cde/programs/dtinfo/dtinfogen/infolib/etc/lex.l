@@ -1,3 +1,5 @@
+%option noyywrap
+
 %{ /* -*- c++ -*- */
 /* $XConsortium: lex.l /main/5 1996/11/19 16:55:12 drk $ */
 
@@ -7,14 +9,14 @@
 #include <unistd.h>
 #endif
 
-#include <iostream.h>
+#include <iostream>
 #include <stdio.h>
-#include <stream.h>  
+#include <sstream>
 #include <string.h>
 
 #include "Exceptions.hh"
 
-#include "SGMLDefn.h"  
+#include "SGMLDefn.h"
 #include "Dispatch.h"
 #include "AttributeRec.h"
 #include "AttributeList.h"  
@@ -57,7 +59,7 @@ unsigned char oct2dec( const char *str )
 ^A[^\n]+                   {
                              char *name;
 			     char *tstr;
-			     char *value;
+			     const char *value;
                              int type;
 			     // Parse the attStr
 

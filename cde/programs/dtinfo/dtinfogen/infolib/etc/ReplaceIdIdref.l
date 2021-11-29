@@ -1,3 +1,5 @@
+%option noyywrap
+
 %{ /* -*- c++ -*- */
 /* $XConsortium: ReplaceIdIdref.l /main/3 1996/11/19 16:54:45 drk $ */
   
@@ -5,8 +7,8 @@
 #include "NodeData.h"
   
 /* imported interfaces... */
-#include <iostream.h>
-#include <stream.h>
+#include <iostream>
+#include <sstream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
@@ -23,7 +25,8 @@
 #include "DataBase.h"
 #include "BookCaseDB.h"
 #include "GraphicsTask.h"
-#include "Dispatch.h"  
+#include "Dispatch.h"
+#include "api/utility.h"
 
 // Debugging macro
 #ifdef DEBUG

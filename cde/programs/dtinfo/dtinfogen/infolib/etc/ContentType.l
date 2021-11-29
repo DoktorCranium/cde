@@ -1,23 +1,28 @@
+%option noyywrap
+
 %{
 /* $XConsortium: ContentType.l /main/2 1996/11/19 16:54:22 drk $ */
 
-#include <iostream.h>
-#include <stream.h>  
+#include <iostream>
+#include <sstream>
+using namespace std;
+
 #include <stdio.h>
 #include <memory.h>
 #include <string.h>
 #include <stdlib.h>
-#include <assert.h>  
+#include <assert.h>
 
 #include "Exceptions.hh"
 
-#include "Task.h"  
-#include "SGMLName.h"  
+#include "Task.h"
+#include "SGMLName.h"
 #include "ExprList.h"
 #include "Expression.h"
 #include "OL_DataExpr.tab.h"
 #include "ContentType.h"
-  
+#include "api/utility.h"
+
 /* CurrentContentPtr is used as the communication media between
  * yyparse and ContentType::Parse()
  */
@@ -140,7 +145,7 @@ my_input ( char *buf, int max_size )
 
 //--------------------------------------------------------------
 void
-ol_dataerror(char *str)
+ol_dataerror(const char *str)
 {
   throw(Unexpected(form("Syntax error in %s", myinput)));
 }
@@ -158,9 +163,9 @@ ContentType::ContentType()
 ContentType::~ContentType()
 {
 
-   Expression *eptr = exprlist;
+   OL_Expression *eptr = exprlist;
    while ( eptr ) {
-      Expression *tmp = eptr;
+      OL_Expression *tmp = eptr;
       eptr = eptr->next;
       delete tmp;
    }
@@ -187,7 +192,7 @@ ContentType::Parse( char *str )
 
 //--------------------------------------------------------------
 void
-ContentType::init( Expression *expr )
+ContentType::init( OL_Expression *expr )
 {
   assert(expr);
   if ( expr->next ) {
@@ -196,7 +201,7 @@ ContentType::init( Expression *expr )
      * The same as CONCAT
      */
     ExprList *elist = new ExprList( expr );
-    Expression *new_expr = new Expression ( CONCAT, -1, elist );
+    OL_Expression *new_expr = new OL_Expression ( CONCAT, -1, elist );
     assert(new_expr);
 
     exprlist = new_expr;
@@ -205,4 +210,3 @@ ContentType::init( Expression *expr )
     exprlist = expr;
   }
 }
-

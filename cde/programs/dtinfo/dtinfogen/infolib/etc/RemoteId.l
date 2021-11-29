@@ -1,3 +1,5 @@
+%option noyywrap
+
 %{
 /* $XConsortium: RemoteId.l /main/3 1996/11/19 16:54:33 drk $ */
 

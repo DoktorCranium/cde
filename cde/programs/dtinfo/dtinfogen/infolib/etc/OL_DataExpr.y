@@ -6,7 +6,7 @@
 #include "ContentType.h"
 
 extern int yylex();
-extern void yyerror( char *str );
+extern void yyerror( const char *str );
 
 extern ContentType *CurrentContentPtr;
 
@@ -15,7 +15,7 @@ extern ContentType *CurrentContentPtr;
 %union {
   int        name;
   char       *string;
-  Expression *eptr;
+  OL_Expression *eptr;
 }
 
 %token <name>      Reference
@@ -52,43 +52,43 @@ ExprList  : Expr
 
 Expr : Id
          {
-	   Expression *expr = new Expression( GENERIC_ID, $1);
+	   OL_Expression *expr = new OL_Expression( GENERIC_ID, $1);
 	   $$ = expr;
 	 }
 
      | Content
          {
-	   Expression *expr = new Expression( CONTENT );
+	   OL_Expression *expr = new OL_Expression( CONTENT );
 	   $$ = expr;
 	 }
 
      | Concat '(' ExprList ')'
          {
 	   ExprList   *elist = new ExprList( $3 );
-	   Expression *expr = new Expression( CONCAT, -1, elist);
+	   OL_Expression *expr = new OL_Expression( CONCAT, -1, elist);
 	   $$ = expr;
 	 }
      | Attr '(' Id ')'
          {
-	   Expression *expr = new Expression( REFERENCE, $3);
+	   OL_Expression *expr = new OL_Expression( REFERENCE, $3);
 	   $$ = expr;
 	 }
      | FirstOf '(' ExprList ')'
          {
 	   ExprList *elist = new ExprList ( $3 );
-	   Expression *expr = new Expression( FIRSTOF, -1, elist );
+	   OL_Expression *expr = new OL_Expression( FIRSTOF, -1, elist );
 	   $$ = expr;
 	 }
 
      | Literal
          {
-	   Expression *expr = new Expression( LITERAL, -1, $1 );
+	   OL_Expression *expr = new OL_Expression( LITERAL, -1, $1 );
 	   $$ = expr;
 	 }
 
      | Reference
          {
-	   Expression *expr = new Expression( REFERENCE, $1 );
+	   OL_Expression *expr = new OL_Expression( REFERENCE, $1 );
 	   $$ = expr;
 	 }
   
