@@ -148,7 +148,7 @@ unsigned char oct2dec( const char *str )
                            }
 <ProcessData>"\\n"         {
                              // Replace new line with space
-                             DataBuffer->put('\015');
+                             DataBuffer->put('\040');
 			     Dispatch::newline();
                              
                            }
