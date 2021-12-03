@@ -525,7 +525,7 @@ _DtTermPrimPtyInit
      */
     tio.c_oflag &= ~(OCRNL | ONLRET | NLDLY | CRDLY | TABDLY |
 		     BSDLY | VTDLY  | FFDLY);
-    tio.c_oflag |=   ONLCR;
+    tio.c_oflag |=   ONLCR | OPOST;
 
     /* baud rate is 9600 (nice default), turn off clocal and turn on
      * hupcl so that the last close will SIGHUP processes running on
