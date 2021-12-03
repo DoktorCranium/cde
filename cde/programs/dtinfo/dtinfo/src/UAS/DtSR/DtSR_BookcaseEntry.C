@@ -87,7 +87,7 @@ DtSR_BookcaseSearchEntry::DtSR_BookcaseSearchEntry(
 
     // determine the language of this bookcase
     // NOTE: dtsearch should provide language information
-    if (! strcmp(env().lang(), "ja_JP.EUC-JP"))
+    if (! strcmp(env().lang(), "ja_JP.UTF-8"))
 	f_language = DtSrLaJPN;
     else
 	f_language = DtSrLaENG;

@@ -102,36 +102,9 @@ EnvMgr::EnvMgr() : f_argc(0),
   if ((lang = getenv("LC_ALL")) == NULL)
     if ((lang = getenv("LC_CTYPE")) == NULL)
       if ((lang = getenv("LANG")) == NULL)
-	lang = "C";
+	lang = "C.UTF-8";
 
-  _DtXlateDb db = NULL;
-  char platform[_DtPLATFORM_MAX_LEN + 1];
-  int execver, compver;
-
-  if (_DtLcxOpenAllDbs(&db) == 0)
-  {
-    if (_DtXlateGetXlateEnv(db, platform, &execver, &compver) == 0) {
-
-      char* std_locale = NULL;
-
-      _DtLcxXlateOpToStd(db, platform, compver, DtLCX_OPER_SETLOCALE,
-					lang, &std_locale, NULL, NULL, NULL);
-      if (std_locale) {
-#ifdef LCX_DEBUG
-	fprintf(stderr, "(DEBUG) standard locale=\"%s\"\n", std_locale);
-#endif
-	f_lang = XtsNewString(std_locale);
-	free(std_locale);
-      }
-    }
-
-    _DtLcxCloseDb(&db);
-    db = NULL;
-  }
-
-  // If OpToStd conversion failed, use non-std name
-  if (f_lang == NULL)
-    f_lang = XtsNewString(lang);
+  f_lang = XtsNewString(lang);
 
   // tell mmdb info_lib to load info_base only if it matches to f_lang
   static char mmdb_lang[_POSIX_PATH_MAX];
@@ -141,7 +114,7 @@ EnvMgr::EnvMgr() : f_argc(0),
   f_home = XtsNewString( getenv("HOME") );
 
   char dirname[256];
-  snprintf (dirname, sizeof(dirname), "%s/.dt/dtinfo/%s", f_home, f_lang);
+  snprintf (dirname, sizeof(dirname), "%s/.dt/dtinfo", f_home);
   f_user_path = XtsNewString(dirname);
 
 
