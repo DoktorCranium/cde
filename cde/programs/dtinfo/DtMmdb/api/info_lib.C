@@ -54,10 +54,6 @@
 #include "oliasdb/locator_hd.h"
 #include "oliasdb/graphic_hd.h"
 
-#ifdef DtinfoClient
-#include <lib/DtSvc/DtUtil2/LocaleXlate.h>
-#endif
-
 /*
 extern void report_total();
 extern void reset_total();
@@ -153,18 +149,8 @@ f_bad_info_base_names(0), f_bad_info_base_paths(0), f_descriptor(des)
 //debug(cerr, base_desc);
 //fprintf(stderr, "base_name = %s\n", base_name);
 
-	 char* mmdb_lang = getenv("MMDB_LANG");
-#ifdef MMDB_LANG_DEBUG
-	 cerr << "base_locale=" << base_locale << endl;
-	 if (mmdb_lang)
-	   cerr << "mmdb_lang=" << mmdb_lang << endl;
-#endif
-
          if ((selected_base_name == 0 ||
-	      strcmp(selected_base_name, base_name) == 0) &&
-	     (mmdb_lang == NULL ||
-	      strcmp(mmdb_lang, base_locale) == 0 ||
-	      strcmp("C.ISO-8859-1", base_locale) == 0))
+	      strcmp(selected_base_name, base_name) == 0))
          {
 
             len = MIN(strlen(info_lib_dir) + strlen(base_name) +1, PATHSIZ -1);
@@ -427,35 +413,11 @@ info_lib::define_info_base( char* base_name, char* base_desc,
       if ((lang = getenv("LC_ALL")) == NULL)
 	if ((lang = getenv("LC_CTYPE")) == NULL)
 	  if ((lang = getenv("LANG")) == NULL)
-	    lang = "C";
-
-#ifdef DtinfoClient
-      _DtXlateDb db    = NULL;
-      char* std_locale = NULL;
-
-      if (_DtLcxOpenAllDbs(&db) == 0)
-      {
-	char platform[_DtPLATFORM_MAX_LEN + 1];
-	int execver, compver;
-
-	if (_DtXlateGetXlateEnv(db, platform, &execver, &compver) == 0)
-	{
-	  _DtLcxXlateOpToStd(db, platform, compver, DtLCX_OPER_SETLOCALE,
-					lang, &std_locale, NULL, NULL, NULL);
-	}
-	_DtLcxCloseDb(&db);
-	db = NULL;
-      }
-#endif
+	    lang = "C.UTF-8";
 
       base = new info_base(*f_obj_dict, set_nm_list, list_nm_list,
                            new_db_path, base_name, base_desc, base_uid,
-#ifdef DtinfoClient
-			   std_locale ? std_locale : lang,
-#else
-			   lang,
-#endif
-                           mm_version(MAJOR, MINOR)
+			   lang, mm_version(MAJOR, MINOR)
                           );
 
       info_base_list.insert_as_tail(new dlist_void_ptr_cell(base));
@@ -488,17 +450,8 @@ info_lib::define_info_base( char* base_name, char* base_desc,
 
       char* base_entry = form("%s\t%s\t%s\t%s\t%d\t%d\n", 
                               base_name, base_desc, base_uid,
-#ifdef DtinfoClient
-			      std_locale ? std_locale: lang,
-#else
-			      lang,
-#endif
-			      MAJOR, MINOR
+			      lang, MAJOR, MINOR
                              );
-#ifdef DtinfoClient
-      if (std_locale)
-	free(std_locale);
-#endif
 
       if ( !(nm_out << base_entry) ) {
          MESSAGE(cerr, form("write %s.%s failed", info_lib_path, MAP_FILE_8_3));
