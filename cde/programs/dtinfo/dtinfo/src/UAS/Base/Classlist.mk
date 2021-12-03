@@ -1,7 +1,7 @@
-/* $XConsortium: Classlist.mk /main/5 1996/10/30 14:46:19 drk $ */
-CLASSES=
+# $XConsortium: Classlist.mk /main/5 1996/10/30 14:46:19 drk $
+Base_CLASSES=
 
-SRCS= \
+Base_SRCS= \
 UAS_Base.C \
 UAS_Buffer.C \
 UAS_Collection.C \
@@ -20,6 +20,6 @@ UAS_TextRun.C \
 UAS_String.C \
 UAS_StyleSheet.C
 
-MSGS=\
+Base_MSGS=\
 UAS_Base.msg
 

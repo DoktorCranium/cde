@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libBasic.a
+noinst_LTLIBRARIES = libBasic.la
 
 # get our env
 include ../templates/dtinfo_env.mk
@@ -8,6 +8,7 @@ include ../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libBasic_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
+libBasic_la_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
 
-libBasic_a_SOURCES = ../Prelude.h $(Basic_SRCS)
+libBasic_la_SOURCES = ../Prelude.h $(Basic_SRCS)
+

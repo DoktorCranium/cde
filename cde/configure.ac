@@ -733,6 +733,9 @@ programs/dtinfo/dtinfo/src/Makefile
 programs/dtinfo/dtinfo/src/Widgets/Makefile
 programs/dtinfo/dtinfo/src/Support/Makefile
 programs/dtinfo/dtinfo/src/UAS/Makefile
+programs/dtinfo/dtinfo/src/UAS/Base/Makefile
+programs/dtinfo/dtinfo/src/UAS/MMDB/Makefile
+programs/dtinfo/dtinfo/src/UAS/DtSR/Makefile
 programs/dtinfo/dtinfo/src/Basic/Makefile
 programs/dtinfo/dtinfo/src/OliasSearch/Makefile
 programs/dtinfo/dtinfo/src/Marks/Makefile

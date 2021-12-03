@@ -1,7 +1,7 @@
-/* $XConsortium: Classlist.mk /main/4 1996/10/30 14:48:10 drk $ */
-CLASSES=
+# $XConsortium: Classlist.mk /main/4 1996/10/30 14:48:10 drk $
+MMDB_CLASSES=
 
-SRCS= \
+MMDB_SRCS= \
 MMDB.C \
 MMDB_Common.C \
 MMDB_Factory.C \
@@ -11,5 +11,5 @@ MMDB_BookCase.C \
 MMDB_EmbeddedObject.C \
 MMDB_StyleSheet.C
 
-MSGS=\
+MMDB_MSGS=\
 UAS_MMDB.msg

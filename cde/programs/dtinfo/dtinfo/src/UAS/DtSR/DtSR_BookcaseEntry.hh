@@ -35,7 +35,7 @@
 #include "DtSR_Stems.hh"
 
 extern "C" {
-#include "Search.h"
+#include "Dt/Search.h"
 }
 
 class DtSR_BookcaseEntry : public UAS_BookcaseEntry

@@ -10,6 +10,8 @@ dfiles_SOURCES = dfiles.c
 
 pmaker_SOURCES = pmaker.c
 
+# JET - this one migth need to be regenned via the lex file someday...
+# Maybe it should always be regenned?
 msgsets_SOURCES = msgsets.C
 
 treeres: treeres.src
