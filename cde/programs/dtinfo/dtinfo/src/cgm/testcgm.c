@@ -30,7 +30,7 @@
 #include "spec.h"
 #include "GraphicsP.h"
 
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
   XGCValues myStruct;
   unsigned long mask;
@@ -42,7 +42,7 @@ main(int argc, char **argv)
   Pixel *ret_colors;
   int ret_number, pageNo;
   GC myGC;
-  Pixmap myPixmap = NULL;
+  Pixmap myPixmap = 0;
   char *fileName;
   int i;
   _DtGrStream stream ;
@@ -58,7 +58,7 @@ main(int argc, char **argv)
 			    512, 512, 2,
 			    BlackPixel(display, scr_num),
 			    WhitePixel(display, scr_num));
-  XSetStandardProperties(display, win, "VCGM", "VCGM", NULL, NULL, 0,
+  XSetStandardProperties(display, win, "VCGM", "VCGM", 0, NULL, 0,
 			 NULL);
   XMapWindow(display, win);
   /* find out what we actually got */

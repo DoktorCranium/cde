@@ -1,5 +1,5 @@
-/* $XConsortium: Classlist.mk /main/11 1996/10/30 14:41:40 drk $ */
-CLASSES= \
+# $XConsortium: Classlist.mk /main/11 1996/10/30 14:41:40 drk $
+Managers_CLASSES= \
 ErrorMgr \
 MessageMgr \
 StyleSheetMgr \
@@ -26,7 +26,7 @@ InputMgrX \
 UrlMgr \
 EnvMgr
 
-SRCS=MessageMgr.C \
+Managers_SRCS=MessageMgr.C \
 StyleSheetMgr.C \
 SearchMgr.C \
 NodeMgr.C \
@@ -53,7 +53,7 @@ CatMgr.C \
 WString.C \
 EnvMgr.C
 
-MSGS= \
+Managers_MSGS= \
 CatMgr.msg \
 EnvMgr.msg \
 TtIpcMgr.msg

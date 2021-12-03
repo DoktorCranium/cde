@@ -1,6 +1,6 @@
-/* $XConsortium: Classlist.mk /main/8 1996/10/30 14:39:26 drk $ */
+# $XConsortium: Classlist.mk /main/8 1996/10/30 14:39:26 drk $
 
-CLASSES= \
+Agents_CLASSES= \
 Agent \
 Dialog \
 ListView \
@@ -33,7 +33,7 @@ UrlAgent \
 AddLibraryAgent
 
 
-SRCS=AgentMotif.C \
+Agents_SRCS=AgentMotif.C \
 MessageAgentMotif.C \
 IcccmAgent.C \
 AnchorCanvas.C \
@@ -63,7 +63,7 @@ ScopeMenu.C \
 UrlAgentMotif.C \
 AddLibraryAgentMotif.C
 
-MSGS= \
+Agents_MSGS= \
 Agent.msg \
 AddLibraryAgent.msg \
 BookmarkEdit.msg \

@@ -1,4 +1,4 @@
-/* $XConsortium: Classlist.mk /main/4 1996/10/30 14:40:34 drk $ */
+# $XConsortium: Classlist.mk /main/4 1996/10/30 14:40:34 drk $
 CLASSLIBS= \
 Support \
 UAS \

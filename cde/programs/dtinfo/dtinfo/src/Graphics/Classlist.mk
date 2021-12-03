@@ -1,6 +1,6 @@
-/* $XConsortium: Classlist.mk /main/4 1996/10/30 14:41:07 drk $ */
-CLASSES= \
+# $XConsortium: Classlist.mk /main/4 1996/10/30 14:41:07 drk $
+Graphics_CLASSES= \
 PixmapGraphic 
 
-SRCS= \
+Graphics_SRCS= \
 PixmapGraphic.C 

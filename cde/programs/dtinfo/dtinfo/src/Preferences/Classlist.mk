@@ -1,13 +1,13 @@
-/* $XConsortium: Classlist.mk /main/3 1996/08/21 15:43:21 drk $ */
+# $XConsortium: Classlist.mk /main/3 1996/08/21 15:43:21 drk $
 
-CLASSES= \
+Preferences_CLASSES= \
 UserPreference \
 IntegerPref \
 BooleanPref \
 StringPref \
 WindowGeometryPref
 
-SRCS=\
+Preferences_SRCS=\
 UserPreference.C \
 IntegerPref.C \
 BooleanPref.C \

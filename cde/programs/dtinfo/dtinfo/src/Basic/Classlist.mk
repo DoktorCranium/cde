@@ -1,5 +1,5 @@
-/* $XConsortium: Classlist.mk /main/3 1996/10/30 14:40:00 drk $ */
-CLASSES=\
+# $XConsortium: Classlist.mk /main/3 1996/10/30 14:40:00 drk $
+Basic_CLASSES=\
 Error \
 FolioObject \
 BitField \
@@ -26,7 +26,7 @@ ClientEventHandler \
 NodeDisplayData \
 NodeViewInfo
 
-SRCS= \
+Basic_SRCS= \
 FolioObject.C \
 BitField.C \
 OString.C \

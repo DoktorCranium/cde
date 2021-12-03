@@ -1,18 +1,18 @@
-/* $XConsortium: Classlist.mk /main/4 1996/08/21 15:43:28 drk $ */
+# $XConsortium: Classlist.mk /main/4 1996/08/21 15:43:28 drk $
 
-CLASSES= \
+Query_CLASSES= \
 QueryTerm \
 QueryTermView \
 QueryGroupView \
 QueryGroup \
 QueryEditor
 
-SRCS= \
+Query_SRCS= \
 QueryEditor.C \
 QueryTermView.C \
 QueryGroupView.C \
 QueryTerm.C  \
 QueryGroup.C
 
-MSGS= \
+Query_MSGS= \
 QueryEditor.msg

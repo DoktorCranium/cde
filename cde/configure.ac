@@ -726,6 +726,30 @@ programs/dtinfo/mmdb/StyleSheet/Makefile
 programs/dtinfo/clients/Makefile
 programs/dtinfo/clients/dtinfo_start/Makefile
 
+programs/dtinfo/dtinfo/Makefile
+programs/dtinfo/dtinfo/wwl/Makefile
+programs/dtinfo/dtinfo/wwl/src/Makefile
+programs/dtinfo/dtinfo/src/Makefile
+programs/dtinfo/dtinfo/src/Widgets/Makefile
+programs/dtinfo/dtinfo/src/Support/Makefile
+programs/dtinfo/dtinfo/src/UAS/Makefile
+programs/dtinfo/dtinfo/src/Basic/Makefile
+programs/dtinfo/dtinfo/src/OliasSearch/Makefile
+programs/dtinfo/dtinfo/src/Marks/Makefile
+programs/dtinfo/dtinfo/src/Graphics/Makefile
+programs/dtinfo/dtinfo/src/Preferences/Makefile
+programs/dtinfo/dtinfo/src/Managers/Makefile
+programs/dtinfo/dtinfo/src/Other/Makefile
+programs/dtinfo/dtinfo/src/Query/Makefile
+programs/dtinfo/dtinfo/src/Agents/Makefile
+programs/dtinfo/dtinfo/src/OnlineRender/Makefile
+programs/dtinfo/dtinfo/src/Messages/Makefile
+programs/dtinfo/dtinfo/src/cgm/Makefile
+programs/dtinfo/dtinfo/install/Makefile
+programs/dtinfo/dtinfo/install/lib/Makefile
+programs/dtinfo/dtinfo/install/lib/bitmaps/Makefile
+programs/dtinfo/dtinfo/install/lib/fonts/Makefile
+
 programs/types/Makefile
 
 programs/tttypes/Makefile
