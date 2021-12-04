@@ -1,9 +1,17 @@
 MAINTAINERCLEANFILES= Makefile.in
 
-noinst_LIBRARIES = libmisc.a
+include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/misc
+BUILT_SOURCES = unique_id.c
 
-libmisc_a_CFLAGS = -DPORTABLE_DB
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
 
-libmisc_a_SOURCES = ../../DtMmdb/misc/unique_id.c
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libmisc.la
+
+libmisc_la_CFLAGS = $(DTINFO_DEFINES) -DPORTABLE_DB -I$(BASE)
+
+libmisc_la_SOURCES = $(BUILT_SOURCES)

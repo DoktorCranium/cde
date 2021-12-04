@@ -1,16 +1,20 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libcompression.a
+include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/compression
+BUILT_SOURCES = abs_agent.C zip.C huffman.C trie.C code.C lzss.C
 
-libcompression_a_CXXFLAGS = -I../../DtMmdb -I../../DtMmdb/dti_excs
+PARSER_FILES = sgml.C ps.C
+BUILT_SOURCES += $(PARSER_FILES)
 
-libcompression_a_SOURCES = ../../DtMmdb/compression/abs_agent.C \
-			    ../../DtMmdb/compression/zip.C \
-			    ../../DtMmdb/compression/huffman.C \
-			    ../../DtMmdb/compression/trie.C \
-			    ../../DtMmdb/compression/code.C \
-			    ../../DtMmdb/compression/lzss.C \
-			    ../../DtMmdb/compression/sgml.C \
-			    ../../DtMmdb/compression/ps.C
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
+
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libcompression.la
+
+libcompression_la_CXXFLAGS = $(DTINFO_DEFINES) -I../../DtMmdb -I../../DtMmdb/dti_excs -I$(BASE)
+
+libcompression_la_SOURCES = $(BUILT_SOURCES)

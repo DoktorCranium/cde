@@ -1,13 +1,18 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libmgrs.a
+include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/mgrs
+BUILT_SOURCES = managers.C misc.C query_mgr.C template_mgr.C
 
-libmgrs_a_CXXFLAGS = -DCOMPACTED_DISK_REP -DPORTABLE_DB -I../../DtMmdb \
-		      -I../../DtMmdb/dti_excs
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
 
-libmgrs_a_SOURCES = ../../DtMmdb/mgrs/managers.C \
-		     ../../DtMmdb/mgrs/misc.C \
-		     ../../DtMmdb/mgrs/query_mgr.C \
-		     ../../DtMmdb/mgrs/template_mgr.C
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libmgrs.la
+
+libmgrs_la_CXXFLAGS = $(DTINFO_DEFINES) -DCOMPACTED_DISK_REP -DPORTABLE_DB -I../../DtMmdb \
+		      -I../../DtMmdb/dti_excs -I$(BASE)
+
+libmgrs_la_SOURCES = $(BUILT_SOURCES)

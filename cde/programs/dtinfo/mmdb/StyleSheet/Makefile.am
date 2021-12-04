@@ -1,42 +1,36 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libStyleSheet.a
+include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/StyleSheet
+BUILT_SOURCES = Attribute.C AttributeList.C BitVector.C DocParser.C	\
+       Element.C Expression.C Feature.C FeatureDefDictionary.C		\
+       FeatureSet.C FeatureValue.C PathQualifier.C PathTable.C		\
+       Resolver.C ResolverStack.C SSPath.C StyleSheet.C			\
+       StyleSheetExceptions.C SymTab.C VariableTable.C defParser.C	\
+       defToken.C style.C tokenStyle.C RendererHCV.C
 
-libStyleSheet_a_CXXFLAGS = -DEXPAND_TEMPLATES -DCDE_NEXT -I../../DtMmdb \
-                            -I../../DtMmdb/StyleSheet -I../../DtMmdb/dti_excs \
-			    -I../../DtMmdb/dti_cc
+SPECFILES = hardcopy.feature.spec online.feature.spec
 
-libStyleSheet_a_SOURCES = ../../DtMmdb/StyleSheet/Attribute.C \
-		       	   ../../DtMmdb/StyleSheet/AttributeList.C \
-		   	   ../../DtMmdb/StyleSheet/BitVector.C \
-			   ../../DtMmdb/StyleSheet/DocParser.C \
-		       	   ../../DtMmdb/StyleSheet/Element.C \
-	     		   ../../DtMmdb/StyleSheet/Expression.C \
-        		   ../../DtMmdb/StyleSheet/Feature.C \
-		     	   ../../DtMmdb/StyleSheet/FeatureDefDictionary.C \
-			   ../../DtMmdb/StyleSheet/FeatureSet.C \
-			   ../../DtMmdb/StyleSheet/FeatureValue.C \
-			   ../../DtMmdb/StyleSheet/PathQualifier.C \
-		   	   ../../DtMmdb/StyleSheet/PathTable.C \
-			   ../../DtMmdb/StyleSheet/Resolver.C \
-		      	   ../../DtMmdb/StyleSheet/ResolverStack.C \
-		   	   ../../DtMmdb/StyleSheet/SSPath.C \
-			   ../../DtMmdb/StyleSheet/StyleSheet.C \
-			   ../../DtMmdb/StyleSheet/StyleSheetExceptions.C \
-			   ../../DtMmdb/StyleSheet/SymTab.C \
-			   ../../DtMmdb/StyleSheet/VariableTable.C \
-			   ../../DtMmdb/StyleSheet/defParser.C \
-	       		   ../../DtMmdb/StyleSheet/defToken.C \
-			   ../../DtMmdb/StyleSheet/style.C \
-		   	   ../../DtMmdb/StyleSheet/tokenStyle.C \
-			   ../../DtMmdb/StyleSheet/RendererHCV.C
+BUILT_SOURCES += $(SPECFILES)
 
 if LINUX
-libStyleSheet_a_SOURCES += ../../DtMmdb/StyleSheet/SSTemplates.C
+BUILT_SOURCES += SSTemplates.C
 endif
 
 if BSD
-libStyleSheet_a_SOURCES += ../../DtMmdb/StyleSheet/SSTemplates.C
+BUILT_SOURCES += SSTemplates.C
 endif
+
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
+
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libStyleSheet.la
+
+libStyleSheet_la_CXXFLAGS = $(DTINFO_DEFINES) -I../../DtMmdb \
+                            -I../../DtMmdb/StyleSheet -I../../DtMmdb/dti_excs \
+			    -I../../DtMmdb/dti_cc -I$(BASE)
+
+libStyleSheet_la_SOURCES = $(BUILT_SOURCES)

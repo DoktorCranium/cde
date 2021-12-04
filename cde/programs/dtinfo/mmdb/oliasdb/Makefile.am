@@ -1,33 +1,26 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = liboliasdb.a
+include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/oliasdb
+BUILT_SOURCES = asciiIn_filters.C collectionIterator.C dlp_hd.C		\
+			dlp_test.C doc_hd.C doc_test.C graphic_hd.C	\
+			graphic_test.C loc_test.C locator_hd.C mark.C	\
+			mark_base.C mark_test.C mmdb.C node_hd.C	\
+			node_test.C olias_funcs.C olias_test.C		\
+			stylesheet_hd.C stylesheet_test.C toc_hd.C	\
+			toc_test.C user_base.C
 
-liboliasdb_a_CXXFLAGS = -DNO_DB_LOCK -DCDE_NEXT -I../../DtMmdb \
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
+
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = liboliasdb.la
+
+liboliasdb_la_CXXFLAGS = $(DTINFO_DEFINES) -DNO_DB_LOCK -DCDE_NEXT -I../../DtMmdb \
 			 -I../../DtMmdb/misc -I../../DtMmdb/dti_excs \
-			 -I../../DtMmdb/dti_cc -I../.. -I../../DtMmdb/oliasdb
+			 -I../../DtMmdb/dti_cc -I../.. -I../../DtMmdb/oliasdb \
+			 -I$(BASE)
 
-liboliasdb_a_SOURCES = ../../DtMmdb/oliasdb/asciiIn_filters.C \
-		  	../../DtMmdb/oliasdb/collectionIterator.C \
-			../../DtMmdb/oliasdb/dlp_hd.C \
-	 		../../DtMmdb/oliasdb/dlp_test.C \
-			../../DtMmdb/oliasdb/doc_hd.C \
-	 		../../DtMmdb/oliasdb/doc_test.C \
-			../../DtMmdb/oliasdb/graphic_hd.C \
-	     		../../DtMmdb/oliasdb/graphic_test.C \
-			../../DtMmdb/oliasdb/loc_test.C \
-	   		../../DtMmdb/oliasdb/locator_hd.C \
-			../../DtMmdb/oliasdb/mark.C \
-       			../../DtMmdb/oliasdb/mark_base.C \
-			../../DtMmdb/oliasdb/mark_test.C \
-	    		../../DtMmdb/oliasdb/mmdb.C \
-			../../DtMmdb/oliasdb/node_hd.C \
-	  		../../DtMmdb/oliasdb/node_test.C \
-			../../DtMmdb/oliasdb/olias_funcs.C \
-	      		../../DtMmdb/oliasdb/olias_test.C \
-			../../DtMmdb/oliasdb/stylesheet_hd.C \
-			../../DtMmdb/oliasdb/stylesheet_test.C \
-			../../DtMmdb/oliasdb/toc_hd.C \
-	 		../../DtMmdb/oliasdb/toc_test.C \
-			../../DtMmdb/oliasdb/user_base.C
+liboliasdb_la_SOURCES = $(BUILT_SOURCES)

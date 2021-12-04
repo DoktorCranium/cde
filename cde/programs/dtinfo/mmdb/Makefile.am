@@ -12,15 +12,19 @@ SUBDIRS = \
         utility			HardCopy \
 	dti_cc			StyleSheet
 
-noinst_LIBRARIES = libmmdb.a
+noinst_LTLIBRARIES = libMMDB.la
 
-libmmdb_a_SOURCES =
+libMMDB_la_SOURCES =
+# fake things so libtool creates this as a C++ library
+nodist_EXTRA_libMMDB_la_SOURCES = dummy.cxx
 
-libmmdb_a_LIBADD = api/libapi.a btree/libbtree.a \
-		   btree_berkeley/libbtree_berkeley.a \
-		   compression/libcompression.a \
-		   diskhash/libdiskhash.a dstr/libdstr.a \
-		   dti_excs/libdti_excs.a dynhash/libdynhash.a \
-		   hmphf/libhmphf.a index/libindex.a mgrs/libmgrs.a \
-		   misc/libmisc.a object/libobject.a oliasdb/liboliasdb.a \
-		   schema/libschema.a storage/libstorage.a utility/libutility.a
+libMMDB_la_LIBADD = api/libapi.la btree/libbtree.la			\
+		   btree_berkeley/libbtree_berkeley.la			\
+		   compression/libcompression.la			\
+		   diskhash/libdiskhash.la dstr/libdstr.la		\
+		   dti_excs/libdti_excs.la dynhash/libdynhash.la	\
+		   hmphf/libhmphf.la index/libindex.la			\
+		   mgrs/libmgrs.la misc/libmisc.la			\
+		   object/libobject.la oliasdb/liboliasdb.la		\
+		   schema/libschema.la storage/libstorage.la		\
+		   utility/libutility.la

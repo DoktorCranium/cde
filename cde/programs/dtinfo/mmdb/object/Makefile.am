@@ -1,25 +1,22 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libobject.a
+include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/object
+BUILT_SOURCES = composite.C compressed_pstring.C cset.C dl_list.C	\
+		       dl_list_cell.C handler.C integer.C		\
+		       long_pstring.C oid.C oid_list.C oid_t.C		\
+		       primitive.C pstring.C random_gen.C root.C	\
+		       short_list.C tuple.C
 
-libobject_a_CXXFLAGS = -DPORTABLE_DB -I../../DtMmdb -I../../DtMmdb/dti_excs
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
 
-libobject_a_SOURCES = ../../DtMmdb/object/composite.C \
-		       ../../DtMmdb/object/compressed_pstring.C \
-		       ../../DtMmdb/object/cset.C \
-		       ../../DtMmdb/object/dl_list.C \
-		       ../../DtMmdb/object/dl_list_cell.C \
-	      	       ../../DtMmdb/object/handler.C \
-		       ../../DtMmdb/object/integer.C \
-		       ../../DtMmdb/object/long_pstring.C \
-	      	       ../../DtMmdb/object/oid.C \
-		       ../../DtMmdb/object/oid_list.C \
-		       ../../DtMmdb/object/oid_t.C \
-       		       ../../DtMmdb/object/primitive.C \
-		       ../../DtMmdb/object/pstring.C \
-		       ../../DtMmdb/object/random_gen.C \
-	    	       ../../DtMmdb/object/root.C \
-		       ../../DtMmdb/object/short_list.C \
-		       ../../DtMmdb/object/tuple.C
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libobject.la
+
+libobject_la_CXXFLAGS = $(DTINFO_DEFINES) -DPORTABLE_DB -I../../DtMmdb -I../../DtMmdb/dti_excs \
+			-I$(BASE)
+
+libobject_la_SOURCES = $(BUILT_SOURCES)

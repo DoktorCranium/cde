@@ -1,21 +1,27 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libHardCopy.a
+include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
-
-libHardCopy_a_CXXFLAGS = -DCDE_NEXT -DEXPAND_TEMPLATES -I../../DtMmdb \
-			  -I../../DtMmdb/HardCopy -I../../DtMmdb/dti_excs
-
-libHardCopy_a_SOURCES = ../../DtMmdb/HardCopy/FPset.C \
-			 ../../DtMmdb/HardCopy/HardCopyFP.C \
-			 ../../DtMmdb/HardCopy/autoNumber.C \
-			 ../../DtMmdb/HardCopy/autoNumberFP.C
+BASE = ../../DtMmdb/HardCopy
+BUILT_SOURCES = FPset.C HardCopyFP.C autoNumber.C autoNumberFP.C
 
 if LINUX
-libHardCopy_a_SOURCES += ../../DtMmdb/HardCopy/TemplatesAutoNumber.C
+BUILT_SOURCES += TemplatesAutoNumber.C
 endif
 
 if BSD
-libHardCopy_a_SOURCES += ../../DtMmdb/HardCopy/TemplatesAutoNumber.C
+BUILT_SOURCES += TemplatesAutoNumber.C
 endif
+
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
+
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libHardCopy.la
+
+libHardCopy_la_CXXFLAGS = $(DTINFO_DEFINES) \
+    -I../../DtMmdb -I../../DtMmdb/HardCopy -I../../DtMmdb/dti_excs	\
+    -I$(BASE)
+
+libHardCopy_la_SOURCES = $(BUILT_SOURCES)

@@ -1,14 +1,20 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libhmphf.a
+include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/hmphf
+BUILT_SOURCES = buckets.C mphf_funcs.C mphf_hash_table.C params.C	\
+		      pattern.C sorter.C
 
-libhmphf_a_CXXFLAGS = -DPORTABLE_DB -I../../DtMmdb -I../../DtMmdb/dti_excs
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
 
-libhmphf_a_SOURCES = ../../DtMmdb/hmphf/buckets.C \
-		      ../../DtMmdb/hmphf/mphf_funcs.C \
-		      ../../DtMmdb/hmphf/mphf_hash_table.C \
-		      ../../DtMmdb/hmphf/params.C \
-	       	      ../../DtMmdb/hmphf/pattern.C \
-		      ../../DtMmdb/hmphf/sorter.C
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libhmphf.la
+
+libhmphf_la_CXXFLAGS = $(DTINFO_DEFINES) -DPORTABLE_DB -I../../DtMmdb	\
+-I../../DtMmdb/dti_excs -I$(BASE)
+
+libhmphf_la_SOURCES = $(BUILT_SOURCES)
+
