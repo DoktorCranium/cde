@@ -101,10 +101,6 @@ replace_entity( FlexBuffer *buf , const char *str)
 	buf->writeStr("&amp;");
 	break;
 
-      case '\240':
-	buf->writeStr("&nbsp;");
-	break;
-
       case '<':
 	buf->writeStr("&lt;");
 	break;
