@@ -160,17 +160,11 @@
  * Coded as bit positions for efficient boolean comparisons.
  */
 #define JS_STX		0x0001	/* Start of text blk, initial state */
-#define JS_KANJI	0x0002	/* Set 1, Set 3 */
-#define JS_KATAKANA	0x0004	/* Set 1 */
-#define JS_ASCII	0x0008	/* Set 0 */
-#define JS_ROMAN	0x0010	/* Set 1 */
-#define JS_GREEK	0x0020	/* Set 1, Set 3 */
-#define JS_CYRILLIC	0x0040	/* Set 1 */
-#define JS_ALPHA	0x0080	/* Set 3 */
-#define JS_HALFKATA	0x0100	/* Set 2 */
-#define JS_DISCARD	0x0200	/* Set 1, Set 3, any char not in EUC */
-#define JS_ETX		0x0300	/* End of text block */
-#define JS_ALPHA_COMPATIBLE  (JS_ROMAN | JS_GREEK | JS_CYRILLIC)
+#define JS_KANJI	0x0002
+#define JS_ASCII	0x0004
+#define JS_OTHERS	0x0008
+#define JS_DISCARD	0x0010	/* Any char not in UTF-8 */
+#define JS_ETX		0x0020	/* End of text block */
 
 /************************************************/
 /*						*/
@@ -241,17 +235,12 @@ char *ensure_end_slash (char *pathstr);
 static char	*display_jstate (int js)
 {
     switch (js) {
-	case JS_KANJI:		return "KANJI";
-	case JS_KATAKANA:	return "KATAKANA";
-	case JS_DISCARD:	return "DISCARD";
-	case JS_ROMAN:		return "ROMAN";
-	case JS_ASCII:		return "ASCII";
-	case JS_ALPHA:		return "ALPHA";
-	case JS_ETX:		return "ETX";
 	case JS_STX:		return "STX";
-	case JS_GREEK:		return "GREEK";
-	case JS_CYRILLIC:	return "CYRILLIC";
-	case JS_HALFKATA:	return "HALFKATA";
+	case JS_KANJI:		return "KANJI";
+	case JS_ASCII:		return "ASCII";
+	case JS_OTHERS:		return "OTHERS";
+	case JS_DISCARD:	return "DISCARD";
+	case JS_ETX:		return "ETX";
 	default:		return "(UNKNOWN)";
     }
 } /* display_jstate() */
@@ -284,7 +273,7 @@ static int	read_jchar (void)
     else
 	jchar[0] = readchar (NULL);
     if (jchar[0] == 0)
-	return (jstate = JS_ETX);
+	return jstate = JS_ETX;
     readcount++;
 
     for (jcharlen = 1; jcharlen < MB_CUR_MAX; ++jcharlen) {
@@ -296,34 +285,9 @@ static int	read_jchar (void)
     /* If jchar is an invalid multibyte sequence,
      * discard it until we get back into sync.
      */
-    if (jcharlen == MB_CUR_MAX) return (jstate = JS_DISCARD);
+    if (jcharlen == MB_CUR_MAX) return jstate = JS_DISCARD;
 
-    if (jcharlen == 1) {
-	if (jchar[0] < 0x80) {
-	    jcharlen = 1;
-	    jstate = JS_ASCII;
-	}
-	else jstate = JS_DISCARD;
-
-	return jstate;
-    }
-
-    if (jcharlen == 2) {
-	str1[0] = 0xC2;
-	str1[1] = 0x80;
-	str1[2] = 0;
-
-	str2[0] = 0xDF;
-	str2[1] = 0xBF;
-	str2[2] = 0;
-
-	if (strcmp ((char *) jchar, str1) >= 0 &&
-	    strcmp ((char *) jchar, str2) <= 0)
-	    jstate = JS_ROMAN;
-	else jstate = JS_DISCARD;
-
-	return jstate;
-    }
+    if (jcharlen == 1) return jstate = JS_ASCII;
 
     if (jcharlen == 3) {
 	str1[0] = 0xE4;
@@ -339,27 +303,13 @@ static int	read_jchar (void)
 	if (strcmp ((char *) jchar, str1) >= 0 &&
 	    strcmp ((char *) jchar, str2) <= 0)
 	    jstate = JS_KANJI;
-	else {
-	    str1[0] = 0xEF;
-	    str1[1] = 0xBD;
-	    str1[2] = 0xA6;
-	    str1[3] = 0;
-
-	    str2[0] = 0xEF;
-	    str2[1] = 0xBE;
-	    str2[2] = 0x9F;
-	    str2[3] = 0;
-
-	    if (strcmp ((char *) jchar, str1) >= 0 &&
-		strcmp ((char *) jchar, str2) <= 0)
-		jstate = JS_HALFKATA;
-	    else jstate = JS_DISCARD;
-	}
+	else
+	    jstate = JS_OTHERS;
 
 	return jstate;
     }
 
-    return (jstate = JS_DISCARD);
+    return jstate = JS_OTHERS;
 } /* read_jchar() */
 
 
@@ -620,12 +570,6 @@ static UCHAR	*parse_substring (void)
 		fputc ((substrbuf[i] < 32)? '~' : substrbuf[i],
 		    aa_stderr);
 	    fprintf (aa_stderr, "'\n");
-	    if (last_jstate == JS_ROMAN) {
-		fprintf (aa_stderr, "  (ascii equiv: '");
-		for (i = 1;  i < substrlen;  i+=2)
-		    fputc ((substrbuf[i] & 0x7f) + 32, aa_stderr);
-		fprintf (aa_stderr, "')\n");
-	    }
 	    fflush (aa_stderr);
 	}
 
@@ -642,12 +586,7 @@ static UCHAR	*parse_substring (void)
 	    is_substr_end = TRUE;
 	    return NULL;
 
-	case JS_KATAKANA:
-	case JS_ROMAN:
-	case JS_CYRILLIC:
-	case JS_GREEK:
-	case JS_ALPHA:
-	case JS_HALFKATA:
+	case JS_OTHERS:
 	    /* Treat entire substring as single parsed word */
 ENTIRE_SUBSTR_IS_WORD:
 	    if (debugging_jpn)
