@@ -37,7 +37,7 @@ Prelude.h:
 Dtinfo: Dtinfo.res $(RESFILES)
 	$(CPP_PROGRAM) -traditional -nostdinc -C Dtinfo.res | $(TREERES) > $@
 
-# dtinfo class dfiles and hfiles building
+# dtinfo class dfile and hfile building for the modules
 include templates/dtinfo-dfiles-hfiles.mk
 
 # gather up the messages and generate the file. MSGS comes from the
@@ -62,14 +62,11 @@ OLIASNORMALLIBS= Agents/libAgents.a Other/libOther.a			\
            OliasSearch/libOliasSearch.a Widgets/libWidgets.a		\
            cgm/libcgm.a
 
-#DTSEARCHLIBS = -L$(DTSEARCH_LIBDIR) -lDtSearch
+bin_PROGRAMS = dtinfo
 
+dtinfo_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
 
+dtinfo_LDADD = $(OLIASNORMALLIBS) $(LIBSEARCH) $(MMDB_LIBS) $(WWL_LIBS) \
+	$(DTCLIENTLIBS) -lXmu $(XTOOLLIB)
 
-#bin_PROGRAMS = dtinfo
-
-#dtinfo_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
-
-#dtinfo_LDADD = $(OLIASNORMALLIBS) $(LIBSEARCH) $(MMDB_LIBS) $(WWL_LIBS) $(DTCLIENTLIBS) -lXmu $(XTOOLLIB)
-
-# dtinfo_SOURCES = main.C Support/InputNotifier.C
+dtinfo_SOURCES = main.C Support/InputNotifier.C
