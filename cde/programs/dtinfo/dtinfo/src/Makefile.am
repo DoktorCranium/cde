@@ -53,10 +53,23 @@ dtinfo.msg.updated:
 
 CLEANFILES += dtinfo.msg.updated dtinfo.cpp
 
+## dtinfo proper
+OLIASNORMALLIBS= Agents/libAgents.a Other/libOther.a			\
+           Basic/libBasic.a Preferences/libPreferences.a		\
+           UAS/libUAS.a Query/libQuery.a Graphics/libGraphics.a	\
+           Managers/libManagers.a Support/libSupport.a		\
+           Marks/libMarks.a OnlineRender/libOnlineRender.a		\
+           OliasSearch/libOliasSearch.a Widgets/libWidgets.a		\
+           cgm/libcgm.a
+
+#DTSEARCHLIBS = -L$(DTSEARCH_LIBDIR) -lDtSearch
+
+
+
 #bin_PROGRAMS = dtinfo
 
-#dtinfo_CPPFLAGS = -DEXPAND_TEMPLATES -I..
+#dtinfo_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
 
-#dtinfo_LDADD = lib
+#dtinfo_LDADD = $(OLIASNORMALLIBS) $(LIBSEARCH) $(MMDB_LIBS) $(WWL_LIBS) $(DTCLIENTLIBS) -lXmu $(XTOOLLIB)
 
-#dtinfo_SOURCES = main.C main_c_api.c
+# dtinfo_SOURCES = main.C Support/InputNotifier.C

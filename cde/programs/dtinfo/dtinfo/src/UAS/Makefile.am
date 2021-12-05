@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 SUBDIRS = Base MMDB DtSR
 
-noinst_LTLIBRARIES = libUAS.la
+noinst_LIBRARIES = libUAS.a
 
 # get our env
 include ../templates/dtinfo_env.mk
@@ -10,11 +10,13 @@ include ../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libUAS_la_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
-libUAS_la_SOURCES =
-# this should make sure this is linked with a C++ compiler
-nodist_EXTRA_libUAS_la_SOURCES = dummy.cxx
-libUAS_la_LIBADD = Base/libBase.la MMDB/libMMDB.la DtSR/libDtSR.la
+libUAS_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
+libUAS_a_SOURCES =
+
+libUAS_a_LIBADD = Base/libBase.a MMDB/libMMDB.a DtSR/libDtSR.a
+
+RANLIB = echo
+libUAS_a_AR =  $(LD) -r -o
 
 noinst_DATA = UAS.msg
 

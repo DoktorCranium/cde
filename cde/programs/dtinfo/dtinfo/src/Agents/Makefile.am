@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libAgents.la
+noinst_LIBRARIES = libAgents.a
 
 # get our env
 include ../templates/dtinfo_env.mk
@@ -8,8 +8,11 @@ include ../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libAgents_la_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
-libAgents_la_SOURCES = ../Prelude.h $(Agents_SRCS)
+libAgents_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
+libAgents_a_SOURCES = ../Prelude.h $(Agents_SRCS)
+
+RANLIB = echo
+libAgents_a_AR = $(LD) -r -o
 
 BUILT_SOURCES = Agents.msg
 CLEANFILES = $(BUILT_SOURCES)

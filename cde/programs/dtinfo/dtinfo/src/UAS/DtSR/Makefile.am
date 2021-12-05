@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libDtSR.la
+noinst_LIBRARIES = libDtSR.a
 
 # get our env
 include ../../templates/dtinfo_env.mk
@@ -8,9 +8,12 @@ include ../../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libDtSR_la_CXXFLAGS = -I../Base -I./Util_Classes -I../..	\
+libDtSR_a_CXXFLAGS = -I../Base -I./Util_Classes -I../..	\
 	$(DTINFO_DEFINES) $(DTINFO_INCLUDES)
-libDtSR_la_SOURCES = $(DtSR_SRCS)
+libDtSR_a_SOURCES = $(DtSR_SRCS)
+
+RANLIB = echo
+libDtSR_a_AR = $(LD) -r -o
 
 BUILT_SOURCES = DtSR.msg
 CLEANFILES = $(BUILT_SOURCES)

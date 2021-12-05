@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libOliasSearch.la
+noinst_LIBRARIES = libOliasSearch.a
 
 # get our env
 include ../templates/dtinfo_env.mk
@@ -8,7 +8,9 @@ include ../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libOliasSearch_la_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
+libOliasSearch_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
 
-libOliasSearch_la_SOURCES = ../Prelude.h $(OliasSearch_SRCS)
+libOliasSearch_a_SOURCES = ../Prelude.h $(OliasSearch_SRCS)
 
+RANLIB = echo
+libOliasSearch_a_AR = $(LD) -r -o

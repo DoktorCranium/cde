@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libPreferences.la
+noinst_LIBRARIES = libPreferences.a
 
 # get our env
 include ../templates/dtinfo_env.mk
@@ -8,7 +8,9 @@ include ../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libPreferences_la_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
+libPreferences_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
 
-libPreferences_la_SOURCES = ../Prelude.h $(Preferences_SRCS)
+libPreferences_a_SOURCES = ../Prelude.h $(Preferences_SRCS)
 
+RANLIB = echo
+libPreferences_a_AR = $(LD) -r -o

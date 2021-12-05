@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libOnlineRender.la
+noinst_LIBRARIES = libOnlineRender.a
 
 # get our env
 include ../templates/dtinfo_env.mk
@@ -8,8 +8,12 @@ include ../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libOnlineRender_la_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
-libOnlineRender_la_SOURCES = ../Prelude.h $(OnlineRender_SRCS)
+libOnlineRender_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
+libOnlineRender_a_SOURCES = ../Prelude.h CanvasRenderer.C	\
+	FeatureSupport.C FontCache.C SegClientData.C
+
+RANLIB = echo
+libOnlineRender_a_AR = $(LD) -r -o
 
 BUILT_SOURCES = OnlineRender.msg
 CLEANFILES = $(BUILT_SOURCES)

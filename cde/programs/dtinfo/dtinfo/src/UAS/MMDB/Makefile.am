@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libMMDB.la
+noinst_LIBRARIES = libMMDB.a
 
 # get our env
 include ../../templates/dtinfo_env.mk
@@ -8,9 +8,13 @@ include ../../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libMMDB_la_CXXFLAGS = -I../Base -I../.. $(DTINFO_DEFINES)	\
+libMMDB_a_CXXFLAGS = -I../Base -I../.. $(DTINFO_DEFINES)	\
 	$(DTINFO_INCLUDES)
-libMMDB_la_SOURCES = $(MMDB_SRCS)
+libMMDB_a_SOURCES = $(MMDB_SRCS)
+
+RANLIB = echo
+libMMDB_a_AR = $(LD) -r -o
+
 
 BUILT_SOURCES = MMDB.msg
 CLEANFILES = $(BUILT_SOURCES)

@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libGraphics.la
+noinst_LIBRARIES = libGraphics.a
 
 # get our env
 include ../templates/dtinfo_env.mk
@@ -8,7 +8,9 @@ include ../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libGraphics_la_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
+libGraphics_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
 
-libGraphics_la_SOURCES = ../Prelude.h $(Graphics_SRCS)
+libGraphics_a_SOURCES = ../Prelude.h $(Graphics_SRCS)
 
+RANLIB = echo
+libGraphics_a_AR = $(LD) -r -o

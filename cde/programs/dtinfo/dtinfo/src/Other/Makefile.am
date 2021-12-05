@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libOther.la
+noinst_LIBRARIES = libOther.a
 
 # get our env
 include ../templates/dtinfo_env.mk
@@ -8,8 +8,11 @@ include ../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libOther_la_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
-libOther_la_SOURCES = ../Prelude.h $(Other_SRCS)
+libOther_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
+libOther_a_SOURCES = ../Prelude.h $(Other_SRCS)
+
+RANLIB = echo
+libOther_a_AR = $(LD) -r -o
 
 BUILT_SOURCES = Other.msg
 CLEANFILES = $(BUILT_SOURCES)

@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libSupport.la
+noinst_LIBRARIES = libSupport.a
 
 # get our env
 include ../templates/dtinfo_env.mk
@@ -8,7 +8,9 @@ include ../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libSupport_la_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
+libSupport_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
 
-libSupport_la_SOURCES = ../Prelude.h $(Support_SRCS)
+libSupport_a_SOURCES = ../Prelude.h $(Support_SRCS)
 
+RANLIB = echo
+libSupport_a_AR = $(LD) -r -o

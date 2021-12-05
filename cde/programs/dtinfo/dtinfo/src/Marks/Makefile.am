@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libMarks.la
+noinst_LIBRARIES = libMarks.a
 
 # get our env
 include ../templates/dtinfo_env.mk
@@ -8,7 +8,10 @@ include ../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libMarks_la_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
+libMarks_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
 
-libMarks_la_SOURCES = ../Prelude.h $(Marks_SRCS)
+libMarks_a_SOURCES = ../Prelude.h $(Marks_SRCS)
+
+RANLIB = echo
+libMarks_a_AR = $(LD) -r -o
 

@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libQuery.la
+noinst_LIBRARIES = libQuery.a
 
 # get our env
 include ../templates/dtinfo_env.mk
@@ -8,8 +8,11 @@ include ../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libQuery_la_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
-libQuery_la_SOURCES = ../Prelude.h $(Query_SRCS)
+libQuery_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
+libQuery_a_SOURCES = ../Prelude.h $(Query_SRCS)
+
+RANLIB = echo
+libQuery_a_AR = $(LD) -r -o
 
 BUILT_SOURCES = Query.msg
 CLEANFILES = $(BUILT_SOURCES)

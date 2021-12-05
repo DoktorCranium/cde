@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LTLIBRARIES = libBase.la
+noinst_LIBRARIES = libBase.a
 
 # get our env
 include ../../templates/dtinfo_env.mk
@@ -8,9 +8,12 @@ include ../../templates/dtinfo_env.mk
 # class info
 include Classlist.mk
 
-libBase_la_CXXFLAGS = -I.. -I ../.. -I../Support $(DTINFO_DEFINES)	\
+libBase_a_CXXFLAGS = -I.. -I ../.. -I../Support $(DTINFO_DEFINES)	\
 	$(DTINFO_INCLUDES)
-libBase_la_SOURCES = $(Base_SRCS)
+libBase_a_SOURCES = $(Base_SRCS)
+
+RANLIB = echo
+libBase_a_AR = $(LD) -r -o
 
 BUILT_SOURCES = Base.msg
 CLEANFILES = $(BUILT_SOURCES)
