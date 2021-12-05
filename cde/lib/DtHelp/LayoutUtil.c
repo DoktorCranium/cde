@@ -479,7 +479,7 @@ _DtCvCheckLineSyntax (
 	 * If this string is a multi-byte, check the list of multi-bytes
 	 * that can't end a line.  If one is found it can't end a line.
          */
-        if (wcFlag &&
+        if ((wcFlag || canvas->mb_length > 1) &&
 		CheckList(lastChar, canvas->locale.cant_end_chars) == True)
 	    return False;
 
@@ -537,7 +537,7 @@ _DtCvCheckLineSyntax (
 	 * character (want it to go through the CheckMulti list just in
 	 * case it's specified in there, before eliminating it).
 	 */
-	if (False == skip_hypen_ck && wcFlag
+	if (False == skip_hypen_ck && (wcFlag || canvas->mb_length > 1)
 		&& CheckList(nextChar,canvas->locale.cant_begin_chars) == False
 		&& True == nxtCharMb)
 	    return True;
@@ -603,7 +603,7 @@ _DtCvCheckLineSyntax (
      * If this is multi-byte, check the list of multi-byte
      * that can't begin a line.
      */
-    if (_DtCvIsSegWideChar(pSeg))
+    if (_DtCvIsSegWideChar(pSeg) || canvas->mb_length > 1)
       {
 	/*
 	 * plus checking the 'can not begin a line' list, check
@@ -665,6 +665,7 @@ _DtCvGetNextWidth (
 {
     int      result;
     int      len = 0;
+    int      mbl;
     int      tLen;
     int      wcFlag;
     int      curWidth;
@@ -744,7 +745,7 @@ _DtCvGetNextWidth (
 	 * if a single byte string, zoom through it looking for
 	 * specific breaking characters.
 	     */
-	if (0 == wcFlag)
+	if (0 == wcFlag && canvas->mb_length == 1)
 	  {
 	    tChar = pChar;
 	    len = 0;
@@ -818,7 +819,20 @@ _DtCvGetNextWidth (
 	    len = 0;
 	    while (len < myLength)
 	      {
-		len++;
+		if (wcFlag) len++;
+		else
+		  {
+		    mbl = mblen(pChar + len, MB_CUR_MAX);
+
+		    if (mbl == -1)
+		      {
+			++len;
+			continue;
+		      }
+		    else if (!mbl) break;
+		    else len += mbl;
+		  }
+
 		if (_DtCvCheckLineSyntax(canvas,pSeg,start,len,False) == True)
 		  {
 		    pChar    = _DtCvStrPtr(_DtCvStringOfStringSeg(pSeg),
@@ -1813,7 +1827,7 @@ _DtCvGetNextSearchEntry(_DtCanvasStruct* canvas)
     return canvas->search_cnt++;
 }
 
-int
+void
 _DtCvSetSearchEntryInfo(_DtCanvasStruct* canvas, int line_idx)
 {
     int search_idx;
