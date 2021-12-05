@@ -84,7 +84,6 @@ typedef struct _GlobalsStruct
     char *dtInfoHomeEnv;
     char *dtInfoBinEnv;
     char *tmpDirEnv;
-    char *sgmlPathEnv;
     char *sgmlSearchPathEnv;
     char *sgmlCatFilesEnv;
     char *sgmlCatFiles;
@@ -1004,7 +1003,6 @@ defaultGlobals(void)
     gStruct->dtInfoHomeEnv = makeAbsPathEnv("DTINFO_HOME");
     gStruct->dtInfoBinEnv = makeAbsPathEnv("DTINFO_BIN");
     gStruct->tmpDirEnv = makeAbsPathEnv("TMPDIR");
-    gStruct->sgmlPathEnv = makeAbsPathEnv("SGML_PATH");
     gStruct->sgmlSearchPathEnv = makeAbsPathEnv("SGML_SEARCH_PATH");
     gStruct->sgmlCatFilesEnv = makeAbsPathEnv("SGML_CATALOG_FILES");
     gStruct->sgmlCatFiles = NULL;
