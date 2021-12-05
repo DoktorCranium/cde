@@ -65,7 +65,6 @@ do
 		catfiles="$catfiles -m $OPTARG"
 	    fi;;
 	(h) help=1;;
-	(i) info_dir="$OPTARG";;
 	(l) log=1;;
 	(m) mapfiles="$mapfiles $OPTARG";;
 	(o) oname="$OPTARG"
@@ -90,17 +89,9 @@ done
 
 default_charset='UTF-8'
 dbk_lib="${dbk_lib:-/usr/dt/dthelp/dtdocbook}"  # if no -t, use installed dir
-sgml_dir="${sgml_dir:-${dbk_lib}}"              # if no -s, use -t
-info_dir="${info_dir:-/usr/dt/infolib}"         # if no -i, use installed dir
-sgml_cat="${sgml_dir}/SGML"
-if [[ ${#sgmls} -eq 0 ]] then                  # if no -S, use installed one
-    if [[ -x ${info_dir}/etc/nsgmls ]] then
-        sgmls="${info_dir}/etc/nsgmls"
-    else
-        sgmls="${info_dir}/etc/sgmls"
-    fi
-fi
-sgmls="${sgmls:-${info_dir}/etc/sgmls}"         # if no -S, use installed one
+sgml_dir="${sgml_dir:-${dbk_lib}/sgml}"         # if no -s, use -t
+sgml_cat="${sgml_dir}"
+sgmls="${sgmls:-onsgmls}"                       # if no -S, use onsgmls
 instant="${instant:-${dbk_lib}/instant}"        # if no -I, use installed one
 x_locale="${x_locale:-${LANG}}"                 # if no -L, use installed one
 helptag2="${helptag2:-dthelp_htag2}"            # if no -H, use one in PATH
@@ -121,21 +112,13 @@ fi
 export TPT_LIB="${dbk_lib}"
 export LOCALE_DIR="${dbk_lib}/${x_locale}"
 
-# Determine whether we are using sgmls or nsgmls
 parser=`basename $sgmls`
 
-# If running sgmls, set the environment variable for sgmls(1) to find
-# its files; if running nsgmls (or anything besides sgmls), set the
-# environment variable for finding the default catalog - also, if we
-# are running sgmls, delete any -g options since sgmls doesn't support
-# catalogs
-if ([[ "$parser" = sgmls ]]) then
-    export SGML_PATH="${sgml_cat}/%P:${sgml_cat}/%S:%S"
-    catfiles=""
-elif ([[ "$SGML_CATALOG_FILES" = "" ]]) then
-	export SGML_CATALOG_FILES="${sgml_cat}/catalog"
-    else
-	export SGML_CATALOG_FILES="${SGML_CATALOG_FILES}:${sgml_cat}/catalog"
+# Set the environment variable for finding the default catalog.
+if ([[ "$SGML_CATALOG_FILES" = "" ]]) then
+    export SGML_CATALOG_FILES="${sgml_cat}/catalog"
+else
+    export SGML_CATALOG_FILES="${SGML_CATALOG_FILES}:${sgml_cat}/catalog"
 fi
 
 export SP_CHARSET_FIXED=1
@@ -158,7 +141,7 @@ if (( $help )); then
     echo "    -m <maps>  add <maps> to list of SDATA or CMAP files"
     echo "    -o <file>  use <file> as the output file name"
     echo "    -r         remove leftover intermediate files"
-    echo "    -s <dir>   docbook.sgml is in <dir>"
+    echo "    -s <dir>   docbook.dcl is in <dir>"
     echo "    -t <dir>   read translation specs, etc., from <dir>"
     echo "    -u         do not compress during translation"
     echo "    -v         verbose"
@@ -320,8 +303,8 @@ if [[ -a $basename.$$.esis ]] then
     fi
 fi
 if (( $verbose )); then
-    echo "${sgmls} -deglru$catfiles ${sgml_dir}/docbook.sgml $iname > $basename.$$.esis"
-    ${sgmls} -deglru$catfiles ${sgml_dir}/docbook.sgml $iname > $basename.$$.esis
+    echo "${sgmls} -deglru$catfiles ${sgml_dir}/docbook.dcl $iname > $basename.$$.esis"
+    ${sgmls} -deglru$catfiles ${sgml_dir}/docbook.dcl $iname > $basename.$$.esis
     if (( $? )); then
 	if (( !$debug )); then
 	    echo "rm -f $basename.$$.esis"
@@ -330,7 +313,7 @@ if (( $verbose )); then
 	fatalError "Error processing $iname by $parser"
     fi
 else
-    ${sgmls} -deglru$catfiles ${sgml_dir}/docbook.sgml $iname \
+    ${sgmls} -deglru$catfiles ${sgml_dir}/docbook.dcl $iname \
 				      > $basename.$$.esis 2> $basename.$$.log
     if (( $? )); then
 	if (( !$debug )); then

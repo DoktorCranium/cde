@@ -1,4 +1,4 @@
-<!-- $XConsortium: iso-grk3.gml /main/3 1996/06/19 17:12:24 drk $ -->
+<!-- $XConsortium: iso-grk3.gml /main/2 1996/10/29 16:22:14 drk $ -->
 <!-- (C) International Organization for Standardization 1986
      Permission to copy in any form is granted for use with
      conforming SGML systems and applications as defined in
@@ -52,3 +52,4 @@
 <!ENTITY Psi      SDATA "[Psi   ]"--=capital Psi, Greek-->
 <!ENTITY omega    SDATA "[omega ]"--=small omega, Greek-->
 <!ENTITY Omega    SDATA "[Omega ]"--=capital Omega, Greek-->
+ 

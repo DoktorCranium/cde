@@ -1,4 +1,4 @@
-<!-- $XConsortium: iso-dia.gml /main/3 1996/06/19 17:12:15 drk $ -->
+<!-- $XConsortium: iso-dia.gml /main/2 1996/10/29 16:21:27 drk $ -->
 <!-- (C) International Organization for Standardization 1986
      Permission to copy in any form is granted for use with
      conforming SGML systems and applications as defined in
