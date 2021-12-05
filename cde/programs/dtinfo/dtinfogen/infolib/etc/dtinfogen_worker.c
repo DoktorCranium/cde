@@ -48,10 +48,7 @@
 #include <X11/Intrinsic.h>
 #include <Dt/Utility.h>
 
-#include <lib/DtSvc/DtUtil2/LocaleXlate.h>
-
-#define LANG_COMMON	"C"		/* default os language */
-#define CLANG_COMMON	"C.ISO-8859-1"	/* default canonical language */
+#define LANG_COMMON	"ja_JP.UTF-8"		/* default os language */
 
 #define XtsNewString(str) \
     ((str) != NULL ? (char *)(memcpy(XtMalloc((unsigned)strlen(str) + 1), \
@@ -84,7 +81,6 @@ typedef struct _GlobalsStruct
     char *ldLibraryPathEnv;
     char *libPathEnv;
     char *shlibPathEnv;
-    char *lcxPathEnv;
     char *dtInfoHomeEnv;
     char *dtInfoBinEnv;
     char *tmpDirEnv;
@@ -98,8 +94,6 @@ typedef struct _GlobalsStruct
 
     char *install;
     char *arch;
-    char *lang;		/* os-specific language (value of env) */
-    char *clang;	/* canonical language */
     int   dtsridx;      /* dtsearch: index into langtbl */
     char *sgml;
     char *decl;
@@ -177,12 +171,12 @@ typedef struct
 static
 t_entry langtbl[] =
 {
-  { "C.ISO-8859-1",	1,	"eng.sfx",	"eng.stp",	NULL },
-  { "es_ES.ISO-8859-1",	2,	"esp.sfx",	"esp.stp",	NULL },
-  { "fr_FR.ISO-8859-1",	3,	"fra.sfx",	"fra.stp",	NULL },
-  { "it_IT.ISO-8859-1",	4,	"ita.sfx",	"ita.stp",	NULL },
-  { "de_DE.ISO-8859-1",	5,	"deu.sfx",	"deu.stp",	NULL },
-  { "ja_JP.EUC-JP",	7,	NULL,		NULL,		"jpn.knj" },
+  { "en_US.UTF-8",	1,	"eng.sfx",	"eng.stp",	NULL },
+  { "es_ES.UTF-8",	2,	"esp.sfx",	"esp.stp",	NULL },
+  { "fr_FR.UTF-8",	3,	"fra.sfx",	"fra.stp",	NULL },
+  { "it_IT.UTF-8",	4,	"ita.sfx",	"ita.stp",	NULL },
+  { "de_DE.UTF-8",	5,	"deu.sfx",	"deu.stp",	NULL },
+  { "ja_JP.UTF-8",	7,	NULL,		NULL,		"jpn.knj" },
   { NULL,		0,	NULL,		NULL,		NULL }
 };
 
@@ -957,27 +951,12 @@ buildPath(char *format, ...)
     return XtsNewString(pathBuf);
 }
 
-/* Assumes gStruct->install and gStruct->clang */
-/* are set (may be NULL) */
+/* Assumes gStruct->install is set (may be NULL) */
 static char *
 buildSGML(void)
 {
-    char *sgmlPath =
-	buildPath("%s/infolib/%s/SGML",
-		  STR(gStruct->install), STR(gStruct->clang));
+    char *sgmlPath = buildPath("%s/infolib/sgml", STR(gStruct->install));
 
-    if (!checkStat(sgmlPath, FSTAT_IS_DIR))
-    {
-	XtFree(sgmlPath);
-
-	sgmlPath = buildPath("%s/infolib/%s/SGML",
-				STR(gStruct->install), LANG_COMMON);
-
-	if (!checkStat(sgmlPath, FSTAT_IS_DIR)) {
-	    XtFree(sgmlPath);
-	    return (char *)NULL;
-	}
-    }
 #ifdef SGML_DEBUG
     fprintf(stderr, "(DEBUG) buildSGML=\"%s\"\n", sgmlPath);
 #endif
@@ -989,7 +968,7 @@ buildSGML(void)
 static char *
 buildDecl(void)
 {
-    return buildPath("%s/dtinfo.decl", STR(gStruct->sgml));
+    return buildPath("%s/docbook.dcl", STR(gStruct->sgml));
 }
 
 /* Assumes gStruct->sgml is set (may be NULL) */
@@ -1022,7 +1001,6 @@ defaultGlobals(void)
     gStruct->ldLibraryPathEnv = makeAbsPathEnv("LD_LIBRARY_PATH");
     gStruct->libPathEnv = makeAbsPathEnv("LIBPATH");
     gStruct->shlibPathEnv = makeAbsPathEnv("SHLIB_PATH");
-    gStruct->lcxPathEnv = makeAbsPathEnv("DTLCXSEARCHPATH");
     gStruct->dtInfoHomeEnv = makeAbsPathEnv("DTINFO_HOME");
     gStruct->dtInfoBinEnv = makeAbsPathEnv("DTINFO_BIN");
     gStruct->tmpDirEnv = makeAbsPathEnv("TMPDIR");
@@ -1038,42 +1016,40 @@ defaultGlobals(void)
 
     { /* resolve lang from env variable */
       char* lang;
+      char *s = NULL;
+      char* code = NULL;
+      int curLen;
+      int maxLen = 0;
+      t_entry* iter;
+
       if ((lang = getenv("LC_ALL")) == NULL)
 	if ((lang = getenv("LC_CTYPE")) == NULL)
 	  if ((lang = getenv("LANG")) == NULL)
 	    lang = LANG_COMMON;
 
-      gStruct->lang = strdup(lang); 
-    }
+      lang = strdup(lang);
 
-    { /* resolve canonical lang using _DtLcx routines */
-      _DtXlateDb db = NULL;
-      char platform[_DtPLATFORM_MAX_LEN + 1];
-      int execver, compver;
+      s = strchr(lang, '.'); if (s) *s = 0;
 
-      gStruct->clang = NULL;
+      curLen = strlen(lang);
 
-      if (_DtLcxOpenAllDbs(&db) == 0)
-      {
-	if (_DtXlateGetXlateEnv(db, platform, &execver, &compver) == 0)
-	{
-	  /* _DtLcxXlateOpToStd allocates space for std lang using strdup */
-	  _DtLcxXlateOpToStd(db, platform, compver, DtLCX_OPER_SETLOCALE,
-			gStruct->lang, &gStruct->clang, NULL, NULL, NULL);
+      appendStr(&lang, &curLen, &maxLen, ".UTF-8");
+
+      /* resolve dtsearch language based on canonical lang */
+
+      for (iter = langtbl; iter->name; ++iter) {
+        if (strcmp(lang, iter->name) == 0) {
+          code = lang;
+	  break;
 	}
-
-	_DtLcxCloseDb(&db);
-	db = NULL;
       }
 
-      if (gStruct->clang == NULL)
-	gStruct->clang = strdup(CLANG_COMMON);
-    }
+      free(lang);
 
-    { /* resolve dtsearch language based on canonical lang */
-      t_entry* iter;
-      for (gStruct->dtsridx = 0, iter = langtbl; iter->name; iter++) {
-	if (strcmp(iter->name, gStruct->clang) == 0) { /* found a match */
+      if (!code) code = LANG_COMMON;
+
+      for (iter = langtbl; iter->name; ++iter) {
+	if (strcmp(iter->name, code) == 0) {
 	  gStruct->dtsridx = iter - langtbl;
 	  break;
 	}
@@ -1094,10 +1070,7 @@ defaultGlobals(void)
 
     gStruct->dirMode = 0775;
     gStruct->searchEngine = "dtsearch";
-    gStruct->parser = "nsgmls";
-    if (!testExec(gStruct->parser, False))
-	gStruct->parser = "sgmls";
-
+    gStruct->parser = "onsgmls";
     gStruct->keepWorkDir = False;
     gStruct->workDir = (char *)NULL;
 
@@ -1172,7 +1145,6 @@ checkGlobals(void)
 static void
 addCatFile(char *catalog, Bool needed)
 {
-    Boolean parserIsNSGMLS;
     char pathBuf[(2 * MAXPATHLEN) + 10];
     char *ptr1, *ptr2;
     int catlen;
@@ -1183,31 +1155,12 @@ addCatFile(char *catalog, Bool needed)
 	dieRWD(-1, "%s: %s: %s\n",
 	       EXEC_NAME, catalog, strerror(errno));
     }
-    parserIsNSGMLS = (strcmp(gStruct->parser, "nsgmls") == 0);
-    if (parserIsNSGMLS)
-    {
-	ptr1 = makeAbsPathStr(catalog);
-	snprintf(pathBuf, sizeof(pathBuf), "-c%s ", ptr1);
-	appendStr(&gStruct->sgmlCatFiles, &gStruct->sgmlCatFilesLen,
-		  &gStruct->sgmlCatFilesMaxLen, pathBuf);
-	XtFree(ptr1);
-    }
-    else
-    {
-	ptr1 = strrchr(catalog, '/');
-	catlen = strlen(catalog);
-	if (ptr1)
-	    catlen -= strlen(ptr1);
-	snprintf(pathBuf, sizeof(pathBuf), "%.*s/%%P:%.*s/%%S",
-				catlen, catalog, catlen, catalog);
-	ptr1 = makeAbsPathStr(pathBuf);
-	ptr2 = addToEnv("SGML_PATH", ptr1, False);
-	if (gStruct->sgmlPathEnv)
-	    XtFree(gStruct->sgmlPathEnv);
-	if (ptr1)
-	    XtFree(ptr1);
-	gStruct->sgmlPathEnv = ptr2;
-    }
+
+    ptr1 = makeAbsPathStr(catalog);
+    snprintf(pathBuf, sizeof(pathBuf), "-c%s ", ptr1);
+    appendStr(&gStruct->sgmlCatFiles, &gStruct->sgmlCatFilesLen,
+	      &gStruct->sgmlCatFilesMaxLen, pathBuf);
+    XtFree(ptr1);
 }
 
 static int
@@ -1362,45 +1315,24 @@ parseDocument(int runCmd, ...)
     char *cmd = (char *)NULL;
     int cmdLen = 0;
     int maxLen = 0;
-    Boolean parserIsNSGMLS;
-
-    parserIsNSGMLS = (strcmp(gStruct->parser, "nsgmls") == 0);
 
     if (!checkStat(gStruct->sgml, FSTAT_IS_DIR | FSTAT_IS_READABLE))
 	dieRWD(-1, "%s: faulty installation: %s\n",
 	       EXEC_NAME, strerror(errno));
 
-    addCatFile(buildPath("%s/infolib/%s/SGML/catalog",
-			 STR(gStruct->install), STR(gStruct->clang)), False);
-    addCatFile(buildPath("%s/infolib/%s/SGML/catalog",
-			 STR(gStruct->install), LANG_COMMON), True);
+    addCatFile(buildPath("%s/infolib/sgml/catalog",
+			 STR(gStruct->install)), True);
 
-    if (parserIsNSGMLS)
-    {
-	if (!gStruct->sgmlSearchPathEnv)
-	    gStruct->sgmlSearchPathEnv = addToEnv("SGML_SEARCH_PATH", ".", False);
-    }
-    else
-    {
-	ptr = addToEnv("SGML_PATH", "%S", False);
-	if (gStruct->sgmlPathEnv)
-	    XtFree(gStruct->sgmlPathEnv);
-	gStruct->sgmlPathEnv = ptr;
-    }
+    if (!gStruct->sgmlSearchPathEnv)
+	gStruct->sgmlSearchPathEnv = addToEnv("SGML_SEARCH_PATH", ".", False);
 
     appendStr(&cmd, &cmdLen, &maxLen, gStruct->parser);
-
-    if (parserIsNSGMLS) {
-	appendStr(&cmd, &cmdLen, &maxLen, " -bidentity ");
-	appendStr(&cmd, &cmdLen, &maxLen, gStruct->sgmlCatFiles);
-    }
+    appendStr(&cmd, &cmdLen, &maxLen, " ");
+    appendStr(&cmd, &cmdLen, &maxLen, gStruct->sgmlCatFiles);
 
     if (runCmd)
     {
 	appendStr(&cmd, &cmdLen, &maxLen, " -sg ");
-
-	if (! parserIsNSGMLS)
-	    appendStr(&cmd, &cmdLen, &maxLen, gStruct->decl);
 
 	va_start(ap, runCmd);
 	while ((ptr = va_arg(ap, char *)) != 0)
@@ -1415,12 +1347,9 @@ parseDocument(int runCmd, ...)
 	return (char *)NULL;
     }
 
-    if (parserIsNSGMLS)
-	appendStr(&cmd, &cmdLen, &maxLen, "-oline -wno-idref ");
-    else
-	appendStr(&cmd, &cmdLen, &maxLen, " -l ");
-
+    appendStr(&cmd, &cmdLen, &maxLen, "-oline -wno-idref ");
     appendStr(&cmd, &cmdLen, &maxLen, gStruct->decl);
+
     va_start(ap, runCmd);
     while ((ptr = va_arg(ap, char *)) != 0)
     {
@@ -1641,22 +1570,22 @@ storeBookCase(char *cmdSrc, char *tocOpt, char *dbName,
      */
     {
 
-      const char* nsgmls_file = makeTmpFile();
+      const char* onsgmls_file = makeTmpFile();
 
-      cmd = buildPath("%s > %s;echo", cmdSrc, nsgmls_file);
+      cmd = buildPath("%s > %s && echo", cmdSrc, onsgmls_file);
 
       runShellCmd(cmd);
 
       tmpFile = makeTmpFile();
 
       cmd = buildPath("cat %s | NodeParser %s %s %s > %s",
-			nsgmls_file, tocOpt, dbName, dirName, tmpFile);
+			onsgmls_file, tocOpt, dbName, dirName, tmpFile);
       runShellCmd(cmd);
 
-      cmd = buildPath("rm -f %s", nsgmls_file);
+      cmd = buildPath("rm -f %s", onsgmls_file);
       ret = system(cmd);
       if(ret != 0) die(-1, "system for rm failed; exiting...\n");
-      XtFree((char*)nsgmls_file);
+      XtFree((char*)onsgmls_file);
     }
 
     XtFree(cmd);
@@ -2405,6 +2334,12 @@ main(int argc, char *argv[])
 	printUsage((char *)NULL, -1);
 
     defaultGlobals();
+
+    if (setenv("SP_CHARSET_FIXED", "1", 1) == -1)
+	die(-1, "%s: SP_CHARSET_FIXED: %s\n", EXEC_NAME, strerror(errno));
+
+    if (setenv("SP_ENCODING", "UTF-8", 1) == -1)
+	die(-1, "%s: SP_ENCODING: %s\n", EXEC_NAME, strerror(errno));
 
     if (!doAdmin(argc, argv) &&
 	!doBuild(argc, argv) &&
