@@ -55,7 +55,7 @@
 #include "oliasdb/graphic_hd.h"
 
 #ifdef DtinfoClient
-#include <lib/DtSvc/DtUtil2/LocaleXlate.h>
+#include <Dt/LocaleXlate.h>
 #endif
 
 /*
