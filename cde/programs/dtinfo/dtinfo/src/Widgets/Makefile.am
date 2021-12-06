@@ -3,7 +3,7 @@ MAINTAINERCLEANFILES = Makefile.in
 noinst_LIBRARIES = libWidgets.a
 
 # get our env
-include ../templates/dtinfo_env.mk
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
 libWidgets_a_CXXFLAGS = $(DTINFO_DEFINES) $(DTINFO_INCLUDES)
 

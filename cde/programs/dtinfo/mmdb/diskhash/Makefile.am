@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
 BASE = ../../DtMmdb/diskhash
 BUILT_SOURCES = disk_bucket.C bucket_array.C disk_hash.C

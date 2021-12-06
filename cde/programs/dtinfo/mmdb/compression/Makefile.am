@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
 BASE = ../../DtMmdb/compression
 BUILT_SOURCES = abs_agent.C zip.C huffman.C trie.C code.C lzss.C

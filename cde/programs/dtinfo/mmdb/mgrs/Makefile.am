@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
 BASE = ../../DtMmdb/mgrs
 BUILT_SOURCES = managers.C misc.C query_mgr.C template_mgr.C

@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-include $(top_srcdir)/programs/dtinfo/dtinfo/src/templates/dtinfo_env.mk
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
 BASE = ../../DtMmdb/btree_berkeley
 BUILT_SOURCES = bt_close.c bt_conv.c bt_debug.c bt_delete.c bt_get.c	\

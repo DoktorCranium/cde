@@ -1,7 +1,7 @@
 MAINTAINERCLEANFILES = Makefile.in
 
 # get our env variables
-include templates/dtinfo_env.mk
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
 # get the toplevel Classlist
 include Classlist.mk
