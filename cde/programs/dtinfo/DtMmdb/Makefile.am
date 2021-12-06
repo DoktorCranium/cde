@@ -27,3 +27,8 @@ libDtMmdb_la_LIBADD = api/libapi.la btree/libbtree.la \
 		      utility/libutility.la
 
 libDtMmdb_la_LDFLAGS = -version-info 2:1:0
+
+infolibdir = $(CDE_INSTALLATION_TOP)/infolib/etc
+infolib_DATA = oliasdb/mmdb.infolib.spec	\
+	StyleSheet/hardcopy.feature.spec	\
+	StyleSheet/online.feature.spec

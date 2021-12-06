@@ -4,7 +4,7 @@ noinst_PROGRAMS = dtinfo_start
 
 BUILT_SOURCES = dtinfo_start.opnums
 
-dtinfo_start_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB) -lXm
+dtinfo_start_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 dtinfo_start.opnums: $(top_builddir)/programs/tttypes/dtinfo_start.opnums
 	$(RM) dtinfo_start.opnums

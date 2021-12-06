@@ -259,7 +259,7 @@ void cat_open (void)
 
     if(dfile != NULL)
     {
-        sprintf(line,"gencat %s %s", dFilename, dfile);
+        snprintf(line, PATH_MAX, "gencat %s %s", dFilename, dfile);
         if ( system(line) != 0 )
 	{
            fatal("default .tmsg file would not gencat\n",0,9);
