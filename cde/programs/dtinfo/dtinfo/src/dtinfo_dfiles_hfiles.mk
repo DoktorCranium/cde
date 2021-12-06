@@ -1,5 +1,6 @@
-## Build the dfiles and hfiles components for each of the class modules.
-## Moved into this file to keep Makefile.am in dtinfo/src readable
+## Build the dfiles and hfiles components for each of the class
+## modules.  Moved into this file to keep Makefile.am in dtinfo/src
+## somewhat morereadable
 
 # Support
 include Support/Classlist.mk

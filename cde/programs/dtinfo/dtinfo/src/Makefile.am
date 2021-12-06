@@ -38,7 +38,7 @@ Dtinfo: Dtinfo.res $(RESFILES)
 	$(CPP_PROGRAM) -traditional -nostdinc -C Dtinfo.res | $(TREERES) > $@
 
 # dtinfo class dfile and hfile building for the modules
-include templates/dtinfo-dfiles-hfiles.mk
+include $(top_srcdir)/programs/dtinfo/dtinfo/src/dtinfo_dfiles_hfiles.mk
 
 # gather up the messages and generate the file. MSGS comes from the
 # dtinfo/src/Classlist.mk file.
