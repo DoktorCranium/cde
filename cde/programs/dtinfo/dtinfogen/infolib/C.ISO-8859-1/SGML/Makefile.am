@@ -1,5 +1,3 @@
-sgmldir = ${prefix}/infolib/C/SGML
-
 MAINTAINERCLEANFILES = Makefile.in
 
 DECL_FILES= \
@@ -44,4 +42,5 @@ MISC_FILES= \
 
 ALL_FILES = $(DECL_FILES) $(DTD_FILES) $(ENTITY_FILES) $(MISC_FILES)
 
+sgmldir = $(CDE_INSTALLATION_TOP)/infolib/C/SGML
 sgml_DATA = $(ALL_FILES)

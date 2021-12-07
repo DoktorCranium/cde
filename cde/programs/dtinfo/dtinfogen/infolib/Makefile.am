@@ -1,10 +1,13 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = etc C.ISO-8859-1 ja_JP.EUC-JP
+SUBDIRS = etc C.ISO-8859-1
 
-C:: C.ISO-8859-1
-	$(RM) $@
-	$(LN) $? $@
+# Not supported, but we'll keep it here in case someday...
+# SUBDIRS += ja_JP.EUC-JP
 
-clean::
-	$(RM) C
+BUILT_SOURCES = C
+CLEANFILES = $(BUILT_SOURCES)
+
+C:
+	$(LN_S) C.ISO-8859-1 $@
+

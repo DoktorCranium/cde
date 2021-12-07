@@ -753,6 +753,16 @@ programs/dtinfo/dtinfo/install/lib/Makefile
 programs/dtinfo/dtinfo/install/lib/bitmaps/Makefile
 programs/dtinfo/dtinfo/install/lib/fonts/Makefile
 
+programs/dtinfo/dtinfogen/Makefile
+programs/dtinfo/dtinfogen/mmdb/Makefile
+programs/dtinfo/dtinfogen/mmdb/src/Makefile
+programs/dtinfo/dtinfogen/mmdb/StyleSheet/Makefile
+programs/dtinfo/dtinfogen/infolib/Makefile
+programs/dtinfo/dtinfogen/infolib/etc/Makefile
+programs/dtinfo/dtinfogen/infolib/C.ISO-8859-1/Makefile
+programs/dtinfo/dtinfogen/infolib/C.ISO-8859-1/SGML/Makefile
+programs/dtinfo/dtinfogen/install/Makefile
+
 programs/types/Makefile
 
 programs/tttypes/Makefile

@@ -48,7 +48,7 @@
 #include <X11/Intrinsic.h>
 #include <Dt/Utility.h>
 
-#include <lib/DtSvc/DtUtil2/LocaleXlate.h>
+#include <Dt/LocaleXlate.h>
 
 #define LANG_COMMON	"C"		/* default os language */
 #define CLANG_COMMON	"C.ISO-8859-1"	/* default canonical language */
