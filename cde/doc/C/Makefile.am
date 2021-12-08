@@ -1,5 +1,4 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = help man
-# NOTYET = guides 
+SUBDIRS = help man guides
 
