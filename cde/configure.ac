@@ -832,6 +832,7 @@ doc/C/Makefile
 doc/C/help/Makefile
 doc/C/man/Makefile
 doc/C/guides/Makefile
+doc/C/m-guides/Makefile
 
 doc/de_DE.ISO8859-1/Makefile
 doc/de_DE.ISO8859-1/help/Makefile

@@ -1,4 +1,4 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = help man guides
+SUBDIRS = m-guides man guides help 
 
