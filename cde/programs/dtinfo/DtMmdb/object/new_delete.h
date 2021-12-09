@@ -51,7 +51,7 @@
 #ifndef _new_delete_h
 #define _new_delete_h 1
 
-#include "new_delete_simple.h"
+#include "dti_excs/new_delete_simple.h"
 
 #ifdef C_API
 #include <stdlib.h>

@@ -51,7 +51,7 @@
 #ifndef _mmdb_exception_h
 #define _mmdb_exception_h 1
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 
 #ifdef C_API
 #include "utility/c_fstream.h"

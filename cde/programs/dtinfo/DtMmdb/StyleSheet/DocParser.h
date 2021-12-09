@@ -29,7 +29,7 @@
 using namespace std;
 
 #include "SymTab.h"
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 
 class Resolver;
 class Attribute;

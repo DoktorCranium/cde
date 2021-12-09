@@ -26,7 +26,7 @@
 #define _Renderer_h 1
 
 #include "Feature.h"
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 
 /* **************************************************************
  * class Renderer

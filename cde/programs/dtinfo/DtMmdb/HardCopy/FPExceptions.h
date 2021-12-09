@@ -26,7 +26,7 @@
 #ifndef _FPExceptions_h
 #define _FPExceptions_h
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 
 /////////////////////////////////////////////////////////
 //

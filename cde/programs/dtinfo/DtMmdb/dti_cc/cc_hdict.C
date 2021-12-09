@@ -1,6 +1,7 @@
 // $TOG: cc_hdict.C /main/5 1998/04/17 11:45:00 mgreess $
 
 #include "dti_cc/cc_exceptions.h"
+#include "dti_cc/cc_hdict.h"
 
 template <class K, class V> CC_Boolean kv_pair<K, V>::f_needRemove = FALSE;
 

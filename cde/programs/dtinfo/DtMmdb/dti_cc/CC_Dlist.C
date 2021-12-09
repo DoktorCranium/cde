@@ -24,7 +24,7 @@
 #ifndef __CC_Dlist_cc
 #define __CC_Dlist_cc
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 #include "cc_exceptions.h"
 #include "CC_Dlist.h"
 

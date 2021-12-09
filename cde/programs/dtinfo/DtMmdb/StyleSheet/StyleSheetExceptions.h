@@ -24,7 +24,7 @@
 #ifndef _StyleSheetExceptions_h
 #define _StyleSheetExceptions_h
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 #include "SymTab.h"
 
 #define CASTEXCEPT

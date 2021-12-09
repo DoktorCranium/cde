@@ -28,7 +28,7 @@
 #include <fstream>
 #include <iostream>
 using namespace std;
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 
 #define END_TRY end_try 
 

@@ -23,6 +23,7 @@
 // $TOG: cc_pvect.C /main/6 1998/04/17 11:45:20 mgreess $
 
 #include "dti_cc/cc_exceptions.h"
+#include "dti_cc/cc_pvect.h"
 
 template <class T> 
 pointer_vector<T>::pointer_vector(const pointer_vector<T>& pv) :

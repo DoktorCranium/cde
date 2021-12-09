@@ -23,6 +23,7 @@
 // $XConsortium: cc_vvect.C /main/4 1996/08/21 15:49:18 drk $
 
 #include "dti_cc/cc_exceptions.h"
+#include "dti_cc/cc_vvect.h"
 
 template <class T> 
 value_vector<T>::value_vector(const value_vector<T>& vv) :

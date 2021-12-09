@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 noinst_LTLIBRARIES = libobject.la
 
-libobject_la_CXXFLAGS = -DC_API -DPORTABLE_DB -I.. -I../dti_excs
+libobject_la_CXXFLAGS = -DPORTABLE_DB -I..
 
 libobject_la_SOURCES = composite.C     compressed_pstring.C    cset.C \
 		       dl_list.C       dl_list_cell.C          handler.C \

@@ -44,7 +44,7 @@
 
 
 #include "utility/funcs.h"
-#include "unique_id.h"
+#include "misc/unique_id.h"
 
 #define X_INCLUDE_TIME_H
 #define XOS_USE_XT_LOCKING

@@ -24,7 +24,7 @@
 #ifndef _Stack_hh
 #define _Stack_hh
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 #include "CC_Slist.h"
 
 template <class T> class Stack: public Destructable

@@ -33,7 +33,7 @@ class ResolverStack;
 
 #include "SSPath.h"
 #include "ResolverStack.h"
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 
 
 /* **************************************************************

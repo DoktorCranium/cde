@@ -22,6 +22,9 @@
  */
 // $XConsortium: cc_povec.cc /main/3 1996/06/11 16:56:44 cde-hal $
 
+#include "dti_cc/cc_povec.h"
+#include "dti_cc/cc_pvect.h"
+
 template <class T>
 dlist_array<T>::dlist_array(const dlist_array<T>& da) 
 {

@@ -48,7 +48,7 @@
  */
 
 
-#include "unique_id.h"
+#include "misc/unique_id.h"
 #include "api/info_lib.h"
 #include "utility/db_version.h"
 #include "oliasdb/locator_hd.h"
