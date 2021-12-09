@@ -20,7 +20,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin Street, Fifth
  * Floor, Boston, MA 02110-1301 USA
  */
-/* $XConsortium: OL-Data.h /main/2 1996/07/18 16:47:56 drk $ */
+/* $XConsortium: OL_Data.h /main/2 1996/07/18 16:47:56 drk $ */
 #ifndef OL_DATA_H
 #define OL_DATA_H
 

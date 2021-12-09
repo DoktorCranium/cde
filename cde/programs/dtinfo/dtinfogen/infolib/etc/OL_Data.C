@@ -20,7 +20,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin Street, Fifth
  * Floor, Boston, MA 02110-1301 USA
  */
-/* $XConsortium: OL-Data.C /main/4 1996/08/21 15:47:10 drk $
+/* $XConsortium: OL_Data.C /main/4 1996/08/21 15:47:10 drk $
  *
  * (c) Copyright 1996 Digital Equipment Corporation.
  * (c) Copyright 1996 Hewlett-Packard Company.
@@ -32,7 +32,7 @@
  */
 
 /* exported interfaces */
-#include "OL-Data.h"
+#include "OL_Data.h"
 
 /* imported interfaces */
 #include <stdlib.h>

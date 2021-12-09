@@ -14,7 +14,7 @@
 #include <sstream>
 #include <string.h>
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 
 #include "SGMLDefn.h"
 #include "Dispatch.h"
