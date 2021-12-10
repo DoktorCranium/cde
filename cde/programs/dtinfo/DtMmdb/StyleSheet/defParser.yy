@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <sstream>
-#include <iostream.h>
+#include <iostream>
 #include "Debug.h"
 #include "FeatureDefDictionary.h"
 

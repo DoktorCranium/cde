@@ -29,3 +29,27 @@ libStyleSheet_la_SOURCES = Attribute.C \
 			   defToken.C \
 			   style.C \
 			   tokenStyle.C
+
+AM_YFLAGS = -l -d
+AM_LFLAGS = -8 -s
+
+CLEANFILES = defParser.C \
+	     defParser.tab.h \
+	     defToken.C \
+	     style.C \
+	     style.tab.h \
+	     tokenStyle.C
+
+defParser.C: defParser.yy
+	$(YACC) $(AM_YFLAGS) -p defParser -b defParser $<
+	mv defParser.tab.c $@
+
+defToken.C: defToken.ll
+	$(LEX) $(AM_LFLAGS) -P defParser -o $@ $<
+
+style.C: style.yy
+	$(YACC) $(AM_YFLAGS) -p style -b style $<
+	mv style.tab.c style.C
+
+tokenStyle.C: tokenStyle.ll
+	$(LEX) $(AM_LFLAGS) -P style -o $@ $<

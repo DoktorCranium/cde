@@ -1,3 +1,4 @@
+%option noyywrap
 
 %a 30000
 %e 10000
@@ -16,20 +17,18 @@
 #include <iostream>
 using namespace std;
 
-extern istream *g_yyin;
+extern istream *g_defParserin;
 
 #define YY_INPUT(buf,result,max_size)\
   {\
-     if (g_yyin -> eof()) {\
+     if (g_defParserin -> eof()) {\
         result=0;\
      } else {\
-        g_yyin -> read((char *)buf, max_size-1); \
-        result = g_yyin -> gcount(); \
+        g_defParserin -> read((char *)buf, max_size-1); \
+        result = g_defParserin -> gcount(); \
         buf[result] = 0; \
      }\
   }
-
-int yylineno=1;
 
 unsigned char* defToken_string_buf = new unsigned char[1024];
 int defToken_string_buf_size = 1024;
@@ -43,7 +42,7 @@ unsigned char* new_copy(const unsigned char* str, int size)
    return x;
 }
 
-void addToDefTokenStringBuf(const unsigned char* str, int size)
+void addToDefTokenStringBuf(const char* str, int size)
 {
    if ( size <= 0 ) return;
 
@@ -113,53 +112,53 @@ boolean ([Bb][Oo][Oo][Ll][Ee][Aa][Nn])
 
 
 {stringprefix} {
-		yylval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
+		defParserlval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
 		return(TYPE);
 	}
 
 {string} {
-		yylval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
+		defParserlval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
 		return(TYPE);
 	}
 
 {integer} {
-		yylval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
+		defParserlval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
 		return(TYPE);
 	}
 
 {real} {
-		yylval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
+		defParserlval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
 		return(TYPE);
 	}
 
 {unit} {
-		yylval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
+		defParserlval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
 		return(TYPE);
 	}
 
 {unitpixel} {
-		yylval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
+		defParserlval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
 		return(TYPE);
 	}
 
 {array} {
-		yylval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
+		defParserlval.charPtrData = new_copy((unsigned char*)yytext, yyleng);
 		return(TYPE);
 	}
 
 {boolean} {
-		yylval.charPtrData = 
+		defParserlval.charPtrData =
 		   new_copy((unsigned char*)"INTEGER", strlen("INTEGER"));
 		return(TYPE);
 	}
 
 [0-9]+		{
-		yylval.intData = atoi((char*)yytext);
+		defParserlval.intData = atoi((char*)yytext);
 		return(INTEGER);
 		}
 
 [0-9]+"."[0-9]+	{
-		yylval.realData = atof((char*)yytext);
+		defParserlval.realData = atof((char*)yytext);
 		return(REAL);
 		}
 
@@ -169,10 +168,10 @@ boolean ([Bb][Oo][Oo][Ll][Ee][Aa][Nn])
 
 <quoted_string>\"	{
 
-		yylval.charPtrData = 
+		defParserlval.charPtrData =
 			new unsigned char[defToken_string_buf_content_size+1];
-		memcpy( yylval.charPtrData, 
-			defToken_string_buf, 
+		memcpy( defParserlval.charPtrData,
+			defToken_string_buf,
 			defToken_string_buf_content_size+1
 		      );
 
@@ -187,13 +186,13 @@ boolean ([Bb][Oo][Oo][Ll][Ee][Aa][Nn])
 		}
 
 "&"[^ \t\n\";.=@+*\/\.\*:?\^,{}\[\]()]+	{
-		yylval.charPtrData = 
+		defParserlval.charPtrData =
                   (unsigned char*)strdup((const char*)(yytext+1));
 		return(REF_NAME);
 		}
 
 [^ \t\n\";.=@+*\/\.\*:?\^,{}\[\]()]+	{
-		yylval.charPtrData = 
+		defParserlval.charPtrData =
                   (unsigned char*)strdup((const char*)yytext);
 		return(NORMAL_STRING);
 		}
@@ -212,7 +211,7 @@ boolean ([Bb][Oo][Oo][Ll][Ee][Aa][Nn])
 
 %%
 
-void yyerror(char* msg)
+void defParsererror(char* msg)
 {
    cerr << "line " << yylineno << ": " << msg;
 }

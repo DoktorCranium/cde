@@ -6,13 +6,13 @@
   * the Copyright Laws of the United States.  USE OF A COPYRIGHT
   * NOTICE IS PRECAUTIONARY ONLY AND DOES NOT IMPLY PUBLICATION
   * OR DISCLOSURE.
-  * 
+  *
   * THIS SOFTWARE CONTAINS CONFIDENTIAL INFORMATION AND TRADE
   * SECRETS OF HAL COMPUTER SYSTEMS INTERNATIONAL, LTD.  USE,
   * DISCLOSURE, OR REPRODUCTION IS PROHIBITED WITHOUT THE
   * PRIOR EXPRESS WRITTEN PERMISSION OF HAL COMPUTER SYSTEMS
   * INTERNATIONAL, LTD.
-  * 
+  *
   *                         RESTRICTED RIGHTS LEGEND
   * Use, duplication, or disclosure by the Government is subject
   * to the restrictions as set forth in subparagraph (c)(l)(ii)
@@ -22,9 +22,10 @@
   *          HAL COMPUTER SYSTEMS INTERNATIONAL, LTD.
   *                  1315 Dell Avenue
   *                  Campbell, CA  95008
-  * 
+  *
   */
 
+%option noyywrap
 
 %a 30000
 %e 10000
@@ -44,9 +45,9 @@
 #include "StyleSheetExceptions.h"
 #include "style.tab.h"
 #include "Debug.h"
-#include <iostream.h>
+#include <iostream>
 
-extern istream *g_stylein ;
+istream *g_stylein = 0;
 
 #define YY_INPUT(buf,result,max_size)\
   {\
@@ -67,8 +68,6 @@ char* commentBuffer = new char [1024];
 int commentBufferSize = 1024;
 int commentBufferContentSize = 0;
 
-int yylineno=1;
-		
 void addToQstringBuf(const unsigned char* str, int size)
 {
    if ( size <= 0 ) return;
@@ -101,7 +100,7 @@ unit ([Ii][Nn]|[Ii][Nn][Cc][Hh]|[Pp][Cc]|[Pp][Ii][Cc][Aa]|[Pp][Tt]|[Pp][Oo][Ii][
               delete [] commentBuffer;
               commentBufferSize = 2 * yyleng ;
               commentBuffer = new char [commentBufferSize];
-           } 
+           }
 
 	   commentBufferContentSize = yyleng-1;
            memcpy(commentBuffer, yytext+1, commentBufferContentSize); // copy everything except the #
@@ -117,17 +116,17 @@ unit ([Ii][Nn]|[Ii][Nn][Cc][Hh]|[Pp][Cc]|[Pp][Ii][Cc][Aa]|[Pp][Tt]|[Pp][Oo][Ii][
 	}
 
 [+]	{
-           yylval.charData = yytext[0];
+           stylelval.charData = yytext[0];
 	   return(OPER_plus);
 	}
 
 [-]	{
-           yylval.charData = yytext[0];
+           stylelval.charData = yytext[0];
 	   return(OPER_minus);
 	}
 
 "/"	{
-           yylval.charData = yytext[0];
+           stylelval.charData = yytext[0];
 	   return(OPER_div);
 	}
 
@@ -136,7 +135,7 @@ unit ([Ii][Nn]|[Ii][Nn][Cc][Hh]|[Pp][Cc]|[Pp][Ii][Cc][Aa]|[Pp][Tt]|[Pp][Oo][Ii][
 	}
 
 "*"	{
-           yylval.charData = yytext[0];
+           stylelval.charData = yytext[0];
 	   return(OPER_star);
 	}
 
@@ -190,9 +189,9 @@ unit ([Ii][Nn]|[Ii][Nn][Cc][Hh]|[Pp][Cc]|[Pp][Ii][Cc][Aa]|[Pp][Tt]|[Pp][Oo][Ii][
 
 "=="|"!="	{
            if ( strcmp((const char*)yytext, "==") == 0 )
-              yylval.intData = EQUAL;
+              stylelval.intData = EQUAL;
  	   else
-              yylval.intData = NOT_EQUAL;
+              stylelval.intData = NOT_EQUAL;
 
 	   return(OPER_equality);
 	}
@@ -203,15 +202,15 @@ unit ([Ii][Nn]|[Ii][Nn][Cc][Hh]|[Pp][Cc]|[Pp][Ii][Cc][Aa]|[Pp][Tt]|[Pp][Oo][Ii][
 
 "<="|"<"|">="|">"	{
            if ( strcmp((const char*)yytext, "<=") == 0 )
-              yylval.intData = LESS_OR_EQUAL;
+              stylelval.intData = LESS_OR_EQUAL;
  	   else
            if ( strcmp((const char*)yytext, "<") == 0 )
-              yylval.intData = LESS;
+              stylelval.intData = LESS;
  	   else
            if ( strcmp((const char*)yytext, ">=") == 0 )
-              yylval.intData = GREATER_OR_EQUAL;
+              stylelval.intData = GREATER_OR_EQUAL;
  	   else
-              yylval.intData = GREATER;
+              stylelval.intData = GREATER;
 
 	   return(OPER_relational);
 	}
@@ -221,38 +220,38 @@ unit ([Ii][Nn]|[Ii][Nn][Cc][Hh]|[Pp][Cc]|[Pp][Ii][Cc][Aa]|[Pp][Tt]|[Pp][Oo][Ii][
 			}
 
 [Tt][Rr][Uu][Ee]	{
-                yylval.boolData = true;
+                stylelval.boolData = true;
 		return(BOOLVAL);
 			}
 
 [Ff][Aa][Ll][Ss][Ee]	{
-                yylval.boolData = false;
+                stylelval.boolData = false;
 		return(BOOLVAL);
 			}
 
 [On][Nn]	{
-                yylval.boolData = true;
+                stylelval.boolData = true;
 		return(BOOLVAL);
 		}
 
 [Oo][Ff][Ff]	{
-                yylval.boolData = false;
+                stylelval.boolData = false;
 		return(BOOLVAL);
 		}
 
 [0-9]+("."[0-9]+)?{unit} 	{
-		yylval.charPtrData = 
+		stylelval.charPtrData =
                   (unsigned char*)strdup((const char*)yytext);
 		return(DIMENSION);
 		}
 
 [0-9]+		{
-		yylval.intData = atoi((char*)yytext);
+		stylelval.intData = atoi((char*)yytext);
 		return(INTEGER);
 		}
 
 [0-9]+"."[0-9]+	{
-		yylval.realData = atof((char*)yytext);
+		stylelval.realData = atof((char*)yytext);
 		return(REAL);
 		}
 
@@ -262,10 +261,10 @@ unit ([Ii][Nn]|[Ii][Nn][Cc][Hh]|[Pp][Cc]|[Pp][Ii][Cc][Aa]|[Pp][Tt]|[Pp][Oo][Ii][
 
 <quoted_string>\"	{
 
-		yylval.charPtrData = 
+		stylelval.charPtrData =
 			new unsigned char[qstring_buf_content_size+1];
-		memcpy( yylval.charPtrData, 
-			qstring_buf, 
+		memcpy( stylelval.charPtrData,
+			qstring_buf,
 			qstring_buf_content_size+1
 		      );
 
@@ -276,7 +275,7 @@ unit ([Ii][Nn]|[Ii][Nn][Cc][Hh]|[Pp][Cc]|[Pp][Ii][Cc][Aa]|[Pp][Tt]|[Pp][Oo][Ii][
 		}
 
 <quoted_string>\\	{
-		int c = styleinput();
+		int c = yyinput();
 		switch (c) {
 		   case '"':
 		     addToQstringBuf((unsigned char*)"\"", 1);
@@ -298,19 +297,19 @@ unit ([Ii][Nn]|[Ii][Nn][Cc][Hh]|[Pp][Cc]|[Pp][Ii][Cc][Aa]|[Pp][Tt]|[Pp][Oo][Ii][
 		}
 
 {unit}		{
-		yylval.charPtrData = 
+		stylelval.charPtrData =
                   (unsigned char*)strdup((const char*)yytext);
 		  return(UNIT_STRING);
 		}
 
 [^ \t\n\".=@+*\/\.\*:?\^,{}\[\]()!]+	{
-		yylval.charPtrData = 
+		stylelval.charPtrData =
                   (unsigned char*)strdup((const char*)yytext);
 		return(NORMAL_STRING);
 		}
 
 <sgmlgimode>[0-9a-zA-Z\.\-]+ {
-		yylval.charPtrData = 
+		stylelval.charPtrData =
                   (unsigned char*)strdup((const char*)yytext);
 		BEGIN 0;
 		return(SGMLGI_STRING);
@@ -346,7 +345,7 @@ void report_error_location()
    }
 }
 
-void yyerror(char* msg)
+void styleerror(char* msg)
 {
 #ifdef DEBUG
    cerr << "line " << yylineno << ": " << msg << "\n";
