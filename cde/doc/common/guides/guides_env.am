@@ -9,11 +9,11 @@ INFOLIBNAME = -n cde
 # orig: INFOLIBDESC = -d InfoLibDesc
 
 SSENTS = -m common/catalog
-DGENV = LANG=$(LANG) SGML_SEARCH_PATH=".:.."
+DGENV = LANG=$(HELP_LANG) SGML_SEARCH_PATH=".:.."
 DTINFOGENOPTIONS = $(INFOLIBNAME) -d $(INFOLIBDESC)
 
 # Note the quad-dollar sign - this escapes $$ (pid) for the tmp
-# dir. This is required for milti-core builds to work.
+# dir. This is required for multi-core builds to work.
 DTINFOGENTMPDIR = /tmp/dtinfogen-guides.$$$$
 
 DTHELPSRC = $(top_srcdir)/lib/DtHelp
