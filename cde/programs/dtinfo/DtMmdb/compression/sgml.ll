@@ -1,5 +1,5 @@
  /*
-  * $XConsortium: ps.l /main/2 1996/07/18 14:27:45 drk $
+  * $XConsortium: sgml.l /main/2 1996/07/18 14:28:02 drk $
   *
   * Copyright (c) 1993 HAL Computer Systems International, Ltd.
   * All rights reserved.  Unpublished -- rights reserved under
@@ -38,12 +38,10 @@
 #include "compression/trie.h"
 #include "compression/abs_agent.h"
 
+
 static unsigned char yybuf[LBUFSIZ];
 static int yybuf_sz = LBUFSIZ;
 static int yybuffed = 0;
-              
-#undef yywrap
-int yywrap();
 
 #undef YY_INPUT
 #define YY_INPUT(buf,result,max_size) \
@@ -56,9 +54,12 @@ int yywrap();
 
 %%
 
+"<"[0-9a-zA-Z_.]+">"|"</"[0-9a-zA-Z_.]+">" {
+               (*lex_action_func)((unsigned char*)(yytext), yyleng, 1);
+	}
+
 .|\n	{
 	   if ( yybuffed >= yybuf_sz ) {
-              //alphabet -> add_letters( yybuf, yybuf_sz );
               (*lex_action_func)(yybuf, yybuf_sz, 2);
               yybuffed = 0;
            }
@@ -71,7 +72,6 @@ int yywrap();
 
 int yywrap()
 {
-   //alphabet -> add_letters( yybuf, yybuffed );
    (*lex_action_func)(yybuf, yybuffed, 2);
    return 1;
 }
