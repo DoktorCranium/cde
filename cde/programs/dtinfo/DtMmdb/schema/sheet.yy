@@ -54,8 +54,6 @@ extern desc* last_desc_ptr;
 
 #define CAST_TO_CONTAINER(x) 	((container_desc*)x)
 
-#define alloca(x) 	(malloc(x))
-
 extern void yyerror(char*);
 extern int yylex();
 
@@ -103,7 +101,7 @@ extern int yylex();
  MODE
  PAGE_SZ
  CACHED_PAGES
- BYTE_ORDER
+ ENDIANNESS
  SEPARATOR
 %type <integer>
 
@@ -306,7 +304,7 @@ Page_Store_Term : Store_Term
 	{
 	   CAST_TO_PAGE_STORE(desc_ptr) -> set_cached_pages($3);
 	}
-	| BYTE_ORDER EQUAL TOKEN 
+	| ENDIANNESS EQUAL TOKEN 
 	{
 	   CAST_TO_PAGE_STORE(desc_ptr) -> set_order($3);
 	}

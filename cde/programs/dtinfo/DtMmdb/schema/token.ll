@@ -25,6 +25,7 @@
   * 
   */
 
+%option noyywrap
 
 %a 30000
 %e 10000
@@ -175,16 +176,16 @@ int linecount = 1;
 	}
 
 [0-9]+ 	{
-    	 yylval.integer = atoi((char*)yytext);
+	 schemalval.integer = atoi((char*)yytext);
          return (NUMBER);
 	}
 
 [a-zA-Z0-9_\-.$]+ 	{
          if ( replace_string[0] != 0 && yytext[0] == '$' ) {
             strcpy(replace_string + replace_string_len, (char*)yytext+1);
-    	    yylval.string = replace_string;
+	    schemalval.string = replace_string;
          } else
-    	    yylval.string = (char*)yytext;
+	    schemalval.string = (char*)yytext;
          return (TOKEN);
 	}
 

@@ -507,13 +507,6 @@ void schemaerror( char* errorstr )
     return;
 }
 
-extern "C" {
-int schemawrap()
-{
-    return( 1 );
-}
-}
-
 //void yyerror( char* errorstr )
 //{
 //    extern int linecount;
