@@ -38,3 +38,35 @@ $(INFOLIB)/$(BOOKCASE)/dtsearch/dtsearch.ocf: $(INFOLIBDEPS)
 
 BUILT_SOURCES += $(INFOLIB)/$(BOOKCASE)/dtsearch/dtsearch.ocf
 CLEANFILES += $(INFOLIB)/$(BOOKCASE)/dtsearch/dtsearch.ocf
+
+# installation - these files *may* change depending on if the docs
+# ever change, but for now we will list them as they are currently
+# installed.
+
+cdedtidir = $(CDE_INSTALLATION_TOP)/infolib/$(HELP_LANG)/cde.dti
+dist_cdedti_DATA = ../cde.dti/bookcase.map ../cde.dti/cde.oli
+
+cdedtidocdir = $(cdedtidir)/CDEDOC
+dist_cdedtidoc_DATA = ../cde.dti/CDEDOC/CDEDOC.dbd	\
+		../cde.dti/CDEDOC/CDEDOC.dbi	\
+		../cde.dti/CDEDOC/CDEDOC.sch
+
+cdedtidocsearchdir = $(cdedtidocdir)/dtsearch
+dist_cdedtidocsearch_DATA = ../cde.dti/CDEDOC/dtsearch/CDEDOC.d00	\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.d22			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.dbd			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.k21			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.sfx			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.d01			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.d23			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.k00			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.k22			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.stp			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.d21			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.d99			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.k01			\
+	../cde.dti/CDEDOC/dtsearch/CDEDOC.k23			\
+	../cde.dti/CDEDOC/dtsearch/dtsearch.ocf
+
+BUILT_SOURCES += $(cdedti_DATA) $(cdedtidoc_DATA) $(cdedtidocsearch_DATA)
+CLEANFILES += $(cdedti_DATA) $(cdedtidoc_DATA) $(cdedtidocsearch_DATA)
