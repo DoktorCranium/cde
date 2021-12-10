@@ -70,3 +70,9 @@ dist_cdedtidocsearch_DATA = ../cde.dti/CDEDOC/dtsearch/CDEDOC.d00	\
 
 BUILT_SOURCES += $(cdedti_DATA) $(cdedtidoc_DATA) $(cdedtidocsearch_DATA)
 CLEANFILES += $(cdedti_DATA) $(cdedtidoc_DATA) $(cdedtidocsearch_DATA)
+
+# link the C version to en_US.UTF-8
+install-data-hook:
+	$(RM) $(DESTDIR)$(CDE_INSTALLATION_TOP)/infolib/en_US.UTF-8
+	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/infolib && $(LN_S) C en_US.UTF-8
+
