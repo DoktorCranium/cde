@@ -31,6 +31,7 @@
  * (c) Copyright 1996 Hitachi.
  */
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -45,13 +46,12 @@
 #endif
 #include <sys/param.h>
 #include <sys/stat.h>
-#include <X11/Intrinsic.h>
 #include <Dt/Utility.h>
 
 #define LANG_COMMON	"ja_JP.UTF-8"		/* default os language */
 
 #define XtsNewString(str) \
-    ((str) != NULL ? (char *)(memcpy(XtMalloc((unsigned)strlen(str) + 1), \
+    ((str) != NULL ? (char *)(memcpy(malloc((unsigned)strlen(str) + 1), \
      str, (unsigned)strlen(str) + 1)) : NULL)
 
 typedef enum
@@ -103,8 +103,8 @@ typedef struct _GlobalsStruct
     char *searchEngine;
     char *parser;
 
-    Boolean verbose;
-    Boolean keepWorkDir;
+    bool verbose;
+    bool keepWorkDir;
     char *workDir;
 
     char *library;
@@ -113,7 +113,7 @@ typedef struct _GlobalsStruct
     char *libName;
     char *outFile;
     char *saveESIS;
-    Boolean loadESIS;
+    bool loadESIS;
     int tocElemIndex;
     char *id;
     char *title;
@@ -203,23 +203,23 @@ static void dieRWD(int exitCode, char *format, ...);
 static void die(int exitCode, char *format, ...);
 static void sigHandler(int sig);
 static void touchFile(char *fileName);
-static Boolean checkStat(char *fileName, unsigned int flags);
+static bool checkStat(char *fileName, unsigned int flags);
 static void checkDir(char *dirName);
 static void checkExec(char *execName);
 static char *makeTmpFile(void);
 static char *makeWorkDir(void);
 static void removeWorkDir(void);
 static void runShellCmd(char *cmd);
-static Boolean doAdmin(int argc, char *argv[]);
-static Boolean doBuild(int argc, char *argv[]);
-static Boolean doTocgen(int argc, char *argv[]);
-static Boolean doUpdate(int argc, char *argv[]);
-static Boolean doValidate(int argc, char *argv[]);
-static Boolean doHelp(int argc, char *argv[]);
+static bool doAdmin(int argc, char *argv[]);
+static bool doBuild(int argc, char *argv[]);
+static bool doTocgen(int argc, char *argv[]);
+static bool doUpdate(int argc, char *argv[]);
+static bool doValidate(int argc, char *argv[]);
+static bool doHelp(int argc, char *argv[]);
 static void appendStr(char **str, int *curLen, int *maxLen, char *strToAppend);
 static char *makeAbsPathEnv(char *var);
 static char *makeAbsPathStr(char *str);
-static char *addToEnv(char *var, char *addMe, Boolean prepend);
+static char *addToEnv(char *var, char *addMe, bool prepend);
 static char *buildPath(char *format, ...);
 static char *buildSGML(void);
 static char *buildDecl(void);
@@ -232,7 +232,7 @@ static char *parseDocument(int runCmd, ...);
 static void buildBookcase(char *cmdSrc, char *dirName);
 static char *storeBookCase(char *cmdSrc, char *tocOpt, char *dbName,
 			   char *dirName);
-static Boolean findBookCaseNameAndDesc(char *tmpFile, char *bookCaseName,
+static bool findBookCaseNameAndDesc(char *tmpFile, char *bookCaseName,
 				       char *bookCaseDesc);
 static void validateBookCaseName(char *bookCaseName);
 static void validateBookCase(char *mapName, char *bookCaseName);
@@ -293,7 +293,7 @@ die(int exitCode, char *format, ...)
 static void
 sigHandler(int sig)
 {
-    gStruct->keepWorkDir = False;	/* Always clean up on signal. */
+    gStruct->keepWorkDir = false;	/* Always clean up on signal. */
     dieRWD(-1, "Received signal; exiting...\n");
 }
 
@@ -312,33 +312,33 @@ touchFile(char *fileName)
     fclose(fp);
 }
 
-static Boolean
+static bool
 checkStat(char *fileName, unsigned int flags)
 {
     struct stat statBuf;
-    Boolean userOwnsFile;
-    Boolean userInGroup;
+    bool userOwnsFile;
+    bool userInGroup;
 
     if (!fileName)
-	return False;
+	return false;
 
     errno = 0;
 
     if (stat(fileName, &statBuf) != 0)
-	return False;
+	return false;
 
     if ((flags & FSTAT_IS_FILE) &&
 	(!S_ISREG(statBuf.st_mode)))
     {
 	errno = ENOENT;
-	return False;
+	return false;
     }
 
     if ((flags & FSTAT_IS_DIR) &&
 	(!S_ISDIR(statBuf.st_mode)))
     {
 	errno = ENOTDIR;
-	return False;
+	return false;
     }
 
     userOwnsFile = (getuid() == statBuf.st_uid);
@@ -350,15 +350,15 @@ checkStat(char *fileName, unsigned int flags)
 	if (userOwnsFile)
 	{
 	    if (!(statBuf.st_mode & S_IRUSR))
-		return False;
+		return false;
 	}
 	else if (userInGroup)
 	{
 	    if (!(statBuf.st_mode & S_IRGRP))
-		return False;
+		return false;
 	}
 	else if (!(statBuf.st_mode & S_IROTH))
-	    return False;
+	    return false;
     }
 
     if (flags & FSTAT_IS_WRITABLE)
@@ -366,15 +366,15 @@ checkStat(char *fileName, unsigned int flags)
 	if (userOwnsFile)
 	{
 	    if (!(statBuf.st_mode & S_IWUSR))
-		return False;
+		return false;
 	}
 	else if (userInGroup)
 	{
 	    if (!(statBuf.st_mode & S_IWGRP))
-		return False;
+		return false;
 	}
 	else if (!(statBuf.st_mode & S_IWOTH))
-	    return False;
+	    return false;
     }
 
     if (flags & FSTAT_IS_EXECUTABLE)
@@ -382,19 +382,19 @@ checkStat(char *fileName, unsigned int flags)
 	if (userOwnsFile)
 	{
 	    if (!(statBuf.st_mode & S_IXUSR))
-		return False;
+		return false;
 	}
 	else if (userInGroup)
 	{
 	    if (!(statBuf.st_mode & S_IXGRP))
-		return False;
+		return false;
 	}
 	else if (!(statBuf.st_mode & S_IXOTH))
-	    return False;
+	    return false;
     }
 
     errno = 0;
-    return True;
+    return true;
 }
 
 static void
@@ -417,20 +417,20 @@ checkDir(char *dirName)
     runShellCmd(cmdBuf);
 }
 
-static Boolean
-testExec(char *execName, Boolean tellIt)
+static bool
+testExec(char *execName, bool tellIt)
 {
     char *path;
     char **pathVector;
     int i;
     char execBuf[MAXPATHLEN + 1];
-    Boolean found;
+    bool found;
 
     if (!execName)
-	return True;
+	return true;
 
     if ((path = getenv("PATH")) == (char *)NULL)
-	return True;
+	return true;
 
     path = XtsNewString(path);
     pathVector = _DtVectorizeInPlace(path, ':');
@@ -444,8 +444,8 @@ testExec(char *execName, Boolean tellIt)
 
     found = (pathVector[i] != (char *)NULL);
 
-    XtFree((char *)pathVector);
-    XtFree(path);
+    free((char *)pathVector);
+    free(path);
 
     if (found && tellIt)
 	fprintf(stderr, "%s ==> %s\n", execName, execBuf);
@@ -474,7 +474,7 @@ makeTmpFile(void)
 	if (!checkStat(tmpFile, FSTAT_EXISTS))
 	    return tmpFile;
 
-	XtFree(tmpFile);
+	free(tmpFile);
     }
 
     dieRWD(-1, "%s: could not create tmp file.\n", EXEC_NAME);
@@ -512,7 +512,7 @@ makeWorkDir(void)
 	    return workDir;
 	}
 
-	XtFree(workDir);
+	free(workDir);
     }
 
     dieRWD(-1, "%s: could not create work directory.\n", EXEC_NAME);
@@ -532,7 +532,7 @@ removeWorkDir(void)
 	snprintf(cmdBuf, sizeof(cmdBuf), "rm -rf %s", gStruct->workDir);
 	ret = system(cmdBuf);
 	if(ret != 0) die(-1, "system for rm failed; exiting...\n");
-	XtFree(gStruct->workDir);
+	free(gStruct->workDir);
 	gStruct->workDir = (char *)NULL;
     }
 }
@@ -547,7 +547,7 @@ runShellCmd(char *cmd)
 	dieRWD(-1, "%s: command failed: %s\n", EXEC_NAME, cmd);
 }
 
-static Boolean
+static bool
 doAdmin(int argc, char *argv[])
 {
     if (strcmp(argv[1], "admin") == 0)
@@ -557,13 +557,13 @@ doAdmin(int argc, char *argv[])
 
 	runShellCmd("Librarian");
 
-	return True;
+	return true;
     }
 
-    return False;
+    return false;
 }
 
-static Boolean
+static bool
 doBuild(int argc, char *argv[])
 {
     if (strcmp(argv[1], "build") == 0)
@@ -604,7 +604,7 @@ doBuild(int argc, char *argv[])
 	    if ((dirName = dirname(bcCopy)) == (char *)NULL)
 		dirName = ".";
 	    dirName = XtsNewString(dirName);
-	    XtFree(bcCopy);
+	    free(bcCopy);
 
 	    if (gStruct->loadESIS)
 	    {
@@ -612,13 +612,13 @@ doBuild(int argc, char *argv[])
 	    }
 	    else
 	    {
-		cmdSrc = parseDocument(False, bookcase, 0);
+		cmdSrc = parseDocument(false, bookcase, 0);
 	    }
 
 	    buildBookcase(cmdSrc, dirName);
 
-	    XtFree(cmdSrc);
-	    XtFree(dirName);
+	    free(cmdSrc);
+	    free(dirName);
 	}
 
 	if (!gStruct->libName)
@@ -626,15 +626,15 @@ doBuild(int argc, char *argv[])
 	fileToTouch = buildPath("%s/%s.oli",
 				gStruct->library, gStruct->libName);
 	touchFile(fileToTouch);
-	XtFree(fileToTouch);
+	free(fileToTouch);
 
-	return True;
+	return true;
     }
 
-    return False;
+    return false;
 }
 
-static Boolean
+static bool
 doTocgen(int argc, char *argv[])
 {
     if (strcmp(argv[1], "tocgen") == 0)
@@ -658,12 +658,12 @@ doTocgen(int argc, char *argv[])
 
 	buildTOC(argc - argsProcessed, &argv[argsProcessed]);
 
-	return True;
+	return true;
     }
-    return False;
+    return false;
 }
 
-static Boolean
+static bool
 doUpdate(int argc, char *argv[])
 {
     if (strcmp(argv[1], "update") == 0)
@@ -700,22 +700,22 @@ doUpdate(int argc, char *argv[])
 	if (!checkStat(styleSheet, FSTAT_IS_READABLE))
 	    die(-1, "%s: %s: %s\n", EXEC_NAME, styleSheet, strerror(errno));
 
-	cmdSrc = parseDocument(False,
+	cmdSrc = parseDocument(false,
 			       gStruct->styleProlog, styleSheet, 0);
 	cmd = buildPath("%s | StyleUpdate %s %s",
 			cmdSrc, gStruct->library, gStruct->bookCase);
 	runShellCmd(cmd);
 
-	XtFree(cmdSrc);
-	XtFree(cmd);
+	free(cmdSrc);
+	free(cmd);
 
-	return True;
+	return true;
     }
 
-    return False;
+    return false;
 }
 
-static Boolean
+static bool
 doValidate(int argc, char *argv[])
 {
     if (strcmp(argv[1], "validate") == 0)
@@ -739,25 +739,25 @@ doValidate(int argc, char *argv[])
 
 	    if (gStruct->saveESIS)
 	    {
-		cmdSrc = parseDocument(False, bookcase, 0);
+		cmdSrc = parseDocument(false, bookcase, 0);
 		cmd = buildPath("%s > %s", cmdSrc, gStruct->saveESIS);
 		runShellCmd(cmd);
-		XtFree(cmdSrc);
-		XtFree(cmd);
+		free(cmdSrc);
+		free(cmd);
 	    }
 	    else
 	    {
-		parseDocument(True, bookcase, 0);
+		parseDocument(true, bookcase, 0);
 	    }
 	}
 
-	return True;
+	return true;
     }
 
-    return False;
+    return false;
 }
 
-static Boolean
+static bool
 doHelp(int argc, char *argv[])
 {
     if (strcmp(argv[1], "-h") == 0)
@@ -765,10 +765,10 @@ doHelp(int argc, char *argv[])
 	printUsage((char *)NULL, 0);
 
 	/* NOTREACHED */
-	return True;
+	return true;
     }
 
-    return False;
+    return false;
 }
 
 static void
@@ -782,7 +782,7 @@ appendStr(char **str, int *curLen, int *maxLen, char *strToAppend)
     len = strlen(strToAppend);
     while (*curLen + len >= *maxLen)
     {
-	newStr = XtRealloc(*str, (*maxLen + MAXPATHLEN) * sizeof(char));
+	newStr = realloc(*str, (*maxLen + MAXPATHLEN) * sizeof(char));
 	if (!newStr)
 	    return;
 
@@ -815,11 +815,11 @@ makeAbsPathEnv(char *var)
 		var, oldPath, newPath);
 
     pathlen = strlen(var) + strlen(newPath) + 2;
-    newVar = XtMalloc(pathlen);
+    newVar = malloc(pathlen);
     snprintf(newVar, pathlen, "%s=%s", var, newPath);
     putenv(newVar);
 
-    XtFree(newPath);
+    free(newPath);
 
     return newVar;
 }
@@ -893,18 +893,18 @@ makeAbsPathStr(char *str)
 	    }
 	}
 
-	XtFree((char *)dirVector);
+	free((char *)dirVector);
     }
 
-    XtFree((char *)pathVector);
-    XtFree((char *)cwdVector);
-    XtFree(str);
+    free((char *)pathVector);
+    free((char *)cwdVector);
+    free(str);
 
     return newPath;
 }
 
 static char *
-addToEnv(char *var, char *addMe, Boolean prepend)
+addToEnv(char *var, char *addMe, bool prepend)
 {
     char *envStr;
     int len, ptrlen;
@@ -920,7 +920,7 @@ addToEnv(char *var, char *addMe, Boolean prepend)
     len = strlen(var) + strlen(STR(envStr)) + strlen(addMe) + 3;
     ptrlen = len * sizeof(char);
 
-    if ((ptr = XtMalloc(ptrlen)) != (char *)NULL)
+    if ((ptr = malloc(ptrlen)) != (char *)NULL)
     {
 	if (envStr)
 	{
@@ -990,7 +990,7 @@ defaultGlobals(void)
 {
     memset((void *)gStruct, 0, sizeof(GlobalsStruct));
 
-    gStruct->verbose = False;
+    gStruct->verbose = false;
 
     /* Clear out the ENV environment variable. */
     if (getenv("ENV") != (char *)NULL)
@@ -1069,7 +1069,7 @@ defaultGlobals(void)
     gStruct->dirMode = 0775;
     gStruct->searchEngine = "dtsearch";
     gStruct->parser = "onsgmls";
-    gStruct->keepWorkDir = False;
+    gStruct->keepWorkDir = false;
     gStruct->workDir = (char *)NULL;
 
     gStruct->tocElemIndex = 0;
@@ -1125,7 +1125,7 @@ checkGlobals(void)
 				     STR(langtbl[gStruct->dtsridx].name));
 
 	if (!checkStat(gStruct->dtsrlib, FSTAT_IS_DIR)) {
-	    XtFree(gStruct->dtsrlib);
+	    free(gStruct->dtsrlib);
 	    gStruct->dtsrlib = buildPath("%s/infolib/etc/%s/dtsr",
 					gStruct->install, LANG_COMMON);
 	}
@@ -1141,7 +1141,7 @@ checkGlobals(void)
 }
 
 static void
-addCatFile(char *catalog, Bool needed)
+addCatFile(char *catalog, bool needed)
 {
     char pathBuf[(2 * MAXPATHLEN) + 10];
     char *ptr1, *ptr2;
@@ -1158,7 +1158,7 @@ addCatFile(char *catalog, Bool needed)
     snprintf(pathBuf, sizeof(pathBuf), "-c%s ", ptr1);
     appendStr(&gStruct->sgmlCatFiles, &gStruct->sgmlCatFilesLen,
 	      &gStruct->sgmlCatFilesMaxLen, pathBuf);
-    XtFree(ptr1);
+    free(ptr1);
 }
 
 static int
@@ -1223,7 +1223,7 @@ parseArgs(int argc, char *argv[])
 	}
 	else if (strcmp(argv[i], "-v") == 0)
 	{
-	    gStruct->verbose = True;
+	    gStruct->verbose = true;
 	}
 	else if (strcmp(argv[i], "-h") == 0)
 	{
@@ -1240,7 +1240,7 @@ parseArgs(int argc, char *argv[])
 	else if (strcmp(argv[i], "-m") == 0)
 	{
 	    if (++i < argc)
-		addCatFile(argv[i], True);
+		addCatFile(argv[i], true);
 	}
 	else if (strcmp(argv[i], "-s") == 0)
 	{
@@ -1255,7 +1255,7 @@ parseArgs(int argc, char *argv[])
 	else if (strcmp(argv[i], "--load-esis") == 0)
 	{
 	    if (++i < argc)
-		gStruct->loadESIS = True;
+		gStruct->loadESIS = true;
 	}
 	else if (strcmp(argv[i], "--bin") == 0)
 	{
@@ -1263,18 +1263,18 @@ parseArgs(int argc, char *argv[])
 	    {
 		char *ptr1, *ptr2;
 
-		ptr1 = addToEnv("PATH", argv[i], True);
+		ptr1 = addToEnv("PATH", argv[i], true);
 		ptr2 = makeAbsPathEnv("PATH");
 		if (gStruct->pathEnv)
-		    XtFree(gStruct->pathEnv);
+		    free(gStruct->pathEnv);
 		if (ptr1)
-		    XtFree(ptr1);
+		    free(ptr1);
 		gStruct->pathEnv = ptr2;
 	    }
 	}
 	else if (strcmp(argv[i], "--keep") == 0)
 	{
-	    gStruct->keepWorkDir = True;
+	    gStruct->keepWorkDir = true;
 	}
 	else if (strcmp(argv[i], "-chapter") == 0)
 	{
@@ -1319,10 +1319,10 @@ parseDocument(int runCmd, ...)
 	       EXEC_NAME, strerror(errno));
 
     addCatFile(buildPath("%s/infolib/sgml/catalog",
-			 STR(gStruct->install)), True);
+			 STR(gStruct->install)), true);
 
     if (!gStruct->sgmlSearchPathEnv)
-	gStruct->sgmlSearchPathEnv = addToEnv("SGML_SEARCH_PATH", ".", False);
+	gStruct->sgmlSearchPathEnv = addToEnv("SGML_SEARCH_PATH", ".", false);
 
     appendStr(&cmd, &cmdLen, &maxLen, gStruct->parser);
     appendStr(&cmd, &cmdLen, &maxLen, " ");
@@ -1341,7 +1341,7 @@ parseDocument(int runCmd, ...)
 	va_end(ap);
 
 	runShellCmd(cmd);
-	XtFree(cmd);
+	free(cmd);
 	return (char *)NULL;
     }
 
@@ -1378,7 +1378,7 @@ buildBookcase(char *cmdSrc, char *dirName)
     tmpFile = storeBookCase(cmdSrc, "all", dataBase, dirName);
     newMmdbPathEnv = buildPath("MMDB_PATH=%s", STR(gStruct->library));
     if (gStruct->mmdbPathEnv)
-	XtFree(gStruct->mmdbPathEnv);
+	free(gStruct->mmdbPathEnv);
     gStruct->mmdbPathEnv = newMmdbPathEnv;
     putenv(newMmdbPathEnv);
 
@@ -1387,7 +1387,7 @@ buildBookcase(char *cmdSrc, char *dirName)
 
     if (!findBookCaseNameAndDesc(tmpFile, bookCaseName, bookCaseDesc))
 	dieRWD(-1, "%s: Missing Bookcase name\n", EXEC_NAME);
-    XtFree(tmpFile);
+    free(tmpFile);
 
     bookCaseDir = buildPath("%s/%s", STR(gStruct->library), bookCaseName);
     if (checkStat(bookCaseDir, FSTAT_IS_DIR))
@@ -1428,7 +1428,7 @@ buildBookcase(char *cmdSrc, char *dirName)
       snprintf(cmd, sizeof(cmd), "rm -f %s", style_file);
       ret1 = system(cmd);
       if(ret1 != 0) die(-1, "system for rm failed; exiting...\n");
-      XtFree((char*)style_file);
+      free((char*)style_file);
     }
 
 
@@ -1448,7 +1448,7 @@ buildBookcase(char *cmdSrc, char *dirName)
       snprintf(cmd, sizeof(cmd), "rm -f %s", compress_file);
       ret1 = system(cmd);
       if(ret1 != 0) die(-1, "system for rm failed; exiting...\n");
-      XtFree((char*)compress_file);
+      free((char*)compress_file);
     }
 
 
@@ -1468,11 +1468,11 @@ buildBookcase(char *cmdSrc, char *dirName)
       snprintf(cmd, sizeof(cmd), "rm -f %s", anonym_file);
       ret1 = system(cmd);
       if(ret1 != 0) die(-1, "system for rm failed; exiting...\n");
-      XtFree((char*)anonym_file);
+      free((char*)anonym_file);
     }
 
     validateBookCase(bookCaseMap, bookCaseName);
-    XtFree(bookCaseMap);
+    free(bookCaseMap);
 
     if (strcmp(gStruct->searchEngine, "dtsearch") == 0)
     {
@@ -1549,7 +1549,7 @@ buildBookcase(char *cmdSrc, char *dirName)
 	    dieRWD(-1, "%s: Cannot find %s: %s\n",
 		   EXEC_NAME, curDir, strerror(errno));
     }
-    XtFree(bookCaseDir);
+    free(bookCaseDir);
 
     if (!gStruct->keepWorkDir)
 	removeWorkDir();
@@ -1583,15 +1583,15 @@ storeBookCase(char *cmdSrc, char *tocOpt, char *dbName,
       cmd = buildPath("rm -f %s", onsgmls_file);
       ret = system(cmd);
       if(ret != 0) die(-1, "system for rm failed; exiting...\n");
-      XtFree((char*)onsgmls_file);
+      free((char*)onsgmls_file);
     }
 
-    XtFree(cmd);
+    free(cmd);
 
     return tmpFile;
 }
 
-static Boolean
+static bool
 findBookCaseNameAndDesc(char *tmpFile, char *bookCaseName,
 			char *bookCaseDesc)
 {
@@ -1623,20 +1623,20 @@ findBookCaseNameAndDesc(char *tmpFile, char *bookCaseName,
 		    *((char *) memcpy(bookCaseDesc, p1, len) + len) = '\0';
 		    fclose(fp);
 
-		    return True;
+		    return true;
 		}
 	    }
 	}
     }
     fclose(fp);
 
-    return False;
+    return false;
 }
 
 static void
 validateBookCaseName(char *bookCaseName)
 {
-    Boolean isOk = False;
+    bool isOk = false;
 
     if (strlen(bookCaseName) <= 8)
     {
@@ -1707,14 +1707,14 @@ editMapFile(char *bookCaseName, char *bookCaseMap)
     char *lastLine;
     int i;
     int bcNameLen;
-    Boolean replaced = False;
+    bool replaced = false;
 
     if ((stat(bookCaseMap, &statBuf) != 0) ||
 	((fp = fopen(bookCaseMap, "r")) == (FILE *)NULL))
 	dieRWD(-1, "%s: %s: %s\n", EXEC_NAME, bookCaseMap,
 	       strerror(errno));
 
-    file = XtMalloc((statBuf.st_size + 1) * sizeof(char));
+    file = malloc((statBuf.st_size + 1) * sizeof(char));
     ret = fread(file, statBuf.st_size, sizeof(char), fp);
     if(ret == 0) die(-1, "fread failed; exiting...\n");
     if (file[statBuf.st_size - 1] == '\n')
@@ -1730,7 +1730,7 @@ editMapFile(char *bookCaseName, char *bookCaseMap)
 	libID = lineVector[1];
     else
 	libID = (char *)NULL;
-    XtFree((char *)lineVector);
+    free((char *)lineVector);
 
     if ((libDesc = gStruct->libDesc) == (char *)NULL)
 	libDesc = oldDesc;
@@ -1745,7 +1745,7 @@ editMapFile(char *bookCaseName, char *bookCaseMap)
     bcNameLen = strlen(bookCaseName);
 
     fprintf(fp, "%s\t%s\n", STR(libDesc), STR(libID));
-    XtFree(firstLine);
+    free(firstLine);
 
     for (i = 1; fileVector[i] != (char *)NULL; i++)
     {
@@ -1756,7 +1756,7 @@ editMapFile(char *bookCaseName, char *bookCaseMap)
 	    if (!replaced)
 	    {
 		fprintf(fp, "%s\n", lastLine);
-		replaced = True;
+		replaced = true;
 	    }
 	}
 	else
@@ -1770,8 +1770,8 @@ editMapFile(char *bookCaseName, char *bookCaseMap)
 
     fclose(fp);
 
-    XtFree((char *)fileVector);
-    XtFree(file);
+    free((char *)fileVector);
+    free(file);
 }
 
 static void
@@ -1833,15 +1833,15 @@ buildTOC(int argc, char *argv[])
     }
 
     tocBC = tocBookcase(argc, argv);
-    cmdSrc = parseDocument(False, tocBC, 0);
+    cmdSrc = parseDocument(false, tocBC, 0);
     if ((tocDir = dirname(tocBC)) == (char *)NULL)
 	tocDir = ".";
     tocDir = XtsNewString(tocDir);
     p1 = storeBookCase(cmdSrc, "toc", makeWorkDir(), tocDir);
-    XtFree(p1);
-    XtFree(tocDir);
-    XtFree(cmdSrc);
-    XtFree(tocBC);
+    free(p1);
+    free(tocDir);
+    free(cmdSrc);
+    free(tocBC);
 
     makeTOC(idBuf, titleBuf);
 
@@ -1948,14 +1948,14 @@ makeTOC(char *id, char *title)
 
 	ptr1 = replaceData(STR(tocRecord->loc), "&", "&#38;");
 	ptr2 = replaceData(ptr1, "\"", "&#34;");
-	XtFree(ptr1);
+	free(ptr1);
 
 	snprintf(lineBuf, sizeof(lineBuf),
 		"<TOCEntry LinkEnd=\"%s\">%s</> <!-- %s:%s -->\n",
 		ptr2, trTitle, STR(tocRecord->file),
 		STR(tocRecord->line));
-	XtFree(ptr2);
-	XtFree(trTitle);
+	free(ptr2);
+	free(trTitle);
 
 	newTOCEntry.ord = STR(tocRecord->ord);
 	newTOCEntry.entry = lineBuf;
@@ -1973,7 +1973,7 @@ makeTOC(char *id, char *title)
 		   "<TOC id=\"%s\">\n"
 		   "<TITLE>%s</TITLE>\n",
 	    id, tocTitle);
-    XtFree(tocTitle);
+    free(tocTitle);
 
     level = -1;
 
@@ -2034,8 +2034,8 @@ sgmlData(char *inData)
     p2 = replaceData(p1, "<", "&lt;");
     outData = replaceData(p2, ">", "&gt;");
 
-    XtFree(p1);
-    XtFree(p2);
+    free(p1);
+    free(p2);
 
     return outData;
 }
@@ -2061,7 +2061,7 @@ replaceData(char *inData, char *replaceMe, char *replacement)
 	return XtsNewString(inData);
 
     newLen = strlen(inData) + (i * (strlen(replacement) - replaceMeLen));
-    newData = XtMalloc((newLen + 1) * sizeof(char));
+    newData = malloc((newLen + 1) * sizeof(char));
     newData[0] = '\0';
     p = inData;
     while ((endP = strstr(p, replaceMe)) != (char *)NULL)
@@ -2091,7 +2091,7 @@ addTOCEntry(TOCEntry **tocEntries, int *nTOCEntries, int *maxEntries,
 	TOCEntry *newArray;
 
 	newArray =
-	    (TOCEntry *)XtRealloc((char *)*tocEntries,
+	    (TOCEntry *)realloc((char *)*tocEntries,
 				  (*maxEntries + 10) * sizeof(TOCEntry));
 	if (!newArray)
 	    return;
@@ -2128,11 +2128,11 @@ freeTOCEntries(TOCEntry *tocEntries, int nTOCEntries)
 
     for (i = 0; i < nTOCEntries; i++)
     {
-	XtFree(tocEntries[i].ord);
-	XtFree(tocEntries[i].entry);
+	free(tocEntries[i].ord);
+	free(tocEntries[i].entry);
     }
 
-    XtFree((char *)tocEntries);
+    free((char *)tocEntries);
 }
 
 static TOCRecord *
@@ -2143,11 +2143,11 @@ getTOCRecord(FILE *fp)
     TOCRecord *tocRecord;
     char *ptr;
 
-    tocRecord = (TOCRecord *)XtMalloc(sizeof(TOCRecord));
+    tocRecord = (TOCRecord *)malloc(sizeof(TOCRecord));
 
     if (fgets(lineBuf, MAXPATHLEN, fp) == (char *)NULL)
     {
-	XtFree((char *)tocRecord);
+	free((char *)tocRecord);
 	return (TOCRecord *)NULL;
     }
 
@@ -2155,20 +2155,20 @@ getTOCRecord(FILE *fp)
 
     if (fgets(lineBuf, MAXPATHLEN, fp) == (char *)NULL)
     {
-	XtFree((char *)tocRecord);
+	free((char *)tocRecord);
 	return (TOCRecord *)NULL;
     }
     cols = atoi(lineBuf);
 
     if (cols < TOC_REC_COLS)
     {
-	XtFree((char *)tocRecord);
+	free((char *)tocRecord);
 	return (TOCRecord *)NULL;
     }
 
     /* DISCARD first item (book). */
     ptr = getTOCField(fp);
-    XtFree(ptr);
+    free(ptr);
     cols--;
 
     tocRecord->loc = getTOCField(fp);
@@ -2189,7 +2189,7 @@ getTOCRecord(FILE *fp)
     while (cols > 0)
     {
 	ptr = getTOCField(fp);
-	XtFree(ptr);
+	free(ptr);
 	cols--;
     }
 
@@ -2199,13 +2199,13 @@ getTOCRecord(FILE *fp)
 static void
 freeTOCRecord(TOCRecord *tocRecord)
 {
-    XtFree(tocRecord->loc);
-    XtFree(tocRecord->file);
-    XtFree(tocRecord->line);
-    XtFree(tocRecord->ord);
-    XtFree(tocRecord->title);
+    free(tocRecord->loc);
+    free(tocRecord->file);
+    free(tocRecord->line);
+    free(tocRecord->ord);
+    free(tocRecord->title);
 
-    XtFree((char *)tocRecord);
+    free((char *)tocRecord);
 }
 
 static char *
@@ -2264,7 +2264,7 @@ getTOCField(FILE *fp)
 		appendStr(&longField, &lfLen, &maxLen, "#");
 	    appendStr(&longField, &lfLen, &maxLen, ptr);
 
-	    XtFree(ptr);
+	    free(ptr);
 	}
 
 	ptr = longField;
@@ -2313,7 +2313,7 @@ getTOCField(FILE *fp)
 	ptr = XtsNewString(ptr);
 
 	if (longField != (char *)NULL)
-	    XtFree(longField);
+	    free(longField);
 
 	return ptr;
     }
