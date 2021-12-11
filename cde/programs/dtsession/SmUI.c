@@ -45,17 +45,17 @@
  **
  **
  *******************************************************************
- **  (c) Copyright Hewlett-Packard Company, 1990.  All rights are  
- **  reserved.  Copying or other reproduction of this program      
- **  except for archival purposes is prohibited without prior      
- **  written consent of Hewlett-Packard Company.		     
+ **  (c) Copyright Hewlett-Packard Company, 1990.  All rights are
+ **  reserved.  Copying or other reproduction of this program
+ **  except for archival purposes is prohibited without prior
+ **  written consent of Hewlett-Packard Company.
  ********************************************************************
  **
  **
  **
  *****************************************************************************
  *************************************<+>*************************************/
-#ifndef _XOPEN_SOURCE
+#if defined(__linux__) && !defined(_XOPEN_SOURCE)
 # define _XOPEN_SOURCE 600
 #endif
 
@@ -160,7 +160,7 @@ static Boolean saveTimeout;
  *  Inputs:
  *  ------
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -168,9 +168,9 @@ static Boolean saveTimeout;
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-Widget 
+Widget
 CreateLockDialog( void )
 {
   int 	i, slen;
@@ -181,7 +181,7 @@ CreateLockDialog( void )
     char	*lockMessage;
     char	*envLog;
     Pixel   	fg, bg, focus_color;  /* foreground, background colors */
-    
+
     i = 0;
     XtSetArg(uiArgs[i], XmNallowShellResize, True); i++;
     XtSetArg(uiArgs[i], XmNmarginWidth, 0); i++;
@@ -203,10 +203,10 @@ CreateLockDialog( void )
     XtSetArg(uiArgs[i], XmNmwmDecorations, 0);i++;
     XtSetArg(uiArgs[i], XmNmwmInputMode, MWM_INPUT_SYSTEM_MODAL);i++;
     XtSetValues(XtParent(tmpLock), uiArgs, i);
-		
+
     i = 0;
     XtSetArg(uiArgs[i], XmNshadowType, XmSHADOW_OUT); i++;
-    XtSetArg(uiArgs[i], XmNshadowThickness, 2); i++; 
+    XtSetArg(uiArgs[i], XmNshadowThickness, 2); i++;
     XtSetArg(uiArgs[i], XmNtopAttachment, XmATTACH_FORM); i++;
     XtSetArg(uiArgs[i], XmNtopOffset, 15); i++;
     XtSetArg(uiArgs[i], XmNbottomAttachment, XmATTACH_FORM); i++;
@@ -232,7 +232,7 @@ CreateLockDialog( void )
 
     i = 0;
     XtSetArg(uiArgs[i], XmNshadowType, XmSHADOW_OUT); i++;
-    XtSetArg(uiArgs[i], XmNshadowThickness, 2); i++; 
+    XtSetArg(uiArgs[i], XmNshadowThickness, 2); i++;
     XtSetArg(uiArgs[i], XmNtopAttachment, XmATTACH_FORM); i++;
     XtSetArg(uiArgs[i], XmNtopOffset, 15); i++;
     XtSetArg(uiArgs[i], XmNbottomAttachment, XmATTACH_FORM); i++;
@@ -245,7 +245,7 @@ CreateLockDialog( void )
     loginFrame = XmCreateFrame(tmpLock, "loginFrame", uiArgs, i);
 
 
-    /* 
+    /*
      * create the login matte...
      */
     i = 0;
@@ -256,7 +256,7 @@ CreateLockDialog( void )
      *  create the login/password forms
      */
     i = 0;
-    XtSetArg(uiArgs[i], XmNshadowThickness, 0); i++; 
+    XtSetArg(uiArgs[i], XmNshadowThickness, 0); i++;
     XtSetArg(uiArgs[i], XmNrightAttachment, XmATTACH_FORM); i++;
     XtSetArg(uiArgs[i], XmNrightOffset, 15); i++;
     XtSetArg(uiArgs[i], XmNbottomAttachment, XmATTACH_POSITION); i++;
@@ -267,7 +267,7 @@ CreateLockDialog( void )
 
     i = 0;
     XtSetArg(uiArgs[i], XmNresizePolicy, XmRESIZE_NONE);i++;
-    XtSetArg(uiArgs[i], XmNshadowThickness, 0); i++; 
+    XtSetArg(uiArgs[i], XmNshadowThickness, 0); i++;
     XtSetArg(uiArgs[i], XmNtopAttachment, XmATTACH_POSITION); i++;
     XtSetArg(uiArgs[i], XmNtopPosition, 50); i++;
 	XtSetArg(uiArgs[i], XmNleftAttachment, XmATTACH_OPPOSITE_WIDGET); i++;
@@ -364,9 +364,9 @@ CreateLockDialog( void )
     XtGetValues(indFrame, uiArgs, i);
     XtVaSetValues ( smDD.indLabel[0],
                     XmNborderWidth, 2,
-                    XmNborderColor,  focus_color, 
+                    XmNborderColor,  focus_color,
                     NULL );
-    
+
     /*
      * Manage forms AFTER all children have been managed
      */
@@ -391,7 +391,7 @@ CreateLockDialog( void )
  *  Description:
  *  -----------
  *  Determines which exit routines get called when an exit request is made
- *  of the session manager.  
+ *  of the session manager.
  *  If smGD.bmsDead == false, we just exit.
  *  If ASK_STATE is turned on, the query dialog is
  *  put up, if VERBOSE is on, confirm exit in current mode (restart or reset)
@@ -402,7 +402,7 @@ CreateLockDialog( void )
  *  ------
  *  msg -- if non-zero, Session_Exit request to reply/fail && destroy
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -410,7 +410,7 @@ CreateLockDialog( void )
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
 void
 ExitSession(
@@ -430,7 +430,7 @@ ExitSession(
     }
     else
     {
-	if(smSettings.confirmMode == DtSM_VERBOSE_MODE || 
+	if(smSettings.confirmMode == DtSM_VERBOSE_MODE ||
 	   smSettings.startState == DtSM_ASK_STATE)
 	{
 	    ConfirmExit( msg, True );
@@ -460,7 +460,7 @@ ExitSession(
  *  ------
  *  msg -- if non-zero, Session_Exit request to reply/fail && destroy
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -468,10 +468,10 @@ ExitSession(
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-int 
-ConfirmExit( 
+int
+ConfirmExit(
     Tt_message msg,
     Boolean doSave)
 {
@@ -489,13 +489,13 @@ ConfirmExit(
 	/*
 	 * Create all compound strings for confirmation dialogs
 	 */
-	returnToCurrent = XmStringCreateLocalized(((char *)GETMESSAGE(18, 4, 
+	returnToCurrent = XmStringCreateLocalized(((char *)GETMESSAGE(18, 4,
 		"Exiting the desktop session...\n\n\
 Your Current session will be restored upon login.\n\n\
 Application updates you have not saved will be lost.\n\n\
 Continue Logout?")));
 
-	homeToHome = XmStringCreateLocalized(((char *)GETMESSAGE(18, 5, 
+	homeToHome = XmStringCreateLocalized(((char *)GETMESSAGE(18, 5,
 		"Exiting the desktop session...\n\n\
 Your Home session will be restored upon login.\n\
 Your Current session will not be saved.\n\n\
@@ -513,13 +513,13 @@ Continue Logout?")));
 	 * Build up the correct string for this dialog
 	 */
 	i = 0;
-	if (smGD.sessionType == HOME_SESSION && 
-	    smSettings.startState == DtSM_HOME_STATE) 
+	if (smGD.sessionType == HOME_SESSION &&
+	    smSettings.startState == DtSM_HOME_STATE)
 	{
 	    XtSetArg(uiArgs[i], XmNmessageString, homeToHome); i++;
 	}
 	else if (smGD.sessionType == CURRENT_SESSION &&
-	         smSettings.startState == DtSM_HOME_STATE) 
+	         smSettings.startState == DtSM_HOME_STATE)
         {
 	    XtSetArg(uiArgs[i], XmNmessageString, currentToHome); i++;
 	}
@@ -546,7 +546,7 @@ Continue Logout?")));
 
 	smDD.confExit = XmCreateWarningDialog(smGD.topLevelWid, "exitDialog",
 					      uiArgs, i);
-	
+
 	i = 0;
 	XtSetArg(uiArgs[i], XmNuseAsyncGeometry, True);i++;
 	XtSetArg(uiArgs[i], XmNmwmFunctions, 0);i++;
@@ -577,13 +577,13 @@ Continue Logout?")));
 	 * restored so must update the dialog's message.
 	 */
 	i = 0;
-	if (smGD.sessionType == HOME_SESSION && 
-	    smSettings.startState == DtSM_HOME_STATE) 
+	if (smGD.sessionType == HOME_SESSION &&
+	    smSettings.startState == DtSM_HOME_STATE)
 	{
 	    XtSetArg(uiArgs[i], XmNmessageString, homeToHome); i++;
 	}
 	else if (smGD.sessionType == CURRENT_SESSION &&
-	         smSettings.startState == DtSM_HOME_STATE) 
+	         smSettings.startState == DtSM_HOME_STATE)
         {
 	    XtSetArg(uiArgs[i], XmNmessageString, currentToHome); i++;
 	}
@@ -605,7 +605,7 @@ Continue Logout?")));
 
 
     XtAddCallback (XtParent(smDD.confExit), XmNpopupCallback, DialogUp, NULL);
-	
+
     XtManageChild(smDD.confExit);
     return(0);
 }
@@ -625,7 +625,7 @@ Continue Logout?")));
  *  Inputs:
  *  ------
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -633,9 +633,9 @@ Continue Logout?")));
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-int 
+int
 WarnMsgFailure( void )
 {
     int 	i;
@@ -644,7 +644,7 @@ WarnMsgFailure( void )
 
     if(smDD.deadWid == NULL)
     {
-	bmsDeadString = XmStringCreateLocalized(((char *)GETMESSAGE(18, 38, 
+	bmsDeadString = XmStringCreateLocalized(((char *)GETMESSAGE(18, 38,
 		"Messaging System Inoperative\n\n\
 To restart:\n\n1) Save all open data files.\n\
 2) Logout.\n\
@@ -675,7 +675,7 @@ proceed to save your files.")));
 		 (MWM_DECOR_TITLE | MWM_DECOR_BORDER));i++;
 	XtSetArg(uiArgs[i], XmNmwmInputMode, MWM_INPUT_SYSTEM_MODAL);i++;
 	XtSetValues(XtParent(smDD.deadWid), uiArgs, i);
-	
+
 	XtAddCallback (XtParent(smDD.deadWid),
 		       XmNpopupCallback, DialogUp, NULL);
 	XtUnmanageChild(XmMessageBoxGetChild(smDD.deadWid,
@@ -714,7 +714,7 @@ proceed to save your files.")));
  *  Inputs:
  *  ------
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -722,9 +722,9 @@ proceed to save your files.")));
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-static int 
+static int
 CompatModeExit( void )
 {
     int 	i;
@@ -733,7 +733,7 @@ CompatModeExit( void )
 
     if(smDD.compatExit == NULL)
     {
-	compatModeString = XmStringCreateLocalized(((char *)GETMESSAGE(18, 34, 
+	compatModeString = XmStringCreateLocalized(((char *)GETMESSAGE(18, 34,
 		"This session was started from an X Window System startup script.\n\n\
 No session information will be saved.\n\nUse the reset key sequence to log out.")));
 
@@ -761,7 +761,7 @@ No session information will be saved.\n\nUse the reset key sequence to log out."
 		 (MWM_DECOR_TITLE | MWM_DECOR_BORDER));i++;
     XtSetArg(uiArgs[i], XmNmwmInputMode, MWM_INPUT_SYSTEM_MODAL);i++;
 	XtSetValues(XtParent(smDD.compatExit), uiArgs, i);
-	
+
 	XtAddCallback (XtParent(smDD.compatExit),
 		       XmNpopupCallback, DialogUp, NULL);
 	XtUnmanageChild(XmMessageBoxGetChild(smDD.compatExit,
@@ -798,7 +798,7 @@ No session information will be saved.\n\nUse the reset key sequence to log out."
  *  Inputs:
  *  ------
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -806,9 +806,9 @@ No session information will be saved.\n\nUse the reset key sequence to log out."
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-Widget 
+Widget
 CreateLockDialogWithCover(
         Widget parent )
 {
@@ -848,7 +848,7 @@ CreateLockDialogWithCover(
     XtSetArg(uiArgs[i], XmNforeground, &fg); i++;
     XtSetArg(uiArgs[i], XmNbackground, &bg); i++;
     XtGetValues(tmpLock, uiArgs, i);
-     
+
     i = 0;
     XtSetArg(uiArgs[i], XmNfillMode, XmFILL_SELF); i++;
     XtSetArg(uiArgs[i], XmNbehavior, XmICON_LABEL); i++;
@@ -858,10 +858,10 @@ CreateLockDialogWithCover(
     XtSetArg(uiArgs[i], XmNshadowThickness, 0); i++;
     XtSetArg(uiArgs[i], XmNtraversalOn, False); i++;
     loginPic = _DtCreateIcon(picFrame, "lockLabelPixmap", uiArgs, i);
-     
+
     i = 0;
     XtSetArg(uiArgs[i], XmNshadowType, XmSHADOW_OUT); i++;
-    XtSetArg(uiArgs[i], XmNshadowThickness, 2); i++; 
+    XtSetArg(uiArgs[i], XmNshadowThickness, 2); i++;
     XtSetArg(uiArgs[i], XmNtopAttachment, XmATTACH_FORM); i++;
     XtSetArg(uiArgs[i], XmNtopOffset, 15); i++;
     XtSetArg(uiArgs[i], XmNbottomAttachment, XmATTACH_FORM); i++;
@@ -873,7 +873,7 @@ CreateLockDialogWithCover(
     XtSetArg(uiArgs[i], XmNrightOffset, 0); i++;
     loginFrame = XmCreateFrame(tmpLock, "loginFrame", uiArgs, i);
 
-    /* 
+    /*
      * create the login matte...
      */
     i = 0;
@@ -884,7 +884,7 @@ CreateLockDialogWithCover(
      *  create the login/password forms
      */
     i = 0;
-    XtSetArg(uiArgs[i], XmNshadowThickness, 0); i++; 
+    XtSetArg(uiArgs[i], XmNshadowThickness, 0); i++;
     XtSetArg(uiArgs[i], XmNrightAttachment, XmATTACH_FORM); i++;
     XtSetArg(uiArgs[i], XmNrightOffset, 15); i++;
     XtSetArg(uiArgs[i], XmNbottomAttachment, XmATTACH_POSITION); i++;
@@ -895,7 +895,7 @@ CreateLockDialogWithCover(
 
     i = 0;
     XtSetArg(uiArgs[i], XmNresizePolicy, XmRESIZE_NONE);i++;
-    XtSetArg(uiArgs[i], XmNshadowThickness, 0); i++; 
+    XtSetArg(uiArgs[i], XmNshadowThickness, 0); i++;
     XtSetArg(uiArgs[i], XmNtopAttachment, XmATTACH_POSITION); i++;
     XtSetArg(uiArgs[i], XmNtopPosition, 50); i++;
 	XtSetArg(uiArgs[i], XmNleftAttachment, XmATTACH_OPPOSITE_WIDGET); i++;
@@ -985,7 +985,7 @@ CreateLockDialogWithCover(
 					uiArgs, i);
     XtManageChild(smDD.indLabel[1]);
     XmStringFree(passwordString);
-    
+
     i = 0;
     XtSetArg(uiArgs[i], XmNhighlightColor,  &focus_color); i++;
     XtGetValues(indFrame, uiArgs, i);
@@ -1003,7 +1003,7 @@ CreateLockDialogWithCover(
     XtManageChild(loginPic);
     XtManageChild(picFrame);
     XtManageChild(loginFrame);
-	
+
     return(tmpLock);
 }
 
@@ -1022,7 +1022,7 @@ CreateLockDialogWithCover(
  *  Inputs:
  *  ------
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -1030,9 +1030,9 @@ CreateLockDialogWithCover(
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-Widget 
+Widget
 CreateCoverDialog(
         int screenNum,
         Boolean withLock )
@@ -1080,7 +1080,7 @@ CreateCoverDialog(
     }
 
     XtRealizeWidget(tmpCover);
-    
+
     return(tmpCover);
 }
 
@@ -1100,7 +1100,7 @@ CreateCoverDialog(
  *  Inputs:
  *  ------
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -1108,9 +1108,9 @@ CreateCoverDialog(
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-static void 
+static void
 ExitConfirmed(
         Widget w,
         XtPointer client_data,
@@ -1141,7 +1141,7 @@ ExitConfirmed(
  *  msg -- if non-zero, Session_Exit request to reply/fail && destroy
  *  doSave - if True, the session will be saved.
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -1149,9 +1149,9 @@ ExitConfirmed(
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-void 
+void
 ImmediateExit(
         int mode,
 	Tt_message msg,
@@ -1200,14 +1200,14 @@ ImmediateExit(
 
 	if (smGD.sessionType == CURRENT_SESSION ||
 	    smGD.sessionType == DEFAULT_SESSION)
-	    SaveState (False, DtSM_CURRENT_STATE, SmSaveLocal, True, 
+	    SaveState (False, DtSM_CURRENT_STATE, SmSaveLocal, True,
 		 DEFAULT_INTERACT_STYLE, DEFAULT_FAST, DEFAULT_GLOBAL);
-	else if (smGD.sessionType == HOME_SESSION && 
+	else if (smGD.sessionType == HOME_SESSION &&
 		 smSettings.startState == DtSM_CURRENT_STATE)
-	    SaveState (False, DtSM_HOME_STATE, SmSaveLocal, True, 
+	    SaveState (False, DtSM_HOME_STATE, SmSaveLocal, True,
 		 DEFAULT_INTERACT_STYLE, DEFAULT_FAST, DEFAULT_GLOBAL);
         else
-            SaveState (False, DtSM_HOME_STATE, SmSaveGlobal, True, 
+            SaveState (False, DtSM_HOME_STATE, SmSaveGlobal, True,
 		 DEFAULT_INTERACT_STYLE, DEFAULT_FAST, DEFAULT_GLOBAL);
 
 	/*
@@ -1225,10 +1225,10 @@ ImmediateExit(
 	smGD.ExitComplete = False;
 
         saveTimeout = False;
-	timerId = XtAppAddTimeOut (smGD.appCon, smRes.saveYourselfTimeout, 
+	timerId = XtAppAddTimeOut (smGD.appCon, smRes.saveYourselfTimeout,
 				   SaveTimeout, NULL);
 
-	while (smXSMP.saveState.saveComplete == False && 
+	while (smXSMP.saveState.saveComplete == False &&
 	       smXSMP.saveState.shutdownCanceled == False) {
 	    if (saveTimeout)
 		break;
@@ -1237,19 +1237,19 @@ ImmediateExit(
 		XtDispatchEvent(&next);
 	}
     }
-    
+
     /* JET - need this, since dtsession was exiting in the
      * XtAppNextEvent above (receiving it's own EXIT SM message) This
      * is checked in SmExit() so exit's will only occur after this
      * housekeeping has been completed.
      */
-    smGD.ExitComplete = True; 
+    smGD.ExitComplete = True;
 
     if (smXSMP.saveState.shutdownCanceled == False) {
-	/* 
+	/*
 	 * Run the user's exit script if there is one
 	 */
-	if (smGD.compatMode == False) 
+	if (smGD.compatMode == False)
 	{
 	    StartEtc(True);    /* run sessionexit */
 	}
@@ -1276,7 +1276,7 @@ ImmediateExit(
  *  client_data - tells which dialog to unmange (the query or confirm exit)
  *  msg -- if non-zero, Session_Exit request to reply/fail && destroy
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -1284,9 +1284,9 @@ ImmediateExit(
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-static void 
+static void
 ExitCancelled(
         Widget w,
         XtPointer client_data,
@@ -1326,7 +1326,7 @@ ExitCancelled(
  *  Inputs:
  *  ------
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None
@@ -1335,9 +1335,9 @@ ExitCancelled(
  *  Comments:
  *  --------
  *  This routine can be used for any generic SYSTEM_MODAL dialog
- * 
+ *
  *************************************<->***********************************/
-void 
+void
 DialogUp(
         Widget w,
         XtPointer client_data,
@@ -1355,12 +1355,12 @@ DialogUp(
     XtSetArg(uiArgs[i], XmNwidth, &width);i++;
     XtSetArg(uiArgs[i], XmNheight, &height);i++;
     XtGetValues(w, uiArgs, i);
-    
+
 				/* JET - get xinerama info */
 #ifdef USE_XINERAMA
                                 /* use the 'prefered' screen */
-    if (!_DtXineramaGetScreen(smGD.DtXineramaInfo, 
-                              smRes.xineramaPreferredScreen, 
+    if (!_DtXineramaGetScreen(smGD.DtXineramaInfo,
+                              smRes.xineramaPreferredScreen,
 			      &dpwidth, &dpheight, &xorg, &yorg))
       {                         /* no joy here either - setup for normal */
         dpwidth = DisplayWidth(smGD.display, smGD.screen);
@@ -1405,7 +1405,7 @@ DialogUp(
  *  ------
  *  flag = TRUE for Enter, FALSE for Leave.
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -1414,19 +1414,19 @@ DialogUp(
  *  Comments:
  *  --------
  *  Stolen from the window manager code.
- * 
+ *
  *************************************<->***********************************/
 
-void 
+void
 ShowWaitState(
         Boolean flag )
 {
     if (flag)
     {
-	XGrabPointer (smGD.display, DefaultRootWindow(smGD.display), FALSE, 
-		      0, GrabModeAsync, GrabModeAsync, None, 
+	XGrabPointer (smGD.display, DefaultRootWindow(smGD.display), FALSE,
+		      0, GrabModeAsync, GrabModeAsync, None,
 		      smGD.waitCursor, CurrentTime);
-	XGrabKeyboard (smGD.display, DefaultRootWindow(smGD.display), FALSE, 
+	XGrabKeyboard (smGD.display, DefaultRootWindow(smGD.display), FALSE,
 		       GrabModeAsync, GrabModeAsync, CurrentTime);
     }
     else
@@ -1456,9 +1456,9 @@ ShowWaitState(
  *  Comments:
  *  ---------
  *  This code was stolen from the window manager
- * 
+ *
  *************************************<->***********************************/
-Boolean 
+Boolean
 InitCursorInfo( void )
 {
     unsigned int cWidth;
@@ -1492,7 +1492,7 @@ InitCursorInfo( void )
  *  Inputs:
  *  ------
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -1500,20 +1500,20 @@ InitCursorInfo( void )
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-static void 
+static void
 LockDialogUp(
         Widget w,
         XtPointer client_data,
         XtPointer call_data )
 {
-    
+
     register int	i;
     Dimension	width, height;	/* size values returned by XtGetValues	   */
     Dimension	shadowThickness;/* size values returned by XtGetValues	   */
     unsigned int dpwidth, dpheight, xorg, yorg; /* JET - xinerama */
-    
+
     struct
     {			/* position, size of widgets (pixels)	   */
 	int x, y;
@@ -1525,12 +1525,12 @@ LockDialogUp(
     int		width1, width2; /* general width variable		   */
     int		x1, y1;		/* general position variables		   */
     int		index;
-    
+
 				/* JET - get xinerama info */
 #ifdef USE_XINERAMA
                                 /* use the prefered screen */
-    if (!_DtXineramaGetScreen(smGD.DtXineramaInfo, 
-                              smRes.xineramaPreferredScreen, 
+    if (!_DtXineramaGetScreen(smGD.DtXineramaInfo,
+                              smRes.xineramaPreferredScreen,
 			      &dpwidth, &dpheight, &xorg, &yorg))
       {                         /* no joy here either - setup for normal */
         dpwidth = DisplayWidth(smGD.display, smGD.screen);
@@ -1555,7 +1555,7 @@ LockDialogUp(
     {
 	index = 0;
     }
-    
+
     /*
      *  - center the main matte horizontally and vertically...
      */
@@ -1573,7 +1573,7 @@ LockDialogUp(
 
     if ( mw.x < 0 ) mw.x = 0;
     if ( mw.y < 0 ) mw.y = 0;
-    
+
 				/* adjust origins if using Xinerama */
     x1 = mw.x + xorg;
     y1 = mw.y + yorg;
@@ -1590,12 +1590,12 @@ LockDialogUp(
      */
     XtSetArg(uiArgs[0], XmNwidth,  &width);
     XtGetValues(smDD.loginMatte[index], uiArgs, 1);
-    width1 = (int)width;    
+    width1 = (int)width;
 
     XtSetArg(uiArgs[0], XmNwidth,  &width);
     XtGetValues(smDD.loginForm[index], uiArgs, 1);
     width2 = (int)width;
-    
+
     i = 0;
     XtSetArg(uiArgs[i], XmNleftAttachment, XmATTACH_FORM); i++;
     XtSetArg(uiArgs[i], XmNleftOffset, (width1 - width2) / 2); i++;
@@ -1619,7 +1619,7 @@ LockDialogUp(
  *  ------
  *  client_data - sends in the dialog to be dismissed.
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -1627,9 +1627,9 @@ LockDialogUp(
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-static void 
+static void
 SimpleOK(
         Widget w,
         XtPointer client_data,
@@ -1673,7 +1673,7 @@ SimpleOK(
  *  ------
  *  numChars = number of characters entered into the field
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -1681,9 +1681,9 @@ SimpleOK(
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-void 
+void
 UpdatePasswdField(
         int numChars )
 {
@@ -1726,7 +1726,7 @@ UpdatePasswdField(
     {
 	index = 0;
     }
-    
+
     i = 0;
     XtSetArg(uiArgs[i], XmNlabelString,	tmpString); i++;
     XtSetValues(smDD.indLabel[index], uiArgs, i);
@@ -1750,7 +1750,7 @@ UpdatePasswdField(
  *  Inputs:
  *  ------
  *
- * 
+ *
  *  Outputs:
  *  -------
  *  None.
@@ -1758,9 +1758,9 @@ UpdatePasswdField(
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
-int 
+int
 WarnNoStartup( void )
 {
     int 	i;
@@ -1824,7 +1824,7 @@ For additional information, see the CDE User's Guide.")));
  *
  *  Inputs:
  *  ------
- * 
+ *
  *  Outputs:
  *  -------
  *
@@ -1833,7 +1833,7 @@ For additional information, see the CDE User's Guide.")));
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
 Boolean
 ConfirmSessionCreation (
@@ -1877,7 +1877,7 @@ ConfirmSessionCreation (
 		SM_EXIT(1);
 	}
 
-	pch2 = strdup ((char *) GETMESSAGE(18, 52, 
+	pch2 = strdup ((char *) GETMESSAGE(18, 52,
 		"A display-specific '%s' session was selected\nfor display '%s' but one does not exist.\n\nIf you continue, a new display-specific session will\nbe created."));
 	if (!pch2) {
 		PrintError(DtError, smNLS.cantMallocErrorString);
@@ -1900,7 +1900,7 @@ ConfirmSessionCreation (
 	j = 0;
 	XtToolkitInitialize ();
 	smGD.appCon = XtCreateApplicationContext();
-	smGD.display = XtOpenDisplay(smGD.appCon, NULL, argv[0], 
+	smGD.display = XtOpenDisplay(smGD.appCon, NULL, argv[0],
 			SM_RESOURCE_CLASS, NULL, 0, &argc, argv);
 
 	XtSetArg(args[j], XmNbackground,
@@ -1944,7 +1944,7 @@ ConfirmSessionCreation (
 	smDD.confirmSession = XmCreateWarningDialog(
 			tmp_widget, "confirmDialog", uiArgs, i);
 
-	XtAddCallback (smDD.confirmSession, XmNokCallback, 
+	XtAddCallback (smDD.confirmSession, XmNokCallback,
 			ConfirmOKCB, NULL);
 
 	/*
@@ -1961,7 +1961,7 @@ ConfirmSessionCreation (
 
 	XtAddCallback (smDD.confirmSession, XmNcancelCallback,
 			ConfirmCancelCB, NULL);
-	
+
     	XtManageChild(smDD.confirmSession);
 
 	/*
@@ -1972,9 +1972,9 @@ ConfirmSessionCreation (
 	XtSetArg(uiArgs[i], XmNheight, &height); i++;
 	XtGetValues(smDD.confirmSession, uiArgs, i);
 
-	x = (DisplayWidth(smGD.display,  XDefaultScreen(smGD.display)) / 2) 
+	x = (DisplayWidth(smGD.display,  XDefaultScreen(smGD.display)) / 2)
 			- (width / 2);
-	y = (DisplayHeight(smGD.display, XDefaultScreen(smGD.display)) / 2) 
+	y = (DisplayHeight(smGD.display, XDefaultScreen(smGD.display)) / 2)
 			- (height / 2);
 
 	i = 0;
@@ -2014,7 +2014,7 @@ ConfirmSessionCreation (
  *  ConfirmOKCB ()
  *
  *************************************<->***********************************/
-static void 
+static void
 ConfirmOKCB(
         Widget 			w,
         XtPointer 		client_data,
@@ -2028,9 +2028,9 @@ ConfirmOKCB(
 /*************************************<->*************************************
  *
  *  ConfirmCancelCB ()
- * 
+ *
  *************************************<->***********************************/
-static void 
+static void
 ConfirmCancelCB(
         Widget 			w,
         XtPointer 		client_data,
@@ -2050,7 +2050,7 @@ ConfirmCancelCB(
  *
  *  Inputs:
  *  ------
- * 
+ *
  *  Outputs:
  *  -------
  *
@@ -2059,7 +2059,7 @@ ConfirmCancelCB(
  *
  *  Comments:
  *  --------
- * 
+ *
  *************************************<->***********************************/
 void
 PostXSMPFailureDialog (
@@ -2082,7 +2082,7 @@ PostXSMPFailureDialog (
 	XEvent		next;
         int             len;
 
-	pch1 = strdup ((char *) GETMESSAGE(40, 1, 
+	pch1 = strdup ((char *) GETMESSAGE(40, 1,
 		"A session cannot be started because of the\nfollowing error:"));
 	if (!pch1) {
 		PrintError(DtError, smNLS.cantMallocErrorString);
@@ -2120,14 +2120,14 @@ PostXSMPFailureDialog (
 		SM_EXIT(1);
 	}
 
-	pch3 = strdup ((char *) GETMESSAGE(18, 70, 
+	pch3 = strdup ((char *) GETMESSAGE(18, 70,
 		"See the following for more information:"));
 	if (!pch3) {
 		PrintError(DtError, smNLS.cantMallocErrorString);
 		SM_EXIT(1);
 	}
 
-	pch4 = strdup ((char *) GETMESSAGE(18, 71, 
+	pch4 = strdup ((char *) GETMESSAGE(18, 71,
 		"CDE Advanced Users and System's Administration Guide"));
 	if (!pch4) {
 		PrintError(DtError, smNLS.cantMallocErrorString);
@@ -2138,7 +2138,7 @@ PostXSMPFailureDialog (
 	strcpy (error_file, "");
 
         /* JET - VU#497553 */
-	if (check_errorlog) 
+	if (check_errorlog)
 	  {
 	    char		*home;
 
@@ -2151,13 +2151,13 @@ PostXSMPFailureDialog (
 		if (len > MAXPATHLEN)
 		  error_file = XtRealloc(error_file, len + 1);
 
-		sprintf (error_file, "%s/%s/%s", home, 
+		sprintf (error_file, "%s/%s/%s", home,
 			 DtPERSONAL_CONFIG_DIRECTORY,
 			 DtERRORLOG_FILE);
 	      }
 	  }
 
-	pch5 = XtMalloc (strlen (pch1) + strlen (pch2) + strlen (pch3) + strlen (pch4) + 
+	pch5 = XtMalloc (strlen (pch1) + strlen (pch2) + strlen (pch3) + strlen (pch4) +
 				strlen (error_file) + 15);
 	if (!pch5) {
 		PrintError(DtError, smNLS.cantMallocErrorString);
@@ -2172,13 +2172,13 @@ PostXSMPFailureDialog (
 	 * No top level widget has been created so must create one now.
 	 */
 	j = 0;
-	XtSetArg (args[j], XmNbackground, XBlackPixel(smGD.display, 
+	XtSetArg (args[j], XmNbackground, XBlackPixel(smGD.display,
 			XDefaultScreen(smGD.display))); j++;
 	XtSetArg (args[j], XmNmappedWhenManaged, False); j++;
 	XtSetArg (args[j], XmNwidth, 1); j++;
 	XtSetArg (args[j], XmNheight, 1); j++;
 
-        smGD.topLevelWid = XtAppCreateShell (SM_RESOURCE_NAME, 
+        smGD.topLevelWid = XtAppCreateShell (SM_RESOURCE_NAME,
 			SM_RESOURCE_CLASS, applicationShellWidgetClass,
 			smGD.display, args, j);
 
@@ -2210,7 +2210,7 @@ PostXSMPFailureDialog (
 	smDD.confirmSession = XmCreateWarningDialog(
 			smGD.topLevelWid, "confirmDialog", uiArgs, i);
 
-	XtAddCallback (smDD.confirmSession, XmNokCallback, 
+	XtAddCallback (smDD.confirmSession, XmNokCallback,
 			XSMPFailureOKCB, NULL);
 
 	/*
@@ -2237,9 +2237,9 @@ PostXSMPFailureDialog (
 	XtSetArg(uiArgs[i], XmNheight, &height); i++;
 	XtGetValues(smDD.confirmSession, uiArgs, i);
 
-	x = (DisplayWidth(smGD.display,  XDefaultScreen(smGD.display)) / 2) 
+	x = (DisplayWidth(smGD.display,  XDefaultScreen(smGD.display)) / 2)
 			- (width / 2);
-	y = (DisplayHeight(smGD.display, XDefaultScreen(smGD.display)) / 2) 
+	y = (DisplayHeight(smGD.display, XDefaultScreen(smGD.display)) / 2)
 			- (height / 2);
 
 	i = 0;
@@ -2266,7 +2266,7 @@ PostXSMPFailureDialog (
  *  XSMPFailureOKCB ()
  *
  *************************************<->***********************************/
-static void 
+static void
 XSMPFailureOKCB(
         Widget 			w,
         XtPointer 		client_data,
@@ -2290,12 +2290,12 @@ XSMPFailureOKCB(
  *
  *  Inputs:
  *  ------
- * 
+ *
  *  Outputs:
  *  -------
  *
  *************************************<->***********************************/
-void 
+void
 PostSaveSessionErrorDialog ( void )
 {
     int 	i;
@@ -2304,7 +2304,7 @@ PostSaveSessionErrorDialog ( void )
 
     if(smDD.saveSession == NULL)
     {
-	messageString = XmStringCreateLocalized (((char *) GETMESSAGE(18, 56, 
+	messageString = XmStringCreateLocalized (((char *) GETMESSAGE(18, 56,
 		"The session cannot be saved because the required\n\
 'save_type' parameter was not in the message.\n\n\
 The session will not be saved.")));
@@ -2321,7 +2321,7 @@ The session will not be saved.")));
 	XtSetArg (uiArgs[i], XmNhelpLabelString,  smDD.helpString); i++;
 	XtSetArg (uiArgs[i], XmNautoUnmanage,     False); i++;
 
-	smDD.saveSession = XmCreateErrorDialog(smGD.topLevelWid, 
+	smDD.saveSession = XmCreateErrorDialog(smGD.topLevelWid,
 			"sessionSaveDialog", uiArgs, i);
 
 	i = 0;
@@ -2332,7 +2332,7 @@ The session will not be saved.")));
 	XtSetArg (uiArgs[i], XmNmwmInputMode,     MWM_INPUT_SYSTEM_MODAL);i++;
 
 	XtSetValues(XtParent(smDD.saveSession), uiArgs, i);
-	
+
 	XtAddCallback (XtParent(smDD.saveSession),
 		       XmNpopupCallback, DialogUp, NULL);
 
@@ -2362,7 +2362,7 @@ The session will not be saved.")));
  *
  *  Inputs:
  *  ------
- * 
+ *
  *  Outputs: 	void
  *  -------
  *
@@ -2386,14 +2386,14 @@ PostReasonsDialog (
 	int			len;
 	XEvent			next;
 
-	str1 = strdup ((char *) GETMESSAGE(40, 28, 
+	str1 = strdup ((char *) GETMESSAGE(40, 28,
 		"Application '%s'\nexited for the following reason:\n\n%s"));
 	if (!str1) {
 		PrintError(DtError, smNLS.cantMallocErrorString);
 		SM_EXIT(1);
 	}
 
-	for (i = 0, len = 0; i < numMsgs; i++) 
+	for (i = 0, len = 0; i < numMsgs; i++)
 		len += strlen (message[i]);
 
 	str2 = XtMalloc (len + (numMsgs * 3) + 1);
@@ -2417,7 +2417,7 @@ PostReasonsDialog (
 	DtMsgLogMessage (smGD.programName, DtMsgLogWarning, str3);
 
 	free (str1);
-	str1 = strdup ((char *) GETMESSAGE(40, 29, 
+	str1 = strdup ((char *) GETMESSAGE(40, 29,
 		"Application Close Reasons"));
 	if (!str1) {
 		PrintError(DtError, smNLS.cantMallocErrorString);
@@ -2444,7 +2444,7 @@ PostReasonsDialog (
 	XtSetArg (uiArgs[i], XmNhelpLabelString, helpString); i++;
 	XtSetArg (uiArgs[i], XmNautoUnmanage, False); i++;
 
-	smDD.clientReasons = XmCreateWarningDialog(smGD.topLevelWid, 
+	smDD.clientReasons = XmCreateWarningDialog(smGD.topLevelWid,
 		"clientReasons", uiArgs, i);
 
 	i = 0;
@@ -2454,7 +2454,7 @@ PostReasonsDialog (
 		 (MWM_DECOR_TITLE | MWM_DECOR_BORDER));i++;
 	XtSetArg(uiArgs[i], XmNmwmInputMode, MWM_INPUT_SYSTEM_MODAL);i++;
 	XtSetValues(XtParent(smDD.clientReasons), uiArgs, i);
-	
+
 	XtAddCallback (XtParent(smDD.clientReasons),
 		       XmNpopupCallback, DialogUp, NULL);
 
@@ -2470,8 +2470,8 @@ PostReasonsDialog (
 	XtAddCallback (smDD.clientReasons, XmNhelpCallback,
 		       TopicHelpRequested, HELP_APP_CLOSE_REASONS_STR);
 #endif
-	free (str1); 
-	XtFree (str2); 
+	free (str1);
+	XtFree (str2);
 	XtFree (str3);
 	XmStringFree (msgString);
 	XmStringFree (okString);
@@ -2520,7 +2520,7 @@ SaveTimeout (
 	saveTimeout = True;
 
 	if (smXSMP.saveState.shutdownCanceled == False) {
-		/* 
+		/*
 		 * Run the user's exit script if there is one
 		 */
 		if (smGD.compatMode == False)
