@@ -626,7 +626,7 @@ callCancels( void )
 	 XtCallCallbacks(style.startupDialog, XmNcallback, &CancelBut);
      }
 
-     if (dialogStates) 
+     if (dialogStates[0])
        _DtAddToResource(style.display, dialogStates);
 
      calledAlready = True;

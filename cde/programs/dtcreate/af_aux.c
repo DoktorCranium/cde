@@ -220,7 +220,7 @@ void getAF_Icons(FiletypeData *pFiletypedata)
   /***************************************************************/
   pIconData = GetIconDataFromWid(AF_MED_IconGadget);
   if ( (pIconData->pmDirtyBit) &&
-       (pIconData->pmFileName) &&
+       (pIconData->pmFileName[0]) &&
        (strlen(pIconData->pmFileName)) ) {
      pFiletypedata->pszMedPmIcon = XtMalloc(strlen(pIconData->pmFileName) + 1);
      if (pFiletypedata->pszMedPmIcon) {
@@ -234,7 +234,7 @@ void getAF_Icons(FiletypeData *pFiletypedata)
   /* Medium Bitmap                                               */
   /***************************************************************/
   if ( (pIconData->bmDirtyBit) &&
-       (pIconData->bmFileName) &&
+       (pIconData->bmFileName[0]) &&
        (strlen(pIconData->bmFileName)) ) {
      pFiletypedata->pszMedBmIcon = XtMalloc(strlen(pIconData->bmFileName) + 1);
      if (pFiletypedata->pszMedBmIcon) {
@@ -249,7 +249,7 @@ void getAF_Icons(FiletypeData *pFiletypedata)
   /***************************************************************/
   pIconData = GetIconDataFromWid(AF_TINY_IconGadget);
   if ( (pIconData->pmDirtyBit) &&
-       (pIconData->pmFileName) &&
+       (pIconData->pmFileName[0]) &&
        (strlen(pIconData->pmFileName)) ) {
      pFiletypedata->pszTinyPmIcon = XtMalloc(strlen(pIconData->pmFileName) + 1);
      if (pFiletypedata->pszTinyPmIcon) {

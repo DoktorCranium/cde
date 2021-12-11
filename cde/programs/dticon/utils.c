@@ -2505,7 +2505,7 @@ ChangeTitle(void)
         sprintf(dialogTitle, "%s - ", name);
     }
 
-    if (last_fname && *last_fname)
+    if (*last_fname)
     {
         if (name = strrchr(last_fname, '/'))
             name++;
