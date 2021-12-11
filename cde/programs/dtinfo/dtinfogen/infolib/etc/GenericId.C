@@ -29,7 +29,7 @@
 #include "Dispatch.h"
 #include "SGMLName.h"
 #include "OLAF.h"
-#include "OL-Data.h"
+#include "OL_Data.h"
 #include "Token.h"
 
 #ifdef FISH_DEBUG

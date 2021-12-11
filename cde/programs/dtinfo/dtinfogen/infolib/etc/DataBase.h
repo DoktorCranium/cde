@@ -25,7 +25,7 @@
 #ifndef __DataBase_h
 #define __DataBase_h
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 #include "object/c_codes.h" /* mmdb codes */
 #include "oliasdb/olias_consts.h"
 #include <errno.h>

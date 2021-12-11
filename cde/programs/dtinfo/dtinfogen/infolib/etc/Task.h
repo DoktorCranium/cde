@@ -27,7 +27,7 @@
 
 #include <stddef.h>
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 
 class Unexpected : public Exception{
 public:

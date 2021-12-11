@@ -28,7 +28,7 @@
 #include <sstream>
 using namespace std;
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 #include "DataBase.h"
 #include "BookCaseDB.h"
 #include "Task.h"

@@ -36,7 +36,7 @@
 #include <string.h>
 #include <strings.h>
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 #include "FlexBuffer.h"
 #include "oliasdb/mmdb.h"
 #include "oliasdb/asciiIn_filters.h"

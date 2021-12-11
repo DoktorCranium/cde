@@ -163,12 +163,12 @@ void TestTask::data(const char *data, size_t)
 }
 
 /*
- * TestTask 2 is for OL-Data testing
+ * TestTask 2 is for OL_Data testing
  */
 
 #include <stdio.h>
 #include "OLAF.h"
-#include "OL-Data.h"
+#include "OL_Data.h"
 TestTask2::TestTask2()
 {
   f_base = -1;

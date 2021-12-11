@@ -27,7 +27,7 @@
 
 /* imported interfaces */
 #include "Dispatch.h"
-#include "OL-Data.h"
+#include "OL_Data.h"
 #include "Token.h"
 #include "SGMLName.h"
 

@@ -25,7 +25,7 @@
 #include <stdio.h>
 
 #include "dti_cc/CC_Stack.h"
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 #include "DataBase.h"
 
 #include "Dispatch.h"
