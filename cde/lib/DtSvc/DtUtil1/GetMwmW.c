@@ -149,7 +149,7 @@ _GetMwmWindow(
 		}
 	    }
 
-	    if (rcode == Success);
+	    if (rcode == Success)
 	    {
 		*pMwmWindow = pWmInfo->wmWindow;
 	    }

@@ -705,9 +705,10 @@ ScanNLSDir(char *dirname)
               continue;
 
 	    if (locale[0] != '.' &&
-                LANGLISTSIZE > (int) (strlen(languageList)+strlen(locale)+2));
+                LANGLISTSIZE > (int) (strlen(languageList)+strlen(locale)+2))
 	    {
-		(void) sprintf(locale_path, "%s/%s", dirname, locale);
+		(void) snprintf(locale_path, MAXPATHLEN, "%s/%s",
+                                dirname, locale);
 	        retval = stat(locale_path, &locale_stat);
 
 	    	if (0 == retval && S_ISDIR(locale_stat.st_mode))

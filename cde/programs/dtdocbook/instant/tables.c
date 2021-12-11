@@ -768,7 +768,8 @@ TblTableRowEnd(
     if ((at = FindAttValByName(e, "ROWSEP"))) {
 	if (at[0] == '1') fprintf(fp, "_\n");
     }
-    else if (rowsep) /* fprintf(fp, "_\n") */ ;
+    else if (rowsep) /* fprintf(fp, "_\n") */
+        ;
 }
 
 /*

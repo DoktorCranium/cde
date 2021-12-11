@@ -573,7 +573,8 @@ _DtPrintGetDefaultXPrinterName(
     else if((default_printer = getenv("XPRINTER")) != (String)NULL);
     else if((default_printer = getenv("PDPRINTER")) != (String)NULL);
     else if((default_printer = getenv("LPDEST")) != (String)NULL);
-    else if((default_printer = getenv("PRINTER")) != (String)NULL);
+    else if((default_printer = getenv("PRINTER")) != (String)NULL)
+        ;
     /*
      * return a copy of the printer name
      */

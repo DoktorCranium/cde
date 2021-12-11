@@ -2634,11 +2634,11 @@ propP_popup_message(
 	/*
 	 * Free help data strings
 	 */
-	if (help_data.help_text);
+	if (help_data.help_text)
 	    XtFree(help_data.help_text);
-	if (help_data.help_volume);
+	if (help_data.help_volume)
 	    XtFree(help_data.help_volume);
-	if (help_data.help_locationID);
+	if (help_data.help_locationID)
 	    XtFree(help_data.help_locationID);
     }
     else

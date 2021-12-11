@@ -280,7 +280,7 @@ PrintSetupDestroy(PrintSetup *pSetup)
 
     if (pSetup->docName)
       free(pSetup->docName);
-    if (pSetup->dtprintSetup);
+    if (pSetup->dtprintSetup)
       _psReleasePrintSetupDialog(pSetup);
     XtFree((char*) pSetup);
 }
