@@ -984,9 +984,9 @@ MIMEBodyPart::parameterValue(
           vtok++;
 
         if (isCaseSensitive)
-          rtn = strncmp(vtok, parameter, sizeof(parameter));
+            rtn = strncmp(vtok, parameter, strlen(vtok));
         else
-          rtn = strncasecmp(vtok, parameter, sizeof(parameter));
+            rtn = strncasecmp(vtok, parameter, strlen(vtok));
 
         if (0 == rtn)
         {
