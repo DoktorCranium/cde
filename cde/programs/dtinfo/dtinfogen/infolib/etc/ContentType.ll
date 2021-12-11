@@ -13,7 +13,7 @@ using namespace std;
 #include <stdlib.h>
 #include <assert.h>
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 
 #include "Task.h"
 #include "SGMLName.h"
@@ -24,7 +24,7 @@ using namespace std;
 #include "api/utility.h"
 
 /* CurrentContentPtr is used as the communication media between
- * yyparse and ContentType::Parse()
+ * ol_dataparse and ContentType::Parse()
  */
 
 ContentType *CurrentContentPtr;
@@ -33,7 +33,7 @@ ContentType *CurrentContentPtr;
  * Forward declaration for my_input
  */
 static int my_input ( char *, int );
-extern       int yyparse();
+extern       int ol_dataparse();
 
   
 #undef YY_INPUT
@@ -57,7 +57,7 @@ static int dbgLevel = -1;
 %%
 
 "@"[a-zA-Z0-9]+                 {
-                                  yylval.name = SGMLName::intern((const char *)yytext+1 ,1); 
+                                  ol_datalval.name = SGMLName::intern((const char *)yytext+1 ,1); 
 				  return( Reference );
 				}
 ["][^"]*["]                     {
@@ -70,14 +70,14 @@ static int dbgLevel = -1;
                                                len );
 
                                      *(lit_str + len) = '\0';
-                                     yylval.string = lit_str;
+                                     ol_datalval.string = lit_str;
                                   }
                                   else {
-                                     yylval.string = 0;
+                                     ol_datalval.string = 0;
                                   }
 
                                   DBG(50) cerr << "(DEBUG) literal \"string\" = "
-                                               << yylval.string << endl;
+                                               << ol_datalval.string << endl;
 
                                   return( Literal );
                                 }
@@ -91,15 +91,15 @@ static int dbgLevel = -1;
                                                len );
 
                                      *(lit_str + len) = '\0';
-                                     yylval.string = lit_str;
+                                     ol_datalval.string = lit_str;
                                      
                                   }
                                   else {
-                                     yylval.string = 0;
+                                     ol_datalval.string = 0;
                                   }
 
 	                          DBG(50) cerr << "(DEBUG) literal 'string' = "
-	                                       << yylval.string << endl;
+	                                       << ol_datalval.string << endl;
 	 
                                   return( Literal );
                                 }
@@ -109,9 +109,9 @@ static int dbgLevel = -1;
 [Ff][Ii][Rr][Ss][Tt][Oo][Ff]    { return( FirstOf);    }
 "#"[Cc][Oo][Nn][Tt][Ee][Nn][Tt] { return( Content );   }
 [^(,)\n\t ]+                    {
-                                  yylval.name = SGMLName::intern((const char *)yytext,1);
+                                  ol_datalval.name = SGMLName::intern((const char *)yytext,1);
 				  DBG(10) cerr << "(DEBUG) matches"
-				               << (char *)SGMLName::lookup(yylval.name)
+				               << (char *)SGMLName::lookup(ol_datalval.name)
 					       << endl;
 				  return ( Id );
 				}
@@ -184,7 +184,7 @@ ContentType::Parse( char *str )
 
   CurrentContentPtr = this;
   
-  yyparse();
+  ol_dataparse();
   
   BEGIN INITIAL;
   yyrestart(NULL);
