@@ -141,7 +141,7 @@ ClosestTick(
 	 * to see if the duration needs to be updated.
 	 */
 	if (re->re_duration == RE_NOTSET)
-		(*res)->res_duration == RE_NOTSET;
+		(*res)->res_duration = RE_NOTSET;
 
 	return closest_tick;
 }

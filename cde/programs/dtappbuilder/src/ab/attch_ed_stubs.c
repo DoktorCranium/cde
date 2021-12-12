@@ -1771,7 +1771,7 @@ populate_obj_menu(
      * Set the label of the menu items to be the names of the ABObj's
      */
     for (i = 0, trav_open(&trav, parent, AB_TRAV_SALIENT_CHILDREN); 
-	i < num_items_needed, (cur_obj = trav_next(&trav)) != NULL; )
+	i < num_items_needed && (cur_obj = trav_next(&trav)) != NULL; )
     {
 	char	*label;
 
