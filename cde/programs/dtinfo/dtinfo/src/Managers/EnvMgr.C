@@ -47,7 +47,7 @@
 using namespace std;
 #include <sys/stat.h>
 
-#include <lib/DtSvc/DtUtil2/LocaleXlate.h>
+#include <Dt/LocaleXlate.h>
 
 // xList, NodeViewInfo, NodeWindowAgent & NodeMgr used only for
 // getting sections from NodeMgr

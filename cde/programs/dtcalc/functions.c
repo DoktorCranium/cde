@@ -539,8 +539,9 @@ do_calc(void)      /* Perform arithmetic calculation and display result. */
       mpcdm(&dres, v->MPresult) ;
     }
 
-  else if (IS_KEY(v->cur_op, KEY_EQ)) /* do nothing. */ ;   /* Equals */
-
+  else if (IS_KEY(v->cur_op, KEY_EQ))                  /* Equals */
+      ; /* do nothing. */
+  
   show_display(v->MPresult) ;
 
   if (!(IS_KEY(v->current, KEY_EQ) && IS_KEY(v->old_cal_value, KEY_EQ)))

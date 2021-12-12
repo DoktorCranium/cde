@@ -121,7 +121,7 @@ int dbn  /* Database number */
       goto quit;
 
    /* ensure record not already connected to set */
-   if ( ! crmp.owner == NULL_DBA ) { 
+   if ( ! (crmp.owner == NULL_DBA) ) { 
       stat = dberr(S_ISOWNED);
       goto quit;
    }

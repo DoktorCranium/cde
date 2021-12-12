@@ -789,8 +789,9 @@ DtMailServer::retrieve_messages(DtMailEnv &error)
 	if (ok != DTME_MailServerAccess_SocketIOError)
 	  if (ok == DTME_NoError)
 	    ok = ptrans_quit();
-	  else
+	  else {
 	    (void) ptrans_quit();
+          }
 	vtalarm_setitimer(0);
 	SockClose(_sockfp);
 	_sockfp = NULL;

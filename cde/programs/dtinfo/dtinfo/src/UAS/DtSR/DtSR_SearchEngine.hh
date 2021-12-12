@@ -31,7 +31,7 @@
 #include "UAS_SearchEngine.hh"
 
 extern "C" {
-#include "Search.h"
+#include "Dt/Search.h"
 }
 
 #include "DtSR_Parser.hh"

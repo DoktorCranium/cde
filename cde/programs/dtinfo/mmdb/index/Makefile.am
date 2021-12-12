@@ -1,17 +1,20 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libindex.a
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/index
+BUILT_SOURCES = btree_index.C dyn_disk_index.C dyn_index.C		\
+		      dyn_memory_index.C fast_mphf.C hash.C index.C	\
+		      inv_lists.C mphf_index.C
 
-libindex_a_CXXFLAGS = -DPORTABLE_DB -I../../DtMmdb -I../../DtMmdb/dti_excs
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
 
-libindex_a_SOURCES = ../../DtMmdb/index/btree_index.C \
-		      ../../DtMmdb/index/dyn_disk_index.C \
-		      ../../DtMmdb/index/dyn_index.C \
-		      ../../DtMmdb/index/dyn_memory_index.C \
-		      ../../DtMmdb/index/fast_mphf.C \
-		      ../../DtMmdb/index/hash.C \
-		      ../../DtMmdb/index/index.C \
-		      ../../DtMmdb/index/inv_lists.C \
-		      ../../DtMmdb/index/mphf_index.C
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libindex.la
+
+libindex_la_CXXFLAGS = $(DTINFO_DEFINES) -DPORTABLE_DB -I../../DtMmdb -I../../DtMmdb/dti_excs \
+			-I$(BASE)
+
+libindex_la_SOURCES = $(BUILT_SOURCES)

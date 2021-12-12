@@ -1,19 +1,20 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libschema.a
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/schema
+BUILT_SOURCES = desc.C store_desc.C object_dict.C			\
+		       stored_object_desc.C index_desc.C inv_desc.C	\
+		       agent_desc.C container_desc.C sheet.C token.C
 
-libschema_a_CXXFLAGS = -DPORTABLE_DB -I../../DtMmdb -I../../DtMmdb/dti_excs \
-			-I../../DtMmdb/misc
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
 
-libschema_a_SOURCES = ../../DtMmdb/schema/desc.C \
-		       ../../DtMmdb/schema/store_desc.C \
-		       ../../DtMmdb/schema/object_dict.C \
-		       ../../DtMmdb/schema/stored_object_desc.C \
-		       ../../DtMmdb/schema/index_desc.C \
-		       ../../DtMmdb/schema/inv_desc.C \
-		       ../../DtMmdb/schema/agent_desc.C \
-		       ../../DtMmdb/schema/container_desc.C \
-		       ../../DtMmdb/schema/sheet.C \
-		       ../../DtMmdb/schema/token.C
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libschema.la
+
+libschema_la_CXXFLAGS = $(DTINFO_DEFINES) -DPORTABLE_DB -I../../DtMmdb -I../../DtMmdb/dti_excs \
+			-I../../DtMmdb/misc -I$(BASE)
+
+libschema_la_SOURCES = $(BUILT_SOURCES)

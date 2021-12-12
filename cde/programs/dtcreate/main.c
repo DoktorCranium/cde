@@ -634,7 +634,7 @@ void RemoveTmpIconFiles( void )
 
   for (i=0; i < ICON_NUMBER; i++) {
      if ( (IconDataList[i]->pmDirtyBit) &&
-          (IconDataList[i]->pmFileName) &&
+          (IconDataList[i]->pmFileName[0]) &&
           (strlen(IconDataList[i]->pmFileName)) ) {
 #ifdef DEBUG
         printf("RemoveTmpIconFiles: unlink '%s'\n", IconDataList[i]->pmFileName);  /* debug */

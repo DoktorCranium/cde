@@ -1,31 +1,20 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libutility.a
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/utility
+BUILT_SOURCES = atoi_fast.C atoi_larson.C atoi_pearson.C		\
+	atomic_lock.C buffer.C filter.C funcs.C mmdb_exception.C	\
+	ostring.C pm_random.C randomize.C rw_lock.C xtime.C
 
-libutility_a_CXXFLAGS = -DPORTABLE_DB -I../../DtMmdb -I../../DtMmdb/dti_excs \
-			 -I../../DtMmdb/misc
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
 
-libutility_a_SOURCES = ../../DtMmdb/utility/funcs.C \
-			../../DtMmdb/utility/ostring.C \
-		  	../../DtMmdb/utility/pm_random.C \
-			../../DtMmdb/utility/atoi_pearson.C \
-			../../DtMmdb/utility/xtime.C \
-			../../DtMmdb/utility/buffer.C \
-		        ../../DtMmdb/utility/atoi_larson.C \
-		      	../../DtMmdb/utility/atomic_lock.C \
-			../../DtMmdb/utility/rw_lock.C \
-		        ../../DtMmdb/utility/atoi_fast.C \
-		    	../../DtMmdb/utility/filter.C \
-		 	../../DtMmdb/utility/mmdb_exception.C \
-			../../DtMmdb/utility/randomize.C \
-			../../DtMmdb/utility/streambuf.C \
-		    	../../DtMmdb/utility/charbuf.C \
-		        ../../DtMmdb/utility/filebuf.C \
-		  	../../DtMmdb/utility/string.C \
-			../../DtMmdb/utility/stringstream.C \
-			../../DtMmdb/utility/iostream.C \
-		   	../../DtMmdb/utility/fstream.C \
-		  	../../DtMmdb/utility/stream.C \
-			../../DtMmdb/utility/ios.C
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libutility.la
+
+libutility_la_CXXFLAGS = $(DTINFO_DEFINES) -DPORTABLE_DB		\
+	-I../../DtMmdb -I../../DtMmdb/dti_excs -I../../DtMmdb/misc -I$(BASE)
+
+libutility_la_SOURCES = $(BUILT_SOURCES)

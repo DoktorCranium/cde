@@ -1,26 +1,19 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libdti_excs.a
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/dti_excs
+BUILT_SOURCES = Jump_Environment.C Exceptions.C Exception.C	\
+			 Destructable.C terminate.C
 
-libdti_excs_a_CXXFLAGS = -DCC_VERSION=30 -DCHECK_INITIALIZED \
-			 -I../../DtMmdb/dti_excs
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
 
-if SOLARIS
-libdti_excs_a_CXXFLAGS += -DHAS_TERMINATE
-endif
+CLEANFILES = $(BUILT_SOURCES)
 
-if LINUX
-libdti_excs_a_CXXFLAGS += -DNATIVE_EXCEPTIONS
-endif
+noinst_LTLIBRARIES = libdti_excs.la
 
-if BSD
-libdti_excs_a_CXXFLAGS += -DNATIVE_EXCEPTIONS
-endif
+libdti_excs_la_CXXFLAGS = $(DTINFO_DEFINES) -DCC_VERSION=30 -DCHECK_INITIALIZED \
+			 -I../../DtMmdb/dti_excs -I$(BASE)
 
-libdti_excs_a_SOURCES = ../../DtMmdb/dti_excs/Jump_Environment.C \
-		    	 ../../DtMmdb/dti_excs/Exceptions.C \
-		      	 ../../DtMmdb/dti_excs/Exception.C \
-			 ../../DtMmdb/dti_excs/Destructable.C \
-			 ../../DtMmdb/dti_excs/terminate.C
+libdti_excs_la_SOURCES = $(BUILT_SOURCES)

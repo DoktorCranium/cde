@@ -1,19 +1,17 @@
 # process the message files...
 
-# NOTYET dtinfo.cat dtinfo_start.cat
-
 # BROKEN (always has been): fmt_tbl.cat
 
-BUILT_SOURCES = Xm.cat Mrm.cat Uil.cat DtHelp.cat 		\
-      DtMail.cat DtPrint.cat DtWidget.cat MotifApp.cat			\
-      SUNW_TOOLTALK.cat dt.cat dtact.cat dtbuilder.cat dtcalc.cat	\
-      dtcm.cat dtcodegen.cat dtconfig.cat dtcopy.cat dtcreate.cat	\
-      dtfile.cat dthello.cat dthelpgen.cat dthelpprint.cat dticon.cat	\
-      dtimsstart.cat dtksh.cat		\
-      dtlogin.cat dtlp.cat dtmailopts.cat dtpad.cat dtpdm.cat		\
-      dtpdmd.cat dtprintinfo.cat dtscreen.cat dtsearch.cat		\
+BUILT_SOURCES = Xm.cat Mrm.cat Uil.cat DtHelp.cat DtMail.cat		\
+      DtPrint.cat DtWidget.cat MotifApp.cat SUNW_TOOLTALK.cat dt.cat	\
+      dtact.cat dtbuilder.cat dtcalc.cat dtcm.cat dtcodegen.cat		\
+      dtconfig.cat dtcopy.cat dtcreate.cat dtfile.cat dthello.cat	\
+      dthelpgen.cat dthelpprint.cat dticon.cat dtimsstart.cat		\
+      dtksh.cat dtlogin.cat dtlp.cat dtmailopts.cat dtpad.cat		\
+      dtpdm.cat dtpdmd.cat dtprintinfo.cat dtscreen.cat dtsearch.cat	\
       dtsession.cat dtstyle.cat dtterm.cat dttypes.cat dtwm.cat		\
-      dtudcexch.cat dtudcfonted.cat libdtcm.cat libDtMail.cat
+      dtudcexch.cat dtudcfonted.cat libdtcm.cat libDtMail.cat		\
+      dtinfo.cat dtinfo_start.cat
 
 CLEANFILES = $(BUILT_SOURCES)
 

@@ -57,8 +57,9 @@ using namespace std;
 #include "oliasdb/mmdb.h"
 #include "oliasdb/asciiIn_filters.h"
 
+// JET - don't need this - it (exit()) is defined in stdlib.h
 // DDK header file
-#include "olGlobal.h"
+// #include "olGlobal.h"
 
 // Debuggging macro
 int dbgLevel;

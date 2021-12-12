@@ -3670,7 +3670,7 @@ attch_ed_verify_props(void)
      * Get parent of current object
      */
     parent = obj_get_parent(ats->cur_object);
-    if (parent);
+    if (parent)
         parent = obj_get_root(parent);
 
     /*

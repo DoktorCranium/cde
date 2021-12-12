@@ -700,7 +700,7 @@ void SetIconData(Widget wid, char *pszIconFile, enum icon_size_range enumIconSiz
   pIconData = GetIconDataFromWid(wid);
   if (pIconData) {
      if ( (pIconData->pmDirtyBit) &&
-          (pIconData->pmFileName) &&
+          (pIconData->pmFileName[0]) &&
           (strlen(pIconData->pmFileName)) ) {
 #ifdef DEBUG
         printf("SetIconData: unlink '%s'\n", pIconData->pmFileName);  /* debug */

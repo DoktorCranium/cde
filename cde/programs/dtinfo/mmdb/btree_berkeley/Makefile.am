@@ -1,34 +1,35 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libbtree_berkeley.a
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/btree_berkeley
+BUILT_SOURCES = bt_close.c bt_conv.c bt_debug.c bt_delete.c bt_get.c	\
+				bt_open.c bt_overflow.c bt_page.c	\
+				bt_put.c bt_search.c bt_seq.c		\
+				bt_split.c bt_stack.c bt_utils.c	\
+				\
+				mktemp.c realloc.c snprintf.c \
+				\
+				mpool.c \
+				\
+				db.c
 
-libbtree_berkeley_a_CFLAGS = -DMEMMOVE -I../../DtMmdb \
-			     -I../../DtMmdb/btree_berkeley
-
-libbtree_berkeley_a_SOURCES =  ../../DtMmdb/btree_berkeley/bt_close.c \
-				../../DtMmdb/btree_berkeley/bt_conv.c \
-				../../DtMmdb/btree_berkeley/bt_debug.c \
-				../../DtMmdb/btree_berkeley/bt_delete.c \
-				../../DtMmdb/btree_berkeley/bt_get.c \
-				../../DtMmdb/btree_berkeley/bt_open.c \
-				../../DtMmdb/btree_berkeley/bt_overflow.c \
-				../../DtMmdb/btree_berkeley/bt_page.c \
-				../../DtMmdb/btree_berkeley/bt_put.c \
-				../../DtMmdb/btree_berkeley/bt_search.c \
-				../../DtMmdb/btree_berkeley/bt_seq.c \
-				../../DtMmdb/btree_berkeley/bt_split.c \
-				../../DtMmdb/btree_berkeley/bt_stack.c \
-				../../DtMmdb/btree_berkeley/bt_utils.c \
-				../../DtMmdb/btree_berkeley/mktemp.c \
-				../../DtMmdb/btree_berkeley/realloc.c \
-				../../DtMmdb/btree_berkeley/snprintf.c \
-				../../DtMmdb/btree_berkeley/mpool.c \
-				../../DtMmdb/btree_berkeley/db.c
-
-if AIX
-else
-libbtree_berkeley_a_SOURCES += ../../DtMmdb/btree_berkeley/memmove.c
+if LINUX
+BUILT_SOURCES += memmove.c
 endif
 
+if BSD
+BUILT_SOURCES += memmove.c
+endif
+
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
+
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libbtree_berkeley.la
+
+libbtree_berkeley_la_CFLAGS = $(DTINFO_DEFINES) -DMEMMOVE -I../../DtMmdb	\
+                              -I../../DtMmdb/btree_berkeley -I$(BASE)
+
+libbtree_berkeley_la_SOURCES = $(BUILT_SOURCES)

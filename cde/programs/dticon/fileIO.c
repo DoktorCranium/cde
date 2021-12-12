@@ -221,10 +221,13 @@ Boolean
 Read_File(
         char *fnameIn )
 {
-  char *base_name, *suffix, fname[MAXPATHLEN+1], *tmp, *tmp2;
-  unsigned int mask_width_ret, mask_height_ret;
-  int mask_x_hot, mask_y_hot, first;
-  struct stat statBuf;
+  char *base_name = NULL, *suffix = NULL,
+      fname[MAXPATHLEN], *tmp = NULL, *tmp2 = NULL;
+  unsigned int mask_width_ret = 0, mask_height_ret = 0;
+  int mask_x_hot = 0, mask_y_hot = 0, first = 0;
+  struct stat statBuf = {};
+
+  fname[0] = 0;
 
 #ifdef DEBUG
   if (debug)
@@ -241,7 +244,7 @@ Read_File(
   if (tmp && tmp2 && (tmp2 == tmp+1))
   {
     char	*netfile, *localfile;
-    
+
     tmp[0] = '\0';
     netfile = tt_host_file_netfile(fnameIn, tmp+1);
     localfile = tt_netfile_file(netfile);
@@ -259,7 +262,7 @@ Read_File(
 
   /*** - if we got a NULL base_name, return FALSE             ***/
   base_name = strrchr(fname, '/');
-  if (fname)
+  if (fname[0])
     base_name = (base_name ? base_name + 1 : fname);
   if (!base_name)
     return (False);
@@ -491,7 +494,7 @@ Write_File(
 
 
   base_name = strrchr(fname, '/');
-  if (fname) {
+  if (fname[0]) {
     base_name = (base_name ? base_name + 1 : fname);
   }
 
@@ -735,7 +738,7 @@ Display_XPMFile(
     reset_debug = True;
    }
 #endif
-  PixelTableClear;  /* force new pixel table now */
+  PixelTableClear();  /* force new pixel table now */
   for (i=0; i<width; i++)
     for (j=0; j<height; j++) {
       converted = False;

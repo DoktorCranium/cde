@@ -1,13 +1,13 @@
-/* $XConsortium: Classlist.mk /main/5 1996/10/30 14:44:59 drk $ */
+# $XConsortium: Classlist.mk /main/5 1996/10/30 14:44:59 drk $
 
-CLASSES= \
+Other_CLASSES= \
 AppPrintData \
 WindowSystem
 
-SRCS= \
+Other_SRCS= \
 AppPrintData.C \
 WindowSystemMotif.C 
 
-MSGS=\
+Other_MSGS=\
 WindowSystem.msg
 

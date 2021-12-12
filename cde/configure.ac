@@ -183,10 +183,10 @@ AC_SUBST(LIBXIN, '$(top_builddir)/lib/DtXinerama/libDtXinerama.la')
 AC_SUBST(LIBWIDGET, '$(top_builddir)/lib/DtWidget/libDtWidget.la')
 AC_SUBST(LIBTERM, '$(top_builddir)/lib/DtTerm/libDtTerm.la')
 AC_SUBST(LIBSVC, '$(top_builddir)/lib/DtSvc/libDtSvc.la')
-AC_SUBST(LIBSEARCH, '$(top_builddir)/lib/DtSearch/lbiDtSearch.la')
+AC_SUBST(LIBSEARCH, '$(top_builddir)/lib/DtSearch/libDtSearch.la')
 AC_SUBST(LIBPRINT, '$(top_builddir)/lib/DtPrint/libDtPrint.la')
 AC_SUBST(LIBMRM, '$(top_builddir)/lib/DtMrm/libDtMrm.la')
-AC_SUBST(LIBMMDB, '$(top_builddir)/lib/DtMmdb/libDtMmdb.la')
+AC_SUBST(LIBMMDB, '$(top_builddir)/programs/dtinfo/libDtMmdb.la')
 AC_SUBST(LIBHELP, '$(top_builddir)/lib/DtHelp/libDtHelp.la')
 AC_SUBST(LIBCSA, '$(top_builddir)/lib/csa/libcsa.la')
 
@@ -729,6 +729,43 @@ programs/dtinfo/mmdb/StyleSheet/Makefile
 programs/dtinfo/clients/Makefile
 programs/dtinfo/clients/dtinfo_start/Makefile
 
+programs/dtinfo/dtinfo/Makefile
+programs/dtinfo/dtinfo/wwl/Makefile
+programs/dtinfo/dtinfo/wwl/src/Makefile
+programs/dtinfo/dtinfo/src/Makefile
+programs/dtinfo/dtinfo/src/Widgets/Makefile
+programs/dtinfo/dtinfo/src/Support/Makefile
+programs/dtinfo/dtinfo/src/UAS/Makefile
+programs/dtinfo/dtinfo/src/UAS/Base/Makefile
+programs/dtinfo/dtinfo/src/UAS/MMDB/Makefile
+programs/dtinfo/dtinfo/src/UAS/DtSR/Makefile
+programs/dtinfo/dtinfo/src/Basic/Makefile
+programs/dtinfo/dtinfo/src/OliasSearch/Makefile
+programs/dtinfo/dtinfo/src/Marks/Makefile
+programs/dtinfo/dtinfo/src/Graphics/Makefile
+programs/dtinfo/dtinfo/src/Preferences/Makefile
+programs/dtinfo/dtinfo/src/Managers/Makefile
+programs/dtinfo/dtinfo/src/Other/Makefile
+programs/dtinfo/dtinfo/src/Query/Makefile
+programs/dtinfo/dtinfo/src/Agents/Makefile
+programs/dtinfo/dtinfo/src/OnlineRender/Makefile
+programs/dtinfo/dtinfo/src/Messages/Makefile
+programs/dtinfo/dtinfo/src/cgm/Makefile
+programs/dtinfo/dtinfo/install/Makefile
+programs/dtinfo/dtinfo/install/lib/Makefile
+programs/dtinfo/dtinfo/install/lib/bitmaps/Makefile
+programs/dtinfo/dtinfo/install/lib/fonts/Makefile
+
+programs/dtinfo/dtinfogen/Makefile
+programs/dtinfo/dtinfogen/mmdb/Makefile
+programs/dtinfo/dtinfogen/mmdb/src/Makefile
+programs/dtinfo/dtinfogen/mmdb/StyleSheet/Makefile
+programs/dtinfo/dtinfogen/infolib/Makefile
+programs/dtinfo/dtinfogen/infolib/etc/Makefile
+programs/dtinfo/dtinfogen/infolib/C.ISO-8859-1/Makefile
+programs/dtinfo/dtinfogen/infolib/C.ISO-8859-1/SGML/Makefile
+programs/dtinfo/dtinfogen/install/Makefile
+
 programs/types/Makefile
 
 programs/tttypes/Makefile
@@ -797,6 +834,8 @@ doc/util/dbtoman/instant/Makefile
 doc/C/Makefile
 doc/C/help/Makefile
 doc/C/man/Makefile
+doc/C/guides/Makefile
+doc/C/m-guides/Makefile
 
 doc/de_DE.ISO8859-1/Makefile
 doc/de_DE.ISO8859-1/help/Makefile

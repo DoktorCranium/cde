@@ -5,7 +5,7 @@ noinst_LIBRARIES = libWWL.a
 libWWL_a_CXXFLAGS = -I../include
 
 if SOLARIS
-lbWWL_a_CXXFLAGS += -DSYSV -DSVR4
+libWWL_a_CXXFLAGS += -DSYSV -DSVR4
 endif
 
 libWWL_a_SOURCES = WArgList.C      WCallback.C     WComposite.C \

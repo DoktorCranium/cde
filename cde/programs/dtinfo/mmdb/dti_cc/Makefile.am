@@ -1,15 +1,20 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libdti_cc.a
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/dti_cc
+BUILT_SOURCES = CC_Listbase.C cc_exceptions.C CC_String.C	\
+		       CC_Tokenizer.C CC_Stack.C CC_Slist.C
 
-libdti_cc_a_CXXFLAGS = -DEXPAND_TEMPLATES -I../../DtMmdb -I../../DtMmdb/dti_cc \
-		       -I../../DtMmdb/dti_excs
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
 
-libdti_cc_a_SOURCES = ../../DtMmdb/dti_cc/CC_Listbase.C \
-		       ../../DtMmdb/dti_cc/cc_exceptions.C \
-		       ../../DtMmdb/dti_cc/CC_String.C \
-        	       ../../DtMmdb/dti_cc/CC_Tokenizer.C \
-		       ../../DtMmdb/dti_cc/CC_Stack.C \
-		       ../../DtMmdb/dti_cc/CC_Slist.C
+CLEANFILES = $(BUILT_SOURCES)
+
+
+noinst_LTLIBRARIES = libdti_cc.la
+
+libdti_cc_la_CXXFLAGS = $(DTINFO_DEFINES) -I../../DtMmdb	\
+		-I../../DtMmdb/dti_cc -I../../DtMmdb/dti_excs -I$(BASE)
+
+libdti_cc_la_SOURCES = $(BUILT_SOURCES)

@@ -100,7 +100,7 @@ add_message(const _Tt_s_message_ptr &m)
 {
 	_Tt_xdr_version			xvers(_version);
 
-	if (! _flags&(1<<_TT_PROC_ACTIVE)) {
+	if (! (_flags&(1<<_TT_PROC_ACTIVE))) {
 		_tt_syslog(0, LOG_ERR,
 			   catgets(_ttcatd, 2, 4,
 				   "A ToolTalk client died before it "

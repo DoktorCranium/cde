@@ -4003,8 +4003,8 @@ VacationCmd::parseVacationMessage()
 	for (hnd = env->getFirstHeader(error, &name, value);
 	    error.isNotSet() && hnd;
 	    hnd = env->getNextHeader(error, hnd, &name, value)) {
-	    
-	    if (!strcmp(name, "Subject") == 0) {
+
+	    if (strcmp(name, "Subject")) {
 		continue;
 	    }
 	    else {

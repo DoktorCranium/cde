@@ -2,6 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 etcdir = $(CDE_CONFIGURATION_TOP)
 
-SUBDIRS = fonts
+SUBDIRS = bitmaps fonts
 
-etc_PROGRAMS = mmdb.mark.spec
+infolibdir = $(CDE_INSTALLATION_TOP)/infolib/etc
+dist_infolib_DATA = mmdb.mark.spec

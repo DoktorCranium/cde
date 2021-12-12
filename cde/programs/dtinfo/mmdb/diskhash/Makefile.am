@@ -1,11 +1,17 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libdiskhash.a
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/diskhash
+BUILT_SOURCES = disk_bucket.C bucket_array.C disk_hash.C
 
-libdiskhash_a_CXXFLAGS = -I../../DtMmdb -I../../DtMmdb/dti_excs
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
 
-libdiskhash_a_SOURCES = ../../DtMmdb/diskhash/disk_bucket.C \
-			 ../../DtMmdb/diskhash/bucket_array.C \
-			 ../../DtMmdb/diskhash/disk_hash.C
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libdiskhash.la
+
+libdiskhash_la_CXXFLAGS = $(DTINFO_DEFINES) -I../../DtMmdb -I../../DtMmdb/dti_excs -I$(BASE)
+
+libdiskhash_la_SOURCES = $(BUILT_SOURCES)

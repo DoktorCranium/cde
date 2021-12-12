@@ -392,7 +392,7 @@ doc/C/guides/usersGuide/TOC.sgm
 doc/C/guides/man/TOC.sgm
 doc/C/cde.dti/
 doc/C/help/*.sdl
-doc/C/m-guides/
+doc/C/m-guides/common
 doc/C/man/man1/*
 doc/C/man/man1m/*
 doc/C/man/man3/*

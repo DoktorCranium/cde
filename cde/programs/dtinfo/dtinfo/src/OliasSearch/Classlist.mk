@@ -1,6 +1,6 @@
-/* $XConsortium: Classlist.mk /main/3 1996/10/30 14:43:34 drk $ */
-CLASSES=\
+# $XConsortium: Classlist.mk /main/3 1996/10/30 14:43:34 drk $
+OliasSearch_CLASSES=\
 ResultID
 
-SRCS=\
+OliasSearch_SRCS=\
 ResultID.C

@@ -65,10 +65,10 @@ unsigned strhash(const char *p)
 		while (*p != '\0')
 		{
 			h = (h << 4) + (unsigned)CHARADV(p);
-			if (g = h & ((unsigned)0xF << BITS(unsigned) - 4))
+			if ((g = h) & ((unsigned)0xF << (BITS(unsigned) - 4)))
 			{
-				h ^= g >> BITS(unsigned) - 4;
-				h ^= g;
+                            h ^= g >> (BITS(unsigned) - 4);
+                            h ^= g;
 			}
 		}
 	return h;
@@ -93,10 +93,10 @@ unsigned strhashi(const char *p)
 				h = (h << 4) + (unsigned)tolower(*p++);
 			}
 
-			if (g = h & ((unsigned)0xF << BITS(unsigned) - 4))
+			if ((g = h) & ((unsigned)0xF << (BITS(unsigned) - 4)))
 			{
-				h ^= g >> BITS(unsigned) - 4;
-				h ^= g;
+                            h ^= g >> (BITS(unsigned) - 4);
+                            h ^= g;
 			}
 		}
 	return h;

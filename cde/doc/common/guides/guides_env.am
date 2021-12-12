@@ -1,0 +1,34 @@
+# make include file: env variables needed for the guides
+
+INFOLIB = ../cde.dti
+BOOKCASE = CDEDOC
+
+INFOLIBNAME = -n cde
+# INFOLIBDESC must be set in the per-lang guides/Makefile.am (without
+# the -d option) prior to including this file.
+# orig: INFOLIBDESC = -d InfoLibDesc
+
+SSENTS = -m common/catalog
+DGENV = LANG=$(HELP_LANG) SGML_SEARCH_PATH=".:.."
+DTINFOGENOPTIONS = $(INFOLIBNAME) -d $(INFOLIBDESC)
+
+# Note the quad-dollar sign - this escapes $$ (pid) for the tmp
+# dir. This is required for multi-core builds to work.
+DTINFOGENTMPDIR = /tmp/dtinfogen-guides.$$$$
+
+DTHELPSRC = $(top_srcdir)/lib/DtHelp
+DTLCXENVSETUP = DTLCXSEARCHPATH=$(DTHELPSRC)
+DTINFOGENSRC = $(top_srcdir)/programs/dtinfo/dtinfogen
+NSGMLS = $(top_builddir)/programs/nsgmls
+DTSRDIR = $(top_builddir)/programs/dtsr
+
+SGMLDIR  = $(top_srcdir)/programs/dtinfo/dtinfogen/infolib/C/SGML
+SGMLDEPS = $(SGMLDIR)/docbook.dtd $(SGMLDIR)/iso-box.gml \
+    $(SGMLDIR)/iso-dia.gml $(SGMLDIR)/iso-grk3.gml $(SGMLDIR)/iso-lat1.gml \
+    $(SGMLDIR)/iso-lat2.gml $(SGMLDIR)/iso-num.gml $(SGMLDIR)/iso-pub.gml \
+    $(SGMLDIR)/iso-tech.gml
+
+DTINFOGEN = $(DTLCXENVSETUP) DTINFO_HOME=$(DTINFOGENSRC) \
+	DTINFO_BIN=$(DTINFOGENSRC)/install:$(DTINFOGENSRC)/mmdb/StyleSheet:$(DTINFOGENSRC)/mmdb/src:$(NSGMLS):$(DTSRDIR) \
+	$(DTINFOGENSRC)/infolib/etc/dtinfogen
+

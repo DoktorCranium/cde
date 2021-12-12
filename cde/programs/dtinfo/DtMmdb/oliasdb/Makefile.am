@@ -2,8 +2,6 @@ infolibdir = ${prefix}/infolib
 
 MAINTAINERCLEANFILES = Makefile.in
 
-infolib_DATA = mmdb.infolib.spec
-
 noinst_LTLIBRARIES = liboliasdb.la
 
 liboliasdb_la_CXXFLAGS = -DNO_DB_LOCK -I..

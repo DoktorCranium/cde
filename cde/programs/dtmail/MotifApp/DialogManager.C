@@ -417,9 +417,14 @@ DialogManager::forceUpdate( Widget w )
   if ( !w )
     return;
   XtAppContext cxt=XtWidgetToApplicationContext( w );
-  for (diashell=w;!XtIsShell(diashell);diashell=XtParent(diashell));
-  for ( topshell=diashell;XtIsTopLevelShell( topshell );
-	topshell = XtParent( topshell ) );
+  for (diashell=w;
+       !XtIsShell(diashell);
+       diashell=XtParent(diashell))
+      ;
+  for ( topshell=diashell;
+        XtIsTopLevelShell( topshell );
+        topshell = XtParent( topshell ) )
+      ;
 
 //  if (XtIsRealized(diashell) && XtIsRealized(topshell)){
     dpy=XtDisplay(diashell);

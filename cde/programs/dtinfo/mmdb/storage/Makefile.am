@@ -1,22 +1,21 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_LIBRARIES = libstorage.a
+include $(top_srcdir)/programs/dtinfo/dtinfo_env.mk
 
-AUTOMAKE_OPTIONS = no-dependencies
+BASE = ../../DtMmdb/storage
+BUILT_SOURCES = abs_storage.C chunks_index.C heap_comp_funcs.C lru.C	\
+			page.C page_cache.C page_rep.C page_storage.C	\
+			rep_cell.C rep_policy.C store_test.C		\
+			unixf_storage.C version.C vm_storage.C
 
-libstorage_a_CXXFLAGS = -DPORTABLE_DB -I../../DtMmdb -I../../DtMmdb/dti_excs
+$(BUILT_SOURCES):
+	$(LN_S) $(BASE)/$@ $@
 
-libstorage_a_SOURCES = ../../DtMmdb/storage/abs_storage.C \
-		      	../../DtMmdb/storage/chunks_index.C \
-		       	../../DtMmdb/storage/heap_comp_funcs.C \
-			../../DtMmdb/storage/lru.C \
-	      		../../DtMmdb/storage/page.C \
-	       		../../DtMmdb/storage/page_cache.C \
-			../../DtMmdb/storage/page_rep.C \
-		   	../../DtMmdb/storage/page_storage.C \
-		       	../../DtMmdb/storage/rep_cell.C \
-			../../DtMmdb/storage/rep_policy.C \
-		     	../../DtMmdb/storage/store_test.C \
-		     	../../DtMmdb/storage/unixf_storage.C \
-			../../DtMmdb/storage/version.C \
-		  	../../DtMmdb/storage/vm_storage.C
+CLEANFILES = $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libstorage.la
+
+libstorage_la_CXXFLAGS = $(DTINFO_DEFINES) -DPORTABLE_DB	\
+-I../../DtMmdb -I../../DtMmdb/dti_excs -I$(BASE)
+
+libstorage_la_SOURCES = $(BUILT_SOURCES)
