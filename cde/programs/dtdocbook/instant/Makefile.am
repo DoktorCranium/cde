@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-noinst_PROGRAMS = instant
+pkglibexec_PROGRAMS = instant
 
 instant_CFLAGS = -I../lib/tptregexp $(DT_INCDIR)
 

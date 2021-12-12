@@ -88,11 +88,21 @@ do
 done
 
 default_charset='UTF-8'
-dbk_lib="${dbk_lib:-/usr/dt/dthelp/dtdocbook}"  # if no -t, use installed dir
+
+pkg_dbk='cde-desktop/dtdocbook'
+
+# if no -t, use installed dir
+if [[ "$dbk_lib" = "" ]] then
+    dbk_lib="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
+    dbk_lib="${dbk_lib}/../share/${pkg_dbk}"
+fi
+
+# if no -I, use installed one
+instant="${instant:-${dbk_lib}/../../../libexec/${pkg_dbk}/instant}"
+
 sgml_dir="${sgml_dir:-${dbk_lib}/sgml}"         # if no -s, use -t
 sgml_cat="${sgml_dir}"
 sgmls="${sgmls:-onsgmls}"                       # if no -S, use onsgmls
-instant="${instant:-${dbk_lib}/instant}"        # if no -I, use installed one
 x_locale="${x_locale:-${LANG}}"                 # if no -L, use installed one
 helptag2="${helptag2:-dthelp_htag2}"            # if no -H, use one in PATH
 
