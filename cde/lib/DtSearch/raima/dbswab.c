@@ -85,7 +85,7 @@ int	debugging_key_swabs = FALSE;
  */
 void	swab_page (char *pgbuf, FILE_ENTRY *file_ptr, SWABDIR direction)
 {
-#ifndef BYTE_SWAP
+#if defined(WORDS_BIGENDIAN)
     return;
 #else
     INT		slotno;
