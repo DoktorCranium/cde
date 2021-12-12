@@ -16,16 +16,7 @@ libDtHelp_la_CFLAGS = -I./il -I./jpeg -I../DtSvc/DtUtil2 -DDTLIB \
 libDtHelp_la_LIBADD = $(JPEGLIB) il/libil.la $(LTLIBICONV)
 
 if SOLARIS
-libDtHelp_la_CFLAGS += -DLSB_BIT_ORDER
 libDtHelp_la_LIBADD += -lw -lgen -lm -lc
-endif
-
-if LINUX
-libDtHelp_la_CFLAGS += -DLSB_BIT_ORDER
-endif
-
-if BSD
-libDtHelp_la_CFLAGS += -DLSB_BIT_ORDER
 endif
 
 
