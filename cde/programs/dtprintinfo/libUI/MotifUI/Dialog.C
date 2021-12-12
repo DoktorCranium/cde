@@ -338,7 +338,11 @@ Dialog::Dialog(MotifUI *parent, char *title, char *base_directory,
    StringFree(pattern_string);
    if (help)
     {
-      _help_callback_data = _help_callback_data;
+      // JET - this does nothing - should probably be assigned from
+      // help_callback_data, but that argument seems to have been
+      // removed from the arg list (commented out for some reason).
+      // So, I'll just comment this out for now:
+      // _help_callback_data = _help_callback_data;
       XtAddCallback(_w, XmNhelpCallback, &Dialog::DialogCB, (XtPointer) this);
     }
    else
