@@ -685,12 +685,15 @@ programs/dtinfo/Makefile
 programs/dtinfo/tools/Makefile
 programs/dtinfo/tools/misc/Makefile
 programs/dtinfo/DtMmdb/Makefile
+programs/dtinfo/DtMmdb/HardCopy/Makefile
+programs/dtinfo/DtMmdb/StyleSheet/Makefile
 programs/dtinfo/DtMmdb/api/Makefile
 programs/dtinfo/DtMmdb/btree/Makefile
 programs/dtinfo/DtMmdb/btree_berkeley/Makefile
 programs/dtinfo/DtMmdb/compression/Makefile
 programs/dtinfo/DtMmdb/diskhash/Makefile
 programs/dtinfo/DtMmdb/dstr/Makefile
+programs/dtinfo/DtMmdb/dti_cc/Makefile
 programs/dtinfo/DtMmdb/dti_excs/Makefile
 programs/dtinfo/DtMmdb/dynhash/Makefile
 programs/dtinfo/DtMmdb/hmphf/Makefile
@@ -741,7 +744,7 @@ programs/dtdocbook/lib/tptregexp/Makefile
 programs/dtdocbook/instant/Makefile
 programs/dtdocbook/xlate_locale/Makefile
 programs/dtdocbook/doc2sdl/Makefile
-programs/dtdocbook/doc2sdl/SGML/Makefile
+programs/dtdocbook/sgml/Makefile
 
 programs/localized/Makefile
 programs/localized/util/Makefile
