@@ -1,7 +1,5 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-include ../../tooltalk.inc
-
 noinst_LTLIBRARIES = libdb.la
 
 libdb_la_CXXFLAGS = -I../../lib -I../../mini_isam

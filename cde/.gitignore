@@ -2314,3 +2314,10 @@ programs/localized/util/MsgCat.c
 programs/fontaliases/linux/en_US.UTF-8/fonts.alias
 programs/fontaliases/linux/en_US.UTF-8/mk_fonts_alias
 programs/fontaliases/linux/en_US.UTF-8/test_fonts_alias
+
+# files that are modified by configure for version information
+copyright
+doc/common/help/HELPEnt.sgm
+include/Dt/Dt.h
+lib/tt/bin/ttauth/ttauth.man
+lib/tt/tooltalk.inc

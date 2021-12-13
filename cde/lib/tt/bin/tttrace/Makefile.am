@@ -1,7 +1,5 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-include ../../tooltalk.inc
-
 bin_PROGRAMS = tttrace
 
 tttrace_CXXFLAGS = -I../../lib

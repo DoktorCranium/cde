@@ -1,8 +1,7 @@
-headerdir = ${prefix}/share/include/Tt
-
 MAINTAINERCLEANFILES = Makefile.in
 
-include ../../tooltalk.inc
+TT_VERSION = "CDE Version @CDE_VERSION_MAJOR@.@CDE_VERSION_MINOR@.@CDE_VERSION_MICRO@@CDE_VERSION_DEV@"
+TT_VERSION_DEFINE = -DTT_VERSION_STRING=\"$(TT_VERSION)\"
 
 noinst_LTLIBRARIES = libtttk.la
 

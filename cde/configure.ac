@@ -1,7 +1,27 @@
-AC_INIT([cde-desktop], [2.4.0a], [https://sourceforge.net/projects/cdesktopenv])
+dnl When changing the version below, also change the CDE_VERSION_* macros
+dnl to match further below
+AC_INIT([Common Desktop Environment],
+        [2.4.0b],
+        [https://sourceforge.net/projects/cdesktopenv],
+        [cde],
+        [https://sourceforge.net/projects/cdesktopenv])
 AC_CONFIG_HEADERS([include/autotools_config.h])
 AC_CONFIG_MACRO_DIRS([m4])
-AM_INIT_AUTOMAKE([foreign subdir-objects])
+AM_INIT_AUTOMAKE([foreign subdir-objects no-define])
+
+dnl global CDE versioning
+
+CDE_VERSION_MAJOR=2
+CDE_VERSION_MINOR=4
+CDE_VERSION_MICRO=0
+dnl this is blank for a release, or contains an alpha character to indicate a
+dnl dev release.
+CDE_VERSION_DEV=b
+
+AC_SUBST(CDE_VERSION_MAJOR)
+AC_SUBST(CDE_VERSION_MINOR)
+AC_SUBST(CDE_VERSION_MICRO)
+AC_SUBST(CDE_VERSION_DEV)
 
 dnl These must be up here for the compiler search list to actually work
 AC_PROG_CC([cc gcc clang])
@@ -19,16 +39,6 @@ dnl AC_PREREQ()
 
 AC_CANONICAL_HOST
 AC_CANONICAL_BUILD
-
-dnl global CDE versioning
-
-CDE_VERSION_MAJOR=2
-CDE_VERSION_MINOR=3
-CDE_VERSION_MICRO=0
-
-AC_SUBST(CDE_VERSION_MAJOR)
-AC_SUBST(CDE_VERSION_MINOR)
-AC_SUBST(CDE_VERSION_MICRO)
 
 dnl SOURCE_DEFINES - start with CDE project default
 SOURCE_CPP_DEFINES="-DANSICPP -DMULTIBYTE -DNLS16"
@@ -848,6 +858,10 @@ doc/it_IT.ISO8859-1/help/Makefile
 
 include/Makefile
 
+copyright
+doc/common/help/HELPEnt.sgm
+include/Dt/Dt.h
+lib/tt/bin/ttauth/ttauth.man
 ])
 
 AC_OUTPUT
