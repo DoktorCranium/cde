@@ -30,14 +30,14 @@ store	page_store:
 	cached_pages=50:
 	nm=$.dbd:
 	mode=r:
-	byte_order=big_endian
+	endianness=big_endian
 
 store	page_store:
 	page_sz=8192:
 	cached_pages=50:
 	nm=$.dbi:
 	mode=r:
-	byte_order=big_endian
+	endianness=big_endian
 
 inv	inv: nm=$.node.inv:store_nm=$.dbi 
 inv	inv: nm=$.graphic.inv:store_nm=$.dbi 

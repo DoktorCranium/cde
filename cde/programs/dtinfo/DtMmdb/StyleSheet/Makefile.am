@@ -1,5 +1,8 @@
 MAINTAINERCLEANFILES = Makefile.in
 
+specdir = $(pkgdatadir)/DtMmdb
+spec_DATA = hardcopy.feature.spec online.feature.spec
+
 noinst_LTLIBRARIES = libStyleSheet.la
 
 libStyleSheet_la_CXXFLAGS = -DEXPAND_TEMPLATES -DCDE_NEXT -I..

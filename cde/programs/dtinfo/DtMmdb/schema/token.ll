@@ -149,8 +149,8 @@ int linecount = 1;
          return(PAGE_SZ);
         }
 
-"byte_order"	{
-         return(BYTE_ORDER);
+"endianness"	{
+         return(ENDIANNESS);
         }
 
 "cached_pages"	{

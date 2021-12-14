@@ -1,6 +1,7 @@
-infolibdir = ${prefix}/infolib
-
 MAINTAINERCLEANFILES = Makefile.in
+
+specdir = $(pkgdatadir)/DtMmdb
+spec_DATA = mmdb.infolib.spec
 
 noinst_LTLIBRARIES = liboliasdb.la
 

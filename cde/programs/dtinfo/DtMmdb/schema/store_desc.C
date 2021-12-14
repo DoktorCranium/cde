@@ -169,11 +169,11 @@ ostream& store_desc::asciiOut(ostream& out, Boolean last)
    desc::asciiOut(out, false);
    char* mode = mode_str; desc_print(out, mode);
 
-   char* byte_order = order_str;
+   char* endianness = order_str;
    if ( last == true )
-      desc_print_end(out, byte_order);
+      desc_print_end(out, endianness);
    else
-      desc_print(out, byte_order);
+      desc_print(out, endianness);
 
    if ( ! out )
      throw(stringException("store_desc::asciiOut() failed"));
