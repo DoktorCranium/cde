@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 lib_LTLIBRARIES = libDtSvc.la
 
-libDtSvc_la_LDFLAGS = -version-info 2:1:0
+libDtSvc_la_LDFLAGS = -version-info 3:0:1
 
 # USe CPPFLAGS so it will apply to both C and C++ components
 libDtSvc_la_CPPFLAGS = -I./include -DMULTIBYTE -DNLS16 -I../include \

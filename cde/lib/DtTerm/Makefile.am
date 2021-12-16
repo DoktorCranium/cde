@@ -25,4 +25,4 @@ if HAS_UTEMPTER_LIBRARY
 libDtTerm_la_LIBADD += -lutempter
 endif
 
-libDtTerm_la_LDFLAGS = -version-info 2:1:0
+libDtTerm_la_LDFLAGS = -version-info 3:0:1

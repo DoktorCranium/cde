@@ -9,7 +9,7 @@ libcsa_la_CFLAGS = -DRFC_MIME -DLINE_COUNT -DV2 -DOW_I18N \
 
 libcsa_la_LIBADD = -lXt $(TIRPCLIB)
 
-libcsa_la_LDFLAGS = -version-info 2:1:0
+libcsa_la_LDFLAGS = -version-info 3:0:1
 
 if SOLARIS
 libcsa_la_LDFLAGS += -G -z text -z defs

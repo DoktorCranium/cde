@@ -40,4 +40,4 @@ libDtHelp_la_SOURCES = Actions.c       AsciiSpc.c      Callbacks.c \
 		       Layout.c        LayoutUtil.c    LinkMgr.c \
 		       Selection.c     VirtFuncs.c
 
-libDtHelp_la_LDFLAGS = -version-info 2:1:0
+libDtHelp_la_LDFLAGS = -version-info 3:0:1

@@ -25,4 +25,4 @@ if LINUX
 libtt_la_LIBADD += $(TIRPCLIB)
 endif
 
-libtt_la_LDFLAGS = -version-info 2:1:0
+libtt_la_LDFLAGS = -version-info 3:0:1

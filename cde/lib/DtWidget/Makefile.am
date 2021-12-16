@@ -8,7 +8,7 @@ AM_CPPFLAGS = -DCDE_INSTALLATION_TOP=$(CDE_INSTALLATION_TOP) $(DT_INCDIR)
 
 libDtWidget_la_CFLAGS = -DI18N_MSG -DMULTIBYTE
 
-libDtWidget_la_LDFLAGS = -version-info 2:1:0
+libDtWidget_la_LDFLAGS = -version-info 3:0:1
 
 if SOLARIS
 libDtWidget_la_CFLAGS += -DNO_REGCOMP

@@ -7,4 +7,4 @@ libDtMrm_la_CFLAGS = -I../DtTerm/Term -I../DtTerm/TermPrim -I../DtHelp \
 
 libDtMrm_la_SOURCES = DtMrm.c
 
-libDtMrm_la_LDFLAGS = -version-info 2:1:0
+libDtMrm_la_LDFLAGS = -version-info 3:0:1
