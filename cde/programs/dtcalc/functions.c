@@ -677,7 +677,7 @@ do_factorial(int *MPval, int *MPres)     /* Calculate the factorial of MPval. */
         }
       mpcim(&i, MPa) ;
       mpcmi(MP1, &i) ;
-      if (!i) matherr() ;
+      if (!i) matherr((struct exception *) NULL) ;
       else
         while (i > 0)
           {
@@ -687,7 +687,7 @@ do_factorial(int *MPval, int *MPres)     /* Calculate the factorial of MPval. */
             i-- ;
           }
     }
-  else matherr() ;
+  else matherr((struct exception *) NULL) ;
   mpstr(MPa, MPres) ;
 }
 
