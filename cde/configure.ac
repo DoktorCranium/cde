@@ -80,6 +80,9 @@ dnl other things as we go along.
 EXTRA_LIBS=""
 EXTRA_INCS=""
 
+# pam currently only works on netbsd (9.2 tested) and linux
+supports_pam=no
+
 case "${host_os}" in
 	linux*)
 		build_linux=yes
@@ -87,6 +90,7 @@ case "${host_os}" in
                 OSMINORVERSION=15
                 SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -D_POSIX_SOURCE \
 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_SVID_SOURCE"
+                supports_pam=yes
                  ;;
 	freebsd*)
 		build_freebsd=yes
@@ -108,6 +112,7 @@ case "${host_os}" in
 		bsd=yes
                 OSMAJORVERSION=8
                 OSMINORVERSION=0
+                supports_pam=yes
 		;;
 	solaris*|sun*)
 		build_solaris=yes
@@ -461,9 +466,14 @@ dnl iconv
 AM_ICONV
 
 dnl figure out pam support
-
-AC_CHECK_LIB(pam, pam_start,
+dnl Right now this only works on linux and netbsd (9.2 tested)
+if test "$supports_pam" = "yes"
+then
+        AC_CHECK_LIB(pam, pam_start,
              [SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DHAS_PAM_LIBRARY"])
+else
+        AC_CHECK_LIB(pam, NOTSUPPORTED)
+fi
 
 AM_CONDITIONAL([HAS_PAM_LIBRARY], [test "x$ac_cv_lib_pam_pam_start" = "xyes"])
 
