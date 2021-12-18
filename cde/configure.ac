@@ -23,6 +23,12 @@ AC_SUBST(CDE_VERSION_MINOR)
 AC_SUBST(CDE_VERSION_MICRO)
 AC_SUBST(CDE_VERSION_DEV)
 
+dnl released in 2012, this should be sufficient
+AC_PREREQ([2.69])
+
+AC_CANONICAL_HOST
+AC_CANONICAL_BUILD
+
 dnl These must be up here for the compiler search list to actually work
 AC_PROG_CC([cc gcc clang])
 AC_PROG_CXX([c++ g++ clang++])
@@ -30,15 +36,8 @@ AC_PROG_CXX([c++ g++ clang++])
 LT_INIT
 AC_PREFIX_DEFAULT(/usr/dt)
 
-AC_ENABLE_STATIC([no])
 
 PKG_PROG_PKG_CONFIG
-
-dnl todo: determine what version of autoconf we depend on
-dnl AC_PREREQ()
-
-AC_CANONICAL_HOST
-AC_CANONICAL_BUILD
 
 dnl SOURCE_DEFINES - start with CDE project default
 SOURCE_CPP_DEFINES="-DANSICPP -DMULTIBYTE -DNLS16"
@@ -83,7 +82,7 @@ EXTRA_INCS=""
 # pam currently only works on netbsd (9.2 tested) and linux
 supports_pam=no
 
-case "${host_os}" in
+case "${build_os}" in
 	linux*)
 		build_linux=yes
                 OSMAJORVERSION=4
@@ -281,7 +280,7 @@ dnl do.  This is not a replacement for cpp, used at runtime by
 dnl software such as tt_type_comp.
 AC_SUBST(GENCPP, '$(top_builddir)/util/tradcpp/tradcpp')
 
-AM_PROG_LIBTOOL
+LT_INIT
 
 dnl make sure it's installed
 AC_PROG_YACC
@@ -289,7 +288,7 @@ if test -z "$ac_cv_prog_YACC"; then
    MISSING_PROGS="[bison or byacc] ${MISSING_PROGS}"
 fi
 
-AM_PROG_LEX
+AC_PROG_LEX(noyywrap)
 if test -z "$ac_cv_prog_LEX"; then
    MISSING_PROGS="[flex or lex] ${MISSING_PROGS}"
 fi
@@ -308,13 +307,10 @@ AC_C_CONST
 AC_C_BIGENDIAN
 AC_C_INLINE
 AC_C_CHAR_UNSIGNED
-AC_C_STRINGIZE
 AC_C_FLEXIBLE_ARRAY_MEMBER
 AC_SYS_POSIX_TERMIOS
 
 AX_PTHREAD
-
-AC_PROG_CC_C99
 
 AC_PATH_X
 AC_PATH_XTRA
@@ -406,7 +402,6 @@ dnl Used to check if program 'tic' is available to install terminfo files
 AC_CHECK_PROGS(TIC, tic, :)
 
 dnl headers
-AC_HEADER_STDC
 AC_CHECK_HEADERS([locale.h security/pam_appl.h utempter.h])
 
 dnl libraries
