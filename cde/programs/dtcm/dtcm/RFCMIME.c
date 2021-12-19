@@ -1300,8 +1300,9 @@ writeQPrint(char *buf, const char * bp, const unsigned long bp_len,
 	 */
 	    if ( *cur == (char)0x1b ) {
 		/* Only 0x1b ????? */
-		char tmp[3];
-		sprintf(tmp, "=%02X", (int)(unsigned char)*cur);
+                const int tmpsz = 4;
+		char tmp[tmpsz];
+		snprintf(tmp, tmpsz, "=%02X", (int)(unsigned char)*cur);
 		memcpy(&line_buf[off], tmp, 3);
 		off += 3;
 		continue;
