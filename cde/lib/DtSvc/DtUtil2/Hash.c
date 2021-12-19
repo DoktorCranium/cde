@@ -110,12 +110,12 @@ GetTableIndex(
 #endif /* NeedWidePrototypes */
 {
     DtHashEntry	*entries = tab->entries;
-    int		len, idx, i, rehash = 0;
+    int		len = 0, idx, i, rehash = 0;
     char 		c;
     Signature 		sig = 0;
     DtHashEntry	entry;
     String			s1, s2;
-    DtHashKey			compKey;
+    DtHashKey			compKey = NULL;
 
     if (tab->keyIsString) {
 	s1 = (String)key;

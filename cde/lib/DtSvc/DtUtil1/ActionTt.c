@@ -885,7 +885,7 @@ TtRequestCallbackHandler(
     int argRepType;
     char *upttbuf;
     int upttbuflen, ivalue;
-    char *upVType, *upVType2;
+    char *upVType = NULL, *upVType2 = NULL;
 
 
     status = (Tt_status) tt_message_status(message);
@@ -1174,7 +1174,7 @@ InitiateTtRequest(
 	ActionRequest  *request )
 
 {
-    CallbackData *data;
+    CallbackData *data = NULL;
     ActionPtr action = request->clonedAction;
     tt_msgAttr * tt = &(action->u.tt_msg);
     int i;

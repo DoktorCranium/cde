@@ -67,7 +67,7 @@ _DtPerfChkpntListenInit(Display *display, Window parentwin)
 #endif
 {
     Time   timestamp = INVALID_TIME;
-    Window tmpwin;
+    Window tmpwin = 0;
     Bool   bsuccess = False;
 
     _DtSvcProcessLock();

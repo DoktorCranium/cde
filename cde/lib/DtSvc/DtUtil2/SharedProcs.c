@@ -209,7 +209,7 @@ _DtMessageDialog(
         int dialogType )
 
 {
-   Widget message;
+   Widget message = NULL;
    Widget widget;
    XmString message_string;
    XWindowAttributes attributes;

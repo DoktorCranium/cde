@@ -961,7 +961,7 @@ ReadNextEntry(
    char *start;
    char *last;
    char *save;
-   char *error_buffer;
+   char *error_buffer = NULL;
    short startDef;
    char * errorName;
    char * version;

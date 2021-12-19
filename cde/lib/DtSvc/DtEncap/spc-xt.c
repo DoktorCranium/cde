@@ -203,7 +203,7 @@ void SPC_XtAddInput(SPC_Channel_Ptr channel,
 		    SPC_Callback_Condition condition)
 /*-----------------------------------------------------------------------+*/
 {
-  SbInputId id;
+  SbInputId id = 0;
   
   switch(condition) {
     
@@ -224,8 +224,7 @@ void SPC_XtAddInput(SPC_Channel_Ptr channel,
     else
       id = (*SbAddException_hookfn)(fd, handler, channel);
     break;
-    
-  }
+   }
   
   *id_addr=SPC_AddInput(fd, condition, id);
 }

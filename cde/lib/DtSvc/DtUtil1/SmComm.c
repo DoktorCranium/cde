@@ -196,7 +196,7 @@ _DtSetSmState(
 	     Window smWindow,
 	     SmStateInfo *pSmStateInfo)
 {
-  int			propStatus;
+  int			propStatus = Success;
   PropDtSmStateInfo    propSmStateInfo;
   PropDtSmStateInfo   *pPropSmStateInfo;
   Atom                  xaDtSmStateInfo;

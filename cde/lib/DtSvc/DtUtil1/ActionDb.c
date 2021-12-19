@@ -1003,7 +1003,7 @@ _DtActionConverter(DtDtsDbField * fields,
 	char		bigBuf[_DtAct_MAX_BUF_SIZE];
 	char		*buf = bigBuf;
 	char		*fileName = _DtDbPathIdToString(pathId);
-	char		*actionType;
+	char		*actionType = NULL;
 
 	_DtSvcProcessLock();       
 	if (firstTime)

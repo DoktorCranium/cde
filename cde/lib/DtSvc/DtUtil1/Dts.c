@@ -1951,7 +1951,7 @@ DtDtsSetDataType(const char *filename, const char *datatype_in, const int overid
 	int		fd;
 	char		*dt;
 	int		size;
-	u_char		*buff;
+	u_char		*buff = NULL;
 	struct stat	file_stat;
 	char		*datatype = 0;
 
