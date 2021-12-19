@@ -158,7 +158,7 @@ _amstart(Bytearray *isfhandle, char *record, int *reclen,
          Bytearray *curpos, Recno *recnum, struct errcode *errcode)
 {
     Fcb			*fcb;
-    Recno		recnum2;
+    Recno		recnum2 = 0;
     int			err;
     Crp			*newcrp = NULL;
     char		recbuf [ISMAXRECLEN];
