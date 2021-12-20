@@ -130,7 +130,7 @@ ACTION Dthelpview
 	TYPE		COMMAND
 	WINDOW_TYPE	NO_STDIO
         EXEC_STRING     /bin/sh -c '/usr/dt/bin/dthelpgen -dir $HOME/.dt/help/$DTUSERSESSION; \
-                           /usr/dt/bin/dthelpview -helpVolume browser '
+                 /usr/dt/bin/dthelpview -helpVolume browser '
 	DESCRIPTION	%|nls-11007-#The#|
 }
 ACTION Dthelpview
