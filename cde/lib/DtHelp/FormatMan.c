@@ -492,14 +492,14 @@ FormatManPage(
     int		 italicCnt = 0;
     int		 result = 0;
     int		 cread;
-    int		 lastLen;
+    int		 lastLen = 0;
     int		 checkLen;
     int		 retWCLen;
     wchar_t	 lastWC;
     wchar_t	 retWC;
     char	*rloc = in_buf;
     char	*retStrPtr;
-    char	 c;
+    char	 c = 0;
     char	 retC;
     Boolean      flag = False;
     enum State	 newState;

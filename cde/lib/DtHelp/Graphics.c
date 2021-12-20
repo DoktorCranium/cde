@@ -1413,7 +1413,7 @@ static enum _DtGrLoadStatus processTiff(
     ilFile	 inFile;
     ilPipe	 inPipe;
     ilFileImage	 inImage;
-    const ilImageDes   *inDes;
+    const ilImageDes   *inDes = 0;
     static ilContext	IlContext = NULL;
     Display      *dpy = DisplayOfScreen(screen);
     Drawable      drawable = RootWindowOfScreen(screen);  
@@ -2832,7 +2832,7 @@ int _DtGrOpenBuffer(
 int _DtGrCloseStream(
     _DtGrStream *stream)
 {
-    int status;
+    int status = 0;
 
     if ((stream == NULL) || (stream->type == _DtGrNONE))
         return(EOF);    /* Failure */

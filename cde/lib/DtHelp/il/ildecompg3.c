@@ -260,7 +260,7 @@ unsigned long      *pNLines
 	ilDecompG3G4PrivPtr pPriv;             /* Pointer to private image data         */
 
 	ilPtr               dstImageP;         /* Pointer to the Destn. Image           */
-	ilPtr               pRefLine;          /* Pointer to the Reference line         */
+	ilPtr               pRefLine = NULL;   /* Pointer to the Reference line         */
 	ilError             error;             /* Returned error                        */
 	int                 dstBytesPerRow;    /* no.of byte per Row in the dest image  */
 	ilBool              Is_2DCoding;       /* G3 2 D coding is present,  if True    */

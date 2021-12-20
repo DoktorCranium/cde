@@ -362,7 +362,7 @@ BufCompressedSkip (
     BufFilePtr	f,
     int		bytes)
 {
-    int		    c;
+    int		    c = 0;
     while (bytes-- && ((c = BufFileGet(f)) != BUFFILEEOF))
 	    ;
     return c;

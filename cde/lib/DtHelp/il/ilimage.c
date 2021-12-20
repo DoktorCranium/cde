@@ -323,7 +323,7 @@ IL_PRIVATE ilError _ilMallocImagePixels (
     )
 {
 int            plane, nPlanes;
-int                     MCUMinus1;
+int                     MCUMinus1 = 0;
 long           nBytesToAlloc, nBytesPerRow, allocHeight;
 ilPtr                   pPixels;
 long                    rowBytesPerPlane [IL_MAX_SAMPLES];

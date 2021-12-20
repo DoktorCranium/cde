@@ -490,17 +490,17 @@ static unsigned short tagNumbers [] = {
 #define AI_NTAGS            (sizeof(tagNumbers) / sizeof (unsigned short))
 #define AIL_FATAL_ERROR(_error) {error = (_error);  goto AILFatalError; }
 
-ilFileImageRelation        imageType;
+ilFileImageRelation        imageType = mainImage;
 ilFileTag                  *tag [AI_NTAGS];
 ilBool                      present;
 ilError                     error;
 ilPtr                       pTagAlloc;
 unsigned long      value;
-int                         i, tagIndex, nBits, resolutionUnit, fillOrder;
+int                         i, tagIndex, nBits, resolutionUnit, fillOrder = 0;
 unsigned long               group3CompData;
 unsigned long               group4CompData;
 ilFileTag         *pTag;
-ilYCbCrInfo                *pYCbCr;     /* null if not YCbCr ; else -> des...YCbCr */
+ilYCbCrInfo                *pYCbCr = NULL;     /* null if not YCbCr ; else -> des...YCbCr */
 
         /*  Init/zero des and format in *pFileImage.
         */

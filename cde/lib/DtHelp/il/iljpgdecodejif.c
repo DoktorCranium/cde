@@ -120,7 +120,7 @@ iljpgError iljpgDecodeJIF (
     iljpgDataPtr pData;
     iljpgBool           firstMarker, SOSFound, SOF0Found;
     iljpgError          error;
-    int                 value, nFrameComps, length;
+    int                 value, nFrameComps = 0, length;
     iljpgPtr           *ppTable;
     iljpgCompDataPtr    pComp;
     int        i, index;

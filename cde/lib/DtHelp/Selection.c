@@ -154,7 +154,7 @@ SearchForClosestLine (
     _DtCvSelectData *next)
 {
     int		 i;
-    int		 maxI;
+    int		 maxI = 0;
     _DtCvUnit	 lineY;
     _DtCvUnit	 endX;
     _DtCvUnit	 begX;

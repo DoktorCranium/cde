@@ -397,11 +397,11 @@ _DtCvCheckLineSyntax (
     int			  str_len,
     _DtCvValue		  skip_hypen_ck)
 {
-    int     myStrLen;
-    int     wcFlag;
-    void    *pChar;
+    int     myStrLen = 0;
+    int     wcFlag = 0;
+    void    *pChar = NULL;
     wchar_t  nextChar;
-    wchar_t  lastChar;
+    wchar_t  lastChar = 0;
     _DtCvValue lstCharMb = False;
     _DtCvValue nxtCharMb = False;
 
