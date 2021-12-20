@@ -64,7 +64,6 @@ static char *RCSid =
 #include <sys/types.h>
 #include <errno.h>
 
-#include <tptregexp.h>
 #include "general.h"
 #define STORAGE
 #include "translate.h"
@@ -137,8 +136,15 @@ DoTranslate(
      * program is normally done at this point anyway.  */
     for (t=TrSpecs; t; ) {
 	tn = t->next;
+
+	regfree(&t->context_re);
+	regfree(&t->content_re);
+
+	for (int i = 0; i < t->nattpairs; ++i) regfree(&t->attpair[i].rex);
+
 	/* free the contents of t here ... */
 	(void)free((void* )t);
+
 	t = tn;
     }
     TrSpecs = 0;
@@ -268,7 +274,7 @@ ExpandVariables(
 		if ( modifier && *modifier == 'l' ) {
 		    while (*s) {
 		        *op = tolower(*s);
-		        op++, *s++;
+		        op++, s++;
 		    }
 		} else
 		    while (*s) *op++ = *s++;
@@ -470,19 +476,15 @@ FindTrans(
 	if (t->context) {	/* no context specified -> a match */
 	    FindContext(e, t->depth, context);
 
-	    /* If reg expr set, do regex compare; else just string compare. */
-	    if (t->context_re) {
-		if (! tpt_regexec(t->context_re, context)) continue;
-	    }
-	    else {
-		/* Is depth of spec deeper than element's depth? */
-		if (t->depth > e->depth) continue;
+	    if (regexec(&t->context_re, context, 0, NULL, 0)) continue;
 
-		/* See if context of element matches "context" of transpec */
-		match = ( (t->context[0] == context[0]) &&
+	    /* Is depth of spec deeper than element's depth? */
+	    if (t->depth > e->depth) continue;
+
+	    /* See if context of element matches "context" of transpec */
+	    match = ( (t->context[0] == context[0]) &&
 			    !strcmp(t->context, context) );
-		if (!match) continue;
-	    }
+	    if (!match) continue;
 	}
 
 	/* Check attributes.  Loop through list, comparing each. */
@@ -492,7 +494,8 @@ FindTrans(
 		    match = 0;
 		    break;
 		}
-		if (!tpt_regexec(t->attpair[a].rex, atval)) match = 0;
+		if (regexec(&t->attpair[a].rex, atval, 0, NULL, 0))
+		    match = 0;
 	    }
 	    if (!match) continue;
 	}
@@ -551,7 +554,7 @@ FindTrans(
 	/* check content */
 	if (t->content) {		/* no att specified -> a match */
 	    for (match=0,i=0; i<e->ndcont; i++) {
-		if (tpt_regexec(t->content_re, e->dcont[i])) {
+		if (!regexec(&t->content_re, e->dcont[i], 0, NULL, 0)) {
 		    match = 1;
 		    break;
 		}

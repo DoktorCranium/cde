@@ -1,11 +1,12 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-pkglibexec_PROGRAMS = instant
+include ../doc2sdl.am
 
-instant_CFLAGS = -I../lib/tptregexp $(DT_INCDIR)
+doc2sdllibexec_PROGRAMS = instant
 
-instant_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB) -L../lib/tptregexp \
-		-ltptregexp
+instant_CFLAGS = $(DT_INCDIR)
+
+instant_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 instant_CFLAGS += @TCL_INCLUDE_SPEC@
 instant_LDADD += @TCL_LIB_SPEC@

@@ -67,7 +67,6 @@ static char *RCSid =
 #include <sys/types.h>
 #include <errno.h>
 
-#include <tptregexp.h>
 #include "general.h"
 #include "translate.h"
 
@@ -262,7 +261,7 @@ RememberTransSpec(
 
 	if (do_regex) {
 	    t->depth = MAX_DEPTH;
-	    if (!(t->context_re=tpt_regcomp(t->context))) {
+	    if (regcomp(&t->context_re, t->context, 0)) {
 		fprintf(stderr, "Regex error in Context: %s\n", t->context);
 	    }
 	}
@@ -300,16 +299,15 @@ RememberTransSpec(
 	else {		/* value not found */
 	    t->attpair[i].val = ".";
 	}
-	if (!(t->attpair[i].rex=tpt_regcomp(t->attpair[i].val))) {
+	if (regcomp(&t->attpair[i].rex, t->attpair[i].val, 0)) {
 	    fprintf(stderr, "Regex error in AttValue: %s %s\n",
 		    t->attpair[i].name, t->attpair[i].val);
 	}
     }
 
     /* Compile regular expression for content */
-    t->content_re = 0;
     if (t->content) {
-	if (!(t->content_re=tpt_regcomp(t->content)))
+	if (regcomp(&t->content_re, t->content, 0))
 	    fprintf(stderr, "Regex error in Content: %s\n",
 		    t->content);
     }

@@ -48,6 +48,8 @@
  * ________________________________________________________________________
  */
 
+#include <regex.h>
+
 #ifdef STORAGE
 #ifndef lint
 static char *tr_h_RCSid =
@@ -73,7 +75,7 @@ typedef enum { CONT_CONTINUE, CONT_BREAK } ContParse_t;
 typedef struct {
     char	*name;		/* attribute name string */
     char	*val;		/* attribute value string */
-    regexp	*rex;		/* attribute value reg expr (compiled) */
+    regex_t	rex;		/* attribute value reg expr (compiled) */
 } AttPair_t;
 
 typedef struct _Trans {
@@ -81,14 +83,14 @@ typedef struct _Trans {
     char	*gi;		/* element name of tag under consideration */
     char	**gilist;	/* list of element names (multiple gi's) */
     char	*context;	/* context in tree - looking depth levels up */
-    regexp	*context_re;	/* tree hierarchy looking depth levels up */
+    regex_t	context_re;	/* tree hierarchy looking depth levels up */
     int		depth;		/* number of levels to look up the tree */
     AttPair_t	*attpair;	/* attr name-value pairs */
     int		nattpairs;	/* number of name-value pairs */
     char	*parent;	/* GI has this element as parent */
     int		nth_child;	/* GI is Nth child of this of parent element */
     char	*content;	/* element has this string in content */
-    regexp	*content_re;	/* content reg expr (compiled) */
+    regex_t	content_re;	/* content reg expr (compiled) */
     char	*pattrset;	/* is this attr set (any value) in parent? */
     char	*var_name;	/* variable name */
     char	*var_value;	/* variable value */

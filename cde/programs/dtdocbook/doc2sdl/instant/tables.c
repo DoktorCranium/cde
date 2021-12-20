@@ -76,7 +76,6 @@ static char *RCSid =
 #include <sys/types.h>
 #include <errno.h>
 
-#include <tptregexp.h>
 #include "general.h"
 #include "translate.h"
 
