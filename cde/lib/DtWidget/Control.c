@@ -1290,8 +1290,8 @@ Draw(
   XRectangle		clip;
   Position		p_x, p_y, s_x, s_y;
   Dimension		width = 0, height = 0;
-  Pixmap		pix;
-  Pixmap		mask;
+  Pixmap		pix = 0;
+  Pixmap		mask = 0;
   int			index;
   Dimension		left = 0, right = 0, top = 0, bottom = 0;
   Dimension		v_pad;

@@ -3063,7 +3063,7 @@ Draw(
 	GC		gc;
 	XRectangle	clip;
 	Position	p_x, p_y, s_x, s_y;
-	Dimension	width, height;
+	Dimension	width = 0, height = 0;
 	unsigned char	behavior =	G_Behavior (g);
         Position        adj_x, adj_y;
 	int		rec_width=0,begin=0,diff=0;

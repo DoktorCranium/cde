@@ -940,7 +940,7 @@ _SpinBoxBeginLine(	DtSpinBoxWidget spin,
 			Cardinal *num_params)
 {
     int new_position;
-    float new_current;
+    float new_current = 0.0;
     
     if (*num_params != 0) /* params means label or arrows */
 	spin = (DtSpinBoxWidget)XtParent(spin);
@@ -978,7 +978,7 @@ _SpinBoxEndLine(	DtSpinBoxWidget spin,
 			Cardinal *num_params)
 {
     int new_position;
-    float new_current;
+    float new_current = 0.0;
     
     if (*num_params != 0) /* params means label or arrows */
 	spin = (DtSpinBoxWidget)XtParent(spin);

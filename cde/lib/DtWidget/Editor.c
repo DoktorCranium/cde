@@ -1784,7 +1784,7 @@ extractFontMetrics(
     XmFontListEntry next_entry;
     XmFontType type_return = XmFONT_IS_FONT;
     XtPointer tmp_font;
-    XFontStruct *font;
+    XFontStruct *font = NULL;
     Boolean have_font_struct = False;
     Boolean have_font_set = False;
     Boolean use_font_set = False;
