@@ -55,7 +55,7 @@
 /*---------------------------------------------------------------------------
    db_VISTA Key File/Field Manipulation Functions
    ----------------------------------------------
-   An implementation of the B-tree indexing method  described in 
+   An implementation of the B-tree indexing method  described in
    "Sorting and Searching: The Art of Computer Programming, Vol III",
    Knuth, Donald E., Addison-Wesley, 1975. pp 473-480.
 
@@ -164,12 +164,12 @@ key_open(void)
    }
    if ( no_of_keys ) {
       key_info =
-	/* Macro references must be on one line for some compilers */ 
+	/* Macro references must be on one line for some compilers */
 	(KEY_INFO *)
 	ALLOC(&db_global.Key_info, no_of_keys*sizeof(KEY_INFO), "key_info");
       if ( ! key_info )
 	 return( dberr(S_NOMEMORY) );
-      for (i = 0, fld_ptr = &field_table[old_size_fd]; 
+      for (i = 0, fld_ptr = &field_table[old_size_fd];
 	   i < size_fd; ++i, ++fld_ptr) {
 	 if ( fld_ptr->fd_key != NOKEY ) {
 	    ki_ptr = &key_info[fld_ptr->fd_keyno];
@@ -180,7 +180,7 @@ key_open(void)
 	    ki_ptr->dba = NULL_DBA;
 	    file_ptr = &file_table[fld_ptr->fd_keyfile];
 	    ki_ptr->keyval =
-		/* Macro references must be on one line for some compilers */ 
+		/* Macro references must be on one line for some compilers */
 		ALLOC(&ki_ptr->Keyval, file_ptr->ft_slsize, db_avname);
 	    if ( ! ki_ptr->keyval )
 	       return( dberr(S_NOMEMORY) );
@@ -258,7 +258,7 @@ int field  /* field number to be processed */
 
 
 
-/* Reset key_info last status to reposition keys on file "fno" 
+/* Reset key_info last status to reposition keys on file "fno"
 */
 int
 key_reset(FILE_NO fno)
@@ -267,7 +267,7 @@ key_reset(FILE_NO fno)
    KEY_INFO *ki_ptr;
 
    for (i = 0, ki_ptr = key_info; i < no_of_keys; ++i, ++ki_ptr) {
-      if (((fno == size_ft) || (ki_ptr->keyfile == fno)) && 
+      if (((fno == size_ft) || (ki_ptr->keyfile == fno)) &&
 	  ((ki_ptr->lstat == KEYFOUND) || (ki_ptr->lstat == KEYNOTFOUND)))
 	 ki_ptr->lstat = KEYREPOS;
    }
@@ -363,7 +363,7 @@ DB_ADDR *dba         /* database address of located key */
    /* return database address for d_keyfind */
    if ( *dba == NULL_DBA )
       bytecpy(dba, &curkey->dba, sizeof(DB_ADDR));
-   
+
    return( db_status );
 }
 
@@ -380,8 +380,8 @@ int     *slot_offset, /* slot position offset */
 F_ADDR  *child   /* child ptr of located key */
 )
 {
-   int cmp, i, l, u, slot_pos;
-   char *node_slot_ptr;
+   int cmp = 0, i = 0, l, u, slot_pos = 0;
+   char *node_slot_ptr = NULL;
 
    /* perform binary search on node */
    l = 0;
@@ -432,7 +432,7 @@ KEY_SLOT *slot,    /* pointer to key slot to be compared */
 DB_ADDR *dba      /* database address included in comparison if not null */
 )
 {
-/* 
+/*
    returns < 0 if key_val < slot
 	   > 0 if key_val > slot
 	   = 0 if key_val == slot
@@ -529,7 +529,7 @@ DB_ADDR *dba   /* db address of scanned record */
 	 node_slot_ptr = &node->slots[np_ptr->slot*slot_len];
       }
       bytecpy(&child, node_slot_ptr, sizeof(F_ADDR));
-   } while ( child != NULL_NODE ); 
+   } while ( child != NULL_NODE );
 
    if (np_ptr->slot == node->used_slots) {
       --np_ptr->slot;
@@ -686,9 +686,9 @@ DB_ADDR dba   /* record's database address */
       }
       db_status = stat;
    }
-   else if ( db_status == S_OKAY ) 
+   else if ( db_status == S_OKAY )
       dberr(S_SYSERR);
-   
+
    return( db_status );
 }
 
@@ -925,7 +925,7 @@ static int delete(void)
       r_node_slot_ptr = &r_node->slots[sizeof(F_ADDR)];
       bytecpy(node_slot_ptr, r_node_slot_ptr, slot_len - sizeof(F_ADDR));
       dio_touch(pg);
-      
+
       /* set up to delete key from leaf */
       /* (this is more efficient than a recursive call) */
       slot_pos = 0;
@@ -1158,7 +1158,7 @@ d_keyread(char *key_val)
    if ( cfld_ptr->fd_type == COMKEY ) {
       /* copy compound key fields */
       for (kt_lc = size_kt - cfld_ptr->fd_ptr,
-				key_ptr = &key_table[cfld_ptr->fd_ptr]; 
+				key_ptr = &key_table[cfld_ptr->fd_ptr];
 	   (--kt_lc >= 0) && (key_ptr->kt_key == fldno); ++key_ptr) {
 	 fld_ptr = &field_table[key_ptr->kt_field];
 	 fptr = key_type.ks.data + key_ptr->kt_ptr;

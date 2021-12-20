@@ -94,7 +94,7 @@ long	hilite_cleartext (int parse_type, char *stems, int stemcount)
     PARG		parg;
     char *		(*parser)() =	usrblk.dblk->parser;
     char *		(*stemmer)() =	usrblk.dblk->stemmer;
-    DtSrHitword		*hitwords;
+    DtSrHitword		*hitwords = NULL;
     size_t		hitwords_size =	0;
     long		hitwcount =	0;
     long		offset;
@@ -158,10 +158,10 @@ long	hilite_cleartext (int parse_type, char *stems, int stemcount)
 		hitwords = realloc (hitwords,
 		    hitwords_size * sizeof(DtSrHitword) + 16);
 	    }
-	    if (!hitwords) {
-		fputs (PROGNAME"091 Out of Memory!\n", aa_stderr);
-		DtSearchExit (91);
-	    }
+	}
+	if (!hitwords) {
+	    fputs (PROGNAME"091 Out of Memory!\n", aa_stderr);
+	    DtSearchExit (91);
 	}
 	hitwords[hitwcount].offset =	offset;
 	hitwords[hitwcount].length =	wordlen;

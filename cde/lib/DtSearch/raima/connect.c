@@ -84,8 +84,8 @@ int dbn  /* Database number */
    char *orec;            /* ptr to current owner record contents in cache */
    char *mrec;            /* ptr to current member record contents in cache */
    char *nrec;            /* ptr to next member record contents in cache */
-   DB_ADDR mdba;          /* db address of current member record */
-   DB_ADDR ndba;          /* db address of next member record */
+   DB_ADDR mdba = NULL;   /* db address of current member record */
+   DB_ADDR ndba = NULL;   /* db address of next member record */
    INT ordering;          /* set order control variable */
    int stat, compare;     /* status code & sort comparison result */
    SET_ENTRY *set_ptr;
