@@ -68,7 +68,6 @@
 
 #include <sys/types.h>
 #include <netinet/in.h>
-#include <autotools_config.h>
 
 /* Record number for OR_MISCREC DtSearch record */
 #define MISCREC_RECNO	3
@@ -81,21 +80,10 @@ typedef enum {HTON=1, NTOH} SWABDIR;
 
 extern void	swab_page (char *pgbuf, FILE_ENTRY *file_ptr, SWABDIR direction);
 
-#if !defined(WORDS_BIGENDIAN) /* ie (BYTE_ORDER != BIG_ENDIAN) */
-
 #define HTONL(x)	x = htonl(x)
 #define HTONS(x)	x = htons(x)
 #define NTOHL(x)	x = ntohl(x)
 #define NTOHS(x)	x = ntohs(x)
-
-#else	/* !BYTE_SWAP, ie (BYTE_ORDER == BIG_ENDIAN) */
-
-#define HTONL(x)
-#define HTONS(x)
-#define NTOHL(x)
-#define NTOHS(x)
-
-#endif	/* BYTE_SWAP */
 
 /******** debug stuff *******/
 extern char	*debug_keyslot_ptr;

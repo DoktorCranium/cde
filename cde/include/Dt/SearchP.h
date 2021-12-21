@@ -517,26 +517,22 @@ struct or_hwordrec {
  * Actual host_to_network functions defined in <netinit/in.h>
  * which is not yet standardized.
  */
+
+/* JET - Update 12/21/2021 - no need to define (or not) BYTE_SWAP
+ * anymore as we can determine that via autotools (for the code).
+ * Elsewhere, we can just use the systems hto*()/nto*() routines
+ * regardless.
+ */
+
 typedef enum {HTON=1, NTOH} SWABDIR;
 
 extern void swab_dbrec  (struct or_dbrec  *rec,  SWABDIR direction);
 extern void swab_objrec (struct or_objrec *rec,  SWABDIR direction);
 
-#ifdef BYTE_SWAP	/* ie (BYTE_ORDER != BIG_ENDIAN) */
-
 #define HTONL(x)	x = htonl(x)
 #define HTONS(x)	x = htons(x)
 #define NTOHL(x)	x = ntohl(x)
 #define NTOHS(x)	x = ntohs(x)
-
-#else	/* !BYTE_SWAP, ie (BYTE_ORDER == BIG_ENDIAN) */
-
-#define HTONL(x)
-#define HTONS(x)
-#define NTOHL(x)
-#define NTOHS(x)
-
-#endif /* BYTE_SWAP */
 
 
 /*--------------- TESKEY PARSE CHARACTER TYPES ------------
