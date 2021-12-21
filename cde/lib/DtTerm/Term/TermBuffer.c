@@ -984,8 +984,8 @@ _DtTermBufferErase
     DtEraseMode eraseSwitch
 )
 {
-    short  startCol;
-    short  lastCol;
+    short  startCol = 0;
+    short  lastCol = 0;
     
     switch(eraseSwitch)
     {

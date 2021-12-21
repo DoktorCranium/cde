@@ -599,7 +599,7 @@ CreateMenu(Widget termView, Widget parent, Boolean menuBar,
     Arg arglist[20];
     Arg *newArglist;
     int i;
-    KeySym		  ks;
+    KeySym		  ks = NoSymbol;
     char		 *accelerator;
     char		 *acceleratorText;
 
