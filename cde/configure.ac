@@ -571,7 +571,6 @@ programs/dsdm/Makefile
 programs/dthelp/Makefile
 programs/dthelp/dthelpview/Makefile
 programs/dthelp/dthelpgen/Makefile
-programs/dthelp/dthelpdemo/Makefile
 programs/dthelp/dthelpprint/Makefile
 programs/dthelp/parser/Makefile
 programs/dthelp/parser/pass1/Makefile
