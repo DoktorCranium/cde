@@ -4,10 +4,9 @@ bin_PROGRAMS = dtpad
 
 dtpad_CFLAGS = -DDT_LITE -DWORDWRAP
 
-dtpad_LDADD = @DTCLIENTLIBS@ -lXm $(TIRPCLIB) $(XTOOLLIB)
+dtpad_LDADD = $(DTCLIENTLIBS) $(TIRPCLIB) $(XTOOLLIB)
 
 if SOLARIS
-dtpad_CFLAGS += -xF
 dtpad_LDFLAGS = -lintl -lresolv
 endif
 

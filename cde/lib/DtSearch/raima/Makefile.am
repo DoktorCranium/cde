@@ -2,10 +2,8 @@ MAINTAINERCLEANFILES = Makefile.in
 
 noinst_LTLIBRARIES = libraima.la
 
-libraima_la_LIBADD = -lc -lm
-
 libraima_la_CFLAGS = -DCDE_INSTALLATION_TOP=\"$(CDE_INSTALLATION_TOP)\" \
-		     @DT_INCDIR@ -I$(top_srcdir)/include \
+		     $(DT_INCDIR) -I$(top_srcdir)/include \
 		     -DCDE_CONFIGURATION_TOP=\"$(CDE_CONFIGURATION_TOP)\" \
 		     -DNO_TRANS -DUNIX -D_POSIX_SOURCE -DMULTIBYTE
 
@@ -19,10 +17,6 @@ endif
 
 if SOLARIS
 libraima_la_CFLAGS += -D_XOPEN_SOURCE=500 -DNO_REGCOMP
-endif
-
-if HPUX
-libraima_la_CFLAGS += -DMESSAGE_CAT
 endif
 
 

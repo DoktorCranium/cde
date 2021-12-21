@@ -6,7 +6,7 @@ libRFC_a_CXXFLAGS = -I../Common -I../../include -I../../include/utils \
 		    -DTTLOCK_OFF
 
 if SOLARIS
-libRFC_a_CXXFLAGS += -DMMAP_NORESERVE -DSPRO_V2
+libRFC_a_CXXFLAGS += -DMMAP_NORESERVE
 endif
 
 libRFC_a_SOURCES = AliasExpand.C           MIMEBodyPart.C \

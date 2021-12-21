@@ -2,14 +2,14 @@ MAINTAINERCLEANFILES = Makefile.in
 
 SUBDIRS = api db mp util tttk
 
-
 lib_LTLIBRARIES = libtt.la
 
-if AIX
-libtt_la_SOURCES = realpath.c
-else
+# if you are on a system that does not support realpath(), you may need to
+# include realpath.c in the _SOURCES
+#
+#libtt_la_SOURCES = realpath.c
+
 libtt_la_SOURCES =
-endif
 
 # fake things so libtool creates this as a C++ library
 nodist_EXTRA_libtt_la_SOURCES = dummy.cxx

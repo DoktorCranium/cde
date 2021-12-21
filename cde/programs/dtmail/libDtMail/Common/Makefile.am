@@ -6,7 +6,7 @@ libCommon_a_CXXFLAGS = -I../../include -I../../include/utils -I$(srcdir)/lib \
 		       -DDL_NOT_DYNAMIC -DUSE_SOCKSTREAM
 
 if SOLARIS
-libCommon_a_CXXFLAGS += -DMMAP_NORESERVE -DSPRO_V2
+libCommon_a_CXXFLAGS += -DMMAP_NORESERVE
 endif
 
 libCommon_a_SOURCES = APOPServer.C \

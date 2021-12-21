@@ -7,7 +7,7 @@ dtmail_CXXFLAGS = -I../include -I../include/MotifApp -I../include/utils \
 		  -I$(srcdir)/lib -I../../dthelp -DRELEASE_NOTES \
 		  -DDTMAIL_TOOLTALK -DDTEDITOR
 
-dtmail_LDADD = ../libDtMail/libDtMail.a ../MotifApp/libMotifApp.a -lXm \
+dtmail_LDADD = ../libDtMail/libDtMail.a ../MotifApp/libMotifApp.a \
 		$(DTCLIENTLIBS) $(XTOOLLIB) $(TIRPCLIB)
 
 dtmail_SOURCES = AliasListUiItem.C               AlternatesListUiItem.C \

@@ -10,10 +10,6 @@ dist_ksh_SCRIPTS = DtFuncs.dtsh
 
 KSH93SRC = ./ksh93
 
-if SOLARIS
-.NO_PARALLEL:
-endif
-
 KSH93LIBSHELL = $(KSH93SRC)/lib/libshell.a
 
 bin_PROGRAMS = dtksh
@@ -31,9 +27,9 @@ dtksh_CPPFLAGS = -I$(KSH93SRC)/include/ast -I$(KSH93SRC)/src/cmd/ksh93/include \
 		 -DSHOPT_SUID_EXEC -D_API_ast=20100309 -DSHOPT_BRACEPAT \
 		 -DBUILD_DTKSH
 
-dtksh_LDADD = $(DTCLIENTLIBS) -lXm pmain.o $(XTOOLLIB) ${X_LIB} \
+dtksh_LDADD = $(DTCLIENTLIBS) pmain.o $(XTOOLLIB) \
 	      libshell.a $(KSH93SRC)/lib/libcmd.a $(KSH93SRC)/lib/libast.a \
-	      $(KSH93SRC)/lib/libdll.a -lm
+	      $(KSH93SRC)/lib/libdll.a
 
 if LINUX
 dtksh_LDADD += -ldl

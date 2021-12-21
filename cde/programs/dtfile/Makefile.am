@@ -18,7 +18,7 @@ dtfile_CPPFLAGS = -I./dtcopy -DSHAPE -D_ILS_MACROS -DSUN_PERF \
 
 dtfile_LDADD = dtcopy/sharedFuncs.o \
 	dtcopy/fsrtns.o \
-	$(DTCLIENTLIBS) $(TIRPCLIB) -lXm -lXext $(XTOOLLIB) 
+	$(DTCLIENTLIBS) $(TIRPCLIB) $(XTOOLLIB) 
 
 if OPENBSD
 dtfile_CPPFLAGS += -DFILE_MAP_OPTIMIZE
@@ -29,7 +29,6 @@ dtfile_CPPFLAGS += -DFILE_MAP_OPTIMIZE
 endif
 
 if SOLARIS
-dtfile_CFLAGS = -xF
 dtfile_LDADD += -lintl -lresolv
 endif
 

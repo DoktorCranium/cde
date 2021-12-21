@@ -7,7 +7,7 @@ bin_PROGRAMS = ttmv ttrm ttcp ttrmdir
 
 AM_CXXFLAGS = -I../../lib $(TT_VERSION_DEFINE)
 
-LDADD = @LIBTT@ $(TIRPCLIB) $(XTOOLLIB)
+LDADD = $(LIBTT) $(TIRPCLIB) $(XTOOLLIB)
 
 if SOLARIS
 LDADD += -ldl -lintl -lsocket -lnsl

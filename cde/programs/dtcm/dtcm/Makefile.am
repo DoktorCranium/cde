@@ -7,10 +7,6 @@ AM_CFLAGS = $(DT_INCDIR) $(CSA_INCDIR) -I../../../lib/csa	\
 
 LDADD = ../libDtCmP/libDtCmP.a $(LIBCSA) $(DTCLIENTLIBS) $(XTOOLLIB)
 
-if SOLARIS
-AM_CFLAGS += -xstrconst -Xc -v
-endif
-
 if FREEBSD
 LDADD += -lcompat
 endif

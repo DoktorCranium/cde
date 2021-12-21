@@ -4,7 +4,7 @@ bin_PROGRAMS = dtlogin dtgreet dtchooser
 
 if HAS_PAM_LIBRARY
 PAM_LIB = -lpam
-DTPAMSVCLIB = @LIBPAMSVC@
+DTPAMSVCLIB = $(LIBPAMSVC)
 else
 PAM_LIB =
 DTPAMSVCLIB =
@@ -56,12 +56,12 @@ dtgreet_SOURCES = vgcallback.c vglogo.c vgmain.c vgutil.c vglang.c
 dtchooser_SOURCES = chooser.c dtchooser.c vglogo.c vgutil.c vgcallback.c \
 		    vglang.c
 
-dtlogin_LDADD = libresource.a @DTCLIENTLIBS@ -lXau -lXmu -lXext -lXdmcp \
+dtlogin_LDADD = libresource.a $(DTCLIENTLIBS) $(XDMCPLIB) \
 	$(XTOOLLIB) $(TIRPCLIB) $(DTPAMSVCLIB) $(PAM_LIB)
 
 dtgreet_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
-dtchooser_LDADD = $(DTCLIENTLIBS) -lXmu -lXext -lXdmcp $(XTOOLLIB)
+dtchooser_LDADD = $(DTCLIENTLIBS) $(XDMCPLIB) $(XTOOLLIB)
 
 
 if LINUX

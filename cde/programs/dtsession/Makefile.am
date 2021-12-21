@@ -5,7 +5,7 @@ bin_PROGRAMS = dtsession
 bin_SCRIPTS = dtsession_res
 
 if HAS_PAM_LIBRARY
-DTPAMSVCLIB = @LIBPAMSVC@
+DTPAMSVCLIB = $(LIBPAMSVC)
 else
 DTPAMSVCLIB =
 endif

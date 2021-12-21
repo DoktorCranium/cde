@@ -8,7 +8,7 @@ bin_PROGRAMS = rpc.ttdbserver
 rpc_ttdbserver_CXXFLAGS = -I../../slib -I../../lib -I../../mini_isam \
 			$(TIRPC_DEFINES) $(TT_VERSION_DEFINE)
 
-rpc_ttdbserver_LDADD = @LIBTT@ ${TIRPCLIB} $(X_LIBS) ../../slib/libstt.a \
+rpc_ttdbserver_LDADD = $(LIBTT) ${TIRPCLIB} $(X_LIBS) ../../slib/libstt.a \
 		       ../../mini_isam/libisam.a
 
 if LINUX
