@@ -109,7 +109,7 @@
 #endif
 
 #ifdef HAS_PAM_LIBRARY
-#include <PamSvc.h>
+#include <Dt/PamSvc.h>
 #endif
 
 int ApplyFontPathMods(struct display *d, Display *dpy); // fontpath.c

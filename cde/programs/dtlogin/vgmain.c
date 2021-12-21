@@ -91,7 +91,7 @@
 
 
 #ifdef USE_XINERAMA
-#include <DtXinerama.h>
+#include <Dt/DtXinerama.h>
 #endif
 
 #if !defined(NL_CAT_LOCALE)

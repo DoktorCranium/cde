@@ -34,7 +34,7 @@
 #include <stdlib.h>
 #include <X11/Xlib.h>
 
-#include "DtXinerama.h"
+#include <Dt/DtXinerama.h>
 
 /* return a DtXineramaInfo_t (or NULL if no Xinerama) available */
 

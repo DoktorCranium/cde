@@ -86,7 +86,7 @@
 #endif
 
 #ifdef HAS_PAM_LIBRARY
-#include <PamSvc.h>
+#include <Dt/PamSvc.h>
 #endif
 
 #include "Sm.h"

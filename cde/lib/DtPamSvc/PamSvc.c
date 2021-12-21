@@ -54,7 +54,7 @@
 #if defined(__linux__)
 #include <grp.h>
 #endif
-#include "PamSvc.h"
+#include <Dt/PamSvc.h>
 
 /*
  * Local function declarations

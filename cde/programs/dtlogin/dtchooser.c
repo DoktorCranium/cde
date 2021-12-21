@@ -90,7 +90,7 @@
 #include        <Dt/MenuButton.h>
 
 #ifdef USE_XINERAMA
-#include <DtXinerama.h>
+#include <Dt/DtXinerama.h>
 #endif
 
 

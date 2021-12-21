@@ -68,7 +68,7 @@
 #include <Dt/DtP.h>
 #include <Dt/Lock.h>
 #ifdef USE_XINERAMA
-#include <DtXinerama.h>		/* JET - Xinerama support */
+#include <Dt/DtXinerama.h>		/* JET - Xinerama support */
 #endif
 #include "Sm.h"
 #include "SmError.h"
