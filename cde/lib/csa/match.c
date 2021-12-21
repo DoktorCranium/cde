@@ -102,7 +102,7 @@ _DtCmHashCriteria(
 	time_t	tstart1, tstart2, tend1, tend2;
 	time_t	tick;
 	char	*name;
-	cms_attribute_value	*val, *hval;
+	cms_attribute_value	*val, *hval = NULL;
 	boolean_t keep;
 
 	*hnum = 0;
@@ -247,7 +247,7 @@ _DtCmHashCriteria(
 
 			(*hattrs)[j].name.name = name;
 			(*hattrs)[j].name.num = index;
-			if (val) {
+			if (val && hval) {
 				(*hattrs)[j].value = &hval[j];
 				(*hattrs)[j].value->type = val->type;
 				if (csaattrs &&
