@@ -370,7 +370,7 @@ static int	parse_ims_list(char *ptr, ImsList *list)
     char	*def_name;
     int		i, num_ent;
     ImsEnt	*ent = 0;
-    ImsConf	*ims;
+    ImsConf	*ims = NULL;
 
     CLR(list, ImsList);
     list->default_idx = -1;

@@ -393,7 +393,7 @@ void	ximsFinish(void)
 
 static int	ximsShowImsList(void)
 {
-    int		ret;
+    int		ret = NoError;
     int		i;
     int		host_type = HOST_LOCAL;
     char	*hostname;
@@ -769,7 +769,7 @@ static int	parse_options(int argc, char **argv)
     int		i, n;
     int		wac = 1;
     char	*wav[80];
-    int		orgMode;
+    int		orgMode = MODE_START;
     static bool	first_time = True;
 
 #define	SET_FLAG(f)	OpFlag |= (f)

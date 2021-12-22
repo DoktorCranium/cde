@@ -150,7 +150,7 @@ int	read_cmd_conf(void)
     char	*conf_dir, *path;
     char	*p, *lp, *valp;
     int		line_num, num_alias;
-    DtEnv	*dt;
+    DtEnv	*dt = NULL;
     RemoteEnv	*remote;
     FILE	*fp;
 # ifdef	old_hpux
