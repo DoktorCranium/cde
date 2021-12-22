@@ -3872,7 +3872,7 @@ get_cur_func_type(void)
     Widget      label_wid = XmOptionButtonGadget(action_type_opmenu);
     XmString    xm_act_label    = (XmString)NULL;
     char        *act_label = NULL;
-    int        i;
+    int        i = -1;
     AB_FUNC_TYPE	func_type = AB_FUNC_UNDEF;
  
     XtVaGetValues(label_wid, XmNlabelString, &xm_act_label, NULL);
@@ -3904,6 +3904,7 @@ get_cur_func_type(void)
 	    func_type = AB_FUNC_HELP_VOLUME;    
 	    break;
 	default:
+	    func_type = AB_FUNC_UNDEF;
 	    break;
     }
     

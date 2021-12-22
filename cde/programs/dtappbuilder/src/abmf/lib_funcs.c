@@ -1246,7 +1246,7 @@ dtb_more_help_dispatch(
 {
     int             	i;
     Arg             	wargs[10];
-    String		buffer, vol, loc;
+    String		buffer, vol = NULL, loc = NULL;
     char		*cp;
     static Widget	GeneralHelpDialog = (Widget) NULL;
     Widget		help_dialog = (Widget)clientData;
@@ -3310,7 +3310,7 @@ align_labels(
 )
 {
     WidgetList	children_list = NULL,
-		one_col;
+		one_col = NULL;
     Widget	previous_child = NULL,
 		child,
 		ref_widget,

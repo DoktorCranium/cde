@@ -4068,7 +4068,7 @@ menu_newCB(
     PropStateInfo 	*pstate;
     AB_PROP_TYPE	alt_prop_type = AB_PROP_FIXED;
     ABObj		module;
-    Widget		prop_dialog;
+    Widget		prop_dialog = NULL;
     STRING      	base = NULL;
     STRING      	unique_name;
     STRING      	menu_name;

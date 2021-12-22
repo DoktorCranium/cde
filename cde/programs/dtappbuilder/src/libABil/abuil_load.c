@@ -527,7 +527,7 @@ object_child_into_module(
     sym_entry_type	*uil_section_entries
 )
 {
-    ABObjPtr			ret_val;
+    ABObjPtr			ret_val = NULL;
     sym_widget_entry_type	*uil_widget;
 
     if (uil_section_entries == (sym_entry_type *)NULL)
@@ -1112,7 +1112,7 @@ parse_uil(
     Uil_status_type		compile_stat;
     int				user_mess_data	= 1;
     int				user_stat_data	= 1;
-    char			*ret_val;
+    char			*ret_val = NULL;
 
     /* Set up command description structure */
 

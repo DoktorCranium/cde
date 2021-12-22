@@ -2201,7 +2201,7 @@ abobj_paste(
     ABObj		project = proj_get_project(),
     			newObj, 
 			root,
-			newroot,
+			newroot = NULL,
 			parent;
     ABSelectedRec 	sel;
     STRING		name = (STRING) NULL;

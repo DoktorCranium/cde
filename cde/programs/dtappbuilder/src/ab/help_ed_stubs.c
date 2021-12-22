@@ -1412,6 +1412,9 @@ more_help_dispatch(Widget widget, XtPointer clientData, XtPointer callData)
 	*cp++ = 0;
 	vol = buffer;
 	loc = cp; 
+    } else {
+	/* No slash found, give up */
+	return;
     }
 
     if(GeneralHelpDialog == (Widget)NULL) {
