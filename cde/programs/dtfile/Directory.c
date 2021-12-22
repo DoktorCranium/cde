@@ -1635,7 +1635,7 @@ ReadDirectoryProcess(
    position_count = 0;
    if ((fptr = fopen(file_name, "r")) != NULL)
    {
-     PositionInfo * position_info;
+     PositionInfo * position_info = NULL;
      fscanf(fptr, "%d\n", &position_count);
 
      if (position_count > 0)
@@ -2142,7 +2142,7 @@ ReaddirPipeCallback(
    Boolean done;
    short msg;
    Boolean update_due;
-   FileData *new_data, **new_nextp;
+   FileData *new_data = NULL, **new_nextp;
    FileData *old_data, **old_nextp;
    char *ptr;
    char *err_msg;
@@ -2285,7 +2285,9 @@ ReaddirPipeCallback(
                 new_nextp = &(*new_nextp)->next)
              ;
            *new_nextp = new_data;
-           new_data->next = NULL;
+           if(new_data ) {
+             new_data->next = NULL;
+           }
          }
 
          if (activity == activity_reading)
@@ -2814,7 +2816,7 @@ _ReadDir(
 {
   char subdir_name[MAX_PATH];
   FileData *fp, *file_data;
-  FileViewData **lp, *ip;
+  FileViewData **lp = NULL, *ip;
   int i, j, n, rc;
   TreeShow ts;
   Boolean busy_reading;
@@ -2894,7 +2896,7 @@ _ReadDir(
     }
 
     /* add new entry to linked list */
-    if (dp)
+    if (dp && lp)
     {
       *lp = ip;
       lp = &ip->next;
@@ -5130,7 +5132,7 @@ SelectDesktopFile(
 FileMgrData *file_mgr_data)
 {
     DirectorySet *directory_data;
-    FileViewData *file_view_data;
+    FileViewData *file_view_data = NULL;
     int j;
 
     directory_data = file_mgr_data->directory_set[0];
@@ -5149,5 +5151,7 @@ FileMgrData *file_mgr_data)
     }
     ActivateSingleSelect(file_mgr_data->file_mgr_rec,
                          file_mgr_data->selection_list[0]->file_data->logical_type);
-    PositionFileView(file_view_data, file_mgr_data);
+    if(file_view_data) {
+        PositionFileView(file_view_data, file_mgr_data);
+    }
 }

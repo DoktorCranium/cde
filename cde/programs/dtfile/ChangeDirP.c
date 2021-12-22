@@ -904,7 +904,7 @@ DrawCurrentDirectory(
    int draw_x;
    int draw_y;
    int dir_width;
-   int msg_width;
+   int msg_width = 0;
    short columns;
    Boolean msg_drawn;
 

@@ -3219,7 +3219,7 @@ LoadViews (
    static char * name_list[] = { DTFILE_CLASS_NAME, NULL, NULL };
    char view_number[11];
    DialogData * dialog_data;
-   FileMgrData * file_mgr_data;
+   FileMgrData * file_mgr_data = NULL;
    char * workspaces;
    XClassHint classHints;
    char * iconify = NULL;
@@ -3397,7 +3397,7 @@ LoadViews (
      view_count++;
    }
 
-   if (openDirType == NEW)
+   if (openDirType == NEW && file_mgr_data)
       ForceMyIconOpen(file_mgr_data->host, NULL);
 }
 

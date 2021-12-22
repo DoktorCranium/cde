@@ -1482,7 +1482,7 @@ RenameOk(
    char to_host[256];
    char to_dir[MAX_PATH];
    char to_file[256];
-   unsigned int modifiers;
+   unsigned int modifiers = 0;
    char *host_set[1], *file_set[1];
    int  file_count = 1;
 

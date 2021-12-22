@@ -785,7 +785,7 @@ OrderFiles(
    FileViewData ** file_view_data;
    int             file_count;
    FileViewData ** order_list;
-   int * sort;
+   int * sort = NULL;
    int * sub_sort;
    int i;
    int start;
@@ -853,11 +853,14 @@ OrderFiles(
       else
          sort = (int *) FileSizeDescending;
    }
-
+   else
+   {
+      /* Unknown sort order? */
+      return;
+   }
 
    /*  Sort the files and if the sub_sort function is non-null,  */
    /*  sort sets of the files broken according to file type.     */
-
    qsort (order_list, file_count, sizeof (FileViewData *), (int (*)())sort);
 
    if (sub_sort != NULL)
@@ -3177,8 +3180,8 @@ CreateNameChangeDialog (
    int type)
 {
    XRectangle textExtent;
-   FileMgrData * file_mgr_data;
-   DesktopRec * desktopWindow;
+   FileMgrData * file_mgr_data = NULL;
+   DesktopRec * desktopWindow = NULL;
    Widget parent = XtParent(w);
    Widget text;
    Arg args[8];
@@ -3317,18 +3320,20 @@ CreateNameChangeDialog (
    else
    {
       text = XmCreateTextField(parent, "nameChangeT", args, n);
-      file_mgr_data->renaming = file_view_data;
-      XtAddCallback (text, XmNmotionVerifyCallback,
-                     (XtCallbackProc)ChangeIconName,
-                     (XtPointer)file_mgr_data);
-      XtAddCallback (text, XmNmodifyVerifyCallback,
-                     (XtCallbackProc)ChangeIconName,
-                     (XtPointer)file_mgr_data);
-      XtAddCallback (text, XmNactivateCallback,
-                     (XtCallbackProc)ChangeIconName,
-                     (XtPointer)file_mgr_data);
-      XtAddCallback(text, XmNhelpCallback, (XtCallbackProc)HelpRequestCB,
-                    HELP_NAMECHANGE_DIALOG_STR);
+      if(file_mgr_data) {
+         file_mgr_data->renaming = file_view_data;
+         XtAddCallback(text, XmNmotionVerifyCallback,
+                       (XtCallbackProc)ChangeIconName,
+                       (XtPointer)file_mgr_data);
+         XtAddCallback(text, XmNmodifyVerifyCallback,
+                        (XtCallbackProc)ChangeIconName,
+                        (XtPointer)file_mgr_data);
+         XtAddCallback(text, XmNactivateCallback,
+                        (XtCallbackProc)ChangeIconName,
+                        (XtPointer)file_mgr_data);
+         XtAddCallback(text, XmNhelpCallback, (XtCallbackProc)HelpRequestCB,
+                       HELP_NAMECHANGE_DIALOG_STR);
+      }
    }
 
    XtAddCallback (text, XmNdestroyCallback, DestroyIconName, (XtPointer)NULL);
@@ -3425,7 +3430,7 @@ CreateNameChangeDialog (
    XtManageChild(text);
    XmProcessTraversal(text, XmTRAVERSE_CURRENT);
 
-   if(type != DESKTOP)
+   if(type != DESKTOP && file_mgr_data)
    {
       FileMgrRec *file_mgr_rec;
 
