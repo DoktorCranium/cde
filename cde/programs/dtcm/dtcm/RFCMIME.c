@@ -46,7 +46,7 @@ static char sccsid[] = "$TOG: RFCMIME.c /main/11 1999/06/30 12:08:55 mgreess $";
  */
 
 #ifdef HAVE_CONFIG_H
-#include <autotools_config.h>
+#include <cde_config.h>
 #endif
 
 #include <stdio.h>

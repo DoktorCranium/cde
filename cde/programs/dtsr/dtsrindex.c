@@ -111,7 +111,7 @@
  * 2.1.5b cborodin bug.  Segfault due to overflowing bitvector
  * after many deletions and no mrclean.
  */
-#include <autotools_config.h>
+#include <cde_config.h>
 #include <Dt/SearchP.h>
 #include <limits.h>
 #include <stdlib.h>

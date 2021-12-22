@@ -65,7 +65,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #if defined(HAVE_CONFIG_H)
-# include <autotools_config.h>
+# include <cde_config.h>
 #endif
 #if defined(HAVE_STRING_H)
 # include <string.h>

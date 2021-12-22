@@ -52,7 +52,7 @@
  *
  * $Log$
  */
-#include <autotools_config.h>
+#include <cde_config.h>
 #include <Dt/SearchP.h>
 
 /********************************/

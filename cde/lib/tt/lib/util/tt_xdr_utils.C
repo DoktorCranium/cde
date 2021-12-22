@@ -35,7 +35,7 @@
 #include <rpc/rpc.h>
 #include <util/tt_xdr_utils.h>
 #include <memory.h>
-#include <autotools_config.h>
+#include <cde_config.h>
 #include "tt_options.h"
 
 #if defined(__OpenBSD__)

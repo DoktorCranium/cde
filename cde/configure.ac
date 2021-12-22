@@ -5,7 +5,7 @@ AC_INIT([Common Desktop Environment],
         [https://sourceforge.net/projects/cdesktopenv],
         [cde],
         [https://sourceforge.net/projects/cdesktopenv])
-AC_CONFIG_HEADERS([include/autotools_config.h])
+AC_CONFIG_HEADERS([include/cde_config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AM_INIT_AUTOMAKE([foreign subdir-objects no-define])
 
