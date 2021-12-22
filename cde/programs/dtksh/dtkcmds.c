@@ -1317,7 +1317,7 @@ do_XtHasCallbacks(
 {
    wtab_t *w;
    char *arg0 = argv[0];
-   char * msg;
+   char * msg = "";
    char * variable = argv[1];
    XtCallbackStatus callbackStatus;
    XrmValue fval, tval;
@@ -2476,18 +2476,18 @@ invokeXDrawFunction(
    char * functionName = argv[0];
    Display * display;
    Window drawable;
-   Window destination;
-   int srcX, srcY;
-   int destX, destY;
-   unsigned int width, height;
+   Window destination = NULL;
+   int srcX = 0, srcY = 0;
+   int destX = 0, destY = 0;
+   unsigned int width = 0, height = 0;
    char *s;
    char *sp;
    int i;
-   int mode, parse;
+   int mode, parse = 0;
    int text = FALSE;
-   int (*func)();
+   int (*func)() = NULL;
    int argtype = 0;
-   int polymode;
+   int polymode = 0;
    int coordmode;
    GC  gc = NULL;
    int p[MAXDRAWARGS];
