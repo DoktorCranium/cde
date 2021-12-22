@@ -108,7 +108,7 @@ getNamedValueString(const char *string, const char *name)
 {
   int		  	  stringLen = strlen(string);
   int		  	  nameLen = strlen(name);
-  const char		* results;
+  const char		* results = NULL;
   char			* stringEnd;
   unsigned int	  offset;
 

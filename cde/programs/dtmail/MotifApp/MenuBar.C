@@ -703,7 +703,7 @@ MenuBar::rotateLabels(
     XtArgVal num_children;
     WidgetList children;
     XmString label, endlabel;
-    Widget prevwid, wid;
+    Widget prevwid = NULL, wid;
 
     if (startindex < 0 || endindex < 0)
 	return;
@@ -763,9 +763,11 @@ MenuBar::rotateLabels(
 		prevwid = (Widget) children[j];
 	} while (!XtIsManaged(prevwid));
 
-	XtVaGetValues(prevwid,
-		XmNlabelString, &label,
-		NULL);
+	if(prevwid) {
+		XtVaGetValues(prevwid,
+			XmNlabelString, &label,
+			NULL);
+	}
 
 	XtVaSetValues(wid,
 		XmNlabelString, label,

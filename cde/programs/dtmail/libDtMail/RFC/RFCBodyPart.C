@@ -420,6 +420,7 @@ RFCBodyPart::flagIsSet(DtMailEnv & error,
 
       default:
 	error.setError(DTME_OperationInvalid);
+	return(DTM_FALSE);
     }
 
     return(answer);

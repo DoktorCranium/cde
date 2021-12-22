@@ -2549,7 +2549,7 @@ SaveAsTextCmd::writeText(XtPointer filedes, char *text_buf)
 void
 SaveAsTextCmd::doit()
 {
-    MsgScrollingList	*list;
+    MsgScrollingList	*list = NULL;
     Widget		listW;
     int			*pos_list = NULL;
     int			pos_count = 0;

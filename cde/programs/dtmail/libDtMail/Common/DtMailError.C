@@ -404,7 +404,7 @@ char *
 DtMailEnv::getMessageText(int set, int msg, char *dft)
 {
     static int oneTimeFlag = 0;	// Only attempt to open message catalog once
-    char *message;
+    char *message = NULL;
     
     if ((oneTimeFlag == 0) && (_errorCatalog == (nl_catd) -1))
     {
