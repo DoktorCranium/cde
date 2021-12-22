@@ -667,7 +667,7 @@ MakeDialog( DialogType dtype )
     char	buffer[128];
     char	*str;
 
-    Widget	w, text;
+    Widget	w = NULL, text;
     Dimension	txt_width, txt_height;
     XmString	ok, cancel, nw, sv;
 

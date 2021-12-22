@@ -365,7 +365,7 @@ void
 ManageSession( struct display *d )
 {
     int			pid;
-    Window		root;
+    Window		root = NULL;
    /* Display 		*dpy; */
 #ifdef BYPASSLOGIN
     char	*BypassUsername;
@@ -1199,8 +1199,6 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
     long	ngroups, groups[NGROUPS];
 #endif /* __AFS */
 
-    waitType  status;
-
     if (verify->argv) {
 	Debug ("StartSession %s: ", verify->argv[0]);
 	for (f = verify->argv; *f; f++) {
@@ -1283,7 +1281,7 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
 #endif
 
 #if !defined(sun) && (!defined(CSRG_BASED) || defined(HAS_PAM_LIBRARY))
-	Account(d, user, NULL, getpid(), USER_PROCESS, status);
+	Account(d, user, NULL, getpid(), USER_PROCESS, 0);
 #endif
 
 #ifdef AIXV3
