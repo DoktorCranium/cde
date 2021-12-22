@@ -255,7 +255,7 @@ static Widget   _Uxbuild_AddFiletype(void)
         int                   ntotalbuttons = 4;
         int                   nbutton = 0;
         Widget                AF_ScrolledWindow;
-        Widget                AF_BigForm;
+        Widget                AF_BigForm = NULL;
         XtArgVal /* Dimension */             dim1, dim2, dim3;
         Widget                AF_MED_IconForm, AF_TINY_IconForm;
         IconData             *pIconData;
