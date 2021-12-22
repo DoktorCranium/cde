@@ -561,14 +561,14 @@ void            process_profile (void)
     int             line_num = 0;
     int             i;
     char           *tok;
-    struct line_id *line_current;
-    struct field_id *field_current;
+    struct line_id *line_current      = NULL;
+    struct field_id *field_current    = NULL;
     struct key_id  *key_current;
     struct date_id *date_current;
-    struct key_id  *abstract_current;
-    struct finclude *finclude_current;
-    struct include *include_current;
-    struct include *i_i_current;
+    struct key_id  *abstract_current  = NULL;
+    struct finclude *finclude_current = NULL;
+    struct include *include_current   = NULL;
+    struct include *i_i_current       = NULL;
     int             found;
     int             tok_type;
 
@@ -2052,7 +2052,7 @@ void            process_infile (void)
 {
     int             line_num = 0;
     struct line_id *line_current;
-    struct rec     *record;
+    struct rec     *record = NULL;
     char            buffer[200];
     int             cant_be;
     time_t          startime = 0L;

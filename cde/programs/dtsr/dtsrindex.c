@@ -920,7 +920,7 @@ void            write_2_dtbs_addr_file (void)
 {
     DtSrINT32		num_addrs_ii;
     DtSrINT32		num_reads;
-    DtSrINT32		i_start, k, cur_ind;
+    DtSrINT32		i_start, k, cur_ind = 0;
     DtSrINT32		num_delete_addrs = 0;
     char		addrs_removed = FALSE;
     DtSrINT32	i;

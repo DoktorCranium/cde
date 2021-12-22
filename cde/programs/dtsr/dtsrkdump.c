@@ -103,7 +103,7 @@ static struct or_dbrec
 /****************************************/
 void            count_words (int index)
 {
-    long	vista_field;
+    long	vista_field = 0;
     UCHAR	*ptr;
     DtSrINT32	offset, free, addrs;
     int		tabstop;
