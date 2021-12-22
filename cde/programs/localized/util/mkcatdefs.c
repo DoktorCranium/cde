@@ -484,7 +484,7 @@ chkcontin(char *line)
 {
   int	len;		/* # bytes in character */
   wchar_t	wc;		/* process code of current character in line */
-  wchar_t	wcprev;		/* process code of previous character in line */
+  wchar_t	wcprev = '\0';		/* process code of previous character in line */
 
   for (wc=0; *line; line+=len) {
     wcprev = wc;
