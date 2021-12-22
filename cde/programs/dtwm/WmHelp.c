@@ -1625,7 +1625,7 @@ RestoreHelpDialogs(
 
     Position xLoc, yLoc;
     short columns, rows;
-    int helpType;
+    int helpType = DtHELP_TYPE_TOPIC;
     char geometry[40];
     int wsCnt;    
     int cCount;

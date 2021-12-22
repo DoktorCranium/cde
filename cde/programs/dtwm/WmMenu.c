@@ -377,7 +377,7 @@ void CheckTerminalSeparator(MenuSpec *menuSpec, Widget buttonWidget, Boolean man
 static MenuItem *
 DuplicateMenuItems (MenuItem *menuItems)
 {
-    MenuItem *newMenuItem = (MenuItem *) NULL, *returnMenuItem, *curMenuItem;
+    MenuItem *newMenuItem = NULL, *returnMenuItem = NULL, *curMenuItem;
     
     for (curMenuItem = menuItems;
 	 curMenuItem != (MenuItem *) NULL;

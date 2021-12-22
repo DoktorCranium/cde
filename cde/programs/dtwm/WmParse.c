@@ -1477,7 +1477,7 @@ _DtWmParseExpandEnvironmentVariables (
     int lenNonEnv;
     int lenEnvVar;
     int lenEnvValue;
-    int lenReturn;
+    int lenReturn = 0;
     int lenSave;
     static unsigned char pchDefaultBrk[] = { 
 				DTWM_CHAR_ENVIRONMENT,

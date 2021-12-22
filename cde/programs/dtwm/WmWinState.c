@@ -614,7 +614,7 @@ void ConfigureNewState (ClientData *pcd)
     }
     else
     {
-	long decor;
+	long decor = WM_DECOR_DEFAULT;
 	WmHeadInfo_t *WmHI;
 
 	if (pcd->isFullscreen)

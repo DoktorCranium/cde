@@ -1360,7 +1360,7 @@ PushCB (Widget    w,
 
    BoxData      * box_data;
    SubpanelData * subpanel_data;
-   ControlData  * main_control_data;
+   ControlData  * main_control_data = NULL;
 
    char m_state;
 
