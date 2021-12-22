@@ -1,7 +1,7 @@
 dnl When changing the version below, also change the CDE_VERSION_* macros
 dnl to match further below
 AC_INIT([Common Desktop Environment],
-        [2.4.0b],
+        [2.4.0c],
         [https://sourceforge.net/projects/cdesktopenv],
         [cde],
         [https://sourceforge.net/projects/cdesktopenv])
@@ -16,7 +16,7 @@ CDE_VERSION_MINOR=4
 CDE_VERSION_MICRO=0
 dnl this is blank for a release, or contains an alpha character to indicate a
 dnl dev release.
-CDE_VERSION_DEV=b
+CDE_VERSION_DEV=c
 
 AC_SUBST(CDE_VERSION_MAJOR)
 AC_SUBST(CDE_VERSION_MINOR)
