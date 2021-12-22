@@ -1993,7 +1993,7 @@ void Parser::translateRange(SdBuilder &sdBuilder, SyntaxChar start,
   for (;;) {
     SyntaxChar doneUpTo = end;
     Boolean gotSwitch = 0;
-    WideChar firstSwitch;
+    WideChar firstSwitch = '\0';
     for (size_t i = 0; i < sdBuilder.switcher.nSwitches(); i++) {
       WideChar c = sdBuilder.switcher.switchFrom(i);
       if (start <= c && c <= end) {

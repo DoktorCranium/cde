@@ -53,7 +53,7 @@ Boolean Parser::parseAttributeSpec(Boolean inDecl,
 	text.addChars(currentInput()->currentTokenStart(),
 		      currentInput()->currentTokenLength(),
 		      currentLocation());
-	size_t nameMarkupIndex;
+	size_t nameMarkupIndex = 0;
 	if (currentMarkup())
 	  nameMarkupIndex = currentMarkup()->size() - 1;
 	text.subst(*syntax().generalSubstTable(), syntax().space());
