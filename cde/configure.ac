@@ -419,6 +419,15 @@ AC_CHECK_LIB(tirpc, svc_register,
        TIRPCLIB=-ltirpc])
 AC_SUBST(TIRPCLIB)
 
+dnl see if the rpc_inline_t type exists
+AC_CHECK_TYPE(rpc_inline_t, [],
+   [AC_DEFINE_UNQUOTED([rpc_inline_t], [int32_t],
+       [Define to int32_t if not defined by including rpc/rpc.h])],
+[
+AC_INCLUDES_DEFAULT
+#include <rpc/rpc.h>
+])
+
 dnl check sizeof time_t for RPC
 AC_CHECK_SIZEOF([int])
 AC_CHECK_SIZEOF([long])
