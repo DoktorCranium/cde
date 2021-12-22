@@ -622,7 +622,7 @@ AddSuLog(
      * take away write access from SULog
      */
 
-    if(chmod (SULog, (int) (st.st_mode & 07777) & ~0222) == -1) {
+    if(chmod (SULog, 0400) == -1) {
         fprintf(stderr, "Error on chmod of '%s', %s\n", SULog, strerror(errno));
     }
 
