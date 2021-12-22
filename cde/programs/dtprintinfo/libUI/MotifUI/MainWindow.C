@@ -222,7 +222,7 @@ void MainWindow::PopupMenu(Widget widget, XtPointer client_data,
 {
    XRectangle          pixmap_rect, label_rect;
    XButtonEvent *      ev;
-   Window              child, parent, root;
+   Window              child, parent = NULL, root;
    int                 root_x, root_y, win_x, win_y;
    unsigned int        modMask;
    Display *           display = XtDisplay(widget);

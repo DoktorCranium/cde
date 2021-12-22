@@ -247,7 +247,7 @@ Dialog::Dialog(MotifUI *parent, char *title, char *caption, boolean editable,
    Arg      args[8];
    int      n;
    XmString xm_string = StringCreate(title);
-   XmString xm_message;
+   XmString xm_message = NULL;
    Pixmap   pixmap;
 
    _dialog_type = PROMPT_DIALOG;

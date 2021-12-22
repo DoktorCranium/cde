@@ -68,15 +68,15 @@ void IconObj::CreateIconObj(MotifUI *parent, char *name, char * /*category*/,
                             char *iconFile, char *details, char *topString,
 			    char *bottomString, IconFields _fields)
 {
-   Pixmap pixmap;
-   Pixmap mask;
+   Pixmap pixmap = XmUNSPECIFIED_PIXMAP;
+   Pixmap mask = XmUNSPECIFIED_PIXMAP;
    Pixel bg;
    Widget p, super_node;
    XmString xm_string, xm_topString, xm_bottomString;
    char *s;
    int shrinkOutline = false;
-   int pixmapPlacement;
-   int alignment;
+   int pixmapPlacement = GuiPIXMAP_LEFT;
+   int alignment = XmALIGNMENT_BEGINNING;
    int isOpened;
    GuiIconFields gui_fields;
 
@@ -95,7 +95,7 @@ void IconObj::CreateIconObj(MotifUI *parent, char *name, char * /*category*/,
       gui_fields->alignments = new unsigned char[fields->n_fields];
       gui_fields->fields = new XmString[fields->n_fields];
 
-      unsigned char alignment;
+      unsigned char alignment = XmALIGNMENT_BEGINNING;
       for (i = 0; i < fields->n_fields; i++)
        {
 	 gui_fields->widths[i] = fields->fields_widths[i];
@@ -454,7 +454,7 @@ boolean IconObj::SetIcon(IconStyle style)
 {
    Pixmap pixmap, mask;
    int shrinkOutline = false;
-   int pixmapPlacement;
+   int pixmapPlacement = GuiPIXMAP_LEFT;
    int alignment;
    int isOpened;
 

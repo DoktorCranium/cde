@@ -221,7 +221,7 @@ DtApp::DtApp(char *progname, int *argc, char **argv) :
 
    // Save print job's class name for registering GUI actions
    PrintJob *dummy_printjob;
-   char *className;
+   char *className = NULL;
    if (app_mode != CONFIG_PRINTERS)
     {
       dummy_printjob = new PrintJob(NULL, "_FOO", NULL, NULL, NULL, NULL, NULL);
