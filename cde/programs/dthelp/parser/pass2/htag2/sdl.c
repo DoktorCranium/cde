@@ -1451,7 +1451,7 @@ static void MarkUsedStyle(M_WCHAR *level, M_WCHAR *class, M_WCHAR *ssi)
 {
 ElementPtr  pThis;
 M_WCHAR    *rlevel = NULL, *rclass = NULL, *rssi = NULL;
-LOGICAL    *pBeenUsed;
+LOGICAL    *pBeenUsed = NULL;
 
 pThis = pTossChain;
 while (pThis)
@@ -1493,7 +1493,7 @@ while (pThis)
 	(!rssi   || (w_strcmp(rssi, ssi) == 0))     &&
 	(w_strcmp(rclass, class) == 0))
 	    {
-	    if (*pBeenUsed == FALSE)
+	    if (pBeenUsed && *pBeenUsed == FALSE)
 		{
 		nStyles++;
 		*pBeenUsed = TRUE;
@@ -2232,7 +2232,7 @@ while (pThis)
 */
 static void MarkUsedTOSS(ElementPtr pRoot)
 {
-ElementPtr pParent, pSnb, pItem, pThis;
+ElementPtr pParent, pSnb = NULL, pItem, pThis;
 static char errMess[] =
 	    "internal error - unrecognized element type in MarkUsedTOSS";
 
@@ -3257,7 +3257,7 @@ int            zFileSize, length;
 unsigned char  zTemp[4];
 int            zFd;
 char           buffer[BUFSIZ];
-FILE          *saveOutFile;
+FILE          *saveOutFile = NULL;
 char           cCount[32];
 static char    errMess[] =
 		    "internal error - unrecognized element type in EmitSDL";
