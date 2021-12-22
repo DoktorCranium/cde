@@ -2128,8 +2128,10 @@ build_todo_list(ToDo *t, Tick date, Glance glance, CSA_entry_handle **a, CSA_uin
 		state = CSA_STATUS_COMPLETED;
 		use_state = B_TRUE;
 	}
-	else
+	else {
+		state = 0;
 		use_state = B_FALSE;
+	}
 
 	setup_range(&range_attrs, &ops, &range_count, start, stop,
 		    CSA_TYPE_TODO, state, use_state, t->cal->general->version);

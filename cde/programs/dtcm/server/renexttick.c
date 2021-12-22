@@ -77,7 +77,7 @@ NextTick(
         RepeatEvent       	*re,
         RepeatEventState        *res)
 {
-	Tick 			 next_time;
+	Tick 			 next_time = 0;
 
 	if (!re) return (Tick)0;
 

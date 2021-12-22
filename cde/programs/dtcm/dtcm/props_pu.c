@@ -2638,7 +2638,7 @@ extern Boolean
 get_editor_vals_from_ui(Props_pu *pu, Props *p) {
 	int		i, hr, min;
 	char		buf[5];
-	Widget		text;
+	Widget		text = NULL;
 	DisplayType	dt = get_int_prop(p, CP_DEFAULTDISP);
 	Reminders_val	*val;
 	char		*msg, *dur_txt;
@@ -2733,7 +2733,7 @@ get_editor_vals_from_ui(Props_pu *pu, Props *p) {
 
 	if ((status = get_reminders_vals(&pu->ep_reminders, False)) != REMINDERS_OK) {
 		char *title = XtNewString(CATGETS(c->DT_catd, 1, 1079, "Calendar : Error - Editor Settings"));
-	  	char *text;
+		char *text = NULL;
 		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		switch (status) {
 

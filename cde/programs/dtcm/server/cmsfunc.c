@@ -778,7 +778,7 @@ cms_insert_entry_5_svc(cms_insert_args *args, struct svc_req *svcrq)
 	cms_key			key;
 	char			*user;
 	uint			access, needaccess;
-	Appt_4			*appt;
+	Appt_4			*appt = NULL;
 
 	if (debug)
 		fprintf(stderr, "cms_insert_entry_5_svc called\n");

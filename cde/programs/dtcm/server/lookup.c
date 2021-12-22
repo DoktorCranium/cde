@@ -341,10 +341,10 @@ _DtCmsGetEntryAttrByKey(
 	CSA_return_code	stat;
 	CSA_return_code	stat2;
 	cms_entry	*entry = NULL;
-	char		*stime, *etime;
+	char		*stime, *etime = NULL;
 	char		sbuf[TIME_BUF_LEN], ebuf[TIME_BUF_LEN];
 	time_t		firsttick = 0;
-	List_node	*lnode;
+	List_node	*lnode = NULL;
 	cms_get_entry_attr_res_item *res = NULL;
 
 	if (entry_r == NULL && res_r == NULL)
@@ -529,7 +529,7 @@ _EnumerateSequence(
 	    stat == CSA_SUCCESS && tick < start2;
 	    tick = NextTick(tick, fsttick, lnode->re, restate))
 	{
-		char *stime, *etime;
+		char *stime, *etime = NULL;
 		char sbuf[TIME_BUF_LEN], ebuf[TIME_BUF_LEN];
 
 		if (tick <= 0 || tick > lnode->lasttick)

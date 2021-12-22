@@ -339,6 +339,9 @@ _DtCms_closest_tick_v4(time_t target, time_t ftick, Period_4 period, int *ordina
 	struct tm tm1, tm2;
 	_Xltimeparams localtime_buf;
 
+	tm1.tm_isdst = 0;
+	tm2.tm_isdst = 0;
+
 	if (target <= ftick) {
 		*ordinal = 1;
 		return(ftick);

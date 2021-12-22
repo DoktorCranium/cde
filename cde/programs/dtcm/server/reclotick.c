@@ -77,7 +77,7 @@ ClosestTick(
         RepeatEvent		*re,
         RepeatEventState        **res)
 {
-	Tick 			 closest_tick,
+	Tick 			 closest_tick = 0,
 				 real_start_time,
 				 target_time = _target_time;
 
