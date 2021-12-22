@@ -1338,7 +1338,7 @@ HSVtoRGB(
 {
    double p1, p2, p3;
    double hue, sat, val;
-   double red, green, blue;
+   double red = 0.0, green = 0.0, blue = 0.0;
    double i, f;
 
    hue = (double)h / 60.0;

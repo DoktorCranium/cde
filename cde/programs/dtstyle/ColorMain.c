@@ -2095,7 +2095,7 @@ void
 SaveOrgPalette( void )
 {
    int i;
-   palette  *tmp_palette, *tmp2_palette;
+   palette  *tmp_palette = NULL, *tmp2_palette = NULL;
 
    if(save.restoreFlag && defaultName_restore[0] != 0) {
       tmp_palette = pHeadPalette;
