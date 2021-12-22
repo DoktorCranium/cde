@@ -452,7 +452,7 @@ Write_File(
 {
   extern int tt_tmpfile_fd;
   int i, j;
-  int mask_needed;
+  int mask_needed = False;
   Boolean SUN;
   char *base_name, *suffix, fname[MAXPATHLEN], *tmp, *tmp2, *vend;
   Pixmap scratch_pix;
