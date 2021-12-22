@@ -103,7 +103,7 @@ static char *br_help_msg[] = {
 void
 Browse(void)
 {
-    char	buf[256], *cmd, **av, **sv, *cmapfile, *sdatafile;
+    char	buf[256], *cmd = NULL, **av, **sv, *cmapfile, *sdatafile;
     char	*Prompt;
     Element_t	*ce;	/* current element */
     Element_t	*e;

@@ -306,7 +306,7 @@ int *flagp
 	char *ret;
 	char *br;
 	char *ender;
-	int parno;
+	int parno = 0;
 	int flags;
 
 	*flagp = HASWIDTH;	/* Tentatively. */
