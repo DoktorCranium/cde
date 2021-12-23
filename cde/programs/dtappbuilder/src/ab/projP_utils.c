@@ -371,7 +371,7 @@ projP_save_export_bil(
         }
         else  /* An error occurred with stat */
         {
-          sprintf(Buf, "%s: %s", new_filename, strerror(errno));
+          snprintf(Buf, sizeof(Buf), "%s: %s", new_filename, strerror(errno));
           util_printf_err(Buf);
         }
         XtUnmanageChild(AB_generic_chooser);

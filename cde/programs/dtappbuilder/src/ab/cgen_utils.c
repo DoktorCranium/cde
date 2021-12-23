@@ -1204,7 +1204,7 @@ exec_run(void)
 {
     ABObj	project= NULL;
     char	executable_name[1024];
-    char	cmd[1024];
+    char	cmd[sizeof(executable_name) + 3];
     STRING	argv[5];
     *executable_name = 0;
     *cmd = 0;

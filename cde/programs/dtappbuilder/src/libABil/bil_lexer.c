@@ -381,7 +381,7 @@ yyerror(const char *message)
 	  CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 37, ", near '%s'"),
 	  tokenText);
     }
-    sprintf(errMsg, "%s%s\n", message, tokenMsg);
+    snprintf(errMsg, sizeof(errMsg), "%s%s\n", message, tokenMsg);
     abil_print_custom_load_err(errMsg);
 }
 

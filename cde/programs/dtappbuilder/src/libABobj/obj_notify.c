@@ -908,7 +908,7 @@ event_print(OBJ_EVENT *event, FILE *outFile, BOOL addNewline, STRING name)
 {
     ABObj	obj= NULL;
     char	eventName[1024];
-    char	eventParams[1024];
+    char	eventParams[1024 + 2];
     char	*eventParamsPtr= eventParams;
     char	buf1[256];
     char	buf2[256];
