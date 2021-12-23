@@ -26,7 +26,12 @@ libDtMmdb_la_LIBADD = api/libapi.la btree/libbtree.la \
 		      schema/libschema.la storage/libstorage.la \
 		      utility/libutility.la
 
+# in order to try to keep lib versions the same across platforms, (2.1.0)
+if BSD
+libDtMmdb_la_LDFLAGS = -version-info 2:1:0
+else
 libDtMmdb_la_LDFLAGS = -version-info 3:0:1
+endif
 
 infolibdir = $(CDE_INSTALLATION_TOP)/infolib/etc
 dist_infolib_DATA = oliasdb/mmdb.infolib.spec	\

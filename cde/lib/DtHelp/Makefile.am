@@ -40,4 +40,9 @@ libDtHelp_la_SOURCES = Actions.c       AsciiSpc.c      Callbacks.c \
 		       Layout.c        LayoutUtil.c    LinkMgr.c \
 		       Selection.c     VirtFuncs.c
 
+# in order to try to keep lib versions the same across platforms, (2.1.0)
+if BSD
+libDtHelp_la_LDFLAGS = -version-info 2:1:0
+else
 libDtHelp_la_LDFLAGS = -version-info 3:0:1
+endif
