@@ -67,7 +67,7 @@
 #endif
 
 #define dtmasTAGCLR()	*_transtag = '\0'; _transnum=0;
-#define dtmasTAGGEN()	(sprintf(_transtag, "a%04d", ++_transnum), _transtag)
+#define dtmasTAGGEN()	(sprintf(_transtag, "a%04u", ++_transnum), _transtag)
 #define dtmasTAGGET()	(_transtag)
 
 static jmp_buf	restart;
