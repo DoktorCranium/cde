@@ -640,7 +640,7 @@ parsed_address(_Tt_string &addr_string)
 	int		junk_version = 1;
 	Tt_status	status;
 	const char 	*addr_format_fmt = "%%ld %%d %%d %%d %%lu %%%ds %%d";
-	char 		 addr_format[32];
+	char 		 addr_format[64];
 	const char 	*fcs1_addr_format_fmt = "%%ld %%d %%d %%d %%lu %%%ds";
 	char 		 fcs1_addr_format[32];
 	
