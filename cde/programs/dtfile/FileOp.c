@@ -1971,7 +1971,7 @@ FileOpPipeCB(
 
          if( cb_data->mode == MOVE_FILE )
          {
-           sprintf( fileName, "%s/%s", tmpDir, cb_data->updates[i].file );
+           snprintf( fileName, sizeof(fileName), "%s/%s", tmpDir, cb_data->updates[i].file );
            if( cb_data->updates[i].operationStatus == True )
            {
              if( status == PIPEMSG_MOVE_TO_SAME_DIR )
@@ -1988,7 +1988,7 @@ FileOpPipeCB(
 
 	       if(initiating_view == NULL && cb_data->callback_data == NULL)
 	       {
-                 sprintf( fileName, "%s/%s", cb_data->directory,
+                 snprintf( fileName, sizeof(fileName), "%s/%s", cb_data->directory,
 			      cb_data->updates[i].file );
                  DtEliminateDots(fileName);
                  RemoveIconFromWorkspace( fileName, cb_data->directory );

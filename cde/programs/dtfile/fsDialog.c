@@ -119,7 +119,7 @@
  *   global variables
  *----------------------*/
 
-#define EMSGMAX 1024
+#define EMSGMAX 4096
 char g_errorMessage[EMSGMAX];
 
 
