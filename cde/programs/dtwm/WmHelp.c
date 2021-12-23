@@ -2060,7 +2060,7 @@ SaveHelpResources(
     char *wsName;
     char workspaces[MAXWMPATH+1];
 
-    char buffer[MAXWMPATH+1];
+    char buffer[MAXWMPATH + 1 + 1024];
     char *res_class;
     char *data;
     int cum_len;
