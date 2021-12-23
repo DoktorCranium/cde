@@ -88,7 +88,7 @@ if ((m_argc > 2) && (strchr(m_argv[2], 'f') || strchr(m_argv[2], 'F')))
 /* fills ``install'' with path to ourself */
 {
 char *path, *cp;
-char buf[200];
+char buf[BUFSIZ];
 char patbuf[BUFSIZ];
 int quit, none;
 
@@ -138,7 +138,7 @@ else
 	quit++;
 	else
 	*cp = '\0';
-	sprintf(buf, "%s/%s", path, m_argv[0]);
+	snprintf(buf, sizeof(buf), "%s/%s", path, m_argv[0]);
 
 	if (access(buf, 1) == 0)
 	    {
