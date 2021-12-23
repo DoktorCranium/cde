@@ -809,7 +809,7 @@ LoadAltDtsResources(struct display *d)
                 if ((strcmp(dp->d_name, DOT)    != 0) &&
                     (strcmp(dp->d_name, DOTDOT) != 0)) {
 
-                    sprintf (res_file, "%s%s", dirname[j],dp->d_name);
+                    snprintf(res_file, sizeof(res_file), "%s%s", dirname[j], dp->d_name);
                     if ((access (res_file, R_OK)) != 0)
 		    {
                         Debug("LoadAltDtsResources- cant access %s.\n",
