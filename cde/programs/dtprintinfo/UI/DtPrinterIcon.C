@@ -67,7 +67,7 @@ DtPrinterIcon::DtPrinterIcon(DtMainW *mainW, AnyUI *parent, Queue *que,
    if (app_mode == INITIALIZE_PRINTERS)
       return;
 
-   char *buf = new char[300];
+   char *buf = new char[sizeof(DtPrinterIcon::homeDir) + 32];
    struct stat statbuff;
    if (*homeDir == '\0')
     {
