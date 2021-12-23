@@ -714,8 +714,8 @@ saveAudio(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-	sprintf(bufr, "%s*audioDlg.x: %d\n", bufr, x);
-	sprintf(bufr, "%s*audioDlg.y: %d\n", bufr, y);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*audioDlg.x: %d\n", bufr, x);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*audioDlg.y: %d\n", bufr, y);
 	if(-1 == write (fd, bufr, strlen(bufr))) {
 		perror(strerror(errno));	
 	}

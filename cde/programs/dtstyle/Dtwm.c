@@ -982,10 +982,10 @@ saveDtwm(
 	width = XtWidth(style.dtwmDialog);
 	height = XtHeight(style.dtwmDialog);
 
-	sprintf(bufr, "%s*dtwmDlg.x: %d\n", bufr, x);
-	sprintf(bufr, "%s*dtwmDlg.y: %d\n", bufr, y);
-	sprintf(bufr, "%s*dtwmDlg.width: %d\n", bufr, width);
-	sprintf(bufr, "%s*dtwmDlg.height: %d\n", bufr, height);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*dtwmDlg.x: %d\n", bufr, x);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*dtwmDlg.y: %d\n", bufr, y);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*dtwmDlg.width: %d\n", bufr, width);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*dtwmDlg.height: %d\n", bufr, height);
 	if(-1 == write (fd, bufr, strlen(bufr))) {
 		perror(strerror(errno));
 	}

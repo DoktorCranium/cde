@@ -2921,8 +2921,8 @@ saveScreen(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-	sprintf(bufr, "%s*Screen.x: %d\n", bufr, x);
-	sprintf(bufr, "%s*Screen.y: %d\n", bufr, y);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*Screen.x: %d\n", bufr, x);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*Screen.y: %d\n", bufr, y);
        
         if(-1 == write (fd, bufr, strlen(bufr))) {
             perror(strerror(errno));

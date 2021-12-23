@@ -1502,7 +1502,7 @@ ButtonCB(
     Bool          do_accel, do_thresh;
     Bool          set;
     char          message1[6], message2[50], message3[6], message4[6];
-    char          pointerStr[70];
+    char          pointerStr[128];
     static char   dclickRes[40];
     static char   enableBtn1Res[40];
     int           dclick;
@@ -1773,8 +1773,8 @@ saveMouse(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-	sprintf(bufr, "%s*Mouse.x: %d\n", bufr, x);
-	sprintf(bufr, "%s*Mouse.y: %d\n", bufr, y);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*Mouse.x: %d\n", bufr, x);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*Mouse.y: %d\n", bufr, y);
 
 	if(-1 == write (fd, bufr, strlen(bufr))) {
 		perror(strerror(errno));

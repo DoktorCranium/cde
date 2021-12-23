@@ -1730,8 +1730,8 @@ saveColorEdit(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-        sprintf(bufr, "%s*colorEditDlg.x: %d\n", bufr, x);
-        sprintf(bufr, "%s*colorEditDlg.y: %d\n", bufr, y);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*colorEditDlg.x: %d\n", bufr, x);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*colorEditDlg.y: %d\n", bufr, y);
         /*any other parameter you want to save goes here*/
         if(-1 == write (fd, bufr, strlen(bufr))) {
 		perror(strerror(errno));
