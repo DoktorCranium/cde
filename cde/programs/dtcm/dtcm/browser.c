@@ -1417,7 +1417,7 @@ mb_draw_chartgrid(Browser *b, Calendar *c)
         Props   	*p = (Props*)c->properties;
 	XFontSetExtents fontextents;
         int     	char_height, char_width;
-        char    	label[5], buf[160];
+        char    	label[12], buf[160];
         new_XContext 	*xc = b->xcontext;
         int 		dayy, dayweek;
         Tick 		daytick;

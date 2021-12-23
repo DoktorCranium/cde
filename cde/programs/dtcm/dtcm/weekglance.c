@@ -1186,7 +1186,7 @@ draw_chart(Calendar *c, Week *w, XRectangle *rect)
         int     n;
 	XFontSetExtents fontextents;
 	int 	char_height;
-        char    label[5];
+        char    label[12];
         new_XContext *xc = c->xcontext;
         Props *p = (Props*)c->properties;
 	DisplayType dt = get_int_prop(p, CP_DEFAULTDISP);

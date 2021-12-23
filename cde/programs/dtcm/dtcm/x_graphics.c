@@ -2660,7 +2660,7 @@ x_print_header(void *gInfoP, char *buf, int pageNum, int numPages)
     }
   }
 
-  sprintf(pageStr, "%s %d %s %d", str2, pageNum, str, numPages);
+  snprintf(pageStr, sizeof(pageStr), "%s %d %s %d", str2, pageNum, str, numPages);
 
   /* Header/footer strings are all set - print 'em! */
   cm_print_header_string(gInfo, CP_PRINTLHEADER,
@@ -3186,7 +3186,7 @@ x_print_todo(void *gInfoP, CSA_entry_handle *list, int a_total,
 	    _csa_iso8601_to_tick(appt->time->value->item.date_time_value,
 				 &start_tick);
 	    format_date3(start_tick, ot, st, buf2);
-	    sprintf(buf3, "%s  %s", buf2, buf1);
+	    snprintf(buf3, sizeof(buf3), "%s  %s", buf2, buf1);
 	  } else
 	    cm_strcpy(buf3, buf1);
 

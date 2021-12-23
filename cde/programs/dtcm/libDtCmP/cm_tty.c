@@ -650,7 +650,7 @@ cm_tty_lookup(nl_catd catd, CSA_session_handle target, int version, char *date, 
 				format_time(end_tick, dt, end_buf);
 			else
 				*end_buf = '\0';
-			sprintf(buf, "%s%c%7s ", start_buf,
+			snprintf(buf, sizeof(buf), "%s%c%7s ", start_buf,
 				(*end_buf ? '-' : ' '), end_buf);
 		}
 
@@ -1747,7 +1747,7 @@ attrs_to_string(CSA_attribute * attrs, int num_attrs)
 
 				growcat(&buffer, tmp_buf);
 				_csa_iso8601_to_duration(attrs[i].value->item.reminder_value->lead_time, &advance_time);
-				sprintf(tmp_buf, "reminder:%d:", advance_time);
+				sprintf(tmp_buf, "reminder:%ld:", (long) advance_time);
 				growcat(&buffer, tmp_buf);
 				if (attrs[i].value->item.reminder_value->reminder_data.data) 
 					cat_indented_string(&buffer,

@@ -713,8 +713,7 @@ find_appts(Widget widget, XtPointer client_data, XmPushButtonCallbackStruct *cbs
 					      (const time_t *)&new_tick->tick,
 					      localtime_buf));
                                 	fmt_time_what(appt, what_buf, dt);
-					sprintf (buf2, "%10s  %s", 
-								buf, what_buf);
+					snprintf(buf2, sizeof(buf2), "%10s  %s", buf, what_buf);
 					buf_str = XmStringCreateLocalized(buf2);
 					XmListAddItem(f->find_list, buf_str, 0);
 					XmStringFree(buf_str);

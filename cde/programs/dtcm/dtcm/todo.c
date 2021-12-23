@@ -2212,7 +2212,7 @@ build_todo_view(ToDo *t, Glance glance, Boolean redisplay) {
 			step = (TodoView *)ckalloc(sizeof(TodoView));
 
 			sprintf(str1, "%d", cnt);
-			sprintf(str2, "%s.", str1);
+			sprintf(str2, "%d.", cnt);
 			str = XmStringCreateLocalized(str2);
 			step->view_item_number = XtVaCreateManagedWidget("cnt",
 				xmLabelGadgetClass, t->view_form_mgr,

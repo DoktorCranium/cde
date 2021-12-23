@@ -299,7 +299,7 @@ make_timezone(Calendar *c)
 	cm_strcpy(tmp_buf, (char*)getenv("TZ"));
 	cm_strcpy(t->mytimezone, tmp_buf);
 
-	sprintf(buf, "%s %s", CATGETS(c->DT_catd, 1, 659, "Time Zone:"),
+	snprintf(buf, sizeof(buf), "%s %s", CATGETS(c->DT_catd, 1, 659, "Time Zone:"),
 		t->mytimezone);
 	set_message(t->timezone_message, buf);
 	set_message(c->message_text, buf);
@@ -385,7 +385,7 @@ tz_set_timezone(Calendar *c, Timezone *t)
     if (t->timezone_type == mytime)
     {
 	set_timezone(t->mytimezone);
-	sprintf(buf, "%s %s", CATGETS(c->DT_catd, 1, 659, "Time Zone:"),
+	snprintf(buf, sizeof(buf), "%s %s", CATGETS(c->DT_catd, 1, 659, "Time Zone:"),
 		t->mytimezone);
 
 	/* get utc time */
@@ -413,7 +413,7 @@ tz_set_timezone(Calendar *c, Timezone *t)
 	cm_strcpy(t->gmttimezone, tmp_buf);
 	sprintf(gmt, "GMT%s", tmp_buf);
 	set_timezone(gmt);
-	sprintf(buf, "%s %s", CATGETS(c->DT_catd, 1, 659, "Time Zone:"), gmt);
+	snprintf(buf, sizeof(buf), "%s %s", CATGETS(c->DT_catd, 1, 659, "Time Zone:"), gmt);
     }
     set_message(t->timezone_message, buf);
     paint_canvas(c, NULL, RENDER_CLEAR_FIRST);
