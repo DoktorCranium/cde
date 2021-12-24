@@ -365,7 +365,7 @@ void
 ManageSession( struct display *d )
 {
     int			pid;
-    Window		root = NULL;
+    Window		root = 0;
    /* Display 		*dpy; */
 #ifdef BYPASSLOGIN
     char	*BypassUsername;

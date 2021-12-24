@@ -2476,7 +2476,7 @@ invokeXDrawFunction(
    char * functionName = argv[0];
    Display * display;
    Window drawable;
-   Window destination = NULL;
+   Window destination = 0;
    int srcX = 0, srcY = 0;
    int destX = 0, destY = 0;
    unsigned int width = 0, height = 0;
