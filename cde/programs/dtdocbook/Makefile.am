@@ -1,3 +1,7 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = lib instant xlate_locale doc2sdl sgml
+SUBDIRS = instant locales sgml tcl tpt
+
+include dtdocbook.am
+
+bin_SCRIPTS = dtdocbook2man dtdocbook2sdl

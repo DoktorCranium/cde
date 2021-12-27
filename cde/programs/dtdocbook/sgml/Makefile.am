@@ -1,6 +1,8 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-sgmldir = $(pkgdatadir)/dtdocbook/sgml
+include ../dtdocbook.am
+
+sgmldir = $(dtdocbookdatadir)/sgml
 
 sgml_DATA = docbook.dcl \
 	    docbook.dtd \
