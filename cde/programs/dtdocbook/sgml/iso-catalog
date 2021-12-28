@@ -62,18 +62,6 @@
           "ISO 8879:1986//ENTITIES Added Latin 2//EN"
 >
 
-<!ENTITY % ISOmfrk  PUBLIC
-          "ISO 9573-13:1991//ENTITIES Math Alphabets: Fraktur //EN"
->
-
-<!ENTITY % ISOmopf  PUBLIC
-          "ISO 9573-13:1991//ENTITIES Math Alphabets: Open Face //EN"
->
-
-<!ENTITY % ISOmscr  PUBLIC
-          "ISO 9573-13:1991//ENTITIES Math Alphabets: Script //EN"
->
-
 <!ENTITY % ISOnum  PUBLIC
           "ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN"
 >
