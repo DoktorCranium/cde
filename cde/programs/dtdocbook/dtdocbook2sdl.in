@@ -321,8 +321,12 @@ if [[ -a $basename.$$.esis ]] then
     fi
 fi
 if (( $verbose )); then
-    echo "${sgmls} -deglru$catfiles ${sgml_dir}/docbook.dcl $iname > $basename.$$.esis"
-    ${sgmls} -deglru$catfiles ${sgml_dir}/docbook.dcl $iname > $basename.$$.esis
+    echo "${sgmls} -deglru$catfiles ${sgml_dir}/docbook.dcl $iname | \
+	    sed 's/\&\&/\\|\[amp   \]\\|/g' | sed 's/\&</\\|\[lt    \]\\|/g' \
+	    > $basename.$$.esis"
+    ${sgmls} -deglru$catfiles ${sgml_dir}/docbook.dcl $iname | \
+	    sed 's/\&\&/\\|\[amp   \]\\|/g' | sed 's/\&</\\|\[lt    \]\\|/g' \
+	    > $basename.$$.esis
     if (( $? )); then
 	if (( !$debug )); then
 	    echo "rm -f $basename.$$.esis"
@@ -331,8 +335,9 @@ if (( $verbose )); then
 	fatalError "Error processing $iname by $parser"
     fi
 else
-    ${sgmls} -deglru$catfiles ${sgml_dir}/docbook.dcl $iname \
-				      > $basename.$$.esis 2> $basename.$$.log
+    ${sgmls} -deglru$catfiles ${sgml_dir}/docbook.dcl $iname | \
+	    sed 's/\&\&/\\|\[amp   \]\\|/g' | sed 's/\&</\\|\[lt    \]\\|/g' \
+	    > $basename.$$.esis 2> $basename.$$.log
     if (( $? )); then
 	if (( !$debug )); then
 	    rm -f $basename.$$.esis

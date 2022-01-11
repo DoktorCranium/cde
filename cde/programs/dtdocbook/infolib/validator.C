@@ -111,13 +111,8 @@ int main(int argc, char** argv )
            quit(1);
         }
      } else {
-        char* path = getenv("DTINFO_HOME");
-        if ( path == 0 ) {
-           cerr << "DTINFO_HOME is undefined.\n";
-           quit(1);
-        }
-
-        char* spec_file_path = form("%s/infolib/etc/%s.feature.spec", path, argv[1]);
+        char* spec_file_path = form("%s/spec/%s.feature.spec",
+				    DTDCBK_DATAROOTDIR, argv[1]);
 
         defStream = new fstream(spec_file_path, ios::in);
 

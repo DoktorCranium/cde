@@ -78,28 +78,16 @@ typedef enum
 typedef struct _GlobalsStruct
 {
     char *pathEnv;
-    char *ldLibraryPathEnv;
-    char *libPathEnv;
-    char *shlibPathEnv;
-    char *dtInfoHomeEnv;
-    char *dtInfoBinEnv;
-    char *tmpDirEnv;
-    char *sgmlSearchPathEnv;
-    char *sgmlCatFilesEnv;
     char *sgmlCatFiles;
     int sgmlCatFilesLen;
     int sgmlCatFilesMaxLen;
-    char *mmdbPathEnv;
 
-    char *install;
-    char *arch;
-    int   dtsridx;      /* dtsearch: index into langtbl */
+    int dtsridx;      /* dtsearch: index into langtbl */
     char *sgml;
     char *decl;
     char *styleProlog;
     char *tmpDir;
     char *spec;
-    int dirMode;
     char *searchEngine;
     char *parser;
 
@@ -156,7 +144,7 @@ static char *emptyString = "";
 
 #define STR(s) ((s) ? (s) : emptyString)
 
-#define EXEC_NAME "dtinfogen"
+#define EXEC_NAME "dtdocbook2infolib"
 
 typedef struct
 {
@@ -950,11 +938,10 @@ buildPath(char *format, ...)
     return XtsNewString(pathBuf);
 }
 
-/* Assumes gStruct->install is set (may be NULL) */
 static char *
 buildSGML(void)
 {
-    char *sgmlPath = buildPath("%s/infolib/sgml", STR(gStruct->install));
+    char *sgmlPath = buildPath("%s/sgml", STR(DTDCBK_DATAROOTDIR));
 
 #ifdef SGML_DEBUG
     fprintf(stderr, "(DEBUG) buildSGML=\"%s\"\n", sgmlPath);
@@ -977,12 +964,10 @@ buildStyleProlog(void)
     return buildPath("%s/styprolog.sgml", STR(gStruct->sgml));
 }
 
-/* Assumes gStruct->install is set (may be NULL) */
 static char *
 buildSpec(void)
 {
-    return buildPath("%s/infolib/etc/mmdb.infolib.spec",
-		     STR(gStruct->install));
+    return buildPath("%s/spec/mmdb.infolib.spec", STR(DTDCBK_DATAROOTDIR));
 }
 
 static void
@@ -997,20 +982,9 @@ defaultGlobals(void)
 	putenv("ENV=");
 
     gStruct->pathEnv = makeAbsPathEnv("PATH");
-    gStruct->ldLibraryPathEnv = makeAbsPathEnv("LD_LIBRARY_PATH");
-    gStruct->libPathEnv = makeAbsPathEnv("LIBPATH");
-    gStruct->shlibPathEnv = makeAbsPathEnv("SHLIB_PATH");
-    gStruct->dtInfoHomeEnv = makeAbsPathEnv("DTINFO_HOME");
-    gStruct->dtInfoBinEnv = makeAbsPathEnv("DTINFO_BIN");
-    gStruct->tmpDirEnv = makeAbsPathEnv("TMPDIR");
-    gStruct->sgmlSearchPathEnv = makeAbsPathEnv("SGML_SEARCH_PATH");
-    gStruct->sgmlCatFilesEnv = makeAbsPathEnv("SGML_CATALOG_FILES");
     gStruct->sgmlCatFiles = NULL;
     gStruct->sgmlCatFilesLen = 0;
     gStruct->sgmlCatFilesMaxLen = 0;
-
-    gStruct->install = getenv("DTINFO_HOME");
-    gStruct->arch = getenv("ARCH");
 
     { /* resolve lang from env variable */
       char* lang;
@@ -1025,7 +999,7 @@ defaultGlobals(void)
 	  if ((lang = getenv("LANG")) == NULL)
 	    lang = LANG_COMMON;
 
-      lang = strdup(lang);
+      lang = XtsNewString(lang);
 
       s = strchr(lang, '.'); if (s) *s = 0;
 
@@ -1062,11 +1036,10 @@ defaultGlobals(void)
     gStruct->styleProlog = buildStyleProlog();
 
     if ((gStruct->tmpDir = getenv("TMPDIR")) == (char *)NULL)
-	gStruct->tmpDir = "/usr/tmp";
+	gStruct->tmpDir = "/tmp";
 
     gStruct->spec = buildSpec();
 
-    gStruct->dirMode = 0775;
     gStruct->searchEngine = "dtsearch";
     gStruct->parser = "onsgmls";
     gStruct->keepWorkDir = false;
@@ -1078,19 +1051,6 @@ defaultGlobals(void)
 static void
 checkGlobals(void)
 {
-    if ((!gStruct->install) || (!checkStat(gStruct->install, FSTAT_IS_DIR)))
-	die(-1, "%s: Cannot find DtInfo Toolkit installation directory.\n"
-		"\n"
-		"The DTINFO_HOME variable must be set to the directory "
-		"where the DtInfo\n"
-		"toolkit is installed.\n"
-		"\n"
-		"You probably invoked this script in an unsupported manner.\n",
-	    EXEC_NAME);
-
-    if (!gStruct->arch)
-	die(-1, "%s: ARCH not set\n", EXEC_NAME);
-
     if (!checkStat(gStruct->sgml, FSTAT_IS_DIR))
 	die(-1, "%s: Can't find DtInfo SGML directory (%s): %s\n",
 	    EXEC_NAME, STR(gStruct->sgml), strerror(errno));
@@ -1120,20 +1080,18 @@ checkGlobals(void)
 	checkExec("dtsrload");
 	checkExec("dtsrindex");
 
-	gStruct->dtsrlib = buildPath("%s/infolib/etc/%s/dtsr",
-				     gStruct->install,
+	gStruct->dtsrlib = buildPath("%s/dtsr", STR(DTDCBK_DATAROOTDIR),
 				     STR(langtbl[gStruct->dtsridx].name));
 
 	if (!checkStat(gStruct->dtsrlib, FSTAT_IS_DIR)) {
 	    free(gStruct->dtsrlib);
-	    gStruct->dtsrlib = buildPath("%s/infolib/etc/%s/dtsr",
-					gStruct->install, LANG_COMMON);
+	    gStruct->dtsrlib = buildPath("%s/dtsr", STR(DTDCBK_DATAROOTDIR),
+					LANG_COMMON);
 	}
 #ifdef DTSR_DEBUG
 	fprintf(stderr, "(DEBUG) gStruct->dtsrlib=\"%s\"\n", gStruct->dtsrlib);
 #endif
-	gStruct->dbdfile = buildPath("%s/infolib/etc/dtsr/%s.dbd",
-				     gStruct->install,
+	gStruct->dbdfile = buildPath("%s/dtsr/%s.dbd", STR(DTDCBK_DATAROOTDIR),
 				     gStruct->searchEngine);
 	gStruct->keytypes = "Default Head Graphics Example Index Table";
     }
@@ -1311,6 +1269,7 @@ parseDocument(int runCmd, ...)
     va_list ap;
     char *ptr;
     char *cmd = (char *)NULL;
+    char *sed = " | sed 's/\\&\\&/\\&/g' | sed 's/\\&</</g'";
     int cmdLen = 0;
     int maxLen = 0;
 
@@ -1318,11 +1277,7 @@ parseDocument(int runCmd, ...)
 	dieRWD(-1, "%s: faulty installation: %s\n",
 	       EXEC_NAME, strerror(errno));
 
-    addCatFile(buildPath("%s/infolib/sgml/catalog",
-			 STR(gStruct->install)), true);
-
-    if (!gStruct->sgmlSearchPathEnv)
-	gStruct->sgmlSearchPathEnv = addToEnv("SGML_SEARCH_PATH", ".", false);
+    addCatFile(buildPath("%s/catalog", STR(gStruct->sgml)), true);
 
     appendStr(&cmd, &cmdLen, &maxLen, gStruct->parser);
     appendStr(&cmd, &cmdLen, &maxLen, " ");
@@ -1340,6 +1295,8 @@ parseDocument(int runCmd, ...)
 	}
 	va_end(ap);
 
+	appendStr(&cmd, &cmdLen, &maxLen, sed);
+
 	runShellCmd(cmd);
 	free(cmd);
 	return (char *)NULL;
@@ -1355,6 +1312,8 @@ parseDocument(int runCmd, ...)
 	appendStr(&cmd, &cmdLen, &maxLen, ptr);
     }
     va_end(ap);
+
+    appendStr(&cmd, &cmdLen, &maxLen, sed);
 
     return cmd;
 }
@@ -1377,9 +1336,6 @@ buildBookcase(char *cmdSrc, char *dirName)
 
     tmpFile = storeBookCase(cmdSrc, "all", dataBase, dirName);
     newMmdbPathEnv = buildPath("MMDB_PATH=%s", STR(gStruct->library));
-    if (gStruct->mmdbPathEnv)
-	free(gStruct->mmdbPathEnv);
-    gStruct->mmdbPathEnv = newMmdbPathEnv;
     putenv(newMmdbPathEnv);
 
     if (gStruct->verbose)
@@ -2326,12 +2282,18 @@ main(int argc, char *argv[])
 {
     GlobalsStruct globalsStruct;
 
+    if (!addToEnv("PATH", STR(INFOLIB_LIBEXECDIR), true))
+	die(-1, "%s: could not set PATH\n", EXEC_NAME);
+
     gStruct = &globalsStruct;
 
     if (argc < 2)
 	printUsage((char *)NULL, -1);
 
     defaultGlobals();
+
+    if (setenv("LC_CTYPE", STR(langtbl[gStruct->dtsridx].name), 1) == -1)
+	die(-1, "%s: LC_CTYPE: %s\n", EXEC_NAME, strerror(errno));
 
     if (setenv("SP_CHARSET_FIXED", "1", 1) == -1)
 	die(-1, "%s: SP_CHARSET_FIXED: %s\n", EXEC_NAME, strerror(errno));

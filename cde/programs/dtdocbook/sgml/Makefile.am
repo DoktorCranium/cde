@@ -30,4 +30,5 @@ sgml_DATA = docbook.dcl \
 	    isolat2.gml \
 	    isonum.gml \
 	    isopub.gml \
-	    isotech.gml
+	    isotech.gml \
+	    styprolog.sgml

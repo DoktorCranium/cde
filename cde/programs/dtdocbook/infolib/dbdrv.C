@@ -131,12 +131,7 @@ int select_and_process( int argc, char** argv )
 
             ok = load_mixed_objects_from_cin(base_ptr);
          }
-      } else
-
-      if ( (ok = select_debug_routine(argc, argv, mmdb)) == 2 )
-      {
-         usage(argv[1]);
-      }
+      } else usage(argv[1]);
    }
 
    return (ok);

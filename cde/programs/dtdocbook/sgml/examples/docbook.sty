@@ -1140,7 +1140,7 @@
 		<suffix><content> ...</content></suffix>
 	</print>
 
-<PATH> GROUP <select> @Choice == "OPT" && @Rep == "REPEAT" </select></PATH>
+<PATH> GROUP <select> @Choice == "OPT" &amp;&amp; @Rep == "REPEAT" </select></PATH>
 	<online>
 		<prefix><content> [</content></prefix>
 		<suffix><content> ...]</content></suffix>
@@ -1178,7 +1178,7 @@
 		<suffix><content> ...</content></suffix>
 	</print>
 
-<PATH> ARG <select> @Choice == "OPT" && @Rep == "REPEAT" </select></PATH>
+<PATH> ARG <select> @Choice == "OPT" &amp;&amp; @Rep == "REPEAT" </select></PATH>
 	<online>
 		<prefix><content> [</content></prefix>
 		<suffix><content> ...]</content></suffix>
@@ -1211,7 +1211,7 @@
 		<prefix><content> | </content></prefix>
 	</print>
 
-<PATH> GROUP ARG <select> position != 1 && @Choice == "OPT" </select></PATH>
+<PATH> GROUP ARG <select> position != 1 &amp;&amp; @Choice == "OPT" </select></PATH>
 	<online>
 		<prefix><content> | [</content></prefix>
 		<suffix><content>]</content></suffix>
@@ -1221,7 +1221,7 @@
 		<suffix><content>]</content></suffix>
 	</print>
 
-<PATH> GROUP ARG <select> position != 1 && @Rep == "REPEAT" </select></PATH>
+<PATH> GROUP ARG <select> position != 1 &amp;&amp; @Rep == "REPEAT" </select></PATH>
 	<online>
 		<prefix><content> | </content></prefix>
 		<suffix><content> ...</content></suffix>
@@ -1231,7 +1231,7 @@
 		<suffix><content> ...</content></suffix>
 	</print>
 
-<PATH> GROUP ARG <select> position != 1 && @Choice == "OPT" && @Rep == "REPEAT" </select></PATH>
+<PATH> GROUP ARG <select> position != 1 &amp;&amp; @Choice == "OPT" &amp;&amp; @Rep == "REPEAT" </select></PATH>
 	<online>
 		<prefix><content> | [</content></prefix>
 		<suffix><content> ...]</content></suffix>

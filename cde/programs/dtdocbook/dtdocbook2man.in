@@ -40,7 +40,6 @@ exec_prefix="@exec_prefix@"
 
 dcbk_name="@PACKAGE_TARNAME@/dtdocbook"
 
-dtdcbk_libdir="${dtdcbk_libdir:-@libdir@/${dcbk_name}}"
 dtdcbk_libexecdir="${dtdcbk_libexecdir:-@libexecdir@/${dcbk_name}}"
 dtdcbk_datarootdir="${dtdcbk_datarootdir:-@datarootdir@/${dcbk_name}}"
 
@@ -68,7 +67,7 @@ if [ $# -eq 3 ]
 then	dclfile=$1
 	reffile=$2
 	manfile=$3
-else	echo "usage:  dbtoman [-c] dcl-file ref-src-file man-dst-file"
+else	echo "usage:  dtdocbook2man [-c] dcl-file ref-src-file man-dst-file"
 	exit 1
 fi
 

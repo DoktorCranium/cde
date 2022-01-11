@@ -264,18 +264,22 @@ static int	search_wordtree (WORDTREE *wordtree, char *wordstring)
 
 static int euro_mbtowc (wchar_t *pwc, const char *p, const char *s)
 {
-    int len;
+    int len = -1;
 
-    mbtowc (NULL, NULL, 0);
-    len = mbtowc (pwc, p, 1);
+    if (p < s) goto done;
 
-    if (len < 0 && p > s) {
-	mbtowc (NULL, NULL, 0);
-	len = mbtowc (pwc, p - 1, 2);
+    if (*p >= 0 && *p <= 0x7F) {
+	len = 1;
+	*pwc = *p;
+	goto done;
     }
 
-    if (len < 0 || *pwc > 0xFF) *pwc = 0x100;
+    if (p == s) goto done;
 
+    mbtowc (NULL, NULL, 0); len = mbtowc (pwc, p - 1, 2);
+
+done:
+    if (len < 0 || *pwc > 0xFF) *pwc = 0x100;
     return len;
 }
 
@@ -294,25 +298,26 @@ static int euro_readchar (READCFP cofunction, void *cofunction_arg, char *outp,
 {
     int len = 1;
 
-    *pwc = 0;
+    *pwc = *outp = cofunction (cofunction_arg);
 
-    *outp = cofunction (cofunction_arg);
+    if (*pwc >= 0 && *pwc <= 0x7F) goto done;
 
-    if (!(*outp)) goto done;
+    *(outp + len) = cofunction (NULL);
 
-    mbtowc (NULL, NULL, 0);
+    mbtowc (NULL, NULL, 0); if (mbtowc (pwc, outp, ++len) >= 0) goto done;
 
-    if (mbtowc (pwc, outp, 1) >= 0) goto done;
+    *pwc = 0x100;
 
-    *(outp + 1) = cofunction (NULL);
-    mbtowc (NULL, NULL, 0);
-    len = mbtowc (pwc, outp, 2);
+    for (;;) {
+	if (len >= MB_CUR_MAX) break;
 
-    if (len < 0 || *pwc > 0xFF) *pwc = 0x100;
+	*(outp + len) = cofunction (NULL);
 
-    len = 2;
+	mblen (NULL, 0); if (mblen (outp, ++len) >= 0) break;
+    }
 
 done:
+    if (*pwc > 0xFF) *pwc = 0x100;
     return len;
 }
 
@@ -381,7 +386,7 @@ char	*teskey_parser (PARG *parg)
     static long		*offsetp, readcount, candidate_offset;
     static int		is_hiliting;
     static int		add_msgs;
-    static int		len;
+    static int		len, opt_len;
     static wchar_t	wc;
 
     /* If first call for current text block... */
@@ -470,12 +475,13 @@ READ_ANOTHER_WORD:
 	     * Otherwise discard just like non_concord.
 	     */
 	    outp += len;
-	    len = euro_readchar (cofunction, NULL, outp, &wc);
-	    readcount += len;
+	    opt_len = euro_readchar (cofunction, NULL, outp, &wc);
+
+	    if (wc) readcount += opt_len;
 
 	    if ((charmap[wc] & CONCORDABLE) != 0) {
-		outp = euro_wctomb (charmap[wc], outp, len);
-		candidate_offset = readcount - len;
+		outp = euro_wctomb (charmap[wc], outp, opt_len);
+		candidate_offset = readcount - opt_len;
 		tpstate = IN_WORD;
 		continue;
 	    }
@@ -524,12 +530,13 @@ READ_ANOTHER_WORD:
 	    }
 	    /* Must be opt_concord... */
 	    outp += len;
-	    len = euro_readchar (cofunction, NULL, outp, &wc);
-	    readcount += len;
+	    opt_len = euro_readchar (cofunction, NULL, outp, &wc);
+
+	    if (wc) readcount += opt_len;
 
 	    if ((charmap[wc] & CONCORDABLE) != 0) {
 		if (outp < endmaxword) {
-		    outp = euro_wctomb (charmap[wc], outp, len);
+		    outp = euro_wctomb (charmap[wc], outp, opt_len);
 		}
 		else {
 		    tpstate = TOO_LONG;

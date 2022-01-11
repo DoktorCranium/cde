@@ -996,15 +996,10 @@ proc ValidMark {mark} {
 	set mark [string range $mark 2 9]
     }
 
-    if {![string match {\[??????\]} $mark]} {
-	UserError "Unknown list mark \"$mark\" specified, using PLAIN" yes
-	return PLAIN
-    } else {
-	foreach m [array names validMarkArray] {
-	    if {$validMarkArray($m) == $mark} {return $m}
-	}
-	return [AddToMarkArray $mark]
+    foreach m [array names validMarkArray] {
+	if {$validMarkArray($m) == $mark} {return $m}
     }
+    return [AddToMarkArray $mark]
 }
 
 
@@ -1369,8 +1364,14 @@ proc ListItem {id override} {
 	    Emit "<BLOCK [Id $labelId] CLASS=\"ITEM\""
 	    Emit " TIMING=\"ASYNC\" "
 	    Emit "SSI=\"$firstString$spacing-MARKED\""
-	    Emit ">\n<P SSI=\"P1\"><SPC NAME=\"$validMarkArray($mark)\""
-	    Emit "></P>\n</BLOCK>\n"
+
+	    if {[string match {\[??????\]} $mark]} {
+		Emit ">\n<P SSI=\"P1\"><SPC NAME=\"$validMarkArray($mark)\""
+		Emit "></P>\n</BLOCK>\n"
+	    } else {
+		Emit ">\n<P SSI=\"P1\">$validMarkArray($mark)"
+		Emit "</P>\n</BLOCK>\n"
+	    }
 	}
     }
 
