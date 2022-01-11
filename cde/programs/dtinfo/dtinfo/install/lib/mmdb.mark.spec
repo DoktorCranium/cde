@@ -8,21 +8,21 @@ store	page_store:
 	cached_pages=50:
 	nm=$.dbd:
 	mode=r:
-	byte_order=big_endian
+	endianness=big_endian
 
 store	page_store:
 	page_sz=1024:
 	cached_pages=50:
 	nm=$.dbi:
 	mode=r:
-	byte_order=big_endian
+	endianness=big_endian
 
 store	page_store:
 	page_sz=1024:
 	cached_pages=50:
 	nm=$.dbh:
 	mode=r:
-	byte_order=big_endian
+	endianness=big_endian
 
 inv inv: nm=$.mark.inv:store_nm=$.dbi
 
