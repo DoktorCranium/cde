@@ -44,7 +44,7 @@
  * 
  */
 
-#include <Exceptions.hh>
+#include <dti_excs/Exceptions.hh>
 
 /*
   Folio Configuration File

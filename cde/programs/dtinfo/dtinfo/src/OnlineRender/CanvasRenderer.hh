@@ -24,7 +24,7 @@
 #ifndef _CanvasRenderer_hh
 #define _CanvasRenderer_hh
 
-#include "Renderer.h"
+#include "StyleSheet/Renderer.h"
 #include "FontCache.hh"
 
 // get DtCanvas structure defns

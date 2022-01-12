@@ -89,7 +89,7 @@
 
 #include "Managers/CatMgr.hh"
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 #include "utility/mmdb_exception.h"
 
 #ifdef MONITOR

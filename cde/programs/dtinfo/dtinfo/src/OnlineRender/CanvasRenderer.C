@@ -48,11 +48,11 @@
 
 #include <utility/funcs.h>
 
-#include "Element.h"
-#include "Attribute.h"
+#include "StyleSheet/Element.h"
+#include "StyleSheet/Attribute.h"
 #include "CanvasRenderer.hh"
-#include "Feature.h"
-#include "FeatureValue.h"
+#include "StyleSheet/Feature.h"
+#include "StyleSheet/FeatureValue.h"
 
 // stylesheet spec states default leading to be 2
 #define DEFAULT_CONTAINER_LEADING 2
@@ -1558,7 +1558,7 @@ CanvasRenderer::really_insert_string (_DtCvSegment *container,
     if ((lang = getenv("LC_ALL")) == NULL)
       if ((lang = getenv("LC_CTYPE")) == NULL)
 	if ((lang = getenv("LANG")) == NULL)
-	  lang = "C";
+	  lang = "C.UTF-8";
 
     _DtHelpGetExactFontIndex(gHelpDisplayArea, // Display Area Structure
 			     lang, // lang

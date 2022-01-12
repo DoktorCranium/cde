@@ -32,7 +32,7 @@
 #include <Dt/CanvasP.h>
 #include <Dt/CanvasSegP.h>
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 
 class SegClientData {
 

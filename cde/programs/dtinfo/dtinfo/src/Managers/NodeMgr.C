@@ -81,10 +81,10 @@
 #include <tml/tml_objects.hxx>
 #endif
 
-#include "DocParser.h"
-#include "Resolver.h" 
-#include "StyleSheet.h"
-#include "StyleSheetExceptions.h"
+#include "StyleSheet/DocParser.h"
+#include "StyleSheet/Resolver.h"
+#include "StyleSheet/StyleSheet.h"
+#include "StyleSheet/StyleSheetExceptions.h"
 #ifdef JBM
 #include "../OnlineRender/TmlRenderer.hh"
 #else

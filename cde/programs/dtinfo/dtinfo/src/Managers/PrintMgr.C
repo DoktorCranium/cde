@@ -74,10 +74,10 @@
 #include "Managers/CatMgr.hh"
 #include "Registration.hh"
 
-#include "DocParser.h"
-#include "Resolver.h" 
-#include "StyleSheet.h"
-#include "StyleSheetExceptions.h"
+#include "StyleSheet/DocParser.h"
+#include "StyleSheet/Resolver.h"
+#include "StyleSheet/StyleSheet.h"
+#include "StyleSheet/StyleSheetExceptions.h"
 #include "../OnlineRender/CanvasRenderer.hh"
 
 #if 0

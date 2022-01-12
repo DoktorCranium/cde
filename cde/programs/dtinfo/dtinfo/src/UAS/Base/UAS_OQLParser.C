@@ -33,7 +33,7 @@
 using namespace std;
 #include <assert.h>
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 #include "UAS_OQLParser.hh"
 
 #include "Managers/CatMgr.hh"

@@ -1,3 +1,3 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = tools DtMmdb mmdb clients dtinfo dtinfogen
+SUBDIRS = tools clients dtinfo

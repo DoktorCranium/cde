@@ -24,7 +24,7 @@
 #ifndef _UAS_Exceptions_hh_
 #define _UAS_Exceptions_hh_
 
-#include "Exceptions.hh"
+#include "dti_excs/Exceptions.hh"
 #include "UAS_String.hh"
 
 #define CASTUASEXCEPT

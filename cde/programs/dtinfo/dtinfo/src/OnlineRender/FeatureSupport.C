@@ -48,9 +48,9 @@
 #include <Prelude.h>
 
 #include <limits.h>
-#include "Feature.h"
-#include "FeatureValue.h"
-#include "StyleSheetExceptions.h"
+#include "StyleSheet/Feature.h"
+#include "StyleSheet/FeatureValue.h"
+#include "StyleSheet/StyleSheetExceptions.h"
 #include <utility/funcs.h>
 #include <sstream>
 using namespace std;

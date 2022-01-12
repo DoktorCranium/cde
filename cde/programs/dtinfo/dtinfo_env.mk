@@ -24,26 +24,18 @@ OLIAS = $(top_builddir)/programs/dtinfo
 OLIASSRC = $(top_srcdir)/programs/dtinfo
 WWL = $(OLIAS)/dtinfo/wwl
 WWLSRC = $(OLIASSRC)/dtinfo/wwl
-MMDB = $(OLIAS)/DtMmdb
-MMDBSRC = $(OLIASSRC)/DtMmdb
-EXCEPTIONS = $(MMDB)/dti_excs
-EXCEPTIONSSRC = $(MMDBSRC)/dti_excs
+MMDB = $(top_builddir)/lib/DtMmdb
+MMDBSRC = $(top_builddir)/lib/DtMmdb
 TOOLS = $(OLIAS)/tools
 UAS = $(OLIAS)/dtinfo/src/UAS
 UASSRC = $(OLIASSRC)/dtinfo/src/UAS
 
 WWL_INCLUDES = -I$(WWLSRC)/include
 WWL_LIBS=$(STATIC) -L$(WWL)/src -lWWL
-EXCEPTIONS_INCLUDES = -I$(EXCEPTIONSSRC)
 MMDB_INCLUDES = -I$(MMDBSRC)
-MMDB_LIBS=$(OLIAS)/mmdb/libMMDB.la
-MMDB_LIBS_C_API = -L$(MMDB) -lDtMmdb
+MMDB_LIBS= -L$(MMDB) -lDtMmdb
 UAS_INCLUDES = -I$(UASSRC)/Base
-COMMON_CLASS_INCLUDES = -I$(MMDBSRC)/dti_cc -I$(MMDBSRC)
-STYLE_SHEET_INCLUDES = -I$(MMDBSRC)/StyleSheet
 TREERES = $(TOOLS)/misc/treeres
 MSGSETS = $(TOOLS)/misc/msgsets
 
-DTINFO_INCLUDES = -I.. $(UAS_INCLUDES) $(EXCEPTIONS_INCLUDES)	\
-	$(WWL_INCLUDES) $(STYLE_SHEET_INCLUDES)			\
-	$(COMMON_CLASS_INCLUDES)
+DTINFO_INCLUDES = -I.. $(UAS_INCLUDES) $(MMDB_INCLUDES) $(WWL_INCLUDES)

@@ -24,7 +24,7 @@
 #ifndef _UAS_Base_h_
 #define _UAS_Base_h_
 
-# include "Exceptions.hh"
+# include "dti_excs/Exceptions.hh"
 # include "UAS_Pointer.hh"
 
 class UAS_Base: public Destructable {
