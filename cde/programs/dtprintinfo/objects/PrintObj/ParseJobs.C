@@ -456,7 +456,6 @@ static void check_dir(char *printer, char *tmp_dir, StatusLineList *job_list,
    DIR *lp_tmp_dir;
    struct dirent *dir_struct;
    char buf[256];
-   int req_len;
    int spool_len;
    int line_ct;
    char *line;
@@ -472,16 +471,15 @@ static void check_dir(char *printer, char *tmp_dir, StatusLineList *job_list,
    char *jobname;
    StatusLineList j_list;
 
-   char *filename = new char[200];
-   char *filename1 = new char[200];
-   char *request = new char[300];
-   char *spool_dir = new char[300];
+   char *filename = new char[PATH_MAX];
+   char *filename1 = new char[PATH_MAX];
+   char *request = new char[PATH_MAX];
+   char *spool_dir = new char[PATH_MAX];
 
    if (getenv("REQ_DIR"))
        snprintf(request, sizeof(request), "%s/%s", getenv("REQ_DIR"), tmp_dir);
    else
-       sprintf(request, sizeof(request), "%s", REQ_DIR, tmp_dir);
-   req_len = strlen(request);
+       snprintf(request, sizeof(request), REQ_DIR, tmp_dir);
    snprintf(spool_dir, sizeof(spool_dir), "%s/%s", SPOOL_DIR, tmp_dir);
    spool_len = strlen(spool_dir);
 
@@ -503,9 +501,7 @@ static void check_dir(char *printer, char *tmp_dir, StatusLineList *job_list,
       if (strcmp(dir_struct->d_name + len - 2, "-0"))
 	 continue;
 
-//      *(request + req_len) = '\0';
-//      strcat(request + req_len, dir_struct->d_name);
-      std:string file_req(request);
+      std::string file_req(request);
       file_req.append(dir_struct->d_name);
 
       if (!(req = fopen(file_req.c_str(), "r")))
