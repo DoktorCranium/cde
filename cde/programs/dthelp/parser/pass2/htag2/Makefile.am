@@ -15,28 +15,9 @@ SDLBUILDSRC  = $(HTAG2)/build
 SDLUTILLIB   = $(HTAG2)/util/libutil.a
 SDLIFFILE    = $(HTAG2SRC)/help.if
 
-XLATESRCS = XlationSvc.c LocaleXlate.c
-
-XLATESRCDIR = ${top_srcdir}/lib/DtSvc/DtUtil2
-
-$(XLATESRCS): XDONE
-
-XDONE: $(XLATESRCDIR)/XlationSvc.c $(XLATESRCDIR)/LocaleXlate.c
-	$(RM) $(XLATESRCS)
-	$(CP) $(XLATESRCDIR)/XlationSvc.c XlationSvc.c
-	$(CP) $(XLATESRCDIR)/LocaleXlate.c LocaleXlate.c
-	cd ../parser; $(MAKE) CDONE
-	touch XDONE
-
-BUILT_SOURCES = $(XLATESRCS)
-CLEANFILES = $(BUILT_SOURCES) XDONE
-
 AM_CPPFLAGS = -I$(SDLPARSERSRC) -I$(SDLUTILSRC) \
-	    -I$(SDLELTDEFSRC) -I$(XLATESRCDIR) $(DT_INCDIR)
+	    -I$(SDLELTDEFSRC) $(DT_INCDIR)
 
 # needed by parser/
 noinst_LIBRARIES = libhelptag.a
-libhelptag_a_SOURCES = custom.c sdl.c option.c	\
-		      out.c $(XLATESRCS)		\
-		      global.c ../parser/delim.h
-
+libhelptag_a_SOURCES = custom.c sdl.c option.c out.c global.c ../parser/delim.h

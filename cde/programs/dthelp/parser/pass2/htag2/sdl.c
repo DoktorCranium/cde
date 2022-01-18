@@ -39,9 +39,6 @@
 #include "userinc.h"
 #include "globdec.h"
 
-#include "LocaleXlate.h"
-#include "XlationSvc.h"
-
 static char *operantLocale;
 
 static char openLoids[]  = "<LOIDS COUNT=\"%d\">\n";
@@ -6536,27 +6533,16 @@ while (name = CycleEnt(FALSE, &type, &content, &wheredef));
 }
 
 
-/* A function that takes a language/charset pair and:
- *     if they are standard, leave them unchanged but get local
- *                           versions and setlocale(3) using those
- *     if they are local, setlocale(3) with them and replace them with
- *			  standard versions.
+/* A function that takes a language/charset pair and setlocale(3) using those.
 */
 void
 SetLocale(M_WCHAR *pLang, M_WCHAR *pCharset)
 {
 const char  cString[] = "C";
-_DtXlateDb  myDb = NULL;
-char        myPlatform[_DtPLATFORM_MAX_LEN+1];
 char        myLocale[256]; /* arbitrarily large */
 char       *mb_lang;
 char       *mb_charset;
-char       *locale;
-char       *lang;
 char       *charset;
-int         execVer;
-int         compVer;
-int         isStd;
 
 if (!pLang && !pCharset)
     return;
@@ -6576,76 +6562,15 @@ if (mb_charset && *mb_charset)
     strcat(myLocale, mb_charset);
     }
 
-if ((_DtLcxOpenAllDbs(&myDb) != 0) ||
-    (_DtXlateGetXlateEnv(myDb,myPlatform,&execVer,&compVer) != 0))
-    {
-    fprintf(stderr,
-            "Warning: could not open locale translation database.\n");
-    if (m_errfile != stderr)
-	fprintf(m_errfile,
-		"Warning: could not open locale translation database.\n");
-    if (mb_lang != cString)
-	mb_free(&mb_lang);
-    if (mb_charset)
-	mb_free(&mb_charset);
-    if (myDb != 0)
-	_DtLcxCloseDb(&myDb);
-    return;
-    }
-
-isStd = !_DtLcxXlateOpToStd(myDb,
-		            "CDE",
-		            0,
-		            DtLCX_OPER_STD,
-		            myLocale,
-		            NULL,
-		            NULL,
-		            NULL,
-		            NULL);
-
-if (isStd)
-    { /* already standard - get local versions and set locale */
-    if (_DtLcxXlateStdToOp(myDb,
-		           myPlatform,
-		           compVer,
-		           DtLCX_OPER_SETLOCALE,
-		           myLocale,
-		           NULL,
-		           NULL,
-		           NULL,
-		           &locale))
-	{
-	fprintf(stderr,
-		"Warning: could not translate CDE locale to local\n");
-	if (m_errfile != stderr)
-	    fprintf(m_errfile,
-		    "Warning: could not translate CDE locale to local\n");
-	_DtLcxCloseDb(&myDb);
-	if (mb_lang != cString)
-	    mb_free(&mb_lang);
-	if (mb_charset)
-	    mb_free(&mb_charset);
-	return;
-	}
-    else
-	{
-	setlocale(LC_CTYPE, locale);
-	operantLocale = mb_malloc(strlen(locale)+1);
-	strcpy(operantLocale, locale);
-	}
-    }
-else
-    { /* already local - just set locale */
-    setlocale(LC_CTYPE, myLocale);
-    operantLocale = mb_malloc(strlen(myLocale)+1);
-    strcpy(operantLocale, myLocale);
-    }
+setlocale(LC_CTYPE, myLocale);
+mb_free(&operantLocale);
+operantLocale = mb_malloc(strlen(myLocale)+1);
+strcpy(operantLocale, myLocale);
 
 if (mb_lang != cString)
     mb_free(&mb_lang);
 if (mb_charset)
     mb_free(&mb_charset);
-_DtLcxCloseDb(&myDb);
 }
 
 

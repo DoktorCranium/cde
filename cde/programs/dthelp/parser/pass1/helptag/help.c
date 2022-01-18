@@ -30,9 +30,6 @@
 #include "globdec.h"
 #include "proto.h"
 
-#include "LocaleXlate.h"
-#include "XlationSvc.h"
-
 void m_mberr1(char *text, const char *arg);
 
 void assert_hometopic_exists(void)
@@ -1436,218 +1433,11 @@ return "";
 }
 
 
-/* A function that takes a language/charset pair and:
- *     if they are standard, leave them unchanged but get local
- *                           versions and setlocale(3) using those
- *     if they are local, setlocale(3) with them and replace them with
- *			  standard versions.
-*/
-static void
-SetStdLocale(char *pLang, char *pCharset)
-{
-static const char *cString   = "C";
-static const char *isoString = "ISO-8859-1";
-_DtXlateDb  myDb = NULL;
-char        myPlatform[_DtPLATFORM_MAX_LEN+1];
-char        myLocale[256]; /* arbitrarily large */
-char        myLocaleTemp[sizeof(myLocale)]; /* non-arbitrarily the same */
-char       *locale;
-char       *lang;
-char       *charset;
-int         execVer;
-int         compVer;
-int         isStd;
-
-snprintf(myLocale, sizeof(myLocale), "%s", pLang);
-if (*pCharset)
-    {
-    snprintf(myLocaleTemp, sizeof(myLocaleTemp), "%s.%s", myLocale, pCharset);
-    strcpy(myLocale, myLocaleTemp);
-    }
-
-if ((_DtLcxOpenAllDbs(&myDb) != 0) ||
-    (_DtXlateGetXlateEnv(myDb,myPlatform,&execVer,&compVer) != 0))
-    {
-    fprintf(stderr,
-            "Warning: could not open locale translation database.\n");
-    if (m_errfile != stderr)
-	fprintf(m_errfile,
-		"Warning: could not open locale translation database.\n");
-    strcpy(pLang, cString);
-    strcpy(pCharset, isoString);
-    if (myDb != 0)
-	_DtLcxCloseDb(&myDb);
-    return;
-    }
-
-isStd = !_DtLcxXlateOpToStd(myDb,
-		            "CDE",
-		            0,
-		            DtLCX_OPER_STD,
-		            myLocale,
-		            NULL,
-		            NULL,
-		            NULL,
-		            NULL);
-
-if (isStd)
-    { /* already standard - get local versions and set locale */
-    if (_DtLcxXlateStdToOp(myDb,
-		           myPlatform,
-		           compVer,
-		           DtLCX_OPER_SETLOCALE,
-		           myLocale,
-		           NULL,
-		           NULL,
-		           NULL,
-		           &locale))
-	{
-	fprintf(stderr,
-		"Warning: could not translate CDE locale to local\n");
-	if (m_errfile != stderr)
-	    fprintf(m_errfile,
-		    "Warning: could not translate CDE locale to local\n");
-	strcpy(pLang, cString);
-	strcpy(pCharset, isoString);
-	_DtLcxCloseDb(&myDb);
-	return;
-	}
-    else
-	{
-	setlocale(LC_CTYPE, locale);
-	mb_free(&locale);
-	}
-    }
-else
-    { /* already local - set locale and get standard versions */
-    if (_DtLcxXlateOpToStd(myDb,
-		           myPlatform,
-		           compVer,
-		           DtLCX_OPER_SETLOCALE,
-		           myLocale,
-		           NULL,
-		           &lang,
-		           &charset,
-		           NULL))
-	{
-	fprintf(stderr,
-		"Warning: could not translate local locale to CDE\n");
-	if (m_errfile != stderr)
-	    fprintf(m_errfile,
-		    "Warning: could not translate local locale to CDE\n");
-	strcpy(pLang, cString);
-	strcpy(pCharset, isoString);
-	_DtLcxCloseDb(&myDb);
-	return;
-	}
-    setlocale(LC_CTYPE, myLocale);
-
-    if (*lang)
-	{
-	strcpy(pLang, lang);
-	mb_free(&lang);
-	}
-    else
-	strcpy(pLang, cString);
-
-    if ( *charset)
-	{
-	strcpy(pCharset, charset);
-	}
-    else
-	strcpy(pCharset, isoString);
-    }
-	mb_free(&charset);
-
-_DtLcxCloseDb(&myDb);
-free(charset);
-free(lang);
-}
-
-
-/* A function that takes the return value from a call to setlocale()
- * and extracts the langterr.charset data from it in a vendor neutral
- * fashion.
-*/
-static char *
-GetStdLocale(void)
-{
-static char buffer[256];
-static char *cString   = "C";
-_DtXlateDb  myDb = NULL;
-char        myPlatform[_DtPLATFORM_MAX_LEN+1];
-char       *opLocale;
-char       *stdLocale;
-int         execVer;
-int         compVer;
-
-if ((_DtLcxOpenAllDbs(&myDb) == 0) &&
-    (_DtXlateGetXlateEnv(myDb,myPlatform,&execVer,&compVer) != 0))
-    {
-    fprintf(stderr,
-            "Warning: could not open locale translation database.\n");
-    if (m_errfile != stderr)
-	fprintf(m_errfile,
-		"Warning: could not open locale translation database.\n");
-    return cString;
-    }
-
-if (_DtLcxXlateOpToStd(myDb,
-		       myPlatform,
-		       compVer,
-		       DtLCX_OPER_SETLOCALE,
-		       setlocale(LC_ALL, NULL),
-		       &stdLocale,
-		       NULL,
-		       NULL,
-		       NULL))
-    {
-    fprintf(stderr,
-	    "Warning: could not translate local locale to CDE\n");
-    if (m_errfile != stderr)
-	fprintf(m_errfile,
-		"Warning: could not translate local locale to CDE\n");
-    _DtLcxCloseDb(&myDb);
-    return cString;
-    }
-
-if (_DtLcxXlateStdToOp(myDb,
-		       myPlatform,
-		       compVer,
-		       DtLCX_OPER_SETLOCALE,
-		       stdLocale,
-		       NULL,
-		       NULL,
-		       NULL,
-		       &opLocale))
-    {
-    fprintf(stderr,
-	    "Warning: could not translate CDE locale to local\n");
-    if (m_errfile != stderr)
-	fprintf(m_errfile,
-		"Warning: could not translate CDE locale to local\n");
-    mb_free(&stdLocale);
-    _DtLcxCloseDb(&myDb);
-    return cString;
-    }
-
-_DtLcxCloseDb(&myDb);
-
-strcpy(buffer, opLocale);
-mb_free(&stdLocale);
-mb_free(&opLocale);
-return buffer;
-}
-
-
 /*
  * Look for a entities by the name of "LanguageElementDefaultLocale".
  * and "LanguageElementDefaultCharset".  If not found, get the user's
  * locale.  If LanguageElementDefaultCharset was set, use that in
- * place of the charset of the local (if any).  Call SetStdLocale()
- * to insure the language and charset are in the normalized form.
- * SetStdLocale() will also set the current locale to the local
- * versions of the language and charset.
+ * place of the charset of the local (if any).
 */
 void
 SetDefaultLocale(void)
@@ -1680,7 +1470,7 @@ m_free(elementName,"wide character string");
 
 if (!locale)
     {
-    tmpStr = GetStdLocale();
+    if ((tmpStr = setlocale(LC_CTYPE, NULL)) == NULL) tmpStr = "C.UTF-8";
     locale = mb_malloc(strlen(tmpStr)+1);
     strcpy(locale, tmpStr);
     }
@@ -1714,10 +1504,11 @@ if (!charset)
 if (dotPtr)
     *dotPtr = '\0';
 
-snprintf(stdLang, sizeof(stdLang), "%s", locale);
-if (charset)
-    snprintf(stdCharset, sizeof(stdCharset), "%s", charset);
-SetStdLocale(stdLang, stdCharset);
+if (charset) snprintf(stdCharset, sizeof(stdCharset), "%s", charset);
+else snprintf(stdCharset, sizeof(stdCharset), "UTF-8");
+
+snprintf(stdLang, sizeof(stdLang), "%s.%s", locale, stdCharset);
+setlocale(LC_CTYPE, stdLang);
 
 if (*stdCharset)
     helpcharset = MakeWideCharString(stdCharset);

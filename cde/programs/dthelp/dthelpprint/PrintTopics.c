@@ -72,7 +72,6 @@ $COPYRIGHT$:
 #include "DtI/HelpTermP.h"	/* from libDtHelp */
 #include "Dt/CanvasP.h"	/* from libDtHelp */
 #include "StringFuncsI.h" /* from libDtHelp */
-#include "Dt/LocaleXlate.h" /* from libDtHelp */
 #include "DtI/bufioI.h" /* from libDtHelp; required for AccessI.h */
 #include "DtI/FileUtilsI.h" /* from libDtHelp */
 #include "DtI/Access.h" /* from libDtHelp */
@@ -468,9 +467,7 @@ int IconvFile(
    for (i=0; i<NUMSTRS; i++) loc[i] = NULL;
    
    /* get the normalized current codeset */
-   _DtHelpCeXlateOpToStdLocale (
-                     DtLCX_OPER_SETLOCALE, setlocale(LC_CTYPE,NULL),
-                     &loc[CUR_LOCALE], NULL, &loc[CUR_CODESET]);
+   _DtHelpCeGetLcCtype(&loc[CUR_LOCALE], NULL, &loc[CUR_CODESET]);
 
    /* get the normalized volume codeset */
    loc[VOL_LOCALE] = _DtHelpCeGetVolumeLocale(helpVolumeHandle);
@@ -495,14 +492,10 @@ int IconvFile(
    }
 
    /* get the source codeset */
-   _DtHelpCeXlateStdToOpLocale (
-                     DtLCX_OPER_ICONV1, loc[VOL_LOCALE],
-                     "iso8859_1", &loc[FROM_CODESET]);
+   loc[FROM_CODESET] = strdup(loc[VOL_LOCALE]);
 
    /* get the target codeset */
-   _DtHelpCeXlateStdToOpLocale (
-                     DtLCX_OPER_ICONV1, loc[CUR_LOCALE],
-                     "iso8859_1", &loc[TO_CODESET]);
+   loc[TO_CODESET] = strdup(loc[CUR_LOCALE]);
 
    /* construct the command line */
    destFile = _DtHPrCreateTmpFile(TMPFILE_PREFIX,TMPFILE_SUFFIX);
@@ -742,9 +735,7 @@ int IconvBuffer(
    for (i=0; i<NUMSTRS; i++) loc[i] = NULL;
    
    /* get the normalized current codeset */
-   _DtHelpCeXlateOpToStdLocale (
-                     DtLCX_OPER_SETLOCALE, setlocale(LC_CTYPE,NULL),
-                     &loc[CUR_LOCALE], NULL, &loc[CUR_CODESET]);
+   _DtHelpCeGetLcCtype(&loc[CUR_LOCALE], NULL, &loc[CUR_CODESET]);
 
    /* get the normalized volume codeset */
    loc[VOL_LOCALE] = _DtHelpCeGetVolumeLocale(helpVolumeHandle);
@@ -769,14 +760,10 @@ int IconvBuffer(
    }
 
    /* get the source codeset */
-   _DtHelpCeXlateStdToOpLocale (
-                     DtLCX_OPER_ICONV1, loc[VOL_LOCALE],
-                     "iso8859_1", &loc[FROM_CODESET]);
+   loc[FROM_CODESET] = strdup(loc[VOL_LOCALE]);
 
    /* get the target codeset */
-   _DtHelpCeXlateStdToOpLocale (
-                     DtLCX_OPER_ICONV1, loc[CUR_LOCALE],
-                     "iso8859_1", &loc[TO_CODESET]);
+   loc[TO_CODESET] = strdup(loc[CUR_LOCALE]);
 
    if ( isFirst ) {
       CD = iconv_open( loc[TO_CODESET], loc[FROM_CODESET] );
