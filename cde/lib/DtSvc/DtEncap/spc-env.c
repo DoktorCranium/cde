@@ -41,9 +41,6 @@
 #include <bms/MemoryMgr.h> 
 #include "DtSvcLock.h"
 
-#include <XlationSvc.h>
-#include <LocaleXlate.h>
-
 /* External declarations */
 
 extern XeString official_hostname;  /* from spc-net.c */
@@ -367,32 +364,14 @@ XeString *SPC_Fixup_Environment(XeString *envp,
     myLang = SPC_Getenv((XeString)"LANG", envp);
     if (myLang)
     {
-      _DtXlateDb db = NULL;
-      char platform[_DtPLATFORM_MAX_LEN];
-      int execVer;
-      int compVer;
-      char *stdLang;
       XeChar *langBuf;
 
-      if (_DtLcxOpenAllDbs(&db) == 0)
+      if ((langBuf = (XeChar *)malloc((strlen(myLang) + 6) * sizeof(XeChar)))
+		      != (XeChar *)NULL)
       {
-	if ((_DtXlateGetXlateEnv(db, platform, &execVer, &compVer) == 0) &&
-	    (_DtLcxXlateOpToStd(db, platform, compVer, DtLCX_OPER_SETLOCALE,
-				myLang, &stdLang, NULL, NULL, NULL) == 0))
-	{
-	  if ((langBuf = (XeChar *)malloc((strlen(stdLang) + 6) *
-					  sizeof(XeChar)))
-	      != (XeChar *)NULL)
-	  {
-	    sprintf(langBuf, "LANG=%s", stdLang);
-	    envp = SPC_Putenv(langBuf, envp);
-	    free(langBuf);
-	  }
-
-	  free(stdLang);
-	}
-
-	_DtLcxCloseDb(&db);
+        sprintf(langBuf, "LANG=%s", myLang);
+        envp = SPC_Putenv(langBuf, envp);
+        free(langBuf);
       }
     }
   }
