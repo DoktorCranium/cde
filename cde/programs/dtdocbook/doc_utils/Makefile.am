@@ -4,7 +4,7 @@ include ../dtdocbook.am
 
 infolib = ../infolib
 
-SUBDIRS = $(infolib) ../dtsr
+SUBDIRS = $(infolib) ../dtsr ../instant
 
 noinst_PROGRAMS = \
 		  dtdocbook2infolib \
