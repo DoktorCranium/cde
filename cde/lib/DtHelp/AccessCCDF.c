@@ -1324,21 +1324,51 @@ char *
 _DtHelpCeGetCcdfVolLocale (
 	_DtHelpVolume	vol)
 {
-    char	  *locale = NULL;
-    char	  *charSet;
+    char	  *locale, *ptr, *resStr;
+    char	  *mResStr = NULL;
+    char	  *mLang = NULL;
+    char	  *lang = "C";
+    char	  *defLocale = "C.UTF-8";
     CcdfVolumePtr  ccdfVol = GetCcdfVolumePtr(vol);
 
     errno  = 0;
-    locale = GetResourceString(ccdfVol->volDb, NULL, "CharSet", "charSet");
-    if (_DtHelpCeStrchr(locale, ".", 1, &charSet) != 0)
-      {
-	charSet = locale;
-        _DtHelpCeXlateOpToStdLocale(DtLCX_OPER_CCDF,charSet,&locale,NULL,NULL); 
-        /* charset is owned by the volume Xrm database; don't free */
-      }
-    else if (NULL != locale)
-        locale = strdup(locale);
 
+    /* resStr is owned by the volume Xrm database; don't free */
+    resStr = GetResourceString(ccdfVol->volDb, NULL, "CharSet", "charSet");
+
+    if (resStr == NULL || *resStr == '\0')
+      {
+	locale = strdup(defLocale);
+	goto done;
+      }
+
+    mResStr = strdup(resStr);
+
+    if (_DtHelpCeStrchr(mResStr, ".", 1, &ptr) == 0)
+      {
+	*ptr++ = '\0';
+
+	if (mResStr == NULL || *mResStr == '\0' || ptr == NULL || *ptr == '\0')
+	  locale = strdup(defLocale);
+	else
+	  locale = strdup(resStr);
+
+	goto done;
+      }
+
+    mLang = _DtHelpGetLocale();
+
+    if (_DtHelpCeStrrchr(mLang, ".", 1, &ptr) == 0)
+      {
+	*ptr = '\0';
+	if (mLang != NULL && *mLang != '\0') lang = mLang;
+      }
+
+    asprintf(&locale, "%s.%s", lang, resStr);
+
+done:
+    free(mLang);
+    free(mResStr);
     return locale;
 
 }  /* End _DtHelpCeGetCcdfVolLocale */

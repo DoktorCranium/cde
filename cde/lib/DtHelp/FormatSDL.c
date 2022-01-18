@@ -1556,7 +1556,7 @@ static SDLElementAttrList  SdlDocAttrList[] =
 	{ SDL_ATTR_PRODVER  , SdlAttrValueImplied , NULL   },
 	{ SDL_ATTR_LICENSE  , SdlAttrValueImplied , NULL   },
 	{ SDL_ATTR_LANGUAGE , SdlAttrValueImplied , "C"    },
-	{ SDL_ATTR_CHARSET  , SdlAttrValueImplied , IsoStr },
+	{ SDL_ATTR_CHARSET  , SdlAttrValueImplied , "UTF-8"},
 	{ SDL_ATTR_AUTHOR   , SdlAttrValueImplied , NULL   },
 	{ SDL_ATTR_VERSION  , SdlAttrValueImplied , NULL   },
 	{ SDL_ATTR_FRST_PG  , SdlAttrValueImplied , NULL   },
@@ -4638,9 +4638,7 @@ SetUp (
     /*
      * determine mb_len should be based on lang/charset.
      */
-    frmt_struct->mb_len   = _DtHelpCeGetMbLen(
-			_DtHelpFontHintsLang(*(frmt_struct->my_fonts)),
-			_DtHelpFontHintsCharSet(*(frmt_struct->my_fonts)));
+    frmt_struct->mb_len   = MB_CUR_MAX;
     frmt_struct->toss     = toss;
     frmt_struct->ui_info  = ui_info;
 
@@ -5605,9 +5603,8 @@ ParseElementAttr(
 
         if (SDLIsStrAttrSet(my_struct->el_info, SDL_ATTR_LANGUAGE)
 		|| SDLIsStrAttrSet(my_struct->el_info, SDL_ATTR_CHARSET))
-	    my_struct->mb_len = _DtHelpCeGetMbLen(
-			_DtHelpFontHintsLang(*(my_struct->my_fonts)),
-			_DtHelpFontHintsCharSet(*(my_struct->my_fonts)));
+	    my_struct->mb_len = MB_CUR_MAX;
+
 	/*
 	 * Do some specific work for containers.
 	 */

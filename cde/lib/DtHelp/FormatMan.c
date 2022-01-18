@@ -840,10 +840,8 @@ _DtHelpFormatManPage(
      */
     _DtHelpCeCopyDefFontAttrList (&fontAttr);
     fontAttr.spacing  = _DtHelpFontSpacingMono;
-    _DtHelpCeXlateOpToStdLocale(DtLCX_OPER_SETLOCALE,setlocale(LC_CTYPE,NULL),
-			NULL, &(fontAttr.language), &(fontAttr.char_set));
-
-    myVars = __DtHelpCeSetUpVars(fontAttr.language, fontAttr.char_set, &myUiInfo);
+    _DtHelpCeGetLcCtype(NULL, &(fontAttr.language), &(fontAttr.char_set));
+    myVars = __DtHelpCeSetUpVars(&myUiInfo);
     if (myVars == NULL)
       {
 	free(fontAttr.language);

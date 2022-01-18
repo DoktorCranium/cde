@@ -2493,27 +2493,25 @@ static Boolean OpenVolForSearch(
 
        if (curVol->gotLocale == False)
        {
+          char *ptr = NULL;
+
           curVol->stdLocale = _DtHelpGetVolumeLocale(curVol->volHandle);
-          /* get the op-specific locales; the strings are default values */
-          _DtHelpCeXlateStdToOpLocale(DtLCX_OPER_ICONV3,curVol->stdLocale,
-          		"iso88591",&curVol->iconv3Codeset);
+
+          if (_DtHelpCeStrchr(curVol->stdLocale, ".", 1, &ptr) == 0)
+          {
+            ++ptr;
+            if (ptr == NULL || *ptr == '\0') ptr = NULL;
+          }
+
+          curVol->iconv3Codeset = strdup(ptr ? ptr : "UTF-8");
           curVol->gotLocale = True;
        }
        openedVolume = True;
 
        /* get the codeset of the application's locale, if haven't gotten it */
        if ( NULL == hw->help_dialog.srch.iconv3Codeset )
-       {
-          char * locale = NULL;
-          _DtHelpCeXlateOpToStdLocale(DtLCX_OPER_SETLOCALE,
-                     setlocale(LC_CTYPE,NULL),&locale,NULL,NULL);
-          /* get the op-specific locales; the strings are default values */
-          /* impt: XlateStdToOpLocale() call requires a locale, not a codeset */
-          _DtHelpCeXlateStdToOpLocale(DtLCX_OPER_ICONV3,locale,
-       		"iso88591",&hw->help_dialog.srch.iconv3Codeset);
-          XtFree(locale);
-       }
-   
+         _DtHelpCeGetLcCtype(NULL, NULL, &(hw->help_dialog.srch.iconv3Codeset));
+
        /** only saves or changes the locale if necessary **/
        /* create an iconv3 context to convert codeset of */
        /* the volume to the codeset of the application */

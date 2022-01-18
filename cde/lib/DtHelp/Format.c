@@ -475,9 +475,9 @@ _DtHelpFormatAsciiFile(
 	  {
 	    _DtHelpCeCopyDefFontAttrList (&fontAttrs);
 	    fontAttrs.spacing = _DtHelpFontSpacingMono;
-	    _DtHelpCeXlateOpToStdLocale(DtLCX_OPER_SETLOCALE,
-				setlocale(LC_CTYPE,NULL), NULL,
-				&(fontAttrs.language), &(fontAttrs.char_set));
+
+	    _DtHelpCeGetLcCtype(NULL, &(fontAttrs.language),
+	      &(fontAttrs.char_set));
 
 	    /*
 	     * fill out the ui information
@@ -494,8 +494,7 @@ _DtHelpFormatAsciiFile(
 	    /*
 	     * get the formatting structure.
 	     */
-	    varHandle = __DtHelpCeSetUpVars(fontAttrs.language,
-						fontAttrs.char_set, &myUiInfo);
+	    varHandle = __DtHelpCeSetUpVars(&myUiInfo);
 	    if (varHandle == NULL)
 	      {
 	        free(fontAttrs.language);
@@ -585,12 +584,8 @@ _DtHelpFormatAsciiString(
     *ret_handle  = NULL;
 
     _DtHelpCeCopyDefFontAttrList (&fontAttrs);
-    _DtHelpCeXlateOpToStdLocale(DtLCX_OPER_SETLOCALE,setlocale(LC_CTYPE,NULL),
-				NULL, &(fontAttrs.language),
-				&(fontAttrs.char_set));
-
-    varHandle = __DtHelpCeSetUpVars(fontAttrs.language, fontAttrs.char_set,
-						&myUiInfo);
+    _DtHelpCeGetLcCtype(NULL, &(fontAttrs.language), &(fontAttrs.char_set));
+    varHandle = __DtHelpCeSetUpVars(&myUiInfo);
     if (varHandle == NULL)
       {
         free(fontAttrs.language);
@@ -678,12 +673,8 @@ _DtHelpFormatAsciiStringDynamic(
     *ret_handle  = NULL;
 
     _DtHelpCeCopyDefFontAttrList (&fontAttrs);
-    _DtHelpCeXlateOpToStdLocale(DtLCX_OPER_SETLOCALE,setlocale(LC_CTYPE,NULL),
-				NULL, &(fontAttrs.language),
-				&(fontAttrs.char_set));
-
-    varHandle = __DtHelpCeSetUpVars(fontAttrs.language, fontAttrs.char_set,
-						&myUiInfo);
+    _DtHelpCeGetLcCtype(NULL, &(fontAttrs.language), &(fontAttrs.char_set));
+    varHandle = __DtHelpCeSetUpVars(&myUiInfo);
     if (varHandle == NULL)
       {
         free(fontAttrs.language);

@@ -74,6 +74,7 @@
 #include "FormatSDLI.h"
 #include "StringFuncsI.h"
 #include "UtilSDLI.h"
+#include "HelpXlate.h"
 
 #ifdef NLS16
 #endif
@@ -89,7 +90,7 @@ static	int	ProcessEntry (
 /********    End Private Function Declarations    ********/
 
 /********    Private Variable Declarations    ********/
-static	const	char	*IsoString = "ISO-8859-1";
+static	const	char	*IsoString = "UTF-8";
 static	const	CESDLVolume	DefaultSdlVolume =
   {
      NULL,		/* _DtCvSegment *sdl_info; */

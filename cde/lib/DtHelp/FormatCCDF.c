@@ -318,7 +318,6 @@ static  int              SegmentSave(
  *****************************************************************************/
 static	const char	*Specials = "<\n\\ ";
 static	const char	*SpaceString = "        ";
-static	const char	*CString = "C";
 static	const char	*Period  = ".";
 static	const char	*Slash   = "/";
 
@@ -472,6 +471,7 @@ GetMbLen (
     char *ptr;
     char *langPart = NULL;
     char *codePart = NULL;
+    char *mLang = NULL;
 
     /*
      * strip spaces
@@ -494,34 +494,32 @@ GetMbLen (
 	*ptr++ = '\0';
 	langPart = strdup(font_str);
 	codePart = strdup(ptr);
+	goto done;
       }
 
     /*
      * old CCDF volume
      */
-    else
-      {
-	_DtHelpCeXlateOpToStdLocale(DtLCX_OPER_CCDF, font_str,
-						NULL, &langPart, &codePart);
-	/*
-	 * if the language is not specified for the code set,
-	 * get the environment's.
-	 */
-	if (strcmp(langPart, "?") == 0)
-	  {
-	    free(langPart);
+    if (font_str == NULL || *font_str == '\0') codePart = strdup("UTF-8");
+    else codePart = strdup(font_str);
 
-            langPart = _DtHelpGetLocale();
-            if (langPart == NULL || *langPart == '\0')
-	      langPart = strdup((char *) CString);
-	    else if (_DtHelpCeStrrchr(langPart, "_", MB_CUR_MAX, &ptr) == 0)
-		*ptr = '\0';
-	    else if (_DtHelpCeStrrchr(langPart, Period, MB_CUR_MAX, &ptr) == 0)
-		*ptr = '\0';
+    mLang = _DtHelpGetLocale();
+
+    if (_DtHelpCeStrrchr(mLang, Period, MB_CUR_MAX, &ptr) == 0)
+      {
+	*ptr = '\0';
+
+	if (mLang != NULL && *mLang != '\0')
+	  {
+	    langPart = strdup(mLang);
+	    goto done;
 	  }
       }
 
-    cur_vars->cur_mb_max = _DtHelpCeGetMbLen(langPart, codePart);
+    langPart = strdup("C");
+
+done:
+    cur_vars->cur_mb_max = MB_CUR_MAX;
 
     /*
      * now set the return variables
@@ -535,6 +533,8 @@ GetMbLen (
         *set_ptr = codePart;
     else
 	free(codePart);
+
+    free(mLang);
 }
 
 /******************************************************************************
@@ -4121,7 +4121,7 @@ Format(
 
     /*
      * change the character set to the returned character set
-     * Assume that the charset is 'iso8859' if not specified.
+     * Assume that the charset is 'UTF-8' if not specified.
      */
     cur_vars->cur_mb_max = 1;
     if (NULL != charSet)
@@ -4355,7 +4355,7 @@ FormatCCDFTitle(
 
     /*
      * change the character set to the returned character set
-     * Assume that the charset is 'iso8859' if not specified.
+     * Assume that the charset is 'UTF-8' if not specified.
      */
     cur_vars->cur_mb_max = 1;
     if (NULL != charSet)
@@ -4794,7 +4794,7 @@ FormatExpandedToc(
  *
  *****************************************************************************/
 /******************************************************************************
- * Function:	VarHandle *__DtHelpCeSetUpVars (char *rd_buf, grow_size)
+ * Function:	VarHandle *__DtHelpCeSetUpVars (_FrmtUiInfo *ui_info)
  *
  * Parameters:
  *
@@ -4807,8 +4807,6 @@ FormatExpandedToc(
  ******************************************************************************/
 VarHandle
 __DtHelpCeSetUpVars(
-    char	*lang,
-    char	*code_set,
     _FrmtUiInfo	*ui_info)
 {
     FormatVariables    *newVars;
@@ -4817,7 +4815,7 @@ __DtHelpCeSetUpVars(
     *newVars = DefVars;
     newVars->ui_info = ui_info;
 
-    newVars->topic_mb_max = _DtHelpCeGetMbLen(lang, code_set);
+    newVars->topic_mb_max = MB_CUR_MAX;
     newVars->cur_mb_max   = newVars->topic_mb_max;
 
     return ((VarHandle) newVars);
@@ -5447,7 +5445,7 @@ _DtHelpCeGetCcdfVolTitleChunks(
      */
     charSet = _DtHelpCeGetCcdfVolLocale(volume);
     if (charSet == NULL)
-	charSet = strdup("C.ISO-8859-1");
+	charSet = strdup("C.UTF-8");
 
     titleStr = _DtHelpCeGetCcdfVolTitle(volume);
     if (titleStr != NULL)

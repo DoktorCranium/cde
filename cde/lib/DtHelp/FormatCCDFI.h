@@ -83,8 +83,6 @@ extern	int		__DtHelpCeProcessString(
 				int		  ret_on_nl,
 				_DtHelpFontHints *font_attr);
 extern	VarHandle	__DtHelpCeSetUpVars (
-				char		*lang,
-				char		*code_set,
 				_FrmtUiInfo	*ui_info);
 
 #endif /* _DtHelpFormatCCDFI_h */

@@ -706,8 +706,6 @@ void _DtHelpCeCompressSpace (
  * Purpose:
  *                  Converts string from fromCode to toCode using iconv(3)
  *                  It expects the codeset strings to be iconv(3) compatible.
- *		    Generally, compatible strings can be retrieved using
- *		    the _DtHelpCeXlateStdToOpLocale() call.
  *
  * Comments:
  *                  iconv(3) is standardized in XPG4, which is just starting
@@ -760,8 +758,6 @@ int _DtHelpCeIconvStr1Step(
  *              Opens an iconv table/algorithm to convert string from 
  *              fromCode to toCode using iconv(3)
  *              It expects the codeset strings to be iconv(3) compatible.
- *		Generally, compatible strings can be retrieved using
- *		the _DtHelpCeXlateStdToOpLocale() call.
  *
  * Comments:
  *              iconv(3) is standardized in XPG4, which is just starting

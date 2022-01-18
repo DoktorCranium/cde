@@ -28,7 +28,7 @@
  **
  **   Project:     DtXlate
  **
- **   Description: DtHelp-specific table-based translation services
+ **   Description: DtHelp-specific translation services
  **
  **   (c) Copyright 1993, 1994 Hewlett-Packard Company
  **   (c) Copyright 1993, 1994 International Business Machines Corp.
@@ -41,25 +41,12 @@
 #ifndef _DtHELP_XLATE_I
 #define _DtHELP_XLATE_I
 
-#include <Dt/LocaleXlate.h>
-#include <Dt/XlationSvc.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /* Functions */
-void _DtHelpCeXlateOpToStdLocale(
-	char       *operation,
-	char       *opLocale,
-	char       **ret_locale,
-	char       **ret_lang,
-	char       **ret_set);
-void _DtHelpCeXlateStdToOpLocale(
-	char       *operation,
-	char       *stdLocale,
-	char       *dflt_opLocale,
-	char       **ret_opLocale);
+void _DtHelpCeGetLcCtype(char **locale, char **lang, char **charset);
 
 #ifdef __cplusplus
 }
