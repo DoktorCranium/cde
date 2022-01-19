@@ -12,22 +12,15 @@ CLEANFILES = $(BUILT_SOURCES)
 sdlhelpdir = $(CDE_INSTALLATION_TOP)/appconfig/help/$(LANG)
 dist_sdlhelp_DATA = $(BUILT_SOURCES)
 
-DTDOCBOOK = $(top_srcdir)/programs/dtdocbook/doc2sdl/dtdocbook
-DOC2SDL_LOC = $(top_srcdir)/programs/dtdocbook/doc2sdl
+DTDOCBOOK = $(top_srcdir)/programs/dtdocbook/doc_utils/dtdocbook2sdl
 DTHELP_HTAG2 = $(top_builddir)/programs/dthelp/parser/pass2/parser/dthelp_htag2
-INSTANT = $(top_builddir)/programs/dtdocbook/instant/instant
-XLATE_LOCALE = $(top_builddir)/programs/dtdocbook/xlate_locale/xlate_locale
-# replace this with a native version detected by autoconf someday
-NSGMLS = $(top_builddir)/programs/nsgmls/nsgmls
 
 # let's try a rule here.  I don't like the backticks for running basename
 # but the $(basename...) seems to add a space for some reason
 
 %.sdl:
-	LANG=$(HELP_LANG) SGML_SEARCH_PATH=".:.." \
-		DTLCXSEARCHPATH=$(top_srcdir)/lib/DtHelp \
-		$(KSH) $(DTDOCBOOK) -t $(DOC2SDL_LOC) -H $(DTHELP_HTAG2) \
-			-I $(INSTANT) -L $(XLATE_LOCALE) -S $(NSGMLS) \
+	LANG=$(LANG) SGML_SEARCH_PATH=".:.." \
+		$(KSH) $(DTDOCBOOK) -H $(DTHELP_HTAG2) -L $(LANG) \
 			-o $@ `basename $@ .sdl`/book.sgm
 
 APPMANAGER_SRCS = Appmanager/GEntity.sgm Appmanager/TOC.sgm		\

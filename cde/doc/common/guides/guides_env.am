@@ -9,26 +9,21 @@ INFOLIBNAME = -n cde
 # orig: INFOLIBDESC = -d InfoLibDesc
 
 SSENTS = -m common/catalog
-DGENV = LANG=$(HELP_LANG) SGML_SEARCH_PATH=".:.."
-DTINFOGENOPTIONS = $(INFOLIBNAME) -d $(INFOLIBDESC)
+DGENV = LANG=$(LANG) SGML_SEARCH_PATH=".:.."
+DTINFOGENOPTIONS = $(SSENTS) $(INFOLIBNAME) -d $(INFOLIBDESC)
 
 # Note the quad-dollar sign - this escapes $$ (pid) for the tmp
 # dir. This is required for multi-core builds to work.
 DTINFOGENTMPDIR = /tmp/dtinfogen-guides.$$$$
 
-DTHELPSRC = $(top_srcdir)/lib/DtHelp
-DTLCXENVSETUP = DTLCXSEARCHPATH=$(DTHELPSRC)
-DTINFOGENSRC = $(top_srcdir)/programs/dtinfo/dtinfogen
-NSGMLS = $(top_builddir)/programs/nsgmls
 DTSRDIR = $(top_builddir)/programs/dtsr
 
-SGMLDIR  = $(top_srcdir)/programs/dtinfo/dtinfogen/infolib/C/SGML
-SGMLDEPS = $(SGMLDIR)/docbook.dtd $(SGMLDIR)/iso-box.gml \
-    $(SGMLDIR)/iso-dia.gml $(SGMLDIR)/iso-grk3.gml $(SGMLDIR)/iso-lat1.gml \
-    $(SGMLDIR)/iso-lat2.gml $(SGMLDIR)/iso-num.gml $(SGMLDIR)/iso-pub.gml \
-    $(SGMLDIR)/iso-tech.gml
+SGMLDIR  = $(top_srcdir)/programs/dtdocbook/sgml
+SGMLDEPS = $(SGMLDIR)/docbook.dtd $(SGMLDIR)/isobox.gml \
+    $(SGMLDIR)/isodia.gml $(SGMLDIR)/isogrk3.gml $(SGMLDIR)/isolat1.gml \
+    $(SGMLDIR)/isolat2.gml $(SGMLDIR)/isonum.gml $(SGMLDIR)/isopub.gml \
+    $(SGMLDIR)/isotech.gml
 
-DTINFOGEN = $(DTLCXENVSETUP) DTINFO_HOME=$(DTINFOGENSRC) \
-	DTINFO_BIN=$(DTINFOGENSRC)/install:$(DTINFOGENSRC)/mmdb/StyleSheet:$(DTINFOGENSRC)/mmdb/src:$(NSGMLS):$(DTSRDIR) \
-	$(DTINFOGENSRC)/infolib/etc/dtinfogen
-
+DTINFOGEN = \
+	PATH=$(PATH):$(DTSRDIR) \
+	$(top_srcdir)/programs/dtdocbook/doc_utils/dtdocbook2infolib
