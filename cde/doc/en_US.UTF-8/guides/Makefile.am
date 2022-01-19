@@ -10,7 +10,7 @@ BUILT_SOURCES =
 CLEANFILES =
 
 # this sets the LANG and HELP_LANG variables
-include $(top_srcdir)/programs/localized/templates/C.am
+include $(top_srcdir)/programs/localized/templates/English.am
 
 # build guide TOCs and deps
 include $(top_srcdir)/doc/common/guides/usersGuide.am
@@ -71,8 +71,7 @@ dist_cdedtidocsearch_DATA = ../cde.dti/CDEDOC/dtsearch/CDEDOC.d00	\
 BUILT_SOURCES += $(cdedti_DATA) $(cdedtidoc_DATA) $(cdedtidocsearch_DATA)
 CLEANFILES += $(cdedti_DATA) $(cdedtidoc_DATA) $(cdedtidocsearch_DATA)
 
-# link the C version to en_US.UTF-8
+# link the en_US.UTF-8 version to C
 install-data-hook:
-	$(RM) $(DESTDIR)$(CDE_INSTALLATION_TOP)/infolib/en_US.UTF-8
-	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/infolib && $(LN_S) C en_US.UTF-8
-
+	$(RM) $(DESTDIR)$(CDE_INSTALLATION_TOP)/infolib/C
+	cd $(DESTDIR)$(CDE_INSTALLATION_TOP)/infolib && $(LN_S) en_US.UTF-8 C

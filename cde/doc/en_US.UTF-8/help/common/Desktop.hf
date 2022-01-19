@@ -14,9 +14,9 @@
 !#####################################################################
 
 
-*.charSet:      ISO-8859-1
+*.charSet:      UTF-8
 *.title:        Common Desktop Environment
-*.bitmap:       /usr/dt/appconfig/help/C/graphics/cdelogo.pm
+*.bitmap:       /usr/dt/appconfig/help/en_US.UTF-8/graphics/cdelogo.pm
 *.abstract:     Overview and Basic Desktop Skills \
  * Using Help \
  * Application Builder \
