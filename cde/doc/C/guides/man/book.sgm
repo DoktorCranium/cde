@@ -1,28 +1,28 @@
 <!-- $XConsortium: book.sgm /main/31 1996/10/31 09:34:49 rws $ -->
 <!DOCTYPE Book PUBLIC "-//HaL and O'Reilly//DTD DocBook//EN" [
 
-<!ENTITY % ISOpublishing PUBLIC "ISO 8879-1986//ENTITIES Publishing//EN">
+<!ENTITY % ISOpublishing PUBLIC "ISO 8879:1986//ENTITIES Publishing//EN">
 %ISOpublishing;
 
-<!ENTITY % ISOnumeric PUBLIC "ISO 8879-1986//ENTITIES Numeric and Special Graphic//EN">
+<!ENTITY % ISOnumeric PUBLIC "ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN">
 %ISOnumeric;
 
-<!ENTITY % ISOdiacritical PUBLIC "ISO 8879-1986//ENTITIES Diacritical Marks//EN">
+<!ENTITY % ISOdiacritical PUBLIC "ISO 8879:1986//ENTITIES Diacritical Marks//EN">
 %ISOdiacritical;
 
-<!ENTITY % ISOgeneraltech PUBLIC "ISO 8879-1986//ENTITIES General Technical//EN">
+<!ENTITY % ISOgeneraltech PUBLIC "ISO 8879:1986//ENTITIES General Technical//EN">
 %ISOgeneraltech;
 
-<!ENTITY % ISOalatin1 PUBLIC "ISO 8879-1986//ENTITIES Added Latin 1//EN">
+<!ENTITY % ISOalatin1 PUBLIC "ISO 8879:1986//ENTITIES Added Latin 1//EN">
 %ISOalatin1;
 
-<!ENTITY % ISOalatin2 PUBLIC "ISO 8879-1986//ENTITIES Added Latin 2//EN">
+<!ENTITY % ISOalatin2 PUBLIC "ISO 8879:1986//ENTITIES Added Latin 2//EN">
 %ISOalatin2;
 
-<!ENTITY % ISOgreek PUBLIC "ISO 8879-1986//ENTITIES Greek Symbols//EN">
+<!ENTITY % ISOgreek PUBLIC "ISO 8879:1986//ENTITIES Greek Symbols//EN">
 %ISOgreek;
 
-<!ENTITY % ISOboxandline PUBLIC "ISO 8879-1986//ENTITIES Box and Line Drawing//EN">
+<!ENTITY % ISOboxandline PUBLIC "ISO 8879:1986//ENTITIES Box and Line Drawing//EN">
 %ISOboxandline;
 
 <!ENTITY % CDE.C.XO "IGNORE">

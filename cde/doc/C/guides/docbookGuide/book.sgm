@@ -1,13 +1,13 @@
 <!-- $XConsortium: book.sgm /main/9 1996/09/08 19:44:55 rws $ -->
 <!DOCTYPE Book PUBLIC "-//HaL and O'Reilly//DTD DocBook//EN" [
 
-<!ENTITY % ISOpublishing PUBLIC "ISO 8879-1986//ENTITIES Publishing//EN">
+<!ENTITY % ISOpublishing PUBLIC "ISO 8879:1986//ENTITIES Publishing//EN">
 %ISOpublishing;
 
-<!ENTITY % ISOnumeric PUBLIC "ISO 8879-1986//ENTITIES Numeric and Special Graphic//EN">
+<!ENTITY % ISOnumeric PUBLIC "ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN">
 %ISOnumeric;
 
-<!ENTITY % ISOalatin1 PUBLIC "ISO 8879-1986//ENTITIES Added Latin 1//EN">
+<!ENTITY % ISOalatin1 PUBLIC "ISO 8879:1986//ENTITIES Added Latin 1//EN">
 %ISOalatin1;
 
 <!ENTITY exm.docarch SYSTEM "./docbookGuide/examples/docarch.sgm" CDATA linespecific>
