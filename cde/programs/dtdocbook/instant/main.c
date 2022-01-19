@@ -82,8 +82,6 @@ static char *CopyRt =
 #include <unistd.h>
 #include <locale.h>
 #include <langinfo.h>
-#include "LocaleXlate.h"
-#include "XlationSvc.h"
 
 
 #define STORAGE
