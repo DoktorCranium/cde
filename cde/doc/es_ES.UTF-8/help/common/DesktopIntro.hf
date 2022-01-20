@@ -14,9 +14,9 @@
 !#####################################################################
 
 
-*.charSet:      iso8859-1
+*.charSet:      UTF-8
 *.title:        Información general y Conocimientos básicos del escritorio
-*.bitmap:       /usr/dt/appconfig/help/es_ES.ISO8859-1/graphics/cdelogo.pm
+*.bitmap:       /usr/dt/appconfig/help/es_ES.UTF-8/graphics/cdelogo.pm
 *.abstract:     Información general y Conocimientos básicos del \
                 Common Desktop Environment.
 

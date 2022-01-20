@@ -14,9 +14,9 @@
 !#####################################################################
 
 
-*.charSet:      iso8859-1
+*.charSet:      UTF-8
 *.title:        Common Desktop Environment
-*.bitmap:       /usr/dt/appconfig/help/es_ES.ISO8859-1/graphics/cdelogo.pm
+*.bitmap:       /usr/dt/appconfig/help/es_ES.UTF-8/graphics/cdelogo.pm
 *.abstract:     Información general y Conocimientos básicos del escritorio \
  * Uso de la Ayuda \
  * El Gestor de aplicaciones \
