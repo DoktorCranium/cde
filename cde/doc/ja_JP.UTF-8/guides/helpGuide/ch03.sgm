@@ -539,14 +539,14 @@ Do not place your fingers near the parrot cage!
 <title>例</title>
 <para>著作権の記号 (&copy;) のエンティティは、ISO numeric set に含まれるので、まず ISO numeric set を（他のエンティティ宣言とともにヘルプ・ボリュームのトップに）、次に示すように取り込まなければなりません。
 </para>
-<programlisting>&lt;!ENTITY % ISOnumeric PUBLIC "ISO 8879-1986//ENTITIES Numeric and Special Graphic//EN">
+<programlisting>&lt;!ENTITY % ISOnumeric PUBLIC "ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN">
 %ISOnumeric;</programlisting>
 <para>このようにすれば、著作権の記号が現われる場所で、次に示すエンティティ参照を指定することができます。
 </para>
 <programlisting>&amp;copy;</programlisting>
 <para>大文字のギリシャ文字のシグマ (&sum;) を表示するには、まず ISO Greek エンティティを（他のエンティティ宣言とともにヘルプ・ボリュームのトップに）、次に示すように取り込まなければなりません。
 </para>
-<programlisting>&lt;!ENTITY % ISOgreek PUBLIC "ISO 8879-1986//ENTITIES Greek Symbols//EN">
+<programlisting>&lt;!ENTITY % ISOgreek PUBLIC "ISO 8879:1986//ENTITIES Greek Symbols//EN">
 %ISOgreek;</programlisting>
 <para>このようにすれば、シグマ文字が現われる場所で、次に示すエンティティ参照を指定することができます。
 </para>
