@@ -14,9 +14,9 @@
 !#####################################################################
 
 
-*.charSet:      iso8859-1
+*.charSet:      UTF-8
 *.title:        Überblick und Grundkenntnisse für das Desktop
-*.bitmap:       /usr/dt/appconfig/help/de_DE.ISO8859-1/graphics/cdelogo.pm
+*.bitmap:       /usr/dt/appconfig/help/de_DE.UTF-8/graphics/cdelogo.pm
 *.abstract:     Überblick und Grundkenntnisse für das \
                 Common Desktop Environment.
 

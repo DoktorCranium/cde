@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-# this sets the LANG and HELP_LANG variables
+# this sets the LANG variables
 include $(top_srcdir)/programs/localized/templates/German.am
 # this does all the work
 include $(top_srcdir)/doc/common/help/sdl-docs.am
