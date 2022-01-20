@@ -1,0 +1,10 @@
+XCOMM $XConsortium: Imakefile /main/8 1996/12/20 11:35:35 rws $
+
+#define InfoLibDesc "Biblioteca de información de CDE y Motif"
+#define HasusersGuide
+#define HasinfoUGuide
+#define HassysAdminGuide
+
+#define BuildingDocs YES
+#include "../../../programs/localized/templates/Spanish.tmpl"
+#include "../../common/guides/Imakefile.tmpl"
