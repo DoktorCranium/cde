@@ -9,7 +9,7 @@ INFOLIBNAME = -n cde
 # orig: INFOLIBDESC = -d InfoLibDesc
 
 SSENTS = -m common/catalog
-DGENV = LANG=$(LANG) SGML_SEARCH_PATH=".:.."
+DGENV = LC_CTYPE=$(LANG) SGML_SEARCH_PATH=".:.."
 DTINFOGENOPTIONS = $(SSENTS) $(INFOLIBNAME) -d $(INFOLIBDESC)
 
 # Note the quad-dollar sign - this escapes $$ (pid) for the tmp

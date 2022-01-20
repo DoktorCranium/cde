@@ -19,7 +19,7 @@ DTHELP_HTAG2 = $(top_builddir)/programs/dthelp/parser/pass2/parser/dthelp_htag2
 # but the $(basename...) seems to add a space for some reason
 
 %.sdl:
-	LANG=$(LANG) SGML_SEARCH_PATH=".:.." \
+	LC_CTYPE=$(LANG) SGML_SEARCH_PATH=".:.." \
 		$(KSH) $(DTDOCBOOK) -H $(DTHELP_HTAG2) -L $(LANG) \
 			-o $@ `basename $@ .sdl`/book.sgm
 

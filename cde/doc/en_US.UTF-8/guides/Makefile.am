@@ -9,7 +9,7 @@ include $(top_srcdir)/doc/common/guides/guides_env.am
 BUILT_SOURCES =
 CLEANFILES =
 
-# this sets the LANG and HELP_LANG variables
+# this sets the LANG variables
 include $(top_srcdir)/programs/localized/templates/English.am
 
 # build guide TOCs and deps
@@ -43,7 +43,7 @@ CLEANFILES += $(INFOLIB)/$(BOOKCASE)/dtsearch/dtsearch.ocf
 # ever change, but for now we will list them as they are currently
 # installed.
 
-cdedtidir = $(CDE_INSTALLATION_TOP)/infolib/$(HELP_LANG)/cde.dti
+cdedtidir = $(CDE_INSTALLATION_TOP)/infolib/$(LANG)/cde.dti
 dist_cdedti_DATA = ../cde.dti/bookcase.map ../cde.dti/cde.oli
 
 cdedtidocdir = $(cdedtidir)/CDEDOC
