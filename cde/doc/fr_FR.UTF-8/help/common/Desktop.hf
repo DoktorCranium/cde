@@ -14,9 +14,9 @@
 !#####################################################################
 
 
-*.charSet:      iso8859-1
+*.charSet:      UTF-8
 *.title:        Bureau CDE
-*.bitmap:       /usr/dt/appconfig/help/fr_FR.ISO8859-1/graphics/cdelogo.pm
+*.bitmap:       /usr/dt/appconfig/help/fr_FR.UTF-8/graphics/cdelogo.pm
 *.abstract:     Généralités et Connaissances de base du Bureau \
  * Aide sur l'aide \
  * Gestionnaire d'applications \
