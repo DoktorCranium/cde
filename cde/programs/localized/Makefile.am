@@ -15,3 +15,7 @@ endif
 if FRENCH
 SUBDIRS += fr_FR.UTF-8
 endif
+
+if JAPANESE
+SUBDIRS += ja_JP.UTF-8
+endif
