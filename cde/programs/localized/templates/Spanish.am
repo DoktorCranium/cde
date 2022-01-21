@@ -12,6 +12,3 @@ endif
 if BSD
 LANG=es_ES.UTF-8
 endif
-
-HELP_LANG=es_ES.ISO8859-1
-
