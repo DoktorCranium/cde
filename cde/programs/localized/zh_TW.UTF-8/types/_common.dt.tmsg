@@ -1,0 +1,4742 @@
+$ $XConsortium: _common.dt.tmsg /main/5 1996/06/25 17:45:27 drk $
+$set 1
+$ *
+$ *****************************************************************************
+$ * _common.dt.tmsg
+$ *
+$ * Translatable Strings for Action and DataType
+$ *
+$ * Copyright (c) 1993, 1994 Hewlett-Packard Company
+$ * Copyright (c) 1993, 1994 International Business Machines Corp.
+$ * Copyright (c) 1993, 1994 Sun Microsystems, Inc.
+$ * Copyright (c) 1993, 1994 Novell, Inc.
+$ *
+$ *****************************************************************************
+$ 
+$ *****************************************************************************
+$ *
+$ *  Format of this message file.
+$ *    $set n [comment] ... n must be 1.
+$ *    $ [comment]
+$ *    m message-text ... Message text may contain following spcial characters
+$ *                       and escape sequences.
+$ *                         \\                  backslash
+$ *                         \n                  newline
+$ *                         \t                  horizontal tab
+$ *                         \ (at end of line)  continue on same line
+$ *
+$ *****************************************************************************
+$ 
+$ **************************************************************************
+$ *  These are messages that are commonly used
+$ **************************************************************************
+$ ----------------------------------------------------------------------------
+$ Messages 1 - 7 must be one word. They cannot be separated by blank.
+$ ----------------------------------------------------------------------------
+$ 
+$ * ACTIONS of FILETYPE
+$ 
+1 瞅絒
+$ 
+2 トパ
+$ 
+3 欹⺼
+$ 
+4 (隓)
+$ 
+5 唈ゥ
+$ 
+$ Message 6 is a common button label for many dialogs.
+$ 
+6 薚泂
+$ 
+$ Message 7 is used by many actions after all the output has been supplied
+$  to the user.  It tells the user how to get rid of the window which has
+$  the output in it.
+$ 
+$  Translate 'Select Close or Exit from the window menu to close this window' 
+$   only.
+$ 
+7 \\\\n*** 霘皕＞槉嵺＝衢逑玿斕藞謥＞驨椲＝迖＞廎忒＝髓驨椲槉嵺 ***
+$ 
+8 殦卼隃⺼槉嵺
+$ 
+9 瞅絒隞槉棷
+$ 
+$ Message 10:
+$         This Message is a header to every *.dt file.
+$         NOTE: make sure each new line begins with a "#".  This indicates
+$         that it is a comment.  Also, keep the \n\ at the end of each
+$         line.
+$   Don't translate /etc/dt/types.
+$ 
+10 #      麔淰⑴逑鞂揧鷋翯蝝⑩﹞  モ謽堈侇嗄錛惉䨣彶渀﹜\n\
+#      霘彶庍ョ麷ʊ柁 /etc/dt/types 罶涷梬麔淰斕﹜\n\
+#      ゛攜衭彶庍ョ麔淰﹞
+$ 
+$ Message 11 and 12:
+$         These Messages are headers in every *.dt file used to break up
+$         the File into ACTIONS and DATATYPES.
+$         NOTE: make sure each line begins with a "#  ".  This indicates
+$         that it is a comment. 
+$ 
+11 # 罶涷㪫迒
+12 # 棬汃
+$ 
+$ Message 13:
+$    This is a title of a dialog invoked when an error occurs.  Many actions
+$    invoke an information dialog when something the action needs is 
+$    not present.
+$ 
+13 罶媢
+$ 
+$ ----------------------------------------------------------------------------
+$ Do not translate message 14.
+$ This is not a messages, but a locale dependent value.
+$ ----------------------------------------------------------------------------
+$ * LANG variable for this message file.
+$ 
+14 zh_TW.eucTW
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 15 is another commonly used message.
+$ ----------------------------------------------------------------------------
+$ Message 15 - translate into 1 word with no blanks.
+$ 
+15 蹌藟
+$ 
+16 蠆諟
+17 か泂⻏昡ス怉罶涷麷倛邴鞜え柁棬汃, \\\n\
+髱篎罶涷麷倛隓恄伒怮鶈え﹞
+$ 
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  autoStart.dt
+$ **************************************************************************
+$ * DESCRIPTION:
+$ * The following are all the help strings defined for the actions used to
+$ * auto-start the CDE clients, when a request is sent to one of them, but
+$ * the client is not currently running.
+$ *
+$ ----------------------------------------------------------------------------
+$ Message 1001 - 1003
+$ Do not translate XXX in the messages "The XXX action ...".  It is a 
+$ defined Action name.  Use \\\ at the end of the line if the message 
+$ continues to the next line.
+$ ----------------------------------------------------------------------------
+1001 InvokeFILEMGR 棬汃絒棬麔淰\\\n\
+                        磣隉炟 (dtfile 剟鷓嶂冈)﹞
+1002 InvokeDTPAD 棬汃絒棬痐譫磣隉侇嗄柁\\\n\
+                        齪А蹌藟蟟 (dtpad 剟鷓嶂冈)﹞
+1003 InvokeMAILER 棬汃絒棬痐譫磣隉侇嗄柁\\\n\
+                        瑧ス嶂冈 (dtmail 剟鷓嶂冈)﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dt.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dt.dt types file defines all the Actions, Datatypes, and descriptions
+$ * of those Actions and Datatypes that are defined specifically for the
+$ * Common Desktop Environment (CDE). 
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2001 - 2003 refer to the DT (*.dt) datatype.
+$ 
+$ 2001 - Do not translate DT or '.dt' in the message.  DT is a 
+$        defined datatype name and it doesn't get translated and '.dt' 
+$        is the filename pattern which matches this datatype.  
+$ 
+2001 楙旂痐譫磣隉侇嗄罶涷梬麔淰﹜怞棬汃 \\\n\
+                        昑罶涷麷倛柁泂氂﹞  怬罶涷麷倛 \\\n\
+                        磝珜 DT﹞  DT 麔淰柁眃麔ボ珜 '.dt'﹞
+$ 
+$ Messages 2002 - 2003 refer to the Reload Actions action which get used
+$    by the 'DT' datatype.
+$ 
+2002 适隞蟡蘋棬汃
+$ 
+2003 ＞适隞蟡蘋棬汃＝鞂适隞蟡蘋棬汃﹝罶涷麷倛\\\n\
+                        昑虳巖郖帣泂氂柁罶涷梬﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 2004 refers to the FP (*.fp) datatype.
+$ 
+$ 2004 - Do not translate FP or '.fp' in the message.  FP is a 
+$        defined datatype name and it doesn't get translated and '.fp' 
+$        is the filename pattern which matches this datatype.  
+$ 
+2004 楙旂痐譫磣隉侇嗄罶涷梬麔淰﹜怞虳巖郖帣\\\n\
+                        崷殦柁泂氂﹞怬罶涷麷倛\\\n\
+                        ボ磝珜 FP﹞FP 麔淰柁棓麔ボ珜 '.fp'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 2005 refers to the DTFILE_FILE (file which starts with a .!) 
+$  datatype.
+$ 
+$ 2005 - Do not translate 'DTFILE_FILE' in the message.  
+$        It is a defined datatype name and it doesn't get translated.  
+$ 
+2005 楙旂麔淰磣隉炟囷え柁騿鰳麔淰﹜え髓砉Б栲咍\\\n\
+                        崷殦罶媢﹞怬罶涷麷倛\\\n\
+                        ボ磝珜 DTFILE_FILE﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 2006 refers to the DTKSH_SCRIPT (*.ds) datatype.
+$ 
+$ 2006 - Do not translate 'DTKSH_SCRIPT' in the message. 
+$        It is a defined datatype name and it 
+$        doesn't get translated.  Also, don't translate the word 'dtksh'.  
+$ 
+2006 楙旂欹⺼麔﹜怞 'dtksh' \\\n\
+                        杬麟碬﹞怬罶涷麷倛ボ磝珜 DTKSH_SCRIPT﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 2007 refers to the DTKSH_CONV (*.dtsh) datatype.
+$ 
+$ 2007 - Do not translate 'DTKSH_CONV' in the message. 
+$        It is a defined datatype name and it doesn't get translated.  
+$        Also, don't translate the word 'dtksh'.  
+$ 
+$ 
+2007 楙堈麔淰怞 'dtksh' 杬麟碬⑴囷え柁砅伈衢逑﹞ \\\n\
+                        怬罶涷麷倛ボ磝珜 \\\n\
+                        DTKSH_CONV﹞
+$ ----------------------------------------------------------------------------
+$ Messages 2008 - 2009 refer to the Style Manager (Dtstyle) action
+$ 
+2008 ⼃倛冈穔磣隉炟
+$ 
+$ 2009 - do not translate '(Dtstyle)'
+$ 
+2009 ＞⼃倛冈穔磣隉炟＝(Dtstyle) 棬汃絒棬\\\n\
+                        痐譫磣隉侇嗄柁⼃倛冈穔磣隉炟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2010 - 2011 refer to the DtHelpManager action
+$ 
+$ 2010 - translate into 1 word with no blanks.
+$ 
+2010 DtHelpManager
+$ 
+$ 2011 - use the same word as Message 2010 to translate 'DtHelpManager'
+$ 
+2011 DtHelpManager 棬汃瞅絒煄嬬\\\n\
+                        赮伢諰咭磣隉炟槉嵺﹞
+$ ----------------------------------------------------------------------------
+$ Messages 2012 - 2013 refer to the OpenDtInto action
+$ 
+2012 痐譫磣隉侇嗄籙蘭
+$ 
+$ 2013 - use the same word as Message 2012 to translate 'OpenDtIntro'
+$ 
+2013 痐譫磣隉侇嗄籙蘭棬汃䬷ざ柁赮伢諰咭晥忟﹜\\\n\
+                        讓挭驨痐譫磣隉侇嗄柁籙痼蘭喿\\\n\
+                        昑椕ヾ岍⼛柁諰咭﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2014 - 2015 refer to the FPHelp action
+$ 
+$ 2014 - translate into 1 word with no blanks.
+$ 
+2014 FPHelp
+$ 
+$ 2015 - use the same word as Message 2014 to translate 'FPHelp'
+$ 
+2015 FPHELP 棬汃頝踛䬷ざ虳巖郖帣\\\n\
+                        赮伢諰咭晥忟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2016 - 2017 refer to the LockDisplay action
+$ 
+$ 2016 - translate into 1 word with no blanks.
+$ 
+2016 LockDisplay
+$ 
+$ 2017 - use the same word as Message 2016 to translate 'LockDisplay'
+$ 
+2017 LockDisplay 棬汃孍泂齡汃袘﹞\\\n\
+                        ⽁禕囷え炟迖淂湅謑\\\n\
+                        懼⑴箾崽齡汃袘柁孍泂﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2018 - 2019 refer to the ExitSession action
+$ 
+$ 2018 - translate into 1 word with no blanks.
+$ 
+2018 ExitSession
+$ 
+$ 2019 - use the same word as Message 2018 to translate 'ExitSession'
+$ 
+2019 ExitSession 棬汃廎忒囷え炟柁痐譫磣隉侇嗄\\\n\
+                        瞃栠汃鞄﹜呥䬷ざ僳蘋糬魦﹞\\\n\
+                        ヵ峈衭瞅沓ⅱ纂堈瞃栠汃鞄﹜囷え炟⽁禕テ僳蘋﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2020 - 2021 refer to the ReloadApps action.  Reload apps executes
+$   the action 'ReloadActions' then runs the clients dtappgather and 
+$   dthelpgen.
+$ 
+2020 适隞蟡蘋鶈え嶂冈
+$ 
+2021 ＞适隞蟡蘋鶈え嶂冈＝棬汃适隞蟡蘋棬汃﹝\\\n\
+                        罶涷麷倛昑虳巖郖帣泂氂柁\\\n\
+                        罶涷梬 ﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2022 - 2023 refer to the Create Action (Dtcreate) action.  
+$ 
+2022 唈ゥ棬汃
+$ 
+$ 2023 - do not translate '(Dtcreate)'.
+$ 
+2023 ＞唈ゥ棬汃＝ (Dtcreate) 欹⺼唈ゥ棬汃鶈え嶂冈﹞\\\n\
+                        囷え唈ゥ棬汃髓唈ゥ鶈え嶂冈柁\\\n\
+                        棬汃昑罶涷麷倛泂氂﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2024 - 2025 refer to the Edit Dtwmrc (DtwmrcEdit) action.  
+$ 
+2024 蹌藟 Dtwmrc
+$ 
+$ 2025 - Don't translate '\$HOME/.dt/dtwmrc', 'EDITOR', or (DtwmrcEdit).
+$ 
+2025 ＞蹌藟 Dtwmrc＝(DtwmrcEdit) 棬汃鞂ョ睎柁侇嗄蹌藟蟟\\\n\
+			(EDITOR 蘄頨䨣禨挴泂柁蹌藟蟟)\\\n\
+                        斕瞅絒 $HOME/.dt/dtwmrc 麔淰﹞\\\n\
+                        ヵ峈 $HOME/.dt/dtwmrc 攜Бョ﹜\\\n\
+                        棬汃鞂髓闀蕍 /usr/dt/config/<language>/sys.dtwmrc \\\n\
+                        柁巖冈唈ゥ篎麔淰﹞撋睎鬊Б\\\n\
+                        麔淰呥欏瞅蹌藟蟟悒﹜⽁禕\\\n\
+                        皕齡汃洠睮衢逑玿藞謥适隞絒棬齡汃洠睮磣隉炟﹜\\\n\
+                        髓テ絒棬⼓﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2026 - 2027 refer to the Mailer (Dtmail) action.  
+$ 
+$ 2026 - translate into 1 word with no blanks.
+$ 
+2026 瑧ス嶂冈
+$ 
+$ 2027 - do not translate '(Dtmail)'.
+$ 
+2027 ＞瑧ス嶂冈＝(Dtmail) 棬汃欹⺼痐譫磣隉侇嗄柁\\\n\
+                        瑧ス嶂冈鶈え嶂冈﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2028 - 2029 refer to the 'Dtcalc' action.  
+$ 
+$ 2028 - translate into 1 word with no blanks.
+$ 
+2028 衶磭鞥
+$ 
+$ 2029 - Don't translate '(Dtcalc)'
+$ 
+2029 ＞衶磭鞥＝(Dtcalc) 棬汃欹⺼痐譫磣隉侇嗄柁\\\n\
+                        衶磭鞥鶈え嶂冈﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2030 - 2031 refer to the Terminal (Dtterm) action.  
+$ 
+$ 2030 - translate into 1 word with no blanks.
+$ 
+2030 嗈磞鞥
+$ 
+$ 2031 - do not translate '(Dtterm)'.
+$ 
+2031 ＞嗈磞鞥＝(Dtterm) 棬汃欹⺼痐譫磣隉侇嗄柁嗈磞鞥\\\n\
+                        篲鶅鶈え嶂冈﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2032 - 2034 refer to the Icon Editor (Dticon) action.  
+$ 
+2032 頝踛蹌藟蟟
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 2033. Do not remove the ':'.
+$   This message prompts the user for which file to edit when invoking
+$   the IconEdit action.
+$ ----------------------------------------------------------------------------
+2033 袺蹌藟柁頝踛麔淰:
+$ 
+$ 2034 - do not translate '(Dticon)'.
+$ 
+2034 ＞頝踛蹌藟蟟＝(Dticon) 棬汃欹⺼痐譫磣隉侇嗄柁頝踛\\\n\
+                        蹌藟蟟﹞  囷え頝踛蹌藟蟟髓唈ゥ轡蹌藟\\\n\
+                        ⻏蠣旃晛昑頝袓旃晛柁憵踛麔淰﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2035 - 2037 refer to the '(None)' action.  
+$ 
+$ Messages 2035 - 2037 are in the dialog that gets posted when a user selects
+$  (i.e. runs) the (None) action.  Message 2034 is the text of the message,
+$  and Message 2036 is the title of the dialog.  NOTE: the '\\\\n' inserts
+$  a newline into the message. Put the newline where you feel appropriate.
+$ 
+2035 篎麷倛柁麔淰隓恄棬汃﹞
+2036 隓恄棬汃﹞
+$ 
+$ 2037 - use the same word as Message 4 to translate '(None)'.
+$ 
+2037 (隓) 棬汃旂纂笱伀柁棬汃﹜え髓\\\n\
+                        夼洁栲纂笱眻柁罶涷麷倛\\\n\
+                        隓恄棬汃﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2038 - 2040 refer to the Watch Errors (DttermErrorlog)action.  
+$ 
+2038 愔鉡蠆諟
+$ 
+$ Message 2039. This is the title of the terminal window which displays the
+$   contents of the errorlog.  Blanks are ok.
+$ 
+2039 愔鉡蠆諟
+$ 
+$ 2040 - use the same word as Message 2038 to translate 'WatchErrors'. Also,
+$   don't translate the string '\$HOME/.dt/errorlog'.
+$ 
+2040 ＞愔鉡蠆諟＝棬汃瞅絒纂堈嗈磞鞥槉嵺﹜挼㶴䬷ざ蠆諟\\\n\
+                        僳蠊麔 $HOME/.dt/errorlog 柁蠡晥﹞\\\n\
+                        ヵ峈渿槉嵺醷麵﹜\\\n\
+                        撋⼓稌怉蠆諟渀﹜\\\n\
+                        鞂⺌棬ャ艀琣槉嵺﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2041 - 2042 refer to the Types and Actions (Dttypes) action(s).
+$ 
+2041 麷倛昑棬汃
+$ 
+$ 2042 - do not translate dttypes or '(Dttypes)'.
+$ 
+2042 ＞麷倛昑棬汃＝(Dttypes) 欹⺼ \\\n\
+                        'dttypes' 襬え嶂冈﹜⑴菙坯棬汃昑罶涷\\\n\
+                        麷倛罶涷梬柁棯纕粡箾罶媢﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2043 - 2047 refer to the 'NoPrint' action.  
+$ 
+$ Message 2043
+$         This Message is a header which points out the default NoPrint
+$         Action.  Don't translate the word 'NoPrint'.
+$         NOTE: make sure the line begins with a "#  ".  This indicates
+$         that it is a comment. 
+2043 #  楙旂蠡泂柁 'NoPrint' 棬汃﹞
+$ 
+$ 2044 - translate into 1 word with no blanks.
+$ 
+2044 隓トパ
+$ 
+$ Messages 2045 - 2046 are in the dialog that gets posted when a user selects
+$  (i.e. runs) the NoPrint action.  Message 2045 is the text of the message,
+$  and Message 2046 is the title of the dialog.
+$ 
+2045 隓恄トパ篎麔淰麷倛﹞
+2046 隓恄トパ
+$ 
+$ 2047 - use the same word as Message 2044 to translate 'NoPrint'.
+$ 
+2047 NoPrint 棬汃罐隃蠆諟髱緷涺﹜\\\n\
+                       玿ざ囷え炟裱トパ柁麔淰\\\n\
+                       珜隓泂氂トパ棬汃柁\\\n\
+                       罶涷麷倛﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 2048
+$         This Message is a header which points out the default Open
+$         Action.  Translate the word 'Open' to what message number 1 is.
+$         NOTE: make sure the line begins with a "#  ".  This indicates
+$         that it is a comment. 
+2048 #  楙旂蠡泂柁瞅絒棬汃﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 2049 - 2050 refer to the 'RestorePanel' action.
+$ 
+2049 ャ艀虳巖郖帣
+$ 
+2050 ＞ャ艀虳巖郖帣＝棬汃ャ艀\\\n\
+                        虳巖郖帣蠡泂昲鳷﹞
+$ 
+$ Messages 2051 - 2052 refer to the Save Session action. 2051 is the
+$   action definition's LABEL and 2052 is the action's DESCRIPTION.
+$ 
+$ "NEW-"
+2051 Save Session
+$ 
+$ "NEW-"
+2052 The Save Session action causes the currently \\\n\
+                                running session to be saved.
+
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  datatypes.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The datatypes.dt types file defines Datatypes and descriptions
+$ * of those and Datatypes that are 'psuedo standards' in the computer
+$ * world.  (i.e. postcript, bitmap, pixmap, etc.)
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3001 is the description of the BM (BitMap) datatype. 
+$ 3001 - Do not translate BM, '.xbm',  or '.bm' in the message.  BM is a 
+$        defined datatype name and it doesn't get translated and '.bm' 
+$        and '.xbm' are the filename patterns which match this datatype.  
+$ 
+3001 篎麔淰柁罶涷珜 X11 ⻏蠣旃晛\\\n\
+                        眭冈﹞怬罶涷麷倛ボ磝珜 BM﹞ BM 麔淰\\\n\
+                        柁棓麔ボ珜 '.bm' 迖 '.xbm'﹞
+$ ----------------------------------------------------------------------------
+$ Message 3002 is the description of the PM (PixMap) datatype. 
+$ 3002 - Do not translate PM, '.pm', '.xpm' or "! XPM2" in the message.  
+$        PM is a defined datatype name and it doesn't get translated 
+$        and '.pm', '.xpm', and "! XPM2" are the filename and CONTENT patterns
+$        used to match this datatype. 
+$ 
+3002 楙旂怞ロ瞗⺪痝憵踛柁頝袓旃晛麔淰﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 PM﹞ PM 麔淰\\\n\
+                        柁棓麔ボ珜 '.pm' 迖 '.xpm'﹜迖ョ蠡晥斕 \\\n\
+                        "! XPM2" А蠣﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3003 is the description of the PCL (Printer Control Language) 
+$  datatype. 
+$ 3003 - Do not translate PCL, or '.pcl' in the message.  
+$        PCL is a defined datatype name and it doesn't get translated 
+$        and '.pcl' is the filename patterns used to match this datatype. 
+$ 
+3003 篎麔淰柁罶涷眭冈珜\\\n\
+                        パ玿鞥祰戔諴侔 (PCL)﹞怬罶涷麷倛\\\n\
+                        ボ磝珜 PCL. PCL 麔淰柁棓麔ボ珜 '.pcl'﹞
+$ 
+$ Message 3004 is the description of the PCL (Printer Control Language) 
+$  'Open' action.
+$ 3004 - Do not translate PCL in the message.  
+$ 
+3004 睎柁侇嗄隓恄栯砫 PCL 麔淰﹞\\\n\
+                        蚍衭瞅絒楙堈麔淰衧鞂罐隃\\\n\
+                        蠆諟髱緷涺﹞
+$ 
+$ 3005 - This message is used by the PCL datatype. It puts out this error
+$   message when a user tries to "Open" a PCL file.
+$ 
+3005 隓恄瞅絒 - 扽 PCL 髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3006 is the description of the PS (PostScript) datatype.
+$ 3006 - Do not translate PS, '.ps', '.PS' or "%!" in the message.  
+$        PS is a defined datatype name and it doesn't get translated 
+$        and '.ps', '.PS', and "%!" are the filename and CONTENT patterns
+$        used to match this datatype. 
+$ 
+3006 篎麔淰珜 postscript 罶涷﹞怬罶涷麷倛\\\n\
+                        ボ磝珜 PS﹞PS 麔淰柁棓麔ボ珜 '.ps' \\\n\
+                        迖 '.PS'﹜迖屼 "%!" А蠣﹞
+$ 
+$ Message 3007 is obsolete.
+$ Message 3007 is the description of the PS (PostScript) 'Open' action.
+$ 
+3007 睎柁侇嗄隓恄栯砫 postscript 麔淰﹞\\\n\
+                        蚍衭瞅絒楙堈麔淰衧鞂罐隃\\\n\
+                        蠆諟髱緷涺﹞
+$ 
+$ 3008 - This message is used by the Postscript datatype. It puts out an error
+$   message when a user tries to "Open" a postscript file.
+$ 
+3008 隓恄瞅絒 - 扽 Postscript 髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3009 is the description of the AUDIO datatype.
+$ 3009 - Do not translate AUDIO, '.snd', '.wav', '.au',  or ".snd" in the
+$        message.  AUDIO is a defined datatype name and it doesn't get 
+$        translated and '.snd', '.wav', '.au', '.l16', '.lo8', '.al',
+$        '.u' and '.snd' are the filename
+$        and CONTENT patterns used to match this datatype. 
+$ 
+3009 楙堈麔淰珜鐖郣罶涷﹞  怬罶涷麷倛\\\n\
+                        磝珜 AUDIO﹞  AUDIO 麔淰柁眃麔ボ\\\n\
+                        珜 '.snd'﹝'.wav' 迖 '.au'﹜迖屼\\\n\
+                        ".snd" А蠣﹞
+$ 
+$ Message 3010 is the description of the AUDIO 'Open' action.
+$ 
+3010 篎棬汃鞂礂勂纂堈鐖郣麔淰﹞
+$ 
+$ Message 3011 is the description of the AUDIO 'Play' action.
+$ 
+3011 篎棬汃鞂礂勂纂堈鐖郣麔淰﹞
+$ 
+$ 3012 - translate into 1 word with no blanks.  This is the AUDIO 'Play' action.
+$ 
+3012 礂勂
+$ 
+$ 3013 - This message is used by the AUDIO datatype. It is the error
+$   message when a user tries to "Open" or "Play" an AUDIO file.
+$ 
+3013 隓恄瞅絒迖礂勂 - 扽郣簎礂勂嶂冈﹞
+$ 
+$ AUDIO Messages continued below starting with Message 3031
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3014 is the description of the TIFF datatype.
+$ 3014 - Do not translate TIFF, '.TIFF', '.TIF', '.tiff',  or '.tif' in the
+$        message.  TIFF is a defined datatype name and it doesn't get
+$        translated and '.TIFF', '.TIF', '.tiff', and '.tif' are the filename
+$        patterns used to match this datatype.
+$ 
+3014 篎麔淰珜 TIFF 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 TIFF﹞ TIFF 麔淰柁\\\n\
+                        棓麔ボ珜 '.TIFF'﹝'.TIF'﹝'.tiff' 迖 '.tif'﹞
+$ 
+$ Message 3015 is obsolete.
+$ Message 3015 is the description of the TIFF 'Open' action.
+$ 
+3015 睎柁侇嗄扽菙坯 TIFF 髲砫蟟﹞\\\n\
+                        蚍衭瞅絒楙堈麔淰衧鞂罐隃\\\n\
+                        蠆諟髱緷涺﹞
+$ 
+$ 3016 - This message is used by the TIFF datatype. It is the error
+$   message when a user tries to "Open" a TIFF file.
+$ 
+3016 隓恄瞅絒 - 扽 TIFF 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3017 is the description of the JPEG datatype.
+$ 3017 - Do not translate JPEG, '.JPEG', '.jpg', '.jpeg',  or '.JPG' in the
+$        message.  JPEG is a defined datatype name and it doesn't get
+$        translated and '.JPEG', '.jpg', '.jpeg', and '.JPG' are the filename
+$        patterns used to match this datatype.
+$ 
+3017 篎麔淰珜 JPEG 犧葎麔淰眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 \\\n\
+                        JPEG﹞ JPEG 麔淰柁棓麔ボ珜 '.JPEG'﹝\\\n\
+                        '.jpg'﹝'.jpeg' 迖 '.JPG'﹞
+$ 
+$ Message 3018 is obsolete.
+$ Message 3018 is the description of the JPEG 'Open' action.
+$ 
+3018 睎柁侇嗄扽菙坯 JPEG 髲砫蟟﹞\\\n\
+                        惉衭瞅絒楙堈麔淰衧鞂罐隃\\\n\
+                        蠆諟髱緷涺﹞
+$ 
+$ 3019 - This message is used by the JPEG datatype. It is the error
+$   message when a user tries to "Open" a JPEG file.
+$ 
+3019 隓恄瞅絒 - 扽 JPEG 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3020 is the description of the MPEG datatype.
+$ 3020 - Do not translate MPEG, '.MPEG', '.Mpg', '.Mpeg',  or '.MPG' in the
+$        message.  MPEG is a defined datatype name and it doesn't get
+$        translated and '.MPEG', '.mpg', '.mpeg', and '.MPG' are the filename
+$        patterns used to match this datatype.
+$ 
+3020 篎麔淰屼 MPEG 犧葎麔淰眭冈柁頝夆憵踛諔憵﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 \\\n\
+                        MPEG﹞ MPEG 麔淰柁棓麔ボ珜 \\\n\
+                        '.MPEG'﹝'.mpg'﹝'.mpeg' 迖 '.MPG'﹞
+$ 
+$ Message 3021 is the description of the MPEG 'Open' action.
+$ 
+3021 睎柁侇嗄扽菙坯 MPEG 髲砫蟟﹞\\\n\
+                        蚍衭瞅絒楙堈麔淰衧鞂罐隃\\\n\
+                        蠆諟髱緷涺﹞
+ 
+$ 3022 - This message is used by the MPEG datatype. It is the error
+$   message when a user tries to "Open" a MPEG file.
+$ 
+3022 隓恄瞅絒 - 扽 MPEG 礂勂嶂冈﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3023 is the description of the GIF datatype.
+$ 3023 - Do not translate GIF, '.GIF', '.gif', "GIF87a",  or "GIF89a" in the
+$        message.  GIF is a defined datatype name and it doesn't get
+$        translated and '.GIF', '.gif', "GIF87a", and "GIF89a" are the filename
+$        or CONTENT patterns used to match this datatype.
+$ 
+3023 篎麔淰珜 GIF 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 GIF﹞ GIF 麔淰柁\\\n\
+                        棓麔ボ珜 .gif 迖 .GIF 迖屼 \\\n\
+                        "GIF87a" 迖 "GIF89a" А蠣﹞
+$ 
+$ Message 3024 is obsolete.
+$ Message 3024 is the description of the GIF 'Open' action.
+$ 
+3024 睎柁侇嗄扽菙坯 GIF 髲砫蟟﹞\\\n\
+                        蚍衭瞅絒楙堈麔淰衧鞂罐隃\\\n\
+                        蠆諟髱緷涺﹞
+$ 
+$ 3025 - This message is used by the GIF datatype. It is the error
+$   message when a user tries to "Open" a GIF file.
+$ 
+3025 隓恄瞅絒 - 扽 GIF 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3026 is the description of the README datatype.
+$ 3026 - Do not translate README, READ, or ME in the
+$        message.  README is a defined datatype name and it doesn't get
+$        translated and READ and ME are the parts of the filename
+$        pattern used to match this datatype.
+$ 
+3026 麔淰珜驨げ虳麔淰扢蠡麔淰 \\\n\
+                        罶媢柁齪А麔﹞  怬罶涷麷倛\\\n\
+                        磝珜 README﹞  README 麔淰\\\n\
+                        柁瞅韝珜 READ﹝眃麔ボ珜 ME﹜\\\n\
+                        斕睮躂暐躂暐扽А蠣﹜\\\n\
+                        騰麵嬣攜俀﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3027 is the description of the HTML datatype.
+$ 3027 - Do not translate HTML, "<HTML>", "<html>", or '.html' in the
+$        message.  HTML is a defined datatype name and it doesn't get
+$        translated  '.html', "<HTML>", or "<html>" are used as filename 
+$        and CONTENT patterns which match this data type.
+$ 
+3027 篎麔淰珜齪А麔﹜屼 World Wide Web 柁 \\\n\
+                        Hyper-Text Markup 諴侔﹞怬罶涷\\\n\
+                        麷倛ボ磝珜 HTML﹞ HTML 麔淰柁棓麔ボ\\\n\
+                        珜 '.html'﹜迖屼 "<HTML>" \\\n\
+                        迖 "<html>" А蠣﹞ 
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3028 is the description of the RICHTEXT datatype.
+$ 3028 - Do not translate RICHTEXT, or '.rt' in the
+$        message.  RICHTEXT is a defined datatype name and it doesn't get
+$        translated  '.rt' is used as filename pattern which matches 
+$        this data type.
+$ 
+3028 麔淰珜齪А麔﹜屼ロ瞗А倛\\\n\
+                        泂氂轡覂齪А﹞  怬罶涷\\\n\
+                        麷倛磝珜 RICHTEXT﹞  RICHTEXT 麔淰柁眃麔ボ\\\n\
+                        珜 '.rt'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3029 is the description of the MSDOS_EXE datatype.
+$ 3029 - Do not translate MSDOS_EXE, '.exe', or '.EXE' in the
+$        message.  MSDOS_EXE is a defined datatype name and it doesn't get
+$        translated and '.exe' and '.EXE' are the parts of the filename
+$        pattern used to match this datatype.
+$ 
+3029 篎麔淰珜欹⺼麔﹜⑴ョ MSDOS 砨晥\\\n\
+                        柁堈藺諔瑼譫欹⺼﹞ 怬罶涷\\\n\
+                        麷倛ボ磝珜 MSDOS_EXE﹞ MSDOS_EXE 麔淰\\\n\
+                        柁棓麔ボ珜 '.exe' 迖 '.EXE'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3030 is the description of the UIL datatype.
+$ 3030 - Do not translate UIL, '.uil', or '.UIL' in the
+$        message.  UIL is a defined datatype name and it doesn't get
+$        translated and '.uil' and '.UIL' are the parts of the filename
+$        pattern used to match this datatype.
+$ 
+3030 楙旂纂堈齪А麔﹜蠡屼 UIL 箾㾀蟟⑴\\\n\
+                        え坭唈ゥ纂堈 Motif 囷え炟蘭郖柁婘沓\\\n\
+                        嶂冈謑﹞ UIL 麔淰柁棓麔ボ珜 '.uil' 迖 \\\n\
+                        '.UIL'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3031 is the description of the 'Audio Editor' action.
+$ 
+3031 篎棬汃鞂絒棬鐖媢蹌藟蟟﹞
+$ 
+$ 3032 - This is the 'Audio Editor' action label.
+$ 
+3032 鐖媢蹌藟蟟
+$ 
+$ 3033 - This message is used by the AUDIO datatype. It is the error
+$   message when a user tries to "Edit" an AUDIO file.
+$ 
+3033 隓恄 '蹌藟'  - 湄肌鐖媢蹌藟蟟⑴え﹞
+$ 
+$ Message 3034 is the description of the 'Audio' action.
+$ 
+3034 篎棬汃鞂絒棬鐖媢祰戔郖帣﹞
+$ 
+$ 3035 - This is the 'Audio' action label.
+$ 
+3035 鐖媢
+$ 
+$ 3036 - This message is used by the 'Audio' action. It is the error
+$   message when a user tries to start the audio control panel.
+$ 
+3036 睎柁侇嗄湄肌菙坯鐖媢祰戔郖帣﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3037 is the description of the 'ImageView' action.
+$ 
+3037 篎棬汃鞂絒棬憵踛髲砫嶂冈﹞
+$ 
+$ 3038 - This is the 'ImageView' action label.
+$ 
+3038 憵踛髲砫
+$ 
+$ 3039 - This message is used by ImageView 'Audio' action. It is the error
+$   message when a user tries to start the image viewer.
+$ 
+3039 睎柁侇嗄湄肌菙坯憵踛髲砫嶂冈﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3040 is the description of the EPS (Encapsulated PostScript) datatype.
+$ 3040 - Do not translate 'PS', 'EPS' or'.eps' in the message.
+$ 
+3040 篎麔淰蠡屼髓 Encapsulated PS 眭冈鬊Б\\\n\
+			柁詗ポ齪А昑頝夆﹞ 怬罶涷麷倛ボ磝珜 EPS﹞\\\n\
+			EPS 麔淰柁棓麔ボ珜 '.eps'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3041 is the description of the IMG datatype.
+$ 3041 - Do not translate 'IMG', '.img', '.IMG' or '.Img' in the message.
+$ 
+3041 篎麔淰蠡屼髓 IMG 眭冈鬊Б柁頝夆\\\n\
+			憵踛﹞ 怬罶涷麷倛ボ磝珜 IMG﹞ IMG 麔淰\\\n\
+			柁棓麔ボ珜 '.img'﹝ '.IMG' 迖 '.Img'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3042 is the description of the PCX datatype.
+$ 3042 - Do not translate 'PCX', '.pcx', '.PCX' or '.Pcx' in the message.
+$ 
+3042 篎麔淰蠡屼髓 PCX 眭冈鬊Б柁頝夆\\\n\
+			憵踛﹞ 怬罶涷麷倛ボ磝珜 PCX﹞ PCX 麔淰\\\n\
+			柁棓麔ボ珜 '.pcx'﹝ '.PCX' 迖 '.Pcx'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3043 is the description of the BMP datatype.
+$ 3043 - Do not translate 'BMP', '.bmp', '.BMP' or '.Bmp' in the message.
+$ 
+3043 篎麔淰蠡屼髓 BMP 眭冈鬊Б柁\\\n\
+			頝夆憵踛﹞ 怬罶涷麷倛ボ磝珜 BMP﹞ BMP 麔\\\n\
+			淰柁棓麔ボ珜 '.bmp'﹝ '.BMP' 迖 '.Bmp'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 3044 is the description of the BMF datatype.
+$ 3044 - Do not translate 'BMF' or '.bmf' in the message.
+$ 
+3044 篎麔淰蠡屼髓 Starbase 眭冈鬊Б\\\n\
+			柁頝夆憵踛﹞ 怬罶涷麷倛ボ磝珜 BMF﹞\\\n\
+			BMF 麔淰柁棓麔ボ珜 '.bmf'﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dtfile.dt
+$ **************************************************************************
+$ * DESCRIPTION
+$ * The dtfile.dt types file defines Datatypes, Actions, and descriptions
+$ * of those Actions and Datatypes that are commonly used within in the 
+$ * File Manager (i.e. folder definitions, file system datatypes, etc.)
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 4001 and 4002:
+$         These Messages are headers used to break up the dtfile.dt file
+$         into ACTIONS and DATATYPES.
+$         NOTE: make sure each line begins with a "#  ".  This indicates
+$         that it is a comment.
+$ 
+4001 # 罶涷㪫迒 - 饜衭珜麔淰磣隉炟邴え
+4002 # 麔淰扢
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4003 is the description of the TRASH_FOLDER datatype.
+$ 
+4003 篎麔淰扢珜杶扜蛦穛勂棷﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4004 is the description of the PARENT_FOLDER datatype.
+$ 4004 - Do not translate PARENT_FOLDER in the message. PARENT_FOLDER is a 
+$        defined datatype name that doesn't get translated.
+$ 
+4004 '..' 頝踛鷥玿隃⺼麔淰扢柁々麔淰扢﹞\\\n\
+                        瞅絒⼓⑴皕麔淰扢蹠芼譫\\\n\
+                        傶纂嬬﹞怬罶涷麷倛ボ磝珜 \\\n\
+                        PARENT_FOLDER﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4005 is the description of the CURRENT_FOLDER datatype.
+$ 4005 - Do not translate CURRENT_FOLDER in the message. CURRENT_FOLDER 
+$        is a defined datatype name that doesn't get translated.
+$ 
+4005 '.' 頝踛鷥玿隃⺼柁麔淰扢﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 CURRENT_FOLDER﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4006 is the description of the DOT_FOLDER datatype.
+$ 4006 - Do not translate DOT_FOLDER in the message. DOT_FOLDER 
+$        is a defined datatype name that doesn't get translated.
+$ 
+4006 篎麔淰扢柁罶涷麷倛ボ磝珜 DOT_FOLDER﹞\\\n\
+                        DOT_FOLDER 麔淰扢ボ磝瞅韝珜\\\n\
+                        纂鷁 (.)﹞ DOT_FOLDER 楈琣旂騿鰳柁﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4007 is the description of the FOLDER_LOCK datatype.
+$ 4007 - Do not translate FOLDER_LOCK in the message. FOLDER_LOCK 
+$        is a defined datatype name that doesn't get translated.
+$ 
+4007 睎扽篎麔淰扢柁嬣蘋暐⑴ḷ﹞\\\n\
+                        睎隓恄嚌蠹迖覗崽麔淰﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 FOLDER_LOCK﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4008 is the description of the FOLDER datatype.
+$ 4008 - Do not translate FOLDER in the message. FOLDER 
+$        is a defined datatype name that doesn't get translated.
+$ 
+4008 楙旂麔淰扢﹞  麔淰扢珜鬊Б\\\n\
+                        麔淰迖怬鱗麔淰扢柁ユ巖﹞ \\\n\
+                        怬罶涷麷倛ボ磝珜 FOLDER﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4009 is the description of the RECURSIVE-LINK datatype.
+$ 4009 - Do not translate RECURSIVE-LINK in the message. RECURSIVE-LINK 
+$        is a defined datatype name that doesn't get translated.
+$ 
+4009 篎頝踛鷥玿挴ホ⺌儷柁滽懧迒椵廎﹜\\\n\
+                        ⑴逑旂麔淰扢迖椴蝝纂椵⻌柁\\\n\
+                        斕睮滽懧迒椵廎﹞  怬麔淰麷倛磝珜\\\n\
+                        RECURSIVE_LINK﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4010 is the description of the BROKEN_LINK datatype.
+$ 4010 - Do not translate BROKEN_LINK in the message. BROKEN_LINK 
+$        is a defined datatype name that doesn't get translated.
+$ 
+4010 篎頝踛鷥玿挴ホ攜Бョ麔淰柁滽懧迒\\\n\
+                        椵廎﹞怬罶涷麷倛ボ磝珜 \\\n\
+                        BROKEN_LINK﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4011 is the description of the DOT_FILE datatype.
+$ 4011 - Do not translate DOT_FILE in the message. DOT_FILE 
+$        is a defined datatype name that doesn't get translated.
+$ 
+4011 篎麔淰柁罶涷麷倛ボ磝珜 DOT_FILE﹞\\\n\
+                        DOT_FILE 麔淰ボ磝瞅韝珜\\\n\
+                        纂鷁 (.)﹞ DOT_FILE 楈琣旂騿鰳柁﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4012 is the description of the EXECUTABLE datatype.
+$ 4012 - Do not translate EXECUTABLE in the message. EXECUTABLE 
+$        is a defined datatype name that doesn't get translated.
+$ 
+4012 篎麔淰珜⑴欹⺼柁 shell 杬麟碬迖\\\n\
+                        蹌㾀蝝柁嶂冈﹞怬罶涷麷倛\\\n\
+                        ボ磝珜 EXECUTABLE﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4013 is the description of the UNKNOWN datatype.
+$ 4013 - Do not translate UNKNOWN in the message. UNKNOWN 
+$        is a defined datatype name that doesn't get translated.
+$ 
+4013 篎麔淰攜嗃ポズ罶涷麷倛﹜\\\n\
+                         モ挴泂怬罶涷麷倛ボ磝珜 UNKNOWN﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4014 is the description of the DATA datatype.
+$ 4014 - Do not translate DATA in the message. DATA 
+$        is a defined datatype name that doesn't get translated.
+$ 
+4014 篎麔淰攜嗃ポズ罶涷麷倛﹜\\\n\
+                        モ挴泂怬罶涷麷倛ボ磝珜 DATA﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4015:
+$         This Message is a header used to break up the dtfile.dt file
+$         into its ACTIONS portion.
+$         NOTE: make sure each line begins with a "#  ".  This indicates
+$         that it is a comment.
+$ 
+4015 #  纂郫痐譫磣隉侇嗄蘄頨麔淰磣隉炟菙坯柁棬汃﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 4016 - 4017 refer to the File Manager Home 'DtfileHome' action.
+$ 
+4016 麔淰磣隉炟 - 媊沓げ蠊
+$ 
+$ 4017 - do not translate (DtfileHome).
+$ 
+4017 ＞麔淰磣隉炟 - 媊沓げ蠊＝(DtfileHome) 棬汃瞅絒\\\n\
+                        麔淰磣隉炟髓栯砫囷え炟柁媊沓麔淰扢﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 4018 - 4020 refer to the File Manager (Dtfile) action.
+$ 
+4018 麔淰磣隉炟
+$ 
+$ Message 4019 - Requests which folder to open when no folder is
+$      is provided to the 'Dtfile' action.  Do not remove the ':'.
+$ 
+4019 袺瞅絒柁げ蠊:
+$ 
+$ 4020 - do not translate '(Dtfile)'.
+$ 
+4020 ＞麔淰磣隉炟＝(Dtfile) 棬汃瞅絒麔淰磣隉炟\\\n\
+                        髓栯砫挴泂柁麔淰扢﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 4021 - 4023 refer to the Application Manager (Dtappmgr) action.
+$ 
+4021 鶈え嶂冈磣隉炟
+$ 
+$ 
+$ Message 4022 - The title of the Application Manager.
+$ 
+4022 鶈え嶂冈磣隉炟
+$ 
+$ 4023 - do not translate '(Dtappmgr)'.
+$ 
+4023 ＞鶈え嶂冈磣隉炟＝(Dtappmgr) 棬汃瞅絒\\\n\
+                        麔淰磣隉炟髓栯砫鶈え嶂冈磣隉炟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 4024 - 4026 refer to the 'TrashFile' action.
+$ 
+$ 4024 - translate into 1 word with no blanks.
+$ 
+4024 杶扜蛦
+$ 
+$ Message 4025 - Requests which file to trash when no file/folder is
+$      is provided to the 'TrashFile' action.  Do not remove the ':'.
+$ 
+4025 袺ェ蘋杶扜蛦柁麔淰:
+$ 
+$ 4026 - use the same word as Message 4024 to translate 'TrashFile'.
+$ 
+4026 ＞杶扜蛦＝棬汃渿麔淰勂蘋\\\n\
+                        痐譫磣隉侇嗄柁麔淰杶扜蛦﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 4027 - 4028 refer to the Trash Can (Dttrash) action.
+$ 
+4027 麔淰杶扜蛦
+$ 
+$ 4028 - do not translate (Dttrash).
+$ 
+4028 椵挹怚譯棬汃頝踛渀﹜＞麔淰杶扜蛦＝(Dttrash) 棬汃鞂\\\n\
+                        瞅絒痐譫磣隉侇嗄柁杶扜蛦槉嵺﹞\\\n\
+                        渿麔淰侹泂⻏怉篎頝踛悒﹜麔淰\\\n\
+                        伒揧銊傶怉杶扜蛦﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 4029 refers to the 'Open New View' action.
+$ 
+4029 ＞瞅絒隞槉棷＝棬汃䬷ざ麔淰磣隉炟﹜\\\n\
+                        髓砅ョ隞麔淰磣隉炟槉嵺栯砫\\\n\
+                        挴泂柁麔淰扢﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 4030 - 4031 refer to the 'PrintFolderList' action.
+$ 
+$ 4030 - translate into 1 word with no blanks.
+$ 
+4030 PrintFolderList
+$ 
+$ 
+$ 4031 - use the same word as Message 4030 to translate 'PrintFolderList'.
+$ 
+4031 PrintFolderList 棬汃渿麔淰扢柁蠡晥トパ\\\n\
+                        怉蠡泂柁パ玿鞥譫﹞
+$ 
+$ Messages 4032 through 4041 are new messages since the CDE/Sample.
+$  Messges 4032 and 4033 are
+$  for a new action (PutOnWorkspace).  This an action used by other clients
+$  which tells the File Manager to put an object on the desktop.
+$ 
+$ 4032 is the Label of the action
+$ 
+4032 勂蘋齡汃洠睮
+$ 
+$ 4033 is the Description of what that action does.
+$   Don't translate 'PutOnWorkspace -workspace wsX'
+$ 
+4033 勂蘋齡汃洠睮 (PutOnWorkspace) 蠢暐\\\n\
+			纂郫痐譫磣隉侇嗄蘄頨崷ポ鶈え嶂冈\\\n\
+			欹⺼棬汃﹜勂殦纂堈昡ス卼痐譫磣隉侇嗄﹞\\\n\
+			篎棬汃柁眭冈珜: \\\n\
+			  'PutOnWorkspace -workspace wsX <path/filename>' \\\n\
+		        X 旂髓 0 瞅沓柁齡汃洠睮禨げ﹞
+$ 
+$  Messges 4034 and 4035 are
+$  for a new action (FILESYSTEM_MOVE).  This an action used by other clients
+$  to tell the file Manager to move a file.
+$ 
+$ 4034 is the Label of the action
+$ 
+4034 傶棬怉纂堈麔淰扢
+$ 
+$ 4035 is the Description of what that action does.
+$   Don't translate FILESYSTEM_MOVE
+$ 
+4035 FILESYSTEM_MOVE 棬汃蠢暐\\\n\
+ 	         	纂郫痐譫磣隉侇嗄蘄頨崷ポ鶈え嶂冈\\\n\
+			欹⺼棬汃, ⣷麔淰磣隉炟欹⺼麔淰柁銊傶﹞ \\\n\
+			篎棬汃柁眭冈珜: \\\n\
+         		  'FILESYSTEM_MOVE <folder_name_to> <files>' \\\n\
+                	files 旂麔淰汒謽柁聤梏ボ磝トざ, 髓洠眭觰瞅﹞
+$ 
+$  Messges 4036 and 4037 are
+$  for a new action (FILESYSTEM_COPY).  This an action used by other clients
+$  to tell the file Manager to copy a file.
+$ 
+$ 4036 is the Label of the action
+$ 
+4036 闀蕍怉纂堈麔淰扢
+$ 
+$ 4037 is the Description of what that action does.
+$   Don't translate FILESYSTEM_COPY
+$ 
+4037 FILESYSTEM_COPY 棬汃蠢暐\\\n\
+			纂郫痐譫磣隉侇嗄蘄頨崷ポ鶈え嶂冈\\\n\
+			欹⺼棬汃⣷麔淰磣隉炟欹⺼麔淰柁闀蕍﹞ \\\n\
+			篎棬汃柁眭冈珜: \\\n\
+			  'FILESYSTEM_COPY <folder_name_to> <files>' \\\n\
+                        files 旂麔淰汒謽柁聤梏ボ磝トざ, 髓洠眭觰瞅﹞
+$ 
+$  Messges 4038 and 4039 are
+$  for a new action (FILESYSTEM_LINK).  This an action used by other clients
+$  to tell the file Manager to link a file.
+$ 
+$ 4038 is the Label of the action
+$ 
+4038 椵廎怉纂堈麔淰扢
+$ 
+$ 4039 is the Description of what that action does.
+$   Don't translate FILESYSTEM_LINK
+$ 
+4039 FILESYSTEM_LINK 棬汃蠢暐\\\n\
+                       纂郫痐譫磣隉侇嗄蘄頨崷ポ鶈え嶂冈\\\n\
+		       欹⺼棬汃⣷麔淰磣隉炟欹⺼麔淰柁椵廎﹞ \\\n\
+		       篎棬汃柁眭冈珜: \\\n\
+			  'FILESYSTEM_LINK <folder_name_to> <files>' \\\n\
+                       files 旂麔淰汒謽柁聤梏ボ磝トざ, 髓洠眭觰瞅﹞
+$ 
+$  Messges 4040 and 4041 are
+$  for a new action DtEmptyTrash.  This an action used by other clients
+$  to tell the file Manager to empty the trash can.
+$ 
+$ 4040 is the Label of the action
+$ 
+4040 覗洠杶扜蛦
+$ 
+$ 4041 is the Description of what that action does.
+$  Don't translate DtEmptyTrash
+$ 
+4041 覗洠杶扜蛦 (DtEmptyTrash) 棬汃\\\n\
+			覗洠杶扜蛦﹞ 纂＾覗洠衭崽⑩柁昡ス\\n\
+			祼攜逑テャ艀藹﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dtpad.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dtpad.dt types file defines Datatypes, Actions, and descriptions
+$ * of those Actions and Datatypes that are commonly used within in the 
+$ * Text Editor (dtpad). 
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 5001 refers to the TEXTFILE (*.txt) datatype.
+$ 
+$ 5001 - Do not translate TEXTFILE or '.txt' in the message.  TEXTFILE is a
+$        defined datatype name and it doesn't get translated and '.txt'
+$        is the filename pattern which matches this datatype.
+$ 
+5001 篎麔淰珜覂齪А罶涷﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 TEXTFILE﹞ TEXTFILE 柁棓麔ボ\\\n\
+                        ⽁禕旂 '.txt'﹞
+$ 
+$ Messages 5002 - 5006 are comments.  NOTE: make sure each new line 
+$                begins with a "#".  This indicates that it is a comment.  
+$                Also, keep the \n\ at the end of each line where used.
+$ 
+5002 # トパ棬汃
+5003 # 蹌藟棬汃
+5004 # 譯ト棬汃柁絒棬渀睮蝷齪А蹌藟蟟棬汃妐﹞
+$ 
+$ Message 5005 - is a header in dtpad.dt.  It is actually a comment
+$                but it explains how the print action for dtpad works so it 
+$                should localized.  Don't translate PRINT_DTPAD and translate
+$                "Print" as it is translated in message 2.  Don't translate
+$                'dtpad'. Make sure each line ends with a \n\. 
+$ 
+5005 # PRINT_DTPAD 棬汃篲鶅蠡泂トパ棬汃﹜\n\
+# 崽欄⼃, ⼓鞂覗崽ョトパ柁穛Б麔﹞ 篎棬汃\n\
+# 珜剟鷓嶂冈 'dtpad' 邴囷え﹞
+$ 
+$ Message 5006 - is a header in dtpad.dt.  It is actually a warning comment
+$                that explains how the follow DATA_CRITERIA rule is used
+$                and what the consequences are if it is changed (dtmail is
+$                effected.  Don't translate DATA_CRITERIA, dtmail, TEXTFILE, and
+$                DATA_ATTRIBUTE.  Keep the WARNING in all capitals.
+$                Make sure each line ends with a \n\ except the last. 
+$ 
+5006 #  滙夼  滙夼  滙夼 \n\
+#\n\
+# dtmail 囷え譯ト柁 DATA_CRITERIA 斒衧坭藑籫\n\
+# 侇嗄柁 TEXTFILE DATA_ATTRIBUTE﹞ ヵ峈睎伝崽\n\
+# 迖埏庍斒衧﹜dtmail ⑴逑隓恄薚䬷ざ齪А\n\
+# 媢桾﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 5007 - 5008 refer to the Text Editor (Dtpad) action.
+$ 
+5007 齪А蹌藟蟟
+$ 
+$ 5008 - do not translate '(Dtpad)'.
+$ 
+5008 ＞齪А蹌藟蟟＝(Dtpad) 棬汃ョ痐譫磣隉侇嗄齪А蹌藟蟟槉嵺\\\n\
+                        瞅絒挴泂柁麔淰﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 5009 - 5010 refer to the Text Editor Quick (DtpadQ) action.
+$ 
+5009 妐楬齪А蹌藟蟟
+$ 
+$ 5010 - do not translate '(DtpadQ)'.
+$ 
+5010 ＞妐楬齪А蹌藟蟟＝(DtpadQ) 棬汃ョ痐譫磣隉侇嗄齪А蹌藟蟟\\\n\
+                        瞅絒挴泂柁麔淰﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  develop.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The develop.dt types file defines Actions, Datatypes, and descriptions
+$ * of those Actions and Datatypes that are used by developers.
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6001 is the description of the CORE (core) datatype.
+$ 6001 - Do not translate CORE in the message.  CORE is a
+$        defined datatype name and it doesn't get translated.
+$ 
+6001 篎麔淰屼攜琣廎忒搢隉柁淭鰾憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 \\\n\
+                        CORE﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6002 is the description of the OBJECT (*.o) datatype.
+$ 6002 - Do not translate OBJECT or '.o' in the message.  OBJECT is a
+$        defined datatype name and it doesn't get translated and '.o'
+$        is the filename pattern which matches this datatype.
+$ 
+6002 楙堈麔淰讓屼蹌㾀蟟皕坭鳲麔淰邴雰ぇ柁蘑瑱戔罶涷﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 OBJECT﹞ OBJECT 麔\\\n\
+                        淰柁棓麔ボ珜 '.o'﹞
+ 
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6003 is the description of the ASSEMBLER (*.s) datatype.
+$ 6003 - Do not translate ASSEMBLER or '.s' in the message.  ASSEMBLER is a
+$        defined datatype name and it doesn't get translated and '.s'
+$        is the filename pattern which matches this datatype.
+$ 
+6003 楙堈麔淰讓屼纂堈儸洁栻擛柁 assembler 嶂冈謑﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 ASSEMBLER﹞\\\n\
+                        ASSEMBLER 麔淰柁棓麔ボ珜 '.s'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6004 is the description of the ARCH_LIB datatype.
+$ 6004 - Do not translate ARCH_LIB or '.a' in the message.  ARCH_LIB is a
+$        defined datatype name and it doesn't get translated and '.a'
+$        is the filename pattern which matches this datatype.
+$ 
+6004 楙堈麔淰讓屼纂堈砉Б昡ス麔淰柁蘑瑱戔嶂冈梬﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 ARCH_LIB﹞\\\n\
+                        ARCH_LIB 麔淰柁棓麔ボ珜 '.a'﹞
+$ 
+$ Leaving 6005 free, may need a different definition for ARCH_LIB for IBM.
+$ 
+$ 6005
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6006 is the description of the SHARED_LIB datatype.
+$ 6006 - Do not translate SHARED_LIB or '.sl' in the message.  SHARED_LIB is a
+$        defined datatype name and it doesn't get translated and '.sl'
+$        is the filename pattern which matches this datatype.
+$ 
+6006 楙堈麔淰讓屼纂堈ヅえ昡ス麔淰柁蘑瑱戔嶂冈梬﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 SHARED_LIB﹞\\\n\
+                        SHARD_LIB 麔淰柁棓麔ボ珜 '.sl' 迖 '.so'﹞
+$ 
+$ Leaving 6007 free, may need a different definition for SHARED_LIB for IBM.
+$ 
+$ 6007
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6008 is the description of the C_SRC datatype.
+$ 6008 - Do not translate C_SRC or '.c' in the message.  C_SRC is a
+$        defined datatype name and it doesn't get translated and '.c'
+$        is the filename pattern which matches this datatype.
+$ 
+6008 楙堈麔淰旂纂堈髓 C 嶂冈諴侔邴檎嬣柁坭鳲麔淰﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 C_SRC﹞\\\n\
+                        C_SRC 麔淰柁棓麔ボ珜 '.c'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6009 is the description of the Make action associated with the
+$    C_SRC datatype.
+$ 6009 - Do not translate C_SRC or 'make' in the message.  
+$   Translate Make the same as message 5.
+$ 
+6009 C_SRC 麔淰柁 Make 杬麟囷え Unix 柁 \\\n\
+                        'make' 杬麟坭蕍汃砨驨昡ス麔淰﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6010 is the description of the CPLUSPLUS_SRC datatype.
+$ 6010 - Do not translate CPLUSPLUS_SRC, '.C', or '.cc' in the message.  
+$        CPLUSPLUS_SRC is a defined datatype name and it doesn't get 
+$        translated and '.cc' and '.C'is the filename pattern which 
+$        matches this datatype.
+$ 
+6010 楙旂纂堈髓 C++ 嶂冈諴侔檎嬣柁坭鳲麔淰﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 CPLUSPLUS_SRC﹞\\\n\
+                        CPLUSPLUS_SRC 麔淰柁棓麔ボ珜 '.C' \\\n\
+                        迖 '.cc'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6011 is the description of the Make action associated with the
+$    CPLUSPLUS_SRC datatype.
+$ 6011 - Do not translate CPLUSPLUS_SRC or 'make' in the message.  
+$   Translate Make the same as message 5.
+$ 
+6011 CPLUSPLUS_SRC 麔淰柁 Make 杬麟囷え Unix 柁 \\\n\
+                        'make' 杬麟坭蕍汃砨驨昡ス麔淰﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6012 is the description of the H_SRC datatype.
+$ 6012 - Do not translate H_SRC or '.h' in the message.  H_SRC is a
+$        defined datatype name and it doesn't get translated and '.h'
+$        is the filename pattern which matches this datatype.
+$ 
+6012 楙旂纂堈 C 諴侔嶂冈柁媊沓麔﹞怬罶涷麷倛ボ磝珜 \\\n\
+                        H_SRC﹞H_SRC 麔淰柁棓麔ボ珜 *.h﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6013 is the description of the MAKEFILE datatype.
+$ 6013 - Do not translate MAKEFILE, Makefile, makefile, or '.mk' in the 
+$        message.  MAKEFILE is a defined datatype name and it doesn't get 
+$        translated and Makefile, makefile, and '.mk' are the filename 
+$        patterns which match this datatype.
+$ 
+6013 楙旂纂堈 Makefile﹞ Makefile 諰咭ヵ皕纂嗢坭鳲\\\n\
+                        麔斕雰ぇ⑴欹⺼麔﹞怬罶涷麷倛ボ磝珜 MAKEFILE﹞\\\n\
+                        MAKEFILE 麔淰柁ボ磝⽁禕旂 Makefile 迖 makefile﹜\\\n\
+                        迖髓 Makefile 迖 makefile 瞅韝﹜迖炟渿棓麔ボ泂珜 \\\n\
+                        '.mk'﹞
+$ 
+$ Message 6014 - Requests which "target" (i.e. file) to make when no
+$      file/folder is is provided to the 'Make' action for the MAKEFILE
+$      datatype.  Do not remove the ':'.
+$ 
+6014 衭 Make 柁げ簅麔:
+$ 
+$ Message 6015 is the description of the Make action associated with the
+$    MAKEFILE datatype.
+$ 6015 - Do not translate Makefiles, or 'make' in the message.  
+$   Translate Make the same as message 5.
+$ 
+6015 Makefiles 柁 Make 棬汃衭忴囷え炟藣蘋げ簅麔﹜\\\n\
+                        隑悒囷え Unix 柁 'make' 杬麟坭搢隉﹞ヵ\\\n\
+                        峈攜挴泂げ簅麔﹜楙堈杬麟祼鞂髱隃⺼\\\n\
+                        麔淰扢蠡柁邴麔淰欹⺼﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 6016 is the description of the IMAKEFILE datatype.
+$ 6016 - Do not translate IMAKEFILE, Imakefile, or imakefile in the 
+$        message.  IMAKEFILE is a defined datatype name and it doesn't get 
+$        translated and Imakefile, and imakefile are the filename 
+$        patterns which match this datatype.
+$ 
+6016 楙旂纂堈 Imakefile﹞ Imakefile 萺訒ヵ\\\n\
+                        皕纂嗢坭鳲麔斕雰ぇ纂堈⑴欹⺼麔﹞\\\n\
+                        ⼓鞂揧 make 杬麟邴囷え﹞怬罶涷麷倛ボ磝珜 \\\n\
+                        IMAKEFILE﹞ IMAKEFILE 麔淰柁麔ボ珜 \\\n\
+                        imakefile 迖 Imakefile﹜迖炟髓 imakefile \\\n\
+                        迖 Imakefile 瞅韝﹞
+$ 
+$ Message 6017 is the description of the Make action associated with the
+$    IMAKEFILE datatype.
+$ 6017 - Do not translate Imakefiles, Makefile, or 'make' in the message.  
+$   Translate Make the same as message 5.
+$ 
+6017 Imakefile 柁 Make 杬麟囷え Unix 柁 \\\n\
+                        'make' 杬麟坭蕍汃砨驨柁 Makefile﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 6018 - 6020 refer to the Symbols List (Nm) action.
+$ 
+6018 嗃磍トざ
+$ 
+$ 6019 - Is a prompt to the user for the filename to list the symbols
+$  for if not file is supplied. Do not remove the ':'.  
+$ 
+6019 麔ボ:
+$ 
+$ 6020 - do not translate 'nm' or '(Nm)'.
+$ 
+6020 ＞嗃磍トざ＝(Nm) 棬汃ト罐纂堈昡ス麔淰\\\n\
+                        迖嶂冈梬麔淰柁嗃磍玿﹞⼓囷え柁旂 \\\n\
+                        'nm' 杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 6021 - 6022 refer to the Print Symbol List (PrintNm) action.
+$ 
+6021 トパ嗃磍トざ
+$ 
+$ 6022 - do not translate 'nm' or '(PrintNm)'.
+$ 
+6022 ＞トパ嗃磍トざ＝(PrintNm) 棬汃囷え蠡泂\\\n\
+                        パ玿鞥トパ 'nm' 杬麟柁藣罐﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 6023 - 6024 refer to the 'Make' action.
+$ 
+$ 6023 - Is a prompt to the user for the Makefile to make from.
+$  Do not remove the ':'.  
+$ 
+6023 Makefile:
+$ 
+$ Message 6024 is the description of the Make action not associated with
+$    any particular type.
+$ 6024 - Do not translate Makefile, or 'make' in the message.  
+$   Translate Make the same as message 5.
+$ 
+6024 扽鰱禨柁 Make 棬汃衭忴囷え炟藣蘋\\\n\
+                        纂堈 Makefile 轡げ簅麔﹜隑悒囷え Unix 柁 \\\n\
+                        'make' 杬麟坭搢隉﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  print.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The print.dt types file defines Actions, Datatypes, and descriptions
+$ * of those Actions and Datatypes that are of global use to the printer. 
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 7001 through 7008:
+$         These Messages are comments used to explain to the user what the
+$         Actions and Datatypes are used for within the print.dt file.
+$         NOTE: make sure each new line begins with a "#  ".  This indicates
+$         that it is a comment.  Make sure each line ends with a \n\. 
+$ 
+7001 #  CDE 柁パ玿鞥鞥倛碬斕卼＞トパ＝棬汃斕﹞\n\
+#\n\
+#  睎⑴髓泂氂ロ堈＞トパ＝棬汃﹜纂堈棬汃怞纂瞗罶涷麷倛﹞\n\
+#  ヵ峈＞トパ＝棬汃ゝ菙坯鰱禨﹜咇錵祼鞂鞜え dtprintinfo \n\
+#  杬麟坭䬷ざパ玿鞥縋齡汃昲鳷﹞#\n\
+#\n\
+#  'dtprintinfo' 旂纂堈磣隉齡怞﹜え坭唈ゥ眭冈珜 \n\
+#  '<printer name>_Print' 柁蠡泂パ玿鞥棬汃﹞\n\
+#\n\
+#  ヵ峈侇嗄斕嚌蠹隞柁麷倛﹜祼鞂唈ゥ纂堈麔淰麷倛\n\
+#  笱泂柁＞トパ＝棬汃﹜゛痐譫磣隉侇嗄棬汃鰱鵽祼\n\
+#  鞂⺌棬囷え楙堈棬汃﹜髓抻鷥蠡泂棬汃﹞ 隞柁棬汃\n\
+#  ⑴逑囷え 'dtlp'﹜迖呣謾怬トパ衢逑邴痤怉欄鶈え\n\
+#  嶂冈笱泂柁鰱禨﹞
+7002 # 蠡泂柁パ玿鞥棬汃﹜鞜えフ㪫 ARG_TYPE“キ伒ゝ泂\n\
+# 氂怬鱗トパ棬汃柁麔淰﹞
+7003 #   ヵ峈ゝ菙坯ズ鰱禨﹜衧鞜え Dtprintinfo 棬汃﹞
+7004 #   ＞トパ齡汃＝(Dtprintinfo) 棬汃鞜え dtprintinfo \n\
+#  杬麟迖 'dtprintinfo -p printer' 杬麟﹞
+7005 #   蠡泂パ玿鞥柁棬汃﹞
+7006 #   蚍菙坯纂堈麔淰鰱禨﹜衧鞜え＞トパ＝棬汃﹞
+7007 #   蚍ゝ菙坯麔淰鰱禨﹜衧鞜え Dtprintinfo 棬汃﹞
+7008 #   搢旂ゝ洁縋ゝ暋泂崷殦柁パ玿鞥昡ス柁棬汃縋\n\
+#   罶涷麷倛﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 7009 is the description of the PRINTER_UNKNOWN datatype.
+$ 
+7009 楙堈頝踛鷥玿ゝョ睎柁痐譫磣隉侇嗄漶癱柁パ玿鞥﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 7010 refers to the 'Print' action.
+$ 
+$ 7010 - description for the default print action.
+$ 
+7010 楙旂蠡泂柁トパ棬汃﹞  ヵ峈欹⺼渀蠹譫纂堈麔淰\\\n\
+                        鰱禨﹜⼓鞂碬パ玿鞥笱泂柁藞禋﹜隑\\\n\
+                        悒トパ篎麔淰﹞ヵ峈欹⺼渀扽鰱禨﹜\\\n\
+                        ⼓鞂䬷ざ＞パ玿鞥齡汃＝槉嵺﹞
+                        
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 7011 - 7012 refer to the Print Job 'Dtprintinfo' action.
+$ 
+$ 7011 - translate into 1 word with no blanks.
+$ 
+7011 トパ齡汃
+$ 
+$ 7012 - do not translate '(Dtprintinfo)'.
+$ 
+7012 ＞トパ齡汃＝(Dtprintinfo) 棬汃⣷睎⑴髓扻\\\n\
+                        泂パ玿鞥昲鳷呥髲砫トパ齡汃﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 7013 refer to the 'DtPrint' action.  It uses the Description
+$  of message 7010 or 7012 depending if there is a file or not.
+$ 
+7013 蠡泂パ玿鞥
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 7014 - 7017 refer to the 'PrinterUnconfigured' action.
+$ 
+$ 7014 - translate into 1 word with no blanks.
+$ 
+7014 PrinterUnconfigured
+$ 
+$ Messages 7015 and 7016 are the message and the title of the message
+$   dialog that pop's up when the PrinterUnconfigured action is run.
+$   Message 7015 is the message, 7016 is the title of the dialog.
+$   NOTE: The '\\\\n' inserts a newline at that location, insert this
+$   where you feel it's appropriate.
+$ 
+7015 パ玿鞥祰戔ゝ崷殦﹞\\\\n蚍衭崷殦パ玿鞥祰戔﹜\\\n\
+                        霘挹＞赮伢諰咭＝隑悒呣怬斕柁\\\\n挴ざ瑱⺼﹞
+7016 パ玿鞥ゝ崷殦
+$ 
+$ 7017 - use the same word as Message 7014 to translate 'PrinterUnconfigured'.
+$ 
+7017 PrinterUnconfigured 棬汃䬷ざ纂堈髱緷﹜諰咭\\\n\
+                        パ玿鞥泲ゝ崷殦﹞
+$ 
+$ Messages 7018 and 7019 are the message and the title of the message
+$   dialog that pop's up when the user tries to drop a printer in the
+$   trash can.
+$   Message 7018 is the message, 7019 is the title of the dialog.
+$   NOTE: The '\\\\n' inserts a newline at that location, insert this
+$   where you feel it's appropriate.
+$ 
+7018 渿纂楶パ玿鞥勂蘋杶扜蛦呥攜鞂\\\\n\\\n\
+                        渿⼓皕侇嗄斕伝崽﹞ 衭渿パ玿鞥皕侇嗄斕伝崽﹜\\\\n\\\n\
+                        霘栯櫇侇嗄磣隉齪ス﹞
+7019 伝崽パ玿鞥
+7020 Printer_Trash 棬汃鞂䬷ざ纂堈髱緷﹜\\\n\
+                        夼漇睎渿纂楶パ玿鞥勂蘋杶扜蛦呥攜鞂\\\n\
+                        渿⼓皕侇嗄斕伝崽﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 7022 - 7024 refer to the Print Manager 'DtPrintManager' action.
+$ 
+$ 7022 - translate into 1 word with no blanks.
+$ 
+7022 トパ磣隉炟
+$ 
+$ 7023 - do not translate '(DtPrintManager)'.
+$ 
+7023 #   ＞トパ磣隉炟＝(DtPrintManager) 棬汃鞂鞜え \n\
+#  'dtprintinfo -all' 杬麟﹞
+7024 ＞トパ磣隉炟＝(DtPrintManager) 棬汃逑⣷睎扻泂禨楶パ玿鞥\\\n\
+                        柁昲鳷呥髲砫トパ齡汃﹞  ⼓躂逑⣷睎渿パ玿鞥\\\n\
+                        侹怉郖帣譫柁＞Е稹頝踛＝祰戔﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dthelpprint.dt
+$ *************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dthelpprint.dt types file defines Actions, Datatypes, and descriptions
+$ * of those Actions and Datatypes that are used by the help system to
+$ * print out it's text.
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 8001 refers to the DTHELP_PRINT_FILE (_phlp*) datatype.
+$ 
+$ 8001 - Do not translate DTHELP_PRINT_FILE or '_phlp' in the message.  
+$        DTHELP_PRINT_FILE is a defined datatype name and it doesn't get 
+$        translated and '_phlp' is the filename pattern which matches 
+$        this datatype.  
+$ 
+$ 
+8001 楙堈麔淰旂ョ睎トパ赮伢諰咭侇嗄渀\\\n\
+                        邴雰ぇ柁﹞怬罶涷麷倛ボ磝珜 \\\n\
+                        DTHELP_PRINT_FILE﹞DTHELP_PRINT_FILE 麔淰\\\n\
+                        柁麔ボ禕髓 '_phlp' 瞅韝﹞
+$ **************************************************************************
+$ **************************************************************************
+$ *  uxstd.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The uxstd.dt types file defines all the Actions, Datatypes, and descriptions
+$ * of those Actions and Datatypes that are defined by standare UNIX commands.
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 10001 refers to the MAN_PAGE datatype.
+$ 
+$ 10001 - Do not translate MAN_PAGE in the message.  MAN_PAGE is a
+$         defined datatype name and it doesn't get translated.
+$ 
+10001 楙堈麔淰讓屼纂堈葰伢諰咭郟﹞怬罶涷\\\n\
+                        麷倛ボ磝珜 MAN_PAGE﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10002 - 10009 refer to the TAR (*.tar) datatype.
+$ 
+$ 10002 - Do not translate TAR or '.tar' in the message.  TAR is a
+$         defined datatype name and it doesn't get translated and '.tar'
+$         is the filename pattern which matches this datatype.
+$ 
+10002 楙堈麔淰旂纂堈砉Б麔淰﹜怬斕讓屼\\\n\
+                        暐ロ堈伀柁麔淰﹞怬罶涷麷倛ボ磝珜 \\\n\
+                        TAR﹞ TAR 麔淰柁棓麔ボ珜 '.tar'﹞
+$ 
+$ Messages 10003 and 10004 refer to the TarList action associated with the
+$    TAR datatype.
+$ 
+10003 砉Б麔淰トざ蠡晥
+$ 
+$ 10004 - Do not translate TAR and (TarList) in the message.  
+$ 
+10004 ＞砉Б麔淰トざ蠡晥＝(TarList) 棬汃ト罐 \\\n\
+                        TAR 砉Б麔淰斕邴屼柁麔淰﹞
+$ 
+$ Messages 10005 and 10006 refer to the PrintTarList action associated with the
+$    TAR datatype.
+$ 10005 - translate into 1 word with no blanks.
+$ 
+10005 PrintTarList
+$ 
+$ 10006 - Do not translate TAR in the message.  Translate PrintTarList the same 
+$         as message 10005.
+$ 
+10006 PrintTarList 棬汃鞂ョ蠡泂パ玿鞥譫パ罐 TAR \\\n\
+                        砉Б麔淰蠡邴屼麔淰柁トざ﹞
+$ 
+$ Messages 10007, 10008, and 10009 refer to the TarUnpack action associated 
+$    with the TAR datatype.
+$ 
+10007 箾瞅砉Б麔淰
+$ 
+$ 10008 - Is a prompt to the user for the filename of the TAR file 
+$  if no file is supplied. Do not remove the ':'.  
+$ 
+10008 麔淰ボ磝:
+$ 
+$ 10009 - Do not translate TAR and (TarUnpack) in the message.  
+$ 
+10009 ＞箾瞅砉Б麔淰＝(TarUnpack) 棬汃稌抰 \\\n\
+                        TAR 麔淰汃珜鰱禨﹜呥渿砉Б麔淰\\\n\
+                        箾瞅珜禨堈ペ伀柁麔淰﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10010 - 10012 refer to the COMPRESSED (*.Z) datatype.
+$ 
+$ 10010 - Do not translate COMPRESSED or '.Z' in the message.  COMPRESSED is a
+$         defined datatype name and it doesn't get translated and '.Z'
+$         is the filename pattern which matches this datatype.
+$ 
+10010 楙堈麔淰儸揧 compress 杬麟鯦醷﹜\\\n\
+                        髓樄砵洠睮﹞ 怬罶涷麷倛ボ磝珜 \\\n\
+                        COMPRESSED﹞ COMPRESSED 麔淰\\\n\
+                        柁棓麔ボ珜 '.Z'﹞
+$ 
+$ Messages 10011 and 10012 refer to the Uncompress action associated
+$    with the COMPRESSED datatype.
+$ 10011 - translate into 1 word with no blanks.
+$ 
+10011 麔淰箾鯦醷
+$ 
+$ 10012 - Do not translate 'compress' and 'uncompress'.
+$ 
+10012 ＞麔淰箾鯦醷＝棬汃稌抰纂堈迖ロ堈\\\n\
+                        揧 'compress' 杬麟邴鯦醷柁麔淰汃珜\\\n\
+                        鰱禨﹜呥渿怬箾鯦醷﹞ ⼓囷え柁旂 'uncompress' \\\n\
+                        杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 10013 refers to the SHELL (*.sh) datatype.
+$ 
+$ 10013 - Do not translate SHELL, BOURNE, '.sh', "#!/bin/sh", or "#! /bin/sh" 
+$         in the message.  SHELL is adefined datatype name and it doesn't 
+$         get translated. BOURNE is the name of type of shell which is named
+$         after a person, and '.sh', "#!/bin/sh", or "#! /bin/sh", are used as
+$         filename and CONTENT patterns which match this datatype.
+$ 
+10013 楙堈麔淰讓屼纂堈髓 BOURNE shell 杬麟碬諴侔\\\n\
+                        邴檎嬣柁⑴欹⺼杬麟碬﹞怬罶涷麷倛ボ磝珜 \\\n\
+                        SHELL﹞ SHELL 柁棓麔ボ珜 '.sh'﹜迖麔\\\n\
+                        淰蠡讓屼А蠣 "#!/bin/sh" 迖 "#! /bin/sh"﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 10014 refers to the CSHELL (*.csh) datatype.
+$ 
+$ 10014 - Do not translate C-SHELL, CSHELL, '.csh', "#!/bin/csh", or 
+$         "#! /bin/csh" in the message.  CSHELL is adefined datatype 
+$         name and it doesn't get translated. '.csh', "#!/bin/csh", or 
+$         "#! /bin/csh" are used as filename and CONTENT patterns which 
+$         match this datatype.
+$ 
+10014 楙堈麔淰讓屼纂堈髓 C-SHELL 杬麟碬諴侔\\\n\
+                        邴檎嬣柁⑴欹⺼杬麟碬﹞怬罶涷麷倛ボ磝珜 \\\n\
+                        CSHELL﹞ CSHELL 柁棓麔ボ珜 '.csh'﹜迖麔\\\n\
+                        淰蠡讓屼А蠣 "#!/bin/csh" 迖 "#! /bin/csh"﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 10015 refers to the KSHELL (*.ksh) datatype.
+$ 
+$ 10015 - Do not translate K-SHELL, KSHELL, '.ksh', "#!/bin/ksh", or
+$         "#! /bin/ksh" in the message.  KSHELL is adefined datatype
+$         name and it doesn't get translated. '.ksh', "#!/bin/ksh", or
+$         "#! /bin/ksh" are used as filename and CONTENT patterns which
+$         match this datatype.
+$ 
+10015 楙堈麔淰讓屼纂堈髓 K-SHELL 杬麟碬諴侔\\\n\
+                        邴檎嬣柁⑴欹⺼杬麟碬﹞怬罶涷麷倛ボ磝珜 \\\n\
+                        KSHELL﹞ KSHELL 柁棓麔ボ珜 '.csh'﹜迖麔\\\n\
+                        淰蠡讓屼А蠣 "#!/bin/ksh" 迖 "#! /bin/ksh"﹞
+$ ----------------------------------------------------------------------------
+$ Messages 10016 - 10018 refer to the SHAR (*.shar) datatype.
+$ 
+$ 10016 - Do not translate SHAR or '.shar' in the message.  SHAR is a
+$         defined datatype name and it doesn't get translated and '.shar'
+$         is the filename pattern which matches this datatype.
+$ 
+10016 楙堈麔淰旂纂堈 shell 砉Б剢讓﹞\\\n\
+                        Shell 砉Б剢讓楈琣揧え坭瑧踽麔淰﹞\\\n\
+                        怬罶涷麷倛珜 SHAR﹞ SHAR 麔淰\\\n\
+                        柁棓麔ボ珜 '.shar'﹞s
+$ 
+$ Messages 10017 and 10018 refer to the Unshar action associated
+$    with the SHAR datatype.
+$ 10017 - translate into 1 word with no blanks.
+$ 
+10017 Unshar
+$ 
+$ 10018 - Translate Unshar the same as message 10017.
+$ 
+10018 Unshar 棬汃稌抰伈え shar 杬麟搢隉柁麔淰\\\n\
+                        汃珜鰱禨﹜呥髱⼓欹⺼ unshar 杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10019 - 10021 refer to the UUENCODE (*.uu) datatype.
+$ 
+$ 10019 - Do not translate UUENCODE or '.uu' in the message.  UUENCODE is a
+$         defined datatype name and it doesn't get translated and '.uu'
+$         is the filename pattern which matches this datatype.
+$ 
+10019 楙旂纂堈蘑瑱戔麔淰﹜椴蝝瑧ス嶂冈坭瑱⺼蒡藣﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 UUENCODE﹞ UUENCODE \\\n\
+                        麔淰柁棓麔ボ珜 '.uu'﹞
+$ 
+$ Messages 10020 and 10021 refer to the Uudecode action associated
+$    with the UUENCODE datatype.
+$ 10020 - translate into 1 word with no blanks.
+$ 
+10020 Uudecode
+$ 
+$ 10021 - Translate Uudecode the same as message 10020.
+$ 
+10021 Uudecode 棬汃稌抰囷え uuencode 杬麟蹌謑柁\\\n\
+                        麔淰汃珜鰱禨﹜呥囷え uudecode 坭箾謑﹞
+$ 
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10022 - 1002x refer to the MESSAGE_CAT (*.cat) datatype.
+$ 
+$ 10022 - Do not translate MESSAGE_CAT or '.cat' in the message.  MESSAGE_CAT 
+$         is a defined datatype name and it doesn't get translated and '.cat'
+$         is the filename pattern which matches this datatype.
+$ 
+10022 楙堈麔淰讓屼纂堈⑴欹⺼麔柁ヾ饑襲\\\n\
+                        罶媢﹞怬罶涷麷倛ボ磝珜 MESSAGE_CAT﹞\\\n\
+                        MESSAGE_CAT 麔淰柁棓麔ボ珜 \\\n\
+                        '.cat'﹞
+$ 
+$ Messages 10023 and 10024 refer to the DumpMessage action associated
+$    with the MESSAGE_CAT datatype.
+$ 10023 - translate into 1 word with no blanks.
+$ 
+10023 DumpMessage
+$ 
+$ 10024 - Translate DumpMessage the same as message 10023.
+$ 
+10024 DumpMessage 棬汃稌抰媢桾げ蠊麔﹜呥渿\\\n\
+                        怬斕鬊Б柁邴媢桾ツ楶蒺パ籔婘﹞
+$ 
+$ Messages 10025 and 10026 refer to the PrintDumpMsg action associated
+$    with the MESSAGE_CAT datatype.
+$ 10025 - translate into 1 word with no blanks.
+$ 
+10025 PrintDumpMsg
+$ 
+$ 10026- Translate PrintDumpMsg the same as message 10025.
+$ 
+10026 PrintDumpMsg 棬汃稌抰媢桾げ蠊麔﹜呥渿\\\n\
+                        怬斕鬊Б柁邴媢桾ツ楶パ罐坭﹞
+$ 
+$ Messages 10027 - 10029 are comments.  NOTE: make sure each new line 
+$                begins with a "#".  This indicates that it is a comment.  
+$                Also, keep the \n\ at the end of each line where used.
+$ 
+10027 # Unix 蹌藟蟟
+10028 # Unix 杬麟
+$ 
+$ Message 10029 - Is a comment which explains how the next action for 
+$                 'TAR' works so it should localized.  Don't translate 
+$                 EXEC_STRING and 'true %(File)Args%'.  Make sure each 
+$                 line ends with a \n\. 
+$ 
+10029 # 譯ト棬汃囷え 'true %(File)Args%' 卼 EXEC_STRING﹞\n\
+# 楙堈訒ⅶ椔纂柁汃え﹜旂⣷邴鰱禨ョ痼纂堈棬汃鞜え渀\n\
+# ツ楶揧＞え＝怉﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10030 - 10032 refer to the Text Editor (Vi) action.
+$ 
+10030 齪А蹌藟蟟 (Vi)
+$ 
+$ Message 10031 - Requests which file to edit when no file/folder is
+$      is provided to the 'Vi' action.  Do not remove the ':'.
+$ 
+10031 衭蹌藟柁麔淰
+$ 
+$ 10032 - use the same word as Message 10030 to translate 'Vi'.  Don't 
+$    translate 'vi'.
+$ 
+10032 ＞齪А蹌藟蟟＝(Vi) 棬汃ョ嗈磞鞥槉嵺譫\\\n\
+                        欹⺼ 'vi' 杬麟﹜ヵ峈睎菙坯麔ボ﹜衧鞂渿\\\n\
+                        篎麔淰蟡蘋﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10033 - 10034 refer to the 'Vedit' action.
+$ 
+$ 10033 - translate into 1 word with no blanks.
+$ 
+10033 Vedit
+$ 
+$ 10034 - use the same word as Message 10033 to translate 'Vedit'.  Don't 
+$    translate 'vi' or 'vedit'.
+$ 
+10034 Vedit 棬汃ョ嗈磞鞥槉嵺斕髓 'vedit' 篲鳷\\\n\
+                        欹⺼ 'vi' 杬麟﹞  ヵ峈睎菙坯麔ボ﹜衧鞂渿\\\n\
+                        篎麔淰蟡蘋﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10035 - 10043 refer to the 'Tar' action.
+$ 
+10035 砉Б麔淰
+$ 
+$ Messages 10036 - 10037 are error (information) messages used when the user
+$    'drops'  more than one file/folder onto the TAR action in the
+$    application manager.  Translate Tar the same as in 10035. 
+$  10036 is the message.  NOTE: the '\\\\n' puts a new line into the message
+$        so it doesn't cover the whole screen.  Put the '\\\\n' where you feel
+$        a new line should be in your message.
+$  10037 is the title of the dialog.
+$ 
+10036 ＞砉Б麔淰＝棬汃ⅲ稌抰痼纂鰱禨﹜靨\\\\n \\\n\
+禕珜纂堈麔淰扢﹞
+10037 鰱禨隓淩
+$ 
+$ 10038 - Don't translate "tar", 'tar', or (Tar).
+$ 
+10038 ＞砉Б麔淰＝(Tar) 棬汃稌抰纂堈麔淰扢鰱禨﹜\\\n\
+                        呥渿怬斕讓屼柁邴麔淰砉Б痼纂柁 \\\n\
+                        "tar" 麔淰﹞⼓囷え柁旂 'tar' 杬麟﹞
+$ 
+$ Message 10039 - Requests which folder to tar when no folder is
+$      is provided to the 'Tar' action.  Do not remove the ':'.
+$ 
+10039 衭砉Б柁麔淰扢:
+$ 
+$ Message 10040 - an error message when the file the user provided the Tar
+$    action is not a folder. Don't translate %(File)Arg_1%, it will be
+$    the bad file name when the message is shown to the user.
+$ 
+10040 蠆諟”%(File)Arg_1% 攜旂纂堈麔淰扢﹞
+$ 
+$ Messsages 10041 and 10042 are status messages for the user.  These are
+$    shown to the user when the Tar action is creating the tarball.
+$  10041 don't translate \\$FOLDER as it is the file (i.e. tarball)
+$    that is being created.
+$  10042 Translate "Please wait" only.
+10041 唈ゥ \\$FOLDER 斕﹞
+10042 [霘寣埸 ...]\\\\n
+$ 
+$ Message 10043 is displayed to the user when the tarball is completed. It
+$   tells the user where they can find the tarball that has been created. 
+$   \\$FOLDER is the complete path to the file that was created. 
+$ 10043 - Don't translate \\$FOLDER or \\\\n. 
+$ 
+10043 \\\\n砉Б麔淰儸唈ゥ﹜鬊Б卼 \\$FOLDER 斕﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 10044 refer to the 'TarList' action.  NOTE: most of the messages
+$  for TarList were defined in 10003 and 10004.  10044 is a request to
+$  the user for the name of the file (i.e. tarball) to list the contents of.
+$ 
+10044 衭トざ柁砉Б麔淰:
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 10045 refer to the 'TarUnpack' action.  NOTE: most of the messages
+$  for TarList were defined in 10007 through 10009.  10045 is a request to
+$  the user for the name of the file (i.e. tarball) to unpack.
+$ 
+10045 衭箾瞅柁砉Б麔淰:
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10046 - 10048 refer to the Compress File (Compress) action.
+$ 
+10046 鯦醷麔淰
+$ 
+$ Message 10047 - Requests which file to compress when no file is
+$      is provided to the 'Compress' action.  Do not remove the ':'.
+$ 
+10047 衭鯦醷柁麔淰:
+$ 
+$ 10048 - do not translate 'compress' or '(Compress)'.
+$ 
+10048 ＞鯦醷麔淰＝(Compress) 棬汃稌抰纂迖ロ堈\\\n\
+                        麔淰﹜隑悒囷え 'compress' 杬麟鯦醷﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 10049 refer to the 'Uncompress' action.  NOTE: most of the messages
+$  for Uncompress were defined in 10010 through 10012.  10049 is a request to
+$  the user for the name of the file to uncompress.
+$ 
+10049 衭箾鯦醷柁麔淰:
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10050 - 10051 refer to the Environment Variables (Env) action.
+$ 
+10050 蘄頨䨣禨
+$ 
+$ 10051 - do not translate 'env' or '(Env)'.
+$ 
+10051 ＞蘄頨䨣禨＝(Env) 棬汃\\\n\
+                        囷え 'env'  杬麟䬷ざ囷え炟柁蘄頨䨣禨﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10052 - 10056 refer to the Compare Files (Diff) action.
+$ 
+10052 籤髱麔淰
+$ 
+$ Messages 10057 and 10058 prompt the users for the files to compare if no
+$   files were provided to the Compare Files action.  Don't translate
+$   (<), (>) or the :.
+$ 
+10053 剼纂堈麔淰 (<):
+$ 
+10054 剼蘑堈麔淰 (>):
+$ 
+$ Message 10055. The \\$file1 and \\$file2 represent file names that were
+$  being compared.  Don't translate them and place them where the 2 file
+$  names should appear in the message.
+$ 
+10055 怚堈麔淰 \\$file1 昑 \\$file2 旂砨フ柁﹞
+$ 
+$ 10056 - do not translate 'diff' or '(Diff)'.
+$ 
+10056 ＞籤髱麔淰＝(Diff) 棬汃囷え 'diff' 杬麟\\\n\
+                        籤髱怚堈麔淰﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10057 - 10060 refer to the Shred File (Rm) action.
+$ 
+10057 覗崽麔淰
+$ 
+$ Message 10059 - This gives the users a double check whether they really want
+$   to remove (Shred) the file.  Once the file is 'shred' it can't be restored.
+$   Translate "Enter y to delete a file, n to leave it" only.
+$ 
+10058 [衭覗崽麔淰霘藣蘋 y﹜攜覗崽霘藣蘋 n ...]\\\\n
+$ 
+$ Message 10059 - Prompt the user for the file to shred if not was provided.
+$   Do not remove the ':'.
+$ 
+10059 衭覗崽柁麔淰:
+$ 
+$ 
+$ 10060 - Don't translate 'rm -i' or (Rm).  
+$         Capitalize the last sentence to emphasis it.
+$ 
+10060 ＞覗崽麔淰＝(Rm) 棬汃囷え 'rm -i' 杬麟枺稌\\\n\
+                        渿麔淰覗崽﹜攜勂蘋麔淰杶扜蛦﹞⼓\\\n\
+                        鞂衭忴睎藣蘋怀堈麔淰柁麔ボ﹜呥⑴\\\n\
+                        ⣷睎薚泂旂匢衭覗崽篎麔淰﹞揧覗崽\\\n\
+                        柁麔淰祼隓恄テ艀婘﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10061 - 10065 refer to the Count Words (Wc) action.
+$ 
+10061 衶磭А禨
+$ 
+$ Messages 10061 - 10062 - These messages provide a "friendly" layout to show
+$   the output from the count words action.  This is how the unix command
+$   'wc' outputs it's data.  Keep this layout as close as possible.
+$ 
+10062 "  ⺼禨   А禨   А蠣  麔ボ"
+10063 "  ============================"
+$ 
+$ Message 10064 - Prompt the user for the file to do a word count on if it was
+$   not provided to the CountWords action.  Do not remove the ':'.
+$ 
+10064 衭衶磭柁麔淰:
+$ 
+$ 10065 - do not translate 'wc' or '(Wc)'.
+$ 
+10065 ＞衶磭А禨＝(Wc) 棬汃衶磭麔淰斕柁⺼禨﹝\\\n\
+                        А禨轡А蠣禨﹞  ⼓囷え柁旂 'wc' 杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10066 - 10069 refer to the Check Spelling (Spell) action.
+$ 
+10066 捋А黀栯
+$ 
+$ Message 10067 - Provides a 'friendly' output to the user providing the
+$   list of misspelled words.
+$   Translate "Misspelled words" and adjust "================" to the same
+$   size (length) of "Misspelled words".
+$ 
+10067 捋А蠆諟\\\\n========\\\\n
+$ 
+$ Message 10068 - Prompt the user for the file to do a spell check on if it was
+$   not provided to the Check Spelling action.  Do not remove the ':'.
+$ 
+10068 衭黀栯捋А柁麔淰:
+$ 
+$ 10069 - do not translate 'spell' or (Spell).
+$ 
+10069 ＞捋А黀栯＝(Spell) 棬汃黀栯麔淰斕邴А柁\\\n\
+                        捋А旂匢薚﹞⼓囷え柁旂 'spell' \\\n\
+                        杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10070 - 10071 refer to the Disk Usage (Df) action.
+$ 
+10070 瀄澥囷え畽
+$ 
+$ 10071 - do no translate 'df' or (Df).
+$ 
+10071 ＞瀄澥囷え畽＝(Df) 棬汃䬷ざ\\\n\
+                        邴稹暋柁瀄澥斕柁⑴え洠睮﹞\\\n\
+                        ⼓囷え柁旂 'df' 杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10072 - 10076 refer to the Folder Size (DuSort) action.
+$ 
+10072 麔淰扢騰麵
+$ 
+$ Message 10073 - 10074 - Provide a 'friendly' layout for the 'du' unix
+$  command.  Keep this layout as close as possible.
+$ 
+10073 棷栠  麔淰/げ蠊  - (纂蜞棷栠珜 512 堈⻏蠣嗢)
+10074 ============================================
+$ 
+$ Message 10075 - Prompt the user for the folder to do a size if one was
+$   not provided to the DirSize action.  Do not remove the ':'.
+$ 
+10075 衭彶庍騰麵柁麔淰扢:
+$ 
+$ 10076 - do not translate 'du', 'sort', or '(DuSort)'.
+$ 
+10076 ＞麔淰扢騰麵＝(DuSort) 棬汃䬷ざ\\\n\
+                        怀堈麔淰轡麔淰扢斕麔淰扢柁騰麵﹞\\\n\
+                        ⼓囷え 'du' 縋 'sort' 杬麟\\\n\
+                        柁嗢ポ﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10077 - 10082 refer to the Search Text (Grep) action.
+$ 
+10077 銌硻齪А
+$ 
+$ Message 10078 - Prompt the user for the file to search if one was
+$   not provided to the Search Text action.  Do not remove the ':'.
+$ 
+10078 衭銌硻柁麔淰:
+$ 
+$ 10079 - is an error message which tells the user that the file provided
+$  \\$SEARCH_FILE is a  folder and the action Search Text (Grep) does not 
+$  for strings in folders.  Don't translate \\$SEARCH_FILE and use it
+$  as a folder name and translate StringSearch the same as in message 10077.
+$ 
+10079 蠆諟”\\$SEARCH_FILE 旂纂堈麔淰扢﹜＞銌硻齪А＝\\\\n\
+隓恄銌硻麔淰扢蠡柁А⻌﹞
+$ 
+$ Message 10080 - Prompt the user for the string to search for the 
+$  StringSearch action.  Do not remove the ':'.
+$ 
+10080 銌硻А⻌:
+$ 
+$ 10081 - the output provided to the user if no matches were found from the
+$   SearchString action.
+$ 
+10081 岊攜怉嗃ポ柁А⻌﹞
+$ 
+$ 10082 - do not translate 'grep' or '(Grep)'.
+$ 
+10082 ＞銌硻齪А＝(Grep) 棬汃囷え 'grep' 杬麟ョ纂嗢\\\n\
+                        麔淰斕麜抻栲堈А⻌邴罐隃搢﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10083 - 10085 refer to the Type File (File) action.
+$ 
+10083 麔淰麷倛
+$ 
+$ Message 10084 - Prompt the user for the file to type for the
+$  TypeFile action.  Do not remove the ':'.
+$ 
+10084 衭䬷ざ麷倛柁麔淰:
+$ 
+$ 10085 - Do not translate '(File)'.
+$ 
+10085 ＞麔淰麷倛＝(File) 棬汃伈え file 杬麟髓扻泂麔\\\n\
+                        淰柁麷倛﹞楙昑麔淰柁痐譫磣隉侇嗄罶\\\n\
+                        涷麷倛攜フ﹞衭扻泂麔淰柁痐譫磣隉侇\\\n\
+                        嗄罶涷麷倛﹜霘藞抻篎麔淰﹜隑悒皕麔\\\n\
+                        淰磣隉炟槉棷斕﹜藞謥衢逑玿杬麟＞藞抻＝\\\n\
+                        ->＞彶庍暐⑴ḷ＝﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10086 - 10090 refer to the 'Execute' action.
+$ 
+$ 10086 - translate into 1 word with no blanks.
+$ 
+10086 欹⺼
+$ 
+$ Message 10087 - Prompt the user for the file to execute (run) for the
+$  Execute action.  Do not remove the ':'.
+$ 
+10087 衭欹⺼柁麔淰:
+$ 
+$ Message 10088 - Prompt the user for the any options which may go with the
+$  command being run from the Execute action.  Do not remove the ':'.
+$ 
+10088 藞禋:
+$ 
+$ Message 10089 - Prompt the user for the any arguments which may go with the
+$  command being run from the Execute action.  Do not remove the ':'.
+$ 
+10089 鰱禨:
+$ 
+$ 10090 - use the same word as Message 10086 to translate 'Execute'.
+$ 
+10090 ＞欹⺼＝棬汃欹⺼纂堈 shell 杬麟碬迖⑴欹⺼柁\\\n\
+                        蘑瑱戔麔﹞⼓鞂衭忴囷え炟藣蘋藞禋縋\\\n\
+                        鰱禨﹜隑悒ョ纂堈嗈磞鞥槉嵺斕欹⺼\\\n\
+                        杬麟碬迖⑴欹⺼麔﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 10091 - 10093 refer to the Execute Command (ExecuteCmd) action.
+$ 
+10091 欹⺼杬麟
+$ 
+$ Message 10092 - Prompt the user for the command to execute (run) for the
+$  ExecuteCmd action.  Do not remove the ':'.
+$ 
+10092 杬麟:
+$ 
+$ 10093 - use the same word as Message 10091 to translate 'ExecuteCmd'.
+$ 
+10093 ＞欹⺼杬麟＝(ExecuteCmd) 棬汃鞂衭忴囷え炟藣蘋纂\\\n\
+                        堈杬麟﹜隑悒髱汃珜鰱禨柁麔淰欹⺼杬麟﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dthelp.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dthelp.dt types file defines all the Actions, Datatypes, and 
+$ * descriptions of those Actions and Datatypes that are defined by 
+$ * the CDE help system.
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 11001 refers to the DTHELP_VOL (*.sdl, *.hv) datatype.
+$ 
+$ 11001 - Do not translate DTHELP_VOL, '.sdl',  or '.hv' in the message.  
+$         DTHELP_VOL is a defined datatype name and it doesn't get translated 
+$         and '.sdl' and '.hv' are the filename patterns which match this 
+$         datatype.
+$ 
+11001 楙旂纂堈赮伢諰咭晥忟柁饜晥忟麔淰﹞⼓柁罶涷\\\n\
+                        麷倛ボ磝珜 DTHELP_VOL﹞\\\n\
+                        DTHELP_VOL 麔淰柁棓麔ボ珜 '.sdl' 迖 '.hv'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 11002 refers to the DTHELP_HT (*.ht) datatype.
+$ 
+$ 11002 - Do not translate DTHELP_HT or '.ht' in the message.
+$         DTHELP_HT is a defined datatype name and it doesn't get translated
+$         and '.ht' is the filename pattern which matches this
+$         datatype.
+$ 
+11002 楙旂纂堈赮伢諰咭饜纕麔淰﹜㪫卼赮伢諰咭晥忟柁\\\n\
+                        纂楶禳﹞衭髲砫赮伢諰咭饜纕﹜睎⽁禕ッ瞅\\\n\
+                        絒饜晥忟麔淰﹞楙堈麔淰柁罶涷麷倛ボ磝珜\\\n\
+                        DTHELP_HT﹞ DTHELP_HT 麔淰柁棓麔ボ\\\n\
+                        珜 '.ht'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 11003 refers to the DTHELP_HVK (*.hvk) datatype.
+$ 
+$ 11003 - Do not translate DTHELP_HVK or '.hvk' in the message.
+$         DTHELP_HVK is a defined datatype name and it doesn't get translated
+$         and '.hvk' is the filename pattern which matches this
+$         datatype.
+$ 
+11003 楙堈麔淰縋儸蹌㾀柁赮伢諰咭晥忟驨鏺﹞衭髲\\\n\
+                        砫赮伢諰咭晥忟﹜睎⽁禕ッ瞅絒饜晥忟麔\\\n\
+                        淰﹞楙堈麔淰柁罶涷麷倛ボ磝珜 DTHELP_HVK﹞\\\n\
+                        DTHELP_HVK 麔淰柁棓麔ボ珜 'hvk'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 11004 refers to the DTHELP_XRN (*.xrh) datatype.
+$ 
+$ 11004 - Do not translate DTHELP_XRN or '.xrh' in the message.
+$         DTHELP_XRN is a defined datatype name and it doesn't get translated
+$         and '.xrh' is the filename pattern which matches this
+$         datatype.
+11004 楙堈麔淰縋儸蹌㾀柁赮伢諰咭晥忟驨鏺﹞衭髲\\\n\
+                        砫赮伢諰咭晥忟﹜睎⽁禕ッ瞅絒饜晥忟麔\\\n\
+                        淰﹞楙堈麔淰柁罶涷麷倛ボ磝珜 DTHELP_XRH﹞\\\n\
+                        DTHELP_XRH 麔淰柁棓麔ボ珜 '.xrh'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 11005 - 11007 refer to the Help Viewer (Dthelpview) action.
+$ 
+11005 赮伢諰咭髲砫蟟
+$ 
+$ Message 11006 - Prompt the user for the help volume to open for the
+$  HelpView action if none is provided.  Do not remove the ':'.
+$ 
+11006 赮伢諰咭晥忟:
+$ 
+$ 11007 - do not translate '(Dthelpview)'.
+$ 
+11007 ＞赮伢諰咭髲砫蟟＝(Dthelpview) 棬汃ョ椵挹怚\\\n\
+                        譯篎頝踛欄悒﹜⑴䬷ざ煄嬬赮伢諰咭﹞\\\n\
+                        ヵ峈渿纂堈赮伢諰咭晥忟泂⻏怉篎頝踛譫﹜\\\n\
+                        篎晥忟祼鞂䬷ざ﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 11008 - 11009 refer to the 'ManPages' action.
+$ 
+$ 11008 - translate into 1 word with no blanks.
+$ 
+11008 轃譫葰伢郟
+$ 
+$ 11009 - use the same word as Message 11008 to translate 'ManPages'.
+$ 
+11009 ＞轃譫葰伢郟＝棬汃鞂ョ轃譫葰伢郟髲砫蟟斕䬷\\\n\
+                        ざ纂堈轃譫葰伢郟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 11010 - 11013 refer to the Man Page Viewer (Dtmanpageview) action.
+$ 
+11010 轃譫葰伢郟髲砫蟟
+$ 
+$ Message 11011 - Prompt the user for the man page to view for the
+$  OpenManPage action if none is provided.  Do not remove the ':'.
+$ 
+11011 轃譫葰伢郟:
+$ 
+$ Message 11013 is locale dependent value.
+$ Dthelpview*manBox*columns = 100 for single-byte
+$                             50 for multi-byte
+$ 
+11012 50 
+$ 
+$ 11013 - do not translate 'Dtmanpageview'.
+$ 
+11013 ＞轃譫葰伢郟髲砫蟟＝(Dtmanpageview) 棬汃鞂ョ纂堈\\\n\
+                       籙厙赮伢諰咭髲砫蟟槉嵺斕䬷ざ轃譫葰伢郟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 11014 - 11016 refer to the Help Generator (Dthelpgen) action.
+$ 
+11014 赮伢諰咭雰ぇ蟟
+$ 
+$ Message 11015 - Prompt the user for the location where the user wishes to
+$  place the help volume generated by dthelpgen.
+$  Do not remove the ':'.
+$ 
+11015 雰ぇ柁赮伢諰咭麔淰柁勂殦⻏殦:
+$ 
+$ 11016 - do not translate 'Dthelpgen'.
+$ 
+11016 赮伢諰咭雰ぇ蟟 (Dthelpgen) 棬汃鞂欹⺼\\\n\
+                        dthelpgen﹜髓雰ぇ囷え炟⑴棤℡柁轃\\\n\
+                        譫赮伢諰咭﹞  欹⺼渀⼓躂鞂䬷ざ "雰ぇ廲\\\n\
+                        ៜ蟟罶媢斕﹜霘寣埸...﹞" 柁髱緷﹞\\\n\
+                        撋囷え炟剼纂僳蘋纂郫痐譫磣隉侇嗄\\\n\
+                        蘄頨渀﹜楙堈棬汃祼鞂欹⺼﹞
+$ 
+$ **************************************************************************
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  xclients.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The xclients.dt types file defines all the Actions, Datatypes, and 
+$ * descriptions of those Actions and Datatypes that are 'X' clients.
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12001 - 12004 refer to the XWD (*.xwd, *.wd) datatype.
+$ 
+$ 12001 - Do not translate XWD, '.xwd', or '.wd' in the message.  XWD is a
+$         defined datatype name and it doesn't get translated and '.xwd' and
+$         '.wd' are the filename patterns which match this datatype. 
+$         XwdCapture is the name of an action and should be translated the
+$         same as message 12034.
+$ 
+12001 楙堈麔淰屼纂堈 XWD 眭冈柁頝夆憵踛﹞\\\n\
+                        楙咍麔淰纂郫旂髓 Xwd Capture 棬汃\\\n\
+                        皕槉嵺斕妐嘵譯坭柁﹞ 怬罶涷麷倛ボ磝珜 \\\n\
+                        XWD﹞XWD 麔淰柁棓麔ボ珜 \\\n\
+                        '.xwd' 迖 '.wd'﹞
+$ 
+$ Messages 2002 - 2003 refer to the Xwd Display (Xwud) action 
+$    which get used by the 'XWD' datatype.
+$ 
+12002 Xwd 䬷ざ
+$ 
+$ Message 12003 - Prompts the user for the xwd file to display when the 
+$  XwdDisplay action is invoked with no file.  Do not remove the ':'.
+$ 
+12003 衭䬷ざ柁 Xwd 麔淰:
+$ 
+$ 12004 - Don't translate xwd, xwud, (Xwud) or (Xwd). 
+$ 
+12004 ＞Xwd 䬷ざ＝(Xwud) 棬汃䬷ざ髓 Xwd \\\n\
+                        麜抻 (Xwd) 棬汃邴唈\\\n\
+                        ゥ柁 xwd 麔淰﹞⼓囷え柁旂 'xwud' \\\n\
+                        杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12005 - 12006 refer to the Refresh Display (Xrefresh) action.
+$ 
+12005 怑隞䬷ざ蟟
+$ 
+$ 12006 - do not translate 'xrefresh' or '(Xrefresh)'.
+$ 
+12006 ＞怑隞䬷ざ蟟＝(Xrefresh) 棬汃逑⣷謽堈糬魦\\\n\
+                        怑隞﹜囷え柁旂 'xrefresh' 杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12007 - 12011 refer to the Edit Bitmap (Bitmap) action.
+$ 
+12007 蹌藟⻏蠣旃晛麔
+$ 
+$ Messages 12008 - 12010 - Prompt the user for input about the bitmap file.
+$   that is to be displayed by the Bitmap action. Do not remove the ':'.
+$ 12008 - Asks the user what file to open.
+$ 
+12008 衭瞅絒柁麔淰:
+$ 
+$ 12009 and 12010 - Ask the user what size via width and height the bitmap
+$   is going to be.  These only get used if the user doesn't provide a file
+$   to the action.
+$ 
+12009 嬥:
+12010 崼:
+$ 
+$ 12011 - do not translate 'bitmap' or '(Bitmap)'.
+$ 
+12011 ＞蹌藟⻏蠣旃晛麔＝(Bitmap) 棬汃欹⺼ 'bitmap' \\\n\
+                        剟鷓嶂冈﹞睎⑴髓菙坯纂堈麔淰鰱禨﹜\\\n\
+                        匢衧⼓鞂衭忴囷え炟藣蘋隞柁⻏蠣旃晛\\\n\
+                        麔柁嬥唄轡崼唄﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12012 - 12013 refer to the Terminal Console action.
+$ 
+12012 嗈磞鞥饜祰ⅵ
+$ 
+$ 12013 - Don't translate 'dtterm'.
+$ 
+12013 ＞嗈磞鞥饜祰ⅵ＝棬汃絒棬纂堈'dtterm' 嗈磞\\\n\
+                        鞥篲鶅嶂冈汃珜囷え炟柁饜祰ⅵ﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12014 - 12015 refer to the Xterm action.
+$ 
+12014 Xterm
+$ 
+$ 12015 - Do Not translate 'xterm'.
+$ 
+12015 Xterm 棬汃絒棬纂堈 \\\n\
+                        'xterm' 嗈磞鞥篲鶅嶂冈﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12016 - 12018 refer to the Terminal Remote (DttermDtspcd) action.
+$ 
+12016 踸磞嗈磞鞥
+$ 
+$ Message 12017 - Prompts the user for the hostname to connect to when the
+$  DttermDtspcd action is invoked.  Do not remove the ':'.
+$ 
+12017 饜鞥ボ磝:
+$ 
+$ 12018 - Don't translate 'dtterm'.
+$ 
+12018 ＞踸磞嗈磞鞥＝棬汃衭忴囷え炟藣蘋纂堈侇嗄\\\n\
+                        ボ磝﹜隑悒ョ篎侇嗄譫絒棬纂堈 'dtterm' \\\n\
+                        嗈磞鞥篲鶅嶂冈﹞侇嗄柁崷殦⽁禕薚﹜懼\\\n\
+                        逑囷え踸磞欹⺼衢逑﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12019 - 12020 refer to the Xterm Remote action.
+$ 
+12019 踸磞 Xterm
+$ 
+$ 12020 - Do not translate 'xterm'.
+$ 
+12020 ＞踸磞 Xterm＝棬汃衭忴囷え炟\\\n\
+                        藣蘋侇嗄ボ磝﹜隑悒ョ篎侇嗄譫絒棬纂\\\n\
+                        堈 'xterm' 嗈磞鞥篲鶅嶂冈﹞侇嗄柁崷殦⽁\\\n\
+                        禕薚﹜懼逑囷え踸磞欹⺼衢逑﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12021 - 12024 refer to the Terminal Rlogin (DttermRlogin) action.
+$ 
+12021 嗈磞鞥 Rlogin
+$ 
+$ In messages 12022 - 12023 the "\\$_title" should not be translated.  It is
+$ the hostname of the foreign host the xterm or dtterm is trying to connect
+$ to.
+$ 
+12022 \\$_title : Dtterm
+12023 閰箹縋 \\$_title 唈ゥ椵稌斕...﹜霘寣埸﹞
+$ 
+$ 12024 - do not translate 'dtterm' or 'rlogin'.
+$ 
+12024 ＞嗈磞鞥 Rlogin＝棬汃衭忴囷え炟藣蘋纂堈\\\n\
+                        侇嗄ボ磝﹜隑悒瞅絒纂堈 'dtterm' 嗈磞鞥篲\\\n\
+                        鶅槉嵺﹜テ欹⺼ 'rlogin' 僳蘋篎侇嗄﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12025 - 12027 refer to the Xterm Rlogin action.
+$ 
+12025 Xterm Rlogin
+$ 
+$ In message 12026 the "\\$_title" should not be translated.  It is
+$ the hostname of the foreign host the xterm is trying to connect
+$ to.
+$ 
+12026 \\$_title : Xterm
+$ 
+$ 12027 - Do not translate 'rlogin' or 'xterm'.
+$ 
+12027 Xterm Rlogin 棬汃衭忴囷え炟藣蘋纂堈\\\n\
+                        侇嗄ボ磝﹜隑悒瞅絒纂堈 'xterm' 嗈磞鞥篲\\\n\
+                        鶅槉嵺﹜テ欹⺼ 'rlogin' 僳蘋篎侇嗄﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12028 - 12029 refer to the 'ReloadResources' action.
+$ 
+12028 适隞蟡蘋罶鳲
+$ 
+$ 12029 - use the same word as Message 12028 to translate 'ReloadResources'.
+$   Don't translate EDITOR.
+$ 
+12029 ＞适隞蟡蘋罶鳲＝棬汃鞂渿睎柁 X 罶鳲罶涷梬适隞蟡蘋\\\n\
+                        痐譫磣隉侇嗄罶鳲﹜呥屼挭睎僳蘋悒邴⑴逑\\\n\
+                        僛ぇ柁䨣彶﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12030 - 12031 refer to the 'DigitalClock' action.
+$ 
+12030 禨⻏渀㺪
+$ 
+$ 12031 - Don't translate 'xclock -digital' or (Xclock).
+$ 
+12031 ＞禨⻏渀㺪＝(Xclock) 棬汃䬷ざ纂堈\\\n\
+                        禨⻏渀㺪﹞  ⼓囷え柁旂 'xclock -digital' 杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12032 - 12033 refer to the System Load (Xload) action.
+$ 
+12032 侇嗄蟡蘋
+$ 
+$ 12033 - Don't translate xload or (Xload).
+$ 
+12033 ＞侇嗄蟡蘋＝(Xload) 棬汃䬷ざ纂堈\\\n\
+                        侇嗄蟡蘋柁頝夆槉棷﹞⼓囷え柁旂 \\\n\
+                        xload 杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12034 - 12036 refer to the Xwd Capture (XwdCapture) action.
+$ 
+12034 Xwd 麜抻
+$ 
+$ Message 12035 - Prompts the user for the name of the file the user wishes
+$  to store the captured xwd image in.  Do not remove the ':'.
+$ 
+12035 藣罐麔淰 (<name>.xwd):
+$ 
+$ 12036 - Don't translate xwd or (Xwd).
+$ 
+12036 ＞Xwd 麜抻＝(Xwd) 棬汃鞂渿纂堈\\\n\
+                        槉嵺妐嘵譯坭﹜呥渿怬鬊Б纂堈 xwd \\\n\
+                        眭冈柁頝夆麔﹞撋睎欹⺼楙堈棬汃渀﹜\\\n\
+                        酮簅鞂䨣觸А﹜霘ョ睎裱麜抻柁槉嵺\\\n\
+                        譫挹纂譯﹞楙堈棬汃囷え柁旂 xwd 杬麟﹞\\\n\
+                        Xwd 鷥玿 'X 槉嵺蒺パ'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12037 - 12038 refer to the Clipboard Contents (Xclipboard) action.
+$ 
+12037 椌藟帣蠡晥
+$ 
+$ 12038 - Don't translate 'xclipboard' or (Xclipboard).
+$ 
+12038 ＞椌藟帣蠡晥＝(Xclipboard) 棬汃\\\n\
+                        䬷ざ睎柁椌藟帣﹞  ⼓囷え柁旂 'xclipboard' \\\n\
+                        杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12039 - 12043 refer to the Font Preview (Xfd) action.
+$ 
+12039 А夆諅ៜ
+$ 
+$ Message 12040 - Prompts the user for the name of the font the user wishes
+$  display.  Do not remove the ':'.
+$ 
+12040 衭諅ៜ柁А夆:
+$ 
+$ Messages 12041 and 12042 are information messages that are output when
+$   a font the user specified can't be found.
+$ 12041 the message. NOTE: the '\\\\n' represents a newline. Place these 
+$   where you feel it's appropriate.
+$ 
+12041 隓恄岊怉睎邴挴泂柁А夆﹞\\\\n\\\n\
+                           霘欹⺼А夆トざ棬汃坭䬷ざ\\\\n\\\n\
+                           ⑴えА夆ボ磝柁トざ﹞
+$ 
+$ 12042 the title of the dialog.
+$ 
+12042 隓恄岊怉А夆ボ磝
+$ 
+$ 12043 - Don't translate 'xfd' or (Xfd).
+$ 
+12043 ＞А夆諅ៜ＝(Xfd) 棬汃衭忴囷え炟藣蘋А夆\\\n\
+                        ボ磝﹜隑悒䬷ざ篎А夆柁邴А蠣﹞\\\n\
+                        ⼓囷え柁旂 'xfd' 杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12044 - 12046 refer to the Window Information (Xwininfo) action.
+$ 
+$ Message 12044 is a comment in xclients.dt.
+$         NOTE: make sure each new line begins with a "#".  This indicates
+$         that it is a comment.   Don't translate '| ${PAGER:-more}' or
+$         (Xwininfo).
+$ 
+12044 # ＞槉嵺罶媢＝(Xwininfo) 棬汃隓恄囷え\n\
+# '| ${PAGER:-more}' 泂氂﹜モ珜⼓攜⣷ 'ョ栲堈槉嵺斕\n\
+# 挹纂譯' 媢桾䬷ざ罐坭﹞
+$ 
+12045 槉嵺罶媢
+$ 
+$ 12046 - Don't translate 'xwininfo' or (Xwininfo).
+$ 
+12046 ＞槉嵺罶媢＝(Xwininfo) 棬汃䬷ざ\\\n\
+                        驨卼栲堈槉嵺柁罶媢﹞  撋睎欹⺼＞トざ槉嵺罶媢＝\\\n\
+                        渀﹜酮簅鞂䨣觸А夆﹜霘ョ睎裱蘀痤罶媢柁\\\n\
+                        槉嵺斕挹纂譯﹞  楙堈棬汃囷え柁旂 'xwininfo' \\\n\
+                        杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12047 - 12049 refer to the Window Properties (Xprop) action.
+$ 
+12047 槉嵺笱迒
+$ 
+$ 12048 - Translate "When the cursor changes to a cross, click on a window" 
+$   only.  This message gets displayed when the cursor changes to a cross and
+$   prompts the user to click on a window
+$ 
+12048 [撋酮簅䨣觸А夆渀﹜霘ョ槉嵺斕挹纂譯 ...]\\\\n
+$ 
+$ 12049 - $  Don't translate 'xprop' or (Xprop).
+$ 
+12049 ＞槉嵺笱迒＝(Xprop) 棬汃\\\n\
+                        鞂䬷ざ槉嵺斕鬊Б柁笱迒﹞  撋睎欹⺼＞槉嵺\\\n\
+                        笱迒＝渀﹜酮簅鞂䨣觸А夆﹜渀霘ョ睎\\\n\
+                        裱蘀痤罶媢柁槉嵺斕挹纂譯﹞楙堈棬汃囷え\\\n\
+                        柁旂 'xprop' 杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12050 - 12051 refer to the X Server Information (Xdpyinfo) 
+$  action.
+$ 
+12050 X ɵ峇蟟罶媢
+$ 
+$ 12051 - Don't translate 'xdpyinfo' or (Xdpyinfo).
+$ 
+12051 ＞X ɵ峇蟟罶媢＝(Xdpyinfo) 棬汃\\\n\
+                        䬷ざ驨 X ɵ峇蟟縋䬷ざ侇嗄柁罶媢﹞\\\n\
+                        ⼓囷え柁旂 'xdpyinfo' 杬麟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 12052 - 12054 refer to the Font List (Xlsfonts) action.
+$ 
+12052 А夆トざ
+$ 
+$ Message 12053 is a note to the user.
+$ 
+12053 硻岊А夆斕﹜霘寣埸......﹞\\\\n\
+        霘恞蜑”睎柁䬷ざ蟟ɵ峇蟟⑴逑鞂揧孍泂纂鞂怗﹞
+$ 
+$ 12054 - do not translate 'xlsfonts' or '(Xlsfonts)'.
+$ 
+12054 ＞А夆トざ＝(Xlsfonts) 棬汃ト罐睎柁\\\n\
+                        侇嗄⑴䬷ざ柁邴А夆﹞⼓囷え柁旂 \\\n\
+                        'xlsfonts' 杬麟﹞
+$ 
+$ 12055 - this message was left out of the System Load (Xload) action
+$  defined in messages 12032 and 12033.  It is the title of the load.
+$ 
+12055 侇嗄蟡蘋
+$ 
+$ 12056 - this message was left out of the DttermConsole action
+$  defined in messages 12012 and 12013.  It is the title of the Terminal.
+$ 
+12056 饜祰ⅵ
+
+$ ----------------------------------------------------------------------------
+$ Message 12057 refers to the 'DigitalClock' action.
+$ 
+$ 12057 - Translate the following X Logical Font Description so the
+$         font used by the digital xclock will be localized.
+$ 
+12057 -dt-interface system-medium-r-normal-s*-*-*-*-*-*-*-*-*
+
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dtappman.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dtappman.dt types file defines all the Actions, Datatypes, and 
+$ * descriptions of those Actions and Datatypes that are specific to the
+$ * CDE Application Manager.
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 13001:
+$         This Message is a header used to explain what objects this file 
+$         works on.  Don't translate /var/dt/appconfig/appmanager/$LOGNAME 
+$         NOTE: make sure each line begins with a "#  ".  This indicates
+$         that it is a comment.
+$ 
+13001 # 楙咍罶涷麷倛泂氂鶈え卼囷え炟ョ \n\
+# /var/dt/appconfig/appmanager/$LOGNAME \n\
+# 麔淰扢斕邴唈ゥ柁昡ス﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 13002 - 13008 are descriptions for the different application groups
+$   within the Application Manager.
+$ 
+$ 13002 - this is the description for the DtApplications icon in the top level
+$   of the Application Manager.
+$ 
+13002 霘椵挹怚譯楙堈頝踛﹜髓瞅絒 \\\n\
+                        Desktop_Apps 痐譫磣隉侇嗄鶈え嶂冈漦嗢﹞
+$ 
+$ 13003 - this is the description for the Printer icon in the top level
+$   of the Application Manager.
+$ 
+13003 霘椵挹怚譯楙堈頝踛﹜髓瞅絒 Printers パ玿鞥\\\n\
+                        鶈え嶂冈漦嗢﹞
+$ 
+$ 13004 - this is the description for the Information icon in the top level
+$   of the Application Manager.
+$ 
+13004 霘椵挹怚譯楙堈頝踛﹜髓瞅絒 Information 罶媢\\\n\
+                        鶈え嶂冈漦嗢﹞
+$ 
+$ 13005 - this is the description for the SystemAdmin icon in the top level
+$   of the Application Manager.
+$ 
+13005 霘椵挹怚譯楙堈頝踛﹜髓瞅絒 System_Admin 侇嗄\\\n\
+                        磣隉鶈え嶂冈漦嗢﹞
+$ 
+$ 13006 - this is the description for the DtTools icon located in the 
+$   Desktop Tools folder of the Application Manager.
+$ 
+13006 霘椵挹怚譯楙堈頝踛﹜髓瞅絒 \\\n\
+                        Desktop_Tools 痐譫磣隉侇嗄齡怞鶈え嶂冈漦嗢﹞
+$ 
+$ 13007 - this is the description for the Application Manager go up icon.
+$ 
+13007 霘椵挹怚譯楙堈頝踛﹜ョ\\\n\
+                        鶈え嶂冈磣隉炟斕菙崼纂嬬﹞
+$ 
+$ 13008 - this is the description for the Application Manager icon.
+$ 
+13008 霘椵挹怚譯楙堈頝踛﹜髓䬷ざ\\\n\
+                        瑊譫嬬柁鶈え嶂冈磣隉炟﹞
+$ ----------------------------------------------------------------------------
+$ Messages 13009 - 13014 Labels for the Application Manager Icons.
+$  Translate all into 1 word with no blanks.
+$ 
+13009 Desktop_Apps
+13010 Printers
+13011 Information
+13012 System_Admin
+13013 Desktop_Tools
+13014 Digital_Media
+$ 
+$ 13015 - this is the description for the Digital_Media icon located in the
+$   top level of the Application Manager.
+$ 
+13015 椵挹怚譯篎頝踛髓瞅絒 \\\n\
+			Digital_Media 禨⻏碄忟鶈え嶂冈漦嗢﹞ 
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  ibm.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * These are ibm specific actions and data types.
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 14001 - 14005
+$ Do not translate XXX in the messages "The XXX action ..." and
+$ "A XXX file ...". It is a defined Action and Filetype name.
+$ Use \\\n\ at the end of the line if the message continues to the next line.
+$ ----------------------------------------------------------------------------
+$ Messages 14001 - 14003 refer to the 'Smit' action.
+$ 
+$ 14001 - translate into 1 word with no blanks.
+$ 
+14001 Smit
+$ 
+$ 14002 and 14003 - use the same word as Message 14001 to translate 'Smit'.
+$ 
+14002 Smit 棬汃衭忴囷え炟藣蘋淂湅謑﹜隑悒欹⺼ \\\n\
+                        IBM 柁 'smit' 侇嗄磣隉齡怞﹞
+$ 
+14003 Smit 棬汃欹⺼ IBM 柁 'smit' 侇嗄磣隉齡怞﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 14004 - 14005 refer to the 'Smit' action.
+$ 
+$ 14004 - translate into 1 word with no blanks.
+14004 Aixterm
+$ 
+$ 14005 - use the same word as Message 14004 to translate 'Aixterm'.
+$ 
+14005 Aixterm 棬汃絒棬纂堈 aixterm 嗈磞鞥篲鶅嶂冈﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  hp.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * These are hp specific actions and data types.
+$ 
+$ ----------------------------------------------------------------------------
+$ Do not translate XXX in the messages "The XXX action ..." and
+$ "A XXX file ...". It is a defined Action and Filetype name.
+$ Use \\\n\ at the end of the line if the message continues to the next line.
+$ ----------------------------------------------------------------------------
+$ Messages 15001 - 15003 refer to the 'Sam' action.
+$ 
+$ 15001 - translate into 1 word with no blanks.
+$ 
+15001 Sams
+$ 
+$ 15002 and 15003 - use the same word as Message 15001 to translate 'Sam'.
+$ 
+15002 Sam 棬汃衭忴囷え炟藣蘋淂湅謑﹜隑悒\\\n\
+                        ョ纂堈嗈磞鞥槉嵺斕欹⺼ HP 柁 'sam' 侇嗄磣隉齡怞﹞
+$ 
+15003 Sam 棬汃ョ纂堈嗈磞鞥槉嵺斕欹⺼ HP \\\n\
+                        柁 'sam' 侇嗄磣隉齡怞﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 15004 - 15005 refer to the 'Hpterm' action.
+$ 
+$ 15004 - translate into 1 word with no blanks.
+15004 Hpterm
+$ 
+$ 15005 - use the same word as Message 15004 to translate 'Hpterm'.
+$ 
+15005 Hpterm 棬汃絒棬 hpterm 嗈磞鞥篲鶅嶂冈﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 15006 is obsolete
+$ Message 15006 refers to the BMF data type. 
+$ 
+15006 BMF 麔淰屼 Starbase 眭冈柁頝夆憵踛﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 15007 - 15008 refer to the Hpterm Remote action.
+$ 
+15007 踸磞 Hpterm
+$ 
+$ 15008 - Do not translate 'hpterm'.
+$ 
+15008 踸磞 Hpterm 棬汃菙ざ囷え炟\\\n\
+			耰蘋侇嗄柁ボ磝, 呥ョ篎侇嗄絒棬 \\\n\
+			'hpterm' 嗈磞鞥篲鶅嶂冈﹞ 篎侇嗄\\\n\
+			⽁禕薚崷殦⑴坯踸磞欹⺼欄え﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 15009 - 15011 refer to the Hpterm Rlogin action.
+$ 
+15009 Hpterm Rlogin
+$ 
+$ In message 15010 the "\\$_title" should not be translated.  It is
+$ the hostname of the foreign host the hpterm is trying to connect
+$ to.
+$ 
+15010 \\$_title : Hpterm
+$ 
+$ 15011 - Do not translate 'rlogin' or 'hpterm'.
+$ 
+15011 Hpterm Rlogin 棬汃菙ざ囷え炟\\\n\
+			耰蘋侇嗄柁ボ磝, 瞅絒纂堈 'hpterm' \\\n\
+			嗈磞鞥篲鶅嶂冈槉嵺, 隑悒欹⺼ \\\n\
+			'rlogin' 怉怬鱗侇嗄﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 15012 - 15013 refer to the Capture Screen action.
+$ 
+15012 麜抻糬魦
+$ 
+15013 篎棬汃鞂絒棬麜抻糬魦襬え嶂冈
+$ 
+$ ***************************************************************************
+$ **************************************************************************
+$ *  dthelptag.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dthelptag.dt types file defines all the Actions, Datatypes, and 
+$ * descriptions of those Actions and Datatypes that are for CDE help 
+$ * developers.
+$ 
+$ ----------------------------------------------------------------------------
+$   Message 16001
+$         This message is a comment in the dthelptag.dt file.
+$         NOTE: make sure each new line begins with a "#".  This indicates
+$         that it is a comment.  Also, keep the \n\ at the end of each
+$         line.
+$ 
+$ 
+16001 # Help ⑴欹⺼麔ガ楎渀⻏卼 ../dt/bin げ蠊斕﹜楙⑴逑\n\
+# 攜ョ囷え炟柁聤梏譫﹞モ笱伀泂氂譯トА⻌﹜ョ鞜え篎\n\
+# 剟鷓嶂冈欄虳﹜渿怬蠹蘋聤梏斕﹞\n
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 16002 refers to the DTHELP_HTG (*.htg) datatype.
+$ 
+$ 16002 - Do not translate DTHELP_HTG or '.htg' in the message.  DTHELP_HTG is 
+$         a defined datatype name and it doesn't get translated and '.htg' 
+$         is the filename pattern which matches this datatype.  Also don't
+$         translate ('dthelptag').  
+$ 
+16002 楙旂痐譫磣隉侇嗄赮伢諰咭侇嗄柁饜衭 HelpTag \\\n\
+                        坭鳲麔淰﹞楙堈麔淰蠡柁罶媢旂伈え \\\n\
+                        HelpTag 簅ざ諴侔坭暋泂眭冈﹜⽁禕髓 HelpTag \\\n\
+                        楗忟 ('dthelptag') 蹌㾀欄悒懼逑髲砫﹞怬罶涷麷\\\n\
+                        倛ボ磝珜 DTHELP_HTG﹞DTHELP_HTG 麔淰柁\\\n\
+                        棓麔ボ珜 '.htg'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 16003 refers to the DTHELP_CTG (*.ctg) datatype.
+$ 
+$ 16003 - Do not translate DTHELP_CTG or '.ctg' in the message.  DTHELP_CTG is 
+$         a defined datatype name and it doesn't get translated and '.ctg' 
+$         is the filename pattern which matches this datatype.  Also don't
+$         translate ('dthelptag') or '-canon'.  
+$ 
+16003 楙旂纂堈痐譫磣隉侇嗄赮伢諰咭侇嗄襬諝柁 SGML \\\n\
+                        饜衭 HelpTag 坭鳲麔淰﹞楙堈麔淰蠡柁罶媢旂\\\n\
+                        伈え襬諝柁 HelpTag 簅ざ諴侔坭暋泂眭冈﹜⽁\\\n\
+                        禕髓 HelpTag 楗忟 ('dthelptag') 蹌㾀欄悒懼逑髲\\\n\
+                        砫﹞  怬罶涷麷倛ボ磝珜 DTHELP_CTG﹞\\\n\
+                        DTHELP_CTG 麔淰柁棓麔ボ珜 '.ctg'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 16004 refers to the DTHELP_ERR (*.ctg) datatype.
+$ 
+$ 16004 - Do not translate DTHELP_ERR or '.err' in the message.  DTHELP_ERR is 
+$         a defined datatype name and it doesn't get translated and '.err' 
+$         is the filename pattern which matches this datatype.  Also don't
+$         translate ('dthelptag') or '-canon'.  
+$ 
+16004 楙堈麔淰讓屼縋儸蹌㾀柁赮伢諰咭晥忟砨驨\\\n\
+                        欄箾庰蟟蠆諟﹞楙堈麔淰ⅲョ蹌㾀赮\\\n\
+                        伢諰咭晥忟﹜愔鉡怉箾庰蟟蠆諟渀﹜懼\\\n\
+                        鞂か dthelptag 箾庰蟟雰ぇ﹞怬罶涷麷倛\\\n\
+                        ボ磝珜 DTHELP_ERR﹞ DTHELP_ERR 麔\\\n\
+                        淰柁棓麔ボ珜 '.err'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 16005 - 16007 are Labels for actions.  They all get mapped
+$  to other actions.
+$ 
+16005 蹌㾀
+16006 蹌㾀 Canon 眭冈
+16007 覗崽
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 16008 - 16009 refer to the 'OpenHelpTag' action.
+$ 
+$ 16008 - translate into 1 word with no blanks.
+$ 
+16008 OpenHelpTag
+$ 
+$ 16009 - use the same word as Message 16008 to translate 'OpenHelpTag'.
+$ 
+16009 OpenHelpTag 棬汃ョ纂堈齪А蹌藟蟟斕瞅絒纂堈饜\\\n\
+                        衭柁 HelpTag 麔淰 (纂堈 '.sdl' 迖 '.hv' 麔淰)﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 16010 - 16012 refer to the 'HelpTag' action.
+$ 
+$ 16010 - translate into 1 word with no blanks.
+$ 
+16010 HelpTag
+$ 
+$ Message 16011 - Prompt the user for the helptag file to view for the
+$  HelpTag action if none is provided.  Do not remove the ':'.
+$ 
+16011 HelpTag 麔淰:
+$ 
+$ 16012 - use the same word as Message 16010 to translate 'HelpTag'.
+$   Don't translate 'dthelpview'.
+$ 
+16012 HelpTag 棬汃逑蹌㾀饜衭柁 HelpTag \\\n\
+                        麔淰﹜髓唈ゥ欹⺼渀赮伢諰咭麔淰﹞欹⺼\\\n\
+                        渀麔淰⑴髓伈え赮伢諰咭侇嗄迖 'dthelpview' \\\n\
+                        嶂冈﹜か栲堈嶂冈䬷ざ﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 16013 - 16014 refer to the 'HelpTagCanon' action.
+$ 
+$ 16013 - translate into 1 word with no blanks.
+$ 
+16013 HelpTagCanon
+$ 
+$ 16014 - use the same word as Message 16013 to translate 'HelpTagCanon'.
+$   Don't translate 'dthelpview'.
+$ 
+16014 HelpTagCanon 棬汃⑴蹌㾀襬諝柁 SGML \\\n\
+                        饜衭 HelpTag 麔淰﹜髓唈ゥ欹⺼渀赮伢\\\n\
+                        諰咭麔淰﹞欹⺼渀麔淰⑴髓伈え赮伢諰\\\n\
+                        咭侇嗄か鶈え嶂冈䬷ざ迖伈え 'dthelpview' 嶂冈\\\n\
+                        䬷ざ﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 16015 - 16016 refer to the 'CleanHelpTag' action.
+$ 
+$ 16015 - translate into 1 word with no blanks.
+$ 
+16015 CleanHelpTag
+$ 
+$ 16016 - use the same word as Message 16015 to translate 'CleanHelpTag'.
+$ 
+16016 CleanHelpTag 棬汃崽⑩か HelpTag 棬汃邴唈ゥ柁蝒⺼\\\n\
+                        赮伢諰咭麔淰﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dtmail.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dtmail.dt types file defines all the Actions, Datatypes, and 
+$ * descriptions of those Actions and Datatypes used by the CDE
+$ * Mailer
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 17001 refers to the DTMAIL_FILE datatype.
+$ 
+$ 17001 - Do not translate DTMAIL_FILE in the message.
+$         DTMAIL_FILE is a defined datatype name and it doesn't
+$         get translated.  Also don't translate the strings "From".
+$ 
+17001 楙旂痐譫磣隉侇嗄 mailer 邴え柁麔淰扢﹞  怬\\\n\
+                        罶涷麷倛珜 DTMAIL_FILE﹞  DMMAIL_FILE 麔淰\\\n\
+                        讓屼藹А蠣 "CDE-Mail-Application-MailBox-File"\\\n\
+                        迖 "From"﹞
+17002 ャ砆
+17003 楙旂纂堈 MIME 媢桾/⼃楶饜忟麔淰﹞  怬罶涷麷倛\\\n\
+                        珜 DTEXTERNALBODY﹞  DTEXTERNALBODY\\\n\
+                        麔淰柁棓麔ボ珜 '.ext'﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dtwm.fp
+$  **************************************************************************
+$ *
+$ * LABEL of CONTROL
+$ *
+18001 渀㺪
+$ 
+18002 ⺼呦謺
+$ 
+18003 媊沓麔淰扢
+$ 
+18004 齪А蹌藟蟟
+$ 
+18005 瑧ス
+$ 
+18006 蠡泂圊
+$ 
+18007 痐譫磣隉侇嗄⼃倛冈穔
+$ 
+18008 鶈え嶂冈
+$ 
+18009 赮伢諰咭磣隉炟
+$ 
+18010 杶扜蛦
+$ 
+18011 孍泂
+$ 
+18012 齡汃斕
+$ 
+18013 廎忒
+$ 
+18014 嗈磞鞥
+$ 
+18015 頝踛蹌藟蟟
+$ 
+18016 痐譫磣隉侇嗄籙蘭
+$ 
+18017 虳巖郖帣赮伢諰咭
+$ *
+$ * TITLE of SUBPANEL
+$ *
+18018 堈藺鶈え嶂冈
+$ 
+18019 赮伢諰咭
+$ 
+18020 堈藺パ玿鞥
+$ 
+18021 驨卼禋げ赮伢諰咭
+$ 
+18022 %b%n%e戀
+$ *
+$ * LABEL of CONTROL
+$ *
+18023 鐖媢祰戔
+$ 
+$ **************************************************************************
+$ *  dtscreen.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dtscreen.dt types file defines all the Actions, Datatypes, and 
+$ * descriptions of those Actions and Datatypes used by the CDE
+$ * Screen Savers.
+$ 
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 19001 - 19003 refer to the 'StartDtscreenHop' action.
+$ 
+$ 19001 - translate into 1 word with no blanks.
+$ 
+19001 StartDtscreenHop
+$ 
+$ 19002 - Short Description
+$ 
+19002 Hopalong iterated fractals
+$ 
+$ 19003 - use the same word as Message 19001 to translate 'StartDtscreenHop'.
+$   Long Description
+$ 
+19003 StartDtscreenHop 棬汃旂侇嗄え坭絒棬 hopalong iterated \\\n\
+                        fractals 糬魦砵諔稹殦邴え﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 19004 - 19006 refer to the 'StartDtscreenQix' action.
+$ 
+$ 19004 - translate into 1 word with no blanks.
+$ 
+19004 StartDtscreenQix
+$ 
+$ 19005 - Short Description
+$ 
+19005 Spinning lines
+$ 
+$ 19006 - use the same word as Message 19004 to translate 'StartDtscreenQix'.
+$   Long Description
+$ 
+19006 StartDtscreenQix 棬汃旂侇嗄え坭絒棬 \\\n\
+                        spinning lines 糬魦砵諔稹殦邴え﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 19007 - 19009 refer to the 'StartDtscreenImage' action.
+$ 
+$ 19007 - translate into 1 word with no blanks.
+$ 
+19007 StartDtscreenImage
+$ 
+$ 19008 - Short Description
+$ 
+19008 Random bouncing image
+$ 
+$ 19009 - use the same word as Message 19007 to translate 'StartDtscreenImage'.
+$   Long Description
+$ 
+19009 StartDtscreenImage 棬汃旂侇嗄え坭絒棬 \\\n\
+                        Random bouncing image 糬魦砵諔稹殦邴え﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 19010 - 19012 refer to the 'StartDtscreenLife' action.
+$ 
+$ 19010 - translate into 1 word with no blanks.
+$ 
+19010 StartDtscreenLife
+$ 
+$ 19011 - Short Description
+$ 
+19011 Conway's game of Life
+$ 
+$ 19012 - use the same word as Message 19010 to translate 'StartDtscreenLife'.
+$   Long Description
+$ 
+19012 StartDtscreenLife 棬汃旂侇嗄え坭絒棬 \\\n\
+                        Conway's game of Life 糬魦砵諔稹殦邴え﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 19013 - 19015 refer to the 'StartDtscreenSwarm' action.
+$ 
+$ 19013 - translate into 1 word with no blanks.
+$ 
+19013 StartDtscreenSwarm
+$ 
+$ 19014 - Short Description
+$ 
+19014 Swarm of bees
+$ 
+$ 19015 - use the same word as Message 19013 to translate 'StartDtscreenSwarm'.
+$   Long Description
+$ 
+19015 StartDtscreenSwarm 棬汃旂侇嗄え坭絒棬 \\\n\
+                        Swarm of bees 憵踛糬魦砵諔稹殦邴え﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 19016 - 19018 refer to the 'StartDtscreenRotor' action.
+$ 
+$ 19016 - translate into 1 word with no blanks.
+$ 
+19016 StartDtscreenRotor
+$ 
+$ 19017 - Short Description
+$ 
+19017 Rotor
+$ 
+$ 19018 - use the same word as Message 19016 to translate 'StartDtscreenRotor'.
+$   Long Description
+$ 
+19018 StartDtscreenRotor 棬汃旂侇嗄え坭絒棬 \\\n\
+                        Rotor 糬魦砵諔稹殦邴え﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 19019 - 19021 refer to the 'StartDtscreenPyro' action.
+$ 
+$ 19019 - translate into 1 word with no blanks.
+$ 
+19019 StartDtscreenPyro
+$ 
+$ 19020 - Short Description
+$ 
+19020 Fireworks
+$ 
+$ 19021 - use the same word as Message 19019 to translate 'StartDtscreenPyro'.
+$   Long Description
+$ 
+19021 StartDtscreenPyro 棬汃旂侇嗄え坭絒棬 \\\n\
+                        Fireworks 糬魦砵諔稹殦邴え﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 19022 - 19024 refer to the 'StartDtscreenFlame' action.
+$ 
+$ 19022 - translate into 1 word with no blanks.
+$ 
+19022 StartDtscreenFlame
+$ 
+$ 19023 - Short Description
+$ 
+19023 Cosmic Flame Fractals
+$ 
+$ 19024 - use the same word as Message 19022 to translate 'StartDtscreenFlame'.
+$   Long Description
+$ 
+19024 StartDtscreenFlame 棬汃旂侇嗄え坭絒棬 \\\n\
+                        Cosmic Flame Fractals 糬魦砵諔稹殦邴え﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 19025 - 19027 refer to the 'StartDtscreenWorm' action.
+$ 
+$ 19025 - translate into 1 word with no blanks.
+$ 
+19025 StartDtscreenWorm
+$ 
+$ 19026 - Short Description
+$ 
+19026 Wiggly Worms
+$ 
+$ 19027 - use the same word as Message 19025 to translate 'StartDtscreenWorm'.
+$   Long Description
+$ 
+19027 StartDtscreenWorm 棬汃旂侇嗄え坭絒棬 \\\n\
+                        Wiggly Worms 糬魦砵諔稹殦邴え﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 19028 - 19030 refer to the 'StartDtscreenBlank' action.
+$ 
+$ 19028 - translate into 1 word with no blanks.
+$ 
+19028 StartDtscreenBlank
+$ 
+$ 19029 - Short Description
+$ 
+19029 Blank Screen
+$ 
+$ 19030 - use the same word as Message 19028 to translate 'StartDtscreenBlank'.
+$   Long Description
+$ 
+19030 StartDtscreenBlank 棬汃旂侇嗄え坭絒棬 \\\n\
+                        Blank Screen 糬魦砵諔稹殦邴え﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dtcm.dt (Calender Manager)
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dtcm.dt types file defines all the Actions, Datatypes, and 
+$ * descriptions of those Actions and Datatypes used by the CDE
+$ * Calender Manager.
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 20001 refers to the CalendarAppointmentAttrs (*.appt) datatype.
+$ 
+$ 20001 - Do not translate CalendarAppointmentAttrs or '.appt' in the message.
+$         CalendarAppointmentAttrs is a defined datatype name and it doesn't 
+$         get translated and '.appt' is the filename pattern which matches 
+$         this datatype.
+$ 
+20001 楙堈麔淰蠡屼縋⺼呦謺磣隉炟砨驨柁罶媢﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 CalendarAppointmentAttrs﹞\\\n\
+                        CalendarAppointmentAttrs 麔淰柁棓麔ボ\\\n\
+                        珜 '.appt'﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 20002 - 20003 refer to the Calendar (Dtcm)  action
+$ 
+$ 20002 - translate into 1 word with no blanks.
+$ 
+20002 ⺼呦謺
+$ 
+$ 20003 - Don't translate '(Dtcm)'
+$ 
+20003 ＞⺼呦謺＝(Dtcm) 棬汃絒棬痐譫磣隉侇嗄柁\\\n\
+                        ⺼呦謺磣隉炟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 20004 - 20005 refer to the Calendar Insert (DtcmInsert) action
+$ 
+20004 ⺼呦謺葅蘋
+$ 
+$ 20005 - Don't translate (DtcmInsert).
+$ 
+20005 ＞⺼呦謺葅蘋＝(DtcmInsert) 棬汃ョ囷え炟\\\n\
+                        蠡泂柁⺼呦謺斕葅蘋纂堈諅窇﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 20006 - 20007 refer to the Calendar Edit (DtcmEdit) action
+$ 
+$ 20006 - translate into 1 word with no blanks.
+$ 
+20006 ⺼呦謺蹌藟
+$ 
+$ 20007 - Don't translate (DtcmEdit).
+$ 
+20007 ＞⺼呦謺蹌藟＝(DtcmEdit) 棬汃髱栲堈\\\n\
+                        ⺼呦謺諅窇欹⺼痼魌柁諅窇蹌藟\\\n\
+                        蟟﹞
+$ 
+$ 20008 - this is and action label
+$ 
+20008 葅蘋
+$ 
+$ Messages 20009 - 20010 
+$	These refer to the messages that appear in the error dialog
+$       when the dtcmInsert action fails.
+$ 20009 NOTE: the '\\\\n' represents a newline. Place these where you 
+$             feel it's appropriate.
+$ 
+20009 楙堈窇鞂扽揧Е粡ョ睎柁\\\n\
+			     戀謺\\\\n\\\n\
+			     モ珜蠆諟﹞  楙堈窇鞂⑴逑\\\n\
+			     眭冈\\\\n\\\n\
+			     蠆諟﹜迖睎柁戀謺⑴逑隓恄揧\\\n\
+			     Б抻﹞
+$ 
+$ 20010 Error dialog title
+$ 
+20010 ⺼呦謺 : 蠆諟 - Е粡窇鞂
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  IconBrowse.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The IconBrowse.dt types file defines all the Actions, Datatypes, and 
+$ * descriptions of those Actions and Datatypes by user whom wish to use
+$ * Instance based icons. 
+$ 
+$ ----------------------------------------------------------------------------
+$ Message 22001 - is a header for IconBrowse.dt.  It is actually a comment
+$                 but it explains how the file works so it should be
+$                 localized.  NOTE: make sure each new line begins with a
+$                 "#".  This indicates that it is a comment.  Also, keep the
+$                 \n\ at the end of each line.
+$    Don't translate BM and PM or .bm and .pm.
+$ 
+22001 # 楙堈麔淰斕柁怚堈罶涷麷倛 (BM 縋 PM) ⑴絒棬⻏蠣旃晛\n\
+# 縋頝踛旃晛麔淰柁 "骳坲" 頝踛﹞  楙玿ざ怀堈頝踛麔淰 (棓麔\n\
+# ボ珜 .bm 昑 .pm 炟) 忔⑴棤嘵怉⺌冼﹜汃珜怬頝踛﹞  楙ョ廲ៜ\n\
+# 謽堈麔淰扢柁頝踛渀哱え﹜モ珜睎攜錛衭瞅絒怀纂堈麔淰\n\
+# 坭栯砫 -- 頝踛ヾ冼祼⑴髓鷥玿﹞\n\
+#\n\
+# 衭絒棬骳坲頝踛﹜霘渿楙堈麔淰闀蕍怉睎媊沓麔淰扢柁 .dt/types/ \n\
+# 麔淰扢斕﹜隑悒适隞蟡蘋棬汃縋罶涷麷倛罶涷梬﹞(衭适隞蟡\n\
+# 蘋棬汃縋罶涷麷倛罶涷梬﹜睎⑴髓僳罐悒适隞僳蘋﹜迖旂ョ鶈\n\
+# え嶂冈磣隉炟柁 DtTools 麔淰扢斕欹⺼ ReloadApps 棬汃﹞\n\
+#\n\
+#   霘恞蜑”か卼幺抻縋䬷ざ⺌衲頝踛錛衭籧⼃柁齡汃﹜モョ楙咍罶涷\n\
+#           昑麷倛絒棬柁硠扃譯﹜麔淰磣隉炟柁欹⺼楬唄⑴逑鞂䨣鴀﹞\n\
+#\n\
+# 衭⣷楙咍罶涷麷倛䨣ャ蠡泂柁頝踛﹜霘皕睎堈藺柁 .dt/types/ \n\
+# 麔淰扢斕崽⑩楙堈麔淰﹜隑悒适隞蟡蘋棬汃縋罶涷麷倛\n\
+# 罶涷梬﹞
+$ 
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  user-prefs.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The user-prefs.dt types file defines all the Actions, Datatypes, and 
+$ * descriptions of those Actions and Datatypes for the default capabilities
+$ * for CDE.
+$ 
+$ Message 23001 - 23006
+$         These messages are comments in the user-prefs.dt file.
+$         NOTE: make sure each new line begins with a "#".  This indicates
+$         that it is a comment.  Also, keep the \n\ at the end of each
+$         line.
+$ 
+$ 
+23001 # 纂郫痐譫磣隉侇嗄蘄頨 (CDE) 棬汃罶涷梬泂氂\n\
+#\n\
+# 楙堈麔淰斕邴泂氂柁棬汃﹜皕纂郫棬汃柁衭忴﹜坲\n\
+# ヵ "齪А蹌藟蟟"﹜怉笱泂柁鶈え嶂冈﹜ヵ "Vi"﹞蚍\n\
+# 衭⺌衲堈藺斿ヾ柁髱鶈﹜霘渿楙堈麔淰闀蕍怉 \n\
+# $HOME/.dt/types/user-prefs.dt﹜隑悒渿ズ MAP_ACTION \n\
+# 庍睎衭欹⺼柁棬汃﹞\n\
+#\n\
+# 衭痤洁睎柁侇嗄⑴髓囷え婛咍棬汃﹜霘皕虳巖郖帣\n\
+# 瞅絒鶈え嶂冈磣隉炟坭廲ៜ﹞
+23002 # 衭囷え盻 dtmail 柁瑧ス嶂冈﹜霘珜睎柁瑧ス嶂冈泂氂\n\
+# 纂堈棬汃﹜隑悒抻鷥 Dtmail﹞\n
+23003 # 衭囷え 'vi' 汃珜睎柁齪А蹌藟蟟﹜霘渿 'Dtpad' (CDE \n\
+# 柁 Motif 齪А蹌藟蟟) 庍 'Vi'﹞\n
+23004 # 纂郫痐譫磣隉侇嗄蘄頨 (CDE) 蠡泂柁嗈磞鞥篲鶅嶂冈珜 Dtterm﹞\n
+23005 # 衭囷え SPCD 踸磞 Dtterm﹜霘渿 'RemoteDttermRlogin' \n\
+# 庍 'RemoteDttermSpcd'﹞\n
+23006 # 衭囷え SPCD 踸磞 Xterm﹜霘渿 'RemoteXtermRlogin' \n\
+# 庍 'RemoteXtermSpcd'﹞\n
+$ 
+$ --------------------------------------------------------------
+$ Messages 23007 - 23011 are LABEL's for actions.
+$ --------------------------------------------------------------
+23007 瑧ス嶂冈
+$ 
+23008 齪А蹌藟蟟
+$ 
+23009 嗈磞鞥
+$ 
+23010 RemoteDtterm
+$ 
+23011 RemoteXterm
+$ 
+$ --------------------------------------------------------------
+$ Messages 23012 - 23016 are DESCRIPTIONS of actions
+$ --------------------------------------------------------------
+23012 瑧ス嶂冈棬汃欹⺼囷え炟晻ン柁\\\n\
+                        瑧ス嶂冈﹞
+$ 
+23013 ＞齪А蹌藟蟟＝棬汃欹⺼囷え炟晻ン柁\\\n\
+                        齪А蹌藟蟟﹞
+$ 
+23014 ＞嗈磞鞥＝棬汃欹⺼囷え炟晻ン柁\\\n\
+                        嗈磞鞥篲鶅嶂冈﹞
+$ 
+23015 RemoteDtterm 棬汃欹⺼囷え炟晻ン柁\\\n\
+                         ョ攜フ鞥蟟譫絒棬 dtterm 柁巖冈﹞
+$ 
+23016 RemoteXterm 棬汃欹⺼囷え炟晻ン柁\\\n\
+                         ョ攜フ鞥蟟譫絒棬 xterm 柁巖冈﹞
+$ 
+$ New action for user-pref's - the Trash 
+$ 
+23017 # 纂郫痐譫磣隉侇嗄蘄頨 (CDE) 蠡泂柁麔淰杶扜蛦旂 Dttrash﹞\n
+23018 杶扜蛦
+$ 
+23019 ＞杶扜蛦＝棬汃欹⺼囷え炟晻ン柁\\\n\
+                        杶扜蛦剟鷓嶂冈﹞
+$ 
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dtbuilder.dt (The Application Builder)
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dtbuilder.dt types file defines all the Actions, Datatypes, and
+$ * descriptions of those Actions and Datatypes used by the CDE
+$ * Application Builder tool.
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 24001 - 24002 refer to the BIP (*.bip) datatype.
+$ 
+$ 24001 - Do not translate BIP or '.bip' in the message.  BIP is a defined 
+$         datatype name and it doesn't get translated and '.bip' is the 
+$         filename pattern which matches this datatype.
+$ 
+24001 楙堈麔淰讓屼痐譫磣隉侇嗄鶈え嶂冈唈ゥ\\\n\
+                        炟柁篲嗢漦罶涷﹞怬罶涷麷倛ボ磝珜 \\\n\
+                        BIP﹞ BIP 麔淰柁棓麔ボ珜 '.bip'﹞
+$ 
+$ Message 24002 is the description of the BIP 'Open' action.
+$  Don't translate (*.bip).
+$ 
+24002 楙堈棬汃髓欹⺼鶈え嶂冈唈ゥ炟﹜呥蟡蘋篎麔柁\\\n\
+                        巖冈﹜瞅絒纂堈鶈え嶂冈唈ゥ炟篲嗢漦﹜\\\n\
+                        麔淰 (*.bip)﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 24003 - 24004 refer to the BIL (*.bil) datatype.
+$ 
+$ 24003 - Do not translate BIL or '.bil' in the message.  BIL is a defined 
+$         datatype name and it doesn't get translated and '.bil' is the 
+$         filename pattern which matches this datatype.
+$ 
+24003 楙堈麔淰讓屼痐譫磣隉侇嗄鶈え嶂冈唈ゥ炟柁\\\n\
+                        篲嗢罶涷﹞  怬罶涷麷倛珜 BIL﹞  BIL 麔\\\n\
+                        淰柁棓麔ボ珜 '.bil'﹞
+$ 
+$ Message 24004 is the description of the BIL 'Open' action.
+$  Don't translate (*.bil).
+$ 
+24004 楙堈棬汃髓欹⺼鶈え嶂冈唈ゥ炟﹜呥蟡蘋篎麔柁\\\n\
+                        巖冈﹜瞅絒纂堈鶈え嶂冈唈ゥ炟篲嗢﹜\\\n\
+                        麔淰 (*.bil)﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 24005 - 24006 refer to the BIX (*.bix) datatype.
+$ 
+$ 24005 - Do not translate BIX, BIP, BIL, or '.bix' in the message.  
+$         BIX, BIP, and BIL is a defined datatype name and it doesn't get 
+$         translated and '.bix' is the filename pattern which matches this 
+$         data type.
+$ 
+24005 楙堈麔淰讓屼痐譫磣隉侇嗄鶈え嶂冈唈ゥ炟柁\\\n\
+                        篲嗢漦柁邴篲嗢漦 (BIP) 縋篲嗢 (BIL) \\\n\
+                        麔淰罶涷﹞  怬罶涷麷倛珜 BIX﹞  BIX 麔\\\n\
+                        淰柁棓麔ボ珜 '.bix'﹞
+$ 
+$ Message 24006 is the description of the BIX 'Open' action.
+$  Don't translate (*.bix).
+$ 
+24006 楙堈棬汃髓欹⺼鶈え嶂冈唈ゥ炟﹜呥蟡蘋篎麔柁\\\n\
+                        巖冈﹜瞅絒纂堈鶈え嶂冈唈ゥ炟讓蕅柁篲\\\n\
+                        嗢漦麔淰 (*.bil)﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 24007 - 24008 refer to the Dtappbuild action
+$ 
+$ 24007 - translate into 1 word with no blanks.
+$ 
+24007 鶈え嶂冈唈ゥ炟
+$ 
+$ 24008 - Don't translate '(Dtappbuild)'
+$ 
+24008 ＞鶈え嶂冈唈ゥ炟＝(Dtappbuild) 棬汃欹⺼\\\n\
+                        痐譫磣隉侇嗄鶈え嶂冈唈ゥ炟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 24009 - 24012 refer to the CodeGen action
+$ 
+$ 24009 - translate into 1 word with no blanks.
+$ 
+24009 謑雰ぇ蟟
+$ 
+$ Message 24010 - Prompt the user for the Application builder project file 
+$   (*.bip)for which to work with.  Do not remove the ':'.
+$ 
+24010 篲嗢漦麔淰 (*.bip):
+$ 
+$ For Message 24011 do not localize \\$DIR_NAME.  It is an environment variable
+$   which contains a folder name.  This is an error message that gets output
+$   when the user doesn't input of provide an folder to the CodeGen action.
+$ 
+24011 蠆諟”\\$DIR_NAME 攜旂纂堈麔淰扢﹞
+$ 
+$ 24012 - don't translate '(CodeGen)'
+$ 
+24012 ＞謑雰ぇ蟟＝(CodeGen) 棬汃欹⺼痐譫磣隉侇嗄鶈え嶂冈\\\n\
+                        柁謑雰ぇ蟟﹞
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  miscActions.dt (Example actions shipped in an example folder)
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The miscActions.dt types file defines all the Actions and
+$ * descriptions of those Actions that we are shipping as examples.  The
+$ * user has the ability to move these into there .dt/types folder if
+$ * they wish to use them.
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25001 - 25002 refer to the Xcalc action
+$ 
+25001 X 衶磭鞥
+$ 
+$ 25002 - Don't translate xcalc, TI-30, or HP-10C. 
+$ 
+25002 Xcalc 棬汃鞜え X 剟鷓嶂冈﹞ \\\n\
+                        xcalc 剟鷓嶂冈旂纂堈⑴篲鶅 TI-30 迖 HP-10C \\\n\
+                        柁秠蟨倛衶磭鞥痐譫磣隉嶂冈崷ス﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25003 - 25004 refer to the OvalClock (Oclock) action
+$ 
+25003 蹖蓛渀㺪
+$ 
+$ 25004 - Don't translate (Oclock) or oclock.
+$ 
+25004 ＞蹖蓛渀㺪＝(Oclock) 棬汃鞜え oclock \\\n\
+                        X 剟鷓嶂冈﹞ oclock 剟鷓嶂冈髓挴嵁巖冈\\\n\
+                        䬷ざげ虳渀睮﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25005 - 25006 refer to the List Atoms (Xlsatoms) action
+$ 
+25005 トざ蠣袓
+$ 
+$ 25006 - Don't translate (Xlsatoms), xlsatoms, and Xlsatoms.
+$ 
+25006 ＞トざ蠣袓＝(Xlsatoms) 棬汃鞜え xlsatoms \\\n\
+                        X 剟鷓嶂冈﹞ Xlsatoms ト罐揧暋迻柁蠣袓﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25007 - 25008 refer to the Xbiff action
+$ 
+25007 Xbiff
+$ 
+$ 25008 - Don't translate xbiff.
+$ 
+25008 Xbiff 棬汃鞜え xbiff X 剟鷓嶂冈﹞\\\n\
+                        xbiff 嶂冈䬷ざ纂堈麵麵柁瑧謜頝踛﹞\\\n\
+                        蚍扽瑧ス﹜瑧謜譫郖柁憿騵\\\n\
+                        攜鞂讀媊﹞ヵ峈瑧ス﹜衧憿騵鞂\\\n\
+                        讀媊﹜瑧謜鞂僛罐韏鐖﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25009 - 25010 refer to the Xcolor action
+$ 
+25009 Xcolor
+$ 
+$ 25010 - Don't translate xcolor.
+$ 
+25010 Xcolor 棬汃鞜え xcolor X 剟鷓嶂冈﹞\\\n\
+                        xcolor ョ槉嵺斕䬷ざ邴柁 256 ⺪﹞\\\n\
+                        撋睎渿酮簅傶怉槉嵺斕渀﹜伒鞂Е\\\n\
+                        稹纂堈屼⺪唄玿 (斕纂泂\\\n\
+                        柁顒唄縋矨唄) 柁⺪痝髱嘵玿﹜\\\n\
+                        フ渀羼砉絅膌く﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25011 - 25012 refer to the Cut and Select (Xcutsel) action
+$ 
+25011 椌抻縋藞抻
+$ 
+$ 25012 - Don't translate (Xcutsel) and xcutsel.
+$ 
+25012 椌抻縋藞抻 (Xcutsel) 棬汃鞜え藹\\\n\
+                        xcutsel X 剟鷓嶂冈﹞  xcutsel 剟鷓嶂冈え坭\\\n\
+                        渿げ虳藞抻楶禳柁棓ヾ闀蕍怉纂堈椌抻邅\\\n\
+                        鍙棷﹜呥渿讓屼椌抻邅鍙棷蠡晥柁楶禳藞\\\n\
+                        抻媊坭﹞  ⼓⑴汃珜攜菙坯藞抻衢逑縋菙坯\\\n\
+                        藞抻衢逑柁鶈え嶂冈怚炟欄睮柁蹥篳﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25013 - 25014 refer to the Xditview action
+$ 
+25013 Xditview
+$ 
+$ 25014 - Don't translate xditview or ditroff.
+$ 
+25014 Xditview 棬汃鞜え xditview X 剟鷓嶂冈﹞\\\n\
+                        xditview 嶂冈鞂渿 ditroff 藣罐䬷ざョ\\\n\
+                        纂堈 X 䬷ざ蟟糬魦譫﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25015 - 25016 refer to the Xedit action
+$ 
+25015 Xedit
+$ 
+$ 25016 - Don't translate xedit.
+$ 
+25016 Xedit 棬汃鞜え xedit X 剟鷓嶂冈﹞\\\n\
+                        xedit 剟鷓嶂冈菙坯纂堈屼ⅹ堈棷棦柁\\\n\
+                        槉嵺”1. 杬麟栠”纂嗢逑⣷睎廎忒 xedit﹝\\\n\
+                        鬊Б麔淰﹝迖ョ蹌藟槉嵺斕蟡蘋纂堈隞麔\\\n\
+                        柁杬麟﹞ 2. 媢桾槉嵺”䬷ざ xedit 媢桾﹞ \\\n\
+                        ⼃﹜楙堈槉嵺籔⑴髓汃珜侇嗄穛Б棷﹞ \\\n\
+                        3. 麔ボ䬷ざ蟟”䬷ざげ虳蹌藟斕柁麔淰ボ\\\n\
+                        磝﹜髓轡楙堈麔淰旂匢⑴髓幺嬣﹜迖炟ⅲ\\\n\
+                        逑幺抻﹞ 4. 蹌藟槉嵺”䬷ざ睎蹌藟迖唈\\\n\
+                        ゥ欄麔淰柁ボ磝﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25017 - 25018 refer to the Xlock action
+$ 
+25017 Xlock
+$ 
+$ 25018 - Don't translate xlock.
+$ 
+25018 Xlock 棬汃鞜え xlock X ɵ峇蟟﹞\\\n\
+                        xlock 剟鷓嶂冈孍泂 X 䬷ざ蟟﹜纂枺怉\\\n\
+                        藣蘋湅謑悒懼逑箾崽﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25019 - 25020 refer to the Xlogo action
+$ 
+25019 Xlogo
+$ 
+$ 25020 - Don't translate xlogo.
+$ 
+25020 Xlogo 棬汃鞜え xlogo X 剟鷓嶂冈﹞\\\n\
+                        xlogo 剟鷓嶂冈䬷ざ X 槉嵺侇嗄柁\\\n\
+                        簅諲﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25021 - 25022 refer to the Magnify (Xmag) action
+$ 
+25021 勂騰
+$ 
+$ 25022 - Don't translate (Xmag) or xmag.
+$ 
+25022 ＞勂騰＝(Xmag) 棬汃鞜え xmag X 剟鷓嶂冈﹞\\\n\
+                        xmag 剟鷓嶂冈逑⣷睎渿 X 槉嵺汔楶勂\\\n\
+                        騰﹞  ヵ峈扽咭薚ユ挴泂棷棦﹜祼鞂\\\n\
+                        䬷ざ纂堈巖夆﹜挴簅⻏卼⼢譫侜﹜鷥\\\n\
+                        玿衭勂騰柁棷棦﹞  楙堈棷棦⑴髓挹⻖僶\\\n\
+                        趡挹瘖 2 芼⼃邳怉錛衭柁騰麵﹞  纂＾藞\\\n\
+                        抻ン棷棦﹜祼鞂聧罐纂堈槉嵺﹜䬷ざ勂\\\n\
+                        騰柁穔騵﹜怬斕坭鳲憵踛柁怀堈頝踛痼\\\n\
+                        蠣楁鞂髓フ⺪柁麵巖夆鷥玿﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25023 - 25024 refer to the Xman action
+$ 
+25023 Xman
+$ 
+$ 25024 - use the same word as Message 20023 to translate 'Xman'
+$  Also, don't translate xman.
+$ 
+25024 Xman 棬汃鞜え xman X 剟鷓嶂冈﹞\\\n\
+                        xman 剟鷓嶂冈旂纂堈葰伢諰咭郟廲ៜ蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25025 - 25026 refer to the X Mail Handler (Xmh) action
+$ 
+25025 X 瑧ス搢隉蟟
+$ 
+$ 25026 - don't translate Xmh, xmh, or MH.
+$ 
+25026 X 瑧ス搢隉蟟 (Xmh) 棬汃鞜え xmh \\\n\
+                        X 剟鷓嶂冈﹞xmh 剟鷓嶂冈菙坯纂堈\\\n\
+                        頝夆冈柁囷え炟蘭郖﹜髓囷え MH 媢桾\\\n\
+                        搢隉侇嗄﹞  翍衭髱睎柁瑧ス欹⺼棬汃\\\n\
+                        渀﹜⼓鞂昋ⅰ MH 孲稹楗忟﹞  諔騵瑧ス\\\n\
+                        媢桾⑴髓檎嬣﹝婽罐﹝稌﹝ャ鷋﹝鼲\\\n\
+                        婽﹝粡囥﹝髓轡鬊Бョ麔淰扢蠡﹞ xmh \\\n\
+                        呥菙坯ペ瞗鞥逑﹜坯睎⺌衲囷え炟蘭郖﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25027 - 25028 refer to the Eyes (Xeyes) action
+$ 
+25027 僊斳
+$ 
+$ 25028 - Don't translate xeyes.
+$ 
+25028 ＞僊斳＝(Xeyes) 棬汃鞜え xeyes X 剟鷓嶂冈﹞\\\n\
+                        xeyes 剟鷓嶂冈䬷ざ纂灛僊斳﹜翦襙睎柁挴簅\\\n\
+                        ョ䬷ざ蟟譫傶棬﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25029 - 25030 refer to the X Authority (Xauth) action
+$ 
+25029 X 筅ḷ
+$ 
+$ 25030 - Don't translate (Xauth) or xauth.
+$ 
+25030 ＞X 筅ḷ＝(Xauth) 棬汃鞜え xauth X 剟\\\n\
+                        鷓嶂冈﹞ xauth 剟鷓嶂冈⑴え坭蹌藟縋䬷\\\n\
+                        ざ椵稌怉 X ɵ峇蟟柁筅ḷ罶媢﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25031 - 25032 refer to the List Clients (Xlsclients) action
+$ 
+25031 トざ剟鷓嶂冈
+$ 
+$ 25032 - Don't translate (Xlsclients) or xlsclients.
+$ 
+25032 ＞トざ剟鷓嶂冈＝(Xlsclients) 棬汃鞜え\\\n\
+                        xlsclients X 剟鷓嶂冈﹞ xlsclients 剟鷓嶂冈旂\\\n\
+                        纂堈襬え嶂冈﹜⑴ト罐糬魦譫欹⺼柁剟鷓\\\n\
+                        嶂冈柁砨驨罶媢﹞  ⼓⑴髓え坭雰ぇ杬麟碬﹜\\\n\
+                        鷥玿囷え炟げ虳瞃栠汃鞄柁妐嘵﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25033 - 25036 refer to the Change Password (Passwd) action
+$ 
+25033 Change Password
+$ 
+$ Messages 25034 and 25035 - Provides a 'friendly' output to the user 
+$   providing a title to where the user is to change the password.
+$   Translate "Changing password" and adjust "----------------" to the same
+$   size of "Changing password".
+$ 
+25034 彶庍湅謑
+25035 --------
+$ 
+$ 25036 - Don't translate (Passwd).
+$ 
+25036 ＞彶庍湅謑＝(Passwd) 棬汃囷え 'passwd' \\\n\
+                        杬麟坭庍䨣囷え炟湅謑﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 25037 - 25038 refer to the X Puzzle (Xpuzzle) action
+$ 
+25037 X 捋頝
+$ 
+$ 25038 - Don't translate (Xpuzzle) or xpuzzle.
+$ 
+25038 ＞X 捋頝＝(Xpuzzle) 棬汃鞜え \\\n\
+                        xpuzzle X 剟鷓嶂冈﹞ xpuzzle 剟鷓嶂冈旂纂堈\\\n\
+                        4x4 15 蘿柁捋頝﹞
+$ **************************************************************************
+$ **************************************************************************
+$ *  miscImages.dt (Example image datatypes shipped in an example folder)
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The miscImages.dt types file defines all the image datatypes and
+$ * descriptions of those image datatypes that we are shipping as examples.  
+$ * The user has the ability to move these into there $HOME/.dt/types folder 
+$ * if they wish to use them.
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26001 is the description of the Sun-raster datatype.
+$ 26001 - Do not translate Sun-raster, or "0x59a66a95" in the
+$        message.  Sun-raster is a defined datatype name and it doesn't get
+$        translated and "0x59a66a95" is the CONTENT pattern used to match 
+$        this datatype.
+$ 
+26001 楙堈麔淰屼纂堈 Sun-raster 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝伒珜 Sun-raster﹞\\\n\
+                        Sun-raster 麔淰讓屼畈柁 "0x59a66a95"﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26002 is the description of the pict-file datatype.
+$ 26002 - Do not translate PICT, pict-file, '.PICT', or '.pict' in the
+$        message.  pict-file is a defined datatype name and it doesn't get
+$        translated and '.PICT' and '.pict' are the filename patterns used 
+$        to match this datatype.
+$ 
+26002 楙堈麔淰屼纂堈 Macintosh PICT 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 pict-file﹞\\\n\
+                        pict-file 麔淰柁棓麔ボ珜 '.PICT' \\\n\
+                        迖 '.pict'﹞
+$ 
+$ 26003 - This message is used by the pict-file datatype. It is the error
+$   message when a user tries to "Open" a pict-file file.
+$ 
+26003 隓恄瞅絒 - 扽 pict-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26004 is the description of the ppm-file datatype.
+$ 26004 - Do not translate ppm-file, "P6, or "P3" in the
+$        message.  ppm-file is a defined datatype name and it doesn't get
+$        translated and "P6", and "P3" are the CONTENT patterns used to match 
+$        this datatype.
+$ 
+26004 楙堈麔淰屼纂堈 Poskanser Protable Pixmap 眭冈柁頝夆\\\n\
+                        憵踛﹞  怬罶涷麷倛ボ磝珜 ppm-file﹞\\\n\
+                        ppm-file 麔淰屼А蠣 "P6" \\\n\
+                        迖 "P3"﹞
+$ 
+$ 26005 - This message is used by the ppm-file datatype. It is the error
+$   message when a user tries to "Open" a ppm-file file.
+$ 
+26005 隓恄瞅絒 - 扽 ppm-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26006 is the description of the pj-file datatype.
+$ 26006 - Do not translate pj-file, '.pj' in the message.  pj-file is a 
+$        defined datatype name and it doesn't get translated and '.pj' is 
+$        the filename pattern used to match this datatype.
+$ 
+26006 楙堈麔淰屼纂堈 HP PaintJet 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 pj-file﹞\\\n\
+                        pj-file 麔淰柁棓麔ボ珜 '.pj'﹞
+$ 
+$ 26007 - This message is used by the pj-file datatype. It is the error
+$   message when a user tries to "Open" a pj-file file.
+$ 
+26007 隓恄瞅絒 - 扽 pj-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26008 is the description of the pgm-file datatype.
+$ 26008 - Do not translate pgm-file, "P5, or "P2" in the
+$        message.  pgm-file is a defined datatype name and it doesn't get
+$        translated and "P5", and "P2" are the CONTENT patterns used to match 
+$        this datatype.
+$ 
+26008 楙堈麔淰屼纂堈 Portable Graymap 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 pgm-file﹞\\\n\
+                        pgm-file 麔淰屼А蠣 "p5" 迖 "p2"﹞
+$ 
+$ 26009 - This message is used by the pgm-file datatype. It is the error
+$   message when a user tries to "Open" a pgm-file file.
+$ 
+26009 隓恄瞅絒 - 扽 pgm-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26010 is the description of the pbm-file datatype.
+$ 26010 - Do not translate pbm-file, "P4, or "P1" in the
+$        message.  pbm-file is a defined datatype name and it doesn't get
+$        translated and "P4", and "P1" are the CONTENT patterns used to match 
+$        this datatype.
+$ 
+26010 楙堈麔淰屼纂堈 Poskanser Portable Bitmap 眭冈柁頝夆\\\n\
+                        憵踛﹞  怬罶涷麷倛ボ磝珜 pbm-file﹞\\\n\
+                        pbm-file 麔淰屼А蠣 "P4" 迖 "P1"﹞
+$ 
+$ 26011 - This message is used by the pbm-file datatype. It is the error
+$   message when a user tries to "Open" a pbm-file file.
+$ 
+26011 隓恄瞅絒 - 扽 pbm-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26012 is the description of the ilbm-file datatype.
+$ 26012 - Do not translate ilbm-file, '.ilbm', or "ILBM" in the
+$        message.  ilbm-file is a defined datatype name and it doesn't get
+$        translated and '.ilbm', and "ILBM" are the filename or CONTENT 
+$        patterns used to match this datatype.
+$ 
+26012 楙堈麔淰屼纂堈 Amiga's IFF ILBM 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 ilbm-file﹞\\\n\
+                        ilbm-file 麔淰柁棓麔ボ珜 '.ilbm'﹜\\\n\
+                        迖屼А蠣 "ILBM"﹞
+$ 
+$ 26013 - This message is used by the ilbm-file datatype. It is the error
+$   message when a user tries to "Open" an ilbm-file file.
+$ 
+26013 隓恄瞅絒 - 扽 ilbm-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26014 is the description of the pi1-file datatype.
+$ 26014 - Do not translate pi1, pi1-file, '.pi1' in the message.  pi1-file is a 
+$        defined datatype name and it doesn't get translated and '.pi1' is 
+$        the filename pattern used to match this datatype.
+$ 
+26014 楙堈麔淰屼纂堈  Atari Degas pil 眭冈柁頝夆\\\n\
+                        憵踛﹞  怬罶涷麷倛ボ磝珜 pil-file﹞\\\n\
+                        pil-file 麔淰柁棓麔ボ珜 '.pil'﹞
+$ 
+$ 26015 - This message is used by the pi1-file datatype. It is the error
+$   message when a user tries to "Open" a pi1-file file.
+$ 
+26015 隓恄瞅絒 - 扽 pil-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26016 is the description of the pcx-file datatype.
+$ 26016 - Do not translate PCX, pcx-file, '.pcx' in the message.  pcx-file is a 
+$        defined datatype name and it doesn't get translated and '.pcx' is 
+$        the filename pattern used to match this datatype.
+$ 
+26016 楙堈麔淰屼纂堈 PC Paintbrush PCX 眭冈柁頝夆\\\n\
+                        憵踛﹞  怬罶涷麷倛ボ磝珜 pcx-file﹞\\\n\
+                        pcx-file 麔淰柁棓麔ボ珜 '.pcx'﹞
+$ 
+$ 26017 - This message is used by the pcx-file datatype. It is the error
+$   message when a user tries to "Open" a pcx-file file.
+$ 
+26017 隓恄瞅絒 - 扽 pcx-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26018 is the description of the tga-file datatype.
+$ 26018 - Do not translate tga-file, '.tga' in the message.  tga-file is a 
+$        defined datatype name and it doesn't get translated and '.tga' is 
+$        the filename pattern used to match this datatype.
+$ 
+26018 楙堈麔淰屼纂堈 TrueVision Targa 眭冈柁頝夆\\\n\
+                        憵踛﹞  怬罶涷麷倛ボ磝珜 tga-file﹞\\\n\
+                        pga-file 麔淰柁棓麔ボ珜 '.tga'﹞
+$ 
+$ 26019 - This message is used by the tga-file datatype. It is the error
+$   message when a user tries to "Open" a tga-file file.
+$ 
+26019 隓恄瞅絒 - 扽 tga-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26020 is the description of the yuv-file datatype.
+$ 26020 - Do not translate YUV, yuv-file, '.yuv' in the message.  yuv-file is a 
+$        defined datatype name and it doesn't get translated and '.yuv' is 
+$        the filename pattern used to match this datatype.
+$ 
+26020 楙堈麔淰屼纂堈 Abekas YUV 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 yuv-file﹞\\\n\
+                        yuv-file 麔淰柁棓麔ボ珜 '.yuv'﹞
+$ 
+$ 26021 - This message is used by the yuv-file datatype. It is the error
+$   message when a user tries to "Open" a yuv-file file.
+$ 
+26021 隓恄瞅絒 - 扽 yuv-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26022 is the description of the xim-file datatype.
+$ 26022 - Do not translate xim, xim-file, '.xim' in the message.  xim-file is a 
+$        defined datatype name and it doesn't get translated and '.xim' is 
+$        the filename pattern used to match this datatype.
+$ 
+26022 楙堈麔淰屼纂堈 xim 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 xim-file﹞\\\n\
+                        xim-file 麔淰柁棓麔ボ珜 '.xim'﹞
+$ 
+$ 26023 - This message is used by the xim-file datatype. It is the error
+$   message when a user tries to "Open" a xim-file file.
+$ 
+26023 隓恄瞅絒 - 扽 xim-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26024 is the description of the mtv-file datatype.
+$ 26024 - Do not translate MTV, PRT, mtv-file, '.mtv' in the message.  
+$        mtv-file is a defined datatype name and it doesn't get translated 
+$        and '.mtv' is  the filename pattern used to match this datatype.
+$ 
+26024 楙堈麔淰屼纂堈 MTV/PRT ray-tracer 藣罐眭冈\\\n\
+                        柁頝夆憵踛﹞  怬罶涷麷倛ボ磝珜 mtv-file﹞\\\n\
+                        mtv-file 麔淰柁棓麔ボ珜 '.mtv'﹞
+$ 
+$ 26025 - This message is used by the mtv-file datatype. It is the error
+$   message when a user tries to "Open" a mtv-file file.
+$ 
+26025 隓恄瞅絒 - 扽 mtv-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26026 is the description of the qrt-file datatype.
+$ 26026 - Do not translate QRT, qrt-file, '.qrt' in the message.  qrt-file is a 
+$        defined datatype name and it doesn't get translated and '.qrt' is 
+$        the filename pattern used to match this datatype.
+$ 
+26026 楙堈麔淰屼纂堈 QRT ray-tracer 藣罐眭冈柁\\\n\
+                        頝夆憵踛﹞  怬罶涷麷倛ボ磝珜 qrt-file﹞\\\n\
+                        qrt-file 麔淰柁棓麔ボ珜 '.qrt'﹞
+$ 
+$ 26027 - This message is used by the qrt-file datatype. It is the error
+$   message when a user tries to "Open" a qrt-file file.
+$ 
+26027 隓恄瞅絒 - 扽 qrt-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26028 is the description of the imgw-file datatype.
+$ 26028 - Do not translate Img-whatnot, imgw-file, '.imgw' in the message. 
+$        imgw-file is a defined datatype name and it doesn't get translated 
+$        and '.imgw' is the filename pattern used to match this datatype.
+$ 
+26028 楙堈麔淰屼纂堈 Img-whatnot 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 imgw-file﹞\\\n\
+                        imgw-file 麔淰柁棓麔ボ珜 '.imgw'﹞
+$ 
+$ 26029 - This message is used by the imgw-file datatype. It is the error
+$   message when a user tries to "Open" a imgw-file file.
+$ 
+26029 隓恄瞅絒 - 扽 imgw-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26030 is the description of the sld-file datatype.
+$ 26030 - Do not translate sld-file, '.sld' in the message.  sld-file is a 
+$        defined datatype name and it doesn't get translated and '.sld' is 
+$        the filename pattern used to match this datatype.
+$ 
+26030 楙堈麔淰屼纂堈 AutoCAD slide 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 sld-file﹞\\\n\
+                        sld-file 麔淰柁棓麔ボ珜 '.sld'﹞
+$ 
+$ 26031 - This message is used by the sld-file datatype. It is the error
+$   message when a user tries to "Open" a sld-file file.
+$ 
+26031 隓恄瞅絒 - 扽 sld-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26032 is the description of the spc-file datatype.
+$ 26032 - Do not translate Atari, spc-file, '.spc' in the message.  spc-file 
+$        is a defined datatype name and it doesn't get translated and '.spc' 
+$        is the filename pattern used to match this datatype.
+$ 
+26032 楙堈麔淰屼纂堈 Atari compressed Spectrum 眭冈柁\\\n\
+                        頝夆憵踛﹞  怬罶涷麷倛ボ磝珜 spc-file﹞\\\n\
+                        spc-file 麔淰柁棓麔ボ珜 '.spc'﹞
+$ 
+$ 26033 - This message is used by the spc-file datatype. It is the error
+$   message when a user tries to "Open" a spc-file file.
+$ 
+26033 隓恄瞅絒 - 扽 spc-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26034 is the description of the spu-file datatype.
+$ 26034 - Do not translate Atari, spu-file, '.spu' in the message.  spu-file 
+$        is a defined datatype name and it doesn't get translated and '.spu' 
+$        is the filename pattern used to match this datatype.
+$ 
+26034 楙堈麔淰屼纂堈 Atari uncompress Spectrum 眭冈柁\\\n\
+                        頝夆憵踛﹞  怬罶涷麷倛ボ磝珜 spu-file﹞\\\n\
+                        spu-file 麔淰柁棓麔ボ珜 '.spu'﹞
+$ 
+$ 26035 - This message is used by the spu-file datatype. It is the error
+$   message when a user tries to "Open" a spu-file file.
+$ 
+26035 隓恄瞅絒 - 扽 spu-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26036 is the description of the gould-file datatype.
+$ 26036 - Do not translate Gould, gould-file, '.gould' in the message.  
+$        gould-file is a defined datatype name and it doesn't get translated 
+$        and '.gould' is the filename pattern used to match this datatype.
+$ 
+26036 楙堈麔淰屼纂堈 Gould scanner 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 gould-file﹞\\\n\
+                        gould-file 麔淰柁棓麔ボ珜 '.gould'﹞
+$ 
+$ 26037 - This message is used by the gould-file datatype. It is the error
+$   message when a user tries to "Open" a gould-file file.
+$ 
+26037 隓恄瞅絒 - 扽 gould-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26038 is the description of the raw-file datatype.
+$ 26038 - Do not translate rgb, raw-file, '.raw' in the message.  raw-file a 
+$        is a defined datatype name and it doesn't get translated and '.raw' 
+$        is the filename pattern used to match this datatype.
+$ 
+26038 楙堈麔淰屼纂堈 raw rgb bytes 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 raw-file﹞\\\n\
+                        raw-file 麔淰柁棓麔ボ珜 '.raw'﹞
+$ 
+$ 26039 - This message is used by the raw-file datatype. It is the error
+$   message when a user tries to "Open" a raw-file file.
+$ 
+26039 隓恄瞅絒 - 扽 raw-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26040 is the description of the rgb3-file datatype.
+$ 26040 - Do not translate rgb3-file, '.rgb3' in the message.  rgb3-file is a 
+$        defined datatype name and it doesn't get translated and '.rgb3' is 
+$        the filename pattern used to match this datatype.
+$ 
+26040 楙堈麔淰屼纂堈 three portable graymaps 眭冈柁\\\n\
+                        頝夆憵踛﹞  怬罶涷麷倛ボ磝珜 rgb3-file﹞\\\n\
+                        rgb3-file 麔淰柁棓麔ボ珜 '.rgb3'﹞
+$ 
+$ 26041 - This message is used by the rgb3-file datatype. It is the error
+$   message when a user tries to "Open" a rgb3-file file.
+$ 
+26041 隓恄瞅絒 - 扽 rgb3-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26042 is the description of the fs-file datatype.
+$ 26042 - Do not translate fs-file, '.fs' in the message.  fs-file is a 
+$        defined datatype name and it doesn't get translated and '.fs' is 
+$        the filename pattern used to match this datatype.
+$ 
+26042 楙堈麔淰屼纂堈 Usenix FaceSaver 眭冈柁\\\n\
+                        頝夆憵踛﹞  怬罶涷麷倛ボ磝珜 fs-file﹞\\\n\
+                        fs-file 麔淰柁棓麔ボ珜 '.fs'﹞
+$ 
+$ 26043 - This message is used by the fs-file datatype. It is the error
+$   message when a user tries to "Open" a fs-file file.
+$ 
+26043 隓恄瞅絒 - 扽 rs-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26044 is the description of the fits-file datatype.
+$ 26044 - Do not translate FITS, fits-file, '.fits' in the message.  fits-file
+$        is a defined datatype name and it doesn't get translated and '.fits' 
+$        is the filename pattern used to match this datatype.
+$ 
+26044 楙堈麔淰屼纂堈 FITS 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 fits-file﹞\\\n\
+                        fits-file 麔淰柁棓麔ボ珜 '.fits'﹞
+$ 
+$ 26045 - This message is used by the fits-file datatype. It is the error
+$   message when a user tries to "Open" a fits-file file.
+$ 
+26045 隓恄瞅絒 - 扽 fits-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26046 is the description of the lispm-file datatype.
+$ 26046 - Do not translate lispm-file, '.lispm', or "This is a BitMap file"
+$        in the message.  lispm-file is a defined datatype name and it doesn't
+$        get translated and '.lispm', and "This is a BitMap file" are the 
+$        filename or CONTENT patterns used to match this datatype.
+$ 
+26046 楙堈麔淰屼纂堈 Lisp Machine bit-array-file 眭冈柁頝夆\\\n\
+                        憵踛﹞  怬罶涷麷倛ボ磝珜 lispm-file﹞\\\n\
+                        lispm-file 麔淰柁棓麔ボ珜 '.lispm'﹜\\\n\
+                        迖屼А蠣 "This is a BitMap file"﹞
+$ 
+$ 26047 - This message is used by the lispm-file datatype. It is the error
+$   message when a user tries to "Open" an lispm-file file.
+$ 
+26047 隓恄瞅絒 - 扽 lispm-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26048 is the description of the rawg-file datatype.
+$ 26048 - Do not translate rawg-file, '.rawg' in the message.  rawg-file is a 
+$        defined datatype name and it doesn't get translated and '.rawg' is 
+$        the filename pattern used to match this datatype.
+$ 
+26048 楙堈麔淰屼纂堈 raw grayscale butes 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 rawg-file﹞\\\n\
+                        rawg-file 麔淰柁棓麔ボ珜 '.rawg'﹞
+$ 
+$ 26049 - This message is used by the rawg-file datatype. It is the error
+$   message when a user tries to "Open" a rawg-file file.
+$ 
+26049 隓恄瞅絒 - 扽 rawg-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ No 26050 message
+$ ----------------------------------------------------------------------------
+$ Messages 26051 is the description of the mac-file datatype.
+$ 26051 - Do not translate MacPaint, mac-file, '.mac' in the message.  
+$        mac-file is a defined datatype name and it doesn't get translated 
+$        and '.mac' is the filename pattern used to match this datatype.
+$ 
+26051 楙堈麔淰屼纂堈 MacPaint 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 mac-file﹞\\\n\
+                        mac-file 麔淰柁棓麔ボ珜 '.mac'﹞
+$ 
+$ 26052 - This message is used by the mac-file datatype. It is the error
+$   message when a user tries to "Open" a mac-file file.
+$ 
+26052 隓恄瞅絒 - 扽 mac-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26053 is the description of the atk-file datatype.
+$ 26053 - Do not translate atk-file, '.atk' in the message.  atk-file is a 
+$        defined datatype name and it doesn't get translated and '.atk' is 
+$        the filename pattern used to match this datatype.
+$ 
+26053 楙堈麔淰屼纂堈 Andrew Toolkit raster 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 atk-file﹞\\\n\
+                        atk-file 麔淰柁棓麔ボ珜 '.atk'﹞
+$ 
+$ 26054 - This message is used by the atk-file datatype. It is the error
+$   message when a user tries to "Open" a atk-file file.
+$ 
+26054 隓恄瞅絒 - 扽 atk-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26055 is the description of the brush-file datatype.
+$ 26055 - Do not translate brush-file, '.brush' in the message.  brush-file 
+$        is a defined datatype name and it doesn't get translated and 
+$        '.brush' is the filename pattern used to match this datatype.
+$ 
+26055 楙堈麔淰屼纂堈 doodle brush 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 brush-file﹞\\\n\
+                        brush-file 麔淰柁棓麔ボ珜 '.brush'﹞
+$ 
+$ 26056 - This message is used by the brush-file datatype. It is the error
+$   message when a user tries to "Open" a brush-file file.
+$ 
+26056 隓恄瞅絒 - 扽 brush-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26057 is the description of the cmu-file datatype.
+$ 26057 - Do not translate CMU, cmu-file, '.cmu', or "\361\0\100\273" in the
+$        message.  cmu-file is a defined datatype name and it doesn't get
+$        translated and '.cmu', and "\361\0\100\273" are the filename or 
+$        CONTENT patterns used to match this datatype.
+$ 
+26057 楙堈麔淰屼纂堈 CMU window manager bitmap 眭冈柁\\\n\
+                        頝夆憵踛﹞  怬罶涷麷倛ボ磝珜 cmu-file﹞\\\n\
+                        cmu-file 麔淰柁棓麔ボ珜 '.cmu'﹜\\\n\
+                        迖屼А蠣 "\\361\\0\\100\\273"﹞
+$ 
+$ 26058 - This message is used by the cmu-file datatype. It is the error
+$   message when a user tries to "Open" an cmu-file file.
+$ 
+26058 隓恄瞅絒 - 扽 cmu-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26059 is the description of the mgr-file datatype.
+$ 26059 - Do not translate MGR, mgr-file, '.mgr', or "yz" in the
+$        message.  mgr-file is a defined datatype name and it doesn't get
+$        translated and '.mgr', and "yz" are the filename or CONTENT 
+$        patterns used to match this datatype.
+$ 
+26059 楙堈麔淰屼纂堈 MGR bitmap 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 mgr-file﹞\\\n\
+                        mgr-file 麔淰柁棓麔ボ珜 '.mgr'﹜\\\n\
+                        迖屼А蠣 "yz"﹞
+$ 
+$ 26060 - This message is used by the mgr-file datatype. It is the error
+$   message when a user tries to "Open" an mgr-file file.
+$ 
+26060 隓恄瞅絒 - 扽 mgr-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26061 is the description of the g3-file datatype.
+$ 26061 - Do not translate g3-file, '.g3' in the message.  g3-file is a 
+$        defined datatype name and it doesn't get translated and '.g3' is 
+$        the filename pattern used to match this datatype.
+$ 
+26061 楙堈麔淰屼纂堈 Group 3 fax 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 g3-file﹞\\\n\
+                        g3-file 麔淰柁棓麔ボ珜 '.g3'﹞
+$ 
+$ 26062 - This message is used by the g3-file datatype. It is the error
+$   message when a user tries to "Open" a g3-file file.
+$ 
+26062 隓恄瞅絒 - 扽 g3-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26063 is the description of the img-file datatype.
+$ 26063 - Do not translate GEM, IMG, img-file, '.img' in the message.  
+$        img-file is a defined datatype name and it doesn't get translated 
+$        and '.img' is the filename pattern used to match this datatype.
+$ 
+26063 楙堈麔淰屼纂堈 GEM IMG 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 img-file﹞\\\n\
+                        img-file 麔淰柁棓麔ボ珜 '.img'﹞
+$ 
+$ 26064 - This message is used by the img-file datatype. It is the error
+$   message when a user tries to "Open" a img-file file.
+$ 
+26064 隓恄瞅絒 - 扽 img-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26065 is the description of the pi3-file datatype.
+$ 26065 - Do not translate pi3, pi3-file, '.pi3' in the message.  pi3-file is 
+$        a defined datatype name and it doesn't get translated and '.pi3' is 
+$        the filename pattern used to match this datatype.
+$ 
+26065 楙堈麔淰屼纂堈 Atari Degas pi3 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 pi3-file﹞\\\n\
+                        pi3-file 麔淰柁棓麔ボ珜 '.pi3'﹞
+$ 
+$ 26066 - This message is used by the pi3-file datatype. It is the error
+$   message when a user tries to "Open" a pi3-file file.
+$ 
+26066 隓恄瞅絒 - 扽 pi3-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26067 is the description of the xbm-file datatype.
+$ 26067 - Do not translate xbm-file, '.xbm' in the message.  xbm-file is a 
+$        defined datatype name and it doesn't get translated and '.xbm' is 
+$        the filename pattern used to match this datatype.
+$ 
+26067 楙堈麔淰屼纂堈 X Bitmap 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 xbm-file﹞\\\n\
+                        xbm-file 麔淰柁棓麔ボ珜 '.xbm'﹞
+$ 
+$ 26068 - This message is used by the xbm-file datatype. It is the error
+$   message when a user tries to "Open" a xbm-file file.
+$ 
+26068 隓恄瞅絒 - 扽 xbm-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26069 is the description of the ybm-file datatype.
+$ 26069 - Do not translate ybm-file, '.ybm', or "!!" in the
+$        message.  ybm-file is a defined datatype name and it doesn't get
+$        translated and '.ybm', and "!!" are the filename or CONTENT 
+$        patterns used to match this datatype.
+$ 
+26069 楙堈麔淰屼纂堈 Benet Yee's face 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 ybm-file﹞\\\n\
+                        ybm-file 麔淰柁棓麔ボ珜 '.ybm'﹜\\\n\
+                        迖屼А蠣 "!!"﹞
+$ 
+$ 26070 - This message is used by the ybm-file datatype. It is the error
+$   message when a user tries to "Open" an ybm-file file.
+$ 
+26070 隓恄瞅絒 - 扽 ybm-file 麔淰髲砫蟟﹞
+$ 
+$ Messages 26071 is the description of the hips-file datatype.
+$ 26071 - Do not translate HIPS, hips-file, '.hips' in the message.  hips-file
+$        is a defined datatype name and it doesn't get translated and '.hips'
+$        is the filename pattern used to match this datatype.
+$ 
+26071 楙堈麔淰屼纂堈 HIPS 眭冈柁頝夆憵踛﹞\\\n\
+                        怬罶涷麷倛ボ磝珜 hips-file﹞\\\n\
+                        hips-file 麔淰柁棓麔ボ珜 '.hips'﹞
+$ 
+$ Messages 26072 is used by the hips-file datatype. It is the error
+$   message when a user tries to "Open" a hips-file file.
+$ 26072 - Do not translate hips-file in the message.  hips-file is a 
+$        defined datatype name and it doesn't get translated. 
+$ 
+26072 隓恄瞅絒 - 扽 hips-file 麔淰髲砫蟟﹞
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 26073 is the description of the photocd-file datatype.
+$ 26073 - Do not translate photocd-file, '.pcd', '.PCD' in the message.  
+$        photocd-file is a defined datatype name and it doesn't get translated 
+$        and '.pcd',and  '.PCD' are the filename patterns used to match 
+$	 this datatype.
+$ 
+26073 楙堈麔淰讓屼頝夆憵踛 photocd 柁眭冈﹞ \\\n\
+			怬罶涷麷倛磝珜 photocd-file﹞  \\\n\
+		 	photocd-file 麔淰柁眃麔ボ珜 \\\n\
+			'.pcd' 迖 '.PCD'.
+$ 
+$ Messages 26074 is used by the photocd-file datatype. It is the error
+$   message when a user tries to "Open" a photocd-file file.
+$ 26074 - Do not translate photocd-file in the message.  photocd-file is a
+$        defined datatype name and it doesn't get translated.
+$ 
+26074 隓恄瞅絒 - 扽 photocd-file 麔淰髲砫蟟.
+$ 
+$ ----------------------------------------------------------------------------
+$ 
+$ Datatype labels - below is a list of datatype labels that need to 
+$  be translated.
+$ 
+27001 痐譫磣隉侇嗄鶈え嶂冈  
+27002 痐譫磣隉侇嗄齡怞  
+27003 侇嗄磣隉  
+$ 
+$ 
+$ "NEW-"
+30000 Put On Workspace
+$ "NEW-"
+30001 This action (DtPutOnWorkspace) will place an object on the workspace
+$ 
+$ The followings are added by IBM for 41J
+$ They are used to display datatypes by dtfile. Don't use so long name.
+$ See COSE cmvc 7649
+$ 
+$ See 3001 for detail
+$ "NEW-"
+31000 BM
+$ See 3002 for detail
+$ "NEW-"
+31001 PM
+$ See 3003 for detail
+$ "NEW-"
+31002 PCL
+$ See 3006 for detail
+$ "NEW-"
+31003 POSTSCRIPT
+$ See 3009 for detail
+$ "NEW-"
+31004 AUDIO
+$ See 3014 for detail
+$ "NEW-"
+31005 TIFF
+$ See 3017 for detail
+$ "NEW-"
+31006 JPEG
+$ See 3020 for detail
+$ "NEW-"
+31007 MPEG
+$ See 3023 for detail
+$ "NEW-"
+31008 GIF
+$ See 3026 for detail
+$ "NEW-"
+31009 README
+$ See 3027 for detail
+$ "NEW-"
+31010 HTML
+$ See 3028 for detail
+$ "NEW-"
+31011 RICHTEXT
+$ See 3029 for detail
+$ "NEW-"
+31012 MSDOS_EXE
+$ See 6001 for detail
+$ "NEW-"
+31013 CORE
+$ See 6002
+$ "NEW-"
+31014 OBJECT
+$ See 6003
+$ "NEW-"
+31015 ASSEMBLER
+$ See 6004
+$ "NEW-"
+31016 ARCH_LIB
+$ See 6006
+$ "NEW-"
+31017 SHARED_LIB
+$ See 6008
+$ "NEW-"
+31018 C_SRC
+$ See 6010
+$ "NEW-"
+31019 CPLUSPLUS_SRC
+$ See 6012
+$ "NEW-"
+31020 H_SRC
+$ See 6013
+$ "NEW-"
+31021 MAKEFILE
+$ See 6016
+$ "NEW-"
+31022 IMAKEFILE
+$ See 2001
+$ "NEW-"
+31023 DT
+$ See 2004
+$ "NEW-"
+31024 FP
+$ See 2005
+$ "NEW-"
+31025 DTFILE_FILE
+$ See 2006
+$ "NEW-"
+31026 DTKSH_SCRIPT
+$ See 2007
+$ "NEW-"
+31027 DTKSH_CONV
+$ See 13008
+$ "NEW-"
+31028 AGROUP
+$ See 13002
+$ "NEW-"
+31029 DTAPPS_GROUP
+$ See 13004
+$ "NEW-"
+31030 INFORMATION_APPGROUP
+$ See 13005
+$ "NEW-"
+31031 SYSTEM_ADMIN_APPGROUP
+$ See 13006
+$ "NEW-"
+31032 DTTOOLS_APPGROUP
+$ See 13007
+$ "NEW-"
+31033 AGUP
+$ See 4003
+$ "NEW-"
+31034 TRASH_FOLDER
+$ See 4004
+$ "NEW-"
+31035 PARENT_FOLDER
+$ See 4005
+$ "NEW-"
+31036 CURRENT_FOLDER
+$ See 4006
+$ "NEW-"
+31037 DOT_FOLDER
+$ See 4007
+$ "NEW-"
+31038 FOLDER_LOCK
+$ See 4007
+$ "NEW-"
+31039 NON_WRITABLE_FOLDER
+$ See 4008
+$ "NEW-"
+31040 FOLDER
+$ See 4009
+$ "NEW-"
+31041 RECURSIVE_LINK
+$ See 4010
+$ "NEW-"
+31042 BROKEN_LINK
+$ See 4011
+$ "NEW-"
+31043 DOT_FILE
+$ See 4012
+$ "NEW-"
+31044 EXECUTABLE
+$ See 4013
+$ "NEW-"
+31045 UNKNOWN
+$ See 4014
+$ "NEW-"
+31046 DATA
+$ See 11001
+$ "NEW-"
+31047 DTHELP_VOL
+$ See 11002
+$ "NEW-"
+31048 DTHELP_HT
+$ See 11003
+$ "NEW-"
+31049 DTHELP_HVK
+$ See 11004
+$ "NEW-"
+31050 DTHELP_XRH
+$ See 8001
+$ "NEW-"
+31051 DTHELP_PRINT_FILE
+$ See 16002
+$ "NEW-"
+31052 DTHELP_HTG
+$ See 16003
+$ "NEW-"
+31053 DTHELP_CTG
+$ See 16004
+$ "NEW-"
+31054 DTHELP_ERR
+$ See 5001
+$ "NEW-"
+31055 TEXTFILE
+$ See 26001
+$ "NEW-"
+31056 Sun-raster
+$ See 26002
+$ "NEW-"
+31057 pict-file
+$ See 26004
+$ "NEW-"
+31058 ppm-file
+$ See 26006
+$ "NEW-"
+31059 pj-file
+$ See 26008
+$ "NEW-"
+31060 pgm-file
+$ See 26010
+$ "NEW-"
+31061 pbm-file
+$ See 26012
+$ "NEW-"
+31062 ilbm-file
+$ See 26014
+$ "NEW-"
+31063 pi1-file
+$ See 26016
+$ "NEW-"
+31064 pcx-file
+$ See 26018
+$ "NEW-"
+31065 tga-file
+$ See 26022
+$ "NEW-"
+31066 xim-file
+$ See 26024
+$ "NEW-"
+31067 mtv-file
+$ See 26026
+$ "NEW-"
+31068 qrt-file
+$ See 26028
+$ "NEW-"
+31069 imgw-file
+$ See 26030
+$ "NEW-"
+31070 sld-file
+$ See 26032
+$ "NEW-"
+31071 spc-file
+$ See 26034
+$ "NEW-"
+31072 spu-file
+$ See 26036
+$ "NEW-"
+31073 gould-file
+$ See 26042
+$ "NEW-"
+31074 fs-file
+$ See 26044
+$ "NEW-"
+31075 fits-file
+$ See 26046
+$ "NEW-"
+31076 lispm-file
+$ See 26071
+$ "NEW-"
+31077 hips-file
+$ See 26051
+$ "NEW-"
+31078 mac-file
+$ See 26053
+$ "NEW-"
+31079 atk-file
+$ See 26055
+$ "NEW-"
+31080 brush-file
+$ See 26057
+$ "NEW-"
+31081 cmu-file
+$ See 26059
+$ "NEW-"
+31082 mgr-file
+$ See 26061
+$ "NEW-"
+31083 g3-file
+$ See 26063
+$ "NEW-"
+31084 img-file
+$ See 26065
+$ "NEW-"
+31085 pi3-file
+$ See 26067
+$ "NEW-"
+31086 xbm-file
+$ See 26069
+$ "NEW-"
+31087 ybm-file
+$ See 7009
+$ "NEW-"
+31088 PRINTER_UNKNOWN
+$ See 10001
+$ "NEW-"
+31089 MAN_PAGE
+$ See 10002
+$ "NEW-"
+31090 TAR
+$ See 10010
+$ "NEW-"
+31091 COMPRESSED
+$ See 10013
+$ "NEW-"
+31092 SHELL
+$ See 10014
+$ "NEW-"
+31093 CSHELL
+$ See 10015
+$ "NEW-"
+31094 KSHELL
+$ See 10016
+$ "NEW-"
+31095 SHAR
+$ See 10019
+$ "NEW-"
+31096 UUENCODE
+$ See 10022
+$ "NEW-"
+31097 MESSAGE_CAT
+$ See 12001
+$ "NEW-"
+31098 XWD
+$ See 3030 for detail
+$ "NEW-"
+31099 UIL
+$ See 20001
+$ "NEW-"
+31100 DtcmAppointmentAttrs
+$ See 24001
+$ "NEW-"
+31101 BIP
+$ See 24003
+$ "NEW-"
+31102 BIL
+$ See 24005
+$ "NEW-"
+31103 BIX
+$ See 17001 for more information
+$ "NEW-"
+31104 DTMAIL_FILE
+
+$ See 17003
+$ 31105 OBS- DTEXTERNALBODY
+
+$ 
+$ ----------------------------------------------------------------------------
+$ Messages 31106 - 31107 refer to the Empty Trash Can (DtEmptyTrash) action.
+$ 
+$ "NEW-"
+31106 Empty Trash Can
+$ 
+$ 31107 - do not translate (DtEmptyTrash).
+$ 
+$ "NEW-"
+31107 The Empty Trash Can (DtEmptyTrash) action empties the desktop Trash \\\n\
+                        Can window when the action icon is double-clicked.
+$ 
+
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dtinfo.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dtinfo.dt file defines Datatypes and Actions for dtinfo.
+$ 
+$ ----------------------------------------------------------------------------
+$ This message is used for the TYPE_LABEL field of the DtInfoLib 
+$   DATA_ATTRIBUTES definition.
+$ 31200 "NEW-"
+31200 Info Lib
+$ 
+$ This message is used for the DESCRIPTION field of the DtInfoLib 
+$   DATA_ATTRIBUTES definition.
+$ 31201 "NEW-"
+31201 On-line documentation for the Information Manager.
+$ 
+$ This message is used for the LABEL field of the DtLoadInfoLib 
+$   ACTION definition.
+$ 31202 "NEW-"
+31202 Load InfoLib
+$ 
+$ This message is used for the DESCRIPTION field of the DtLoadInfoLib 
+$   ACTION definition.
+$ 31203 "NEW-"
+31203 Start an information browser.
+
+$ 
+$ **************************************************************************
+$ **************************************************************************
+$ *  dtims.dt
+$ **************************************************************************
+$ 
+$ * DESCRIPTION
+$ * The dtims.dt file defines Actions for dtimsstart.
+$ 
+$ ----------------------------------------------------------------------------
+$ This message is used for the LABEL field of the DtImsMode
+$   ACTION definition.
+$ 31300 "NEW-"
+31300 DtImsMode
+$ 
+$ This message is used for the DESCRIPTION field of the DtImsMode
+$   ACTION definition.
+$ 31301 "NEW-"
+31301 The DtimsMode action sets the selection mode for Input Method.
+$ 
+$ This message is used for the DESCRIPTION field of the DtImsGetRemoteConf
+$   ACTION definition.
+$ 31302 "NEW-"
+31302 This action obtains IMS configuration data on a remote system.
+$ 
+$ This message is used for the DESCRIPTION field of the DtImsRunRemoteIms
+$   ACTION definition.
+$ 31303 "NEW-"
+31303 This action starts an IMS on a remote system.
+

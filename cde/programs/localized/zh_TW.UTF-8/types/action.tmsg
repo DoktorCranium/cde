@@ -1,0 +1,47 @@
+$ $XConsortium: action.tmsg /main/3 1995/11/08 14:11:32 rswiston $
+$set 1
+$ *
+$ *****************************************************************************
+$ * actions.tmsg
+$ *
+$ * Translatable Strings for actions
+$ *
+$ * Copyright (c) 1993, 1994 Hewlett-Packard Company
+$ * Copyright (c) 1993, 1994 International Business Machines Corp.
+$ * Copyright (c) 1993, 1994 Sun Microsystems, Inc.
+$ * Copyright (c) 1993, 1994 Novell, Inc.
+$ *
+$ *****************************************************************************
+
+$ *****************************************************************************
+$ *
+$ *  Format of this message file.
+$ *    $set n [comment] ... n must be 1.
+$ *    $ [comment]
+$ *    m message-text ... Message text may contain following spcial characters
+$ *                       and escape sequences.
+$ *                         \\                  backslash
+$ *                         \n                  newline
+$ *                         \t                  horizontal tab
+$ *                         \ (at end of line)  continue on same line
+$ *
+$ *****************************************************************************
+$ 
+$ Messages 1 - 11 are 1 continuous comment, make sure you put the "#" at the 
+$ start of each new line.  Use all 1 - 11 to translate if needed.  Leave
+$ any line empty with a '#' if the message is not needed.
+$ 
+1 # 楙堈麔淰鷥玿纂堈＞纂郫痐譫磣隉侇嗄蘄頨＝(CDE; 
+2 # Common Desktop Environment) 柁棬汃﹞楙堈麔淰柁蠡晥隓驨篕衭“
+3 # 伒囷楙堈麔淰旂洠柁﹜嶂冈楁⑴髓欹⺼﹞ヵ峈楙堈麔淰旂纂堈⑴
+4 # 欹⺼麔﹜靨麔ボ昑棬汃罶涷梬斕ズ纂禋げ (*.dt 麔淰) 柁ボ磝砨嗃﹜
+5 # CDE 麔淰磣隉炟祼鞂渿楙堈麔淰槉珜纂堈棬汃﹞
+6 #
+7 # ヵ錛驨棬汃柁箯嗏罶媢﹜霘棤櫇 CDE 鷗癱﹞
+8 #
+9 #
+10 #
+11 #
+$ 
+$ 
+12 纂郫痐譫磣隉侇嗄蘄頨 (CDE) 棬汃﹞霘囷え麔淰磣隉炟鞜え﹞
