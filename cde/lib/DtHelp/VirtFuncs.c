@@ -109,8 +109,8 @@ _DtCvGetStringWidth (
 	result = (*(canvas->virt_functions.get_width)) (
 			canvas->client_data, _DtCvSTRING_TYPE,
 			(_DtCvPointer) &strInfo);
-    if (result < 0)
-	result = 0;
+    if (result <= 0)
+	result = 1;
 
     return result;
 
