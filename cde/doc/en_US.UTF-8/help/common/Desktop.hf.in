@@ -1,4 +1,4 @@
-!# $XConsortium: Desktop.hf /main/5 1996/12/06 19:40:58 rws $
+!# $XConsortium: Desktop.hf /main/4 1996/06/19 16:19:14 drk $
 !#####################################################################
 !#
 !#      CDE Desktop  Help Family 
@@ -15,28 +15,30 @@
 
 
 *.charSet:      UTF-8
-*.title:        Bureau CDE
-*.bitmap:       /usr/dt/appconfig/help/fr_FR.UTF-8/graphics/cdelogo.pm
-*.abstract:     Généralités et Connaissances de base du Bureau \
- * Aide sur l'aide \
- * Gestionnaire d'applications \
- * Agenda \
- * Créer une action \
- * Gestionnaire de fichiers \
- * Tableau de bord \
- * Editeur d'icônes \
- * Gestionnaire des informations \
- * Gestionnaire de connexion et Variables d'environnement \
- * Programme courrier \
- * Gestionnaire d'impression \
- * Gestionnaire de configuration \
- * Emulateur de terminal \
- * Editeur de texte
+*.title:        Common Desktop Environment
+*.bitmap:       @prefix@/appconfig/help/en_US.UTF-8/graphics/cdelogo.pm
+*.abstract:     Overview and Basic Desktop Skills \
+ * Using Help \
+ * Application Builder \
+ * Application Manager \
+ * Calendar Manager \
+ * Create Action \
+ * File Manager \
+ * Front Panel \
+ * Icon Editor \
+ * Information Manager \
+ * Login Manager and Environment Variables \
+ * Mailer \
+ * Print Manager \
+ * Style Manager \
+ * Terminal Emulator \
+ * Text Editor
 
 
 *.volumes:  \
 Intromgr.sdl \
 Help4Help.sdl \
+AppBuilder.sdl \
 Appmanager.sdl \
 Calendar.sdl \
 CreatAct.sdl \
