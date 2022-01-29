@@ -186,7 +186,7 @@ AC_SUBST(LIBSVC, '$(top_builddir)/lib/DtSvc/libDtSvc.la')
 AC_SUBST(LIBSEARCH, '$(top_builddir)/lib/DtSearch/libDtSearch.la')
 AC_SUBST(LIBPRINT, '$(top_builddir)/lib/DtPrint/libDtPrint.la')
 AC_SUBST(LIBMRM, '$(top_builddir)/lib/DtMrm/libDtMrm.la')
-AC_SUBST(LIBMMDB, '$(top_builddir)/programs/dtinfo/libDtMmdb.la')
+AC_SUBST(LIBMMDB, '$(top_builddir)/lib/DtMmdb/libDtMmdb.la')
 AC_SUBST(LIBHELP, '$(top_builddir)/lib/DtHelp/libDtHelp.la')
 AC_SUBST(LIBCSA, '$(top_builddir)/lib/csa/libcsa.la')
 
@@ -231,6 +231,12 @@ AC_ARG_ENABLE([spanish],
         [enable_es="yes"], [enable_es=""]
 )
 AM_CONDITIONAL([SPANISH], [test -n "$enable_es"])
+
+AC_ARG_ENABLE([japanese],
+        AS_HELP_STRING([--enable-japanese], [Build Japanese locale (default=no)]),
+        [enable_ja="yes"], [enable_ja=""]
+)
+AM_CONDITIONAL([JAPANESE], [test -n "$enable_ja"])
 
 dnl hmmm...
 RM="rm -f"
@@ -385,6 +391,10 @@ fi
 AC_CHECK_PROGS(PATCH, patch)
 if test -z "$ac_cv_prog_PATCH"; then
    MISSING_PROGS="patch ${MISSING_PROGS}"
+fi
+AC_CHECK_PROGS(ONSGMLS, onsgmls)
+if test -z "$ac_cv_prog_ONSGMLS"; then
+   MISSING_PROGS="ONSGMLS ${MISSING_PROGS}"
 fi
 
 dnl Used to check if program 'tic' is available to install terminfo files
@@ -543,6 +553,28 @@ lib/DtMrm/Makefile
 
 lib/csa/Makefile
 
+lib/DtMmdb/Makefile
+lib/DtMmdb/HardCopy/Makefile
+lib/DtMmdb/StyleSheet/Makefile
+lib/DtMmdb/api/Makefile
+lib/DtMmdb/btree/Makefile
+lib/DtMmdb/btree_berkeley/Makefile
+lib/DtMmdb/compression/Makefile
+lib/DtMmdb/diskhash/Makefile
+lib/DtMmdb/dstr/Makefile
+lib/DtMmdb/dti_cc/Makefile
+lib/DtMmdb/dti_excs/Makefile
+lib/DtMmdb/dynhash/Makefile
+lib/DtMmdb/hmphf/Makefile
+lib/DtMmdb/index/Makefile
+lib/DtMmdb/mgrs/Makefile
+lib/DtMmdb/misc/Makefile
+lib/DtMmdb/object/Makefile
+lib/DtMmdb/oliasdb/Makefile
+lib/DtMmdb/schema/Makefile
+lib/DtMmdb/storage/Makefile
+lib/DtMmdb/utility/Makefile
+
 programs/Makefile
 
 programs/backdrops/Makefile
@@ -578,8 +610,6 @@ programs/dthelp/parser/pass2/eltdef/Makefile
 programs/dthelp/parser/pass2/htag2/Makefile
 programs/dthelp/parser/pass2/parser/Makefile
 programs/dthelp/parser/helptag/Makefile
-
-programs/nsgmls/Makefile
 
 programs/dtmail/Makefile
 programs/dtmail/dtmail/Makefile
@@ -684,48 +714,6 @@ programs/dtpdmd/Makefile
 programs/dtinfo/Makefile
 programs/dtinfo/tools/Makefile
 programs/dtinfo/tools/misc/Makefile
-programs/dtinfo/DtMmdb/Makefile
-programs/dtinfo/DtMmdb/HardCopy/Makefile
-programs/dtinfo/DtMmdb/StyleSheet/Makefile
-programs/dtinfo/DtMmdb/api/Makefile
-programs/dtinfo/DtMmdb/btree/Makefile
-programs/dtinfo/DtMmdb/btree_berkeley/Makefile
-programs/dtinfo/DtMmdb/compression/Makefile
-programs/dtinfo/DtMmdb/diskhash/Makefile
-programs/dtinfo/DtMmdb/dstr/Makefile
-programs/dtinfo/DtMmdb/dti_cc/Makefile
-programs/dtinfo/DtMmdb/dti_excs/Makefile
-programs/dtinfo/DtMmdb/dynhash/Makefile
-programs/dtinfo/DtMmdb/hmphf/Makefile
-programs/dtinfo/DtMmdb/index/Makefile
-programs/dtinfo/DtMmdb/mgrs/Makefile
-programs/dtinfo/DtMmdb/misc/Makefile
-programs/dtinfo/DtMmdb/object/Makefile
-programs/dtinfo/DtMmdb/oliasdb/Makefile
-programs/dtinfo/DtMmdb/schema/Makefile
-programs/dtinfo/DtMmdb/storage/Makefile
-programs/dtinfo/DtMmdb/utility/Makefile
-programs/dtinfo/mmdb/Makefile
-programs/dtinfo/mmdb/api/Makefile
-programs/dtinfo/mmdb/btree/Makefile
-programs/dtinfo/mmdb/btree_berkeley/Makefile
-programs/dtinfo/mmdb/compression/Makefile
-programs/dtinfo/mmdb/diskhash/Makefile
-programs/dtinfo/mmdb/dstr/Makefile
-programs/dtinfo/mmdb/dti_excs/Makefile
-programs/dtinfo/mmdb/dynhash/Makefile
-programs/dtinfo/mmdb/hmphf/Makefile
-programs/dtinfo/mmdb/index/Makefile
-programs/dtinfo/mmdb/mgrs/Makefile
-programs/dtinfo/mmdb/misc/Makefile
-programs/dtinfo/mmdb/object/Makefile
-programs/dtinfo/mmdb/oliasdb/Makefile
-programs/dtinfo/mmdb/schema/Makefile
-programs/dtinfo/mmdb/storage/Makefile
-programs/dtinfo/mmdb/utility/Makefile
-programs/dtinfo/mmdb/HardCopy/Makefile
-programs/dtinfo/mmdb/dti_cc/Makefile
-programs/dtinfo/mmdb/StyleSheet/Makefile
 programs/dtinfo/clients/Makefile
 programs/dtinfo/clients/dtinfo_start/Makefile
 
@@ -756,16 +744,6 @@ programs/dtinfo/dtinfo/install/lib/Makefile
 programs/dtinfo/dtinfo/install/lib/bitmaps/Makefile
 programs/dtinfo/dtinfo/install/lib/fonts/Makefile
 
-programs/dtinfo/dtinfogen/Makefile
-programs/dtinfo/dtinfogen/mmdb/Makefile
-programs/dtinfo/dtinfogen/mmdb/src/Makefile
-programs/dtinfo/dtinfogen/mmdb/StyleSheet/Makefile
-programs/dtinfo/dtinfogen/infolib/Makefile
-programs/dtinfo/dtinfogen/infolib/etc/Makefile
-programs/dtinfo/dtinfogen/infolib/C.ISO-8859-1/Makefile
-programs/dtinfo/dtinfogen/infolib/C.ISO-8859-1/SGML/Makefile
-programs/dtinfo/dtinfogen/install/Makefile
-
 programs/types/Makefile
 
 programs/tttypes/Makefile
@@ -776,12 +754,24 @@ programs/util/dttypes/Makefile
 programs/dtopen/Makefile
 
 programs/dtdocbook/Makefile
-programs/dtdocbook/lib/Makefile
-programs/dtdocbook/lib/tptregexp/Makefile
+programs/dtdocbook/dtdocbook2man
+programs/dtdocbook/dtdocbook2sdl
+programs/dtdocbook/doc_utils/Makefile
+programs/dtdocbook/dtsr/Makefile
+programs/dtdocbook/infolib/Makefile
 programs/dtdocbook/instant/Makefile
-programs/dtdocbook/xlate_locale/Makefile
-programs/dtdocbook/doc2sdl/Makefile
+programs/dtdocbook/locales/Makefile
+programs/dtdocbook/locales/de_DE.UTF-8/Makefile
+programs/dtdocbook/locales/el_GR.UTF-8/Makefile
+programs/dtdocbook/locales/en_US.UTF-8/Makefile
+programs/dtdocbook/locales/es_ES.UTF-8/Makefile
+programs/dtdocbook/locales/fr_FR.UTF-8/Makefile
+programs/dtdocbook/locales/it_IT.UTF-8/Makefile
+programs/dtdocbook/locales/ja_JP.UTF-8/Makefile
 programs/dtdocbook/sgml/Makefile
+programs/dtdocbook/spec/Makefile
+programs/dtdocbook/tcl/Makefile
+programs/dtdocbook/tpt/Makefile
 
 programs/localized/Makefile
 programs/localized/util/Makefile
@@ -825,29 +815,54 @@ programs/localized/es_ES.UTF-8/types/Makefile
 programs/localized/es_ES.UTF-8/palettes/Makefile
 programs/localized/es_ES.UTF-8/msg/Makefile
 programs/localized/es_ES.UTF-8/appmanager/Makefile
+programs/localized/ja_JP.UTF-8/Makefile
+programs/localized/ja_JP.UTF-8/app-defaults/Makefile
+programs/localized/ja_JP.UTF-8/config/Makefile
+programs/localized/ja_JP.UTF-8/backdrops/Makefile
+programs/localized/ja_JP.UTF-8/types/Makefile
+programs/localized/ja_JP.UTF-8/palettes/Makefile
+programs/localized/ja_JP.UTF-8/msg/Makefile
+programs/localized/ja_JP.UTF-8/appmanager/Makefile
 
 doc/Makefile
-doc/util/Makefile
-doc/util/dbtoman/Makefile
-doc/util/dbtoman/instant/Makefile
 
-doc/C/Makefile
-doc/C/help/Makefile
-doc/C/man/Makefile
-doc/C/guides/Makefile
-doc/C/m-guides/Makefile
+doc/en_US.UTF-8/Makefile
+doc/en_US.UTF-8/help/Makefile
+doc/en_US.UTF-8/help/common/Desktop.hf
+doc/en_US.UTF-8/help/common/DesktopIntro.hf
+doc/en_US.UTF-8/man/Makefile
+doc/en_US.UTF-8/guides/Makefile
+doc/en_US.UTF-8/m-guides/Makefile
 
-doc/de_DE.ISO8859-1/Makefile
-doc/de_DE.ISO8859-1/help/Makefile
+doc/de_DE.UTF-8/Makefile
+doc/de_DE.UTF-8/guides/Makefile
+doc/de_DE.UTF-8/help/Makefile
+doc/de_DE.UTF-8/help/common/Desktop.hf
+doc/de_DE.UTF-8/help/common/DesktopIntro.hf
 
-doc/es_ES.ISO8859-1/Makefile
-doc/es_ES.ISO8859-1/help/Makefile
+doc/es_ES.UTF-8/Makefile
+doc/es_ES.UTF-8/guides/Makefile
+doc/es_ES.UTF-8/help/Makefile
+doc/es_ES.UTF-8/help/common/Desktop.hf
+doc/es_ES.UTF-8/help/common/DesktopIntro.hf
 
-doc/fr_FR.ISO8859-1/Makefile
-doc/fr_FR.ISO8859-1/help/Makefile
+doc/fr_FR.UTF-8/Makefile
+doc/fr_FR.UTF-8/guides/Makefile
+doc/fr_FR.UTF-8/help/Makefile
+doc/fr_FR.UTF-8/help/common/Desktop.hf
+doc/fr_FR.UTF-8/help/common/DesktopIntro.hf
 
-doc/it_IT.ISO8859-1/Makefile
-doc/it_IT.ISO8859-1/help/Makefile
+doc/it_IT.UTF-8/Makefile
+doc/it_IT.UTF-8/guides/Makefile
+doc/it_IT.UTF-8/help/Makefile
+doc/it_IT.UTF-8/help/common/Desktop.hf
+doc/it_IT.UTF-8/help/common/DesktopIntro.hf
+
+doc/ja_JP.UTF-8/Makefile
+doc/ja_JP.UTF-8/guides/Makefile
+doc/ja_JP.UTF-8/help/Makefile
+doc/ja_JP.UTF-8/help/common/Desktop.hf
+doc/ja_JP.UTF-8/help/common/DesktopIntro.hf
 
 include/Makefile
 
