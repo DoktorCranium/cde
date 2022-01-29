@@ -1282,10 +1282,7 @@ CanvasRenderer::handle_olias_attributes(ElementFeatures  &features,
 	assert( mb_len > 0 );
 	if (mb_len == 1) {
 	  const unsigned char ch = (unsigned char)*p++;
-	  if (ch == ' '  || // space
-	      ch == '\t' || // tab
-	      ch == '\n' || // newline
-	      ch == 0xA0) // nbsp
+	  if (isspace(ch))
 	    continue;
 	}
 	else
@@ -1296,10 +1293,7 @@ CanvasRenderer::handle_olias_attributes(ElementFeatures  &features,
 #else
       while (*p)
 	{
-	  if (!((*p == ' ') || // space
-		(*p == '	') || // tab
-		(*p == '\n') || // newline
-		(*p == (char)0xA0))) // nbsp
+	  if (!isspace(*p))
 	    {
 	      vcc++ ;
 	    }
@@ -1679,15 +1673,21 @@ CanvasRenderer::really_insert_string (_DtCvSegment *container,
   if (strseg->type & _DtCvWIDE_CHAR) {
     wchar_t *p;
     for (p = (wchar_t*)string; *p; p++) {
-      if (*p != ' '  && *p != '\t' && *p != '\n')
+      if (!isspace(*p))
 	scd.vclen()++;
     }
   }
-  else { // also need to exclude nbsp
-    unsigned char* p;
-    for (p = (unsigned char*)string; *p; p++) {
-      if (*p != ' ' && *p != '\t' && *p != '\n' && *p != 0xA0)
+  else {
+    unsigned char* p = (unsigned char *) string;
+
+    while (*p) {
+      int mbl = mblen((char *) p, MB_CUR_MAX);
+
+      if (!isspace(*p))
 	scd.vclen()++;
+
+      if (mbl < 0) ++p;
+      else p += mbl;
     }
   }
 

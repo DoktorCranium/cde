@@ -256,31 +256,40 @@ DtCvStrVccToIndex(_DtCvSegment* seg, unsigned int vcc)
     if (seg->type & _DtCvWIDE_CHAR) {
 	wchar_t* seg_str = (wchar_t*)seg->handle.string.string;
 	for (; *seg_str && rel_vcc > 0; seg_str++, index++) {
-	    if (*seg_str != ' ' && *seg_str != '\t' && *seg_str != '\n')
+	    if (!isspace(*seg_str))
 		rel_vcc--;
 	}
 	if (*seg_str == 0 && rel_vcc > 0)
 	    index = (unsigned int)-1;
 	else {
 	    for (; *seg_str; seg_str++, index++) {
-		if (*seg_str != ' ' && *seg_str != '\t' && *seg_str != '\n')
+		if (!isspace(*seg_str))
 		    break;
 	    }
 	}
     }
     else {
 	unsigned char* seg_str = (unsigned char*)seg->handle.string.string;
-	for (; *seg_str && rel_vcc > 0; seg_str++, index++) {
-	    if (*seg_str != ' ' && *seg_str != '\t' &&
-				   *seg_str != '\n' && *seg_str != 0xA0)
+	while (*seg_str && rel_vcc > 0) {
+	    if (!isspace(*seg_str))
 		rel_vcc--;
+
+	    int mbl = mblen((char *) seg_str, MB_CUR_MAX);
+
+	    if (mbl < 0) {
+		++seg_str;
+		++index;
+	    }
+	    else {
+		seg_str += mbl;
+		index += mbl;
+	    }
 	}
 	if (*seg_str == 0 && rel_vcc > 0)
 	    index = (unsigned int)-1;
 	else {
 	    for (; *seg_str; seg_str++, index++) {
-		if (*seg_str != ' ' && *seg_str != '\t' &&
-				       *seg_str != '\n' && *seg_str != 0xA0)
+		if (!isspace(*seg_str))
 		    break;
 	    }
 	}
@@ -301,16 +310,20 @@ DtCvStrVcLenSync(_DtCvSegment* seg)
     if (seg->type & _DtCvWIDE_CHAR) {
 	wchar_t* seg_str = (wchar_t*)seg->handle.string.string;
 	for (; *seg_str; seg_str++) {
-	    if (*seg_str != ' ' && *seg_str != '\t' && *seg_str != '\n')
+	    if (!isspace(*seg_str))
 		vclen++;
 	}
     }
     else {
 	unsigned char* seg_str = (unsigned char*)seg->handle.string.string;
-	for (; *seg_str; seg_str++) {
-	    if (*seg_str != ' ' && *seg_str != '\t' &&
-				   *seg_str != '\n' && *seg_str != 0xA0)
+	while (*seg_str) {
+	    if (!isspace(*seg_str))
 		vclen++;
+
+	    int mbl = mblen((char *) seg_str, MB_CUR_MAX);
+
+	    if (mbl < 0) ++seg_str;
+	    else seg_str += mbl;
 	}
     }
 
@@ -459,15 +472,16 @@ chop_segment(_DtCvSegment* seg, unsigned int nc)
 //   the segment to be highlighted
 
 _DtCvSegment*
-highlight_search_hit(_DtCvSegment* seg, unsigned int vcc, unsigned int len)
+highlight_search_hit(_DtCvSegment* seg, unsigned int vcc, unsigned int vlen)
 {
     if (seg == NULL || (seg->type & _DtCvPRIMARY_MASK) != _DtCvSTRING)
 	return NULL;
 
-    if (len <= 0)
+    if (vlen <= 0)
 	return NULL;
 
     unsigned int seg_vcc = DtCvStrVcc(seg);
+    unsigned int seg_vc_len = DtCvStrVcLen(seg);
     unsigned int seg_nc  = DtCvStrLen(seg);
 
     if (vcc < seg_vcc) // vcc falls short
@@ -480,17 +494,22 @@ highlight_search_hit(_DtCvSegment* seg, unsigned int vcc, unsigned int len)
     if (nseg_nc == (unsigned int)-1) // vcc is beyond segment
 	return NULL;
 
+    unsigned int rel_vcc = vcc - ((SegClientData*)seg->client_use)->vcc();
+
 #ifdef DEBUG
-    fprintf(stderr, "(DEBUG) vcc=%d, index=%d, clen=%d\n", vcc, nseg_nc, len);
+    fprintf(stderr, "(DEBUG) vcc=%d, index=%d, vlen=%d\n", vcc, nseg_nc, vlen);
 #endif
 
-    if (len == 0)
+    if (vlen == 0)
 	return NULL;
-    else if (seg_vcc == vcc && seg_nc == len)
+    else if (seg_vcc == vcc && seg_vc_len == vlen)
 	return seg;
 
-    if (len > seg_nc - nseg_nc) { // len goes beyond this segment
+    unsigned int len = 0;
+
+    if (vlen > seg_vc_len - rel_vcc) { // vlen goes beyond this segment
 	if (seg->next_seg == NULL) {
+	    vlen = seg_vc_len - rel_vcc;
 	    len = seg_nc - nseg_nc;
 	}
 	else {
@@ -499,6 +518,7 @@ highlight_search_hit(_DtCvSegment* seg, unsigned int vcc, unsigned int len)
 	    if (type != _DtCvSTRING || sibling->client_use == NULL ||
 		DtCvStrVcc(sibling) == (unsigned int)-1 ||
 		(seg->type & _DtCvWIDE_CHAR) != (sibling->type & _DtCvWIDE_CHAR)) {
+		vlen = seg_vc_len - rel_vcc;
 		len = seg_nc - nseg_nc;
 	    }
 	    else { // let's merge segments
@@ -510,23 +530,23 @@ highlight_search_hit(_DtCvSegment* seg, unsigned int vcc, unsigned int len)
 		if (widec) {
 		    wchar_t* src = (wchar_t*)sibling->handle.string.string;
 		    wchar_t* dst = (wchar_t*)seg->handle.string.string;
-		    int slen = wcslen(dst);
-		    int len = wcslen(src);
+		    int dlen = wcslen(dst);
+		    int slen = wcslen(src);
 		    seg->handle.string.string = (void*)
 			realloc(seg->handle.string.string,
-					sizeof(wchar_t) * (slen + len + 1));
+					sizeof(wchar_t) * (dlen + slen + 1));
 		    dst = (wchar_t*)seg->handle.string.string;
-		    *((char *) memcpy(dst + slen, src, len) + len) = '\0';
+		    *((char *) memcpy(dst + dlen, src, slen) + slen) = '\0';
 		}
 		else {
 		    char* src = (char*)sibling->handle.string.string;
 		    char* dst = (char*)seg->handle.string.string;
-		    int slen = strlen(dst);
-		    int len = strlen(src);
+		    int dlen = strlen(dst);
+		    int slen = strlen(src);
 		    seg->handle.string.string = (void*)
-			realloc(seg->handle.string.string, slen + len + 1);
+			realloc(seg->handle.string.string, dlen + slen + 1);
 		    dst = (char*)seg->handle.string.string;
-		    *((char *) memcpy(dst + slen, src, len) + len) = '\0';
+		    *((char *) memcpy(dst + dlen, src, slen) + slen) = '\0';
 		}
 		DtCvStrVcLenSync(seg);
 
@@ -539,7 +559,44 @@ highlight_search_hit(_DtCvSegment* seg, unsigned int vcc, unsigned int len)
 		// NOTE: sibling is kept (i.e. not deleted)
 		// this fact may cause problems in next highlight_search_hit
 
-		return highlight_search_hit(seg, vcc, len);
+		return highlight_search_hit(seg, vcc, vlen);
+	    }
+	}
+    }
+    else if (vlen < seg_vc_len - rel_vcc) {
+	if (widec) len = vlen;
+	else {
+	    unsigned char *seg_str = (unsigned char*)seg->handle.string.string;
+
+	    for (int i = 0; i < rel_vcc; ++i) {
+		if (isspace(*seg_str)) {
+		    ++seg_str;
+		    continue;
+		}
+
+		int mbl = mblen((char *) seg_str, MB_CUR_MAX);
+
+		if (mbl < 0) ++seg_str;
+		else seg_str += mbl;
+	    }
+
+	    for (int i = 0; i < vlen; ++i) {
+		if (isspace(*seg_str)) {
+		    ++seg_str;
+		    ++len;
+		    continue;
+		}
+
+		int mbl = mblen((char *) seg_str, MB_CUR_MAX);
+
+		if (mbl < 0) {
+		    ++seg_str;
+		    ++len;
+		}
+		else {
+		    seg_str += mbl;
+		    len += mbl;
+		}
 	    }
 	}
     }
@@ -563,7 +620,7 @@ highlight_search_hit(_DtCvSegment* seg, unsigned int vcc, unsigned int len)
 	    return NULL;
     }
 
-    if (len != seg_nc - nseg_nc)
+    if (vlen != seg_vc_len - rel_vcc)
 	chop_segment(seg, len);
 
     return seg;

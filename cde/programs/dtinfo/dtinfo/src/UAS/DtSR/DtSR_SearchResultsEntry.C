@@ -395,8 +395,7 @@ DtSR_SearchResultsEntry::create_matches()
 	while (off > 0) {
 
 	    int scanned = 0;
-	    if (*cursor == '\n' || *cursor == '\t' || *cursor == ' '  ||
-		*cursor == 0x0D) {
+	    if (isspace(*cursor)) {
 		scanned++;
 	    }
 	    else if (*cursor == ShiftIn || *cursor == ShiftOut) {
@@ -407,20 +406,11 @@ DtSR_SearchResultsEntry::create_matches()
 		scanned++;
 	    }
 	    else {
-		int mbl = mblen(cursor, MB_CUR_MAX);
+		scanned = mblen(cursor, MB_CUR_MAX);
+		vcc++;
 
-		if ((mbl == 1 && (unsigned char) cursor[0] == 0xA0) ||
-		    (mbl == 2 && (unsigned char) cursor[0] == 0xC2 &&
-				 (unsigned char) cursor[1] == 0xA0)) {
-		    scanned++;
-		}
-		else {
-		    scanned = mbl;
-		    vcc++;
-
-		    /* skip one byte in case of failure */
-		    if (scanned < 0) scanned = 1;
-		}
+		/* skip one byte in case of failure */
+		if (scanned < 0) scanned = 1;
 	    }
 
 	    off -= scanned;
@@ -434,13 +424,11 @@ DtSR_SearchResultsEntry::create_matches()
 
 	int len = atoi(len_str);
 	// remove leading white-spaces
-	for (; len && (*cursor == ' ' || *cursor == '\t' ||
-		       *cursor == '\n'|| *cursor == 0x0D); cursor++, len--);
+	for (; len && isspace(*cursor); cursor++, len--);
 
 	// remove trailing white-spaces
 	if (len > 0) {
-	    for (const char*  p = cursor + len - 1;
-		 *p==' ' || *p=='\t' || *p=='\n' || *p==0x0D; p--, len--);
+	    for (const char *p = cursor + len - 1; isspace(*p); p--, len--);
 	}
 
 	if (len == 0)
