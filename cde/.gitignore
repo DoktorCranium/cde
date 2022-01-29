@@ -432,13 +432,6 @@ lib/DtHelp/misc/
 lib/DtSearch/boolyac.c
 lib/DtSearch/boolyac.h
 
-# lib/DtMmdb
-lib/DtMmdb
-
-# lib/DtSearch
-lib/DtSearch/boolyac.c
-lib/DtSearch/boolyac.h
-
 #  lib/DtTerm
 lib/DtTerm/Term/TermLineData.c
 lib/DtTerm/TermPrim/TermPrimGetPty.c
