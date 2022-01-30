@@ -42,7 +42,7 @@ ComboBoxObj::ComboBoxObj(MotifUI *parent, ComboBoxCallback callback,
 	: MotifUI(parent, name, NULL)
 {
    XmString *items_list;
-   int itemCount;
+   int itemCount = 0;
    if (items && n_items)
     {
       items_list = new XmString [n_items];

@@ -194,7 +194,7 @@ protected:
     char		*_shroud;	// String to shroud in debug output.
     char		 _transtag[DTMAS_TAGSIZE]; 
 					// Tag of the current transaction.
-    int			 _transnum;	// Number of the current transaction.
+    unsigned		 _transnum;	// Number of the current transaction.
     int			 _timeout;	// Timeout seconds waiting for server.
     char		*_username;
 

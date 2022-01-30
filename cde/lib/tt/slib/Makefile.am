@@ -1,7 +1,5 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-include ../tooltalk.inc
-
 noinst_LIBRARIES = libstt.a
 
 libstt_a_CXXFLAGS = $(TIRPC_DEFINES) -I../lib

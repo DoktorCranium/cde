@@ -2787,7 +2787,7 @@ static void SearchIndex(
                         &indexEntry, &entryLen,indexEntry,entryLen) == 0
                 && SearchForPattern(indexEntry, srchWord, srchWordLen) == True ) )
        {
-          _DtHelpGlobSrchHit * hit;
+          _DtHelpGlobSrchHit * hit = NULL;
           char * *          topicIdList;
 
           HitListAddFound ( curFile, curVol->curIndexXmStr[0],

@@ -200,7 +200,7 @@ static iljpgError build_huffman_tables (
                 lookup_size,
                 code, mask;
         tree_node *tree_nodes,          /* pointer to pool of tree nodes */
-                  *nodep, *leafp, **followp;  /* misc aux. tree pointers */
+                  *nodep, *leafp = NULL, **followp;  /* misc aux. tree pointers */
         LOOKUP    *lookup_symb, *lookup_len; /* pointers to lookup tables */
         int       absize; /* actual number of Huffman-encoded symbols */
         int      *hufvals, *hufcodes, *huflen; /* intermediate tables */

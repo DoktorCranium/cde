@@ -61,7 +61,7 @@ LastTick(
 	const Tick		 start_time,
         RepeatEvent		*re)
 {
-	Tick 			 last_time;
+	Tick 			 last_time = 0;
 
 	if (!re) return (Tick)0;
 

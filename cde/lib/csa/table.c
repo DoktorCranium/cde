@@ -1055,7 +1055,7 @@ _DtCm_table_delete(
 extern CSA_return_code 
 _DtCm_table_size(Calendar *cal, int *size)
 {
-	int *res;
+	int *res = NULL;
 	CSA_return_code	stat = CSA_SUCCESS;
 	_DtCm_Connection	*conn;
 
@@ -1275,7 +1275,7 @@ _DtCm_table_unregister_target(
 			nullreturned = B_TRUE;
 		break;
 	default:
-		stat = CSA_E_FAILURE;
+		return CSA_E_FAILURE;
 	}
 
 	if (nullreturned) {
@@ -1360,7 +1360,7 @@ _DtCm_table_register_target(
 			nullreturned = B_TRUE;
 		break;
 	default:
-		stat = CSA_E_FAILURE;
+		return CSA_E_FAILURE;
 	}
 
 	if (nullreturned) {

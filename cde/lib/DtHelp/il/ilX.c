@@ -1221,7 +1221,7 @@ ilPipeInfo                  info;
 ilXWCPtr           pXWC;
 ilXPrivPtr         pPriv;
 ilSrcElementData           *pSrcData, srcData;
-unsigned long               bufferSize;
+unsigned long               bufferSize = 0;
 /*
 ** We need to use the execute fucntion with the ratio parameter.
 */

@@ -985,7 +985,7 @@ GeometryManager(
 			height_req = request->request_mode & CWHeight,
 			bw_req = request->request_mode & CWBorderWidth,
 			almost = False;
-	XtGeometryResult	result, parent_result;
+	XtGeometryResult	result = XtGeometryYes, parent_result;
 	XtWidgetGeometry	parent_req, parent_reply;
 	
 

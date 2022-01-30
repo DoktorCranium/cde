@@ -754,8 +754,8 @@ saveFonts(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-        sprintf(bufr, "%s*Fonts.x: %d\n", bufr, x);
-        sprintf(bufr, "%s*Fonts.y: %d\n", bufr, y);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*Fonts.x: %d\n", bufr, x);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*Fonts.y: %d\n", bufr, y);
 
         if(-1 == write (fd, bufr, strlen(bufr))) {
 		perror(strerror(errno));

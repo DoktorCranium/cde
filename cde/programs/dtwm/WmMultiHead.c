@@ -26,7 +26,7 @@
 /*
  * Included Files:
  */
-#include <DtXinerama.h>
+#include <Dt/DtXinerama.h>
 
 #include "WmMultiHead.h"
 

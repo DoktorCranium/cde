@@ -149,13 +149,13 @@ _amread(Bytearray *isfhandle, char *record, int *reclen,
         struct errcode *errcode)
 {
     Fcb			*fcb = NULL;
-    Recno		recnum2;
+    Recno		recnum2 = 0;
     int			err;
     Crp			*crp;
     Btree		*btree = NULL;
     Keydesc2		*pkeydesc2;
     char		keybuf1[MAXKEYSIZE], keybuf2[MAXKEYSIZE];
-    char		*pkey, *pkeynext;
+    char		*pkey = NULL, *pkeynext;
     int			skipbytes;
     int			ret;
     Bytearray		oldcurpos;

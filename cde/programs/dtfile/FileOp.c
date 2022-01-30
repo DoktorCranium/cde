@@ -567,7 +567,7 @@ FileMoveCopyProcess(
         int mode,
         DesktopRec *desktopWindow)
 {
-   char * target_dir, * from, * to;
+   char * target_dir, * from = NULL, * to;
    int i, j, rc, result;
    Boolean return_val = False;
    Boolean isContainer;
@@ -587,7 +587,7 @@ FileMoveCopyProcess(
    Boolean targetError   = FALSE;
    Boolean CopyError=FALSE,MoveError1=FALSE,MoveError2=FALSE;
    char  *CopyString=NULL,*MoveString1=NULL,*MoveString2=NULL;
-   Boolean Same;
+   Boolean Same = FALSE;
 
    /*  Get the fully qualified destination path.  */
    target_dir = (char *)ResolveLocalPathName(host, directory, NULL, home_host_name, &tt_status);
@@ -1971,7 +1971,7 @@ FileOpPipeCB(
 
          if( cb_data->mode == MOVE_FILE )
          {
-           sprintf( fileName, "%s/%s", tmpDir, cb_data->updates[i].file );
+           snprintf( fileName, sizeof(fileName), "%s/%s", tmpDir, cb_data->updates[i].file );
            if( cb_data->updates[i].operationStatus == True )
            {
              if( status == PIPEMSG_MOVE_TO_SAME_DIR )
@@ -1988,7 +1988,7 @@ FileOpPipeCB(
 
 	       if(initiating_view == NULL && cb_data->callback_data == NULL)
 	       {
-                 sprintf( fileName, "%s/%s", cb_data->directory,
+                 snprintf( fileName, sizeof(fileName), "%s/%s", cb_data->directory,
 			      cb_data->updates[i].file );
                  DtEliminateDots(fileName);
                  RemoveIconFromWorkspace( fileName, cb_data->directory );
@@ -2489,7 +2489,7 @@ ChangeIconPipeCB(
    Widget msg_widget;
    DirectorySet *directory_set;
    FileMgrData *file_mgr_data = NULL;
-   FileMgrRec *file_mgr_rec;
+   FileMgrRec *file_mgr_rec = NULL;
    short pipe_msg;
    int i, j, n;
    int rc;

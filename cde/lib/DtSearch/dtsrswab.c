@@ -52,7 +52,8 @@
  *
  * $Log$
  */
-#include "SearchP.h"
+#include <cde_config.h>
+#include <Dt/SearchP.h>
 
 /********************************/
 /*				*/
@@ -61,7 +62,7 @@
 /********************************/
 void	swab_objrec (struct or_objrec *rec,  SWABDIR direction)
 {
-#ifndef BYTE_SWAP
+#if defined(WORDS_BIGENDIAN)
     return;
 #else
     if (direction == NTOH) {
@@ -91,7 +92,7 @@ void	swab_objrec (struct or_objrec *rec,  SWABDIR direction)
 	HTONS (rec->or_objeureka);
     }
     return;
-#endif /* BYTE_SWAP */
+#endif /* WORDS_BIGENDIAN */
 }  /* swab_objrec() */
 
 
@@ -102,7 +103,7 @@ void	swab_objrec (struct or_objrec *rec,  SWABDIR direction)
 /********************************/
 void	swab_dbrec (struct or_dbrec *rec,  SWABDIR direction)
 {
-#ifndef BYTE_SWAP
+#if defined(WORDS_BIGENDIAN)
     return;
 #else
     if (direction == NTOH) {
@@ -147,7 +148,7 @@ void	swab_dbrec (struct or_dbrec *rec,  SWABDIR direction)
 	HTONS (rec->or_language);
     }
     return;
-#endif /* BYTE_SWAP */
+#endif /* WORDS_BIGENDIAN */
 }  /* swab_dbrec() */
 
 /********************* DTSRSWAB.C **********************************/

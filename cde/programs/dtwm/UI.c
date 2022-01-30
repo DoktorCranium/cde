@@ -2317,7 +2317,7 @@ SwitchButtonCreate (SwitchData * switch_data,
 
    for (i = 0; i < switch_count; i++)
    {
-      int pixel_set_index, map_index;
+      int pixel_set_index = 1, map_index;
 
       if (one == True)
          i = switch_count - 1;

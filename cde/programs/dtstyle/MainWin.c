@@ -784,8 +784,8 @@ saveMain(
         /* Get and write out the geometry info for our Window */
         x = XtX(XtParent(style.mainWindow));
         y = XtY(XtParent(style.mainWindow));
-        sprintf(bufr, "%s*mainWindow.x: %d\n", bufr, x);
-        sprintf(bufr, "%s*mainWindow.y: %d\n", bufr, y);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*mainWindow.x: %d\n", bufr, x);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*mainWindow.y: %d\n", bufr, y);
 
         if(-1 == write (fd, bufr, strlen(bufr))) {
 		     perror(strerror(errno));

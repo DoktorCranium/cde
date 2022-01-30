@@ -632,10 +632,12 @@ update_message(const _Tt_message_ptr &m, Tt_state newstate)
 		// delivered messages, update the message and then
 		// change it to its new state.
 
-		_Tt_dispatch_reason reason;
+		_Tt_dispatch_reason reason ;
 
 		while (mcursor.next()) {
 			if (mcursor->is_equal(m)) {
+				bool recognised_state = false;
+
 				dm = (_Tt_s_message *)(*mcursor).c_pointer();
 				mcursor.remove();
 				if (dm.c_pointer() != m.c_pointer()) {
@@ -649,26 +651,35 @@ update_message(const _Tt_message_ptr &m, Tt_state newstate)
 				switch (newstate) {
 				    case TT_FAILED:
 					reason = TTDR_MESSAGE_FAIL;
+					recognised_state = true;
 					break;
 				    case TT_REJECTED:
 					reason = TTDR_MESSAGE_REJECT;
+					recognised_state = true;
 					break;
 				    case TT_HANDLED:
 					reason = TTDR_MESSAGE_REPLY;
+					recognised_state = true;
 					break;
 				    case TT_ACCEPTED:
 					reason = TTDR_MESSAGE_ACCEPT;
+					recognised_state = true;
 					break;
 				    case TT_ABSTAINED:
 					reason = TTDR_MESSAGE_ABSTAIN;
+					recognised_state = true;
 					break;
+//					default:
+					  /* TODO what is the default reason? */
 				}
 #ifdef OPT_BUG_SUNOS_5
 				{
 #endif
 				// Keep this in sync with ::add_message()
-				_Tt_msg_trace trace( *dm, reason );
-				dm->change_state(this, newstate, trace);
+				if(recognised_state) {
+					_Tt_msg_trace trace( *dm, reason );
+					dm->change_state(this, newstate, trace);
+				}
 
 #ifdef OPT_BUG_SUNOS_5
 				// SunPro cfront calls

@@ -633,8 +633,8 @@ saveKeybd(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-        sprintf(bufr, "%s*keyboardDlg.x: %d\n", bufr, x);
-        sprintf(bufr, "%s*keyboardDlg.y: %d\n", bufr, y);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*keyboardDlg.x: %d\n", bufr, x);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*keyboardDlg.y: %d\n", bufr, y);
 
         if(-1 == write (fd, bufr, strlen(bufr))) {
 	    perror(strerror(errno));

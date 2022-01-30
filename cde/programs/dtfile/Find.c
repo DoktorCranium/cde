@@ -2107,7 +2107,7 @@ AlternateInputHandler(
    int offset = 0;
    char next;
    XmString string;
-   int count;
+   int count = 0;
    Arg args[1];
    char * findptr;
    char * end;
@@ -2260,7 +2260,7 @@ AlternateInputHandler2(
    FindRec * find_rec = (FindRec *) client_data;
    int offset = 0;
    char next;
-   int count;
+   int count = 0;
    char * findptr;
    struct stat stat_data;
    char * content;
@@ -2381,7 +2381,7 @@ AlternateInputHandler3(
    int offset = 0;
    char next;
    XmString string;
-   int count;
+   int count = 0;
    Arg args[1];
    char * findptr;
    struct stat stat_data;

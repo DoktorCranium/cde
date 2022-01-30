@@ -43,7 +43,7 @@ LabelObj::LabelObj(MotifUI *parent,
    XmString xm_string = StringCreate(name);
    Widget p, super_node;
    Pixel bg;
-   int alignment;
+   int alignment = XmALIGNMENT_BEGINNING;
 
    switch (_style = style)
    {
@@ -79,7 +79,7 @@ LabelObj::LabelObj(MotifUI *parent,
 
 void LabelObj::LabelStyle(LabelType style)
 {
-   int alignment;
+   int alignment = XmALIGNMENT_BEGINNING;
 
    switch (_style = style)
    {

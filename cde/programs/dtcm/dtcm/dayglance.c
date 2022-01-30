@@ -923,7 +923,7 @@ static int
 day_xytoclock(Calendar *c, int x, int y, Tick t)
 {
 	int daybegin, hr, val;
-	char buf[10];
+	char buf[36];
 	struct tm tm;
 	Props *p;
 	_Xltimeparams localtime_buf;

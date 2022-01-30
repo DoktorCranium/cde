@@ -1046,7 +1046,7 @@ UpdateMainControlMenu (ControlData * control_data)
    long control_type;
    Arg args[5];
 
-   ElementValue * old_element_values;
+   ElementValue * old_element_values = NULL;
 
    /*  Save element values of control then load values of default control */
 
@@ -1769,7 +1769,7 @@ WSPopupMenu (Widget     w,
    XmAnyCallbackStruct * callback;
    XEvent * event;
    Widget form, focus_widget;
-   SwitchData * switch_data;
+   SwitchData * switch_data = NULL;
    ControlData * control_data = NULL;
    Boolean is_button = False;
    Position x, y;

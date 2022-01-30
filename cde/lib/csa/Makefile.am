@@ -5,24 +5,20 @@ MAINTAINERCLEANFILES = Makefile.in
 lib_LTLIBRARIES = libcsa.la
 
 libcsa_la_CFLAGS = -DRFC_MIME -DLINE_COUNT -DV2 -DOW_I18N \
-		   @CSA_INCDIR@
+		   $(CSA_INCDIR)
 
-libcsa_la_LIBADD = -lXt $(TIRPCLIB)
+libcsa_la_LIBADD = $(XTOOLLIB) $(TIRPCLIB)
 
+# in order to try to keep lib versions the same across platforms, (2.1.0)
+if BSD
 libcsa_la_LDFLAGS = -version-info 2:1:0
-
-if SOLARIS
-libcsa_la_LDFLAGS += -G -z text -z defs
-libcsa_la_CFLAGS += -v
-endif
-
-if HPUX
-libcsa_la_CFLAGS += -DHPUX
+else
+libcsa_la_LDFLAGS = -version-info 3:0:1
 endif
 
 if LINUX
 else
-libcsa_la_LIBADD += $(LIBSVC) -lXm
+libcsa_la_LIBADD += $(LIBSVC) $(XTOOLLIB)
 endif
 
 AM_YFLAGS = -d

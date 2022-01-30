@@ -502,7 +502,7 @@ Realize(
    XtValueMask *valueMask, 
    XSetWindowAttributes *attr)
 {
-   Boolean sw_child;
+   Boolean sw_child = FALSE;
    Widget sw;
    Widget vbar;
    Dimension width, vbar_width, shadow_thickness, highlight_thickness;

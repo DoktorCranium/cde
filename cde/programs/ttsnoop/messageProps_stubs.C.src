@@ -317,7 +317,7 @@ _DtTtMessageUpdate(
 	if (tt_is_err( status ) || (instance == 0)) {
 		return;
 	}
-	char *func;
+	char *func = NULL;
 	switch (choice) {
 	    case _DtStringChooseMessageOtype:
 		status = tt_message_otype_set( msg, val );

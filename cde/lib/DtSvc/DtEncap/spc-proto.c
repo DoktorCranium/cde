@@ -1658,7 +1658,7 @@ int SPC_Query_Logfile(SPC_Channel_Ptr channel)
 {
   SPC_Connection_Ptr connection=channel->connection;
   protocol_request_ptr prot;
-  XeString junk1, junk2;
+  XeString junk1 = NULL, junk2 = NULL;
   
   SPC_Write_Protocol_Request(connection, channel, QUERY_LOGFILE);
   prot=SPC_Filter_Connection(connection, channel, LOGFILE_REPLY, TRUE);
@@ -1713,7 +1713,7 @@ SPC_Validate_User(XeString hostname,
 {
   XeString username = XeString_NULL;
   uid_t this_uid;
-  XeString proto_ver;
+  XeString proto_ver = NULL;
   XeString hostinfo;
   XeString path;
   protocol_request_ptr prot;

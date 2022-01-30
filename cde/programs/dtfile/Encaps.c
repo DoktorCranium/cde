@@ -100,7 +100,7 @@
 #include "Main.h"
 #include "ModAttr.h"
 #ifdef USE_XINERAMA
-#include <DtXinerama.h>
+#include <Dt/DtXinerama.h>
 #endif
 
 #define MAX_NAME_LIST_SIZE	25

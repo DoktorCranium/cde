@@ -150,7 +150,7 @@ int	read_cmd_conf(void)
     char	*conf_dir, *path;
     char	*p, *lp, *valp;
     int		line_num, num_alias;
-    DtEnv	*dt;
+    DtEnv	*dt = NULL;
     RemoteEnv	*remote;
     FILE	*fp;
 # ifdef	old_hpux
@@ -979,7 +979,7 @@ int	set_select_mode(int cur_mode, int new_mode)
 	char	*lp, *valp;
 	int	n, line_num, mode_line;
 
-	sprintf(new_fname, "%s,tmp", path);
+	snprintf(new_fname, sizeof(new_fname), "%s,tmp", path);
 	if (!(new_fp = fopen(new_fname, "w"))) {
 	    fclose(fp);
 	    DPR(("set_select_mode(): cannot create %s\n", new_fname));

@@ -129,7 +129,7 @@ NumsToBuf(
 {
 	int 	 i,
 		 size = 0; 
-	char	 tmp_buf[32],
+	char	 tmp_buf[34],
 		 tmp_buf2[32];
 
 	for (i = 0; i < array_size; i++) {

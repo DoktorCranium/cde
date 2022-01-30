@@ -35,6 +35,7 @@
 #include <rpc/rpc.h>
 #include <util/tt_xdr_utils.h>
 #include <memory.h>
+#include <cde_config.h>
 #include "tt_options.h"
 
 #if defined(__OpenBSD__)
@@ -77,11 +78,7 @@ tt_x_putbytes(XDR *xp, caddr_t, int len)
     return TRUE;
 }
 
-#if defined(CSRG_BASED) || defined(__linux__)
-static int32_t*
-#else
-static long *
-#endif
+rpc_inline_t *
 #if defined(CSRG_BASED) || defined(__linux__)
 tt_x_inline(XDR *xp, unsigned int len)
 #else
@@ -99,11 +96,7 @@ tt_x_inline(XDR *xp, int len)
     if (len > 0 && (caddr_t) (intptr_t) len < xp->x_base) {
 	xp->x_handy += RNDUP (len);
 
-#if defined(CSRG_BASED) || defined(__linux__)
-	return (int32_t *) xp->x_private;
-#else
-	return (long *) xp->x_private;
-#endif
+	return (rpc_inline_t *) xp->x_private;
     } else
 	return 0;
 }

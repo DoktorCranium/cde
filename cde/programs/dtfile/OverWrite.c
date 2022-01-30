@@ -312,7 +312,7 @@ buffer_replace_rename_ok_callback(
         XtPointer call_data)
 {
    int          rc = 0;
-   String       newFile, renameNewName, destinationName;
+   String       newFile = NULL, renameNewName, destinationName;
    struct stat  buf;
    int          saveError = 0;
    static char  msg[38+MAX_PATH];

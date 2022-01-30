@@ -67,7 +67,7 @@ extern int errno;
 #endif
 
 #ifdef USE_XINERAMA
-# include <DtXinerama.h>
+# include <Dt/DtXinerama.h>
 #endif
 
 #define SIGVAL void

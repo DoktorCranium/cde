@@ -177,7 +177,7 @@ static void TurnOffHourGlass(BaseUI *obj, void *data)
 
 void DtSetPref::Apply()
 {
-   IconStyle style;
+   IconStyle style = NAME_ONLY;
    boolean add_timeout = false;
 
    if (by_name->Selected())

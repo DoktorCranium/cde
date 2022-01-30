@@ -66,7 +66,7 @@
 #include <Dt/Connect.h>
 #include <Dt/DtNlUtils.h>
 #ifdef USE_XINERAMA
-#include <DtXinerama.h>
+#include <Dt/DtXinerama.h>
 #endif
 #include "SharedProcs.h"
 
@@ -209,7 +209,7 @@ _DtMessageDialog(
         int dialogType )
 
 {
-   Widget message;
+   Widget message = NULL;
    Widget widget;
    XmString message_string;
    XWindowAttributes attributes;

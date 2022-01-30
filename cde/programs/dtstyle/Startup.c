@@ -725,8 +725,8 @@ saveStartup(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-        sprintf(bufr, "%s*startupDlg.x: %d\n", bufr, x);
-        sprintf(bufr, "%s*startupDlg.y: %d\n", bufr, y);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*startupDlg.x: %d\n", bufr, x);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*startupDlg.y: %d\n", bufr, y);
 
         if(-1 == write (fd, bufr, strlen(bufr))) {
 		perror(strerror(errno));

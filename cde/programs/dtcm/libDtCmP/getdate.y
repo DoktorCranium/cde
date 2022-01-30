@@ -41,7 +41,7 @@ static  char sccsid[] = "@(#)getdate.y 1.10 94/11/07 Copyr 1993 Sun Microsystems
 	/*	@(#)getdate.y	2.6	4/20/84	*/
 
 #ifdef HAVE_CONFIG_H
-#include <autotools_config.h>
+#include <cde_config.h>
 #endif
 #include <EUSCompat.h>
 #include <ctype.h>

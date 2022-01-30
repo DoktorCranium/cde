@@ -282,7 +282,7 @@ _DtTermPrimSubprocExec(Widget		  w,
     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
     static char *defaultCmd = (char *) 0;
     int i;
-    int pty;
+    int pty = -1;
     pid_t pid;
     char *c;
     int err;

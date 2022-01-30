@@ -1204,10 +1204,10 @@ saveI18n(
 	width = XtWidth(style.i18nDialog);
 	height = XtHeight(style.i18nDialog);
 
-	sprintf(bufr, "%s*i18nDlg.x: %d\n", bufr, x);
-	sprintf(bufr, "%s*i18nDlg.y: %d\n", bufr, y);
-	sprintf(bufr, "%s*i18nDlg.width: %d\n", bufr, width);
-	sprintf(bufr, "%s*i18nDlg.height: %d\n", bufr, height);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*i18nDlg.x: %d\n", bufr, x);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*i18nDlg.y: %d\n", bufr, y);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*i18nDlg.width: %d\n", bufr, width);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*i18nDlg.height: %d\n", bufr, height);
 	if(-1 == write (fd, bufr, strlen(bufr))) {
 		perror(strerror(errno));
 	}

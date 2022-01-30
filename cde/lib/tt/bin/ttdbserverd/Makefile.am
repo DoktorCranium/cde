@@ -1,13 +1,14 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-include ../../tooltalk.inc
+TT_VERSION = "CDE Version @CDE_VERSION_MAJOR@.@CDE_VERSION_MINOR@.@CDE_VERSION_MICRO@@CDE_VERSION_DEV@"
+TT_VERSION_DEFINE = -DTT_VERSION_STRING=\"$(TT_VERSION)\"
 
 bin_PROGRAMS = rpc.ttdbserver
 
 rpc_ttdbserver_CXXFLAGS = -I../../slib -I../../lib -I../../mini_isam \
 			$(TIRPC_DEFINES) $(TT_VERSION_DEFINE)
 
-rpc_ttdbserver_LDADD = @LIBTT@ ${TIRPCLIB} $(X_LIBS) ../../slib/libstt.a \
+rpc_ttdbserver_LDADD = $(LIBTT) ${TIRPCLIB} $(X_LIBS) ../../slib/libstt.a \
 		       ../../mini_isam/libisam.a
 
 if LINUX

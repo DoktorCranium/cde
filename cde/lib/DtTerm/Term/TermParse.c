@@ -529,6 +529,8 @@ _DtTermEraseDisplay(Widget w)    /* ED CSIpJ */
     case 2: 
       eraseMode = eraseBuffer;
       break ; 
+    default:
+      return;
    }
    _DtTermFuncEraseInDisplay(w, (int)eraseMode, fromParser);
   vtw->term.tpd->cursorRow = row;
@@ -745,6 +747,9 @@ _DtTermEraseInLine(Widget w)  /* EL  ESC[pK */
     case 2:
       eraseMode = eraseLine;
       break;
+
+    default:
+      return;
 
   }
   _DtTermFuncEraseInLine(w, (int)eraseMode, fromParser);

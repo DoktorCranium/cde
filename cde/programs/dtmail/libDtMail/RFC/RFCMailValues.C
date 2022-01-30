@@ -381,6 +381,8 @@ RFCValue::toDate(void)
     const char *token_end[12];
     int	n_tokens = 0;
 
+    token_end[0] = NULL;
+
     // Look for the end of each token. Date tokens are white space
     // separated.
     while (*pos) {
@@ -407,7 +409,7 @@ RFCValue::toDate(void)
     // Some dates will have a comma after the day of the week. We
     // want to remove that. It will always be the first token if
     // we have the day of the week.
-    if (*token_end[0] == ',') {
+    if (token_end[0] && *token_end[0] == ',') {
 	token_end[0]--;
     }
 

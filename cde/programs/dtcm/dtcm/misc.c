@@ -682,7 +682,7 @@ dialog_popup(Widget parent, ...) {
 	char			*text_str = NULL, *ptr, buf[MAXNAMELEN], *help_str;
 	Pixmap			px;
 	va_list			pvar;
-	Widget			frame, form, image, sep, text, last_text, button;
+	Widget			frame, form, image, sep, text, last_text = NULL, button;
 	Display			*dpy = XtDisplayOfObject(parent);
 	XmString		xmstr;
 	Dialog_create_op	op;
@@ -1301,7 +1301,7 @@ Dimension *dim,
 ... )
 {
     va_list   ap;
-    int       i, _high;
+    int       i, _high = 0;
     Dimension _max;
     Widget    _targetW, _highestW;
     Arg       _args[3];
@@ -1355,7 +1355,7 @@ Dimension *dim,
 ... )
 {
     va_list   ap;
-    int       i, _wide;
+    int       i, _wide = 0;
     Widget    _targetW, _widestW;
     Dimension _max;
     XtWidgetGeometry geo;
@@ -1425,7 +1425,7 @@ Dimension *dim,
 ... )
 {
     va_list   ap;
-    int       i, _high;
+    int       i, _high = 0;
     Dimension _max;
     Widget    _targetW, _highestW;
     Arg       _args[3];

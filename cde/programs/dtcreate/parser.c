@@ -1051,7 +1051,7 @@ char    *s1,*tmp,*s2,buf[10],*cts;
 Boolean
 IsLastSingle(char *str)
 {
-    int n;
+    int n = 0;
 
     if(MB_CUR_MAX == 1)
         return(TRUE);

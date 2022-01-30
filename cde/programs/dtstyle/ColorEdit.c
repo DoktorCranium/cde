@@ -1338,7 +1338,7 @@ HSVtoRGB(
 {
    double p1, p2, p3;
    double hue, sat, val;
-   double red, green, blue;
+   double red = 0.0, green = 0.0, blue = 0.0;
    double i, f;
 
    hue = (double)h / 60.0;
@@ -1730,8 +1730,8 @@ saveColorEdit(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-        sprintf(bufr, "%s*colorEditDlg.x: %d\n", bufr, x);
-        sprintf(bufr, "%s*colorEditDlg.y: %d\n", bufr, y);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*colorEditDlg.x: %d\n", bufr, x);
+        snprintf(bufr, sizeof(style.tmpBigStr), "%s*colorEditDlg.y: %d\n", bufr, y);
         /*any other parameter you want to save goes here*/
         if(-1 == write (fd, bufr, strlen(bufr))) {
 		perror(strerror(errno));

@@ -563,7 +563,7 @@ write_module_files(
     strcpy(uiHeaderDefineName,
 	   abmfP_get_define_from_file_name(uiHeaderFileName));
     sprintf(stubsFileName, "%s_stubs.c", obj_get_name(module));
-    sprintf(stubsBakFileName, "%s.BAK", stubsFileName);
+    snprintf(stubsBakFileName, sizeof(stubsBakFileName), "%s.BAK", stubsFileName);
 
     /*
      * ***** WRITE UI HEADER FILE *****
@@ -733,7 +733,7 @@ write_module_files(
 	    if ((stubsCFileChanged) && (deltaFile != NULL))
 	    {
 		char	deltaFileName[MAXPATHLEN];
-		sprintf(deltaFileName, "%s.delta", stubsFileName);
+		snprintf(deltaFileName, sizeof(deltaFileName), "%s.delta", stubsFileName);
 	        replace_file(deltaFileName, deltaFile, TRUE);
 	    }
 
@@ -799,9 +799,9 @@ write_project_files(
 
     sprintf(headerFileName, "%s.h", obj_get_name(project));
     strcpy(headerDefineName, abmfP_get_define_from_file_name(headerFileName));
-    sprintf(headerBakFileName, "%s.BAK", headerFileName);
+    snprintf(headerBakFileName, sizeof(headerBakFileName), "%s.BAK", headerFileName);
     sprintf(stubsFileName, "%s.c", obj_get_name(project));
-    sprintf(stubsBakFileName, "%s.BAK", stubsFileName);
+    snprintf(stubsBakFileName, sizeof(stubsBakFileName), "%s.BAK", stubsFileName);
 
 
     /***** PROJECT HEADER FILE *****/

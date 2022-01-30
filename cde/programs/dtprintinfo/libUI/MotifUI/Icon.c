@@ -1056,7 +1056,7 @@ CalculateSize(
     Window junkwin;
     int x, y;
     Boolean show_fields = False;
-    Dimension _width;
+    Dimension _width = 0;
 
     if (query_geometry)
       {
@@ -1361,7 +1361,7 @@ CalculateSize(
     XSetClipOrigin(XtDisplay(w), MaskStippleGC(w), PixmapX(w), PixmapY(w));
     if (StatePixmap(w) != XmUNSPECIFIED_PIXMAP)
       {
-	Dimension x_offset, y_offset;
+	Dimension x_offset = 0, y_offset = 0;
 
         XGetGeometry(XtDisplay(w), StatePixmap(w), &junkwin,
             (int *) &junk, (int *) &junk, &width, &height, &junk, &junk);
@@ -2001,7 +2001,7 @@ QueryGeometry(
    XtWidgetGeometry *desired
    )
 {
-    Dimension width, width1, height, height1;
+    Dimension width = 0, width1, height = 0, height1;
     Boolean show_fields = False;
 
     width1 = Max(TopLabelWidth(w), BottomLabelWidth(w));

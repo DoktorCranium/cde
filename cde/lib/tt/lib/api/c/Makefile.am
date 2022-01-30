@@ -2,8 +2,6 @@ ttdir = ${includedir}/Tt
 
 MAINTAINERCLEANFILES = Makefile.in
 
-include ../../../tooltalk.inc
-
 noinst_LTLIBRARIES = libapi.la
 
 libapi_la_CXXFLAGS = -I../../../lib

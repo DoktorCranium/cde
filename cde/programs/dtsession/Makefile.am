@@ -5,7 +5,7 @@ bin_PROGRAMS = dtsession
 bin_SCRIPTS = dtsession_res
 
 if HAS_PAM_LIBRARY
-DTPAMSVCLIB = @LIBPAMSVC@
+DTPAMSVCLIB = $(LIBPAMSVC)
 else
 DTPAMSVCLIB =
 endif
@@ -131,10 +131,8 @@ sys.session.ive: sys.session.src
 # systems without a PAM library need dtsession to be SUID root
 
 install-exec-hook:
+if !HAS_PAM_LIBRARY
 	chown root $(DESTDIR)$(bindir)/dtsession
-if HAS_PAM_LIBRARY
-	chmod 755 $(DESTDIR)$(bindir)/dtsession
-else
 	chmod 4755 $(DESTDIR)$(bindir)/dtsession
 endif
 

@@ -1884,7 +1884,7 @@ group_align_hcenters(
 		cell_width,
 		cell_height,
 		group_width,
-		group_height,
+		group_height = 0,
 		offset,
 		gridline,
 		i,
@@ -2235,8 +2235,8 @@ group_align_labels(
 
     for (i = 0; i < num_columns; i++)
     {
-	ABObj	ref_obj;
-	int	ref_width;
+	ABObj	ref_obj = NULL;
+	int	ref_width = 0;
 
         for (j = 0; j < num_rows; j++)
 	    one_col[j] = get_child(obj, i, j);
@@ -2300,7 +2300,7 @@ group_align_vcenters(
 		num_rows,
 		cell_width,
 		cell_height,
-		group_width,
+		group_width = 0,
 		group_height,
 		offset,
 		gridline,

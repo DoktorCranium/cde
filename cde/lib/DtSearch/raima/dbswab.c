@@ -137,7 +137,7 @@ void	swab_page (char *pgbuf, FILE_ENTRY *file_ptr, SWABDIR direction)
 
 	    /* dba, or delete chain ptr */
 	    memcpy (&align_LONG, slotptr + sizeof(INT), sizeof(LONG));
-	    align_LONG = HTONL (align_LONG);
+	    HTONL (align_LONG);
 	    memcpy (slotptr + sizeof(INT), &align_LONG, sizeof(LONG));
 
 	    /* If this is a deleted record, we're done */
@@ -151,7 +151,7 @@ void	swab_page (char *pgbuf, FILE_ENTRY *file_ptr, SWABDIR direction)
 			curr_offset < data_offset;
 			curr_offset += sizeof(LONG)) {
 		memcpy (&align_LONG, slotptr + curr_offset, sizeof(LONG));
-		align_LONG = HTONL (align_LONG);
+		HTONL (align_LONG);
 		memcpy (slotptr + curr_offset, &align_LONG, sizeof(LONG));
 	    }
 	} /* end loop on each slot */
@@ -183,7 +183,7 @@ void	swab_page (char *pgbuf, FILE_ENTRY *file_ptr, SWABDIR direction)
 
 	/* 'orphan' ptr or 'delete chain' ptr */
 	memcpy (&align_LONG, pgbuf + 6, sizeof(LONG));
-	align_LONG = HTONL (align_LONG);
+	HTONL (align_LONG);
 	memcpy (pgbuf + 6, &align_LONG, sizeof(LONG));
 
 #ifdef DEBUG_DBSWAB
@@ -234,7 +234,7 @@ void	swab_page (char *pgbuf, FILE_ENTRY *file_ptr, SWABDIR direction)
 	    cptr = slotptr + slsize - 8;
 
 	    memcpy (&align_LONG, cptr, sizeof(LONG));
-	    align_LONG = HTONL (align_LONG);
+	    HTONL (align_LONG);
 	    memcpy (cptr, &align_LONG, sizeof(LONG));
 
 #ifdef DEBUG_DBSWAB
@@ -249,7 +249,7 @@ void	swab_page (char *pgbuf, FILE_ENTRY *file_ptr, SWABDIR direction)
 	    /* 'child ptr'.  after dba, 4 bytes before end of slot. */
 	    cptr += 4;
 	    memcpy (&align_LONG, cptr, sizeof(LONG));
-	    align_LONG = HTONL (align_LONG);
+	    HTONL (align_LONG);
 	    memcpy (cptr, &align_LONG, sizeof(LONG));
 
 	} /* end loop on each slot */

@@ -1026,7 +1026,7 @@ abmfP_write_action_function(
     ABObj		toObj = obj_get_to(action);
     ABObj		module = NULL;
     char		actionName[1024];
-    char		actionPrintf[1024];
+    char		actionPrintf[32 + sizeof(actionName)];
 
     abmfP_gencode_enter_func(genCodeInfo);
     abmfP_ip_obj(genCodeInfo) = obj_get_to(action);

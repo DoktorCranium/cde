@@ -13,18 +13,6 @@ MsgCat.c: ${top_srcdir}/lib/DtSvc/DtUtil2/MsgCat.c
 	$(RM) MsgCat.c && ln -s ${top_srcdir}/lib/DtSvc/DtUtil2/MsgCat.c MsgCat.c
 
 
-if I386
-AM_CFLAGS += -DBYTE_SWAP
-endif
-
-if X86_64
-AM_CFLAGS += -DBYTE_SWAP
-endif
-
-if ARM
-AM_CFLAGS += -DBYTE_SWAP
-endif
-
 LDADD = ../../lib/DtSearch/libDtSearch.la
 
 dtsrcreate_SOURCES = dtsrcreate.c MsgCat.c

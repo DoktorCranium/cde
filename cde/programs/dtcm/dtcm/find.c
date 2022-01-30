@@ -575,7 +575,7 @@ find_appts(Widget widget, XtPointer client_data, XmPushButtonCallbackStruct *cbs
         int num_items, mo, last_match_total = 0, match_total = 0;
         pr_pos xy;
 	Tick end_of_time, start, stop;
-	Tick_list *ptr, *next_ptr, *tail_ptr, *new_tick;
+	Tick_list *ptr, *next_ptr, *tail_ptr = NULL, *new_tick;
 	CSA_session_handle cal = 0;
 	CSA_return_code stat;
         CSA_entry_handle *entries = NULL;
@@ -713,8 +713,7 @@ find_appts(Widget widget, XtPointer client_data, XmPushButtonCallbackStruct *cbs
 					      (const time_t *)&new_tick->tick,
 					      localtime_buf));
                                 	fmt_time_what(appt, what_buf, dt);
-					sprintf (buf2, "%10s  %s", 
-								buf, what_buf);
+					snprintf(buf2, sizeof(buf2), "%10s  %s", buf, what_buf);
 					buf_str = XmStringCreateLocalized(buf2);
 					XmListAddItem(f->find_list, buf_str, 0);
 					XmStringFree(buf_str);

@@ -1206,7 +1206,7 @@ csa2cmsattrs(
 {
 	CSA_return_code	stat = CSA_SUCCESS;
 	cms_attribute	*cmsattrs;
-	CSA_enum	*ops_r;
+	CSA_enum	*ops_r = NULL;
 	CSA_reminder	*rptr1, *rptr2;
 	int		i,j;
 

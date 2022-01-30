@@ -2209,8 +2209,8 @@ void
 InitWmDisplayEnv (void)
 {
     char *pDisplayName;
-    char buffer[256];
     char displayName[256];
+    char buffer[10 + sizeof(displayName)];
 
     pDisplayName = DisplayString (DISPLAY);
     

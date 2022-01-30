@@ -1553,7 +1553,7 @@ _tt_db_results *_tt_queue_message_1 (_tt_queue_msg_args *args,
       _tt_get_rpc_strings(args->ptypes, message_info->ptypes);
 
       // Get the XDR size of the new message info structure
-      u_int length;
+      u_int length = 0;
       _Tt_xdr_size_stream xdrsz;
       if (!message_info->xdr((XDR *)xdrsz)) {
 	results = TT_DB_ERR_ILLEGAL_MESSAGE;

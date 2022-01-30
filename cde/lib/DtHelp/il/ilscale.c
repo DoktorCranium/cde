@@ -784,7 +784,7 @@ ilBool ilScale (
 {
 unsigned int             state;
 ilPipeInfo               info;
-ilScalePrivptr  pPriv;
+ilScalePrivptr  pPriv = NULL;
 ilDstElementData         dstdata;
 ilImageDes               imdes;
 ilImageFormat            imformat;

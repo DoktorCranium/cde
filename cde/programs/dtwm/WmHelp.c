@@ -1625,7 +1625,7 @@ RestoreHelpDialogs(
 
     Position xLoc, yLoc;
     short columns, rows;
-    int helpType;
+    int helpType = DtHELP_TYPE_TOPIC;
     char geometry[40];
     int wsCnt;    
     int cCount;
@@ -2060,7 +2060,7 @@ SaveHelpResources(
     char *wsName;
     char workspaces[MAXWMPATH+1];
 
-    char buffer[MAXWMPATH+1];
+    char buffer[MAXWMPATH + 1 + 1024];
     char *res_class;
     char *data;
     int cum_len;

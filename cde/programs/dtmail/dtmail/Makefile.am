@@ -7,35 +7,8 @@ dtmail_CXXFLAGS = -I../include -I../include/MotifApp -I../include/utils \
 		  -I$(srcdir)/lib -I../../dthelp -DRELEASE_NOTES \
 		  -DDTMAIL_TOOLTALK -DDTEDITOR
 
-dtmail_LDADD = ../libDtMail/libDtMail.a ../MotifApp/libMotifApp.a -lXm \
-		@DTCLIENTLIBS@ $(XTOOLLIB) $(TIRPCLIB)
-
-# FIXME solaris....
-#if SOLARIS
-#dtmail_LDFLAGS = -lw
-#if SUNPRODIR
-#SUNPRO_DIR = SUNPRODIR
-#else
-#SUNPRO_DIR = /opt/SUNWspro
-#endif
-#C++LIBPATH = -L$(SUNPRO_DIR)/lib
-#
-#if USE_SPRO_V3
-#SPRO_V3_OPTIONS =      -noex -USPRO_V2
-#if DEBUGTREE
-#3SPRO_V3_OPTIONS +=      -xsb
-#endif
-#else
-#EXTRA_CCOPTIONS +=      -DSPRO_V2
-#endif
-#
-#EXTRA_C++OPTIONS = -xF +w $(SPRO_V3_OPTIONS)
-#EXTRA_CCOPTIONS = -xF -xstrconst -Xa -v
-#if USE_EDITRES
-#EXTRA_LIBRARIES = $(XMULIB) ExtraLibraries
-#endif
-#endif SOLARIS
-
+dtmail_LDADD = ../libDtMail/libDtMail.a ../MotifApp/libMotifApp.a \
+		$(DTCLIENTLIBS) $(XTOOLLIB) $(TIRPCLIB)
 
 dtmail_SOURCES = AliasListUiItem.C               AlternatesListUiItem.C \
 		 AntiCheckBoxUiItem.C            AttachArea.C \
@@ -71,7 +44,7 @@ dtmail_SOURCES = AliasListUiItem.C               AlternatesListUiItem.C \
 		 dtb_utils.C                     options_stubs.C \
 		 options_ui.C                    options_util.C
 
+# Don't fail if we can't set the mail group which might not exist on
+# some systems
 install-exec-hook:
-	chown root $(DESTDIR)$(bindir)/dtmail
-	chgrp mail $(DESTDIR)$(bindir)/dtmail
-	chmod 2755 $(DESTDIR)$(bindir)/dtmail
+	-(chgrp mail $(DESTDIR)$(bindir)/dtmail && chmod 2755 $(DESTDIR)$(bindir)/dtmail)

@@ -111,7 +111,8 @@
  * 2.1.5b cborodin bug.  Segfault due to overflowing bitvector
  * after many deletions and no mrclean.
  */
-#include "SearchP.h"
+#include <cde_config.h>
+#include <Dt/SearchP.h>
 #include <limits.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -801,13 +802,11 @@ static void	put_addrs_2_dtbs_addr_file (
 	**** num addrs in database by 1 (!?) ******/
 	/* (...only if prev 'overlay/compression' didn't delete all) */
 
-#ifdef BYTE_SWAP
-	/* Put both arrays in 'network' byte order */
-	for (int32 = 0;  int32 < nitems;  int32++)
-	    HTONL (addrs_array[int32]);
-	for (int32 = 0;  int32 < num_addrs;  int32++)
-	    HTONL (word_addrs_ii[int32]);
-#endif
+    /* Put both arrays in 'network' byte order */
+    for (int32 = 0;  int32 < nitems;  int32++)
+        HTONL (addrs_array[int32]);
+    for (int32 = 0;  int32 < num_addrs;  int32++)
+        HTONL (word_addrs_ii[int32]);
 
     /*
      * If number of new addresses greater than number of free holes,
@@ -921,7 +920,7 @@ void            write_2_dtbs_addr_file (void)
 {
     DtSrINT32		num_addrs_ii;
     DtSrINT32		num_reads;
-    DtSrINT32		i_start, k, cur_ind;
+    DtSrINT32		i_start, k, cur_ind = 0;
     DtSrINT32		num_delete_addrs = 0;
     char		addrs_removed = FALSE;
     DtSrINT32	i;
@@ -966,11 +965,10 @@ void            write_2_dtbs_addr_file (void)
 	    (long)got_word.or_hwoffset, (long)num_reads);
 	DtSearchExit (98);
     }
-#ifdef BYTE_SWAP
+
     for (i = 0; i < num_addrs_ii; i++)
 	NTOHL (word_addrs_ii[i]);
     /* Now both addr arrays are in 'host' byte swap order */
-#endif
 
     /* If there are only new docs,
      * this switch will prevent the checking for updates.
@@ -1116,11 +1114,11 @@ void            write_new_word_2_dtbs (void)
 		(long)record_addr_word[int32] & 0xffL);
 	}
     }
-#ifdef BYTE_SWAP
-	/* Put addr array in 'network' byte order */
-	for (int32 = 0;  int32 < num_addrs_for_word;  int32++)
-	    HTONL (record_addr_word[int32]);
-#endif
+
+    /* Put addr array in 'network' byte order */
+    for (int32 = 0;  int32 < num_addrs_for_word;  int32++)
+        HTONL (record_addr_word[int32]);
+
     num_writes = fwrite (record_addr_word, sizeof(DB_ADDR),
 	(size_t)num_addrs_for_word, dtbs_addr_fp);
     if (num_writes != num_addrs_for_word)

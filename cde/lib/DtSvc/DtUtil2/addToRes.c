@@ -290,7 +290,7 @@ _DtGetEntries(
         int dosort )
 {
     char *line, *colon, *temp, *str, *temp2;
-    Entry entry;
+    Entry entry = { NULL, NULL, 0, False };
     int length;
     int lineno = 0;
 

@@ -2095,7 +2095,7 @@ void
 SaveOrgPalette( void )
 {
    int i;
-   palette  *tmp_palette, *tmp2_palette;
+   palette  *tmp_palette = NULL, *tmp2_palette = NULL;
 
    if(save.restoreFlag && defaultName_restore[0] != 0) {
       tmp_palette = pHeadPalette;
@@ -2455,11 +2455,11 @@ saveColor(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-	sprintf(bufr, "%s*paletteDlg.x: %d\n", bufr, x);
-	sprintf(bufr, "%s*paletteDlg.y: %d\n", bufr, y);
-	sprintf(bufr, "%s*paletteDlg.selected_palette: %s\n", bufr, 
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*paletteDlg.x: %d\n", bufr, x);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*paletteDlg.y: %d\n", bufr, y);
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*paletteDlg.selected_palette: %s\n", bufr,
 		pCurrentPalette->name);
-	sprintf(bufr, "%s*paletteDlg.selected_button: %d\n", bufr, 
+	snprintf(bufr, sizeof(style.tmpBigStr), "%s*paletteDlg.selected_button: %d\n", bufr,
 		selected_button);
 	if(-1 == write (fd, bufr, strlen(bufr))) {
 		perror(strerror(errno));

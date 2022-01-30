@@ -377,7 +377,7 @@ text_to_lines(char *s, int n)
 	Lines *prev_l = NULL, *l = NULL, *head= NULL;
 	int i = 0;
 	char *_p;
-	int clen;
+	int clen = 0;
 
 	if (s == NULL || n <= 0) return NULL;
 
@@ -1227,7 +1227,7 @@ Dtcm_appointment *allocate_appt_struct (Allocation_reason reason, int version, .
 	va_list			pvar;
 	CmDataList		*api_ids = CmDataListCreate();
 	Dtcm_appointment	*appt;
-	int			def_attr_count;
+	int			def_attr_count = 0;
 
 	/*
 	 * The Dtcm_appointment wrapper array

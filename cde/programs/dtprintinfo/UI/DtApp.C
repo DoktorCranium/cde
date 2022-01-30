@@ -221,7 +221,7 @@ DtApp::DtApp(char *progname, int *argc, char **argv) :
 
    // Save print job's class name for registering GUI actions
    PrintJob *dummy_printjob;
-   char *className;
+   char *className = NULL;
    if (app_mode != CONFIG_PRINTERS)
     {
       dummy_printjob = new PrintJob(NULL, "_FOO", NULL, NULL, NULL, NULL, NULL);
@@ -718,7 +718,7 @@ void DtApp::OpenClose(BaseUI *obj)
       n_icons = rc->NumChildren();
       for (i = 0; i < n_jobs; i++)
        {
-         char number[5];
+         char number[11];
 	 sprintf(number, "%d", i + 1);
 	 icons[i]->TopString(number);
        }
@@ -907,7 +907,7 @@ void DtApp::ActionCB(BaseUI *obj, char *actionReferenceName)
 	       IconObj **children = (IconObj **)parent->Children();
                for (i = 0; i < parent->NumChildren(); i++)
                 {
-                  char number[5];
+                  char number[11];
 	          sprintf(number, "%d", i + 1);
 		  children[i]->TopString(number);
 		}

@@ -579,7 +579,7 @@ dssw_form_flags_to_appt(DSSW *dssw, Dtcm_appointment *a, char *name, Tick t, int
 		} else
 			ampm_buf[0] = '\0';
 
-		sprintf(buf, "%s %s%s",
+		snprintf(buf, sizeof(buf), "%s %s%s",
 			dssw->date_val, dssw->start_val.val, ampm_buf); 
 
 		if (!blank_buf(dssw->stop_val.val)
@@ -627,7 +627,7 @@ dssw_form_flags_to_appt(DSSW *dssw, Dtcm_appointment *a, char *name, Tick t, int
 		} else
 			ampm_buf[0] = '\0';
 
-		sprintf(buf, "%s %s%s", dssw->date_val,
+		snprintf(buf, sizeof(buf), "%s %s%s", dssw->date_val,
 			dssw->stop_val.val, ampm_buf); 
 		if ((stop_tick = cm_getdate(buf, NULL)) <= 0) {
 			editor_err_msg(dssw->parent, name, INVALID_DATE,
@@ -719,7 +719,7 @@ dssw_form_to_todo(DSSW *dssw, Dtcm_appointment *a, char *name, Tick t)
 		} else
 			ampm_buf[0] = '\0';
 
-		sprintf(buf, "%s %s%s",
+		snprintf(buf, sizeof(buf), "%s %s%s",
 			dssw->date_val, dssw->start_val.val, ampm_buf); 
 
 		/* 

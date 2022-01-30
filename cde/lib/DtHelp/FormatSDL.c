@@ -5089,11 +5089,11 @@ ProcessSDLAttribute(
     char	*attrValue;
     char	**strPtr;
     char	 numBuf[DTD_NAMELEN+1];
-    char	*varOffset1;
+    char	*varOffset1 = NULL;
     SDLNumber   *numPtr1;
     SdlOption   *enumPtr1;
     SdlOption	 attrNum;
-    _DtHelpFontValue	 fontNum;
+    _DtHelpFontValue	 fontNum = 0;
     _DtHelpFontValue	*fontPtr1;
     const SDLAttribute *pAttr = SDLAttributeList;
 

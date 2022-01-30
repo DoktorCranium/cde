@@ -948,7 +948,7 @@ ColumnGeoSetPreferredWidths(
 			    int row)
 {
     Dimension slack = 0;
-    int last_non_empty_col;
+    int last_non_empty_col = 0;
     int col;
     
     for(col = 0; col < PSUB_GEO_COL_COUNT; col++)

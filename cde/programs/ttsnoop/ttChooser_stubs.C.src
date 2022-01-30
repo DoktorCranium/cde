@@ -60,9 +60,9 @@ _DtTtChooserSet(
 	    dtb_tt_chooser_chooser_initialize(
 			instance, dtb_ttsnoop_ttsnoop_win.ttsnoopWin );
     }
-    char *okString;
-    char *title;
-    char *valueLabel;
+    char *okString    = NULL;
+    char *title       = NULL;
+    char *valueLabel  = NULL;
     char *valuesLabel;
     switch (choice) {
 	case _DtTtChooserNone:
@@ -148,7 +148,7 @@ _DtTtChooserSet(
 	    title = "ttdt_close";
 	    break;
     }
-    DtTtType type;
+    DtTtType type = DTTT_OP;
     switch (choice) {
 	case _DtTtChooserNone:
 	    return;
@@ -269,7 +269,7 @@ choiceSelected(
     XmListCallbackStruct *info = (XmListCallbackStruct *)callData;
     int choice;
     XtVaGetValues( instance->chooserOkButton, XmNuserData, &choice, NULL );
-    DtTtType type;
+    DtTtType type = DTTT_OP;
     Boolean isString = False;
     switch ((_DtTtChooserAction)choice) {
 	case _DtTtChooserNone:
@@ -338,14 +338,14 @@ choiceOkayed(
     XtVaGetValues( instance->chooserOkButton, XmNuserData, &ival, NULL );
     _DtTtChooserAction choice = (_DtTtChooserAction)ival;
     Widget label = dtb_ttsnoop_ttsnoop_win.ttsnoopWin_label;
+    Tt_status status = TT_OK;
+    char *func = NULL, *procid;
     switch (choice) {
 	    void *pval;
 	    int ival, fd;
 	    Tt_message msg;
 	    Tt_pattern pat;
 	    Tt_pattern *pats;
-	    Tt_status status;
-	    char *func, *procid;
 	    XtPointer xtPtr;
 	    XtInputId id;
 	    Widget newWidget;

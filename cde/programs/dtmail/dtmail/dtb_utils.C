@@ -904,6 +904,9 @@ dtb_more_help_dispatch(
 	*cp++ = 0;
 	vol = buffer;
 	loc = cp; 
+    } else {
+	/* No / in help string, invalid */
+	return;
     }
 
     if(GeneralHelpDialog == (Widget)NULL) {
@@ -2489,7 +2492,7 @@ align_labels(
 )
 {
     WidgetList	children_list = NULL,
-		one_col;
+		one_col = NULL;
     Widget	previous_child = NULL,
 		child,
 		previous_ref_widget = NULL;

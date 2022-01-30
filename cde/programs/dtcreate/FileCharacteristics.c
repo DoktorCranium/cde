@@ -524,7 +524,7 @@ static Widget   _Uxbuild_FileCharacteristics(void)
         int             nbutton = 0;
 #define TIGHTNESS       20
         Widget          FC_ScrolledWindow;
-        Widget          FC_BigForm;
+        Widget          FC_BigForm = NULL;
         char		*dialog_title, *pre, *suf;
 
 

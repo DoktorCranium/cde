@@ -520,7 +520,7 @@ objxm_comp_set_color_args(
     static XtArgVal	bgvalue;
     static BOOL		cgen_args;
     AB_TRAVERSAL 	trav;
-    Widget		widget;
+    Widget		widget = NULL;
     Pixel		pixel;
     ABObj	 	subObj;
     int			status;

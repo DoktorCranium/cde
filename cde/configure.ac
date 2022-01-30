@@ -1,7 +1,33 @@
-AC_INIT([cde-desktop], [2.4.0a], [https://sourceforge.net/projects/cdesktopenv])
-AC_CONFIG_HEADERS([include/autotools_config.h])
+dnl When changing the version below, also change the CDE_VERSION_* macros
+dnl to match further below
+AC_INIT([Common Desktop Environment],
+        [2.4.0c],
+        [https://sourceforge.net/projects/cdesktopenv],
+        [cde],
+        [https://sourceforge.net/projects/cdesktopenv])
+AC_CONFIG_HEADERS([include/cde_config.h])
 AC_CONFIG_MACRO_DIRS([m4])
-AM_INIT_AUTOMAKE([foreign subdir-objects])
+AM_INIT_AUTOMAKE([foreign subdir-objects no-define])
+
+dnl global CDE versioning
+
+CDE_VERSION_MAJOR=2
+CDE_VERSION_MINOR=4
+CDE_VERSION_MICRO=0
+dnl this is blank for a release, or contains an alpha character to indicate a
+dnl dev release.
+CDE_VERSION_DEV=c
+
+AC_SUBST(CDE_VERSION_MAJOR)
+AC_SUBST(CDE_VERSION_MINOR)
+AC_SUBST(CDE_VERSION_MICRO)
+AC_SUBST(CDE_VERSION_DEV)
+
+dnl released in 2012, this should be sufficient
+AC_PREREQ([2.69])
+
+AC_CANONICAL_HOST
+AC_CANONICAL_BUILD
 
 dnl These must be up here for the compiler search list to actually work
 AC_PROG_CC([cc gcc clang])
@@ -10,25 +36,8 @@ AC_PROG_CXX([c++ g++ clang++])
 LT_INIT
 AC_PREFIX_DEFAULT(/usr/dt)
 
-AC_ENABLE_STATIC([no])
 
 PKG_PROG_PKG_CONFIG
-
-dnl todo: determine what version of autoconf we depend on
-dnl AC_PREREQ()
-
-AC_CANONICAL_HOST
-AC_CANONICAL_BUILD
-
-dnl global CDE versioning
-
-CDE_VERSION_MAJOR=2
-CDE_VERSION_MINOR=3
-CDE_VERSION_MICRO=0
-
-AC_SUBST(CDE_VERSION_MAJOR)
-AC_SUBST(CDE_VERSION_MINOR)
-AC_SUBST(CDE_VERSION_MICRO)
 
 dnl SOURCE_DEFINES - start with CDE project default
 SOURCE_CPP_DEFINES="-DANSICPP -DMULTIBYTE -DNLS16"
@@ -70,13 +79,17 @@ dnl other things as we go along.
 EXTRA_LIBS=""
 EXTRA_INCS=""
 
-case "${host_os}" in
+# pam currently only works on netbsd (9.2 tested) and linux
+supports_pam=no
+
+case "${build_os}" in
 	linux*)
 		build_linux=yes
                 OSMAJORVERSION=4
                 OSMINORVERSION=15
                 SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -D_POSIX_SOURCE \
 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_SVID_SOURCE"
+                supports_pam=yes
                  ;;
 	freebsd*)
 		build_freebsd=yes
@@ -98,6 +111,7 @@ case "${host_os}" in
 		bsd=yes
                 OSMAJORVERSION=8
                 OSMINORVERSION=0
+                supports_pam=yes
 		;;
 	solaris*|sun*)
 		build_solaris=yes
@@ -272,7 +286,7 @@ dnl do.  This is not a replacement for cpp, used at runtime by
 dnl software such as tt_type_comp.
 AC_SUBST(GENCPP, '$(top_builddir)/util/tradcpp/tradcpp')
 
-AM_PROG_LIBTOOL
+LT_INIT
 
 dnl make sure it's installed
 AC_PROG_YACC
@@ -280,7 +294,7 @@ if test -z "$ac_cv_prog_YACC"; then
    MISSING_PROGS="[bison or byacc] ${MISSING_PROGS}"
 fi
 
-AM_PROG_LEX
+AC_PROG_LEX(noyywrap)
 if test -z "$ac_cv_prog_LEX"; then
    MISSING_PROGS="[flex or lex] ${MISSING_PROGS}"
 fi
@@ -299,13 +313,10 @@ AC_C_CONST
 AC_C_BIGENDIAN
 AC_C_INLINE
 AC_C_CHAR_UNSIGNED
-AC_C_STRINGIZE
 AC_C_FLEXIBLE_ARRAY_MEMBER
 AC_SYS_POSIX_TERMIOS
 
 AX_PTHREAD
-
-AC_PROG_CC_C99
 
 AC_PATH_X
 AC_PATH_XTRA
@@ -401,7 +412,6 @@ dnl Used to check if program 'tic' is available to install terminfo files
 AC_CHECK_PROGS(TIC, tic, :)
 
 dnl headers
-AC_HEADER_STDC
 AC_CHECK_HEADERS([locale.h security/pam_appl.h utempter.h])
 
 dnl libraries
@@ -418,6 +428,15 @@ AC_CHECK_LIB(tirpc, svc_register,
        CXXFLAGS="${CXXFLAGS} -DOPT_TIRPC -I/usr/include/tirpc";
        TIRPCLIB=-ltirpc])
 AC_SUBST(TIRPCLIB)
+
+dnl see if the rpc_inline_t type exists
+AC_CHECK_TYPE(rpc_inline_t, [],
+   [AC_DEFINE_UNQUOTED([rpc_inline_t], [int32_t],
+       [Define to int32_t if not defined by including rpc/rpc.h])],
+[
+AC_INCLUDES_DEFAULT
+#include <rpc/rpc.h>
+])
 
 dnl check sizeof time_t for RPC
 AC_CHECK_SIZEOF([int])
@@ -442,11 +461,15 @@ dnl issues
 XTOOLLIB=""
 AC_CHECK_LIB(X11, XOpenDisplay, [XTOOLLIB="-lX11"], ,
                   [${EXTRA_INCS} ${EXTRA_LIBS}])
+AC_CHECK_LIB(Xext, XextFindDisplay, [XTOOLLIB="-lXext ${XTOOLLIB}"], ,
+                  [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_CHECK_LIB(Xau, XauReadAuth, [XTOOLLIB="-lXau ${XTOOLLIB}"], ,
                   [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_CHECK_LIB(Xpm, XpmLibraryVersion, [XTOOLLIB="-lXpm ${XTOOLLIB}"], ,
                   [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_CHECK_LIB(Xt, XtInitialize, [XTOOLLIB="-lXt ${XTOOLLIB}"], ,
+                 [${EXTRA_INCS} ${EXTRA_LIBS}])
+AC_CHECK_LIB(Xmu, XmuMakeAtom, [XTOOLLIB="-lXmu ${XTOOLLIB}"], ,
                  [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_CHECK_LIB(ICE, IceCloseConnection, [XTOOLLIB="-lICE ${XTOOLLIB}"], ,
                   [${EXTRA_INCS} ${EXTRA_LIBS}])
@@ -457,13 +480,23 @@ AC_CHECK_LIB(Xm, XmTextSetString, [XTOOLLIB="-lXm ${XTOOLLIB}"], ,
 XTOOLLIB="${EXTRA_INCS} ${EXTRA_LIBS} ${X_EXTRA_LIBS} ${XTOOLLIB}"
 AC_SUBST([XTOOLLIB])
 
+dnl only needed by dtlogin
+AC_CHECK_LIB(Xdmcp, XdmcpFlush, [XDMCPLIB="-lXdmcp"], [XDMCPLIB=""],
+                 [${EXTRA_INCS} ${EXTRA_LIBS}])
+AC_SUBST(XDMCPLIB)
+
 dnl iconv
 AM_ICONV
 
 dnl figure out pam support
-
-AC_CHECK_LIB(pam, pam_start,
+dnl Right now this only works on linux and netbsd (9.2 tested)
+if test "$supports_pam" = "yes"
+then
+        AC_CHECK_LIB(pam, pam_start,
              [SOURCE_CPP_DEFINES="${SOURCE_CPP_DEFINES} -DHAS_PAM_LIBRARY"])
+else
+        AC_CHECK_LIB(pam, NOTSUPPORTED)
+fi
 
 AM_CONDITIONAL([HAS_PAM_LIBRARY], [test "x$ac_cv_lib_pam_pam_start" = "xyes"])
 
@@ -588,7 +621,6 @@ programs/dsdm/Makefile
 programs/dthelp/Makefile
 programs/dthelp/dthelpview/Makefile
 programs/dthelp/dthelpgen/Makefile
-programs/dthelp/dthelpdemo/Makefile
 programs/dthelp/dthelpprint/Makefile
 programs/dthelp/parser/Makefile
 programs/dthelp/parser/pass1/Makefile
@@ -866,6 +898,10 @@ doc/ja_JP.UTF-8/help/common/DesktopIntro.hf
 
 include/Makefile
 
+copyright
+doc/common/help/HELPEnt.sgm
+include/Dt/Dt.h
+lib/tt/bin/ttauth/ttauth.man
 ])
 
 AC_OUTPUT

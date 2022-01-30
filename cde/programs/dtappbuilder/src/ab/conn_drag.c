@@ -275,7 +275,7 @@ process_chord_extend(
     int			dum_x;
     int			dum_y;
     unsigned int	mask_ret;
-    Cursor		cur_cursor;
+    Cursor		cur_cursor = curs_nw;
 
 
     x_conn_fullscreen_chord(widget, root_win,
@@ -288,6 +288,8 @@ process_chord_extend(
     new_dir = find_drag_dirn(start_x, start_y, new_x, new_y);
     if (new_dir != find_drag_dirn(start_x, start_y, cur_x, cur_y))
     {
+	int do_cursor = 1;
+
 	switch(new_dir)
 	{
 	  case NORTH_WEST:
@@ -304,19 +306,21 @@ process_chord_extend(
 	    break;
 	  default:
 	    /* catch-all to avoid compiler warnings */
+	    do_cursor = 0;
 	    break;
 	}
 
-	if (XGrabPointer(display, root_win, True,
+	if(do_cursor) {
+	    if (XGrabPointer(display, root_win, True,
 		    ButtonReleaseMask|PointerMotionMask,
 		    GrabModeAsync, GrabModeAsync, root_win,
-		    cur_cursor, CurrentTime) !=
-	    GrabSuccess)
-	{
-	    fprintf(stderr, "Pointer grab failed.\n");
-	    XUngrabKeyboard(display, CurrentTime);
-	    XUngrabServer(display);
-	    return;
+		    cur_cursor, CurrentTime) != GrabSuccess)
+	    {
+		fprintf(stderr, "Pointer grab failed.\n");
+		XUngrabKeyboard(display, CurrentTime);
+		XUngrabServer(display);
+		return;
+	    }
 	}
     }
     x_conn_fullscreen_chord(widget, root_win,

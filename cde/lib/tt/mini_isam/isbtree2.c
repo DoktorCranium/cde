@@ -56,11 +56,11 @@ _isbtree_insert(Btree *btree, char *key)
     Keydesc2		*pkeydesc2 = btree->keydesc2;
     int			keylength = pkeydesc2->k2_len;
     int			nkeys;		     /* Number of keys in the page */
-    int			capac;
+    int			capac = 0;
     char		keybuf[MAXKEYSIZE];
     int	i;
     Blkno		blkno;
-    char		*pkp, *pkp2, *pkp3;
+    char		*pkp = NULL, *pkp2, *pkp3;
     Bufhdr		*kp2bhdr, *kp3bhdr;
     Blkno		blkno2, blkno3;
     int			level;

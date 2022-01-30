@@ -440,7 +440,7 @@ ilBool ilCrop (
 {
 unsigned int            state;
 ilPipeInfo              info;
-ilCropPrivptr  pPriv;
+ilCropPrivptr  pPriv = NULL;
 ilDstElementData        dstdata;
 ilImageDes              imdes;
 ilImageFormat           imformat;

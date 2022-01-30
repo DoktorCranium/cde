@@ -25,7 +25,7 @@
 #ifndef _config_h
 #define _config_h 1
 
-#include <autotools_config.h> // determine endianess
+#include <cde_config.h> // determine endianess
 
 #if defined(WORDS_BIGENDIAN)
 # define OLIAS_BIG_ENDIAN

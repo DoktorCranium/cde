@@ -68,8 +68,8 @@ _DtTermPrimRefreshTextWc(Widget w, short startColumn, short startRow,
     short chunkStartColumn;
     short chunkWidth;
     short chunkLength;
-    short thisStartColumn;
-    short thisEndColumn;
+    short thisStartColumn = 0;
+    short thisEndColumn = 0;
     enhValues enhancements;
     int i1;
     int lineNum;

@@ -1362,7 +1362,7 @@ SetWindowSize(
     XSizeHints  size_hints;
     XWMHints   *wmhints;
     long supplied_return;
-    int geometryBits;
+    int geometryBits = 0;
     XWindowChanges changesStruct;
     WMShellWidget wm;
 

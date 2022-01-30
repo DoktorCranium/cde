@@ -389,7 +389,7 @@ void DtFindD::Stop()
           for (i = 0; i < n_matches; i++)
 	   {
 	     DtPrtJobIcon *job = (DtPrtJobIcon *)matches[i];
-	     char number[9];
+	     char number[12];
 	     sprintf(number, "%d", job->Order() + 1);
 	     fields->fields[0] = (char *)job->Parent()->Parent()->Name();
 	     if (n_fields == 3)

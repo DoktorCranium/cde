@@ -109,7 +109,7 @@
 #endif
 
 #ifdef HAS_PAM_LIBRARY
-#include <PamSvc.h>
+#include <Dt/PamSvc.h>
 #endif
 
 int ApplyFontPathMods(struct display *d, Display *dpy); // fontpath.c
@@ -365,7 +365,7 @@ void
 ManageSession( struct display *d )
 {
     int			pid;
-    Window		root;
+    Window		root = 0;
    /* Display 		*dpy; */
 #ifdef BYPASSLOGIN
     char	*BypassUsername;
@@ -809,7 +809,7 @@ LoadAltDtsResources(struct display *d)
                 if ((strcmp(dp->d_name, DOT)    != 0) &&
                     (strcmp(dp->d_name, DOTDOT) != 0)) {
 
-                    sprintf (res_file, "%s%s", dirname[j],dp->d_name);
+                    snprintf(res_file, sizeof(res_file), "%s%s", dirname[j], dp->d_name);
                     if ((access (res_file, R_OK)) != 0)
 		    {
                         Debug("LoadAltDtsResources- cant access %s.\n",
@@ -1199,8 +1199,6 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
     long	ngroups, groups[NGROUPS];
 #endif /* __AFS */
 
-    waitType  status;
-
     if (verify->argv) {
 	Debug ("StartSession %s: ", verify->argv[0]);
 	for (f = verify->argv; *f; f++) {
@@ -1283,7 +1281,7 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
 #endif
 
 #if !defined(sun) && (!defined(CSRG_BASED) || defined(HAS_PAM_LIBRARY))
-	Account(d, user, NULL, getpid(), USER_PROCESS, status);
+	Account(d, user, NULL, getpid(), USER_PROCESS, 0);
 #endif
 
 #ifdef AIXV3

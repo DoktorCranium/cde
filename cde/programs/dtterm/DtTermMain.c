@@ -60,6 +60,7 @@
 #include "TermPrimRenderP.h"
 #include "TermPrimLineDrawP.h"
 #include "TermPrimLineFontP.h"
+#include "TermPrimSetUtmp.h"
 #include "TermBufferP.h"
 #include "TermP.h"
 #include "TermParseTableP.h"

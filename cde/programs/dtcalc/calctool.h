@@ -36,7 +36,7 @@
 
 
 #include <float.h>
-
+#include <math.h>
 #include <locale.h>
 #include <X11/Intrinsic.h>
 #include <Dt/UserMsg.h>
@@ -544,9 +544,6 @@ extern struct calcVars CalcVars;
 
 typedef struct calcVars *Vars ;
 extern Vars v ;                 /* Calctool variables and options. */
-
-extern void matherr(void); // calctool.c
-
 
 
 /*  Structure, resource definitions, for View's optional parameters.  */

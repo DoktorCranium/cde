@@ -811,10 +811,10 @@ LOOKUP_ENTRY * *xlu_ptr /* pointer to lookup table slot for found page*/
 {
    LOOKUP_ENTRY *lookup;  /* = db_lookup or ix_lookup */
    int pgtab_sz;          /* = db_pgtab_sz or ix_pgtab_sz */
-   long cmp;
+   long cmp = 0;
    int cnt;
-   int lu_slot, l, u;
-   LOOKUP_ENTRY *lu_ptr, *replu_ptr;
+   int lu_slot = 0, l, u;
+   LOOKUP_ENTRY *lu_ptr = NULL, *replu_ptr;
    PAGE_ENTRY *pg_ptr;
    int *lru_ptr;
    int pg_slot;

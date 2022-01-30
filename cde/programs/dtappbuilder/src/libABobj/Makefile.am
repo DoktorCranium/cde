@@ -6,14 +6,6 @@ EXTRA_DEFINES =  -D_POSIX_SOURCE=1
 
 EXTRALIBS = -lm
 
-if HPUX
-CCOPTIONS = -Ae
-endif
-
-if AIX
-EXTRALIBS += -liconv
-endif
-
 if SOLARIS
 EXTRALIBS += -ldl -lgen
 endif

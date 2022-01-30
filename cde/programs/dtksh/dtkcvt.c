@@ -279,7 +279,7 @@ DtkshCvtBooleanToString(
         XrmValuePtr toval )
 {
    char * errmsg;
-   Boolean booleanState;
+   Boolean booleanState = False;
 
    if (fval->size != sizeof(int) && fval->size != sizeof(short) &&
        fval->size != sizeof(char)) 

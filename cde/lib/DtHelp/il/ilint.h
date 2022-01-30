@@ -45,7 +45,7 @@
 
 /* use autotools detection to determine endianess */
 #if defined(HAVE_CONFIG_H)
-# include <autotools_config.h>
+# include <cde_config.h>
 #endif
 
 #ifndef WORDS_BIGENDIAN

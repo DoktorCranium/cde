@@ -1677,10 +1677,10 @@ ResolveCell(
     CellInfo		*ret_info)
 {
     int i;
-    char  *id;
+    char  *id = NULL;
     char  *idRefs;
-    char  *ptr;
-    char   c;
+    char  *ptr = NULL;
+    char   c = 0;
     int    count;
     int    len;
     int    done;
@@ -1690,7 +1690,7 @@ ResolveCell(
     _DtCvUnit   cellWidth;
     _DtCvUnit   retWidth;
     _DtCvUnit   retHeight;
-    _DtCvUnit   saveTop;
+    _DtCvUnit   saveTop = 0;
     CellInfo	*thisCell = &ret_info[cell];
     DataPoint	 basePt;
     _DtCvValue	 reformat = False;

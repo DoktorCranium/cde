@@ -10,10 +10,6 @@ dtimsstart_CFLAGS = -DNLS
 
 dtimsstart_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
-if SOLARIS
-dtimsstart_CFLAGS += -xF
-endif
-
 dtimsstart_SOURCES = action.c env.c file.c main.c remote.c select.c	\
 		     start.c util.c win.c ximserr.h ximsfunc.h xims.h	\
 		     ximspath.h

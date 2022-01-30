@@ -2404,7 +2404,7 @@ RegisterPushRecallClients (
 	WmFpPushRecallClientList pPRCD, 
 	int count)
 {
-    WmScreenData *pSD;
+    WmScreenData *pSD = NULL;
     int i;
 
     for (i= 0; i < wmGD.numScreens; i++)

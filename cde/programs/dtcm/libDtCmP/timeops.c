@@ -52,7 +52,7 @@ static char sccsid[] = "@(#)timeops.c 1.13 95/05/02 Copyr 1991 Sun Microsystems,
 #endif
 
 #ifdef HAVE_CONFIG_H
-#include <autotools_config.h>
+#include <cde_config.h>
 #endif
 #include <EUSCompat.h>
 #include <stdio.h>

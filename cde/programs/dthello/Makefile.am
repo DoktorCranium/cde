@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 bin_PROGRAMS = dthello
 
-dthello_LDADD = $(DTCLIENTLIBS) ${X_LIBS} -lXm $(XTOOLLIB)
+dthello_LDADD = $(DTCLIENTLIBS) $(XTOOLLIB)
 
 if SOLARIS
 dthello_LDADD += -ldl -lgen

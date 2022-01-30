@@ -52,8 +52,12 @@ extern "C" {
 ** System V R4 based systems define the stuff we need in
 ** sys/types.h. Include that and then we are done.
 */
-#if defined(HPUX) || defined(__linux__) || defined(SunOS)
-#include <sys/types.h>
+#if defined(HPUX) || defined(__linux__) || defined(SunOS) || defined(CSRG_BASED)
+# include <sys/types.h>
+#endif
+
+#if defined(CSRG_BASED) || defined(__linux__)
+# include <sys/socket.h>
 #endif
 
 #if defined(sun) && defined(_XOPEN_SOURCE)
@@ -104,6 +108,7 @@ typedef enum {B_FALSE, B_TRUE} boolean_t;
 #endif	/* HPUX */
 
 #if defined(__linux__) || defined(CSRG_BASED)
+#include <string.h>  /* memset for libcsa and others */
 typedef enum {B_FALSE, B_TRUE} boolean_t;
 #define MAXNAMELEN      	256
 #endif

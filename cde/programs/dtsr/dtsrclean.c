@@ -737,10 +737,9 @@ static void     copy_new_d99 (long keyfield)
 	     * dbrec offset. 
 	     */
 	    if (validation_mode) {
-#ifdef BYTE_SWAP
 		for (swapx = 0;  swapx < num_reads;  swapx++)
 		    NTOHL (word_addrs[swapx]);
-#endif
+
 		/* set x to number of good addrs in this block */
 		if (good_addrs_left > num_reads) {
 		    x = num_reads;
@@ -868,10 +867,9 @@ static void     copy_new_d99 (long keyfield)
 		 * dba loop for this word. 
 		 */
 		if (good_addrs_this_block > 0) {
-#ifdef BYTE_SWAP
 		    for (swapx = 0;  swapx < good_addrs_this_block;  swapx++)
 			NTOHL (word_addrs_out[swapx]);
-#endif
+
 		    num_writes = fwrite (word_addrs_out, sizeof (DB_ADDR),
 			(size_t)good_addrs_this_block, fp_d99_new);
 		    if (num_writes != good_addrs_this_block)

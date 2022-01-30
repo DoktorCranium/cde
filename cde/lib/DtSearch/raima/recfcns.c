@@ -303,7 +303,7 @@ DB_ADDR *db_addr
    char *fptr;
    const char *tfptr;
    int s, i, strfld;
-   FIELD_ENTRY *sfld_ptr;
+   FIELD_ENTRY *sfld_ptr = NULL;
    SORT_ENTRY *srt_ptr;
    DB_ADDR *co_ptr, *cm_ptr;
 
@@ -402,7 +402,7 @@ DB_ADDR *db_addr
 	 }
       }
    }
-   if ( strfld >= 0 ) {
+   if ( strfld >= 0 && sfld_ptr) {
       /* insert the new struct key */
       if ( key_insert( strfld, rec + sfld_ptr->fd_ptr, dba ) != S_OKAY )
 	 return( db_status );

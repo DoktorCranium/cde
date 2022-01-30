@@ -573,8 +573,8 @@ _DtTermPrimBufferInsertWc
           short      *returnLength  /* count of characters in overflow buffer */
 )   
 {
-           short    widthInc;       /* incremental change in line width  */
-           short    lengthInc;      /* incremental change in line length */
+           short    widthInc = 0;       /* incremental change in line width  */
+           short    lengthInc = 0;      /* incremental change in line length */
            short    widthInsert;    /* column width of chars inserted    */
 	   short    localCol;
            TermLine line;

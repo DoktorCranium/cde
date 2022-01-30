@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 noinst_LTLIBRARIES = libTermPrim.la
 
-AM_CPPFLAGS = @DT_INCDIR@
+AM_CPPFLAGS = $(DT_INCDIR)
 
 libTermPrim_la_SOURCES = TermPrim.c \
         TermPrimAction.c \
@@ -32,10 +32,6 @@ libTermPrim_la_SOURCES = TermPrim.c \
         TermPrimWMProtocols.c
 
 # JET there may be some more missing here...
-
-if AIX
-libTermPrim_la_SOURCES += TermPrimGetPty-clone.c
-endif
 
 if SOLARIS
 libTermPrim_la_SOURCES += TermPrimGetPty-svr4.c

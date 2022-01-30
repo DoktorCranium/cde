@@ -56,8 +56,8 @@ Invoke::Invoke(const char *command,   // Command to Run
    pid_t c_pid;                        // child's pid 
    pid_t w;                            // temp vars 
    int out_num,err_num;                // # of chars read 
-   char *out_tmp, *err_tmp;            // temp buffer ptrs 
-   char *out_end,*err_end;             // ptr to end of buffer 
+   char *out_tmp, *err_tmp = NULL;     // temp buffer ptrs
+   char *out_end = NULL, *err_end = NULL; // ptr to end of buffer
    int outb_size,errb_size;            // buffer size 
    int out_count, err_count;           // # of buffers allocated 
    int trap_out,trap_err;              // flags; if >0, trap output 

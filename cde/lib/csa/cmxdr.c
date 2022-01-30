@@ -33,7 +33,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <autotools_config.h>
+#include <cde_config.h>
 #endif
 #include <EUSCompat.h>
 #include "cm.h"

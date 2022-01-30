@@ -1398,7 +1398,7 @@ RFCMIME::formatBodies(DtMailEnv & error,
 		free(bp_contents);
     }
     else {
-	char *content_type = new char[100];
+	char *content_type = new char[100 + sizeof(boundary)];
 
 	sprintf(content_type, "Content-Type: multipart/mixed;boundary=%s",
 		boundary);

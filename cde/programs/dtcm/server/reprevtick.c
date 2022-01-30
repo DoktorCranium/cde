@@ -89,7 +89,7 @@ PrevTick(
         RepeatEvent		*re,
         RepeatEventState        *res)
 {
-	Tick 			 next_time;
+	Tick 			 next_time = 0;
 	Tick			 _start_time;
 
         if (!re) return (Tick)0;

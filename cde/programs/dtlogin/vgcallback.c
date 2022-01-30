@@ -1791,7 +1791,7 @@ SetDtLabelAndIcon(void)
 static void 
 _DtShowDialog( DialogType dtype, XmString msg)
 {
-    Widget *w;
+    Widget *w = NULL;
     
 #ifdef VG_TRACE
     vg_TRACE_EXECUTION("main:  entered _DtShowDialog ...");
@@ -1804,6 +1804,7 @@ _DtShowDialog( DialogType dtype, XmString msg)
       case help:       w = &help_message; break;
       case hostname:   w = &hostname_message; break;
       case help_chooser: w = &help_message; break;
+      default: return;
     }
 
     if (*w == NULL)

@@ -26,7 +26,9 @@ nobase_include_HEADERS = Dt/Editor.h \
 	csa/csa.h \
 	Dt/Info.h \
 	Dt/Search.h \
-	Dt/Mmdb.h
+	Dt/Mmdb.h \
+	Dt/DtXinerama.h \
+	Dt/PamSvc.h
 
 
 

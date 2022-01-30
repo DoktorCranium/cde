@@ -164,9 +164,9 @@ ilFileTag     *pTag;
 int                     nTags;              /* # of tags to read */
 unsigned short          numbers[MAX_NTAGS]; /* tag ids to read */
 ilFileTag              *tags [MAX_NTAGS];   /* ptr to returned data */
-int                     stripOffsetsIndex, stripByteCountsIndex, colorMapIndex,
-                        QTablesIndex, DCTablesIndex, ACTablesIndex, softwareIndex,
-                        restartIndex;
+int                     stripOffsetsIndex, stripByteCountsIndex = 0, colorMapIndex,
+                        QTablesIndex = 0, DCTablesIndex = 0, ACTablesIndex = 0, softwareIndex = 0,
+                        restartIndex = 0;
 #define ADD_TAG(_index, _tagid) { \
     _index = nTags++;             \
     numbers[_index] = _tagid;     \

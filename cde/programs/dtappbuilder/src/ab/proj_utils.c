@@ -1492,7 +1492,7 @@ proj_save_exploded(
                 else /* An error occurred with stat */
                 {
                     obj_set_name(project, old_name);
-                    sprintf(Buf, "%s: %s", mod_exp_file, strerror(errno));
+                    snprintf(Buf, sizeof(Buf), "%s: %s", mod_exp_file, strerror(errno));
 		    util_printf_err(Buf);
     		    if (old_name != NULL) util_free(old_name);
 		    if (old_file != NULL) util_free(old_file);
@@ -1558,7 +1558,7 @@ proj_save_exploded(
                         if ((iRet = util_mkdir_hier(dir)) < 0)
                         {
 		    	    obj_set_name(project, old_name);
-			    sprintf(Buf, "%s: %s", dir, strerror(errno));
+			    snprintf(Buf, sizeof(Buf), "%s: %s", dir, strerror(errno));
 			    util_printf_err(Buf);
 			    if (rel_path) util_free(rel_path);
 			    if (old_name != NULL) util_free(old_name);
@@ -2135,7 +2135,7 @@ save_proj_as_bix(
             }
             else /* An error occurred with stat */
             {
-              sprintf(Buf, "%s: %s", bix_file, strerror(errno));
+              snprintf(Buf, sizeof(Buf), "%s: %s", bix_file, strerror(errno));
 		xm_buf = XmStringCreateLocalized(Buf);
 		dtb_proj_error_msg_initialize(&dtb_proj_error_msg);
 		(void)dtb_show_modal_message(dtb_get_toplevel_widget(), 

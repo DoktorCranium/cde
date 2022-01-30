@@ -554,8 +554,8 @@ forward_respond (struct sockaddr *from, int fromlen, int length)
     ARRAY8	    clientAddress;
     ARRAY8	    clientPort;
     ARRAYofARRAY8   authenticationNames;
-    struct sockaddr *client;
-    int		    clientlen;
+    struct sockaddr *client = NULL;
+    int		    clientlen = 0;
     int		    expectedLen;
     int		    i;
     

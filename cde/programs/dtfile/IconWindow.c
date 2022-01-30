@@ -290,8 +290,8 @@ FileWindowInputCallback(
    DirectorySet * directoryData;
    XEvent *new_event;
    XButtonPressedEvent *event;
-   XKeyEvent *kevent;
-   Widget eventIcon;
+   XKeyEvent *kevent = NULL;
+   Widget eventIcon = NULL;
    int i, j;
    FileViewData * fileViewData = NULL;
    Arg args[10];
@@ -373,8 +373,11 @@ FileWindowInputCallback(
       /* get the gadget that received the input */
       if (keybdFocusPolicy == XmEXPLICIT)
          eventIcon = (Widget) XmGetFocusWidget(w);
-      else
-         eventIcon = (Widget) InputForGadget(w, kevent->x, kevent->y);
+      else {
+         if(kevent) {
+            eventIcon = (Widget) InputForGadget(w, kevent->x, kevent->y);
+         }
+      }
       if (eventIcon == NULL)
          return;
 
