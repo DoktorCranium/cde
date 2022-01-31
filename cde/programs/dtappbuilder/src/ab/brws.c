@@ -1888,6 +1888,9 @@ setup_vwr_graphics(
     if (!ui_handle->sm_font)
         ui_handle->sm_font = (XFontStruct *)XLoadQueryFont(dpy, XmDEFAULT_FONT);
 
+    if (!ui_handle->sm_font)
+        ui_handle->sm_font = (XFontStruct *)XLoadQueryFont(dpy, "*");
+
     XSetFont(dpy, ui_handle->normal_gc, ui_handle->sm_font->fid);
     XSetFont(dpy, ui_handle->select_gc, ui_handle->sm_font->fid);
 }
