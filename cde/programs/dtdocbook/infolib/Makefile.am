@@ -128,6 +128,11 @@ StyleUpdate_SOURCES = \
 		      Token.C \
 		      lex.ll
 
+dbdrv_SOURCES = dbdrv.C
+valBase_SOURCES = valBase.C
+validator_SOURCES = validator.C
+restore_SOURCES = restore.C
+
 CLEANFILES = \
 	     OL_DataExpr.C \
 	     OL_DataExpr.tab.h \
