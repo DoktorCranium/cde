@@ -6,4 +6,4 @@ SUBDIRS = backdrops icons dsdm dtmail dtpad dtfile dtwm dtlogin		\
         dtappbuilder palettes dtappintegrate dtprintegrate dtconfig	\
         dtcreate dtprintinfo fontaliases dtdspmsg ttsnoop dtimsstart	\
         dtpdm dtsr dtpdmd dtinfo types tttypes util dtopen localized	\
-        dthelp dtdocbook dtinfo
+        dthelp dtdocbook
