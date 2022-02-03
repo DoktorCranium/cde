@@ -408,6 +408,11 @@ if test -z "$ac_cv_prog_ONSGMLS"; then
    MISSING_PROGS="ONSGMLS ${MISSING_PROGS}"
 fi
 
+AC_PATH_PROGS(GETTY, getty agetty, , [/sbin:/usr/sbin:/usr/libexec:$PATH])
+if test -z "$ac_cv_path_GETTY"; then
+   MISSING_PROGS="getty ${MISSING_PROGS}"
+fi
+
 dnl Used to check if program 'tic' is available to install terminfo files
 AC_CHECK_PROGS(TIC, tic, :)
 
