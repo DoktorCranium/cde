@@ -51,6 +51,7 @@
  * a simple linked list of known displays
  */
 
+# include <sys/mman.h>
 # include "dm.h"
 # include "vgmsg.h"
 
@@ -190,7 +191,7 @@ RemoveDisplay( struct display *old )
 	    IfFree (d->peer);
 	    IfFree (d->from);
             XdmcpDisposeARRAY8(&d->clientAddr);
-	    IfFree (d->language);
+	    munmap (d->language, LANGUAGESIZE + 1);
 	    IfFree (d->langList);
 	    IfFree (d->utmpId);
 	    IfFree (d->gettyLine);
@@ -216,7 +217,16 @@ RemoveDisplay( struct display *old )
 struct display * 
 NewDisplay( char *name, char *class )
 {
+    char *language;
     struct display	*d;
+
+    language = mmap (NULL, LANGUAGESIZE + 1, PROT_READ | PROT_WRITE,
+		    MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+
+    if (language == MAP_FAILED) {
+	LogOutOfMem (ReadCatalog(MC_LOG_SET,MC_LOG_NEW_DPY,MC_DEF_LOG_NEW_DPY));
+	return 0;
+    }
 
     d = (struct display *) malloc (sizeof (struct display));
     if (!d) {
@@ -290,7 +300,7 @@ NewDisplay( char *name, char *class )
     d->useChooser = 0;
     d->clientAddr.data = NULL;
     d->clientAddr.length = 0;
-    d->language = NULL;
+    d->language = language;
     d->langList = NULL;
     d->utmpId = NULL;
     d->gettyLine = NULL;
@@ -303,4 +313,3 @@ NewDisplay( char *name, char *class )
     displays = d;
     return d;
 }
-

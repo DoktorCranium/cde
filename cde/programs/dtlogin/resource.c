@@ -672,6 +672,8 @@ LoadDisplayResources( struct display *d )
 		}
 	   }
 
+	lang = d->language;
+	d->language = NULL;
 
 	for (i = 0; i < NUM_DISPLAY_RESOURCES; i++) {
 		sprintf (name, "%s.%s.%s", AppName,
@@ -681,6 +683,13 @@ LoadDisplayResources( struct display *d )
 		GetResource (name, class, DisplayResources[i].type,
 			      (char **) (((char *) d) + DisplayResources[i].offset), DisplayResources[i].default_value);
 	}
+
+	if (!strlen(lang) && d->language && strlen(d->language))
+		*(strncpy(lang, d->language, LANGUAGESIZE) + LANGUAGESIZE) =
+			'\0';
+
+	free(d->language);
+	d->language = lang;
 
 #ifdef _AIX
     if(d->language == NULL || strlen(d->language) == 0)

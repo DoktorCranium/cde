@@ -100,6 +100,7 @@
 #define DEF_SUPATH      "/usr/sbin:/usr/bin" /* same as ROOTPATH */
 
 #define LANGLISTSIZE    2048
+#define LANGUAGESIZE    50
 #define DELIM           " \t"   /* delimiters in language list             */
 
 

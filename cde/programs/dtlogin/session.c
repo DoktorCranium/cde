@@ -2406,12 +2406,10 @@ RunGreeter( struct display *d, struct greet_info *greet,
                   Debug("Greeter returned language (NULL)\n");
 
 
-		if (strcmp(d->language, "default") == 0) {
-		    int len = strlen(defaultLanguage) + 1;
-		    d->language = (d->language == NULL  ?
-				   malloc(len) : realloc (d->language, len));
-		    strcpy(d->language, defaultLanguage);
-		}
+		if (strcmp(d->language, "default") == 0)
+		    *(strncpy(d->language, defaultLanguage, LANGUAGESIZE) +
+			LANGUAGESIZE) = '\0';
+
 		return;
 #ifdef	BLS
 	    case NOTIFY_BAD_SECLEVEL:
@@ -2678,7 +2676,7 @@ ManageGreeter( struct display *d, struct greet_info *greet,
         Debug("GREET_STATE_AUTHENTICATE\n"); 
 
         r = (ResponseChallenge *)state->response;
-     
+
         if (greet->name == NULL)
         {
           greet->name = strdup(((char *)r) + r->offResponse);
@@ -2805,17 +2803,14 @@ ManageGreeter( struct display *d, struct greet_info *greet,
         */
         ResponseLang *r;
         char *lang;
-        int len;
 
         Debug("GREET_STATE_LANG\n");
 
         r = (ResponseLang *)state->response;
         lang = ((char *)r) + r->offLang;
-        len = strlen(lang) + 1;
 
-        d->language = (d->language == NULL ?
-                       malloc(len) : realloc(d->language, len));
-        strcpy(d->language, lang);
+        *(strncpy(d->language, lang, LANGUAGESIZE) + LANGUAGESIZE) = '\0';
+
         Debug("Language returned:  %s\n", d->language);
       }
       break;

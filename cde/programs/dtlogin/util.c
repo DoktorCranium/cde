@@ -766,7 +766,6 @@ SetDefaultLanguage(struct display *d)
      * If LANG is set for hft, we need to change it for X.
      * Currently there are four hft LANG variables.
      */
-        d->language = (char *)malloc(strlen(lang)+1);
         if(strcmp(lang, "En_JP") == 0)
             strcpy(d->language, "Ja_JP");
         else if(strcmp(lang, "en_JP") == 0)
@@ -776,7 +775,7 @@ SetDefaultLanguage(struct display *d)
         else if(strcmp(lang, "en_TW") == 0)
             strcpy(d->language, "zh_TW");
         else
-            strcpy(d->language, lang);
+            *(strncpy(d->language, lang, LANGUAGESIZE) + LANGUAGESIZE) = '\0';
     }
 }
 #endif /* _AIX */
@@ -820,7 +819,7 @@ setLang( struct display *d, char **env , char *langptr)
 
     if (set_def_lang) {
         env = setEnv(env, "LANG", "C");
-        d->language = strdup("C");
+        strcpy(d->language, "C");
     }
     return env;
 }

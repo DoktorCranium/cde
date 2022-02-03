@@ -1450,16 +1450,6 @@ SetTitle( char *name, char *ptr )
 *
 *****************************************************************************/
 
-#if defined (_AIX) && defined (_POWER)
-#define GETTYPATH "/usr/sbin/getty"
-#elif defined(__OpenBSD__)
-#define GETTYPATH "/usr/libexec/getty"
-#elif defined(__linux__)
-#define GETTYPATH "/sbin/getty"
-#else
-#define GETTYPATH "/etc/getty"
-#endif
-
 static int 
 StartGetty( struct display *d )
 {
