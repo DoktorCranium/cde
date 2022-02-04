@@ -103,7 +103,6 @@ extern int yylex();
  CACHED_PAGES
  ENDIANNESS
  SEPARATOR
-%type <integer>
 
 %type <trans>
  Sheet
