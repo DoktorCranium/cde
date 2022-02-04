@@ -1016,8 +1016,6 @@ defaultGlobals(void)
 	}
       }
 
-      free(lang);
-
       if (!code) code = LANG_COMMON;
 
       for (iter = langtbl; iter->name; ++iter) {
@@ -1026,6 +1024,8 @@ defaultGlobals(void)
 	  break;
 	}
       }
+
+      free(lang);
     }
 
     if ((gStruct->sgml = buildSGML()) == NULL) {
