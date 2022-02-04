@@ -2,7 +2,9 @@ MAINTAINERCLEANFILES = Makefile.in
 
 include ../dtdocbook.am
 
-dtdocbooklibexec_PROGRAMS = instant
+instantdir = $(dtdocbooklibexecdir)/instant
+
+instant_PROGRAMS = instant
 
 instant_CFLAGS = $(DT_INCDIR)
 

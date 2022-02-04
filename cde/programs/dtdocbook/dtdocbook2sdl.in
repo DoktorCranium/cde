@@ -94,6 +94,8 @@ default_locale="en_US.$default_charset"
 prefix="${prefix:-@prefix@}"
 exec_prefix="@exec_prefix@"
 
+export PATH="${PATH}:@bindir@"
+
 dcbk_name="@PACKAGE_TARNAME@/dtdocbook"
 
 dtdcbk_libdir="${dtdcbk_libdir:-@libdir@/${dcbk_name}}"

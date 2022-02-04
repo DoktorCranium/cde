@@ -54,7 +54,7 @@ Var:	procsubstep 0
 #
 GI:		REFENTRY
 StartText:	^.ta 8n 16n 24n 32n 40n 48n 56n 64n 72n
-		^.TH "@{_followrel descendant REFENTRYTITLE 1000}"
+		^.TH "@{_followrel descendant REFENTRYTITLE 1000}" 
 		"@{_followrel descendant MANVOLNUM 1000}"^
 EndText:	^...\\" created by instant / docbook-to-man, @{date}^
 -

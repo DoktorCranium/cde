@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = doc_utils dtsr instant locales sgml spec tcl tpt
+SUBDIRS = dtsr infolib instant locales sgml spec tcl tpt doc_utils
 
 include dtdocbook.am
 
@@ -10,5 +10,5 @@ bin_PROGRAMS = dtdocbook2infolib
 AM_LDFLAGS = $(XTOOLLIB) $(DTCLIENTLIBS)
 
 dtdocbook2infolib_CPPFLAGS = \
-			     -DDTDCBK_DATAROOTDIR=\"$(dtdcbk_datarootdir)\" \
-			     -DINFOLIB_LIBEXECDIR=\"$(PWD)\"
+			     -DDTDCBK_DATAROOTDIR=\"$(dtdocbookdatadir)\" \
+			     -DINFOLIB_LIBEXECDIR=\"$(dtdocbooklibexecdir)/infolib\"
