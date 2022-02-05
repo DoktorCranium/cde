@@ -386,10 +386,10 @@ d_close(void)
       ctbl_free();
 #endif
 
-/*    termfree();
+      termfree();
       key_close();
       sk_free();
-      dio_free(); */
+      dio_free();
    }
    if ( dbopen ) {
       setdb_on = FALSE;
