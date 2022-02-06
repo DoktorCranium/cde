@@ -428,13 +428,13 @@ SetHourGlassCursor( Display *dpy, Window w )
 
 #define DELIM		" \t"   /* delimiters in language list		   */
 
-static jmp_buf	langJump;
+static sigjmp_buf	langJump;
 
 static SIGVAL
 MakeLangAbort( int arg )
 
 {
-    longjmp (langJump, 1);
+    siglongjmp (langJump, 1);
 }
 
 void
@@ -459,7 +459,7 @@ MakeLangList( void )
     signal (SIGALRM, MakeLangAbort);
     alarm ((unsigned) langListTimeout);
 
-    if (!setjmp (langJump)) {
+    if (!sigsetjmp (langJump, 1)) {
         ScanNLSDir(DEF_NLS_DIR);
     }
     else {

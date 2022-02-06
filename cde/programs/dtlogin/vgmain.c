@@ -671,13 +671,13 @@ main( int argc, char **argv )
 
 #define MINTIMEOUT	20
 
-static jmp_buf	syncJump;
+static sigjmp_buf	syncJump;
 
 static SIGVAL
 syncTimeout( int arg )
 
 {
-    longjmp (syncJump, 1);
+    siglongjmp (syncJump, 1);
 }
 
 
@@ -707,7 +707,7 @@ InitToolKit( int argc, char **argv )
      */
 
     signal (SIGALRM, syncTimeout);
-    if (setjmp (syncJump)) {
+    if (sigsetjmp (syncJump, 1)) {
 	LogError(
 		ReadCatalog(MC_LOG_SET,MC_LOG_NO_DPYINIT,MC_DEF_LOG_NO_DPYINIT),
 		dpyinfo.name);

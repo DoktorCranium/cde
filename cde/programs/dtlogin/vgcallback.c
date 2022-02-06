@@ -947,7 +947,7 @@ OptionsUnmapCB( Widget wd, XtPointer client_data, XtPointer call_data )
  *
  ***************************************************************************/
 
-static jmp_buf	pingTime;
+static sigjmp_buf	pingTime;
 static int	serverDead = FALSE;
 static int	pingInterval = 0;	/* ping interval (sec.)		   */
 static int	pingTimeout;		/* ping timeout (sec.)		   */
@@ -956,7 +956,7 @@ static void
 PingLost( void )
 {
     serverDead = TRUE;
-    longjmp (pingTime, 1);
+    siglongjmp (pingTime, 1);
 }
 
 
@@ -965,7 +965,7 @@ PingBlocked( int arg )
 
 {
     serverDead = TRUE;
-    longjmp (pingTime, 1);
+    siglongjmp (pingTime, 1);
 }
 
 
@@ -980,7 +980,7 @@ PingServer( void )
     oldAlarm = alarm (0);
     oldSig = signal (SIGALRM, PingBlocked);
     alarm (pingTimeout * 60);
-    if (!setjmp (pingTime))
+    if (!sigsetjmp (pingTime, 1))
     {
 	XSync (dpyinfo.dpy, 0);
     }

@@ -110,12 +110,12 @@ killWindows( Display *dpy, Window window )
 	}
 }
 
-static jmp_buf	resetJmp;
+static sigjmp_buf	resetJmp;
 
 static SIGVAL
 abortReset( int arg )
 {
-	longjmp (resetJmp, 1);
+	siglongjmp (resetJmp, 1);
 }
 
 /*
@@ -128,7 +128,7 @@ pseudoReset( Display *dpy )
 	Window	root;
 	int	screen;
 
-	if (setjmp (resetJmp)) {
+	if (sigsetjmp (resetJmp, 1)) {
 		LogError(
 		  ReadCatalog(MC_LOG_SET,MC_LOG_PSEUDO,MC_DEF_LOG_PSEUDO));
 	} else {

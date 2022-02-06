@@ -239,7 +239,7 @@ static struct greet_info	greet;
 static struct verify_info	verify;
 static char			*defaultLanguage = NULL;
 
-static jmp_buf	abortSession;
+static sigjmp_buf	abortSession;
 
 #ifdef BLS
   static char *sensitivityLevel;
@@ -257,15 +257,15 @@ XrmDatabase XDB;
 static SIGVAL
 catchTerm( int arg )
 {
-    longjmp (abortSession, 1);
+    siglongjmp (abortSession, 1);
 }
 
-static jmp_buf	pingTime;
+static sigjmp_buf	pingTime;
 
 static SIGVAL
 catchAlrm( int arg )
 {
-    longjmp (pingTime, 1);
+    siglongjmp (pingTime, 1);
 }
 
 #if defined(__STDC__)
@@ -522,7 +522,7 @@ ManageSession( struct display *d )
 #endif
 
     clientPid = 0;
-    if (!setjmp (abortSession)) {
+    if (!sigsetjmp (abortSession, 1)) {
 	signal (SIGTERM, catchTerm);
 	/*
 	 * Start the clients, changing uid/groups
@@ -543,7 +543,7 @@ ManageSession( struct display *d )
 	    for (;;) {
 		if (d->pingInterval)
 		{
-		    if (!setjmp (pingTime))
+		    if (!sigsetjmp (pingTime, 1))
 		    {
 			signal (SIGALRM, catchAlrm);
 			alarm (d->pingInterval * 60);
@@ -1064,12 +1064,12 @@ DeleteXloginResources( struct display *d, Display *dpy )
 
 #if  0 			  /* dead code: transferred to Dtgreet */
 
-static jmp_buf syncJump;
+static sigjmp_buf syncJump;
 
 static SIGVAL
 syncTimeout ()
 {
-    longjmp (syncJump, 1);
+    siglongjmp (syncJump, 1);
 }
 
 
@@ -1079,7 +1079,7 @@ Display		*dpy;
 {
     Debug ("SecureDisplay():\n");
     signal (SIGALRM, syncTimeout);
-    if (setjmp (syncJump)) {
+    if (sigsetjmp (syncJump, 1)) {
 	LogError(ReadCatalog(MC_LOG_SET,MC_LOG_NO_SECDPY,MC_DEF_LOG_NO_SECDPY),
 		   d->name);
 	SessionExit (d, RESERVER_DISPLAY);
@@ -1689,12 +1689,12 @@ StartClient( struct verify_info *verify, struct display *d, int *pidp )
     }
 }
 
-static jmp_buf	tenaciousClient;
+static sigjmp_buf	tenaciousClient;
 
 static SIGVAL
 waitAbort( int arg )
 {
-	longjmp (tenaciousClient, 1);
+	siglongjmp (tenaciousClient, 1);
 }
 
 #if defined(SYSV) || defined(SVR4)
@@ -1723,7 +1723,7 @@ AbortClient( int pid )
 		return 0;
 	    }
 	}
-	if (!setjmp (tenaciousClient)) {
+	if (!sigsetjmp (tenaciousClient, 1)) {
 	    (void) signal (SIGALRM, waitAbort);
 	    (void) alarm ((unsigned) 10);
 	    retId = wait ((waitType *) 0);
@@ -1948,7 +1948,7 @@ RunGreeter( struct display *d, struct greet_info *greet,
 #endif
 
     greeterPid = 0;
-    if (!setjmp (abortSession)) {
+    if (!sigsetjmp (abortSession, 1)) {
 	signal(SIGTERM, catchTerm);
 
 	/*

@@ -223,14 +223,14 @@ StartServer( struct display *d )
  * the sleep finishes, 0 else
  */
 
-static jmp_buf	pauseAbort;
+static sigjmp_buf	pauseAbort;
 static int	serverPauseRet;
 
 static SIGVAL
 serverPauseAbort( int arg )
 {
     Debug ("Display Manager pause timed out\n");
-    longjmp (pauseAbort, 1);
+    siglongjmp (pauseAbort, 1);
 }
 
 static SIGVAL
@@ -238,7 +238,7 @@ serverPauseUsr1( int arg )
 {
     Debug ("Display Manager pause received SIGUSR1\n");
     ++receivedUsr1;
-    longjmp (pauseAbort, 1);
+    siglongjmp (pauseAbort, 1);
 }
 
 static int 
@@ -248,7 +248,7 @@ serverPause( unsigned t, int serverPid )
 
     serverPauseRet = 0;
     Debug ("Display Manager pausing until SIGUSR1 from server or timeout\n");
-    if (!setjmp (pauseAbort)) {
+    if (!sigsetjmp (pauseAbort, 1)) {
 	signal (SIGALRM, serverPauseAbort);
 	signal (SIGUSR1, serverPauseUsr1);
 #ifdef SYSV
@@ -308,17 +308,17 @@ serverPause( unsigned t, int serverPid )
 /*
  * this code is complicated by some TCP failings.  On
  * many systems, the connect will occasionally hang forever,
- * this trouble is avoided by setting up a timeout to longjmp
+ * this trouble is avoided by setting up a timeout to siglongjmp
  * out of the connect (possibly leaving piles of garbage around
  * inside Xlib) and give up, terminating the server.
  */
 
-static jmp_buf	openAbort;
+static sigjmp_buf	openAbort;
 
 static SIGVAL
 abortOpen( int arg )
 {
-	longjmp (openAbort, 1);
+	siglongjmp (openAbort, 1);
 }
 
 static void
@@ -378,7 +378,7 @@ WaitForServer( struct display *d )
     for (i = 0; i < (d->openRepeat > 0 ? d->openRepeat : 1); i++) {
     	(void) signal (SIGALRM, abortOpen);
     	(void) alarm ((unsigned) d->openTimeout);
-    	if (!setjmp (openAbort)) {
+	if (!sigsetjmp (openAbort, 1)) {
 	    Debug ("Before XOpenDisplay(%s)\n", d->name);
 	    errno = 0;
 	    dpy = XOpenDisplay (d->name);
@@ -443,14 +443,14 @@ ResetServer( struct display *d )
  *
  ****************************************************************************/
 
-static jmp_buf	pingTime;
+static sigjmp_buf	pingTime;
 static int	serverDead = FALSE;
 
 static SIGVAL
 PingLost( int arg )
 {
     serverDead = TRUE;
-    longjmp (pingTime, 1);
+    siglongjmp (pingTime, 1);
 }
 
 
@@ -458,7 +458,7 @@ static SIGVAL
 PingBlocked( int arg )
 {
     serverDead = FALSE;
-    longjmp (pingTime, 1);
+    siglongjmp (pingTime, 1);
 }
 
 
@@ -475,7 +475,7 @@ PingServer( struct display *d, Display *alternateDpy )
     oldAlarm = alarm (0);
     oldSig = signal (SIGALRM, PingBlocked);
     alarm (d->pingTimeout * 60);
-    if (!setjmp (pingTime))
+    if (!sigsetjmp (pingTime, 1))
     {
 	Debug ("Ping server\n");
 	XNoOp (alternateDpy);

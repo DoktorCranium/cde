@@ -824,14 +824,14 @@ ReadCatalogXms(int setn, int msgn, char *dflt)
  *  grab/release the server and keyboard
  ***************************************************************************/
 
-static jmp_buf	syncJump;
+static sigjmp_buf	syncJump;
 static int	grabServer;		/* Boolean on grabbing server	   */
 static int	grabTimeout;		/* timeout to grab server	   */
 
 static SIGVAL
 syncTimeout( int arg )
 {
-    longjmp (syncJump, 1);
+    siglongjmp (syncJump, 1);
 }
 
 int 
@@ -853,7 +853,7 @@ SecureDisplay( void )
      *  grab server then the keyboard...
      */
     signal (SIGALRM, syncTimeout);
-    if (setjmp (syncJump)) {
+    if (sigsetjmp (syncJump, 1)) {
 	LogError(ReadCatalog(MC_LOG_SET,MC_LOG_NO_SECDPY,MC_DEF_LOG_NO_SECDPY),
 		   dpyinfo.name);
 	return(1);
