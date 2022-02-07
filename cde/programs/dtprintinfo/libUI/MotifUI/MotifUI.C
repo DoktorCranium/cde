@@ -562,7 +562,7 @@ void MotifUI::Dump(boolean verbose,
 
       int i;
       for (i = -2; i < level; i++) printf("   ");
-      printf("BaseWidget : %08lx\n", _w);
+      printf("BaseWidget : %p\n", _w);
     }
    else
       BaseUI::Dump(false, level);
