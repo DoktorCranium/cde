@@ -266,7 +266,7 @@ set_time_submenu(Widget parent,
 
 	XmString	xmstr;
 	int		i, j, allocation_counter = 0;
-	char		buf[4], buf2[10];
+	char		buf[12], buf2[24];
 	Widget		menu, menuitem;
 	DisplayType	dt = get_int_prop(p, CP_DEFAULTDISP);
 	int		beg = get_int_prop(p, CP_DAYBEGIN);

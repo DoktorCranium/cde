@@ -247,7 +247,7 @@ r_set_bfpm_vals(
                		sprintf(buf, "%d", seconds_to_minutes(val->scope_val));
 		}
 	} else
-		sprintf(buf, "%d", val->scope_val);
+		sprintf(buf, "%ld", (long) val->scope_val);
 
 	switch ( scope ) {
 	  case TIME_MINS :
