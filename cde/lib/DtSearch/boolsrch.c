@@ -220,9 +220,9 @@ static int	read_recno (long recno)
 BAD_DBA:
 	if (debugging_boolsrch) {
 	    fprintf (aa_stderr,
-		PROGNAME"434 Invalid dba %ld.  "
+		"%s434 Invalid dba %ld.  "
 		"recno=%ld bitvec[%ld]=%02x  db_status=%d.\n",
-		objrecdba, recno, recno>>3, 1<<(recno%8), db_status);
+		PROGNAME, (long) objrecdba, recno, recno>>3, 1<<(recno%8), db_status);
 	    fflush (aa_stderr);
 	}
 	return FALSE;
