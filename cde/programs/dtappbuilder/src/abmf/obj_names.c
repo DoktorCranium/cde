@@ -484,7 +484,7 @@ abmfP_get_c_struct_or_ptr_name(
         name = abmfP_get_c_struct_global_name(structObj);
 	if (wantPtr)
 	{
-	    sprintf(nameBuf, "&(%s)", name);
+	    snprintf(nameBuf, sizeof(nameBuf), "&(%s)", name);
 	    name = nameBuf;
 	}
     }
@@ -660,7 +660,7 @@ abmfP_get_c_substruct_global_name(ABObj obj)
     {
 	return NULL;
     }
-    sprintf(name, "%s.%s", structVar, structField);
+    snprintf(name, sizeof(name), "%s.%s", structVar, structField);
     return name;
 }
 
