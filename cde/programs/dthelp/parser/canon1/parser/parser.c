@@ -39,6 +39,8 @@ char *user_defined_entities M_PARINIT("USER-DEFINED-ENTITIES");
 
 static void scanloop(LOGICAL prolog);
 
+extern void m_mberr1(char *text, const char *arg);
+
 /* Main procedure */
 int main(int argc, char **argv)
 {

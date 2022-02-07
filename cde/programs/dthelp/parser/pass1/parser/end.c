@@ -33,6 +33,9 @@ This product and information is proprietary of Tandem Computers Incorporated.
 #include "globdec.h"
 
 /* Include generated file */
+
+extern void chksnb(void);
+
 #include "efile.c"
 
 

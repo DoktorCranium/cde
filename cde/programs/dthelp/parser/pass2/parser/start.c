@@ -32,6 +32,8 @@ This product and information is proprietary of Tandem Computers Incorporated.
 #include "userinc.h"
 #include "globdec.h"
 
+extern void ImpliedAttribute(char *name, M_WCHAR *value);
+
 /* Include generated file */
 #include "sfile.c"
 

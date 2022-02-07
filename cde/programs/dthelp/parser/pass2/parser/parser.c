@@ -35,6 +35,8 @@
 #include "if.h"
 #include "entext.h"
 
+extern void m_mberr1(char *text, const char *arg);
+
 /* Main procedure */
 void main(int argc, char **argv)
   {
