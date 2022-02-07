@@ -521,7 +521,7 @@ static char ident6[]="@(#) (c) Copyright 1993, 1994 Unix System Labs, Inc., a su
     if (termp - term > 1 && *(termp-1) == ' ') {
 	 *(termp-1) = M_EOS;
     }
-    if (!(lastTermId = (int) m_lookfortrie(term, &gtree)))
+    if (!(lastTermId = (intptr_t) m_lookfortrie(term, &gtree)))
 	{
 	lastTermId = NextId();
 	m_ntrtrie(term, &gtree, (void *) -lastTermId);
