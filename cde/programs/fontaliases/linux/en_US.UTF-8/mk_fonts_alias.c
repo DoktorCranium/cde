@@ -81,7 +81,7 @@ enum app_adstyl_spc_t {SANS_P, SERIF_M, SERIF_P};
 struct xlfd_t app_font[APP_FAL_SIZE], app_alias[APP_FAL_SIZE];
 struct font_alias_t app_fal[APP_FAL_SIZE];
 
-static int print_xlfd(struct xlfd_t *pxlfd) {
+static void print_xlfd(struct xlfd_t *pxlfd) {
   fprintf(stdout, "\"-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s\"",
       pxlfd->fndry,
       pxlfd->fmly,
@@ -1199,7 +1199,90 @@ static void print_app_dtsymbol_1(void) {
   for (int i = 0; i < APP_FAL_SIZE; ++i) print_font_alias(&app_fal[i]);
 }
 
-int main(void) {
+static void mixed_iface_iso8859(bool is_user, bool is_bold) {
+  iface_iso8859(is_user, is_bold);
+
+  if (!is_user && is_bold) return;
+
+  for (int i = 0; i < IFACE_FAL_SIZE; ++i) {
+    struct font_alias_t *pfa = &iface_fal[i];
+
+    pfa->font->fndry  = "b&h";
+    pfa->font->fmly   = is_user ? "lucidatypewriter" : "lucidabright";
+    pfa->font->wght   = is_bold ? "bold" : "medium";
+    pfa->font->adstyl = is_user ? "sans" : "";
+    pfa->font->spc    = is_user ? "m" : "p";
+  }
+
+  if (!is_user) {
+    iface_alias_xxs.adstyl = "xxs serif";
+    iface_alias_xs.adstyl  = "xs serif";
+    iface_alias_s.adstyl   = "s serif";
+    iface_alias_m.adstyl   = "m serif";
+    iface_alias_l.adstyl   = "l serif";
+    iface_alias_xl.adstyl  = "xl serif";
+    iface_alias_xxl.adstyl = "xxl serif";
+  }
+
+  iface_font_xxs.pxlsz   = "10";
+  iface_font_xxs.ptsz    = "100";
+  iface_font_xxs.resx    = "75";
+  iface_font_xxs.resy    = "75";
+  iface_font_xxs.avgwdth = is_user ? "60" : "56";
+
+  iface_font_xs.pxlsz   = "11";
+  iface_font_xs.ptsz    = "80";
+  iface_font_xs.resx    = "100";
+  iface_font_xs.resy    = "100";
+  iface_font_xs.avgwdth = is_user ? "70" : "63";
+
+  iface_font_s.pxlsz   = "14";
+  iface_font_s.ptsz    = "140";
+  iface_font_s.resx    = "75";
+  iface_font_s.resy    = "75";
+  iface_font_s.avgwdth = is_user ? "90" : "80";
+
+  iface_font_m.pxlsz   = "17";
+  iface_font_m.ptsz    = "120";
+  iface_font_m.resx    = "100";
+  iface_font_m.resy    = "100";
+  iface_font_m.avgwdth = is_user ? "100" : "96";
+
+  iface_font_l.pxlsz   = "19";
+  iface_font_l.ptsz    = "190";
+  iface_font_l.resx    = "75";
+  iface_font_l.resy    = "75";
+  iface_font_l.avgwdth = is_user ? "110" : "109";
+
+  iface_font_xl.pxlsz   = "20";
+  iface_font_xl.ptsz    = "140";
+  iface_font_xl.resx    = "100";
+  iface_font_xl.resy    = "100";
+  iface_font_xl.avgwdth = is_user ? "120" : "114";
+
+  iface_font_xxl.pxlsz   = "24";
+  iface_font_xxl.ptsz    = "240";
+  iface_font_xxl.resx    = "75";
+  iface_font_xxl.resy    = "75";
+  iface_font_xxl.avgwdth = is_user ? "140" : "137";
+
+  for (int i = 0; i < IFACE_FAL_SIZE; ++i) {
+    struct font_alias_t *pfa = &iface_fal[i];
+
+    pfa->alias->pxlsz   = pfa->font->pxlsz;
+    pfa->alias->ptsz    = pfa->font->ptsz;
+    pfa->alias->resx    = pfa->font->resx;
+    pfa->alias->resy    = pfa->font->resy;
+    pfa->alias->spc     = pfa->font->spc;
+    pfa->alias->avgwdth = pfa->font->avgwdth;
+  }
+}
+
+static void print_mixed_iface_iso8859(char *encdng) {
+  print_iface(mixed_iface_iso8859, encdng);
+}
+
+int main(int argc, char *argv[]) {
   for (int i = 0; i < APP_FAL_SIZE; ++i) {
     struct font_alias_t *pfa = &app_fal[i];
     pfa->font  = &app_font[i];
@@ -1222,8 +1305,18 @@ int main(void) {
     "16"
   };
 
-  for (int i = 0; i < sizeof(iface_encdng) / sizeof(char *); ++i)
-    print_iface_iso8859(iface_encdng[i]);
+  for (int i = 0; i < sizeof(iface_encdng) / sizeof(char *); ++i) {
+    char *encdng = iface_encdng[i];
+
+    if (argc) {
+      if (strcmp(encdng, "5") &&
+          strcmp(encdng, "7") &&
+          strcmp(encdng, "8") &&
+          strcmp(encdng, "16"))
+        print_mixed_iface_iso8859(encdng);
+    }
+    else print_iface_iso8859(encdng);
+  }
 
   print_iface_iso8859_11();
   print_iface_koi8_r();
