@@ -241,7 +241,7 @@ connection to the X server is terminated. If the application observes neither
 of these protocols, its connection to the X server is terminated.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><function>f.lower</function>&ensp;[<emphasis>&minus;</emphasis> <literal>client</literal> | <symbol role="Variable">within</symbol>&ensp;| <emphasis>freeFamily</emphasis>]</term>
+<varlistentry><term><function>f.lower</function>&ensp;[<emphasis>-</emphasis> <literal>client</literal> | <symbol role="Variable">within</symbol>&ensp;| <emphasis>freeFamily</emphasis>]</term>
 <listitem>
 <para>This function lowers a primary window to the bottom of the global window
 stack (where it obscures no other window) and lowers the secondary window
@@ -408,7 +408,7 @@ switches to the last workspace.</para>
 <para>This function terminates dtwm (but NOT the X window system).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><function>f.raise</function>&ensp;[<emphasis>&minus;</emphasis><symbol role="Variable">client</symbol> | <symbol role="Variable">within</symbol>
+<varlistentry><term><function>f.raise</function>&ensp;[<emphasis>-</emphasis><symbol role="Variable">client</symbol> | <symbol role="Variable">within</symbol>
 | <emphasis>freeFamily</emphasis>]</term>
 <listitem>
 <para>This function raises a primary window to the top of the global window

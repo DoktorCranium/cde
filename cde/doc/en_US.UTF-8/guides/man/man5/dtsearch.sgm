@@ -151,7 +151,7 @@ for extracting summary database information, including
 </RefSect2>
 <RefSect2>
 <Title>Argument Conventions</Title>
-<para>Optional command line arguments are specified with a dash (&minus;) and
+<para>Optional command line arguments are specified with a dash (-) and
 typically a single character argument identifier. Some required
 arguments also use the dash convention. Unless specifically indicated
 otherwise, dash arguments may be specified in any order. Where values

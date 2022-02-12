@@ -58,7 +58,7 @@ For example:
 <Emphasis>DTSPUSERAPPHOSTS</Emphasis>. <SystemItem Class="EnvironVar">XMICONSEARCHPATH</SystemItem> is supported by
 <Emphasis>DTSPSYSICON</Emphasis> and
 <Emphasis>DTSPUSERICON</Emphasis>.</Para>
-<Para>The input search path environment variables fall into two categories &minus;
+<Para>The input search path environment variables fall into two categories -
 those that support the host:/path syntax and those that do not.
 If the name of
 the input environment variable contains the string
@@ -176,7 +176,7 @@ default <Filename>/etc/dt</Filename> configuration location is up to the user of
 <Title>OPTIONS</Title>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;u user</Literal></Term>
+<Term><Literal>-u user</Literal></Term>
 <ListItem>
 <Para>Causes
 <Command>dtsearchpath</Command> to return the search paths for the specified user.
@@ -187,7 +187,7 @@ a particular user.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;v</Literal></Term>
+<Term><Literal>-v</Literal></Term>
 <ListItem>
 <Para>The verbose option causes
 <Command>dtsearchpath</Command> to print to standard output the values of the search environment
@@ -196,7 +196,7 @@ formatted for easier human reading. By default, the command runs silently.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;csh</Literal></Term>
+<Term><Literal>-csh</Literal></Term>
 <ListItem>
 <Para>Causes <Command>dtsearchpath</Command> to return values suitable for
 evaluation by a C Shell script. By default, the command returns values suitable for
@@ -206,7 +206,7 @@ evaluation by a Bourne Shell script.
 </VarListEntry>
 
 <VarListEntry>
-<Term><Literal>&minus;ksh</Literal></Term>
+<Term><Literal>-ksh</Literal></Term>
 <ListItem>
 <Para>Causes <Command>dtsearchpath</Command> to return values suitable fore
 evaluation by a Korn Shell script. By default, the command returns values suitable for

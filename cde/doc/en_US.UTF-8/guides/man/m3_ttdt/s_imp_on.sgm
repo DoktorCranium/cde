@@ -96,7 +96,7 @@ passes the
 <Para>If for some reason no width or height is returned by the other tool,
 <Function>ttdt_sender_imprint_on</Function> sets
 <Symbol Role="Variable">*width</Symbol> or
-<Symbol Role="Variable">*height</Symbol> to &minus;1.
+<Symbol Role="Variable">*height</Symbol> to -1.
 If no positional information is returned,
 <Function>ttdt_sender_imprint_on</Function> sets
 <Emphasis>*xoffset</Emphasis> and

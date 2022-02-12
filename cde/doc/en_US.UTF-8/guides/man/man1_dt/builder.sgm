@@ -13,7 +13,7 @@
 CDE Application Builder</refpurpose></refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dtbuilder</command><arg choice="opt">projectfile</arg><arg choice="opt">&minus;useWC&numsp;<replaceable>class<?Pub Caret></replaceable></arg>
+<command>dtbuilder</command><arg choice="opt">projectfile</arg><arg choice="opt">-useWC&numsp;<replaceable>class<?Pub Caret></replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
 <refsect1>
@@ -30,7 +30,7 @@ Help).</para>
 <refsect1>
 <title>OPTIONS</title>
 <variablelist>
-<varlistentry><term><literal>&minus;useWC&numsp;</literal><emphasis>class</emphasis></term>
+<varlistentry><term><literal>-useWC&numsp;</literal><emphasis>class</emphasis></term>
 <listitem>
 <para>Use the specified widget class whenever possible. Valid values are:
 </para>
@@ -63,7 +63,7 @@ by the user.</para>
 </refsect1>
 <refsect1>
 <title>RESOURCES</title>
-<para>If the <literal>&minus;useWC</literal> option is not specified, <command>dtbuilder</command> uses the <literal>useWidgetClass</literal> resource in
+<para>If the <literal>-useWC</literal> option is not specified, <command>dtbuilder</command> uses the <literal>useWidgetClass</literal> resource in
 the Xt resources table to determine which class to use for generated widgets.
 The class/type is <symbol>XmCUseWidgetClass</symbol>/<symbol>XtEnum</symbol> and the valid
 values are:</para>

@@ -27,14 +27,14 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>ttrmdir</Command>
-<Arg Choice="opt">&minus;L</Arg>
+<Arg Choice="opt">-L</Arg>
 <Arg><Replaceable>directory</Replaceable></Arg>
 <Arg>.&thinsp;.&thinsp;.</Arg>
 </CmdSynopsis>
 <CmdSynopsis>
 <Command>ttrmdir</Command>
-<Arg>&minus;h</Arg>
-<Arg>&minus;v</Arg>
+<Arg>-h</Arg>
+<Arg>-v</Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -64,7 +64,7 @@ object-removing operation.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;h</Literal></Term>
+<Term><Literal>-h</Literal></Term>
 <ListItem>
 <Para>Write a help message for invoking
 <Command>ttrmdir</Command> and then exit.
@@ -72,7 +72,7 @@ object-removing operation.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;L</Literal></Term>
+<Term><Literal>-L</Literal></Term>
 <ListItem>
 <Para>Remove the ToolTalk objects of the directories, but do not invoke
 <Command>rmdir</Command>(1) to remove the actual directories.
@@ -80,7 +80,7 @@ object-removing operation.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;v</Literal></Term>
+<Term><Literal>-v</Literal></Term>
 <ListItem>
 <Para>Write the version number of
 <Command>ttrmdir</Command> and then exit.
@@ -89,10 +89,10 @@ object-removing operation.
 </VarListEntry>
 </VariableList>
 <Para><![ %CDE.C.XO; [It is unspecified whether the
-<Literal>&minus;p</Literal> option to
+<Literal>-p</Literal> option to
 <Command>cp</Command>(1) is supported.
 ]]><![ %CDE.C.CDE; [The
-<Literal>&minus;p</Literal> option to
+<Literal>-p</Literal> option to
 <Command>cp</Command>(1) is not supported.
 ]]></Para>
 </RefSect1>
@@ -186,12 +186,12 @@ for the processing of
 <RefSect1>
 <Title>STDOUT</Title>
 <Para>When the
-<Literal>&minus;h</Literal> option is used,
+<Literal>-h</Literal> option is used,
 <Command>ttrmdir</Command> writes to standard output a help message
 in an unspecified format.
 </Para>
 <Para>When the
-<Literal>&minus;v</Literal> option is used,
+<Literal>-v</Literal> option is used,
 <Command>ttrmdir</Command> writes to standard output a version number
 in an unspecified format.
 </Para>

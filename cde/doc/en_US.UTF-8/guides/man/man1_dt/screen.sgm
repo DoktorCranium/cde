@@ -13,10 +13,10 @@
 Common Desktop Environment animated screen savers</refpurpose></refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dtscreen</command><arg choice="opt">&minus;display <replaceable>dsp</replaceable></arg><arg choice="opt">&minus;delay <replaceable>usecs</replaceable></arg>
-<arg choice="opt">&minus;batchcount <replaceable>num</replaceable></arg><arg
-choice="opt">&minus;saturation <replaceable>value</replaceable></arg><arg
-choice="opt">&minus;nice <replaceable>nicelevel</replaceable></arg><arg choice="opt">&minus;mode <replaceable>mode</replaceable></arg>
+<command>dtscreen</command><arg choice="opt">-display <replaceable>dsp</replaceable></arg><arg choice="opt">-delay <replaceable>usecs</replaceable></arg>
+<arg choice="opt">-batchcount <replaceable>num</replaceable></arg><arg
+choice="opt">-saturation <replaceable>value</replaceable></arg><arg
+choice="opt">-nice <replaceable>nicelevel</replaceable></arg><arg choice="opt">-mode <replaceable>mode</replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
 <refsect1>
@@ -106,17 +106,17 @@ are:</para>
 </refsect1>
 <refsect1>
 <title>OPTIONS</title>
-<para><literal>&minus;display</literal> <emphasis>dsp</emphasis></para>
+<para><literal>-display</literal> <emphasis>dsp</emphasis></para>
 <!--Start of RS / RE range-->
 <para>The display on which animations will be drawn.</para>
 <!--End of RS / RE range-->
-<para><literal>&minus;delay</literal> <emphasis>usecs</emphasis></para>
+<para><literal>-delay</literal> <emphasis>usecs</emphasis></para>
 <!--Start of RS / RE range-->
 <para>The delay option sets the speed at which a mode will operate. It simply
 sets the number of microseconds to delay between batches of "hopalong pixels",
 "qix lines", "life generations", "image blits", and "swarm motions".</para>
 <!--End of RS / RE range-->
-<para><literal>&minus;batchcount</literal> <emphasis>num</emphasis></para>
+<para><literal>-batchcount</literal> <emphasis>num</emphasis></para>
 <!--Start of RS / RE range-->
 <para>The batchcount option sets the number of things to do per batch to num.
 In qix mode this refers to the number of lines rendered in the same color.
@@ -125,17 +125,17 @@ In image mode this refers to the number of X logos on the screen at once.
 in swarm mode this refers to the number of bees. In life mode it means nothing.
 </para>
 <!--End of RS / RE range-->
-<para><literal>&minus;saturation</literal> <emphasis>value</emphasis></para>
+<para><literal>-saturation</literal> <emphasis>value</emphasis></para>
 <!--Start of RS / RE range-->
 <para>The saturation option sets the saturation of the color ramp used to
 value. 0 is grayscale, 1 is very rich color and 0.4 is a nice pastel.</para>
 <!--End of RS / RE range-->
-<para><literal>&minus;nice</literal> <emphasis>nicelevel</emphasis></para>
+<para><literal>-nice</literal> <emphasis>nicelevel</emphasis></para>
 <!--Start of RS / RE range-->
 <para>The nice option sets the system nicelevel of the dtscreen process to
 nicelevel.</para>
 <!--End of RS / RE range-->
-<para><literal>&minus;mode</literal> <emphasis>mode</emphasis></para>
+<para><literal>-mode</literal> <emphasis>mode</emphasis></para>
 <!--Start of RS / RE range-->
 <para>The mode option specifies which animation should be displayed. Values
 are:</para>

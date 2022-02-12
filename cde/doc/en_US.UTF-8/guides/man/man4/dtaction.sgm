@@ -349,7 +349,7 @@ string requires shell features such as redirection of standard input, redirectio
 of standard output, or pipes, the appropriate shell must be specified explicitly
 in the execution string. For example:</para>
 <informalexample remap="indent">
-<programlisting>EXEC_STRING       sh &minus;c 'ls &minus;l | more'</programlisting>
+<programlisting>EXEC_STRING       sh -c 'ls -l | more'</programlisting>
 </informalexample>
 <para>Keywords are evaluated in the <systemitem class="Constant">EXEC_STRING</systemitem> field. There is no default value for the <systemitem class="Constant">EXEC_STRING</systemitem> field.</para>
 </refsect2>
@@ -401,13 +401,13 @@ used to specify a unique terminal-window geometry, font, color or title.</para>
 <para>The value of the <systemitem class="Constant">TERM_OPTS</systemitem>
 field must be an option string in a form the terminal emulator supports and
 it must only affect the appearance of the terminal window. For example, options
-such as <literal>&minus;e</literal>, which affect the behavior of the terminal
+such as <literal>-e</literal>, which affect the behavior of the terminal
 window, must not be used.</para>
 <para>Keywords are evaluated in the <systemitem class="Constant">TERM_OPTS</systemitem> field. The default value of the <systemitem class="Constant">TERM_OPTS</systemitem> field is</para>
 <informalexample remap="indent">
-<programlisting>&minus;title action_label</programlisting>
+<programlisting>-title action_label</programlisting>
 </informalexample>
-<para>where <emphasis>action_label</emphasis> is the <systemitem class="Constant">LABEL</systemitem> field for the action. See &cdeman.dtterm; (or <command>xterm</command>(1)) for the meaning of <literal>&minus;title</literal>.</para>
+<para>where <emphasis>action_label</emphasis> is the <systemitem class="Constant">LABEL</systemitem> field for the action. See &cdeman.dtterm; (or <command>xterm</command>(1)) for the meaning of <literal>-title</literal>.</para>
 </refsect2>
 <refsect2>
 <title>TT_ARGn_MODE Field</title>
@@ -714,7 +714,7 @@ actions that do not define the field. The default value is <literal>%DatabaseHos
 <listitem>
 <para>Specifies an alternative terminal emulator for terminal-based actions
 that execute locally. Any terminal emulator specified by this resource must
-support the <literal>&minus;title</literal> and <literal>&minus;e</literal>
+support the <literal>-title</literal> and <literal>-e</literal>
 options as described in &cdeman.dtterm;. The default value is &cdeman.dtterm;.</para>
 </listitem>
 </varlistentry>
@@ -748,7 +748,7 @@ is left open. The default value is 3.</para>
                         default printer.
         ARG_TYPE        Text
         TYPE            COMMAND
-        EXEC_STRING     sh &minus;c 'pr %Arg_1"File to print:"% | lp'
+        EXEC_STRING     sh -c 'pr %Arg_1"File to print:"% | lp'
         WINDOW_TYPE     NO_STDIO
 }</programlisting>
 </informalexample>

@@ -17,46 +17,46 @@
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>dtinfogen</command>
-<arg choice="opt">&minus;h</arg>
+<arg choice="opt">-h</arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>dtinfogen admin</command>
-<arg choice="opt">&minus;h</arg>
+<arg choice="opt">-h</arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>dtinfogen build</command>
-<arg choice="opt">&minus;h</arg>
-<arg choice="opt">&minus;T <replaceable>TmpDir</replaceable></arg>
-<arg choice="opt">&minus;m <replaceable>CatalogFile</replaceable></arg>
-<arg choice="plain">&minus;l <replaceable>Library</replaceable></arg>
-<arg choice="plain">&minus;d <replaceable>LibraryDescription</replaceable></arg>
-<arg choice="plain">&minus;n <replaceable>LibraryShortName</replaceable></arg>
+<arg choice="opt">-h</arg>
+<arg choice="opt">-T <replaceable>TmpDir</replaceable></arg>
+<arg choice="opt">-m <replaceable>CatalogFile</replaceable></arg>
+<arg choice="plain">-l <replaceable>Library</replaceable></arg>
+<arg choice="plain">-d <replaceable>LibraryDescription</replaceable></arg>
+<arg choice="plain">-n <replaceable>LibraryShortName</replaceable></arg>
 <arg choice="plain"><replaceable>Bookcase</replaceable> ...</arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>dtinfogen tocgen</command>
-<arg choice="opt">&minus;h</arg>
-<arg choice="opt">&minus;T <replaceable>TmpDir</replaceable></arg>
-<arg choice="opt">&minus;m <replaceable>CatalogFile</replaceable></arg>
-<arg choice="opt">&minus;id <replaceable>TOCid</replaceable></arg>
-<arg choice="opt">&minus;title <replaceable>TOCtitle</replaceable></arg>
+<arg choice="opt">-h</arg>
+<arg choice="opt">-T <replaceable>TmpDir</replaceable></arg>
+<arg choice="opt">-m <replaceable>CatalogFile</replaceable></arg>
+<arg choice="opt">-id <replaceable>TOCid</replaceable></arg>
+<arg choice="opt">-title <replaceable>TOCtitle</replaceable></arg>
 <arg choice="plain"><replaceable>document</replaceable> ...</arg>
-<arg choice="plain">&minus;f <replaceable>TOCfile</replaceable></arg>
+<arg choice="plain">-f <replaceable>TOCfile</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>dtinfogen update</command>
-<arg choice="opt">&minus;h</arg>
-<arg choice="opt">&minus;T <replaceable>TmpDir</replaceable></arg>
-<arg choice="opt">&minus;m <replaceable>CatalogFile</replaceable></arg>
-<arg choice="plain">&minus;b <replaceable>BookcaseName</replaceable></arg>
-<arg choice="plain">&minus;l <replaceable>library</replaceable></arg>
+<arg choice="opt">-h</arg>
+<arg choice="opt">-T <replaceable>TmpDir</replaceable></arg>
+<arg choice="opt">-m <replaceable>CatalogFile</replaceable></arg>
+<arg choice="plain">-b <replaceable>BookcaseName</replaceable></arg>
+<arg choice="plain">-l <replaceable>library</replaceable></arg>
 <arg choice="plain"><replaceable>stylesheet</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>dtinfogen validate</command>
-<arg choice="opt">&minus;h</arg>
-<arg choice="opt">&minus;T <replaceable>TmpDir</replaceable></arg>
-<arg choice="opt">&minus;m <replaceable>CatalogFile</replaceable></arg>
+<arg choice="opt">-h</arg>
+<arg choice="opt">-T <replaceable>TmpDir</replaceable></arg>
+<arg choice="opt">-m <replaceable>CatalogFile</replaceable></arg>
 <arg choice="plain"><replaceable>SGMLdocument</replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
@@ -109,11 +109,11 @@ DocBook.DTD.
 <para>The following options are available:
 </para>
 <variablelist>
-<varlistentry><term><literal>&minus;h</literal></term>
+<varlistentry><term><literal>-h</literal></term>
 <listitem><para>Displays a help message for each available option.
 </para></listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;T</literal> <replaceable>TmpDir</replaceable></term>
+<varlistentry><term><literal>-T</literal> <replaceable>TmpDir</replaceable></term>
 <listitem><para>Specifies the directory in which temporary files are placed during the
 build process. The default is to use the environment variable
 <systemitem class="environvar">TMPDIR</systemitem>. If variable
@@ -122,25 +122,25 @@ build process. The default is to use the environment variable
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;m</literal> <replaceable>CatalogFile</replaceable></term>
+<varlistentry><term><literal>-m</literal> <replaceable>CatalogFile</replaceable></term>
 <listitem><para>Specifies a catalog file conforming to the SGML Open specification for
 resolving SGML entities. You can use multiple
-<literal>&minus;m</literal> options to specify as many
+<literal>-m</literal> options to specify as many
 <replaceable>CatalogFile</replaceable>s as you wish.
 </para></listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;l</literal> <replaceable>Library</replaceable></term>
+<varlistentry><term><literal>-l</literal> <replaceable>Library</replaceable></term>
 <listitem><para>Specifies the location of the information library to build.
 <replaceable>Library</replaceable> is the name of the directory that
 contains the built bookcase(s).
 </para></listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;d</literal> <replaceable>LibraryDescription</replaceable></term>
+<varlistentry><term><literal>-d</literal> <replaceable>LibraryDescription</replaceable></term>
 <listitem><para><replaceable>LibraryDescription</replaceable> is a brief description of
 the information library to be built.
 </para></listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;n</literal> <replaceable>LibraryShortName</replaceable></term>
+<varlistentry><term><literal>-n</literal> <replaceable>LibraryShortName</replaceable></term>
 <listitem><para><replaceable>LibraryShortName</replaceable> specifies an abbreviated name for
 the information library to be built.
 </para></listitem>
@@ -151,7 +151,7 @@ dtinfoBook.dtd.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;f</literal> <replaceable>TOCfile</replaceable></term>
+<varlistentry><term><literal>-f</literal> <replaceable>TOCfile</replaceable></term>
 <listitem><para>Specifies the SGML instance of a hypertext table of contents conforming
 to the dtinfoTOC.dtd.
 </para></listitem>
@@ -160,7 +160,7 @@ to the dtinfoTOC.dtd.
 <listitem><para>A DocBook SGML source file.
 </para></listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;b</literal> <replaceable>BookcaseName</replaceable></term>
+<varlistentry><term><literal>-b</literal> <replaceable>BookcaseName</replaceable></term>
 <listitem><para>The name of the bookcase whose style sheet information will be updated.
 The content of the <Symbol>BOOKCASENAME</Symbol> element in the
 dtinfoBook.dtd.
@@ -174,12 +174,12 @@ dtinfoBook.dtd.
 <listitem><para>Any SGML document to be validated.
 </para></listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;id</literal> <replaceable>TOCid</replaceable></term>
+<varlistentry><term><literal>-id</literal> <replaceable>TOCid</replaceable></term>
 <listitem><para>The unique identifier of the hypertext table of contents
 document.
 </para></listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;title</literal> <replaceable>TOCtitle</replaceable></term>
+<varlistentry><term><literal>-title</literal> <replaceable>TOCtitle</replaceable></term>
 <listitem><para>The title of the table of contents. This title will be
 displayed in the DtInfo Browser.
 </para></listitem>

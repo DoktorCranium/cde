@@ -112,7 +112,7 @@ Keywords and Values</literal></entry></row>
 <entry align="left" valign="top">False</entry></row>
 <row>
 <entry align="left" valign="top">PANEL_GEOMETRY</entry>
-<entry align="left" valign="top">{+&minus;}<symbol role="Variable">xoffset</symbol>[{+&minus;}<symbol role="Variable">yoffset</symbol>]</entry>
+<entry align="left" valign="top">{+-}<symbol role="Variable">xoffset</symbol>[{+-}<symbol role="Variable">yoffset</symbol>]</entry>
 <entry align="left" valign="top">NULL</entry></row>
 <row>
 <entry align="left" valign="top">RESOLUTION</entry>
@@ -487,7 +487,7 @@ used to associate a control with an executable. It is necessary for control
 types of <literal>client</literal> (an X client running within the front panel)
 and for <literal>icon</literal> when the keyword <systemitem class="Constant">PUSH_RECALL</systemitem> is True. The value <emphasis>client name</emphasis>
 is the name of the executable or can be set via a command-line argument for
-some clients (such as <command>xterm</command> <literal>&minus;name</literal> <emphasis>panelterm</emphasis>). The <emphasis>client name</emphasis> for a running
+some clients (such as <command>xterm</command> <literal>-name</literal> <emphasis>panelterm</emphasis>). The <emphasis>client name</emphasis> for a running
 client can be found by executing xprop. The first string of the <systemitem class="Constant">WM_CLASS</systemitem> property is the value used.</para>
 </listitem>
 </varlistentry>

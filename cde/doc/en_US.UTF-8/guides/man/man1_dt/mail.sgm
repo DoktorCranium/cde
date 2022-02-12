@@ -13,7 +13,7 @@
 mailer</refpurpose></refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dtmail</command><arg choice="opt">&minus;h</arg><arg choice="opt">&minus;c</arg><arg choice="opt">&minus;f<replaceable>mailfile</replaceable></arg><group><arg>&minus;a <replaceable>file1</replaceable></arg><arg>...<replaceable>fileN</replaceable></arg></group>
+<command>dtmail</command><arg choice="opt">-h</arg><arg choice="opt">-c</arg><arg choice="opt">-f<replaceable>mailfile</replaceable></arg><group><arg>-a <replaceable>file1</replaceable></arg><arg>...<replaceable>fileN</replaceable></arg></group>
 </cmdsynopsis>
 </refsynopsisdiv>
 <refsect1>
@@ -33,20 +33,20 @@ use the Tooltalk API to compose and send messages.</para>
 <refsect1>
 <title>OPTIONS</title>
 <variablelist>
-<varlistentry><term>&minus;a file1 ... fileN</term>
+<varlistentry><term>-a file1 ... fileN</term>
 <listitem>
 <!-- ex-TP-->
 <para>Bring up a Compose window with &thinsp;file1&thinsp; through &thinsp;fileN&thinsp;
 as attachments.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;c</term>
+<varlistentry><term>-c</term>
 <listitem>
 <!-- ex-TP-->
 <para>Bring up an empty Compose window</para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;f filename</term>
+<varlistentry><term>-f filename</term>
 <listitem>
 <!-- ex-TP-->
 <para>This specifies the mail file to be loaded in at start up time. Ordinarily,
@@ -55,7 +55,7 @@ user's inbox. Use of this option overrides the use of the MAIL variable.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;h</term>
+<varlistentry><term>-h</term>
 <listitem>
 <!-- ex-TP-->
 <para>Display help for command line options</para>

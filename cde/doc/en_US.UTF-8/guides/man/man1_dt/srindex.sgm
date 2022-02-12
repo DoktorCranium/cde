@@ -14,15 +14,15 @@
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>dtsrindex</command>
-<arg choice="plain">&minus;d<replaceable>dbname</replaceable></arg>
-<arg choice="opt">&minus;t<replaceable>etxstr</replaceable></arg>
-<arg choice="opt"><group choice="plain"><arg choice="plain">&minus;h0</arg>
-<arg choice="plain">&minus;h<replaceable>hashsz</replaceable></arg>
+<arg choice="plain">-d<replaceable>dbname</replaceable></arg>
+<arg choice="opt">-t<replaceable>etxstr</replaceable></arg>
+<arg choice="opt"><group choice="plain"><arg choice="plain">-h0</arg>
+<arg choice="plain">-h<replaceable>hashsz</replaceable></arg>
 </group></arg>
-<arg choice="opt">&minus;r<replaceable>recdots</replaceable></arg>
-<arg choice="opt">&minus;b<replaceable>batchsz</replaceable></arg>
-<arg choice="opt">&minus;c<replaceable>cachesz</replaceable></arg>
-<arg choice="opt">&minus;i<replaceable>inbufsz</replaceable></arg>
+<arg choice="opt">-r<replaceable>recdots</replaceable></arg>
+<arg choice="opt">-b<replaceable>batchsz</replaceable></arg>
+<arg choice="opt">-c<replaceable>cachesz</replaceable></arg>
+<arg choice="opt">-i<replaceable>inbufsz</replaceable></arg>
 <arg choice="plain"><replaceable>file</replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
@@ -99,7 +99,7 @@ of the database.
 the option name without white space.</para>
 </note>
 <variablelist>
-<varlistentry><term><literal>&minus;d</literal><Symbol Role="Variable">dbname</Symbol></term>
+<varlistentry><term><literal>-d</literal><Symbol Role="Variable">dbname</Symbol></term>
 <listitem>
 <para>Specifies the 1 to 8 ASCII character name of the database to be
 updated.
@@ -110,7 +110,7 @@ files are automatically appended.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;t</literal><Symbol Role="Variable">etxstr</Symbol></term>
+<varlistentry><term><literal>-t</literal><Symbol Role="Variable">etxstr</Symbol></term>
 <listitem>
 <para>Specifies the end of document text delimiter string. The default
 document separator in an fzk file is an ASCII form feed character
@@ -120,7 +120,7 @@ delimiter.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;h0</literal></term>
+<varlistentry><term><literal>-h0</literal></term>
 <listitem>
 <para>Instructs <command>dtsrindex</command> to not check for duplicate
 record ids. This option should not be specified unless it
@@ -128,7 +128,7 @@ is certain that there are no duplicate ids in the fzk file.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;h</literal><Symbol Role="Variable">hashsz</Symbol></term>
+<varlistentry><term><literal>-h</literal><Symbol Role="Variable">hashsz</Symbol></term>
 <listitem>
 <para>Sets the duplicate record id hash table size to <Symbol Role="Variable">hashsz</Symbol>. The default is 3000.
 <command>dtsrindex</command> will execute more efficiently if the
@@ -137,7 +137,7 @@ file.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;r</literal><Symbol Role="Variable">recdots</Symbol></term>
+<varlistentry><term><literal>-r</literal><Symbol Role="Variable">recdots</Symbol></term>
 <listitem>
 <para>Instructs <command>dtsrindex</command> to print a progress character to
 stdout for every <Symbol Role="Variable">recdots</Symbol> documents
@@ -145,7 +145,7 @@ processed during the first pass. The default is 20.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;b</literal><Symbol Role="Variable">batchsz</Symbol></term>
+<varlistentry><term><literal>-b</literal><Symbol Role="Variable">batchsz</Symbol></term>
 <listitem>
 <para>Sets the batch size to <Symbol Role="Variable">batchsz</Symbol>. The
 default is 10000. The batch size is the maximum number of records
@@ -157,7 +157,7 @@ of memory.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;c</literal><Symbol Role="Variable">cachesz</Symbol></term>
+<varlistentry><term><literal>-c</literal><Symbol Role="Variable">cachesz</Symbol></term>
 <listitem>
 <para>Sets the number of 1024 byte cache pages used by the DtSearch Database
 Management System to <Symbol Role="Variable">cachesz</Symbol>. The
@@ -167,7 +167,7 @@ or equal to 16, in even powers of 2. The default is usually sufficient.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;i</literal><Symbol Role="Variable">inbufsz</Symbol></term>
+<varlistentry><term><literal>-i</literal><Symbol Role="Variable">inbufsz</Symbol></term>
 <listitem>
 <para>Sets the size of the input line buffer to <Symbol Role="Variable">inbufsz</Symbol>. The default is 1024 bytes. This
 buffer is used only for reading the four ASCII header lines for each

@@ -38,7 +38,7 @@
 <Title>DESCRIPTION</Title>
 <Para>The
 <Function>DtEditorSetContents</Function> function places a
-<SystemItem Class="Constant">NULL</SystemItem>&minus;terminated string, wide character string
+<SystemItem Class="Constant">NULL</SystemItem>-terminated string, wide character string
 or sized buffer into a DtEditor widget.
 Any data currently in the DtEditor widget is lost.
 The data is transferred to the

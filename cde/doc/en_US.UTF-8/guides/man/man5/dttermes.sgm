@@ -1404,7 +1404,7 @@ on the setting of the mode specified, either via the <literal>appKeypadDefault</
 <refsect2>
 <title>ANSI Function Keys</title>
 <para>The function keys transmit the following escape sequences unless Sun
-function keys mode has been selected, either via the <command>dtterm</command> <literal>&minus;sk</literal> option, or the <literal>sunFunctionKeys</literal> resource
+function keys mode has been selected, either via the <command>dtterm</command> <literal>-sk</literal> option, or the <literal>sunFunctionKeys</literal> resource
 in &cdeman.dtterm; or the DtTerm widget.</para>
 <informaltable remap="center" orient="port">
 <tgroup cols="2" colsep="0" rowsep="0">

@@ -26,12 +26,12 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>dtcm_insert</Command>
-<Arg Choice="opt">&minus;c&numsp;<Replaceable>calendar</Replaceable></Arg>
-<Arg Choice="opt">&minus;d&numsp;<Replaceable>date</Replaceable></Arg>
-<Arg Choice="opt">&minus;s&numsp;<Replaceable>start</Replaceable></Arg>
-<Arg Choice="opt">&minus;e&numsp;<Replaceable>end</Replaceable></Arg>
-<Arg Choice="opt">&minus;v&numsp;<Replaceable>view</Replaceable></Arg>
-<Arg Choice="opt">&minus;w&numsp;<Replaceable>what</Replaceable></Arg>
+<Arg Choice="opt">-c&numsp;<Replaceable>calendar</Replaceable></Arg>
+<Arg Choice="opt">-d&numsp;<Replaceable>date</Replaceable></Arg>
+<Arg Choice="opt">-s&numsp;<Replaceable>start</Replaceable></Arg>
+<Arg Choice="opt">-e&numsp;<Replaceable>end</Replaceable></Arg>
+<Arg Choice="opt">-v&numsp;<Replaceable>view</Replaceable></Arg>
+<Arg Choice="opt">-w&numsp;<Replaceable>what</Replaceable></Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -47,8 +47,8 @@ appointment is specified using one of the command-line options.
 Once an appointment
 is added, the list of appointments for the specified date
 (see the
-<Literal>&minus;d</Literal> and
-<Literal>&minus;v</Literal> options) is displayed.
+<Literal>-d</Literal> and
+<Literal>-v</Literal> options) is displayed.
 </Para>
 </RefSect1>
 <RefSect1>
@@ -62,7 +62,7 @@ is added, the list of appointments for the specified date
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;c&numsp;</Literal><Emphasis>calendar</Emphasis></Term>
+<Term><Literal>-c&numsp;</Literal><Emphasis>calendar</Emphasis></Term>
 <ListItem>
 <Para>Specify the name of the target calendar.
 Calendar names
@@ -79,7 +79,7 @@ the current user at the current host machine.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;d&numsp;</Literal><Emphasis>date</Emphasis></Term>
+<Term><Literal>-d&numsp;</Literal><Emphasis>date</Emphasis></Term>
 <ListItem>
 <Para>Specify the date for the appointment(s) to be inserted.
 The
@@ -96,7 +96,7 @@ are correctly calculated.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;s&numsp;</Literal><Symbol Role="Variable">start</Symbol></Term>
+<Term><Literal>-s&numsp;</Literal><Symbol Role="Variable">start</Symbol></Term>
 <ListItem>
 <Para>Specify the starting time for the appointment.
 The time is specified using the form
@@ -118,16 +118,16 @@ no time is associated with the inserted appointment.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;e&numsp;</Literal><Emphasis>end</Emphasis></Term>
+<Term><Literal>-e&numsp;</Literal><Emphasis>end</Emphasis></Term>
 <ListItem>
 <Para>The ending time for the appointment,
 in the same format as
-<Literal>&minus;s</Literal>. Specifying an ending time without a starting time is an error.
+<Literal>-s</Literal>. Specifying an ending time without a starting time is an error.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;v&numsp;</Literal><Emphasis>view</Emphasis></Term>
+<Term><Literal>-v&numsp;</Literal><Emphasis>view</Emphasis></Term>
 <ListItem>
 <Para>Specify the view span of appointments to display.
 The
@@ -138,7 +138,7 @@ The
 <Term><Literal>day</Literal></Term>
 <ListItem>
 <Para>Display all appointments for the given date (see
-<Literal>&minus;d</Literal> option).
+<Literal>-d</Literal> option).
 </Para>
 </ListItem>
 </VarListEntry>
@@ -161,7 +161,7 @@ starting with Sunday.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;w&numsp;</Literal><Emphasis>what</Emphasis></Term>
+<Term><Literal>-w&numsp;</Literal><Emphasis>what</Emphasis></Term>
 <ListItem>
 <Para>Specify the appointment description text.
 Up to 5 lines of text can be specified by placing &bsol;n
@@ -313,7 +313,7 @@ for the specified view span, including the appointment just
 ]]>
 <![ %CDE.C.CDE; [
 <Para>In the
-<Literal>&minus;w</Literal> option, it may be necessary to
+<Literal>-w</Literal> option, it may be necessary to
 escape the &bsol; character (``&bsol;&bsol;n'') or enclose
 the string in quotes
 to avoid interpretation by the shell.
@@ -353,7 +353,7 @@ Appointments for Monday February 27, 1995:
 <Para>To insert at a specific time:
 </Para>
 <InformalExample Remap="indent">
-<ProgramListing>dtcm_insert &minus;s "11:00 am"
+<ProgramListing>dtcm_insert -s "11:00 am"
 Appointments for Tuesday September 25, 1990:
         1) Appointment
         2) 11:00am-12:00pm Appointment
@@ -362,7 +362,7 @@ Appointments for Tuesday September 25, 1990:
 <Para>To insert at a specific start and end time:
 </Para>
 <InformalExample Remap="indent">
-<ProgramListing>dtcm_insert &minus;s "11:00 am" &minus;e 11:28am
+<ProgramListing>dtcm_insert -s "11:00 am" -e 11:28am
 Appointments for Tuesday September 25, 1990:
         1) Appointment
         2) 11:00am-11:28am Appointment
@@ -371,7 +371,7 @@ Appointments for Tuesday September 25, 1990:
 <Para>To insert at a specific time and date:
 </Para>
 <InformalExample Remap="indent">
-<ProgramListing>dtcm_insert &minus;s 11:00am &minus;d 09/26/90
+<ProgramListing>dtcm_insert -s 11:00am -d 09/26/90
 Appointments for Wednesday September 26, 1990:
         1) 11:00am-12:00pm Appointment
 </ProgramListing>
@@ -379,7 +379,7 @@ Appointments for Wednesday September 26, 1990:
 <Para>To insert at a specific time, date, and message:
 </Para>
 <InformalExample Remap="indent">
-<ProgramListing>dtcm_insert &minus;s "11:00 am" &minus;d 09/26/90 &minus;w "call home"
+<ProgramListing>dtcm_insert -s "11:00 am" -d 09/26/90 -w "call home"
 Appointments for Wednesday September 26, 1990:
         1) 11:00am-12:00pm Appointment
         2) 11:00am-12:00pm call home
@@ -388,7 +388,7 @@ Appointments for Wednesday September 26, 1990:
 <Para>To insert a multiple-line appointment:
 </Para>
 <InformalExample Remap="indent">
-<ProgramListing>dtcm_insert &minus;s 12:00 &minus;w "call dentist&bsol;n
+<ProgramListing>dtcm_insert -s 12:00 -w "call dentist&bsol;n
                  no thanks&bsol;ncancel appointment"
 Appointments for Tuesday September 25, 1990:
         1) Appointment

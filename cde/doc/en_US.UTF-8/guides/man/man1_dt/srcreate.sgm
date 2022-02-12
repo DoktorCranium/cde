@@ -13,8 +13,8 @@
 and initialize a DtSearch database</refpurpose></refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dtsrcreate</command><arg choice="opt">&minus;q</arg><arg choice="opt">&minus;o</arg><arg choice="opt">&minus;fd</arg><arg choice="opt">&minus;fa</arg><arg choice="opt">&minus;a<replaceable>abstr</replaceable></arg><arg
-choice="opt">&minus;d<replaceable>dir</replaceable></arg><arg choice="opt">&minus;wn<replaceable>min</replaceable></arg><arg choice="opt">&minus;wx <replaceable>max</replaceable></arg><arg choice="opt">&minus;l<replaceable>lang</replaceable></arg>
+<command>dtsrcreate</command><arg choice="opt">-q</arg><arg choice="opt">-o</arg><arg choice="opt">-fd</arg><arg choice="opt">-fa</arg><arg choice="opt">-a<replaceable>abstr</replaceable></arg><arg
+choice="opt">-d<replaceable>dir</replaceable></arg><arg choice="opt">-wn<replaceable>min</replaceable></arg><arg choice="opt">-wx <replaceable>max</replaceable></arg><arg choice="opt">-l<replaceable>lang</replaceable></arg>
 <arg choice="plain"><replaceable>dbname</replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
@@ -86,35 +86,35 @@ search words are highlighted as desired.</para>
 option name without white space.</para>
 </note>
 <variablelist>
-<varlistentry><term><literal>&minus;q</literal></term>
+<varlistentry><term><literal>-q</literal></term>
 <listitem>
 <para>Suppresses printing of configuration record report.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;o</literal></term>
+<varlistentry><term><literal>-o</literal></term>
 <listitem>
 <para>Suppresses overwrite prompt; preauthorizes erasure and reinitialization
 of preexisting database.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;d</literal><symbol role="Variable">dir</symbol></term>
+<varlistentry><term><literal>-d</literal><symbol role="Variable">dir</symbol></term>
 <listitem>
 <para>Specifies where to find the model <filename>dtsearch.dbe</filename>
 file, rather than in the current working directory or target directory.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;fd</literal></term>
+<varlistentry><term><literal>-fd</literal></term>
 <listitem>
 <para>Configure a <Symbol>DtSearch</Symbol> type database. This is the default.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;fa</literal></term>
+<varlistentry><term><literal>-fa</literal></term>
 <listitem>
 <para>Configure an <literal>AusText</literal> type database.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;a</literal><symbol role="Variable">abstr</symbol></term>
+<varlistentry><term><literal>-a</literal><symbol role="Variable">abstr</symbol></term>
 <listitem>
 <para>Set the maximum abstract size to <symbol role="Variable">abstr</symbol>
 bytes. This is the maximum permitted length in characters for an abstract
@@ -124,7 +124,7 @@ type. (See &cdeman.dtsrfzkfiles; and &cdeman.DtSearch;
 for more information about abstract fields.)</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;wn</literal><symbol role="Variable">min</symbol></term>
+<varlistentry><term><literal>-wn</literal><symbol role="Variable">min</symbol></term>
 <listitem>
 <para>Change minimum word size to <symbol role="Variable">min</symbol> characters.
 This is the minimum word size in characters to be indexed in the database.
@@ -139,7 +139,7 @@ languages and may be ignored by multibyte language processors. (See
 &cdeman.DtSearch; for more information about DtSearch word sizes).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;wx</literal><symbol role="Variable">max</symbol></term>
+<varlistentry><term><literal>-wx</literal><symbol role="Variable">max</symbol></term>
 <listitem>
 <para>Change maximum word size to <symbol role="Variable">max</symbol> characters.
 This is the maximum word size in characters. Smaller is better since extraordinarily
@@ -152,7 +152,7 @@ language processors. (See &cdeman.DtSearch; for more information
 about DtSearch word sizes).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;l</literal><symbol role="Variable">lang</symbol></term>
+<varlistentry><term><literal>-l</literal><symbol role="Variable">lang</symbol></term>
 <listitem>
 <para>Change the language number to <symbol role="Variable">lang</symbol>.
 The default is 0.</para>

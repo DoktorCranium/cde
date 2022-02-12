@@ -15,35 +15,35 @@ a &str-XZ; application building services project or module file</refpurpose>
 1995 International Business Machines Corp.--><!-- (c) Copyright 1993, 1994,
 1995 Sun Microsystems, Inc.--><!-- (c) Copyright 1993, 1994, 1995 Novell,
 Inc.--><refsynopsisdiv><![ %CDE.C.CDE; [<cmdsynopsis>
-<command>dtcodegen</command><arg choice="opt">&minus;changed</arg><arg choice="opt">&minus;main</arg><arg choice="opt">&minus;merge</arg><arg choice="opt">&minus;nomerge</arg><arg choice="opt">&minus;module&numsp;<replaceable>mymod</replaceable></arg>
-<arg choice="opt">&minus;useWC&numsp;<replaceable>class</replaceable></arg>
-<group><arg>&minus;p</arg><arg>&minus;project&numsp;<replaceable>myproj</replaceable></arg>
-</group><group><arg>&minus;np</arg><arg>&minus;noproject</arg></group><arg
-choice="opt">&minus;showall</arg><arg choice="opt">&minus;noshowall</arg>
-<group><arg>&minus;s</arg><arg>&minus;silent</arg></group><group><arg>&minus;v</arg><arg>&minus;verbose</arg></group><group><arg><replaceable>file</replaceable></arg>
+<command>dtcodegen</command><arg choice="opt">-changed</arg><arg choice="opt">-main</arg><arg choice="opt">-merge</arg><arg choice="opt">-nomerge</arg><arg choice="opt">-module&numsp;<replaceable>mymod</replaceable></arg>
+<arg choice="opt">-useWC&numsp;<replaceable>class</replaceable></arg>
+<group><arg>-p</arg><arg>-project&numsp;<replaceable>myproj</replaceable></arg>
+</group><group><arg>-np</arg><arg>-noproject</arg></group><arg
+choice="opt">-showall</arg><arg choice="opt">-noshowall</arg>
+<group><arg>-s</arg><arg>-silent</arg></group><group><arg>-v</arg><arg>-verbose</arg></group><group><arg><replaceable>file</replaceable></arg>
 <arg>&numsp;.&thinsp;.&thinsp;.</arg></group>
 </cmdsynopsis>]]><![ %CDE.C.XO; [<CmdSynopsis>
 <Command>dtcodegen</Command>
-<Arg Choice="opt">&minus;changed</Arg>
-<Arg Choice="opt">&minus;main</Arg>
-<Arg Choice="opt">&minus;merge</Arg>
-<Arg Choice="opt">&minus;nomerge</Arg>
-<Arg Choice="opt">&minus;showall</Arg>
-<Arg Choice="opt">&minus;noshowall</Arg>
+<Arg Choice="opt">-changed</Arg>
+<Arg Choice="opt">-main</Arg>
+<Arg Choice="opt">-merge</Arg>
+<Arg Choice="opt">-nomerge</Arg>
+<Arg Choice="opt">-showall</Arg>
+<Arg Choice="opt">-noshowall</Arg>
 <Group>
-<Arg>&minus;s</Arg>
-<Arg>&minus;silent</Arg>
+<Arg>-s</Arg>
+<Arg>-silent</Arg>
 </Group>
 <Group>
-<Arg>&minus;v</Arg>
-<Arg>&minus;verbose</Arg>
+<Arg>-v</Arg>
+<Arg>-verbose</Arg>
 </Group>
 <Arg><Replaceable>file</Replaceable></Arg>
 <Arg>&numsp;.&thinsp;.&thinsp;.</Arg>
 </CmdSynopsis>
 ]]>
 <cmdsynopsis>
-<command>dtcodegen</command><arg>&minus;help</arg>
+<command>dtcodegen</command><arg>-help</arg>
 </cmdsynopsis>
 </refsynopsisdiv><refsect1>
 <title>DESCRIPTION</title>
@@ -61,43 +61,43 @@ the X Window System convention of full-word options.
 ]]>
 <para>The following options are available:</para>
 <variablelist>
-<varlistentry><term><literal>&minus;cha<?Pub Caret>nged</literal></term>
+<varlistentry><term><literal>-cha<?Pub Caret>nged</literal></term>
 <listitem>
 <para>Generate only source code for those modules that have changed since
 the last time <command>dtcodegen</command> was run.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;help</literal></term>
+<varlistentry><term><literal>-help</literal></term>
 <listitem>
 <para>Write a help message to standard output explaining all <command>dtcodegen</command> options and then terminate.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;main</literal></term>
+<varlistentry><term><literal>-main</literal></term>
 <listitem>
 <para>Produce the project files associated with the application's <function>main</function> routine.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;merge</literal></term>
+<varlistentry><term><literal>-merge</literal></term>
 <listitem>
 <para>Merge generated stubs files with previous versions, perpetuating changes
 made or custom edits done to the previous stubs file. This is the default
 behavior.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;nomerge</literal></term>
+<varlistentry><term><literal>-nomerge</literal></term>
 <listitem>
 <para>Do not merge existing and new <Filename>_stubs.c</Filename> files. This
-option overrides the default merging behavior. If both <literal>&minus;merge</literal> and <literal>&minus;nomerge</literal> are used, the one given last
+option overrides the default merging behavior. If both <literal>-merge</literal> and <literal>-nomerge</literal> are used, the one given last
 on the command line takes precedence. <![ %CDE.C.CDE; [</para></listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;module&numsp;</literal><emphasis>mymod</emphasis></term>
+<varlistentry><term><literal>-module&numsp;</literal><emphasis>mymod</emphasis></term>
 <listitem>
 <para>Generate code for the module <emphasis>mymod</emphasis>, (which is expected
-to be defined in the file <emphasis>mymod</emphasis> <Filename>.bil</Filename>). Using multiple <literal>&minus;module</literal> options includes
+to be defined in the file <emphasis>mymod</emphasis> <Filename>.bil</Filename>). Using multiple <literal>-module</literal> options includes
 multiple modules in the generated code.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;useWC&numsp;</literal><emphasis>class</emphasis></term>
+<varlistentry><term><literal>-useWC&numsp;</literal><emphasis>class</emphasis></term>
 <listitem>
 <para>Use the specified widget class whenever possible. Valid values are:
 </para>
@@ -116,13 +116,13 @@ widgets. This value retains the CDE 1.0 behavior.</para>
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;p&thinsp;|&thinsp;&minus;project&numsp;</literal> <emphasis>myproj</emphasis></term>
+<varlistentry><term><literal>-p&thinsp;|&thinsp;-project&numsp;</literal> <emphasis>myproj</emphasis></term>
 <listitem>
 <para>Generate code for the project <emphasis>myproj</emphasis>, (which is
 expected to be defined in the file <emphasis>myproj</emphasis> <Filename>.bip</Filename>).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;noproject</literal></term>
+<varlistentry><term><literal>-noproject</literal></term>
 <listitem>
 <para>Ignore the <emphasis>project</emphasis><Filename>.bip</Filename> project
 file and use default project settings instead. This is useful in producing
@@ -130,33 +130,33 @@ an application from one or a few module files (for example, for testing) as
 an alternative to generating the entire project. ]]></para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;showall</literal></term>
+<varlistentry><term><literal>-showall</literal></term>
 <listitem>
 <para>Cause the generated application to show (map) all application windows
 (main windows and dialogs) at startup, ignoring whether they are set to be
 initially visible or not. If no project is specified on the command line, <![ %CDE.C.CDE; [either
-by using <literal>&minus;project</literal> or by specifying a <emphasis>project</emphasis> <Filename>.bip</Filename> file as an
-operand, ]]><command>dtcodegen</command> performs as if <literal>&minus;showall</literal> had been specified. (The <literal>&minus;noshowall</literal> option
+by using <literal>-project</literal> or by specifying a <emphasis>project</emphasis> <Filename>.bip</Filename> file as an
+operand, ]]><command>dtcodegen</command> performs as if <literal>-showall</literal> had been specified. (The <literal>-noshowall</literal> option
 suppresses this behavior).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;noshowall</literal></term>
+<varlistentry><term><literal>-noshowall</literal></term>
 <listitem>
 <para>Cause the generated application to show at startup (map) only those
 windows (main windows and dialogs) whose initially visible attribute is true.
 If a project is specified on the command line, <![ %CDE.C.CDE; [either by
-using <literal>&minus;project</literal> or by specifying a <emphasis>project</emphasis> <Filename>.bip</Filename> file as an operand, ]]> <command>dtcodegen</command> performs as if <literal>&minus;noshowall</literal> had
-been specified. (The <literal>&minus;showall</literal> option suppresses this
+using <literal>-project</literal> or by specifying a <emphasis>project</emphasis> <Filename>.bip</Filename> file as an operand, ]]> <command>dtcodegen</command> performs as if <literal>-noshowall</literal> had
+been specified. (The <literal>-showall</literal> option suppresses this
 behavior).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;s&thinsp;|&thinsp;&minus;silent</literal></term>
+<varlistentry><term><literal>-s&thinsp;|&thinsp;-silent</literal></term>
 <listitem>
 <para>Work silently, producing no output except error messages while generating
 source code.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;v&thinsp;|&thinsp;&minus;verbose</literal></term>
+<varlistentry><term><literal>-v&thinsp;|&thinsp;-verbose</literal></term>
 <listitem>
 <para>Be more verbose in providing progress and status messages during the
 generation of source code.</para>
@@ -194,7 +194,7 @@ used.</para>]]><![ %CDE.C.XO; [</Para>
 </VarListEntry>
 </VariableList>]]></refsect1><refsect1>
 <title>RESOURCES</title>
-<para>If the <literal>&minus;useWC</literal> option is not specified, <command>dtcodegen</command> uses the <literal>useWidgetClass</literal> resource in
+<para>If the <literal>-useWC</literal> option is not specified, <command>dtcodegen</command> uses the <literal>useWidgetClass</literal> resource in
 the Xt resources table to determine which class to use for generated widgets.
 The class/type is <Symbol>XmCUseWidgetClass</Symbol>/<Symbol>XtEnum</Symbol> and the valid
 values are:</para>
@@ -260,11 +260,11 @@ written to standard output.</para>
 ]]><![ %CDE.C.CDE; [<para>The <command>dtcodegen</command> utility takes the
 standard action for all signals.</para>]]></refsect1><refsect1>
 <title>STDOUT</title>
-<para>When <literal>&minus;help</literal> is specified, <command>dtcodegen</command> writes to standard output a usage message in an unspecified format.
+<para>When <literal>-help</literal> is specified, <command>dtcodegen</command> writes to standard output a usage message in an unspecified format.
 Otherwise, standard output is not used.</para>
 </refsect1><refsect1>
 <title>STDERR</title>
-<para>When <literal>&minus;verbose</literal> is specified, <command>dtcodegen</command> writes to standard error informational progress messages
+<para>When <literal>-verbose</literal> is specified, <command>dtcodegen</command> writes to standard error informational progress messages
 and diagnostic messages in an unspecified format.
 Otherwise, standard error is used only for diagnostic messages.</para>
 </refsect1><refsect1>
@@ -313,7 +313,7 @@ that are common across interfaces.</para>
 <para>A record of per-module code generation and the date and time of
 each module as it was processed.
 This data is required to provide support for the
-<literal>&minus;changed</literal> option as part of determining which files
+<literal>-changed</literal> option as part of determining which files
 need to be regenerated and
 which ones do not.</para>
 </listitem>
@@ -379,7 +379,7 @@ project file
 <literal>myproject.bip</literal>:</para>
 <informalexample remap="indent">
 <programlisting><![ %CDE.C.XO; [dtcodegen myproject.bip
-]]><![ %CDE.C.CDE; [dtcodegen &minus;p myproject
+]]><![ %CDE.C.CDE; [dtcodegen -p myproject
 ]]></programlisting>
 </informalexample>
 <para>Run the code generator for the project
@@ -396,7 +396,7 @@ for a project file that
 references the module
 <literal>mymodule</literal> and then silently generate code for just that
 module:</para><informalexample remap="indent">
-<programlisting>dtcodegen &minus;silent mymodule</programlisting>
+<programlisting>dtcodegen -silent mymodule</programlisting>
 </informalexample><para>In the following example:</para><informalexample remap="indent">
 <programlisting>dtcodegen name1 name2</programlisting>
 </informalexample><para>if the project file
@@ -420,15 +420,15 @@ for the project
 <Filename>myproject.c</Filename> and
 <Filename>myproject.h</Filename>:</para>
 <informalexample remap="indent">
-<programlisting><![ %CDE.C.XO; [dtcodegen &minus;main myproject-file
-]]><![ %CDE.C.CDE; [dtcodegen &minus;main &minus;p myproject
+<programlisting><![ %CDE.C.XO; [dtcodegen -main myproject-file
+]]><![ %CDE.C.CDE; [dtcodegen -main -p myproject
 ]]></programlisting>
 </informalexample>
 <para>Search the current working directory for a project file and,
 if one is found, generate code for only those modules that have changed
 since the code generator was last run:</para>
 <informalexample remap="indent">
-<programlisting>dtcodegen &minus;changed</programlisting>
+<programlisting>dtcodegen -changed</programlisting>
 </informalexample>
 <para>Generate, for the project
 <![ %CDE.C.XO; [in file
@@ -439,8 +439,8 @@ set
 <literal>module3</literal> that have changed since the last time the code
 generator was run:</para>
 <informalexample remap="indent">
-<programlisting><![ %CDE.C.XO; [dtcodegen &minus;changed myproject.bip module1 module2 module3
-]]><![ %CDE.C.CDE; [dtcodegen &minus;changed &minus;p myproject module1 module2 module3
+<programlisting><![ %CDE.C.XO; [dtcodegen -changed myproject.bip module1 module2 module3
+]]><![ %CDE.C.CDE; [dtcodegen -changed -p myproject module1 module2 module3
 ]]></programlisting>
 </informalexample>
 </refsect1><refsect1>

@@ -23,12 +23,12 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>rpc.ttdbserverd</Command>
-<Arg Choice="opt">&minus;G</Arg>
-<Arg Choice="opt">&minus;m <Replaceable>DTMOUNTPOINT_value</Replaceable></Arg>
-<Arg Choice="opt">&minus;n</Arg>
+<Arg Choice="opt">-G</Arg>
+<Arg Choice="opt">-m <Replaceable>DTMOUNTPOINT_value</Replaceable></Arg>
+<Arg Choice="opt">-n</Arg>
 <!--.RB [ -t \ level]-->
-<Arg Choice="opt">&minus;v</Arg>
-<Arg Choice="opt">&minus;?</Arg>
+<Arg Choice="opt">-v</Arg>
+<Arg Choice="opt">-?</Arg>
 <!-- This was disabled for release 1.0-->
 <!-- [-a authentication-level]-->
 </CmdSynopsis>
@@ -94,7 +94,7 @@ on a different host.
 <Title>OPTIONS</Title>
 <VariableList>
 <VarListEntry>
-<Term>&minus;G</Term>
+<Term>-G</Term>
 <ListItem>
 <Para>Perform garbage collection.
 This cleans up the <Filename>TT_DB</Filename> directories and the
@@ -103,19 +103,19 @@ associated internal database files.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;m <Replaceable>DTMOUNTPOINT_value</Replaceable></Term>
+<Term>-m <Replaceable>DTMOUNTPOINT_value</Replaceable></Term>
 <ListItem>
 <Para>Sets the <SystemItem Class="EnvironVar">DTMOUNTPOINT</SystemItem>
 environment variable for
 <Command>rpc.ttdbserverd</Command>.
 If there is already an environment variable called
-<SystemItem Class="EnvironVar">DTMOUNTPOINT</SystemItem>, &minus;m
+<SystemItem Class="EnvironVar">DTMOUNTPOINT</SystemItem>, -m
 will override it.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;n</Term>
+<Term>-n</Term>
 <ListItem>
 <Para>Turn off permission checking.  Normally the protection of the file
 passed to
@@ -127,7 +127,7 @@ spec.  This option should be used with caution.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;v</Term>
+<Term>-v</Term>
 <ListItem>
 <Para>Print out the version number.
 </Para>
@@ -137,7 +137,7 @@ spec.  This option should be used with caution.
 <!--.B \-t level-->
 <!--Turns on trace level, the valid level is between 1 to 10.-->
 <VarListEntry>
-<Term>&minus;?</Term>
+<Term>-?</Term>
 <ListItem>
 <Para>Prints out the command usage information.
 </Para>
@@ -161,7 +161,7 @@ spec.  This option should be used with caution.
 <Para>If set, the value of this environment variable will be used in place
 of <Filename>/net</Filename> in pathnames constructed to answer
 &cdeman.tt.host.netfile.file;
-queries. This environment variable can also be set by using the &minus;m
+queries. This environment variable can also be set by using the -m
 flag for <Command>rpc.ttdbserverd</Command>.
 </Para>
 </ListItem>

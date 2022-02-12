@@ -139,16 +139,16 @@ typedef CSA_string      CSA_time_duration;
 #define CSA_CONFIG_VER_IMPLEM                   ((CSA_enum)8)
 #define CSA_CONFIG_VER_SPEC                     ((CSA_enum)9)
 /* CHARACTER SET IDENTIFIERS */
-#define CSA_CHARSET_437         "&minus;//XAPIA//CHARSET IBM 437//EN"
-#define CSA_CHARSET_850         "&minus;//XAPIA//CHARSET IBM 850//EN"
-#define CSA_CHARSET_1252        "&minus;//XAPIA//CHARSET Microsoft 1252//EN"
-#define CSA_CHARSET_ISTRING     "&minus;//XAPIA//CHARSET Apple ISTRING//EN"
-#define CSA_CHARSET_UNICODE     "&minus;//XAPIA//CHARSET UNICODE//EN"
-#define CSA_CHARSET_T61         "&minus;//XAPIA//CHARSET TSS T61//EN"
-#define CSA_CHARSET_IA5         "&minus;//XAPIA//CHARSET TSS IA5//EN"
-#define CSA_CHARSET_ISO_10646   "&minus;//XAPIA//CHARSET ISO 10646//EN"
-#define CSA_CHARSET_ISO_646     "&minus;//XAPIA//CHARSET ISO 646//EN"
-#define CSA_CHARSET_ISO_8859_1  "&minus;//XAPIA//CHARSET ISO 8859&minus;1//EN"
+#define CSA_CHARSET_437         "-//XAPIA//CHARSET IBM 437//EN"
+#define CSA_CHARSET_850         "-//XAPIA//CHARSET IBM 850//EN"
+#define CSA_CHARSET_1252        "-//XAPIA//CHARSET Microsoft 1252//EN"
+#define CSA_CHARSET_ISTRING     "-//XAPIA//CHARSET Apple ISTRING//EN"
+#define CSA_CHARSET_UNICODE     "-//XAPIA//CHARSET UNICODE//EN"
+#define CSA_CHARSET_T61         "-//XAPIA//CHARSET TSS T61//EN"
+#define CSA_CHARSET_IA5         "-//XAPIA//CHARSET TSS IA5//EN"
+#define CSA_CHARSET_ISO_10646   "-//XAPIA//CHARSET ISO 10646//EN"
+#define CSA_CHARSET_ISO_646     "-//XAPIA//CHARSET ISO 646//EN"
+#define CSA_CHARSET_ISO_8859_1  "-//XAPIA//CHARSET ISO 8859-1//EN"
 #define CSA_CB_CALENDAR_LOGON                   ((CSA_flags)0x0
 #define CSA_CB_CALENDAR_DELETED                 ((CSA_flags)0x1)
 #define CSA_CB_CALENDAR_ATTRIBUTE_UPDATED       ((CSA_flags)0x2)
@@ -211,89 +211,89 @@ typedef CSA_string      CSA_time_duration;
 /* CALENDAR ATTRIBUTES */
 /* CALENDAR ATTRIBUTE NAMES */
 #define CSA_CAL_ATTR_ACCESS_LIST                              &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Access List//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Access List//EN"
 #define CSA_CAL_ATTR_CALENDAR_NAME                            &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Calendar Name//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Calendar Name//EN"
 #define CSA_CAL_ATTR_CALENDAR_OWNER                           &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Calendar Owner//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Calendar Owner//EN"
 #define CSA_CAL_ATTR_CALENDAR_SIZE                            &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Calendar Size//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Calendar Size//EN"
 #define CSA_CAL_ATTR_CODE_PAGE                                &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Character Set//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Character Set//EN"
 #define CSA_CAL_ATTR_COUNTRY                                  &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Country//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Country//EN"
 #define CSA_CAL_ATTR_DATE_CREATED                             &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Date Created//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Date Created//EN"
 #define CSA_CAL_ATTR_LANGUAGE                                 &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Language//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Language//EN"
 #define CSA_CAL_ATTR_NUMBER_ENTRIES                           &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Number Entries//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Number Entries//EN"
 #define CSA_CAL_ATTR_PRODUCT_IDENTIFIER                       &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Product Identifier//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Product Identifier//EN"
 #define CSA_CAL_ATTR_TIME_ZONE                                &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Time Zone//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Time Zone//EN"
 #define CSA_CAL_ATTR_VERSION                                  &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Version//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Version//EN"
 #define CSA_CAL_ATTR_WORK_SCHEDULE                            &bsol;
-        "&minus;//XAPIA/CSA/CALATTR//NONSGML Work Schedule//EN"
+        "-//XAPIA/CSA/CALATTR//NONSGML Work Schedule//EN"
 /* ENTRY ATTRIBUTES */
 /* ENTRY ATTRIBUTES NAMES */
 #define CSA_ENTRY_ATTR_ATTENDEE_LIST                          &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Attendee List//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Attendee List//EN"
 #define CSA_ENTRY_ATTR_AUDIO_REMINDER                         &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Audio Reminder//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Audio Reminder//EN"
 #define CSA_ENTRY_ATTR_CLASSIFICATION                         &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Classification//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Classification//EN"
 #define CSA_ENTRY_ATTR_DATE_COMPLETED                         &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Date Complated//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Date Complated//EN"
 #define CSA_ENTRY_ATTR_DATE_CREATED                           &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Date Created//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Date Created//EN"
 #define CSA_ENTRY_ATTR_DESCRIPTION                            &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Description//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Description//EN"
 #define CSA_ENTRY_ATTR_DUE_DATE                               &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Due Date//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Due Date//EN"
 #define CSA_ENTRY_ATTR_END_DATE                               &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML End Date//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML End Date//EN"
 #define CSA_ENTRY_ATTR_EXCEPTION_DATES                        &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Exception Dates//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Exception Dates//EN"
 #define CSA_ENTRY_ATTR_EXCEPTION_RULE                         &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Exception Rule//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Exception Rule//EN"
 #define CSA_ENTRY_ATTR_FLASHING_REMINDER                      &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Flashing Reminder//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Flashing Reminder//EN"
 #define CSA_ENTRY_ATTR_LAST_UPDATE                            &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Last Update//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Last Update//EN"
 #define CSA_ENTRY_ATTR_MAIL_REMINDER                          &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Mail Reminder//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Mail Reminder//EN"
 #define CSA_ENTRY_ATTR_NUMBER_RECURRENCES                     &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Number Recurrences//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Number Recurrences//EN"
 #define CSA_ENTRY_ATTR_ORGANIZER                              &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Organizer//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Organizer//EN"
 #define CSA_ENTRY_ATTR_POPUP_REMINDER                         &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Popup Reminder//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Popup Reminder//EN"
 #define CSA_ENTRY_ATTR_PRIORITY                               &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Priority//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Priority//EN"
 #define CSA_ENTRY_ATTR_RECURRENCE_RULE                        &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Recurrence Rule//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Recurrence Rule//EN"
 #define CSA_ENTRY_ATTR_RECURREING_DATES                       &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Recurring Dates//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Recurring Dates//EN"
 #define CSA_ENTRY_ATTR_REFERENCE_IDENTIFIER                   &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Reference_identifier//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Reference_identifier//EN"
 #define CSA_ENTRY_ATTR_SEQUENCE_NUMBER                        &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Sequence Number//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Sequence Number//EN"
 #define CSA_ENTRY_ATTR_SPONSOR                                &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Sponsor//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Sponsor//EN"
 #define CSA_ENTRY_ATTR_START_DATE                             &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Start Date//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Start Date//EN"
 #define CSA_ENTRY_ATTR_STATUS                                 &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Status//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Status//EN"
 #define CSA_ENTRY_ATTR_SUBTYPE                                &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Subtype//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Subtype//EN"
 #define CSA_ENTRY_ATTR_SUMMARY                                &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Summary//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Summary//EN"
 #define CSA_ENTRY_ATTR_TIME_TRANSPARENCY                      &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Transparency//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Transparency//EN"
 #define CSA_ENTRY_ATTR_TYPE                                   &bsol;
-        "&minus;//XAPIA/CSA/ENTRYATTR//NONSGML Type//EN"
+        "-//XAPIA/CSA/ENTRYATTR//NONSGML Type//EN"
 /* COMMON EXTENSIONS DECLARATIONS */
 /* EXTENSION SET ID */
 /* Common Extension Set */

@@ -14,14 +14,14 @@ document objects in a database</refpurpose></refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>dtsrload</command>
-<arg choice="plain">&minus;d<replaceable>dbname</replaceable></arg>
-<arg choice="opt">&minus;c</arg>
-<arg choice="opt">&minus;t<replaceable>etxstr</replaceable></arg>
-<arg choice="opt"><group choice="plain"><arg choice="plain">&minus;h0</arg>
-<arg choice="plain">&minus;h<replaceable>hashsz</replaceable></arg>
+<arg choice="plain">-d<replaceable>dbname</replaceable></arg>
+<arg choice="opt">-c</arg>
+<arg choice="opt">-t<replaceable>etxstr</replaceable></arg>
+<arg choice="opt"><group choice="plain"><arg choice="plain">-h0</arg>
+<arg choice="plain">-h<replaceable>hashsz</replaceable></arg>
 </group></arg>
-<arg choice="opt">&minus;e<replaceable>hufname</replaceable></arg>
-<arg choice="opt">&minus;p<replaceable>dotcnt</replaceable></arg>
+<arg choice="opt">-e<replaceable>hufname</replaceable></arg>
+<arg choice="opt">-p<replaceable>dotcnt</replaceable></arg>
 <arg choice="plain"><replaceable>file</replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
@@ -87,7 +87,7 @@ be allowed to perform online searches of the database.
 the option name without white space.</para>
 </note>
 <variablelist>
-<varlistentry><term><literal>&minus;d</literal><Symbol Role="Variable">dbname</Symbol></term>
+<varlistentry><term><literal>-d</literal><Symbol Role="Variable">dbname</Symbol></term>
 <listitem>
 <para>Specifies the 1 to 8 ASCII character name of the database to be
 updated.
@@ -98,7 +98,7 @@ files are automatically appended.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;c</literal></term>
+<varlistentry><term><literal>-c</literal></term>
 <listitem>
 <para>Instructs <command>dtsrload</command> to initialize the database total
 document count by counting existing records before loading the current
@@ -106,7 +106,7 @@ batch. This option is usually not required.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;t</literal><Symbol Role="Variable">etxstr</Symbol></term>
+<varlistentry><term><literal>-t</literal><Symbol Role="Variable">etxstr</Symbol></term>
 <listitem>
 <para>Specifies the end of document text delimiter string. The default
 document separator in an fzk file is an ASCII form feed character
@@ -116,7 +116,7 @@ delimiter.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;h0</literal></term>
+<varlistentry><term><literal>-h0</literal></term>
 <listitem>
 <para>Instructs <command>dtsrload</command> to not check for duplicate
 record ids. This option should not be specified unless it
@@ -124,7 +124,7 @@ is certain that there are no duplicate ids in the fzk file.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;h</literal><Symbol Role="Variable">hashsz</Symbol></term>
+<varlistentry><term><literal>-h</literal><Symbol Role="Variable">hashsz</Symbol></term>
 <listitem>
 <para>Sets the duplicate record id hash table size to
 <Symbol Role="Variable">hashsz</Symbol>. The default is 3000.
@@ -134,7 +134,7 @@ file.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;e</literal><Symbol Role="Variable">hufname</Symbol></term>
+<varlistentry><term><literal>-e</literal><Symbol Role="Variable">hufname</Symbol></term>
 <listitem>
 <para>Sets the compression encode file name to
 <Symbol Role="Variable">hufname</Symbol>. The default is
@@ -143,7 +143,7 @@ This option is ignored unless the database type is AusText.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;p</literal><Symbol Role="Variable">dotcount</Symbol></term>
+<varlistentry><term><literal>-p</literal><Symbol Role="Variable">dotcount</Symbol></term>
 <listitem>
 <para>Instructs <command>dtsrload</command> to print a progress character to
 stdout for every <Symbol Role="Variable">dotcount</Symbol> documents

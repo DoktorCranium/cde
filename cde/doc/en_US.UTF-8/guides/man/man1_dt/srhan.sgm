@@ -14,9 +14,9 @@ cmd</manvolnum>
 a DtSearch fzk file</refpurpose></refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis> <command>dtsrhan</command> <arg
-choice="opt">&minus;m</arg> <arg choice="opt">&minus;oo</arg> <arg
-choice="opt">&minus;oa</arg> <arg
-choice="opt">&minus;w<replaceable>screensz</replaceable></arg> <arg
+choice="opt">-m</arg> <arg choice="opt">-oo</arg> <arg
+choice="opt">-oa</arg> <arg
+choice="opt">-w<replaceable>screensz</replaceable></arg> <arg
 choice="plain"><replaceable>hanfile</replaceable></arg> <arg
 choice="plain"><replaceable>textfile</replaceable></arg> <arg
 choice="opt"><replaceable>fzkfile</replaceable></arg> </cmdsynopsis>
@@ -46,31 +46,31 @@ desirable way.
 option takes a value, the value must be directly appended to the option
 name without white space.</para> </note>
 <variablelist>
-<varlistentry><term><literal>&minus;m</literal></term>
+<varlistentry><term><literal>-m</literal></term>
 <listitem>
 <para>Switches off all messages except error messages.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;oo</literal></term>
+<varlistentry><term><literal>-oo</literal></term>
 <listitem>
 <para>Overwrite preexisting fzk file. If this option and the
-<literal>&minus;oa</literal> option are omitted and the output fzk file
+<literal>-oa</literal> option are omitted and the output fzk file
 already exists, <command>dtsrhan</command> prompts for which option to
 use.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;oa</literal></term>
+<varlistentry><term><literal>-oa</literal></term>
 <listitem>
 <para>Append new output to preexisting fzk file. If this option and the
-<literal>&minus;oo</literal> option are omitted and the output fzk file
+<literal>-oo</literal> option are omitted and the output fzk file
 already exists, <command>dtsrhan</command> prompts for which option to
 use.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;w</literal><symbol role="Variable">screensz</symbol></term>
+<varlistentry><term><literal>-w</literal><symbol role="Variable">screensz</symbol></term>
 <listitem>
 <para>Sets the
 target screen width to <symbol role="Variable">screensz</symbol>

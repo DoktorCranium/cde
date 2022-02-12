@@ -21,7 +21,7 @@
 <Command>dthelptag</Command>
 <Arg Choice="opt">options</Arg>
 <Arg><Replaceable>file</Replaceable></Arg>
-<Arg Choice="opt"><Replaceable>parser&minus;options</Replaceable></Arg>
+<Arg Choice="opt"><Replaceable>parser-options</Replaceable></Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -60,11 +60,11 @@ argument has no periods,
 and assumes an extension of <Filename>.htg</Filename>, <Filename>.ctg</Filename> or <Filename>.sdl</Filename>
 for the input file.
 The <Filename>.ctg</Filename>
-extension is assumed when the <Literal>&minus;formal</Literal>
+extension is assumed when the <Literal>-formal</Literal>
 option described below is used.
 The <Filename>.sdl</Filename>
-extension is assumed when the <Literal>&minus;compress</Literal>
-or <Literal>&minus;decompress</Literal>
+extension is assumed when the <Literal>-compress</Literal>
+or <Literal>-decompress</Literal>
 option (described later in this document) is used.
 </Para>
 <Para>Several options to
@@ -74,7 +74,7 @@ parsing phase of the
 <Command>dthelptag</Command> process may follow the file name.
 </Para>
 <Para>The output file is:
-<Symbol Role="Variable">file</Symbol>.sdl &minus; the compiled help volume file.
+<Symbol Role="Variable">file</Symbol>.sdl - the compiled help volume file.
 </Para>
 </RefSect1>
 <RefSect1>
@@ -83,18 +83,18 @@ parsing phase of the
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;verbose</Literal></Term>
+<Term><Literal>-verbose</Literal></Term>
 <ListItem>
-<Para>The <Literal>&minus;verbose</Literal>
+<Para>The <Literal>-verbose</Literal>
 option will cause
 <Command>dthelptag</Command> to generate and display parser messages during processing.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;formal</Literal></Term>
+<Term><Literal>-formal</Literal></Term>
 <ListItem>
-<Para>The <Literal>&minus;formal</Literal>
+<Para>The <Literal>-formal</Literal>
 option causes
 <Command>dthelptag</Command> to accept a subset of the HelpTag language that is strictly compliant
 to canonical SGML.
@@ -106,9 +106,9 @@ input file becomes <Filename>.ctg</Filename>.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;nooptimize</Literal></Term>
+<Term><Literal>-nooptimize</Literal></Term>
 <ListItem>
-<Para>The <Literal>&minus;nooptimize</Literal>
+<Para>The <Literal>-nooptimize</Literal>
 option eliminates certain optimizations that normally take place
 during translation of HelpTag markup to the runtime format.
 Using
@@ -117,9 +117,9 @@ this option speeds the translation process.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;clean</Literal></Term>
+<Term><Literal>-clean</Literal></Term>
 <ListItem>
-<Para>The <Literal>&minus;clean</Literal>
+<Para>The <Literal>-clean</Literal>
 option causes
 <Command>dthelptag</Command> to simply remove any intermediate files from the current directory.
 No translation takes place.
@@ -127,12 +127,12 @@ No translation takes place.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;debug</Literal></Term>
+<Term><Literal>-debug</Literal></Term>
 <ListItem>
-<Para>The <Literal>&minus;debug</Literal>
+<Para>The <Literal>-debug</Literal>
 option causes
 <Command>dthelptag</Command> to leave all intermediate files in the current directory.
-The <Literal>&minus;debug</Literal>
+The <Literal>-debug</Literal>
 option also blocks the compression step of
 <Command>dthelptag</Command>, leaving the resulting <Filename>.sdl</Filename>
 output file in a human-readable form.
@@ -140,9 +140,9 @@ output file in a human-readable form.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;files</Literal></Term>
+<Term><Literal>-files</Literal></Term>
 <ListItem>
-<Para>The <Literal>&minus;files</Literal>
+<Para>The <Literal>-files</Literal>
 option causes a list of files referenced in the translation process to
 be emitted to the standard output.
 No translation takes place.
@@ -150,18 +150,18 @@ No translation takes place.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;help</Literal></Term>
+<Term><Literal>-help</Literal></Term>
 <ListItem>
-<Para>The <Literal>&minus;help</Literal> option causes
+<Para>The <Literal>-help</Literal> option causes
 <Command>dthelptag</Command> to emit a synopsis of the
 <Command>dthelptag</Command> command line and a list of options to the standard output.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;decompress</Literal></Term>
+<Term><Literal>-decompress</Literal></Term>
 <ListItem>
-<Para>The <Literal>&minus;decompress</Literal>
+<Para>The <Literal>-decompress</Literal>
 option causes
 <Command>dthelptag</Command> to decompress a previously created <Filename>.sdl</Filename>
 file.
@@ -170,15 +170,15 @@ When this option is specified, the default input extension is <Filename>.sdl</Fi
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;compress</Literal></Term>
+<Term><Literal>-compress</Literal></Term>
 <ListItem>
-<Para>The <Literal>&minus;compress</Literal>
+<Para>The <Literal>-compress</Literal>
 option causes
 <Command>dthelptag</Command> to compress a <Filename>.sdl</Filename>
 file that either was created by translating a <Filename>.htg</Filename>
 or <Filename>.ctg</Filename>
-file using the <Literal>&minus;debug</Literal>
-option or was previously decompressed using the <Literal>&minus;decompress</Literal>
+file using the <Literal>-debug</Literal>
+option or was previously decompressed using the <Literal>-decompress</Literal>
 option.
 When this option is specified, the default input extension is <Filename>.sdl</Filename>.
 </Para>
@@ -318,7 +318,7 @@ may be specified, but the last entry will override any previous setting.
 <ListItem>
 <Para>Neither the <Literal>shortfiles</Literal> <Emphasis>parser-option</Emphasis>
 nor any of its synonyms should be used.
-Rather, the <Literal>&minus;shortfiles</Literal>
+Rather, the <Literal>-shortfiles</Literal>
 option should be given as an <Emphasis>option</Emphasis>
 to
 <Command>dthelptag</Command>. The
@@ -407,7 +407,7 @@ file described in the <Emphasis>CDE Help System Author's and Programmer's Guide<
 <VarListEntry>
 <Term><Literal>file.ctg</Literal></Term>
 <ListItem>
-<Para>Default input file when the <Literal>&minus;formal</Literal>
+<Para>Default input file when the <Literal>-formal</Literal>
 option has been specified.
 </Para>
 </ListItem>

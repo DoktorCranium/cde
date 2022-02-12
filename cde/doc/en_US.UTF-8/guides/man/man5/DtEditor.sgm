@@ -45,7 +45,7 @@ with at least the following members:
 <ListItem>
 <Para>The data being transferred is a pointer
 to a
-<SystemItem Class="Constant">NULL</SystemItem>&minus;terminated string of characters (a <StructName Role="typedef">char *</StructName>).
+<SystemItem Class="Constant">NULL</SystemItem>-terminated string of characters (a <StructName Role="typedef">char *</StructName>).
 </Para>
 </ListItem>
 </VarListEntry>
@@ -105,7 +105,7 @@ indicates the type of data contained in the structure.
 The
 <Symbol Role="Variable">string</Symbol> argument
 points to a
-<SystemItem Class="Constant">NULL</SystemItem>&minus;terminated string of characters.
+<SystemItem Class="Constant">NULL</SystemItem>-terminated string of characters.
 It is valid when
 <Symbol Role="Variable">type</Symbol> is
 <SystemItem Class="Constant">DtEDITOR_TEXT</SystemItem>. The

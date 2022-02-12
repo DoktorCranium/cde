@@ -22,7 +22,7 @@ standard/restricted command and programming language
 <Command>ksh</Command>
 <Arg Choice="opt">&plusmn;abcefhikmnoprstuvxCP</Arg>
 <Group>
-<Arg>&minus;I</Arg>
+<Arg>-I</Arg>
 <Arg>file</Arg>
 </Group>
 <Group>
@@ -30,12 +30,12 @@ standard/restricted command and programming language
 <Arg>option</Arg>
 </Group>
 <Arg>.&thinsp;.&thinsp;.</Arg>
-<Arg Choice="opt">&minus;</Arg>
+<Arg Choice="opt">-</Arg>
 <Arg Choice="opt">arg .&thinsp;.&thinsp;.</Arg>
 <Arg>rksh</Arg>
 <Arg Choice="opt">&plusmn;abcefhikmnoprstuvxCP</Arg>
 <Group>
-<Arg>&minus;I</Arg>
+<Arg>-I</Arg>
 <Arg>file</Arg>
 </Group>
 <Group>
@@ -43,7 +43,7 @@ standard/restricted command and programming language
 <Arg>option</Arg>
 </Group>
 <Arg>.&thinsp;.&thinsp;.</Arg>
-<Arg Choice="opt">&minus;</Arg>
+<Arg Choice="opt">-</Arg>
 <Arg Choice="opt">arg .&thinsp;.&thinsp;.</Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
@@ -129,7 +129,7 @@ if it terminates normally; 256+<Emphasis>signum&hairsp;</Emphasis> if
 it terminates abnormally (the name of the signal corresponding
 to the exit status can be
 obtained via the
-<Literal>&minus;l $?</Literal> option of the
+<Literal>-l $?</Literal> option of the
 <Literal>kill&hairsp;</Literal> built-in utility).
 </Para>
 <Para>An
@@ -186,7 +186,7 @@ the redirection operators
 <Literal>&lt;&amp;</Literal> and
 <Literal>>&amp;</Literal> with arg
 <Literal>p</Literal> to commands and by using
-<Literal>&minus;p</Literal> option of
+<Literal>-p</Literal> option of
 the built-in commands
 <Literal>read</Literal> and
 <Literal>print</Literal> described later.
@@ -559,7 +559,7 @@ but can be unset or redefined:
 </Para>
 <ItemizedList>
 <ListItem>
-<Para>autoload=&acute;typeset &minus;fu&acute;</Para>
+<Para>autoload=&acute;typeset -fu&acute;</Para>
 </ListItem>
 <ListItem>
 <Para>command=&acute;command &acute;</Para>
@@ -568,40 +568,40 @@ but can be unset or redefined:
 <Para>fc=hist</Para>
 </ListItem>
 <ListItem>
-<Para>float=&acute;typeset &minus;E&acute;</Para>
+<Para>float=&acute;typeset -E&acute;</Para>
 </ListItem>
 <ListItem>
-<Para>functions=&acute;typeset &minus;f&acute;</Para>
+<Para>functions=&acute;typeset -f&acute;</Para>
 </ListItem>
 <ListItem>
-<Para>hash=&acute;alias &minus;t &minus;&minus;&acute;</Para>
+<Para>hash=&acute;alias -t --&acute;</Para>
 </ListItem>
 <ListItem>
-<Para>history=&acute;hist &minus;l&acute;</Para>
+<Para>history=&acute;hist -l&acute;</Para>
 </ListItem>
 <ListItem>
-<Para>integer=&acute;typeset &minus;i&acute;</Para>
+<Para>integer=&acute;typeset -i&acute;</Para>
 </ListItem>
 <ListItem>
-<Para>nameref=&acute;typeset &minus;n&acute;</Para>
+<Para>nameref=&acute;typeset -n&acute;</Para>
 </ListItem>
 <ListItem>
 <Para>nohup=&acute;nohup &acute;</Para>
 </ListItem>
 <ListItem>
-<Para>r=&acute;hist &minus;s&acute;</Para>
+<Para>r=&acute;hist -s&acute;</Para>
 </ListItem>
 <ListItem>
 <Para>redirect=&acute;command exec&acute;</Para>
 </ListItem>
 <ListItem>
-<Para>stop=&acute;kill &minus;s STOP&acute;</Para>
+<Para>stop=&acute;kill -s STOP&acute;</Para>
 </ListItem>
 <ListItem>
 <Para>times=&acute;{ {time;} 2>&amp;1;}&acute;</Para>
 </ListItem>
 <ListItem>
-<Para>type=&acute;whence &minus;v&acute;</Para>
+<Para>type=&acute;whence -v&acute;</Para>
 </ListItem>
 </ItemizedList>
 </RefSect2>
@@ -629,7 +629,7 @@ A
 <Filename>$HOME</Filename>. A
 <Literal>&ap;</Literal> followed by a
 <Literal>+</Literal> or
-<Literal>&minus;</Literal> is replaced by the value of
+<Literal>-</Literal> is replaced by the value of
 $PWDand
 $OLDPWDrespectively.
 </Para>
@@ -692,7 +692,7 @@ then the file passed as an argument will contain the output of the
 <Symbol Role="Variable">list</Symbol> process.
 For example,
 </Para>
-<Para><Literal>paste &lt;(cut &minus;f1</Literal> <Emphasis>file1</Emphasis><Literal>) &lt;(cut &minus;f3</Literal> <Emphasis>file2</Emphasis><Literal>) | tee >(</Literal><Emphasis>process1</Emphasis><Literal>) >(</Literal><Emphasis>process2</Emphasis><Literal>)</Literal>
+<Para><Literal>paste &lt;(cut -f1</Literal> <Emphasis>file1</Emphasis><Literal>) &lt;(cut -f3</Literal> <Emphasis>file2</Emphasis><Literal>) | tee >(</Literal><Emphasis>process1</Emphasis><Literal>) >(</Literal><Emphasis>process2</Emphasis><Literal>)</Literal>
 </Para>
 <Para><Emphasis>cuts</Emphasis> fields 1 and 3 from
 the files
@@ -715,7 +715,7 @@ is a UNIX
 <Emphasis>parameter&hairsp;</Emphasis> is an
 <Symbol Role="Variable">variable</Symbol>, one or more digits,
 or any of the characters
-<Literal>&ast;</Literal>, <Literal>@</Literal>, <Literal>#</Literal>, <Literal>?</Literal>, <Literal>&minus;</Literal>, <Literal>$</Literal>, and
+<Literal>&ast;</Literal>, <Literal>@</Literal>, <Literal>#</Literal>, <Literal>?</Literal>, <Literal>-</Literal>, <Literal>$</Literal>, and
 <Literal>!\&caret;</Literal>. A
 <Emphasis>variable&hairsp;</Emphasis> is denoted by a <Emphasis>vname</Emphasis>.
 To create a variable whose
@@ -745,7 +745,7 @@ an
 between a
 <Literal>[</Literal> and a
 <Literal>]</Literal>. To assign values to an indexed array, use
-<Literal>set &minus;A</Literal> <Emphasis>vname</Emphasis> <Symbol Role="Variable">value</Symbol> .&thinsp;.&thinsp;..
+<Literal>set -A</Literal> <Emphasis>vname</Emphasis> <Symbol Role="Variable">value</Symbol> .&thinsp;.&thinsp;..
 The value of all
 subscripts must be in the
 range of
@@ -756,7 +756,7 @@ with a valid subscript is
 legal and an array will be created if necessary.
 </Para>
 <Para>An associative array is created with the
-<Literal>&minus;A</Literal> option to
+<Literal>-A</Literal> option to
 <Literal>typeset.</Literal> A
 <Emphasis>subscript&hairsp;</Emphasis> for an associative array is denoted by
 a string enclosed between
@@ -782,7 +782,7 @@ is equivalent to referencing the array with subscript 0.
 <Para>A
 <Emphasis>nameref&hairsp;</Emphasis> is a variable that is a reference to another variable.
 A nameref is created with the
-<Literal>&minus;n</Literal> attribute of
+<Literal>-n</Literal> attribute of
 <Literal>typeset</Literal>. The value of the variable at the time of the
 <Literal>typeset</Literal> command becomes the variable that will be referenced whenever
 the nameref variable is used.
@@ -797,16 +797,16 @@ inside a function whose name is passed as an argument to a function.
 For example, if the name of a variable is passed as the first
 argument to a function, the command
 </Para>
-<Para>typeset &minus;n var=$1
+<Para>typeset -n var=$1
 </Para>
 <Para>inside the function causes references and assignments to
 <Literal>var</Literal> to be references and assignments to the variable whose
 name has been passed to the function.
 </Para>
 <Para>If either of the floating point attributes,
-<Literal>&minus;E</Literal>, or
-<Literal>&minus;F</Literal>, or the integer attribute,
-<Literal>&minus;i</Literal>, is set for
+<Literal>-E</Literal>, or
+<Literal>-F</Literal>, or the integer attribute,
+<Literal>-i</Literal>, is set for
 <Emphasis>vname</Emphasis>, then the
 <Emphasis>value&hairsp;</Emphasis> is subject to arithmetic evaluation as described below.
 </Para>
@@ -917,7 +917,7 @@ argument.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;:&minus;word&hairsp;}</Term>
+<Term>${parameter&hairsp;:-word&hairsp;}</Term>
 <ListItem>
 <Para>If
 <Emphasis>parameter&hairsp;</Emphasis> is set and is non-null then substitute its value;
@@ -1076,7 +1076,7 @@ so that, in the following example,
 <Literal>pwd</Literal> is executed only if
 <Literal>d</Literal> is not set or is null:
 </Para>
-<Para>print &thinsp;${d:&minus;&hairsp;$(&hairsp;pwd&hairsp;)&hairsp;}
+<Para>print &thinsp;${d:-&hairsp;$(&hairsp;pwd&hairsp;)&hairsp;}
 </Para>
 <Para>If the colon (
 <Literal>:</Literal> <Literal>)</Literal> is omitted from the above expressions,
@@ -1096,7 +1096,7 @@ are automatically set by the shell:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;</Term>
+<Term>-</Term>
 <ListItem>
 <Para>Options supplied to the shell on invocation or by
 the
@@ -1373,7 +1373,7 @@ ignored when performing filename matching.
 <ListItem>
 <Para>The search path for function definitions.
 This path is searched when a function with the
-<Literal>&minus;u</Literal> attribute is referenced and when a command is not found.
+<Literal>-u</Literal> attribute is referenced and when a command is not found.
 If an executable file is found, then it is read and executed
 in the current environment.
 </Para>
@@ -1627,7 +1627,7 @@ Implicit null fields
 <Para>Following splitting, each field is scanned for the characters
 <Literal>&ast;</Literal>, <Literal>?</Literal>, <Literal>(</Literal>, and
 <Literal>&str.OK;&hairsp;</Literal> unless the
-<Literal>&minus;f</Literal> option has been set.
+<Literal>-f</Literal> option has been set.
 If one of these characters appears
 then the word is regarded as a
 <Symbol Role="Variable">pattern</Symbol>. Each file name component that contains any pattern character
@@ -1677,13 +1677,13 @@ uses of pattern matching the
 <ListItem>
 <Para>Matches any one of the enclosed characters.
 A pair of characters separated by
-<Literal>&minus;</Literal> matches any
+<Literal>-</Literal> matches any
 character lexically between the pair, inclusive.
 If the first character following the opening
 <Literal>&str.OK;&hairsp;</Literal> is a
 <Literal>!</Literal> then any character not enclosed is matched.
 A
-<Literal>&minus;</Literal> can be included in the character set by putting it as the
+<Literal>-</Literal> can be included in the character set by putting it as the
 first or last character.
 Within
 <Literal>&str.OK;&hairsp;</Literal> and
@@ -1846,25 +1846,25 @@ expression:
 </Para>
 <Para>An internal representation of a
 <Emphasis>variable&hairsp;</Emphasis> as a double precision floating point can be specified with the
-<Literal>&minus;E</Literal> &str.OK;<Emphasis>n&hairsp;</Emphasis>&str.CK;
+<Literal>-E</Literal> &str.OK;<Emphasis>n&hairsp;</Emphasis>&str.CK;
 or
-<Literal>&minus;F</Literal> &str.OK;<Emphasis>n&hairsp;</Emphasis>&str.CK;
+<Literal>-F</Literal> &str.OK;<Emphasis>n&hairsp;</Emphasis>&str.CK;
 option of the
 <Literal>typeset</Literal> special built-in command.
 The
-<Literal>&minus;E</Literal> option causes the expansion of the value to be represented using
+<Literal>-E</Literal> option causes the expansion of the value to be represented using
 scientific notation when it is expanded.
 The optional option argument
 <Symbol Role="Variable">n</Symbol> defines the number of significant figures.
 The
-<Literal>&minus;F</Literal> option causes the expansion to be represented as a floating decimal number
+<Literal>-F</Literal> option causes the expansion to be represented as a floating decimal number
 when it is expanded.
 The optional option argument
 <Symbol Role="Variable">n</Symbol> defines the number of places after the decimal point in this case.
 </Para>
 <Para>An internal integer representation of a
 <Emphasis>variable&hairsp;</Emphasis> can be specified with the
-<Literal>&minus;i</Literal> &str.OK;<Emphasis>n&hairsp;</Emphasis>&str.CK;
+<Literal>-i</Literal> &str.OK;<Emphasis>n&hairsp;</Emphasis>&str.CK;
 option of the
 <Literal>typeset</Literal> special built-in command.
 The optional option argument
@@ -1875,8 +1875,8 @@ variable determines the arithmetic base.
 </Para>
 <Para>Arithmetic evaluation is performed on the value of each
 assignment to a variable with the
-<Literal>&minus;E</Literal>, <Literal>&minus;F</Literal>, or
-<Literal>&minus;i</Literal> attribute.
+<Literal>-E</Literal>, <Literal>-F</Literal>, or
+<Literal>-i</Literal> attribute.
 Assigning a floating point number to a
 variable whose type is an integer causes the fractional
 part to be truncated.
@@ -1922,15 +1922,15 @@ of the following unary or binary expressions:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;a file</Term>
+<Term>-a file</Term>
 <ListItem>
-<Para>Same is <Literal>&minus;e</Literal> below.
+<Para>Same is <Literal>-e</Literal> below.
 This is obsolete.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;b file</Term>
+<Term>-b file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is a block special file.
@@ -1938,7 +1938,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;c file</Term>
+<Term>-c file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is a character special file.
@@ -1946,7 +1946,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;d file</Term>
+<Term>-d file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is a directory.
@@ -1954,7 +1954,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;e file</Term>
+<Term>-e file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists.
@@ -1962,7 +1962,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;f file</Term>
+<Term>-f file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is an ordinary file.
@@ -1970,7 +1970,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;g file</Term>
+<Term>-g file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is has its setgid bit set.
@@ -1978,7 +1978,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;k file</Term>
+<Term>-k file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is has its sticky bit set.
@@ -1986,7 +1986,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;n string</Term>
+<Term>-n string</Term>
 <ListItem>
 <Para>True, if length of
 <Symbol Role="Variable">string</Symbol> is non-zero.
@@ -1994,7 +1994,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;o option</Term>
+<Term>-o option</Term>
 <ListItem>
 <Para>True, if option named
 <Emphasis>option</Emphasis> is on.
@@ -2002,7 +2002,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;p file</Term>
+<Term>-p file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is a fifo special file or a pipe.
@@ -2010,7 +2010,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;r file</Term>
+<Term>-r file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is readable by current process.
@@ -2018,7 +2018,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;s file</Term>
+<Term>-s file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and has size greater than zero.
@@ -2026,7 +2026,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;t fildes</Term>
+<Term>-t fildes</Term>
 <ListItem>
 <Para>True, if file descriptor number
 <Emphasis>fildes</Emphasis> is open and associated with a terminal device.
@@ -2034,7 +2034,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;u file</Term>
+<Term>-u file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is has its setuid bit set.
@@ -2042,7 +2042,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;w file</Term>
+<Term>-w file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is writable by current process.
@@ -2050,7 +2050,7 @@ This is obsolete.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;x file</Term>
+<Term>-x file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is executable by current process.
@@ -2061,7 +2061,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;z string</Term>
+<Term>-z string</Term>
 <ListItem>
 <Para>True, if length of
 <Symbol Role="Variable">string</Symbol> is zero.
@@ -2069,7 +2069,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;L file</Term>
+<Term>-L file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is a symbolic link.
@@ -2077,7 +2077,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;O file</Term>
+<Term>-O file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is owned by the effective user id of this process.
@@ -2085,7 +2085,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;G file</Term>
+<Term>-G file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and its group matches the effective group id of this process.
@@ -2093,7 +2093,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;S file</Term>
+<Term>-S file</Term>
 <ListItem>
 <Para>True, if
 <Symbol Role="Variable">file</Symbol> exists and is a socket.
@@ -2101,7 +2101,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>file1 &minus;nt file2</Term>
+<Term>file1 -nt file2</Term>
 <ListItem>
 <Para>True, if
 <Emphasis>file1</Emphasis> exists and is newer than
@@ -2109,7 +2109,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>file1 &minus;ot file2</Term>
+<Term>file1 -ot file2</Term>
 <ListItem>
 <Para>True, if
 <Emphasis>file1</Emphasis> exists and is older than
@@ -2117,7 +2117,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>file1 &minus;ef file2</Term>
+<Term>file1 -ef file2</Term>
 <ListItem>
 <Para>True, if
 <Emphasis>file1</Emphasis> and
@@ -2171,7 +2171,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>exp1 &minus;eq exp2</Term>
+<Term>exp1 -eq exp2</Term>
 <ListItem>
 <Para>True, if
 <Emphasis>exp1</Emphasis> is equal to
@@ -2179,7 +2179,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>exp1 &minus;ne exp2</Term>
+<Term>exp1 -ne exp2</Term>
 <ListItem>
 <Para>True, if
 <Emphasis>exp1</Emphasis> is not equal to
@@ -2187,7 +2187,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>exp1 &minus;lt exp2</Term>
+<Term>exp1 -lt exp2</Term>
 <ListItem>
 <Para>True, if
 <Emphasis>exp1</Emphasis> is less than
@@ -2195,7 +2195,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>exp1 &minus;gt exp2</Term>
+<Term>exp1 -gt exp2</Term>
 <ListItem>
 <Para>True, if
 <Emphasis>exp1</Emphasis> is greater than
@@ -2203,7 +2203,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>exp1 &minus;le exp2</Term>
+<Term>exp1 -le exp2</Term>
 <ListItem>
 <Para>True, if
 <Emphasis>exp1</Emphasis> is less than or equal to
@@ -2212,7 +2212,7 @@ has permission to search in the directory.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>exp1 &minus;ge exp2</Term>
+<Term>exp1 -ge exp2</Term>
 <ListItem>
 <Para>True, if
 <Emphasis>exp1</Emphasis> is greater than or equal to
@@ -2339,7 +2339,7 @@ as standard input.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&lt;&lt;[&minus;]word</Term>
+<Term>&lt;&lt;[-]word</Term>
 <ListItem>
 <Para>The shell input is read up to a line that is the same as
 <Emphasis>word</Emphasis> after any quoting has been removed remove,
@@ -2359,7 +2359,7 @@ substitution occur,
 and
 <Literal>&bsol;</Literal> must be used to quote the characters
 <Literal>&bsol;</Literal>, <Literal>$</Literal>, <Literal>&grave;</Literal>. If
-<Literal>&minus;</Literal> is appended to
+<Literal>-</Literal> is appended to
 <Literal>&lt;&lt;</Literal>, then all leading tabs are stripped from
 <Emphasis>word&hairsp;</Emphasis> and from the document.
 </Para>
@@ -2376,11 +2376,11 @@ and
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&lt;&amp;&minus;</Term>
+<Term>&lt;&amp;-</Term>
 <ListItem>
 <Para>The standard input is closed.
 Similarly for the standard output using
-<Literal>>&amp;&minus;</Literal>.</Para>
+<Literal>>&amp;-</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
@@ -2455,7 +2455,7 @@ variables
 or creates new ones,
 using the
 <Literal>export</Literal> or
-<Literal>typeset</Literal> <Literal>&minus;x</Literal> commands they become part of the
+<Literal>typeset</Literal> <Literal>-x</Literal> commands they become part of the
 environment.
 The environment seen by any executed command is thus composed
 of any name-value pairs originally inherited by the shell,
@@ -2463,7 +2463,7 @@ whose values may be modified by the current shell,
 plus any additions
 which must be noted in
 <Literal>export</Literal> or
-<Literal>typeset</Literal> <Literal>&minus;x</Literal> commands.
+<Literal>typeset</Literal> <Literal>-x</Literal> commands.
 </Para>
 <Para>The environment for any
 <Emphasis>simple-command&hairsp;</Emphasis> or function
@@ -2480,12 +2480,12 @@ TERM=450 &thinsp;cmd &thinsp;args
 (export &thinsp;TERM; &thinsp;TERM=450; &thinsp;cmd &thinsp;args)
 </programlisting>
 <Para>are equivalent (as far as the above execution of
-<Emphasis>cmd&hairsp;</Emphasis> is concerned except for special built-in commands listed below &minus;
+<Emphasis>cmd&hairsp;</Emphasis> is concerned except for special built-in commands listed below -
 those that are
 preceded with a dagger).
 </Para>
 <Para>If the obsolete
-<Literal>&minus;k</Literal> option is set,
+<Literal>-k</Literal> option is set,
 <Emphasis>all&hairsp;</Emphasis> variable assignment arguments are placed in the environment,
 even if they occur after the command name.
 The following
@@ -2495,7 +2495,7 @@ first prints
 </Para>
 <programlisting>
 echo a=b c
-set ;&minus;k
+set ;-k
 echo a=b c
 </programlisting>
 <Para>This feature is intended for use with scripts written
@@ -2561,13 +2561,13 @@ from function calls.
 </Para>
 <Para>Function names
 can be listed with the
-<Literal>&minus;f</Literal> or
+<Literal>-f</Literal> or
 <Literal>+f</Literal> option of the
 <Literal>typeset</Literal> special built-in command.
 The text of functions, when available, will also
 be listed with
-<Literal>&minus;f</Literal>. Functions can be undefined with the
-<Literal>&minus;f</Literal> option of the
+<Literal>-f</Literal>. Functions can be undefined with the
+<Literal>-f</Literal> option of the
 <Literal>unset</Literal> special built-in command.
 </Para>
 <Para>Ordinarily, functions are unset when the shell executes a shell script.
@@ -2664,7 +2664,7 @@ or by one of the following:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>%&minus;</Term>
+<Term>%-</Term>
 <ListItem>
 <Para>Previous job.
 </Para>
@@ -2817,10 +2817,10 @@ If
 The edited command(s) is printed and re-executed upon
 leaving the editor unless you quit without writing.
 The
-<Literal>&minus;s</Literal> option
+<Literal>-s</Literal> option
 (
 an in obsolete versions, the editor name
-<Literal>&minus;</Literal>)
+<Literal>-</Literal>)
 is used to skip the editing phase and
 to re-execute the command.
 In this case a substitution parameter of the form
@@ -2828,7 +2828,7 @@ In this case a substitution parameter of the form
 can be used to modify the command before execution.
 For example, with the preset alias
 <Literal>r</Literal>, which is aliased to
-<Literal>&acute;hist &minus;s&acute;</Literal>, typing
+<Literal>&acute;hist -s&acute;</Literal>, typing
 `<Literal>r bad=good c</Literal>'
 will re-execute the most recent command which starts with the letter
 <Literal>c</Literal>, replacing the first occurrence of the string
@@ -3279,7 +3279,7 @@ reverses the direction of the search.
 <VarListEntry>
 <Term>&caret;O</Term>
 <ListItem>
-<Para>Operate &minus; Execute the current line and fetch
+<Para>Operate - Execute the current line and fetch
 the next line relative to current line from the
 history file.
 </Para>
@@ -3298,7 +3298,7 @@ The commands that accept a parameter are
 <VarListEntry>
 <Term>M- letter</Term>
 <ListItem>
-<Para>Soft-key &minus; Your alias list is searched for an
+<Para>Soft-key - Your alias list is searched for an
 alias by the name
 <Literal>_</Literal><Emphasis>letter</Emphasis> and if an alias of this name is defined, its
 value will be inserted on the input queue.
@@ -3310,7 +3310,7 @@ The
 <VarListEntry>
 <Term>M-[ letter</Term>
 <ListItem>
-<Para>Soft-key &minus; Your alias list is searched for an
+<Para>Soft-key - Your alias list is searched for an
 alias by the name
 <Literal>__</Literal><Emphasis>letter</Emphasis> and if an alias of this name is defined, its
 value will be inserted on the input queue.
@@ -3663,7 +3663,7 @@ the previous command back in time is accessed.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[count]&minus;</Term>
+<Term>[count]-</Term>
 <ListItem>
 <Para>Equivalent to
 <Literal>k</Literal>.</Para>
@@ -3964,7 +3964,7 @@ Equivalent to
 <Term>[count]v</Term>
 <ListItem>
 <Para>Returns the command
-<Literal>hist &minus;e ${VISUAL:&minus;${EDITOR:&minus;vi}}</Literal> <Emphasis>count</Emphasis> in the input buffer.
+<Literal>hist -e ${VISUAL:-${EDITOR:-vi}}</Literal> <Emphasis>count</Emphasis> in the input buffer.
 If
 <Emphasis>count&hairsp;</Emphasis> is omitted, then the current line is used.
 </Para>
@@ -4039,12 +4039,12 @@ and the exit status, when there is no syntax error, is zero.
 Except for
 <Literal>:</Literal>, <Literal>true</Literal>, <Literal>false</Literal>, <Literal>echo</Literal>, <Literal>command</Literal>, <Literal>newgrp</Literal>, and
 <Literal>login</Literal>, all built-in commands accept
-<Literal>&minus;&minus;</Literal> to indicate end of options.
+<Literal>--</Literal> to indicate end of options.
 They also interpret the option
-<Literal>&minus;?</Literal> as a help request and print a
+<Literal>-?</Literal> as a help request and print a
 <Emphasis>usage&hairsp;</Emphasis> message
 on standard error.
-Commands that are preceded by one or two &minus;
+Commands that are preceded by one or two -
 are special built-in commands and
 are treated specially in the following ways:
 </Para>
@@ -4070,7 +4070,7 @@ that contains them to abort.
 </ListItem>
 <ListItem>
 <Para>Words,
-following a command preceded by &minus;&minus;
+following a command preceded by --
 that are in the format of a variable assignment,
 are expanded with the same rules as a variable assignment.
 This means that
@@ -4082,14 +4082,14 @@ performed.
 </OrderedList>
 <VariableList>
 <VarListEntry>
-<Term>&minus;: arg&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>-: arg&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>The command only expands parameters.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus; &thinsp;. name&hairsp; arg&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>- &thinsp;. name&hairsp; arg&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>If
 <Emphasis>name&hairsp;</Emphasis> is a function defined with the
@@ -4115,13 +4115,13 @@ The exit status is the exit status of the last command executed.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;&minus; alias &minus;ptx name =value&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>-- alias -ptx name =value&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para><Literal>alias&hairsp;</Literal> with no arguments prints the list of aliases
 in the form
 <Emphasis>name=value&hairsp;</Emphasis> on standard output.
 The
-<Literal>&minus;p</Literal> option
+<Literal>-p</Literal> option
 causes the word
 <Literal>alias</Literal> to be inserted before each one.
 When one or more arguments are given
@@ -4134,20 +4134,20 @@ A trailing space in
 <Emphasis>value&hairsp;</Emphasis> causes the next word to be checked for
 alias substitution.
 The obsolete
-<Literal>&minus;t</Literal> option is used to set and list tracked aliases.
+<Literal>-t</Literal> option is used to set and list tracked aliases.
 The value of a tracked alias is the full pathname
 corresponding to the given
 <Symbol Role="Variable">name</Symbol>. The value becomes undefined when the value of
 <SystemItem Class="EnvironVar">PATH</SystemItem> is reset but the alias remains tracked.
 Without the
-<Literal>&minus;t</Literal> option,
+<Literal>-t</Literal> option,
 for each
 <Emphasis>name&hairsp;</Emphasis> in the argument list
 for which no
 <Emphasis>value&hairsp;</Emphasis> is given, the name
 and value of the alias is printed.
 The obsolete
-<Literal>&minus;x</Literal> option has no effect.
+<Literal>-x</Literal> option has no effect.
 The exit status is non-zero if a
 <Emphasis>name&hairsp;</Emphasis> is given, but no value, and no alias has been defined for the
 <Emphasis>name&hairsp;</Emphasis>.</Para>
@@ -4168,7 +4168,7 @@ See
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus; break n&hairsp;</Term>
+<Term>- break n&hairsp;</Term>
 <ListItem>
 <Para>Exit from the enclosing
 <Literal>for&hairsp;</Literal>, <Literal>while&hairsp;</Literal>, <Literal>until&hairsp;</Literal>, or
@@ -4180,21 +4180,21 @@ If
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>builtin &minus;ds &minus;f file&hairsp; name&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>builtin -ds -f file&hairsp; name&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>If
 <Emphasis>name&hairsp;</Emphasis> is not specified, the built-ins are printed on standard output.
 The
-<Literal>&minus;s</Literal> option prints only the special built-ins.
+<Literal>-s</Literal> option prints only the special built-ins.
 Otherwise, each
 <Emphasis>name&hairsp;</Emphasis> represents the pathname whose basename is the name of the built-in.
 The entry point function name is determined by prepending
 <Literal>b_</Literal> to the built-in name.
 Special built-ins cannot be bound to a pathname or deleted.
 The
-<Literal>&minus;d</Literal> option deletes each of the given built-ins.
+<Literal>-d</Literal> option deletes each of the given built-ins.
 On systems that support dynamic loading, the
-<Literal>&minus;f</Literal> option names a shared library containing the code for built-ins.
+<Literal>-f</Literal> option names a shared library containing the code for built-ins.
 Once a library is loaded, its symbols become available
 for subsequent invocations of
 <Literal>builtin</Literal>. Multiple libraries can be specified with separate invocations
@@ -4211,20 +4211,20 @@ error-checks the incoming arguments and then calls the real <function>funcName</
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>cd &minus;LP arg&hairsp;</Term>
+<Term>cd -LP arg&hairsp;</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>cd &minus;LP old&hairsp; new&hairsp;</Term>
+<Term>cd -LP old&hairsp; new&hairsp;</Term>
 <ListItem>
 <Para>This command can be in either of two forms.
 In the first form it
 changes the current directory to
 <Emphasis>arg</Emphasis>. If
 <Emphasis>arg&hairsp;</Emphasis> is
-<Literal>&minus;</Literal> the directory is changed to the previous
+<Literal>-</Literal> the directory is changed to the previous
 directory.
 The shell
 variable
@@ -4256,13 +4256,13 @@ searched for
 <Para>By default, symbolic links are not followed when
 finding the directory name.
 This is equivalent to the
-<Literal>&minus;L</Literal> option.
+<Literal>-L</Literal> option.
 The
-<Literal>&minus;P</Literal> option causes
+<Literal>-P</Literal> option causes
 symbolic links to be followed when determining the directory.
 The last instance of
-<Literal>&minus;L</Literal> or
-<Literal>&minus;P</Literal> determines which method is used.
+<Literal>-L</Literal> or
+<Literal>-P</Literal> determines which method is used.
 </Para>
 <Para>The
 <Literal>cd&hairsp;</Literal> command may not be executed by
@@ -4270,15 +4270,15 @@ The last instance of
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>command &minus;pvV name&hairsp; arg&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>command -pvV name&hairsp; arg&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>Without the
-<Literal>&minus;v</Literal> or
-<Literal>&minus;V</Literal> options,
+<Literal>-v</Literal> or
+<Literal>-V</Literal> options,
 <Literal>command</Literal> executes
 <Emphasis>name&hairsp;</Emphasis> with the arguments given by
 <Emphasis>arg</Emphasis>. The
-<Literal>&minus;p</Literal> option causes
+<Literal>-p</Literal> option causes
 a default path to be searched
 rather than the one defined by the value of
 <SystemItem Class="EnvironVar">PATH</SystemItem>. Functions will not be searched for when finding
@@ -4291,17 +4291,17 @@ For example, the predefined alias
 <Literal>redirect=&acute;command exec&acute;</Literal> prevents a script from terminating when an invalid
 redirection is given.)
 With the
-<Literal>&minus;v</Literal> option,
+<Literal>-v</Literal> option,
 <Literal>command</Literal> is equivalent to the built-in
 <Literal>whence</Literal> command described below.
 The
-<Literal>&minus;V</Literal> options, causes
+<Literal>-V</Literal> options, causes
 <Literal>command</Literal> to
-<Literal>whence &minus;v</Literal>.</Para>
+<Literal>whence -v</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus; continue n&hairsp;</Term>
+<Term>- continue n&hairsp;</Term>
 <ListItem>
 <Para>Resume the next iteration of the enclosing
 <Literal>for&hairsp;</Literal>, <Literal>while&hairsp;</Literal>, <Literal>until&hairsp;</Literal>, or
@@ -4327,7 +4327,7 @@ when a login shell terminates.
 <Term>echo arg&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>When the first
-<Emphasis>arg&hairsp;</Emphasis> does not begin with a &minus;, and
+<Emphasis>arg&hairsp;</Emphasis> does not begin with a -, and
 none of the arguments contain a &bsol;,
 then
 <Literal>echo</Literal> prints each of its arguments separated by a space
@@ -4343,7 +4343,7 @@ See
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus; eval arg&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>- eval arg&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>The arguments are read as input
 to the shell
@@ -4352,7 +4352,7 @@ and the resulting command(s) executed.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus; exec &minus;c &minus;a name&hairsp; arg&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>- exec -c -a name&hairsp; arg&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>If
 <Emphasis>arg&hairsp;</Emphasis> is given,
@@ -4360,11 +4360,11 @@ the command specified by
 the arguments is executed in place of this shell
 without creating a new process.
 The
-<Literal>&minus;c</Literal> option causes the environment to be cleared before applying
+<Literal>-c</Literal> option causes the environment to be cleared before applying
 variable assignments associated with the
 <Literal>exec</Literal> invocation.
 The
-<Literal>&minus;a</Literal> option
+<Literal>-a</Literal> option
 causes
 <Emphasis>name&hairsp;</Emphasis> rather than the first
 <Emphasis>arg</Emphasis>, to become
@@ -4400,7 +4400,7 @@ shell which has the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;&minus; export &minus;p name&hairsp;=value&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>-- export -p name&hairsp;=value&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>If
 <Emphasis>name&hairsp;</Emphasis> is not given,
@@ -4408,7 +4408,7 @@ the names and values of each variable with
 the export attribute are printed with the values
 quoted in a manner that allows them to be re-inputed.
 The
-<Literal>&minus;p</Literal> option
+<Literal>-p</Literal> option
 causes the word
 <Literal>export</Literal> to be inserted before each one.
 Otherwise, the given
@@ -4449,10 +4449,10 @@ If
 the positional parameters are used.
 An option argument begins with a
 <Literal>+</Literal> or a
-<Literal>&minus;</Literal>. An option not beginning with
+<Literal>-</Literal>. An option not beginning with
 <Literal>+</Literal> or
-<Literal>&minus;</Literal> or the argument
-<Literal>&minus;&thinsp;&minus;</Literal> ends the options.
+<Literal>-</Literal> or the argument
+<Literal>-&thinsp;-</Literal> ends the options.
 <Emphasis>optstring</Emphasis> contains the letters that
 <Emphasis>getopts</Emphasis> recognizes.
 If a letter is followed by a
@@ -4483,20 +4483,20 @@ Otherwise,
 The exit status is non-zero when there are no more options.
 </Para>
 <Para>There is no way to specify any of the options
-<Literal>:</Literal>, <Literal>+</Literal>, <Literal>&minus;</Literal>, <Literal>?</Literal>, <Literal>[</Literal>, and
+<Literal>:</Literal>, <Literal>+</Literal>, <Literal>-</Literal>, <Literal>?</Literal>, <Literal>[</Literal>, and
 <Literal>]</Literal>. The option
 <Literal>#</Literal> can only be specified as the first option.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>hist &minus;e ename&hairsp; &ensp; &minus;nlr&hairsp; first&hairsp; last&hairsp;</Term>
+<Term>hist -e ename&hairsp; &ensp; -nlr&hairsp; first&hairsp; last&hairsp;</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>hist &minus;s old=new&hairsp; command&hairsp;</Term>
+<Term>hist -s old=new&hairsp; command&hairsp;</Term>
 <ListItem>
 <Para>In the first form,
 a range of commands from
@@ -4510,7 +4510,7 @@ A string is used to locate the most recent command starting with
 the given string.
 A negative number is used as an offset to the current command number.
 If the
-<Literal>&minus;l</Literal> option
+<Literal>-l</Literal> option
 is selected,
 the commands are listed on standard output.
 Otherwise, the editor program
@@ -4531,11 +4531,11 @@ then it will be set to
 <Symbol Role="Variable">first</Symbol>. If
 <Emphasis>first&hairsp;</Emphasis> is not specified
 the default is the previous command
-for editing and &minus;16 for listing.
+for editing and -16 for listing.
 The option
-<Literal>&minus;r</Literal> reverses the order of the commands and
+<Literal>-r</Literal> reverses the order of the commands and
 the option
-<Literal>&minus;n</Literal> suppresses command numbers when listing.
+<Literal>-n</Literal> suppresses command numbers when listing.
 In the second form the
 <Emphasis>command&hairsp;</Emphasis> is re-executed after the substitution
 <Emphasis>old&hairsp;</Emphasis><Literal>=</Literal><Emphasis>new&hairsp;</Emphasis>
@@ -4544,42 +4544,42 @@ is performed.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>jobs &minus;lnp&hairsp; job&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>jobs -lnp&hairsp; job&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>Lists information about each given job; or all active jobs if
 <Emphasis>job</Emphasis> is omitted.
 The
-<Literal>&minus;l</Literal> option lists process ids in addition to the normal information.
+<Literal>-l</Literal> option lists process ids in addition to the normal information.
 The
-<Literal>&minus;n</Literal> option only displays jobs that have stopped or exited since last
+<Literal>-n</Literal> option only displays jobs that have stopped or exited since last
 notified.
 The
-<Literal>&minus;p</Literal> option causes only the process group to be listed.
+<Literal>-p</Literal> option causes only the process group to be listed.
 See
 <Emphasis>Jobs</Emphasis> for a description of the format of
 <Emphasis>job</Emphasis>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>kill &minus;s signame&hairsp; job&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>kill -s signame&hairsp; job&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>kill &minus;n signum&hairsp; job&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>kill -n signum&hairsp; job&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>kill &minus;l sig&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>kill -l sig&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>Sends either the TERM (terminate) signal or the
 specified signal to the specified jobs or processes.
 Signals are either given by number with the
-<Literal>&minus;n</Literal> option or by name with the
-<Literal>&minus;s</Literal> option
+<Literal>-n</Literal> option or by name with the
+<Literal>-s</Literal> option
 (as given in
 <Literal>&lt;signal.h></Literal>, stripped of the prefix ``SIG'' with
 the exception that SIGCLD is named CHLD).
@@ -4587,7 +4587,7 @@ For backward compatibility, the
 <Literal>n</Literal> and
 <Literal>s</Literal> can be omitted and the number or name placed immediately
 after the
-<Literal>&minus;</Literal>. If the signal being sent is TERM (terminate) or HUP (hangup),
+<Literal>-</Literal>. If the signal being sent is TERM (terminate) or HUP (hangup),
 then the job or process will be sent a CONT (continue) signal
 if it is stopped.
 The argument
@@ -4596,7 +4596,7 @@ active jobs.
 See
 <Emphasis>Jobs</Emphasis> for a description of the format of
 <Emphasis>job</Emphasis>. In the third form,
-<Literal>kill &minus;l</Literal>, if
+<Literal>kill -l</Literal>, if
 <Emphasis>sig&hairsp;</Emphasis> is not specified,
 the signal names are listed.
 Otherwise, for each
@@ -4624,7 +4624,7 @@ is non-zero, and 1 otherwise.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus; newgrp arg&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>- newgrp arg&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>Equivalent to
 <Literal>exec /bin/newgrp</Literal> <Emphasis>arg&hairsp;</Emphasis> .&thinsp;.&thinsp;.&hairsp;.
@@ -4632,22 +4632,22 @@ is non-zero, and 1 otherwise.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>print &minus;Rnprs&hairsp; &minus;u unit&hairsp; &minus;f format&hairsp; arg&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>print -Rnprs&hairsp; -u unit&hairsp; -f format&hairsp; arg&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>With no options or with option
-<Literal>&minus;</Literal> or
-<Literal>&minus;&thinsp;&minus;</Literal>, Each
+<Literal>-</Literal> or
+<Literal>-&thinsp;-</Literal>, Each
 <Emphasis>arg</Emphasis> is printed
 on standard output.
 The
-<Literal>&minus;f</Literal> option causes the arguments to be printed as
+<Literal>-f</Literal> option causes the arguments to be printed as
 described by
 <Literal>printf</Literal>. In this case any
 <Literal>n</Literal>, <Literal>r</Literal>, <Literal>R</Literal> options are ignored.
 Otherwise,
 unless the
-<Literal>&minus;R</Literal> or
-<Literal>&minus;r</Literal>, are specified, the following
+<Literal>-R</Literal> or
+<Literal>-r</Literal>, are specified, the following
 escape conventions will be applied:
 </Para>
 <VariableList>
@@ -4725,25 +4725,25 @@ not adding a new-line.
 </VarListEntry>
 </VariableList>
 <Para>The
-<Literal>&minus;R</Literal> option will print all subsequent arguments and options
+<Literal>-R</Literal> option will print all subsequent arguments and options
 other than
-<Literal>&minus;n</Literal>. The
-<Literal>&minus;p</Literal> option causes the
+<Literal>-n</Literal>. The
+<Literal>-p</Literal> option causes the
 arguments to be written onto the pipe
 of the process spawned with
 <Literal>&verbar;&amp;</Literal> instead of standard output.
 The
-<Literal>&minus;s</Literal> option causes the
+<Literal>-s</Literal> option causes the
 arguments to be written onto the history file
 instead of standard output.
 The
-<Literal>&minus;u</Literal> option can be used to specify a one digit
+<Literal>-u</Literal> option can be used to specify a one digit
 file descriptor unit number
 <Emphasis>unit&hairsp;</Emphasis> on which the
 output will be placed.
 The default is 1.
 If the option
-<Literal>&minus;n</Literal> is used, no
+<Literal>-n</Literal> is used, no
 <Literal>new-line&hairsp;</Literal> is added to the output.
 </Para>
 </ListItem>
@@ -4790,18 +4790,18 @@ be reinput to the shell.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>pwd &minus;LP</Term>
+<Term>pwd -LP</Term>
 <ListItem>
 <Para>Outputs the value of the current working
 directory.
 If the
-<Literal>&minus;P</Literal> option is given,
+<Literal>-P</Literal> option is given,
 all symbolic links are resolved from the name.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>read &minus;Aprs&hairsp; &minus;d delim&hairsp; &minus;t timeout&hairsp; &minus;u unit&hairsp; vname?prompt&hairsp; vname&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>read -Aprs&hairsp; -d delim&hairsp; -t timeout&hairsp; -u unit&hairsp; vname?prompt&hairsp; vname&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>The shell input mechanism.
 One line is read and
@@ -4811,11 +4811,11 @@ The escape character,
 <Literal>&bsol;</Literal>, is used to remove any special meaning for the next
 character and for line continuation.
 The
-<Literal>&minus;d</Literal> option
+<Literal>-d</Literal> option
 causes the read to continue to the first character of
 <Emphasis>delim&hairsp;</Emphasis> rather than new-line.
 In raw mode,
-<Literal>&minus;r,</Literal> the
+<Literal>-r,</Literal> the
 <Literal>&bsol;</Literal> character is not treated specially.
 The first
 field is assigned to the first
@@ -4823,19 +4823,19 @@ field is assigned to the first
 to the second
 <Emphasis>vname</Emphasis>, etc., with leftover fields assigned to the last
 <Emphasis>vname</Emphasis>. The
-<Literal>&minus;A</Literal> option causes the variable
+<Literal>-A</Literal> option causes the variable
 <Emphasis>vname&hairsp;</Emphasis> to be unset and each field that is read to be stored in
 successive elements of the indexed array
 <Emphasis>vname.</Emphasis> The
-<Literal>&minus;p</Literal> option causes the input line
+<Literal>-p</Literal> option causes the input line
 to be taken from the input pipe
 of a process spawned by the shell
 using
 <Literal>&verbar;&amp;</Literal>. If the
-<Literal>&minus;s</Literal> option is present,
+<Literal>-s</Literal> option is present,
 the input will be saved as a command in the history file.
 The option
-<Literal>&minus;u</Literal> can be used to specify a one digit file
+<Literal>-u</Literal> can be used to specify a one digit file
 descriptor unit
 <Emphasis>unit&hairsp;</Emphasis> to read from.
 The file descriptor can be opened with the
@@ -4843,13 +4843,13 @@ The file descriptor can be opened with the
 The default value of unit
 <Emphasis>n&hairsp;</Emphasis> is 0.
 The option
-<Literal>&minus;t</Literal> is used to specify a timeout in decimal
+<Literal>-t</Literal> is used to specify a timeout in decimal
 seconds when reading from a terminal or pipe.
 If
 <Emphasis>vname&hairsp;</Emphasis> is omitted then
 <Symbol>REPLY</Symbol> is used as the default
 <Emphasis>vname</Emphasis>. An end-of-file with the
-<Literal>&minus;p</Literal> option causes cleanup for this process
+<Literal>-p</Literal> option causes cleanup for this process
 so that another can be spawned.
 If the first argument contains a
 <Literal>?</Literal>, the remainder of this word is used as a
@@ -4861,7 +4861,7 @@ or read has timed out.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;&minus; readonly &minus;p vname=value&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>-- readonly -p vname=value&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>If
 <Emphasis>vname&hairsp;</Emphasis> is not given
@@ -4869,7 +4869,7 @@ the names and values of each variable with
 the readonly attribute is printed with the values
 quoted in a manner that allows them to be re-inputed.
 The
-<Literal>&minus;p</Literal> option
+<Literal>-p</Literal> option
 causes the word
 <Literal>readonly</Literal> to be inserted before each one.
 Otherwise, the given
@@ -4881,7 +4881,7 @@ by subsequent assignment.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus; return n&hairsp;</Term>
+<Term>- return n&hairsp;</Term>
 <ListItem>
 <Para>Causes a shell
 <Symbol Role="Variable">function</Symbol> or
@@ -4902,13 +4902,13 @@ then it behaves the same as
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus; set &plusmn;CPabefhkmnopstuvx &plusmn;o option&hairsp; .&thinsp;.&thinsp;. &plusmn;A vname&hairsp; arg&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>- set &plusmn;CPabefhkmnopstuvx &plusmn;o option&hairsp; .&thinsp;.&thinsp;. &plusmn;A vname&hairsp; arg&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>The options for this command have meaning as follows:
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>&minus;A</Term>
+<Term>-A</Term>
 <ListItem>
 <Para>Array assignment.
 Unset the variable
@@ -4921,7 +4921,7 @@ list
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;C</Term>
+<Term>-C</Term>
 <ListItem>
 <Para>Prevents redirection
 <Literal>></Literal> from truncating existing files.
@@ -4932,7 +4932,7 @@ Require
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;P</Term>
+<Term>-P</Term>
 <ListItem>
 <Para>Causes the
 <Literal>cd</Literal> and
@@ -4941,14 +4941,14 @@ Require
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;a</Term>
+<Term>-a</Term>
 <ListItem>
 <Para>All subsequent variables that are defined are automatically exported.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;b</Term>
+<Term>-b</Term>
 <ListItem>
 <Para>Prints job completion messages as soon as a background job changes
 state rather than waiting for the next prompt.
@@ -4956,7 +4956,7 @@ state rather than waiting for the next prompt.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;e</Term>
+<Term>-e</Term>
 <ListItem>
 <Para>If a command has a non-zero exit status,
 execute the
@@ -4967,14 +4967,14 @@ This mode is disabled while reading profiles.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;f</Term>
+<Term>-f</Term>
 <ListItem>
 <Para>Disables file name generation.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;h</Term>
+<Term>-h</Term>
 <ListItem>
 <Para>Each command
 becomes a tracked alias when first encountered.
@@ -4982,7 +4982,7 @@ becomes a tracked alias when first encountered.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;k</Term>
+<Term>-k</Term>
 <ListItem>
 <Para>(Obsolete). All variable assignment arguments are placed in the environment for a command,
 not just those that precede the command name.
@@ -4990,7 +4990,7 @@ not just those that precede the command name.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;m</Term>
+<Term>-m</Term>
 <ListItem>
 <Para>Background jobs will run in a separate process group
 and a line will print upon completion.
@@ -5002,7 +5002,7 @@ interactive shells.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;n</Term>
+<Term>-n</Term>
 <ListItem>
 <Para>Read commands and check them for syntax errors, but do not execute them.
 Ignored for interactive shells.
@@ -5010,7 +5010,7 @@ Ignored for interactive shells.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;o</Term>
+<Term>-o</Term>
 <ListItem>
 <Para>The following argument can be one of the following option names:
 </Para>
@@ -5019,14 +5019,14 @@ Ignored for interactive shells.
 <Term>allexport</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;a</Literal>.</Para>
+<Literal>-a</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>errexit</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;e</Literal>.</Para>
+<Literal>-e</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
@@ -5066,7 +5066,7 @@ The command
 <Term>keyword</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;k</Literal>.</Para>
+<Literal>-k</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
@@ -5081,28 +5081,28 @@ The command
 <Term>monitor</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;m</Literal>.</Para>
+<Literal>-m</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>noclobber</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;C</Literal>.</Para>
+<Literal>-C</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>noexec</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;n</Literal>.</Para>
+<Literal>-n</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>noglob</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;f</Literal>.</Para>
+<Literal>-f</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
@@ -5116,42 +5116,42 @@ The command
 <Term>notify</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;b</Literal>.</Para>
+<Literal>-b</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>nounset</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;u</Literal>.</Para>
+<Literal>-u</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>physical</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;P</Literal>.</Para>
+<Literal>-P</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>privileged</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;p</Literal>.</Para>
+<Literal>-p</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>verbose</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;v</Literal>.</Para>
+<Literal>-v</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>trackall</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;h</Literal>.</Para>
+<Literal>-h</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
@@ -5178,7 +5178,7 @@ in
 <Term>xtrace</Term>
 <ListItem>
 <Para>Same as
-<Literal>&minus;x</Literal>.</Para>
+<Literal>-x</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
@@ -5191,7 +5191,7 @@ in
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;p</Term>
+<Term>-p</Term>
 <ListItem>
 <Para>Disables processing of the
 <Filename>$HOME/.profile</Filename> file and uses the file
@@ -5205,61 +5205,61 @@ set to the real uid and gid.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;s</Term>
+<Term>-s</Term>
 <ListItem>
 <Para>Sort the positional parameters lexicographically.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;t</Term>
+<Term>-t</Term>
 <ListItem>
 <Para>(Obsolete). Exit after reading and executing one command.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;u</Term>
+<Term>-u</Term>
 <ListItem>
 <Para>Treat unset parameters as an error when substituting.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;v</Term>
+<Term>-v</Term>
 <ListItem>
 <Para>Print shell input lines as they are read.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;x</Term>
+<Term>-x</Term>
 <ListItem>
 <Para>Print commands and their arguments as they are executed.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;&thinsp;&minus;</Term>
+<Term>-&thinsp;-</Term>
 <ListItem>
 <Para>Do not change any of the options; useful in setting
 <Literal>$1</Literal> to a value beginning with
-<Literal>&minus;</Literal>. If no arguments follow this option then the positional parameters are unset.
+<Literal>-</Literal>. If no arguments follow this option then the positional parameters are unset.
 </Para>
 <Para>As an obsolete feature,
 if the first
 <Emphasis>arg&hairsp;</Emphasis> is
-<Literal>&minus;</Literal> then the
-<Literal>&minus;x</Literal> and
-<Literal>&minus;v</Literal> options are turned off and the next
+<Literal>-</Literal> then the
+<Literal>-x</Literal> and
+<Literal>-v</Literal> options are turned off and the next
 <Emphasis>arg</Emphasis> is treated as the first argument.
 Using
 <Literal>+</Literal> rather than
-<Literal>&minus;</Literal> causes these options to be turned off.
+<Literal>-</Literal> causes these options to be turned off.
 These options can also be used upon invocation of the shell.
 The current set of options may be found in
-<Literal>$&minus;</Literal>. Unless
-<Literal>&minus;A</Literal> is specified,
+<Literal>$-</Literal>. Unless
+<Literal>-A</Literal> is specified,
 the remaining arguments are positional
 parameters and are assigned, in order, to
 <Literal>$1</Literal> <Literal>$2</Literal> .&thinsp;.&thinsp;.&hairsp;.
@@ -5272,7 +5272,7 @@ of all variables are printed on the standard output.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus; shift n&hairsp;</Term>
+<Term>- shift n&hairsp;</Term>
 <ListItem>
 <Para>The positional parameters from
 <Literal>$</Literal><Symbol Role="Variable">n</Symbol><Literal>+1</Literal>
@@ -5296,9 +5296,9 @@ second given by
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus; trap &minus;p action&hairsp; sig&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>- trap -p action&hairsp; sig&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
-<Para>The &minus;p
+<Para>The -p
 option causes the trap
 action associated with each trap as specified by the arguments
 to be printed with appropriate quoting.
@@ -5316,7 +5316,7 @@ If
 <Emphasis>action&hairsp;</Emphasis> is omitted and the first
 <Emphasis>sig&hairsp;</Emphasis> is a number, or if
 <Emphasis>action&hairsp;</Emphasis> is
-<Literal>&minus;</Literal>, then the trap(s) for each
+<Literal>-</Literal>, then the trap(s) for each
 <Emphasis>sig&hairsp;</Emphasis> are reset
 to their original values.
 If
@@ -5362,7 +5362,7 @@ of commands associated with each signal number.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;&minus; typeset &plusmn;AHflnprtux&hairsp; &plusmn;EFLRZin&hairsp; vname&hairsp;=value&hairsp; &hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>-- typeset &plusmn;AHflnprtux&hairsp; &plusmn;EFLRZin&hairsp; vname&hairsp;=value&hairsp; &hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>Sets attributes and values for shell variables and functions.
 When invoked inside a function,
@@ -5374,7 +5374,7 @@ The following list of attributes may be specified:
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>&minus;A</Term>
+<Term>-A</Term>
 <ListItem>
 <Para>Declares
 <Emphasis>vname&hairsp;</Emphasis> to be an associate array.
@@ -5384,7 +5384,7 @@ expressions.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;E</Term>
+<Term>-E</Term>
 <ListItem>
 <Para>Declares
 <Emphasis>vname&hairsp;</Emphasis> to be a double precision floating point number.
@@ -5396,7 +5396,7 @@ that are used when expanding
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;F</Term>
+<Term>-F</Term>
 <ListItem>
 <Para>Declares
 <Emphasis>vname&hairsp;</Emphasis> to be a double precision floating point number.
@@ -5408,7 +5408,7 @@ decimal point that are used when expanding
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;H</Term>
+<Term>-H</Term>
 <ListItem>
 <Para>This option provides UNIX to host-name file mapping on non-UNIX
 machines.
@@ -5416,7 +5416,7 @@ machines.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;L</Term>
+<Term>-L</Term>
 <ListItem>
 <Para>Left justify and remove leading blanks from
 <Symbol Role="Variable">value</Symbol>. If
@@ -5428,12 +5428,12 @@ When the variable is assigned to, it is
 filled on the right with blanks or truncated, if necessary, to
 fit into the field.
 The
-<Literal>&minus;R</Literal> option is turned off.
+<Literal>-R</Literal> option is turned off.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;R</Term>
+<Term>-R</Term>
 <ListItem>
 <Para>Right justify and fill with leading blanks.
 If
@@ -5445,18 +5445,18 @@ The field is left filled with blanks or
 truncated from the end if the
 variable is reassigned.
 The
-<Literal>&minus;L</Literal> option is turned off.
+<Literal>-L</Literal> option is turned off.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;Z</Term>
+<Term>-Z</Term>
 <ListItem>
 <Para>Right justify and fill with leading zeros if
 the first non-blank character is a digit and the
-<Literal>&minus;L</Literal> option has not been set.
+<Literal>-L</Literal> option has not been set.
 Remove leading zeros if the
-<Literal>&minus;L</Literal> option is also set.
+<Literal>-L</Literal> option is also set.
 If
 <Emphasis>n&hairsp;</Emphasis> is non-zero it defines the width
 of the field,
@@ -5466,17 +5466,17 @@ first assignment.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;f</Term>
+<Term>-f</Term>
 <ListItem>
 <Para>The names refer to function names rather than
 variable names.
 No assignments can be made and the only other
 valid options are
-<Literal>&minus;t</Literal>, <Literal>&minus;u</Literal> and
-<Literal>&minus;x</Literal>. The option
-<Literal>&minus;t</Literal> turns on execution tracing for this function.
+<Literal>-t</Literal>, <Literal>-u</Literal> and
+<Literal>-x</Literal>. The option
+<Literal>-t</Literal> turns on execution tracing for this function.
 The option
-<Literal>&minus;u</Literal> causes this function to be marked undefined.
+<Literal>-u</Literal> causes this function to be marked undefined.
 The
 <SystemItem Class="EnvironVar">FPATH</SystemItem> variable will be searched to find the function definition
 when the function is referenced.
@@ -5484,7 +5484,7 @@ when the function is referenced.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;i</Term>
+<Term>-i</Term>
 <ListItem>
 <Para>Declares
 <Emphasis>vname&hairsp;</Emphasis> to be represented internally as integer.
@@ -5497,17 +5497,17 @@ otherwise the the output base will be ten.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;l</Term>
+<Term>-l</Term>
 <ListItem>
 <Para>All upper-case characters are
 converted to lower-case.
 The upper-case option,
-<Literal>&minus;u</Literal> is turned off.
+<Literal>-u</Literal> is turned off.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;n</Term>
+<Term>-n</Term>
 <ListItem>
 <Para>Declares
 <Emphasis>vname&hairsp;</Emphasis> to be a reference to the variable whose name is
@@ -5518,7 +5518,7 @@ a function whose name has been passed as an argument.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;r</Term>
+<Term>-r</Term>
 <ListItem>
 <Para>The given
 <Emphasis>vname</Emphasis>s are marked
@@ -5529,7 +5529,7 @@ by subsequent assignment.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;t</Term>
+<Term>-t</Term>
 <ListItem>
 <Para>Tags the variables.
 Tags are user definable and have no special
@@ -5538,17 +5538,17 @@ meaning to the shell.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;u</Term>
+<Term>-u</Term>
 <ListItem>
 <Para>All lower-case characters are converted
 to upper-case characters.
 The lower-case option,
-<Literal>&minus;l</Literal>, is turned off.
+<Literal>-l</Literal>, is turned off.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;x</Term>
+<Term>-x</Term>
 <ListItem>
 <Para>The given
 <Emphasis>vname</Emphasis>s are marked for automatic
@@ -5558,12 +5558,12 @@ Variables whose names contain a &period;
 can not be exported.
 </Para>
 <Para>The
-<Literal>&minus;i</Literal> attribute can not be specified along with
-<Literal>&minus;R</Literal>, <Literal>&minus;L</Literal>, <Literal>&minus;Z</Literal>, or
-<Literal>&minus;f</Literal>.</Para>
+<Literal>-i</Literal> attribute can not be specified along with
+<Literal>-R</Literal>, <Literal>-L</Literal>, <Literal>-Z</Literal>, or
+<Literal>-f</Literal>.</Para>
 <Para>Using
 <Literal>+</Literal> rather than
-<Literal>&minus;</Literal> causes these options to be turned off.
+<Literal>-</Literal> causes these options to be turned off.
 If no
 <Emphasis>vname&hairsp;</Emphasis> arguments are given
 a list of
@@ -5572,15 +5572,15 @@ a list of
 <Emphasis>variables&hairsp;</Emphasis> is printed.
 (Using
 <Literal>+</Literal> rather than
-<Literal>&minus;</Literal> keeps the
+<Literal>-</Literal> keeps the
 values from being printed.)
 The
-<Literal>&minus;p</Literal> option causes
+<Literal>-p</Literal> option causes
 <Literal>typeset</Literal> followed by the the option letters
 to be printed before each name
 rather than the names of the options.
 If any option other than
-<Literal>&minus;p</Literal> is given,
+<Literal>-p</Literal> is given,
 only those variables
 which have all of the given
 options are printed.
@@ -5595,7 +5595,7 @@ Otherwise, the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ulimit &minus;HSacdfmnpstv limit&hairsp;</Term>
+<Term>ulimit -HSacdfmnpstv limit&hairsp;</Term>
 <ListItem>
 <Para>Set or display a resource limit.
 The available resources limits are listed below.
@@ -5606,8 +5606,8 @@ The value of
 <Emphasis>limit&hairsp;</Emphasis> can be a number in the unit specified below with each resource,
 or the value
 <Literal>unlimited</Literal>. The
-<Literal>&minus;H</Literal> and
-<Literal>&minus;S</Literal> options specify whether the hard limit or the
+<Literal>-H</Literal> and
+<Literal>-S</Literal> options specify whether the hard limit or the
 soft limit for the given resource is set.
 A hard limit cannot be increased once it is set. A soft
 limit can be increased up to the value of the hard limit.
@@ -5623,28 +5623,28 @@ name and unit is printed before the value.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>&minus;a</Term>
+<Term>-a</Term>
 <ListItem>
 <Para>Lists all of the current resource limits.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;c</Term>
+<Term>-c</Term>
 <ListItem>
 <Para>The number of 512-byte blocks on the size of core dumps.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;d</Term>
+<Term>-d</Term>
 <ListItem>
 <Para>The number of K-bytes on the size of the data area.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;f</Term>
+<Term>-f</Term>
 <ListItem>
 <Para>The number of 512-byte blocks on files that can be written the
 current process or by child processes (files of any size may be read).
@@ -5652,47 +5652,47 @@ current process or by child processes (files of any size may be read).
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;m</Term>
+<Term>-m</Term>
 <ListItem>
 <Para>The number of K-bytes on the size of physical memory.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;n</Term>
+<Term>-n</Term>
 <ListItem>
 <Para>The number of file descriptors plus 1.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;p</Term>
+<Term>-p</Term>
 <ListItem>
 <Para>The number of 512-byte blocks for pipe buffering.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;s</Term>
+<Term>-s</Term>
 <ListItem>
 <Para>The number of K-bytes on the size of the stack area.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;t</Term>
+<Term>-t</Term>
 <ListItem>
 <Para>The number of seconds to be used by each process.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;v</Term>
+<Term>-v</Term>
 <ListItem>
 <Para>The number of K-bytes for virtual memory.
 </Para>
 <Para>If no option is given,
-<Literal>&minus;f</Literal> is assumed.
+<Literal>-f</Literal> is assumed.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -5700,7 +5700,7 @@ current process or by child processes (files of any size may be read).
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>umask &minus;S mask&hairsp;</Term>
+<Term>umask -S mask&hairsp;</Term>
 <ListItem>
 <Para>The user file-creation mask is set to
 <Emphasis>mask&hairsp;</Emphasis> (see
@@ -5714,27 +5714,27 @@ applying
 If
 <Emphasis>mask&hairsp;</Emphasis> is omitted, the current value of the mask is printed.
 The
-<Literal>&minus;S</Literal> option causes the mode to be printed as a symbolic
+<Literal>-S</Literal> option causes the mode to be printed as a symbolic
 value. Otherwise, the
 mask is printed in octal.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus; unalias &minus;a name&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>- unalias -a name&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>The
 <Emphasis>aliases&hairsp;</Emphasis> given by the list of
 <Symbol Role="Variable">name</Symbol>s are removed from the
 <Emphasis>alias&hairsp;</Emphasis> list.
 The
-<Literal>&minus;a</Literal> option causes all the
+<Literal>-a</Literal> option causes all the
 aliases to be unset.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;unset &minus;fv vname&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>-unset -fv vname&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>The variables given by the list of
 <Emphasis>vname</Emphasis>s are unassigned,
@@ -5742,14 +5742,14 @@ i.e.,
 their values and attributes are erased.
 Readonly variables cannot be unset.
 If the
-<Literal>&minus;f</Literal> option
+<Literal>-f</Literal> option
 is set, then the names refer to
 <Emphasis>function&hairsp;</Emphasis> names.
 If the
-<Literal>&minus;v</Literal> option is set, then the names refer to
+<Literal>-v</Literal> option is set, then the names refer to
 <Emphasis>variable&hairsp;</Emphasis> names.
 The default is equivalent to
-<Literal>&minus;v</Literal>. Unsetting
+<Literal>-v</Literal>. Unsetting
 <Symbol>ERRNO</Symbol>, <Symbol>LINENO</Symbol>, <Symbol>MAILCHECK</Symbol>, <Symbol>OPTARG</Symbol>, <Symbol>OPTIND</Symbol>, <Symbol>RANDOM</Symbol>, <Symbol>SECONDS</Symbol>, <Symbol>TMOUT</Symbol>, and
 <Literal>_</Literal> removes their special meaning even if they are
 subsequently assigned to.
@@ -5772,23 +5772,23 @@ See
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>whence &minus;apv name&hairsp; .&thinsp;.&thinsp;.</Term>
+<Term>whence -apv name&hairsp; .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>For each
 <Symbol Role="Variable">name</Symbol>, indicate how it
 would be interpreted if used as a command name.
 </Para>
 <Para>The
-<Literal>&minus;v</Literal> option
+<Literal>-v</Literal> option
 produces a more verbose report.
 </Para>
 <Para>The
-<Literal>&minus;p</Literal> option
+<Literal>-p</Literal> option
 does a path search for
 <Emphasis>name&hairsp;</Emphasis> even if name is an alias, a function, or a reserved word.
 The
-<Literal>&minus;a</Literal> is similar to the
-<Literal>&minus;v</Literal> option but causes
+<Literal>-a</Literal> is similar to the
+<Literal>-v</Literal> option but causes
 all interpretations of the given name to be reported.
 </Para>
 </ListItem>
@@ -5800,7 +5800,7 @@ all interpretations of the given name to be reported.
 <Para>If the shell is invoked by
 <Emphasis>exec</Emphasis>(2), and the first character of argument zero
 (<Literal>$0</Literal>) is
-<Literal>&minus;</Literal>, then the shell is assumed to be a
+<Literal>-</Literal>, then the shell is assumed to be a
 <Emphasis>login</Emphasis> shell and
 commands are read from
 <Filename>/etc/profile</Filename> and then from either
@@ -5813,7 +5813,7 @@ and arithmetic substitution on
 the value of the environment variable
 <Symbol>ENV</Symbol> if the file exists.
 If the
-<Literal>&minus;s</Literal> option is not present and
+<Literal>-s</Literal> option is not present and
 <Emphasis>arg&hairsp;</Emphasis> is, then a path search is performed on the first
 <Emphasis>arg&hairsp;</Emphasis> to determine the name of the script to execute.
 The script
@@ -5828,10 +5828,10 @@ when it is invoked:
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>&minus;c</Term>
+<Term>-c</Term>
 <ListItem>
 <Para>If the
-<Literal>&minus;c</Literal> option is present then
+<Literal>-c</Literal> option is present then
 commands are read from the first
 <Emphasis>arg</Emphasis>. Any remaining arguments become
 position parameters starting at
@@ -5839,10 +5839,10 @@ position parameters starting at
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;s</Term>
+<Term>-s</Term>
 <ListItem>
 <Para>If the
-<Literal>&minus;s</Literal> option is present or if no
+<Literal>-s</Literal> option is present or if no
 arguments remain
 then commands are read from the standard input.
 Shell output,
@@ -5854,10 +5854,10 @@ file descriptor 2.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;i</Term>
+<Term>-i</Term>
 <ListItem>
 <Para>If the
-<Literal>&minus;i</Literal> option is present or
+<Literal>-i</Literal> option is present or
 if the shell input and output are attached to a terminal (as told by
 <Emphasis>ioctl</Emphasis>(2)) then this shell is
 <Emphasis>interactive</Emphasis>. In this case TERM is ignored (so that <Literal>kill 0</Literal>
@@ -5869,16 +5869,16 @@ In all cases, QUIT is ignored by the shell.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;r</Term>
+<Term>-r</Term>
 <ListItem>
 <Para>If the
-<Literal>&minus;r</Literal> option is present the shell is a restricted shell.
+<Literal>-r</Literal> option is present the shell is a restricted shell.
 </Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
 <Para>The
-<Literal>&minus;I</Literal> <Emphasis>filename&hairsp;</Emphasis> option is used
+<Literal>-I</Literal> <Emphasis>filename&hairsp;</Emphasis> option is used
 to generate a cross reference database
 that can be used by a separate utility
 to find definitions and references for variables and commands.
@@ -5886,7 +5886,7 @@ to find definitions and references for variables and commands.
 <Para>The remaining options and arguments are described under the
 <Literal>set</Literal> command above.
 An optional
-<Literal>&minus;</Literal> as the first argument is ignored.
+<Literal>-</Literal> as the first argument is ignored.
 </Para>
 </RefSect2>
 <RefSect2>
@@ -6030,7 +6030,7 @@ installed in a directory in the search path before the directory where the
 original command was found, the shell will continue to
 <Emphasis>exec&hairsp;</Emphasis> the original command.
 Use the
-<Literal>&minus;t</Literal> option of the
+<Literal>-t</Literal> option of the
 <Literal>alias&hairsp;</Literal> command to correct this situation.
 </Para>
 <Para>Some very old shell scripts contain a

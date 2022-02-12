@@ -16,10 +16,10 @@ Create optimized DtSearch compression/decompression tables
 <cmdsynopsis>
 <command>huffcode</command>
 <arg choice="opt"><group choice="plain">
-<arg choice="plain">&minus;l<replaceable>lit_thresh</replaceable></arg>
-<arg choice="plain">&minus;l&minus;</arg>
+<arg choice="plain">-l<replaceable>lit_thresh</replaceable></arg>
+<arg choice="plain">-l-</arg>
 </group></arg>
-<arg choice="opt">&minus;o</arg>
+<arg choice="opt">-o</arg>
 <arg choice="plain"><replaceable>huffile</replaceable></arg>
 <arg choice="opt"><replaceable>textfile</replaceable></arg>
 </cmdsynopsis>
@@ -96,7 +96,7 @@ record, does not match the value in the decode module. The
 the option name without white space.</para>
 </note>
 <variablelist>
-<varlistentry><term><literal>&minus;l</literal><Symbol Role="Variable">lit_thresh</Symbol></term>
+<varlistentry><term><literal>-l</literal><Symbol Role="Variable">lit_thresh</Symbol></term>
 <listitem>
 <para>Sets the literal character's minimum threshold to the integer specified
 by <Symbol Role="Variable">lit_thresh</Symbol>.
@@ -114,14 +114,14 @@ in the encode table occurring with frequency less than or equal to
 <Symbol Role="Variable">lit_thresh</Symbol> will be coded with the
 literal character.
 </para>
-<para>If this option and the <literal>&minus;l&minus;</literal> option are
-omitted, the default is <literal>&minus;l0</literal>, meaning that
+<para>If this option and the <literal>-l-</literal> option are
+omitted, the default is <literal>-l0</literal>, meaning that
 literal coding is provided only for bytes that never occur (counts of
 zero).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;l&minus;</literal></term>
+<varlistentry><term><literal>-l-</literal></term>
 <listitem>
 <para>Disables literal character encoding. Disabling literal character
 encoding in corpa with unbalanced byte frequency distributions will lead
@@ -129,13 +129,13 @@ to extremely long bit string codes. Most natural language text corpa
 are represented by highly unbalanced frequency distributions so this
 option is not recommended for most DtSearch applications.
 </para>
-<para>If this option and the <literal>&minus;l</literal><Symbol Role="Variable">lit_thresh</Symbol> option are omitted, the default is
-<literal>&minus;l0</literal>, meaning that literal coding is provided
+<para>If this option and the <literal>-l</literal><Symbol Role="Variable">lit_thresh</Symbol> option are omitted, the default is
+<literal>-l0</literal>, meaning that literal coding is provided
 only for bytes that never occur (counts of zero).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;o</literal></term>
+<varlistentry><term><literal>-o</literal></term>
 <listitem>
 <para>Suppresses the overwrite prompt. It preauthorizes erasure and
 reinitialization of the decode module.

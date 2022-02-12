@@ -12,7 +12,7 @@
 </refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dtpad</command><arg choice="opt">&minus;<replaceable>options</replaceable></arg>
+<command>dtpad</command><arg choice="opt">-<replaceable>options</replaceable></arg>
 <arg choice="opt"><replaceable>file</replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv><refsect1>
@@ -41,7 +41,7 @@ standard dialogs are presented for accessing files and printing text.</para>
 <para>Wrap-to-fit and overstrike modes.</para>
 </listitem>
 <listitem>
-<para>Optional status line &minus; allowing cursor positioning by line number.
+<para>Optional status line - allowing cursor positioning by line number.
 </para>
 </listitem>
 <listitem>
@@ -80,7 +80,7 @@ the X Window System convention of full-word options.
 <refsect2>
 <title>Basic Command Line Options</title>
 <variablelist>
-<varlistentry><term><literal>&minus;saveOnClose</literal></term>
+<varlistentry><term><literal>-saveOnClose</literal></term>
 <listitem>
 <para>Automatically and silently saves the current text when there are unsaved
 changes and the Text Editor is closed. The default action for this situation
@@ -90,20 +90,20 @@ Save dialog is always posted when a new file is specified and there are unsaved
 changes.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;missingFileWarning</literal></term>
+<varlistentry><term><literal>-missingFileWarning</literal></term>
 <listitem>
 <para>Posts a Warning dialog whenever a file name is specified and the file
 does not exist or cannot be accessed.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;noReadOnlyWarning</literal></term>
+<varlistentry><term><literal>-noReadOnlyWarning</literal></term>
 <listitem>
 <para>Disables the Warning dialog posted whenever a file is specified for
 which the user does not have write permission. The default posts a Warning
 dialog whenever this situation occurs.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;noNameChange</literal></term>
+<varlistentry><term><literal>-noNameChange</literal></term>
 <listitem>
 <para>Indicates that the default file name associated with the current text
 is not to change when the text is saved under a name different than what it
@@ -113,7 +113,7 @@ file name is automatically changed to correspond to the last name under which
 the current text was saved.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;viewOnly</literal></term>
+<varlistentry><term><literal>-viewOnly</literal></term>
 <listitem>
 <para>Disallows editing of text in the edit window, essentially turning the
 Text Editor into a text viewer. The default allows text editing in the edit
@@ -124,7 +124,7 @@ have write permission.</para>
 </variablelist>
 
 <![ %CDE.C.CDE; [<variablelist>
-<varlistentry><term><literal>&minus;statusLine</literal></term>
+<varlistentry><term><literal>-statusLine</literal></term>
 <listitem>
 <para>Displays a status line at the bottom of the edit window. The status
 line shows the line number of the line where the text cursor is currently
@@ -133,14 +133,14 @@ the line number window in the status line, typing the desired number and pressin
 the Return key. Normally, a status line is not displayed.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;wrapToFit</literal></term>
+<varlistentry><term><literal>-wrapToFit</literal></term>
 <listitem>
 <para>Initially turns on wrap-to-fit mode. Wrap-to-fit mode can be toggled
 on or off via the <symbol role="Message">Edit</symbol> menu Wrap-to-fit button
 and normally is initially turned off.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;workspaceList</literal> <emphasis>workspace_list</emphasis></term>
+<varlistentry><term><literal>-workspaceList</literal> <emphasis>workspace_list</emphasis></term>
 <listitem>
 <para>Displays the edit window for the current invocation of the Text Editor
 in the specified workspace or workspaces. The default displays the edit window
@@ -149,7 +149,7 @@ If more than one workspace is specified, the list must be enclosed in quotes.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;session</literal> <emphasis>session_file</emphasis></term>
+<varlistentry><term><literal>-session</literal> <emphasis>session_file</emphasis></term>
 <listitem>
 <para>Restores the Text Editor to all text editing windows and settings that
 were in effect at a previous &str-XZ; shutdown. All other command-line options
@@ -167,7 +167,7 @@ state at shutdown.</para>
 <refsect2>
 <title>Client and Server Control Options</title>
 <variablelist>
-<varlistentry><term><literal>&minus;standAlone</literal></term>
+<varlistentry><term><literal>-standAlone</literal></term>
 <listitem>
 <para>Forces the current invocation of the Text Editor to do its own text
 processing in its own window, independent of the Text Editor server. This
@@ -177,7 +177,7 @@ a different locale or different color resources. The Text Editor still supports
 file drag and drop in this mode.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;noBlocking</literal></term>
+<varlistentry><term><literal>-noBlocking</literal></term>
 <listitem>
 <para>Terminates the Text Editor requestor process as soon as the Text Editor
 server determines that it can handle the requestor's edit request. If this
@@ -185,22 +185,22 @@ option is not specified, the requestor blocks, terminating only when it receives
 notification from the server that its edit window has been closed.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;server</literal></term>
+<varlistentry><term><literal>-server</literal></term>
 <listitem>
 <para>Forces a Text Editor server to be started up (if one is not already
 running) to process all subsequent edit requests for the display. These edit
 requests are normally generated by subsequent invocations of the Text Editor
-without the <literal>&minus;standAlone</literal> command-line option and cause
+without the <literal>-standAlone</literal> command-line option and cause
 the server to create a separate edit window to handle each request. Users
 normally do not need to use this option since the initial edit request for
 the display causes the &str-XZ; to start a Text Editor server automatically.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;exitOnLastClose</literal></term>
+<varlistentry><term><literal>-exitOnLastClose</literal></term>
 <listitem>
 <para>Specifies that the Text Editor server process is to terminate when the
-last edit window for the display is closed. It should only be used with the <literal>&minus;server</literal> option since it only applies to the server process.
+last edit window for the display is closed. It should only be used with the <literal>-server</literal> option since it only applies to the server process.
 If this option is not specified, the Text Editor server remains active indefinitely,
 even when all active edit windows have been closed.</para>
 </listitem>
@@ -244,7 +244,7 @@ specific to the Text Editor are passed on the Text Editor server. None of
 the standard widget resources, except for geometry, are passed on from the
 requestor Text Editor to the Text Editor server. These resources are loaded
 according to the environment on the server's host at the time the server is
-started up. If more control is required, the <literal>&minus;standAlone</literal>
+started up. If more control is required, the <literal>-standAlone</literal>
 command-line option is used to create a separate, stand alone <command>dtpad</command> process where any and all of the standard resources, such as <literal>fontList</literal> or <literal>colors</literal>, can be loaded according to
 the environment on the requestor's host.</para>]]>
 <informaltable remap="center" orient="port">
@@ -323,35 +323,35 @@ the environment on the requestor's host.</para>]]>
 <para>Indicates whether the Text Editor is to save automatically the current
 text when there are unsaved changes and the Text Editor is closed. Setting
 this resource to True automatically saves unsaved changes when the Text Editor
-is closed. This is equivalent to specifying the <literal>&minus;saveOnClose</literal> command-line option.</para>
+is closed. This is equivalent to specifying the <literal>-saveOnClose</literal> command-line option.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>missingFileWarning</literal></term>
 <listitem>
 <para>Indicates whether a warning dialog is to be posted when a file is specified
 that does not exist or cannot be accessed. Setting this resource to True displays
-the warning. This is equivalent to specifying the <literal>&minus;missingFileWarning</literal> command-line option.</para>
+the warning. This is equivalent to specifying the <literal>-missingFileWarning</literal> command-line option.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>readOnlyWarning</literal></term>
 <listitem>
 <para>Indicates whether a warning dialog is to be posted when a file for which
 the user does not have write permission is read. Setting this resource to
-False suppresses the warning. This is equivalent to specifying the <literal>&minus;noReadOnlyWarning</literal> command-line option.</para>
+False suppresses the warning. This is equivalent to specifying the <literal>-noReadOnlyWarning</literal> command-line option.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>nameChange</literal></term>
 <listitem>
 <para>Indicates whether the current file name is to be changed when the current
 text is saved under a new name. Setting this resource to False does not allow
-the name to be reset. This is equivalent to specifying the <literal>&minus;noNameChange</literal> command-line option.</para>
+the name to be reset. This is equivalent to specifying the <literal>-noNameChange</literal> command-line option.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>viewOnly</literal></term>
 <listitem>
 <para>Indicates whether text only be viewed or whether it can be edited in
 the edit window. Setting this resource to True disables text editing. This
-is equivalent to specifying the <literal>&minus;viewOnly</literal> command-line
+is equivalent to specifying the <literal>-viewOnly</literal> command-line
 option.</para>
 </listitem>
 </varlistentry><![ %CDE.C.XO; [</VariableList>]]><![ %CDE.C.CDE; [<varlistentry>
@@ -359,26 +359,26 @@ option.</para>
 <listitem>
 <para>Indicates whether the Text Editor is to display the status line at the
 bottom of the edit window. Setting this resource to True displays the status
-line. This is equivalent to specifying the <literal>&minus;statusLine</literal>
+line. This is equivalent to specifying the <literal>-statusLine</literal>
 command-line option.</para>
 </listitem>
 </varlistentry><varlistentry><term><literal>wrapToFit</literal></term>
 <listitem>
 <para>Indicates whether the Text Editor is to enable wrap-to-fit mode when
 the editor is started. Setting this resource to True enables wrap-to-fit mode.
-This is equivalent to specifying the <literal>&minus;wrapToFit</literal> command-line
+This is equivalent to specifying the <literal>-wrapToFit</literal> command-line
 option.</para>
 </listitem>
 </varlistentry><varlistentry><term><literal>workspaceList</literal></term>
 <listitem>
 <para>Indicates which workspace or workspaces the Text Editor is to be displayed
-in. This is equivalent to specifying the <literal>&minus;workspaceList</literal>
+in. This is equivalent to specifying the <literal>-workspaceList</literal>
 command-line option.</para>
 </listitem>
 </varlistentry><varlistentry><term><literal>session</literal></term>
 <listitem>
 <para>Specifies the saved session file to use in restoring a previously saved
-Text Editor session. This is equivalent to specifying the <literal>&minus;session</literal> command-line argument.</para>
+Text Editor session. This is equivalent to specifying the <literal>-session</literal> command-line argument.</para>
 </listitem>
 </varlistentry></variablelist>
 <informaltable remap="center" orient="port">
@@ -434,7 +434,7 @@ Resources</literal></entry>
 <para>Specifies whether the Text Editor is to run as a separate, independent
 Text Editor process without using the Text Editor server. Setting this resource
 to True invokes a separate, independent process. This is equivalent to specifying
-the <literal>&minus;standAlone</literal> command-line option.</para>
+the <literal>-standAlone</literal> command-line option.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>blocking</literal></term>
@@ -443,7 +443,7 @@ the <literal>&minus;standAlone</literal> command-line option.</para>
 receiving notification from the Text Editor server that the user exited or
 closed its edit window. Setting this resource to False causes the client process
 to exit immediately when the server determines that it can handle its edit
-request. This is equivalent to specifying the <literal>&minus;noBlocking</literal>
+request. This is equivalent to specifying the <literal>-noBlocking</literal>
 command-line option.</para>
 </listitem>
 </varlistentry>
@@ -451,7 +451,7 @@ command-line option.</para>
 <listitem>
 <para>Specifies that the Text Editor is to be started in server mode to handle
 all processing for all subsequent edit requests for the display. Setting this
-resource to True is equivalent to specifying the <literal>&minus;server</literal>
+resource to True is equivalent to specifying the <literal>-server</literal>
 command-line option.</para>
 </listitem>
 </varlistentry>
@@ -459,7 +459,7 @@ command-line option.</para>
 <listitem>
 <para>Specifies that the Text Editor server is to terminate when the last
 edit window for the display is closed. Setting this resource to True is equivalent
-to specifying the <literal>&minus;exitOnLastClose</literal> command-line option.
+to specifying the <literal>-exitOnLastClose</literal> command-line option.
 </para>
 </listitem>
 </varlistentry>
@@ -711,10 +711,10 @@ Save</symbol> request or a user action.</para>
 <varlistentry><term><literal>Requestor Mode</literal></term>
 <listitem>
 <para>When the Text Editor is started without any overriding command-line
-options (that is, <literal>&minus;standAlone</literal> or <literal>&minus;server</literal>), it always attempts to run in this mode. In this mode it simply
+options (that is, <literal>-standAlone</literal> or <literal>-server</literal>), it always attempts to run in this mode. In this mode it simply
 sends an edit request to a separate Text Editor server process and then blocks
 (does nothing) until it receives a notice from the server when its edit request
-is done, at which time it exits. If <literal>&minus;noBlocking</literal> is
+is done, at which time it exits. If <literal>-noBlocking</literal> is
 specified, it exits immediately after the server accepts its edit request
 rather than waiting until the edit request is done.</para>
 </listitem>
@@ -723,7 +723,7 @@ rather than waiting until the edit request is done.</para>
 <listitem>
 <para>If the Text Editor server cannot process the edit request from the Text
 Editor instance (for example, the server process doesn't exist or can't be
-started, or it can't access the requestor's file), or if <literal>&minus;standAlone</literal> is specified on the command line, the Text Editor instance operates
+started, or it can't access the requestor's file), or if <literal>-standAlone</literal> is specified on the command line, the Text Editor instance operates
 in <literal>standAlone</literal> mode. In this mode the Text Editor creates
 its own edit window and handles all processing for this window on its own.
 In addition, it does not handle any edit requests from outside sources and
@@ -732,11 +732,11 @@ it exits when its edit window is closed.</para>
 </varlistentry>
 <varlistentry><term><literal>Server Mode</literal></term>
 <listitem>
-<para>When <literal>&minus;server</literal> is specified on the command line,
+<para>When <literal>-server</literal> is specified on the command line,
 the Text Editor instance operates as a server for all Text Editor edit requests
 for the same display. That is, it creates a separate edit window and does
 the actual editing for all Text Editor instances running to the same display
-that do not have <literal>&minus;standAlone</literal> specified on their command
+that do not have <literal>-standAlone</literal> specified on their command
 line. Only one Text Editor server for a display can exist, and in the &str-XZ;,
 this instance is normally started automatically if it's not running at the
 time an edit request is made.</para>

@@ -13,10 +13,10 @@
 service </refpurpose></refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dtlogin</command><arg choice="opt">&minus;config<replaceable>configuration_file</replaceable></arg><arg choice="opt">&minus;daemon</arg><arg choice="opt">&minus;debug<replaceable>debug_level</replaceable></arg><arg choice="opt">&minus;error<replaceable>error_log_file</replaceable></arg><arg choice="opt">&minus;quiet</arg><arg choice="opt">&minus;nodaemon</arg><arg choice="opt">&minus;resources<replaceable>resource_file</replaceable></arg>
-<arg choice="opt">&minus;server<replaceable>server_entry</replaceable></arg>
-<arg choice="opt">&minus;udpPort<replaceable>port_number</replaceable></arg>
-<arg choice="opt">&minus;session<replaceable>session_program</replaceable></arg>
+<command>dtlogin</command><arg choice="opt">-config<replaceable>configuration_file</replaceable></arg><arg choice="opt">-daemon</arg><arg choice="opt">-debug<replaceable>debug_level</replaceable></arg><arg choice="opt">-error<replaceable>error_log_file</replaceable></arg><arg choice="opt">-quiet</arg><arg choice="opt">-nodaemon</arg><arg choice="opt">-resources<replaceable>resource_file</replaceable></arg>
+<arg choice="opt">-server<replaceable>server_entry</replaceable></arg>
+<arg choice="opt">-udpPort<replaceable>port_number</replaceable></arg>
+<arg choice="opt">-session<replaceable>session_program</replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
 <refsect1>
@@ -315,12 +315,12 @@ the <literal>Xserver</literal>, <literal>Xsecurity</literal>, <literal>xhost</li
 </refsect1>
 <refsect1>
 <title>OPTIONS</title>
-<para>All options, except <literal>&minus;config</literal>, specify values
+<para>All options, except <literal>-config</literal>, specify values
 that can also be specified in the configuration file as resources. Typically,
 customization is done via the configuration file rather than command line
 options. The options are most useful for debugging and one-shot tests.</para>
 <variablelist>
-<varlistentry><term>&minus;config configuration_file</term>
+<varlistentry><term>-config configuration_file</term>
 <listitem>
 <!-- ex-TP-->
 <para>Specifies a resource file that specifies the remaining configuration
@@ -328,7 +328,7 @@ parameters. This replaces the <command>dtlogin</command> default Xconfig file. S
 section for more information.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;daemon</term>
+<varlistentry><term>-daemon</term>
 <listitem>
 <!-- ex-TP-->
 <para>Specifies True as the value for the <literal>daemonMode</literal>
@@ -337,7 +337,7 @@ disassociate the controlling terminal and put itself in the background when
 it first starts up (just like the host of other daemons).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;debug debug_level</term>
+<varlistentry><term>-debug debug_level</term>
 <listitem>
 <!-- ex-TP-->
 <para>Specifies the numeric value for the <literal>debugLevel</literal> resource.
@@ -345,14 +345,14 @@ A non-zero value causes <command>dtlogin</command> to print debugging statements
 it also disables the <literal>daemonMode</literal> resource, forcing <command>dtlogin</command> to run synchronously.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;error error_log_file</term>
+<varlistentry><term>-error error_log_file</term>
 <listitem>
 <!-- ex-TP-->
 <para>Specifies the value for the <literal>errorLogFile</literal> resource.
 See the Xerrors section for more information.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;nodaemon</term>
+<varlistentry><term>-nodaemon</term>
 <listitem>
 <!-- ex-TP-->
 <para>Specifies False as the value for the <literal>daemonMode</literal>
@@ -360,7 +360,7 @@ resource.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;quiet</term>
+<varlistentry><term>-quiet</term>
 <listitem>
 <!-- ex-TP-->
 <para>Specifies True as the value for the <literal>quiet</literal>
@@ -368,21 +368,21 @@ resource. This prevents dtlogin from writing status messages to tty1.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;resources resource_file</term>
+<varlistentry><term>-resources resource_file</term>
 <listitem>
 <!-- ex-TP-->
 <para>Specifies the value for the <literal>resources</literal> resource.
 See the Xresources section for more information.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;server server_entry</term>
+<varlistentry><term>-server server_entry</term>
 <listitem>
 <!-- ex-TP-->
 <para>Specifies the value for the <literal>servers</literal> resource. See
 the Xservers section for more information.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;udpPort port_number</term>
+<varlistentry><term>-udpPort port_number</term>
 <listitem>
 <!-- ex-TP-->
 <para>Specifies the value for the <literal>requestPort</literal> resource.
@@ -391,7 +391,7 @@ XDMCP uses the registered well-known udp port 177, this resource should probably
 not be changed except for debugging.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term>&minus;session session_program</term>
+<varlistentry><term>-session session_program</term>
 <listitem>
 <!-- ex-TP-->
 <para>Specifies the value for the <literal>session</literal> resource. See
@@ -672,7 +672,7 @@ using XDMCP.</para>
 <listitem>
 <!-- ex-TP-->
 <para>The display name must be something that can be passed in the
-<literal>&minus;display</literal> option to any X program. This string is used in the
+<literal>-display</literal> option to any X program. This string is used in the
 display-specific resources to specify the particular display, so be careful
 to match the names (e.g., use <literal>":0 local /usr/bin/X11/X :0"</literal>
 instead of <literal>"localhost:0 local /usr/bin/X11/X :0"</literal> if your
@@ -978,7 +978,7 @@ dynamically, so authName is ignored in this case. (See authorize.)</para>
 </refsect2>
 <refsect2>
 <title>authFile</title>
-<para>This file is used to communicate the authorization data from <command>dtlogin</command> to the server, using the &minus;auth server command line
+<para>This file is used to communicate the authorization data from <command>dtlogin</command> to the server, using the -auth server command line
 option. It should be kept in a write- protected directory to prevent its erasure,
 which would disable the authorization mechanism in the server. If NULL, <command>dtlogin</command>
 will generate a file name.</para>

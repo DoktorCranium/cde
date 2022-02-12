@@ -33,13 +33,13 @@ widgets and gadgets contained within the DtHelpDialog widget hierarchy. The
 following list identifies the names of these widgets (or gadgets):</para>
 <itemizedlist>
 <listitem>
-<para>Topic Tree &minus; <emphasis>TocArea</emphasis></para>
+<para>Topic Tree - <emphasis>TocArea</emphasis></para>
 </listitem>
 <listitem>
-<para>Display Area &minus; <emphasis>DisplayArea</emphasis></para>
+<para>Display Area - <emphasis>DisplayArea</emphasis></para>
 </listitem>
 <listitem>
-<para>Button Box &minus; <emphasis>BtnBox</emphasis></para>
+<para>Button Box - <emphasis>BtnBox</emphasis></para>
 </listitem>
 </itemizedlist>
 <para>The DtHelpDialog widget honors all default and user-specified resource

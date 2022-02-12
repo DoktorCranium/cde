@@ -27,14 +27,14 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>ttmv</Command>
-<Arg Choice="opt">&minus;fL</Arg>
+<Arg Choice="opt">-fL</Arg>
 <Arg><Replaceable>pathname1</Replaceable></Arg>
 <Arg><Replaceable>pathname2</Replaceable></Arg>
 <!-- -->
 </CmdSynopsis>
 <CmdSynopsis>
 <Command>ttmv</Command>
-<Arg Choice="opt">&minus;fL</Arg>
+<Arg Choice="opt">-fL</Arg>
 <Arg><Replaceable>pathname</Replaceable></Arg>
 <Arg>.&thinsp;.&thinsp;.</Arg>
 <Arg><Replaceable>directory</Replaceable></Arg>
@@ -42,8 +42,8 @@
 </CmdSynopsis>
 <CmdSynopsis>
 <Command>ttmv</Command>
-<Arg>&minus;h</Arg>
-<Arg>&minus;v</Arg>
+<Arg>-h</Arg>
+<Arg>-v</Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -73,16 +73,16 @@ the object-moving operation.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;f</Literal></Term>
+<Term><Literal>-f</Literal></Term>
 <ListItem>
 <Para>Force.
 Do not report any errors, and pass the
-<Literal>&minus;f</Literal> option to
+<Literal>-f</Literal> option to
 <Command>mv</Command>(1).</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;h</Literal></Term>
+<Term><Literal>-h</Literal></Term>
 <ListItem>
 <Para>Write a help message for invoking
 <Command>ttmv</Command> and then exit.
@@ -90,7 +90,7 @@ Do not report any errors, and pass the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;L</Literal></Term>
+<Term><Literal>-L</Literal></Term>
 <ListItem>
 <Para>Move the ToolTalk objects of the files, but do not invoke
 <Command>mv</Command>(1) to move the actual files.
@@ -98,7 +98,7 @@ Do not report any errors, and pass the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;v</Literal></Term>
+<Term><Literal>-v</Literal></Term>
 <ListItem>
 <Para>Write the version number of
 <Command>ttmv</Command> and then exit.
@@ -107,10 +107,10 @@ Do not report any errors, and pass the
 </VarListEntry>
 </VariableList>
 <Para><![ %CDE.C.XO; [It is unspecified whether the
-<Literal>&minus;i</Literal> option to
+<Literal>-i</Literal> option to
 <Command>mv</Command>(1) is supported.
 ]]><![ %CDE.C.CDE; [The
-<Literal>&minus;i</Literal> option to
+<Literal>-i</Literal> option to
 <Command>cp</Command>(1) is not supported.
 ]]></Para>
 </RefSect1>
@@ -219,12 +219,12 @@ for the processing of
 <RefSect1>
 <Title>STDOUT</Title>
 <Para>When the
-<Literal>&minus;h</Literal> option is used,
+<Literal>-h</Literal> option is used,
 <Command>ttmv</Command> writes to standard output a help message
 in an unspecified format.
 </Para>
 <Para>When the
-<Literal>&minus;v</Literal> option is used,
+<Literal>-v</Literal> option is used,
 <Command>ttmv</Command> writes to standard output a version number
 in an unspecified format.
 </Para>

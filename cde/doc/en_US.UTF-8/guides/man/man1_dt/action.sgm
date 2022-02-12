@@ -28,10 +28,10 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>dtaction</Command>
-<Arg Choice="opt">&minus;contextDir&numsp;<Replaceable>context_dir</Replaceable></Arg>
-<Arg Choice="opt">&minus;execHost&numsp;<Replaceable>host_name</Replaceable></Arg>
-<Arg Choice="opt">&minus;termOpts&numsp;<Replaceable>terminal_arguments</Replaceable></Arg>
-<Arg Choice="opt">&minus;user&numsp;<Replaceable>user_name</Replaceable></Arg>
+<Arg Choice="opt">-contextDir&numsp;<Replaceable>context_dir</Replaceable></Arg>
+<Arg Choice="opt">-execHost&numsp;<Replaceable>host_name</Replaceable></Arg>
+<Arg Choice="opt">-termOpts&numsp;<Replaceable>terminal_arguments</Replaceable></Arg>
+<Arg Choice="opt">-user&numsp;<Replaceable>user_name</Replaceable></Arg>
 <Arg><Replaceable>action_name</Replaceable></Arg>
 <Arg Choice="opt"><Replaceable>action_arg</Replaceable></Arg>
 <Arg>...</Arg>
@@ -94,7 +94,7 @@ the X Window System convention of full-word options.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;contextDir</Literal> <Emphasis>context_dir</Emphasis></Term>
+<Term><Literal>-contextDir</Literal> <Emphasis>context_dir</Emphasis></Term>
 <ListItem>
 <Para>If the definition of
 <Emphasis>action_name</Emphasis> does not define
@@ -106,7 +106,7 @@ the user can use this option to specify a default directory context.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;execHost</Literal> <Emphasis>host_name</Emphasis></Term>
+<Term><Literal>-execHost</Literal> <Emphasis>host_name</Emphasis></Term>
 <ListItem>
 <Para>The user can use this option to specify an alternative execution host,
 <Emphasis>host_name</Emphasis>, for a command action.
@@ -123,7 +123,7 @@ specified action on any eligible host.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;termOpts</Literal> <Emphasis>terminal_arguments</Emphasis></Term>
+<Term><Literal>-termOpts</Literal> <Emphasis>terminal_arguments</Emphasis></Term>
 <ListItem>
 <Para>This option allows the user to specify arguments intended for the terminal
 emulator that is provided for command actions that are not of type
@@ -134,15 +134,15 @@ These arguments are passed unchanged to the terminal emulator.
 The user must ensure that they are reasonable; in particular,
 <Emphasis>terminal_arguments</Emphasis> does not allow the argument that specifies the command
 to be run in a terminal emulator window (that is,
-<Literal>&minus;e</Literal> for
+<Literal>-e</Literal> for
 &cdeman.dtterm;).</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;user</Literal> <Emphasis>user_name</Emphasis></Term>
+<Term><Literal>-user</Literal> <Emphasis>user_name</Emphasis></Term>
 <ListItem>
 <Para>The
-<Literal>&minus;user</Literal> option allows a user to specify a user name.
+<Literal>-user</Literal> option allows a user to specify a user name.
 If
 <Command>dtaction</Command> is not currently running as that user, a prompt dialog
 collects the indicated user password, or the root user

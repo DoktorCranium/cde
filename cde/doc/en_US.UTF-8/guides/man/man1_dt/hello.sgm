@@ -14,13 +14,13 @@ transitional greeting</refpurpose></refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>dthello</command>
-<arg choice="opt">&minus;display <replaceable>&lt;display></replaceable></arg>
-<arg choice="opt">&minus;fground <replaceable>&lt;color></replaceable></arg>
-<arg choice="opt">&minus;bground <replaceable>&lt;color></replaceable></arg>
-<arg choice="opt">&minus;font <replaceable>&lt;fontname></replaceable></arg>
-<arg choice="opt">&minus;string <replaceable>&lt;message></replaceable></arg>
-<arg choice="opt">&minus;file <replaceable>&lt;filename></replaceable></arg>
-<arg choice="opt">&minus;timeout <replaceable>&lt;seconds></replaceable></arg>
+<arg choice="opt">-display <replaceable>&lt;display></replaceable></arg>
+<arg choice="opt">-fground <replaceable>&lt;color></replaceable></arg>
+<arg choice="opt">-bground <replaceable>&lt;color></replaceable></arg>
+<arg choice="opt">-font <replaceable>&lt;fontname></replaceable></arg>
+<arg choice="opt">-string <replaceable>&lt;message></replaceable></arg>
+<arg choice="opt">-file <replaceable>&lt;filename></replaceable></arg>
+<arg choice="opt">-timeout <replaceable>&lt;seconds></replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
 <refsect1>
@@ -43,44 +43,44 @@ is not intended to be started directly by users.
 </para>
 </note>
 <variablelist>
-<varlistentry><term><literal>&minus;display</literal> <emphasis>display</emphasis></term>
+<varlistentry><term><literal>-display</literal> <emphasis>display</emphasis></term>
 <listitem>
 <para>Display id.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;fground</literal> <emphasis>color</emphasis></term>
+<varlistentry><term><literal>-fground</literal> <emphasis>color</emphasis></term>
 <listitem>
 <para>Foreground color.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;bground</literal> <emphasis>color</emphasis></term>
+<varlistentry><term><literal>-bground</literal> <emphasis>color</emphasis></term>
 <listitem>
 <para>Background color.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;font</literal> <emphasis>fontname</emphasis></term>
+<varlistentry><term><literal>-font</literal> <emphasis>fontname</emphasis></term>
 <listitem>
 <para>Font.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;string</literal> <emphasis>message</emphasis></term>
+<varlistentry><term><literal>-string</literal> <emphasis>message</emphasis></term>
 <listitem>
 <para>String to be displayed in window.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;file</literal> <emphasis>filename</emphasis></term>
+<varlistentry><term><literal>-file</literal> <emphasis>filename</emphasis></term>
 <listitem>
 <para>Text file name whose contents will be displayed in window.
 This option may be specified up to five times.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;timeout</literal> <emphasis>seconds</emphasis></term>
+<varlistentry><term><literal>-timeout</literal> <emphasis>seconds</emphasis></term>
 <listitem>
 <para>Number of seconds before giving up on the window manager
 and terminating.

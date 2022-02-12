@@ -16,45 +16,45 @@ user cmd</manvolnum></refmeta><refnamediv><refname><command>dtterm</command></re
 <command>dtterm</command>
 <arg choice="opt">&plusmn;132</arg>
 <arg choice="opt">&plusmn;aw</arg>
-<arg choice="opt">&minus;background <replaceable>background_color</replaceable></arg>
-<arg choice="opt">&minus;bg <replaceable>background_color</replaceable></arg>
+<arg choice="opt">-background <replaceable>background_color</replaceable></arg>
+<arg choice="opt">-bg <replaceable>background_color</replaceable></arg>
 <arg choice="opt">&plusmn;bs</arg>
-<arg choice="opt">&minus;C</arg>
-<arg choice="opt">&minus;display <replaceable>display_name</replaceable></arg>
-<arg choice="opt">&minus;e <replaceable>program_argument ...</replaceable></arg>
-<arg choice="opt">&minus;fb <replaceable>fontset</replaceable></arg>
-<arg choice="opt">&minus;fg <replaceable>foreground_color</replaceable></arg>
-<arg choice="opt">&minus;fn <replaceable>fontset</replaceable></arg>
-<arg choice="opt">&minus;font <replaceable>fontset</replaceable></arg>
-<arg choice="opt">&minus;foreground <replaceable>foreground_color</replaceable></arg>
-<arg choice="opt">&minus;geometry <replaceable>geometry_string</replaceable></arg>
-<arg choice="opt">&minus;help</arg>
+<arg choice="opt">-C</arg>
+<arg choice="opt">-display <replaceable>display_name</replaceable></arg>
+<arg choice="opt">-e <replaceable>program_argument ...</replaceable></arg>
+<arg choice="opt">-fb <replaceable>fontset</replaceable></arg>
+<arg choice="opt">-fg <replaceable>foreground_color</replaceable></arg>
+<arg choice="opt">-fn <replaceable>fontset</replaceable></arg>
+<arg choice="opt">-font <replaceable>fontset</replaceable></arg>
+<arg choice="opt">-foreground <replaceable>foreground_color</replaceable></arg>
+<arg choice="opt">-geometry <replaceable>geometry_string</replaceable></arg>
+<arg choice="opt">-help</arg>
 <arg choice="opt">&plusmn;iconic</arg>
 <arg choice="opt">&plusmn;j</arg>
 <arg choice="opt">&plusmn;kshMode</arg>
 <?sml-break><!-- for the sake of tbl after docbook-to-man -->
 <arg choice="opt">&plusmn;l</arg>
-<arg choice="opt">&minus;lf <replaceable>file_name</replaceable></arg>
+<arg choice="opt">-lf <replaceable>file_name</replaceable></arg>
 <arg choice="opt">&plusmn;ls</arg>
 <arg choice="opt">&plusmn;map</arg>
 <arg choice="opt">&plusmn;mb</arg>
-<arg choice="opt">&minus;ms <replaceable>pointer_color</replaceable></arg>
-<arg choice="opt">&minus;name <replaceable>prog_name</replaceable></arg>
-<arg choice="opt">&minus;nb <replaceable>number</replaceable></arg>
+<arg choice="opt">-ms <replaceable>pointer_color</replaceable></arg>
+<arg choice="opt">-name <replaceable>prog_name</replaceable></arg>
+<arg choice="opt">-nb <replaceable>number</replaceable></arg>
 <arg choice="opt">&plusmn;rw</arg>
-<arg choice="opt">&minus;S <replaceable>ccn</replaceable></arg>
-<arg choice="opt">&minus;S <replaceable>c.n</replaceable></arg>
+<arg choice="opt">-S <replaceable>ccn</replaceable></arg>
+<arg choice="opt">-S <replaceable>c.n</replaceable></arg>
 <arg choice="opt">&plusmn;sb</arg>
 <arg choice="opt">&plusmn;sf</arg>
-<group><arg>&minus;sl <replaceable>screens</replaceable></arg>
+<group><arg>-sl <replaceable>screens</replaceable></arg>
 <group><arg>s&thinsp;</arg><arg>&thinsp;l</arg></group></group>
-<arg choice="opt">&minus;ti <replaceable>term_id</replaceable></arg>
-<arg choice="opt">&minus;title <replaceable>title_string</replaceable></arg>
-<arg choice="opt">&minus;tm <replaceable>term_modes</replaceable></arg>
-<arg choice="opt">&minus;tn <replaceable>term_name</replaceable></arg>
-<arg choice="opt">&minus;usage</arg>
+<arg choice="opt">-ti <replaceable>term_id</replaceable></arg>
+<arg choice="opt">-title <replaceable>title_string</replaceable></arg>
+<arg choice="opt">-tm <replaceable>term_modes</replaceable></arg>
+<arg choice="opt">-tn <replaceable>term_name</replaceable></arg>
+<arg choice="opt">-usage</arg>
 <arg choice="opt">&plusmn;vb</arg>
-<arg choice="opt">&minus;xrm <replaceable>resource_string</replaceable></arg>
+<arg choice="opt">-xrm <replaceable>resource_string</replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv><refsect1>
 <title>DESCRIPTION</title><![ %CDE.C.CDE; [<para>The <command>dtterm</command>
@@ -66,7 +66,7 @@ utility does not support the &str-Zu; because it uses the X Window System
 convention of full-word options.</para>]]>
 <para>The following options are available:</para>
 <variablelist>
-<varlistentry><term><literal>&minus;132</literal></term>
+<varlistentry><term><literal>-132</literal></term>
 <listitem>
 <para>Recognize the <systemitem class="Constant">DECCOLM</systemitem> escape
 sequence and resize the window appropriately. Normally, <command>dtterm</command>
@@ -80,7 +80,7 @@ which switches between 80- and 132-column mode.</para>
 sequence. This is the default behavior.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;aw</literal></term>
+<varlistentry><term><literal>-aw</literal></term>
 <listitem>
 <para>Allow auto-wraparound. This option allows the cursor to automatically
 wrap to the beginning of the next line when it is at the right-most position
@@ -92,11 +92,11 @@ of a line and text is output. This is the default behavior.</para>
 <para>Do not allow auto-wraparound.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;background</literal>  <symbol role="Variable">background_color</symbol></term>
+<varlistentry><term><literal>-background</literal>  <symbol role="Variable">background_color</symbol></term>
 <listitem>
 <para>Specify the terminal window background and the default background for
 the scroll bar and the X11 pointer cursor. This option defaults to either
-the primary colorset background (default) or select pixel (see <literal>&minus;bs</literal> ). <![ %CDE.C.HP; [(When not running under HPVUE,
+the primary colorset background (default) or select pixel (see <literal>-bs</literal> ). <![ %CDE.C.HP; [(When not running under HPVUE,
 it defaults to
 <Literal>*background/*Background</Literal> with an ultimate fallback color of black.)
 ]]>The <symbol role="Variable">background_color</symbol> argument describes
@@ -104,14 +104,14 @@ the background color.</para>
 </listitem>
 </varlistentry>
 
-<varlistentry><term><literal>&minus;bg</literal>  <symbol role="Variable">background_color</symbol></term>
+<varlistentry><term><literal>-bg</literal>  <symbol role="Variable">background_color</symbol></term>
 <listitem>
 <para>The <symbol role="Variable">background_color</symbol> argument describes the background color.</para>
 </listitem>
 </varlistentry>
 
 
-<varlistentry><term><literal>&minus;bs</literal></term>
+<varlistentry><term><literal>-bs</literal></term>
 <listitem>
 <para>Use the Motif select color instead of the background color for the terminal
 window's background color.</para>
@@ -124,7 +124,7 @@ the terminal window's background color. This is the default behavior.</para>
 </listitem>
 </varlistentry>
 
-<varlistentry><term><literal>&minus;C</literal></term>
+<varlistentry><term><literal>-C</literal></term>
 <listitem>
 <para>Specify that output directed to <Filename>/dev/console</Filename> be directed
 instead to the terminal window. It is provided as a way to prevent output,
@@ -135,14 +135,14 @@ for, <Filename>/dev/console</Filename> is required in order to redirect console
 output.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;display</literal> <symbol role="variable">display_name</symbol></term>
+<varlistentry><term><literal>-display</literal> <symbol role="variable">display_name</symbol></term>
 <listitem>
 <para>Specify the X11 display server. This defaults to the <systemitem class="EnvironVar">DISPLAY</systemitem> environment variable. The <symbol role="variable">display_name</symbol>
 argument specifies the X11 display to which <command>dtterm</command> connects.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;e</literal> <symbol role="variable">program_argument
+<varlistentry><term><literal>-e</literal> <symbol role="variable">program_argument
 ...</symbol></term>
 <listitem>
 <para>Specify an executable program and any command-line arguments <command>dtterm</command> invokes as a subprocess when <command>dtterm</command> is
@@ -150,7 +150,7 @@ started. It must be the last option on the command line. The <symbol role="varia
 be invoked by <command>dtterm</command>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;fb</literal> <symbol role="variable">fontset</symbol></term>
+<varlistentry><term><literal>-fb</literal> <symbol role="variable">fontset</symbol></term>
 <listitem>
 <para>Specify an <structname role="typedef">XFontSet</structname> used by <command>dtterm</command> when displaying bold terminal text. The <structname role="typedef">XFontSet</structname> should be specified as a Motif <![ %CDE.C.CDE; [&cdeman.XmFontList;. ]]><![ %CDE.C.XO; [ <structname role="typedef">XmFontList</structname>. ]]>The terminal emulator supports only character
 or mono-spaced fonts. When using proportional fonts, the behavior is undefined.
@@ -160,7 +160,7 @@ emulator generates bold text by overstriking (with a one pixel offset) the <lite
 bold terminal <structname role="typedef">XFontSet</structname> used by <command>dtterm</command>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;fg</literal>  <symbol role="Variable">foreground_color</symbol></term>
+<varlistentry><term><literal>-fg</literal>  <symbol role="Variable">foreground_color</symbol></term>
 <listitem>
 <para>Specify the foreground color of the terminal window as well as the default
 foreground color used by <command>dtterm</command> for the scroll bar and
@@ -172,7 +172,7 @@ it defaults to
 the foreground color.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;fn</literal> <symbol role="variable">fontset</symbol></term>
+<varlistentry><term><literal>-fn</literal> <symbol role="variable">fontset</symbol></term>
 <listitem>
 <para>Specify an <structname role="typedef">XFontSet</structname> used by <command>dtterm</command> when displaying terminal text. It should be specified as
 a Motif <![ %CDE.C.CDE; [&cdeman.XmFontList;. ]]><![ %CDE.C.XO; [<structname role="typedef">XmFontList</structname>. ]]>Only character or mono-spaced fonts
@@ -184,19 +184,19 @@ argument specifies the terminal <structname role="typedef">XFontSet</structname>
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;font</literal> <symbol role="variable">fontset</symbol></term>
+<varlistentry><term><literal>-font</literal> <symbol role="variable">fontset</symbol></term>
 <listitem>
-<para>Equivalent to <literal>&minus;fn</literal>. The <symbol role="variable">fontset</symbol>
+<para>Equivalent to <literal>-fn</literal>. The <symbol role="variable">fontset</symbol>
 argument specifies the terminal <structname role="typedef">XFontSet</structname>.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;foreground</literal>  <symbol role="Variable">foreground_color</symbol></term>
+<varlistentry><term><literal>-foreground</literal>  <symbol role="Variable">foreground_color</symbol></term>
 <listitem>
-<para>Equivalent to <literal>&minus;fg</literal>. The <symbol role="Variable">foreground_color</symbol> argument specifies the foreground color used by <command>dtterm</command>.</para>
+<para>Equivalent to <literal>-fg</literal>. The <symbol role="Variable">foreground_color</symbol> argument specifies the foreground color used by <command>dtterm</command>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;geometry</literal> <symbol role="variable">geometry_string</symbol></term>
+<varlistentry><term><literal>-geometry</literal> <symbol role="variable">geometry_string</symbol></term>
 <listitem>
 <para>Specify the terminal window's preferred size and position. Width and
 height are expressed in characters. The default size is 24 lines of 80 characters
@@ -205,12 +205,12 @@ argument specifies the terminal geometry used by <command>dtterm</command>.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;help</literal></term>
+<varlistentry><term><literal>-help</literal></term>
 <listitem>
 <para>Display a message summarizing <command>dtterm</command> usage.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;iconic</literal></term>
+<varlistentry><term><literal>-iconic</literal></term>
 <listitem>
 <para>Display the terminal emulator initially in an iconified state.</para>
 </listitem>
@@ -221,7 +221,7 @@ argument specifies the terminal geometry used by <command>dtterm</command>.
 the default behavior.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;j</literal></term>
+<varlistentry><term><literal>-j</literal></term>
 <listitem>
 <para>Use jump scrolling. With jump scrolling, the screen may be scrolled
 more than one line at a time. This provides for faster screen updates when
@@ -236,7 +236,7 @@ lines are displayed. This is the default behavior.</para>
 <para>Do not use jump scrolling.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;kshMode</literal></term>
+<varlistentry><term><literal>-kshMode</literal></term>
 <listitem>
 <para>Enable <command>ksh</command> mode. In <command>ksh</command> mode,
 a key pressed with the extend modifier bit set generates an escape character
@@ -255,11 +255,11 @@ and for generating multi-byte Asian characters.</para>
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;l</literal></term>
+<varlistentry><term><literal>-l</literal></term>
 <listitem>
 <para>Enables output logging. When <command>dtterm</command> enables logging,
 all output received from the subprocess is logged either to a file or to a
-command pipeline (as specified via the <literal>&minus;lf</literal> option
+command pipeline (as specified via the <literal>-lf</literal> option
 described in the following paragraph). Since data are logged directly from
 the subprocess, the log file includes all escape characters and carriage-return
 and newline pairs the terminal line discipline sends. The application may
@@ -271,7 +271,7 @@ enable and disable logging via escape sequences.</para>
 <para>Disable output logging. This is the default behavior.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;lf</literal>  <symbol role="Variable">file_name</symbol></term>
+<varlistentry><term><literal>-lf</literal>  <symbol role="Variable">file_name</symbol></term>
 <listitem>
 <para>Name the file to which <command>dtterm</command> writes the output log.
 If the <symbol role="Variable">file_name</symbol> argument begins with a pipe
@@ -281,7 +281,7 @@ file name is <literal>DttermLog</literal> <symbol role="variable">XXXXX</symbol>
 in the directory from which the subprocess was started. The <symbol role="Variable">file_name</symbol> argument specifies the log file name used by <command>dtterm</command> for logging.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;ls</literal></term>
+<varlistentry><term><literal>-ls</literal></term>
 <listitem><![ %CDE.C.CDE; [<para>Start a login shell (the first character
 of <symbol role="Variable">argv</symbol>[0] is a dash), indicating to the
 shell that it should read the system's <literal>profile</literal> and the
@@ -293,7 +293,7 @@ is a dash), indicating to the shell that it should read the system's <literal>pr
 <para>Start a normal (non-login) shell. This is the default behavior.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;map</literal></term>
+<varlistentry><term><literal>-map</literal></term>
 <listitem>
 <para>Map (de-iconify) <command>dtterm</command> upon subprocess output if <command>dtterm</command> is unmapped (iconified). The user can specify, via the <literal>mapOnOutputDelay</literal> resource, an initial period of time during which <command>dtterm</command> does not map itself upon subprocess output.</para>
 </listitem>
@@ -304,10 +304,10 @@ is a dash), indicating to the shell that it should read the system's <literal>pr
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;mb</literal></term>
+<varlistentry><term><literal>-mb</literal></term>
 <listitem>
 <para>Ring a bell when the user types at a specified distance from the right
-margin. The distance from the right margin is specified by the <literal>&minus;nb</literal> option.</para>
+margin. The distance from the right margin is specified by the <literal>-nb</literal> option.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>+mb</literal></term>
@@ -316,27 +316,27 @@ margin. The distance from the right margin is specified by the <literal>&minus;n
 the default behavior.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;ms</literal> <symbol role="variable">pointer_color</symbol></term>
+<varlistentry><term><literal>-ms</literal> <symbol role="variable">pointer_color</symbol></term>
 <listitem>
 <para>Specify the foreground color used by <command>dtterm</command> for the
 terminal window's (X11) pointer cursor. The default is the terminal window's
-foreground color (see <literal>&minus;foreground</literal>). The <symbol role="variable">pointer_color</symbol> argument specifies the pointer foreground color used
+foreground color (see <literal>-foreground</literal>). The <symbol role="variable">pointer_color</symbol> argument specifies the pointer foreground color used
 by <command>dtterm</command>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;name</literal> <symbol role="variable">prog_name</symbol></term>
+<varlistentry><term><literal>-name</literal> <symbol role="variable">prog_name</symbol></term>
 <listitem>
 <para>Specify the X11 name of the <command>dtterm</command> window. The <symbol role="variable">prog_name</symbol> argument specifies the name to use.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;nb</literal> <symbol role="variable">number</symbol></term>
+<varlistentry><term><literal>-nb</literal> <symbol role="variable">number</symbol></term>
 <listitem>
 <para>Ring the bell this number of characters from the right margin when enabled.
 The default is 10. The <symbol role="variable">number</symbol> argument specifies the
 number of characters.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;rw</literal></term>
+<varlistentry><term><literal>-rw</literal></term>
 <listitem>
 <para>Enable reverse-wraparound.</para>
 </listitem>
@@ -346,7 +346,7 @@ number of characters.</para>
 <para>Do not enable reverse-wraparound. This is the default behavior.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;S</literal><symbol role="variable">ccn</symbol></term>
+<varlistentry><term><literal>-S</literal><symbol role="variable">ccn</symbol></term>
 <listitem>
 <para>Run the terminal emulator against a pre-opened <![ %CDE.C.CDE; [ <literal>pty</literal> or STREAMS ]]>pseudo-terminal device. The terminal emulator
 provides this option to use when the pseudo-terminal device name is of the
@@ -359,9 +359,9 @@ specifies the file descriptor number that corresponds to the pseudo-terminal
 device's already opened master side.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;S</literal><symbol role="variable">c.n</symbol></term>
+<varlistentry><term><literal>-S</literal><symbol role="variable">c.n</symbol></term>
 <listitem>
-<para>Equivalent to <literal>&minus;S</literal><symbol role="variable">ccn</symbol>, but
+<para>Equivalent to <literal>-S</literal><symbol role="variable">ccn</symbol>, but
 provided for systems with a larger pseudo-terminal device name space. The <symbol role="variable">c</symbol> argument specifies the last component of the pseudo-terminal
 device slave name. The terminal emulator ignores this value and the value
 may be empty. The <symbol role="Variable">n</symbol> argument specifies the
@@ -369,7 +369,7 @@ number of the file descriptor that corresponds to the pseudo-terminal device's
 already opened master side.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;sb</literal></term>
+<varlistentry><term><literal>-sb</literal></term>
 <listitem>
 <para>Display a scroll bar. This is the default behavior.</para>
 </listitem>
@@ -379,7 +379,7 @@ already opened master side.</para>
 <para>Do not display a scroll bar.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;sf</literal></term>
+<varlistentry><term><literal>-sf</literal></term>
 <listitem>
 <para>Generate Sun Function Key escape sequences instead of <![ %CDE.C.CDE; [standard
 ANSI escape sequences ]]><![ %CDE.C.XO; [the escape sequences described in <xref
@@ -396,7 +396,7 @@ of Sun Function Key escape sequences for the terminal's function keys. This
 is the default behavior.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;sl</literal>  <symbol role="Variable">screens</symbol>[<literal>s|l</literal>]</term>
+<varlistentry><term><literal>-sl</literal>  <symbol role="Variable">screens</symbol>[<literal>s|l</literal>]</term>
 <listitem>
 <para>Specify the number of lines in the terminal buffer beyond the length
 of the window. The option value consists of a number followed by an optional
@@ -410,7 +410,7 @@ The default is <literal>4s</literal>. The <symbol role="Variable">screens</symbo
 argument specifies the number of screens or lines to save.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;ti</literal> <symbol role="variable">term_id</symbol></term>
+<varlistentry><term><literal>-ti</literal> <symbol role="variable">term_id</symbol></term>
 <listitem>
 <para>Specify the name used by <command>dtterm</command> to select the correct
 response to terminal ID queries. Valid values are <literal>vt100</literal>, <literal>vt101</literal>, <literal>vt102</literal>, and <literal>vt220</literal>. The
@@ -418,7 +418,7 @@ default is <literal>vt220</literal>. The <symbol role="variable">term_id</symbol
 specifies the terminal ID to use.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;title</literal> <symbol role="variable">title_string</symbol></term>
+<varlistentry><term><literal>-title</literal> <symbol role="variable">title_string</symbol></term>
 <listitem>
 <para>The <symbol role="variable">title_string</symbol> argument specifies
 the window title used by <command>dtterm</command>. The title
@@ -428,7 +428,7 @@ otherwise the title defaults to <literal>Terminal</literal>.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;tm</literal> <symbol role="variable">term_modes</symbol></term>
+<varlistentry><term><literal>-tm</literal> <symbol role="variable">term_modes</symbol></term>
 <listitem>
 <para>Specify a string containing terminal-setting keywords and the characters
 to which they can be bound. Allowable keywords include: <literal>intr</literal>, <literal>quit</literal>, <literal>erase</literal>, <literal>kill</literal>, <literal>eof</literal>, <literal>eol</literal>, <literal>swtch</literal>, <literal>start</literal>, <literal>stop</literal>, <literal>brk</literal>, <literal>susp</literal>, <literal>dsusp</literal>, <literal>rprnt</literal>, <literal>flush</literal>, <literal>weras</literal> and <literal>lnext</literal>. The
@@ -438,19 +438,19 @@ for overriding the default terminal settings without having to do an <command>st
 specifies the terminal mode string.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;tn</literal> <symbol role="variable">term_name</symbol></term>
+<varlistentry><term><literal>-tn</literal> <symbol role="variable">term_name</symbol></term>
 <listitem>
 <para>Specify a name to which <command>dtterm</command> sets the <systemitem class="environvar">TERM</systemitem> environment variable. The default is <command>dtterm</command>.
 The <symbol role="variable">term_name</symbol> argument specifies the terminal name used
 by <command>dtterm</command>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;usage</literal></term>
+<varlistentry><term><literal>-usage</literal></term>
 <listitem>
 <para>Display a usage message on the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;vb</literal></term>
+<varlistentry><term><literal>-vb</literal></term>
 <listitem>
 <para>Use a visual bell instead of an audible one. Flash the window instead
 of ringing the terminal bell whenever a &lt;control>-G is received.</para>
@@ -462,7 +462,7 @@ of ringing the terminal bell whenever a &lt;control>-G is received.</para>
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;xrm</literal> <symbol role="variable">resource_string</symbol></term>
+<varlistentry><term><literal>-xrm</literal> <symbol role="variable">resource_string</symbol></term>
 <listitem>
 <para>Allow the user to specify the X11 Resource Manager-style resources on
 the command line. The <symbol role="variable">resource_string</symbol> argument specifies
@@ -485,7 +485,7 @@ an X11 resource string. (See <function>XrmParseCommand</function>(3) and <functi
 <variablelist>
 <varlistentry><term><systemitem class="EnvironVar">DISPLAY</systemitem></term>
 <listitem>
-<para>Specify the default X Windows display to connect to (see <literal>&minus;display</literal> ). The terminal emulator sets the subprocess's <systemitem class="EnvironVar">DISPLAY</systemitem> environment variable to the connected X11 display name.
+<para>Specify the default X Windows display to connect to (see <literal>-display</literal> ). The terminal emulator sets the subprocess's <systemitem class="EnvironVar">DISPLAY</systemitem> environment variable to the connected X11 display name.
 </para>
 </listitem>
 </varlistentry>
@@ -980,7 +980,7 @@ in an iconified state.</para>
 </varlistentry>
 <varlistentry><term><systemitem class="environvar">iconName</systemitem></term>
 <listitem>
-<para>Specifies the name for the icon. When used with the <literal>&minus;e</literal> option, the default is the last component of the program's path;
+<para>Specifies the name for the icon. When used with the <literal>-e</literal> option, the default is the last component of the program's path;
 otherwise, the default is the last component of the name used to execute <command>dtterm</command> (that is, <symbol role="Variable">argv</symbol>[0]).</para>
 </listitem>
 </varlistentry>
@@ -1161,7 +1161,7 @@ queries. Valid values are <literal>vt100</literal>, <literal>vt101</literal>, <l
 </varlistentry>
 <varlistentry><term><systemitem class="environvar">title</systemitem></term>
 <listitem>
-<para>Specifies the window title. When used with the <literal>&minus;e</literal>
+<para>Specifies the window title. When used with the <literal>-e</literal>
 option, the default is the last component of the program's path; otherwise,
 the default is the last component of the name used to execute <command>dtterm</command> (that is, <symbol role="Variable">argv</symbol>[0]).</para>
 </listitem>
@@ -1216,13 +1216,13 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>Resource Setting</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;132</classname></entry>
+<entry align="left" valign="top"><classname>-132</classname></entry>
 <entry align="left" valign="top"><classname>*c132: True</classname></entry></row>
 <row>
 <entry align="left" valign="top"><classname>+132</classname></entry>
 <entry align="left" valign="top"><classname>*c132: False</classname></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;aw</classname></entry>
+<entry align="left" valign="top"><classname>-aw</classname></entry>
 <entry align="left" valign="top"><classname>*autoWrap: True</classname></entry>
 </row>
 <row>
@@ -1230,13 +1230,13 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>*autoWrap: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;background</classname> <symbol role="Variable">background_color</symbol></entry>
+<entry align="left" valign="top"><classname>-background</classname> <symbol role="Variable">background_color</symbol></entry>
 <entry align="left" valign="top"><classname>*background:</classname> <symbol role="Variable">background_color</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;bg</classname> <symbol role="Variable">background_color</symbol></entry>
+<entry align="left" valign="top"><classname>-bg</classname> <symbol role="Variable">background_color</symbol></entry>
 <entry align="left" valign="top"><classname>*background:</classname> <symbol role="Variable">background_color</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;bs</classname></entry>
+<entry align="left" valign="top"><classname>-bs</classname></entry>
 <entry align="left" valign="top"><classname>*backgroundIsSelect: True</classname></entry>
 </row>
 <row>
@@ -1244,34 +1244,34 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>*backgroundIsSelect: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;C</classname></entry>
+<entry align="left" valign="top"><classname>-C</classname></entry>
 <entry align="left" valign="top"><classname>*consoleMode: True</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;display</classname> <symbol role="variable">display_name</symbol></entry>
+<entry align="left" valign="top"><classname>-display</classname> <symbol role="variable">display_name</symbol></entry>
 <entry align="left" valign="top"><classname>.display:</classname> <symbol role="variable">display_name</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;e</classname> <symbol role="variable">program_argument...</symbol></entry></row>
+<entry align="left" valign="top"><classname>-e</classname> <symbol role="variable">program_argument...</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;fb</classname> <symbol role="variable">fontset</symbol></entry>
+<entry align="left" valign="top"><classname>-fb</classname> <symbol role="variable">fontset</symbol></entry>
 <entry align="left" valign="top"><classname>*userBoldFont:</classname> <symbol role="variable">fontset</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;fg</classname> <symbol role="Variable">foreground_color</symbol></entry>
+<entry align="left" valign="top"><classname>-fg</classname> <symbol role="Variable">foreground_color</symbol></entry>
 <entry align="left" valign="top"><classname>*foreground:</classname> <symbol role="Variable">foreground_color</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;fn</classname> <symbol role="variable">fontset</symbol></entry>
+<entry align="left" valign="top"><classname>-fn</classname> <symbol role="variable">fontset</symbol></entry>
 <entry align="left" valign="top"><classname>*userFont:</classname> <symbol role="variable">fontset</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;font</classname> <symbol role="variable">fontset</symbol></entry>
+<entry align="left" valign="top"><classname>-font</classname> <symbol role="variable">fontset</symbol></entry>
 <entry align="left" valign="top"><classname>*userFont:</classname> <symbol role="variable">fontset</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;foreground</classname> <symbol role="Variable">foreground_color</symbol></entry>
+<entry align="left" valign="top"><classname>-foreground</classname> <symbol role="Variable">foreground_color</symbol></entry>
 <entry align="left" valign="top"><classname>*foreground:</classname> <symbol role="Variable">foreground_color</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;geometry</classname> <symbol role="variable">geometry_string</symbol></entry>
+<entry align="left" valign="top"><classname>-geometry</classname> <symbol role="variable">geometry_string</symbol></entry>
 <entry align="left" valign="top"><classname>.geometry:</classname> <symbol role="variable">geometry_string</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;iconic</classname></entry>
+<entry align="left" valign="top"><classname>-iconic</classname></entry>
 <entry align="left" valign="top"><classname>.iconic: True</classname></entry>
 </row>
 <row>
@@ -1279,7 +1279,7 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>.iconic: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;j</classname></entry>
+<entry align="left" valign="top"><classname>-j</classname></entry>
 <entry align="left" valign="top"><classname>*jumpScroll: True</classname></entry>
 </row>
 <row>
@@ -1287,7 +1287,7 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>*jumpScroll: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;kshMode</classname></entry>
+<entry align="left" valign="top"><classname>-kshMode</classname></entry>
 <entry align="left" valign="top"><classname>*kshMode: True</classname></entry>
 </row>
 <row>
@@ -1295,7 +1295,7 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>*kshMode: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;l</classname></entry>
+<entry align="left" valign="top"><classname>-l</classname></entry>
 <entry align="left" valign="top"><classname>*logging: True</classname></entry>
 </row>
 <row>
@@ -1303,10 +1303,10 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>*logging: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;lf</classname> <symbol role="Variable">file_name</symbol></entry>
+<entry align="left" valign="top"><classname>-lf</classname> <symbol role="Variable">file_name</symbol></entry>
 <entry align="left" valign="top"><classname>*logFile:</classname> <symbol role="Variable">file_name</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;ls</classname></entry>
+<entry align="left" valign="top"><classname>-ls</classname></entry>
 <entry align="left" valign="top"><classname>*loginShell: True</classname></entry>
 </row>
 <row>
@@ -1314,7 +1314,7 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>*loginShell: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;map</classname></entry>
+<entry align="left" valign="top"><classname>-map</classname></entry>
 <entry align="left" valign="top"><classname>*mapOnOutput: True</classname></entry>
 </row>
 <row>
@@ -1322,7 +1322,7 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>*mapOnOutput: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;mb</classname></entry>
+<entry align="left" valign="top"><classname>-mb</classname></entry>
 <entry align="left" valign="top"><classname>*marginBell: True</classname></entry>
 </row>
 <row>
@@ -1330,16 +1330,16 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>*marginBell: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;ms</classname> <symbol role="variable">pointer_color</symbol></entry>
+<entry align="left" valign="top"><classname>-ms</classname> <symbol role="variable">pointer_color</symbol></entry>
 <entry align="left" valign="top"><classname>*pointerColor:</classname> <symbol role="variable">pointer_color</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;name</classname> <symbol role="variable">prog_name</symbol></entry>
+<entry align="left" valign="top"><classname>-name</classname> <symbol role="variable">prog_name</symbol></entry>
 <entry align="left" valign="top"><classname>.name:</classname> <symbol role="variable">prog_name</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;nb</classname> <symbol role="variable">number</symbol></entry>
+<entry align="left" valign="top"><classname>-nb</classname> <symbol role="variable">number</symbol></entry>
 <entry align="left" valign="top"><classname>*nMarginBell:</classname> <symbol role="variable">number</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;rw</classname></entry>
+<entry align="left" valign="top"><classname>-rw</classname></entry>
 <entry align="left" valign="top"><classname>*reverseWrap: True</classname></entry>
 </row>
 <row>
@@ -1347,7 +1347,7 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>*reverseWrap: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;sb</classname></entry>
+<entry align="left" valign="top"><classname>-sb</classname></entry>
 <entry align="left" valign="top"><classname>*scrollBar: True</classname></entry>
 </row>
 <row>
@@ -1355,7 +1355,7 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>*scrollBar: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;sf</classname></entry>
+<entry align="left" valign="top"><classname>-sf</classname></entry>
 <entry align="left" valign="top"><classname>*sunFunctionKeys: True</classname></entry>
 </row>
 <row>
@@ -1363,25 +1363,25 @@ The following table describes the relationship between the two:</para>
 <entry align="left" valign="top"><classname>*sunFunctionKeys: False</classname></entry>
 </row>
 <row>
-<entry align="left" valign="top"><classname>&minus;sl</classname> <symbol role="Variable">screens</symbol>s</entry>
+<entry align="left" valign="top"><classname>-sl</classname> <symbol role="Variable">screens</symbol>s</entry>
 <entry align="left" valign="top"><classname>*saveLines:</classname> <symbol role="Variable">screens  * lines/screen</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;sl</classname> <symbol role="Variable">lines</symbol></entry>
+<entry align="left" valign="top"><classname>-sl</classname> <symbol role="Variable">lines</symbol></entry>
 <entry align="left" valign="top"><classname>*saveLines:</classname> <symbol role="Variable">lines</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;ti</classname> <symbol role="variable">term_id</symbol></entry>
+<entry align="left" valign="top"><classname>-ti</classname> <symbol role="variable">term_id</symbol></entry>
 <entry align="left" valign="top"><classname>*termId:</classname> <symbol role="variable">term_id</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;title</classname> <symbol role="variable">title_string</symbol></entry>
+<entry align="left" valign="top"><classname>-title</classname> <symbol role="variable">title_string</symbol></entry>
 <entry align="left" valign="top"><classname>.title:</classname> <symbol role="variable">title_string</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;tm</classname> <symbol role="variable">term_modes</symbol></entry>
+<entry align="left" valign="top"><classname>-tm</classname> <symbol role="variable">term_modes</symbol></entry>
 <entry align="left" valign="top"><classname>*ttyModes:</classname> <symbol role="variable">term_modes</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;tn</classname> <symbol role="variable">term_name</symbol></entry>
+<entry align="left" valign="top"><classname>-tn</classname> <symbol role="variable">term_name</symbol></entry>
 <entry align="left" valign="top"><classname>*termName:</classname> <symbol role="variable">term_name</symbol></entry></row>
 <row>
-<entry align="left" valign="top"><classname>&minus;vb</classname></entry>
+<entry align="left" valign="top"><classname>-vb</classname></entry>
 <entry align="left" valign="top"><classname>*visualBell: True</classname></entry>
 </row>
 <row>

@@ -27,15 +27,15 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>ttsession</Command>
-<Arg Choice="opt">&minus;hNpsStv</Arg>
+<Arg Choice="opt">-hNpsStv</Arg>
 <Group>
-<Arg>&minus;E</Arg>
-<Arg>&minus;X</Arg>
+<Arg>-E</Arg>
+<Arg>-X</Arg>
 </Group>
-<Arg Choice="opt">&minus;a&ensp;<Replaceable>level</Replaceable></Arg>
-<Arg Choice="opt">&minus;d&ensp;<Replaceable>display</Replaceable></Arg>
+<Arg Choice="opt">-a&ensp;<Replaceable>level</Replaceable></Arg>
+<Arg Choice="opt">-d&ensp;<Replaceable>display</Replaceable></Arg>
 <Group>
-<Arg>&minus;c&ensp;</Arg>
+<Arg>-c&ensp;</Arg>
 <Arg Choice="opt"><Replaceable>command</Replaceable></Arg>
 </Group>
 </CmdSynopsis>
@@ -60,7 +60,7 @@ by any program that needs to send or receive a message.
 <![ %CDE.C.XO; [
 <Para>The
 <Command>ttsession</Command> utility supports the &str-Zu;, except that the
-<Literal>&minus;c</Literal> option has an optional option-argument,
+<Literal>-c</Literal> option has an optional option-argument,
 which treats all of the following command-line arguments
 as a string to be passed to another shell invocation.
 </Para>
@@ -69,7 +69,7 @@ as a string to be passed to another shell invocation.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;a&numsp;</Literal><Symbol Role="Variable">level</Symbol></Term>
+<Term><Literal>-a&numsp;</Literal><Symbol Role="Variable">level</Symbol></Term>
 <ListItem>
 <Para>Set the server authentication level.
 The following
@@ -94,7 +94,7 @@ The following
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;c&numsp;[</Literal><Symbol Role="Variable">command</Symbol><Literal>]</Literal></Term>
+<Term><Literal>-c&numsp;[</Literal><Symbol Role="Variable">command</Symbol><Literal>]</Literal></Term>
 <ListItem>
 <Para>Start a process tree session and run the given command.
 The
@@ -107,12 +107,12 @@ If
 <Command>ttsession</Command> invokes the shell named by the
 <SystemItem Class="EnvironVar">SHELL</SystemItem> environment variable.
 Everything after
-<Literal>&minus;c</Literal> on the command line is used as the command to be executed.
+<Literal>-c</Literal> on the command line is used as the command to be executed.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;d&numsp;</Literal><Symbol Role="Variable">display</Symbol></Term>
+<Term><Literal>-d&numsp;</Literal><Symbol Role="Variable">display</Symbol></Term>
 <ListItem>
 <Para>Specify an X Windows display.
 The ToolTalk session will consist of those applications
@@ -123,18 +123,18 @@ The default display is identified by the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;E</Literal></Term>
+<Term><Literal>-E</Literal></Term>
 <ListItem>
 <Para>Read in the types from the Classing Engine database.
 If neither
-<Literal>&minus;E</Literal> nor
-<Literal>&minus;X</Literal> is given,
-<Literal>&minus;X</Literal> is assumed.
+<Literal>-E</Literal> nor
+<Literal>-X</Literal> is given,
+<Literal>-X</Literal> is assumed.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;h</Literal></Term>
+<Term><Literal>-h</Literal></Term>
 <ListItem>
 <Para>Write a help message to standard error that
 describes the command syntax of
@@ -143,7 +143,7 @@ describes the command syntax of
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;N</Literal></Term>
+<Term><Literal>-N</Literal></Term>
 <ListItem>
 <Para>Maximize the number of clients allowed to connect to (in other words, open
 procids in) this session by attempting to raise the limit of
@@ -154,7 +154,7 @@ on some systems this option may have no effect.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;p</Literal></Term>
+<Term><Literal>-p</Literal></Term>
 <ListItem>
 <Para>Write the name of a new process tree session to standard output, and then
 fork a background instance of
@@ -163,7 +163,7 @@ fork a background instance of
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;s</Literal></Term>
+<Term><Literal>-s</Literal></Term>
 <ListItem>
 <Para>Silent.
 Do not write any warning messages to standard error.
@@ -171,7 +171,7 @@ Do not write any warning messages to standard error.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;S</Literal></Term>
+<Term><Literal>-S</Literal></Term>
 <ListItem>
 <Para>Do not fork a background instance to manage the
 <Command>ttsession</Command> session.
@@ -179,7 +179,7 @@ Do not write any warning messages to standard error.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;t</Literal></Term>
+<Term><Literal>-t</Literal></Term>
 <ListItem>
 <Para>Turn on trace mode.
 See
@@ -195,14 +195,14 @@ a given process is also shown together with the success of that attempt.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;v</Literal></Term>
+<Term><Literal>-v</Literal></Term>
 <ListItem>
 <Para>Write the version number to standard output and exit.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;X</Literal></Term>
+<Term><Literal>-X</Literal></Term>
 <ListItem>
 <Para>Read in the types from the following XDR format databases:
 </Para>
@@ -240,7 +240,7 @@ See
 <RefSect1>
 <Title>INPUT FILES</Title>
 <Para>The XDR format databases listed by the
-<Literal>&minus;X</Literal> option are serialized ToolTalk data structures of
+<Literal>-X</Literal> option are serialized ToolTalk data structures of
 an unspecified format, except that it is the same
 as the format of
 &cdeman.tt.type.comp; output files.
@@ -275,11 +275,11 @@ service will auto-start one.
 </Para>
 <Para>If
 <Command>ttsession</Command> is run with the
-<Literal>&minus;d</Literal> option and
+<Literal>-d</Literal> option and
 <SystemItem Class="EnvironVar">DISPLAY</SystemItem> is not set,
 <Command>ttsession</Command> sets
 <SystemItem Class="EnvironVar">DISPLAY</SystemItem> to be the value of the
-<Literal>&minus;d</Literal> option for itself and all processes it forks.
+<Literal>-d</Literal> option for itself and all processes it forks.
 This helps ToolTalk clients to find the right X display when
 they are auto-started by
 <Command>ttsession</Command>.</Para>
@@ -418,7 +418,7 @@ The format of the variable is implementation specific.
 <Command>ttsession</Command> utility reacts to two signals.
 If it receives the
 <SystemItem Class="Constant">SIGUSR1</SystemItem> signal, it toggles trace mode on or off (see the
-<Literal>&minus;t</Literal> option).
+<Literal>-t</Literal> option).
 If it receives the
 <SystemItem Class="Constant">SIGUSR2</SystemItem> signal, it rereads the types file.
 The
@@ -428,17 +428,17 @@ The
 <RefSect1>
 <Title>STDOUT</Title>
 <Para>When the
-<Literal>&minus;v</Literal> option is used,
+<Literal>-v</Literal> option is used,
 <Command>ttsession</Command> writes the version number in an unspecified format.
 When
-<Literal>&minus;p</Literal> is used,
+<Literal>-p</Literal> is used,
 <Command>ttsession</Command> writes the name of a new process tree session.
 </Para>
 </RefSect1>
 <RefSect1>
 <Title>STDERR</Title>
 <Para>Used only for diagnostic messages and the help message written by the
-<Literal>&minus;h</Literal> option.
+<Literal>-h</Literal> option.
 </Para>
 </RefSect1>
 <RefSect1>
@@ -454,7 +454,7 @@ When
 <RefSect1>
 <Title>EXIT STATUS</Title>
 <Para>When the
-<Literal>&minus;c</Literal> child process exits,
+<Literal>-c</Literal> child process exits,
 <Command>ttsession</Command> exits with the status of the exited child.
 Otherwise, the following exit values are returned:
 </Para>
@@ -464,8 +464,8 @@ Otherwise, the following exit values are returned:
 <ListItem>
 <Para>Normal termination.
 Without the
-<Literal>&minus;c</Literal> or
-<Literal>&minus;S</Literal> options, a zero exit status means
+<Literal>-c</Literal> or
+<Literal>-S</Literal> options, a zero exit status means
 <Command>ttsession</Command> has successfully forked an instance of itself that has begun
 serving the session.
 </Para>
@@ -507,8 +507,8 @@ Another
 <RefSect1>
 <Title>APPLICATION USAGE</Title>
 <Para>Since everything after
-<Literal>&minus;c</Literal> on the command line is used as the command to be executed,
-<Literal>&minus;c</Literal> should be the last option.
+<Literal>-c</Literal> on the command line is used as the command to be executed,
+<Literal>-c</Literal> should be the last option.
 </Para>
 <Para>Tracing is helpful for seeing how messages are
 dispatched and delivered, but the output may be voluminous.

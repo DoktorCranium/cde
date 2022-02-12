@@ -13,7 +13,7 @@
 CDE Session Manager</refpurpose></refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dtsession</command><arg choice="opt">&minus;norestore</arg><arg choice="opt">&minus;session <replaceable>session_name</replaceable></arg>
+<command>dtsession</command><arg choice="opt">-norestore</arg><arg choice="opt">-session <replaceable>session_name</replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
 <refsect1>
@@ -925,13 +925,13 @@ set the <literal>RestartStyleHint</literal> property to <literal>RestartNever</l
 the DT Login Manager (<command>dtlogin</command>). If desired, <command>dtsession</command> may also be started on an existing X server. Note that <command>dtsession</command> automatically starts a window manager.</para>
 <para>The following options are available:</para>
 <variablelist>
-<varlistentry><term><literal>&minus;norestore</literal></term>
+<varlistentry><term><literal>-norestore</literal></term>
 <listitem>
 <para>Instructs <command>dtsession</command> not to restore a previous session
 nor save the session upon logout.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;session</literal> <symbol role="variable">session_name</symbol></term>
+<varlistentry><term><literal>-session</literal> <symbol role="variable">session_name</symbol></term>
 <listitem>
 <para>Instructs <command>dtsession</command> to start the specified session.
 Valid session names are:</para>

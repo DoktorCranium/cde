@@ -29,11 +29,11 @@
 <CmdSynopsis>
 <Command>dtconfig</Command>
 <Group>
-<Arg>&minus;d</Arg>
-<Arg>&minus;e</Arg>
-<Arg>&minus;kill</Arg>
-<Arg>&minus;reset</Arg>
-<Arg>&minus;p</Arg>
+<Arg>-d</Arg>
+<Arg>-e</Arg>
+<Arg>-kill</Arg>
+<Arg>-reset</Arg>
+<Arg>-p</Arg>
 </Group>
 <!--- -->
 <!--- -->
@@ -54,7 +54,7 @@ required to use
 <Title>OPTIONS</Title>
 <VariableList>
 <VarListEntry>
-<Term>&minus;d</Term>
+<Term>-d</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Disables desktop auto-start feature. At end of boot cycle, platform's native
@@ -63,7 +63,7 @@ text based login mechanism will be used.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;e</Term>
+<Term>-e</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Enable's desktop auto-start feature. Desktop login window will display at end
@@ -72,7 +72,7 @@ of platform's boot cycle.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;kill</Term>
+<Term>-kill</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Kill desktop (window based) login process and any user sessions associated with
@@ -81,7 +81,7 @@ it. Return control to system's native text based console.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;reset</Term>
+<Term>-reset</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Tell desktop (window based) login process to reread its configuration files
@@ -90,7 +90,7 @@ to incorporate any changes.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;p</Term>
+<Term>-p</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Printer actions for any printer known to platform will be created if such print

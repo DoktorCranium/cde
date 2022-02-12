@@ -17,20 +17,20 @@
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>dtinfo</command>
-<arg choice="opt">&minus;help</arg>
-<arg choice="opt">&minus;l <replaceable>infolib</replaceable></arg>
-<arg choice="opt">&minus;sect <replaceable>section</replaceable>
-<arg choice="opt"><group choice="req" rep="repeat"><arg choice="plain">&minus;<replaceable>section</replaceable></arg>
+<arg choice="opt">-help</arg>
+<arg choice="opt">-l <replaceable>infolib</replaceable></arg>
+<arg choice="opt">-sect <replaceable>section</replaceable>
+<arg choice="opt"><group choice="req" rep="repeat"><arg choice="plain">-<replaceable>section</replaceable></arg>
 <arg choice="plain">,<replaceable>section</replaceable></arg>
 </group></arg></arg>
-<arg choice="opt">&minus;secondary</arg>
-<arg choice="opt">&minus;verbose</arg>
-<arg choice="opt">&minus;print</arg>
-<arg choice="opt">&minus;hierarchy</arg>
-<arg choice="opt">&minus;printer <replaceable>x_print_server</replaceable></arg>
-<arg choice="opt">&minus;copies <replaceable>number</replaceable></arg>
-<arg choice="opt">&minus;paperSize <replaceable>size</replaceable></arg>
-<arg choice="opt">&minus;s</arg>
+<arg choice="opt">-secondary</arg>
+<arg choice="opt">-verbose</arg>
+<arg choice="opt">-print</arg>
+<arg choice="opt">-hierarchy</arg>
+<arg choice="opt">-printer <replaceable>x_print_server</replaceable></arg>
+<arg choice="opt">-copies <replaceable>number</replaceable></arg>
+<arg choice="opt">-paperSize <replaceable>size</replaceable></arg>
+<arg choice="opt">-s</arg>
 </cmdsynopsis>
 </refsynopsisdiv><refsect1>
 <title>DESCRIPTION</title>
@@ -104,13 +104,13 @@ across sessions.
 <para>The following options are available:
 </para>
 <variablelist>
-<varlistentry><term><literal>&minus;help</literal></term>
+<varlistentry><term><literal>-help</literal></term>
 <listitem>
 <para>Prints a summary of the command's syntax.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;l</literal> <symbol role="variable">infolib</symbol></term>
+<varlistentry><term><literal>-l</literal> <symbol role="variable">infolib</symbol></term>
 <listitem>
 <para>Specifies an absolute file path or the filename of an information library.
 If an infolib's filename is specified, the search path specified by
@@ -122,7 +122,7 @@ This option can be specified more than once.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;secondary</literal></term>
+<varlistentry><term><literal>-secondary</literal></term>
 <listitem>
 <para>Starts a secondary instance of <command>dtinfo</command>. Secondary
 instances do not respond to <symbol>Dtinfo_ShowInfoAtLoc</symbol>
@@ -130,27 +130,27 @@ and <symbol>Dtinfo_LoadInfoLib</symbol> ToolTalk messages.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;verbose</literal></term>
+<varlistentry><term><literal>-verbose</literal></term>
 <listitem>
 <para>Prints information on the terminal as the command runs, if
 <command>dtinfo</command> is started from the command line.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;sect</literal> <symbol role="variable">section</symbol>[{&minus;<symbol role="variable">section</symbol>|,<symbol role="variable">section</symbol>}&hellip;]</term>
+<varlistentry><term><literal>-sect</literal> <symbol role="variable">section</symbol>[{-<symbol role="variable">section</symbol>|,<symbol role="variable">section</symbol>}&hellip;]</term>
 <listitem>
 <para>Specifies the infolib section or sections to either display
 or print. Sections can be specified in generalized locator format.
 </para>
 <para>To specify a range of sections, use the form:
 </para>
-<para><literal>&minus;sect</literal> <symbol role="variable">section</symbol><literal>-</literal><symbol role="variable">section</symbol>
+<para><literal>-sect</literal> <symbol role="variable">section</symbol><literal>-</literal><symbol role="variable">section</symbol>
 </para>
 <para>where the start and end sections are separated by the hyphen character.
 </para>
 <para>To specify a discontiguous list of sections, use the form:
 </para>
-<para><literal>&minus;sect</literal> <symbol role="variable">section</symbol>,<symbol role="variable">section</symbol>
+<para><literal>-sect</literal> <symbol role="variable">section</symbol>,<symbol role="variable">section</symbol>
 </para>
 <para>where the sections in the list are separated by the comma character.
 </para>
@@ -160,7 +160,7 @@ all the sections in separate browser windows.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;print</literal></term>
+<varlistentry><term><literal>-print</literal></term>
 <listitem>
 <para>Instructs <command>dtinfo</command> to print the locations specified
 with the <literal>-sect</literal> option. Printing of an entire infolib
@@ -172,18 +172,18 @@ the top of a section, the section containing the location is printed.
 </variablelist>
 <refsect2>
 <title>Print Control Options</title>
-<para>These options are valid only if the <literal>&minus;print</literal>
+<para>These options are valid only if the <literal>-print</literal>
 option is also specified.
 </para>
 <variablelist>
-<varlistentry><term><literal>&minus;hierarchy</literal></term>
+<varlistentry><term><literal>-hierarchy</literal></term>
 <listitem>
 <para>Prints an entire specified section and all of its subsections. By
 default, only the specified section is printed.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;printer</literal> <symbol role="variable">x_print_server</symbol></term>
+<varlistentry><term><literal>-printer</literal> <symbol role="variable">x_print_server</symbol></term>
 <listitem>
 <para>Specifies which X Print server to use. If this is not specified as a
 command-line option or resource, the value is taken from the
@@ -191,14 +191,14 @@ environment.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;copies</literal> <symbol role="variable">number</symbol></term>
+<varlistentry><term><literal>-copies</literal> <symbol role="variable">number</symbol></term>
 <listitem>
 <para>Specifies how many copies to print. The default value is 1. This option
 is ignored when generating an output file.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;paperSize</literal> <symbol role="variable">size</symbol></term>
+<varlistentry><term><literal>-paperSize</literal> <symbol role="variable">size</symbol></term>
 <listitem>
 <para>Specifies a size of paper to which the output should be formatted. Valid
 sizes are <literal>iso-a4</literal>, <literal>iso-b4</literal>,
@@ -206,7 +206,7 @@ sizes are <literal>iso-a4</literal>, <literal>iso-b4</literal>,
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;outputFile</literal> <symbol role="variable">filename</symbol></term>
+<varlistentry><term><literal>-outputFile</literal> <symbol role="variable">filename</symbol></term>
 <listitem>
 <para>Specifies a file to hold the print-ready output. If this option is
 specified, no output is sent to the printer. If this
@@ -214,7 +214,7 @@ option is specified, the <literal>-copies</literal> option is ignored.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;s</literal></term>
+<varlistentry><term><literal>-s</literal></term>
 <listitem>
 <para>Specifies silent printing. <command>dtinfo</command> does not write to
 either standard out or standard error, nor does it attempt to open any
@@ -630,8 +630,8 @@ relative or absolute, for one or more information libraries.
 </refsect1><refsect1>
 <title>OUTPUT FILES</title>
 <para>For output, <command>dtinfo</command> produces a file to hold
-print-ready output, if the <literal>&minus;outputFile</literal> and the
-<literal>&minus;print</literal> options are specified.
+print-ready output, if the <literal>-outputFile</literal> and the
+<literal>-print</literal> options are specified.
 </para>
 </refsect1><refsect1>
 <title>EXTENDED DESCRIPTION</title>

@@ -27,8 +27,8 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>rpc.cmsd
-[&minus;d]</Command>
-<Arg Choice="opt">&minus;s</Arg>
+[-d]</Command>
+<Arg Choice="opt">-s</Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -47,14 +47,14 @@ resource-scheduling data. Its primary client is
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>&minus;d</Term>
+<Term>-d</Term>
 <ListItem>
 <Para>Enables debugging output.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;s</Term>
+<Term>-s</Term>
 <ListItem>
 <Para>Runs rpc.cmsd in the foreground. This option should
 be used when rpc.cmsd is invoked manually for debugging purposes.
@@ -97,7 +97,7 @@ be used when rpc.cmsd is invoked manually for debugging purposes.
 <RefSect1>
 <Title>STDOUT</Title>
 <Para>When the
-<Literal>&minus;d</Literal> option is used,
+<Literal>-d</Literal> option is used,
 <Command>rpc.cmsd</Command> writes the debugging information to stdout.
 </Para>
 </RefSect1>

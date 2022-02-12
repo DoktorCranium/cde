@@ -24,8 +24,8 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>dtmailpr</Command>
-<Arg Choice="opt">&minus;f<Replaceable>filename</Replaceable></Arg>
-<Arg Choice="opt">&minus;p</Arg>
+<Arg Choice="opt">-f<Replaceable>filename</Replaceable></Arg>
+<Arg Choice="opt">-p</Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -45,7 +45,7 @@ and attachments removed. If no filename argument is provided
 <Title>OPTIONS</Title>
 <VariableList>
 <VarListEntry>
-<Term>&minus;p</Term>
+<Term>-p</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Insert page breaks between each mail message so that they print one
@@ -54,7 +54,7 @@ per page.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;f filename</Term>
+<Term>-f filename</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Read from the specified file instead of standard in.

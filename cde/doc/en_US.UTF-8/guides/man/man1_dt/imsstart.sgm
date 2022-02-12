@@ -13,8 +13,8 @@
 an input method server</refpurpose></refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dtimsstart</command><arg choice="opt">&minus;env</arg><arg choice="opt">&minus;ims <replaceable>name</replaceable></arg><arg choice="opt">&minus;shell <replaceable>name</replaceable></arg><arg choice="opt">&minus;host <replaceable>hostname</replaceable></arg><arg choice="opt">&minus;imsopt <replaceable>options</replaceable></arg>
-<arg choice="opt">&minus;list</arg>
+<command>dtimsstart</command><arg choice="opt">-env</arg><arg choice="opt">-ims <replaceable>name</replaceable></arg><arg choice="opt">-shell <replaceable>name</replaceable></arg><arg choice="opt">-host <replaceable>hostname</replaceable></arg><arg choice="opt">-imsopt <replaceable>options</replaceable></arg>
+<arg choice="opt">-list</arg>
 </cmdsynopsis>
 </refsynopsisdiv>
 <refsect1>
@@ -54,7 +54,7 @@ the selection window.</para>
 </variablelist>
 <refsect2>
 <title>Remote Execution of IMS</title>
-<para>If you use the <literal>&minus;host</literal> option to have <command>dtimsstart</command> start an IMS on a remote host, <command>dtimsstart</command>
+<para>If you use the <literal>-host</literal> option to have <command>dtimsstart</command> start an IMS on a remote host, <command>dtimsstart</command>
 does the following:</para>
 <itemizedlist><listitem><para>Executes the <Symbol>DtImsGetRemoteConf</Symbol>
 action to retrieve IMS configuration data from the specified remote system
@@ -74,7 +74,7 @@ Desktop Environment: Advanced User's and System Administrator's Guide</emphasis>
 <title>OPTIONS</title>
 <para>The following options are available:</para>
 <variablelist>
-<varlistentry><term><literal>&minus;env</literal></term>
+<varlistentry><term><literal>-env</literal></term>
 <listitem>
 <para>Outputs the contents of the <Symbol>XMODIFIERS</Symbol> environment
 variable to stdout. <command>dtimsstart</command> automatically updates this
@@ -83,31 +83,31 @@ that the intended IMS is the one that is being started. If you omit this
 option, no output occurs.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;ims</literal> <emphasis>name</emphasis></term>
+<varlistentry><term><literal>-ims</literal> <emphasis>name</emphasis></term>
 <listitem>
 <para>The name of the IMS to be started. If you specify this option, <command>dtimsstart</command> starts the IMS without displaying the selection window.
 If you omit this option, <command>dtimsstart</command> displays the selection
 window.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;shell</literal> <emphasis>name</emphasis></term>
+<varlistentry><term><literal>-shell</literal> <emphasis>name</emphasis></term>
 <listitem>
-<para>The output format to use, of output, if <literal>&minus;env</literal>
+<para>The output format to use, of output, if <literal>-env</literal>
 is specified. If you omit this option, <command>dtimsstart</command> uses
 the value of $SHELL as the default.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;host</literal> <emphasis>hostname</emphasis></term>
+<varlistentry><term><literal>-host</literal> <emphasis>hostname</emphasis></term>
 <listitem>
 <para>The name of the host on which the IMS is to run. If you omit this option, <command>dtimsstart</command> uses the local host as the default.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;imsopt</literal> <emphasis>options</emphasis></term>
+<varlistentry><term><literal>-imsopt</literal> <emphasis>options</emphasis></term>
 <listitem>
 <para>The command line options for the selected IMS.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;list</literal></term>
+<varlistentry><term><literal>-list</literal></term>
 <listitem>
 <para>Instructs <command>dtimsstart</command> to output the names of input
 methods registered on the system and then exit immediately.</para>
@@ -129,7 +129,7 @@ methods registered on the system and then exit immediately.</para>
 <itemizedlist><listitem><para>The started IMS did not complete its initialization
 within the timeout period.</para>
 </listitem><listitem><para>The started IMS process aborted.</para>
-</listitem><listitem><para>The IMS specified by the <literal>&minus;ims</literal>
+</listitem><listitem><para>The IMS specified by the <literal>-ims</literal>
 option is not registered.</para>
 </listitem></itemizedlist>
 </listitem>
@@ -488,7 +488,7 @@ default is False.</para>
 <varlistentry><term><literal>no_option</literal></term>
 <listitem>
 <para>A Bool indicating whether the IMS allows the command-line option or
-not. If True, any options specified by <literal>&minus;imsopt</literal> are
+not. If True, any options specified by <literal>-imsopt</literal> are
 ignored, though the value of the <literal>cmd_param</literal> entry is always
 applied regardless of this value. It should be True for the local IMS. The
 default is False.</para>

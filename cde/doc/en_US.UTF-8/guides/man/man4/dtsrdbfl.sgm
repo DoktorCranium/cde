@@ -28,7 +28,7 @@ may also be enhanced by the database developer.
 </para>
 <para>All database files for a single database must be located in the same
 directory. The directory is specified in the offline build tools by the
-optional path prefix in the <literal>&minus;d</literal><Symbol Role="Variable">dbname</Symbol> argument. The directory is specified for
+optional path prefix in the <literal>-d</literal><Symbol Role="Variable">dbname</Symbol> argument. The directory is specified for
 the online API by a <systemitem class="environvar">PATH</systemitem>
 configuration file (ocf file).
 </para>
@@ -136,24 +136,24 @@ See &cdeman.dtsrlangfiles; for formats of language files.
 </para>
 <simplelist>
 <member>
-<filename>eng.stp</filename> &minus; for
+<filename>eng.stp</filename> - for
 <systemitem class="constant">DtSrLaENG</systemitem> and
 <systemitem class="constant">DtSrLaENG2</systemitem>
 </member>
 <member>
-<filename>esp.stp</filename> &minus; for
+<filename>esp.stp</filename> - for
 <systemitem class="constant">DtSrLaESP</systemitem>
 </member>
 <member>
-<filename>fra.stp</filename> &minus; for
+<filename>fra.stp</filename> - for
 <systemitem class="constant">DtSrLaFRA</systemitem>
 </member>
 <member>
-<filename>deu.stp</filename> &minus; for
+<filename>deu.stp</filename> - for
 <systemitem class="constant">DtSrLaDEU</systemitem>
 </member>
 <member>
-<filename>ita.stp</filename> &minus; for
+<filename>ita.stp</filename> - for
 <systemitem class="constant">DtSrLaITA</systemitem>
 </member>
 </simplelist>

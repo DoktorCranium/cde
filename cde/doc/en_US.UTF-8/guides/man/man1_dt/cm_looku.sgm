@@ -26,9 +26,9 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>dtcm_lookup</Command>
-<Arg Choice="opt">&minus;c&numsp;<Replaceable>calendar</Replaceable></Arg>
-<Arg Choice="opt">&minus;d&numsp;<Replaceable>date</Replaceable></Arg>
-<Arg Choice="opt">&minus;v&numsp;<Replaceable>view</Replaceable></Arg>
+<Arg Choice="opt">-c&numsp;<Replaceable>calendar</Replaceable></Arg>
+<Arg Choice="opt">-d&numsp;<Replaceable>date</Replaceable></Arg>
+<Arg Choice="opt">-v&numsp;<Replaceable>view</Replaceable></Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -42,8 +42,8 @@ used to look up appointments from the calendar
 of the command-line options.
 The current list of appointments for the specified date
 (see the
-<Literal>&minus;d</Literal> and
-<Literal>&minus;v</Literal> options) is displayed.
+<Literal>-d</Literal> and
+<Literal>-v</Literal> options) is displayed.
 </Para>
 </RefSect1>
 <RefSect1>
@@ -57,7 +57,7 @@ The current list of appointments for the specified date
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;c&numsp;</Literal><Emphasis>calendar</Emphasis></Term>
+<Term><Literal>-c&numsp;</Literal><Emphasis>calendar</Emphasis></Term>
 <ListItem>
 <Para>Specify the name of the target calendar.
 Calendar names
@@ -74,7 +74,7 @@ the current user at the current host machine.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;d&numsp;</Literal><Emphasis>date</Emphasis></Term>
+<Term><Literal>-d&numsp;</Literal><Emphasis>date</Emphasis></Term>
 <ListItem>
 <Para>Specify the date for the look up query.
 The
@@ -91,7 +91,7 @@ are correctly calculated.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;v&numsp;</Literal><Emphasis>view</Emphasis></Term>
+<Term><Literal>-v&numsp;</Literal><Emphasis>view</Emphasis></Term>
 <ListItem>
 <Para>Specify the view span of appointments to display.
 The
@@ -102,7 +102,7 @@ The
 <Term><Literal>day</Literal></Term>
 <ListItem>
 <Para>Display all appointments for the given date (see
-<Literal>&minus;d</Literal> option).
+<Literal>-d</Literal> option).
 </Para>
 </ListItem>
 </VarListEntry>
@@ -294,7 +294,7 @@ Appointments for Tuesday March 29, 1994:
 <Para>To look up entries for a specific date:
 </Para>
 <InformalExample Remap="indent">
-<ProgramListing>dtcm_lookup &minus;d 03/29/94
+<ProgramListing>dtcm_lookup -d 03/29/94
 Appointments for Wednesday March 30, 1994:
         1) 11:00am-12:00pm Appointment
         2) 11:30am-12:30pm Group Lunch
@@ -304,7 +304,7 @@ Appointments for Wednesday March 30, 1994:
 <Para>To look up entries from a specific target calendar:
 </Para>
 <InformalExample Remap="indent">
-<ProgramListing>dtcm_lookup &minus;c felix@cat
+<ProgramListing>dtcm_lookup -c felix@cat
 Appointments for Tuesday March 29, 1994:
         1) Appointment
         2) 10:15am-10:30am Coffee
@@ -317,7 +317,7 @@ Appointments for Tuesday March 29, 1994:
 <Para>To look up an entire week's appointments:
 </Para>
 <InformalExample Remap="indent">
-<ProgramListing>dtcm_lookup &minus;v week
+<ProgramListing>dtcm_lookup -v week
 Appointments for Sunday March 27, 1994:
         1) 6:00am-5:00pm Hiking
 Appointments for Monday March 28, 1994:

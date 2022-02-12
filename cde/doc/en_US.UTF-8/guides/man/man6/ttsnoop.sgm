@@ -25,7 +25,7 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>ttsnoop</Command>
-<Arg Choice="opt">&minus;t</Arg>
+<Arg Choice="opt">-t</Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -83,7 +83,7 @@ to exit <command>ttsnoop</command>
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;t</Literal></Term>
+<Term><Literal>-t</Literal></Term>
 <ListItem>
 <Para>Print trace output. Of particular interest is that ttsnoop
 will print example ToolTalk API code in the invoking OpenWindows

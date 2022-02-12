@@ -19,15 +19,15 @@ objects in an archive</refpurpose></refnamediv><!-- $XConsortium: tttar.sgm
 <command>tttar c</command><arg>t</arg><arg>x</arg><arg choice="opt">EfhpSv</arg><arg choice="opt"><replaceable>tarfile</replaceable></arg><arg><replaceable>pathname</replaceable></arg><arg>.&thinsp;.&thinsp;.</arg>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>tttar c</command><arg>t</arg><arg>xfL</arg><arg choice="opt">EhpRSv</arg><arg><replaceable>tttarfile</replaceable></arg><group><group><arg>&minus;rename <replaceable>oldname</replaceable></arg><arg><replaceable>newname</replaceable></arg></group>
+<command>tttar c</command><arg>t</arg><arg>xfL</arg><arg choice="opt">EhpRSv</arg><arg><replaceable>tttarfile</replaceable></arg><group><group><arg>-rename <replaceable>oldname</replaceable></arg><arg><replaceable>newname</replaceable></arg></group>
 <arg>.&thinsp;.&thinsp;.</arg></group><arg><replaceable>pathname</replaceable></arg>
 <arg>.&thinsp;.&thinsp;.</arg>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>tttar</command><arg>&minus;h</arg><arg>&minus;help</arg>
+<command>tttar</command><arg>-h</arg><arg>-help</arg>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>tttar</command><arg>&minus;v</arg>
+<command>tttar</command><arg>-v</arg>
 </cmdsynopsis>
 </refsynopsisdiv><refsect1>
 <title>DESCRIPTION</title>
@@ -70,38 +70,38 @@ the current working directory must be writable, so that the <emphasis>tttarfile<
 <title>OPTIONS</title><![ %CDE.C.XO; [<Para>The
 <Command>tttar</Command> utility supports the &str-Zu;,
 except that the
-<Literal>&minus;help</Literal> and
-<Literal>&minus;rename</Literal> options are full words, which cannot be combined
+<Literal>-help</Literal> and
+<Literal>-rename</Literal> options are full words, which cannot be combined
 with the other options, and
-<Literal>&minus;rename</Literal> can only be used after
+<Literal>-rename</Literal> can only be used after
 the first operand,
 <Emphasis>tttarfile</Emphasis>.</Para>
 ]]>
 <para>The following options are available:</para>
 <variablelist>
-<varlistentry><term><literal>&minus;h</literal></term>
+<varlistentry><term><literal>-h</literal></term>
 <listitem>
 <para></para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;help</literal></term>
+<varlistentry><term><literal>-help</literal></term>
 <listitem>
 <para>Write a help message for invoking <command>tttar</command> and then
 exit.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;rename</literal><emphasis>&numsp;oldname&numsp;newname</emphasis></term>
+<varlistentry><term><literal>-rename</literal><emphasis>&numsp;oldname&numsp;newname</emphasis></term>
 <listitem>
 <para>Interpret the next two arguments as an <emphasis>oldname</emphasis>
 and a <emphasis>newname</emphasis>, respectively, and rename any entry archived
 as <emphasis>oldname</emphasis> to <emphasis>newname</emphasis>. If <emphasis>oldname</emphasis> is a directory, then <command>tttar</command> recursively
-renames the entries as well. If more than one <literal>&minus;rename</literal>
+renames the entries as well. If more than one <literal>-rename</literal>
 option applies to an entry (because of one or more parent directories being
-renamed), the most specific <literal>&minus;rename</literal> option applies.
+renamed), the most specific <literal>-rename</literal> option applies.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;v</literal></term>
+<varlistentry><term><literal>-v</literal></term>
 <listitem>
 <para>Write the version number of <command>tttar</command> and then exit.
 </para>
@@ -147,7 +147,7 @@ the same character more than once produces undefined results.</para>
 <varlistentry><term><literal>f</literal></term>
 <listitem>
 <para>Use the next argument as the name of the <emphasis>tttarfile</emphasis>.
-If <emphasis>tttarfile</emphasis> is given as `<literal>&minus;</literal>', <command>tttar</command> writes to the standard output or reads from the standard input,
+If <emphasis>tttarfile</emphasis> is given as `<literal>-</literal>', <command>tttar</command> writes to the standard output or reads from the standard input,
 whichever is appropriate.</para>
 </listitem>
 </varlistentry>
@@ -214,12 +214,12 @@ just the name.</para>
 </listitem>
 <listitem>
 <para>The <Literal>X</Literal> and <Literal>F</Literal> function modifiers
-and the <literal>&minus;I</literal> option of <command>tar</command>(1), for
+and the <literal>-I</literal> option of <command>tar</command>(1), for
 including or excluding files from being archived based on SCCS status or being
 listed in a special file.</para>
 </listitem>
 <listitem>
-<para>The <literal>w</literal> function modifier and the <literal>&minus;C</literal> option of <command>tar</command>(1), for pausing or changing directories
+<para>The <literal>w</literal> function modifier and the <literal>-C</literal> option of <command>tar</command>(1), for pausing or changing directories
 between the files listed on the command line.</para>
 </listitem>
 <listitem>
@@ -257,7 +257,7 @@ ToolTalk objects.</para>
 </refsect1><refsect1>
 <title>STDIN</title>
 <para>When the <literal>f</literal> modifier is used with the <literal>t</literal>
-or <literal>x</literal> function letter and the pathname is &minus;, the standard
+or <literal>x</literal> function letter and the pathname is -, the standard
 input is an archive file formatted as described in <literal>EXTENDED DESCRIPTION</literal>. Otherwise, the standard input is not used.</para>
 </refsect1><refsect1>
 <title>INPUT FILES</title>
@@ -313,12 +313,12 @@ written to standard output.</para>
 ]]><![ %CDE.C.CDE; [<para>The <command>tttar</command> utility takes the standard
 action for all signals.</para>]]></refsect1><refsect1>
 <title>STDOUT</title>
-<para>When the <literal>&minus;h</literal> option is used, <command>tttar</command> writes to standard output a help message in an unspecified format.
+<para>When the <literal>-h</literal> option is used, <command>tttar</command> writes to standard output a help message in an unspecified format.
 </para>
-<para>When the <literal>&minus;v</literal> option is used, <command>tttar</command> writes to standard output a version number in an unspecified format.
+<para>When the <literal>-v</literal> option is used, <command>tttar</command> writes to standard output a version number in an unspecified format.
 </para>
 <para>When the <literal>f</literal> modifier is used with the <literal>c</literal>
-function letter and the pathname is &minus;, the standard output is an archive
+function letter and the pathname is -, the standard output is an archive
 file formatted as described in <literal>EXTENDED DESCRIPTION</literal>.</para>
 <para>Otherwise, the standard output is not used.</para>
 </refsect1><refsect1>

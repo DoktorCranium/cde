@@ -64,7 +64,7 @@ otherwise, it returns False.
 <RefSect1>
 <Title>APPLICATION USAGE</Title>
 <Para>The application should add
-<Literal>&minus;session</Literal> <Emphasis>saveFile</Emphasis> when it updates its
+<Literal>-session</Literal> <Emphasis>saveFile</Emphasis> when it updates its
 <SystemItem Class="Constant">WM_COMMAND</SystemItem> property.
 </Para>
 <Para>The application must use

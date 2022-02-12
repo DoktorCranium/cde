@@ -269,9 +269,9 @@ use. The default terminal emulator is &cdeman.dtterm;.</para>
 When a remote <systemitem class="Constant">COMMAND</systemitem> action is
 executed on one of the hosts in the list, the terminal emulator associated
 with that host is used for that command. The list is passed to the terminal
-emulator using the <literal>&minus;e</literal> argument. (Thus, if another
+emulator using the <literal>-e</literal> argument. (Thus, if another
 terminal emulator than <command>dtterm</command> is used, it must support
-the <literal>&minus;e</literal> argument. <![ %CDE.C.CDE; [See <command>xterm</command>(1). ]]></para>
+the <literal>-e</literal> argument. <![ %CDE.C.CDE; [See <command>xterm</command>(1). ]]></para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>WaitTime</literal></term>

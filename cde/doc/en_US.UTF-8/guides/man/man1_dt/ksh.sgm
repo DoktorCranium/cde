@@ -17,16 +17,16 @@ Format, Version 1.0.0--><!-- (c) Copyright
 1995 Sun Microsystems, Inc.--><!-- (c) Copyright 1993, 1994, 1995 Novell,
 Inc.--><refsynopsisdiv>
 <cmdsynopsis>
-<command>dtksh</command><arg choice="opt">&minus;abCefimnuvx</arg><arg choice="opt">&minus;o&numsp;<replaceable>option</replaceable></arg><arg choice="opt">+abCefmnuvx</arg><arg choice="opt">+o&numsp;<replaceable>option</replaceable></arg><group>
+<command>dtksh</command><arg choice="opt">-abCefimnuvx</arg><arg choice="opt">-o&numsp;<replaceable>option</replaceable></arg><arg choice="opt">+abCefmnuvx</arg><arg choice="opt">+o&numsp;<replaceable>option</replaceable></arg><group>
 <arg><replaceable>command_file</replaceable></arg><group><arg><replaceable>argument</replaceable></arg><arg>...</arg></group></group>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>dtksh</command><arg choice="opt">&minus;abCefimnuvx</arg><arg choice="opt">&minus;o&numsp;<replaceable>option</replaceable></arg><arg choice="opt">+abCefmnuvx</arg><arg choice="opt">+o&numsp;<replaceable>option</replaceable></arg><arg><replaceable>command_string</replaceable></arg><group><arg><replaceable>command_name</replaceable></arg>
+<command>dtksh</command><arg choice="opt">-abCefimnuvx</arg><arg choice="opt">-o&numsp;<replaceable>option</replaceable></arg><arg choice="opt">+abCefmnuvx</arg><arg choice="opt">+o&numsp;<replaceable>option</replaceable></arg><arg><replaceable>command_string</replaceable></arg><group><arg><replaceable>command_name</replaceable></arg>
 <group><arg><replaceable>argument</replaceable></arg><arg>...</arg></group>
 </group>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>dtksh</command><arg>&minus;s</arg><arg choice="opt">&minus;abCefimnuvx</arg><arg choice="opt">&minus;o&numsp;<replaceable>option</replaceable></arg>
+<command>dtksh</command><arg>-s</arg><arg choice="opt">-abCefimnuvx</arg><arg choice="opt">-o&numsp;<replaceable>option</replaceable></arg>
 <arg choice="opt">+abeCefmnuvx</arg><arg choice="opt">+o&numsp; <replaceable>option</replaceable></arg><group><arg><replaceable>argument</replaceable></arg>
 <arg>...</arg></group>
 </cmdsynopsis>
@@ -89,13 +89,13 @@ widget for information on the resources that apply to that widget.</para>
 <para>The following information describes the environment variables that <command>dtksh</command> uses that are in addition to those documented in the manual
 page for the <command>sh</command> command language interpreter.</para>
 <refsect2>
-<title>Immediate Return Value (&hairsp;&minus;&hairsp;)</title>
+<title>Immediate Return Value (&hairsp;-&hairsp;)</title>
 <para>Many of the category 3 commands (as described in <![ %CDE.C.CDE; [the <literal>Return Values From Built-in Commands</literal> section) ]]><![ %CDE.C.XO; [<xref
 role="5" linkend="XCSA.MAN6.anch.1">) ]]>return a single value using an environment
 variable specified as the first argument to the command (in the synopses for
 these special commands, the first argument has the name <symbol role="Variable">variable</symbol>). If this return value is immediately used in an expression,
-the special environment variable ``&minus;'' can be used in place of a variable
-name. When <command>dtksh</command> encounters ``&minus;'' as the name of
+the special environment variable ``-'' can be used in place of a variable
+name. When <command>dtksh</command> encounters ``-'' as the name of
 the environment variable in which the return value is to be returned, it returns
 the result as the value of the command. This allows the shell script to embed
 the command call in another command call. (This feature works only for commands
@@ -107,14 +107,14 @@ XSync $DISPLAY true</programlisting>
 </informalexample>
 <para>can be replaced by the equivalent:</para>
 <informalexample remap="indent">
-<programlisting>XSync $(XtDisplay "&minus;" $FORM) true</programlisting>
+<programlisting>XSync $(XtDisplay "-" $FORM) true</programlisting>
 </informalexample>
 <para>The reference to <emphasis>$DISPLAY</emphasis> is replaced with the
 value returned by the call to <command>XtDisplay</command>. This capability
 is available for all category 3 commands except those that create a widget,
 those that return more than a single value and those whose first argument
 is not named <symbol role="Variable">variable</symbol>. Commands that do not
-accept ``&minus;'' as the environment variable name include: <command>XtInitialize</command>, <command>XtCreateApplicationShell</command>, <command>XtCreatePopupShell</command>, <command>XtCreateManagedWidget</command> and <command>XtCreateWidget</command>; all commands of the form:</para>
+accept ``-'' as the environment variable name include: <command>XtInitialize</command>, <command>XtCreateApplicationShell</command>, <command>XtCreatePopupShell</command>, <command>XtCreateManagedWidget</command> and <command>XtCreateWidget</command>; all commands of the form:</para>
 <informalexample remap="indent">
 <programlisting>XmCreate...()</programlisting>
 </informalexample>
@@ -469,7 +469,7 @@ GC arguments</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XDrawLines</command><arg><replaceable>display drawable</replaceable></arg>
-<arg choice="opt"><replaceable>&minus;coordinateMode</replaceable></arg><arg
+<arg choice="opt"><replaceable>-coordinateMode</replaceable></arg><arg
 choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replaceable>x1 y1 x2 y2</replaceable></arg><arg choice="opt"><replaceable>x3 y3&numsp;...</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->The <emphasis>coordinateMode</emphasis> operand is either <systemitem class="Constant">CoordModeOrigin</systemitem> or <systemitem class="Constant">CoordModePrevious</systemitem>. <!--.LE--></para>
@@ -480,7 +480,7 @@ choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replace
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XDrawPoints</command><arg><replaceable>display drawable</replaceable></arg>
-<arg choice="opt"><replaceable>&minus;coordinateMode</replaceable></arg><arg
+<arg choice="opt"><replaceable>-coordinateMode</replaceable></arg><arg
 choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replaceable>x1 y1</replaceable></arg><arg choice="opt"><replaceable>x2 y2 x3 y3&numsp;...</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->The <emphasis>coordinateMode</emphasis> operand is either <systemitem class="Constant">CoordModeOrigin</systemitem> or <systemitem class="Constant">CoordModePrevious</systemitem>. <!--.LE--></para>
@@ -510,7 +510,7 @@ choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replace
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XFillPolygon</command><arg><replaceable>display drawable</replaceable></arg>
-<arg choice="opt"><replaceable>&minus;shape</replaceable></arg><arg choice="opt"><replaceable>&minus;coordinateMode</replaceable></arg><arg choice="opt"><replaceable>optional
+<arg choice="opt"><replaceable>-shape</replaceable></arg><arg choice="opt"><replaceable>-coordinateMode</replaceable></arg><arg choice="opt"><replaceable>optional
 GC arguments</replaceable></arg><arg><replaceable>x1 y1 x2 y2&numsp;...</replaceable></arg>
 <!-- -->
 </cmdsynopsis>
@@ -587,9 +587,9 @@ dtksh-command</replaceable></arg>
 indicated file descriptor with the X Toolkit as an alternative input source
 (that is, for reading). The input handler for the shell script is responsible
 for unregistering the input source when it is no longer needed, and also to
-close the file descriptor. If the <literal>&minus;r</literal> option is specified
+close the file descriptor. If the <literal>-r</literal> option is specified
 (raw mode), <command>dtksh</command> does not automatically read any of the
-data available from the input source; it is up to the specified <command>dtksh</command> command to read all data. If the <literal>&minus;r</literal>
+data available from the input source; it is up to the specified <command>dtksh</command> command to read all data. If the <literal>-r</literal>
 option is not specified, the specified <command>dtksh</command> command is
 invoked only when a full line has been read (that is, a line terminated by
 either an unescaped <keysym>newline</keysym> character, or end-of-file) and
@@ -2204,7 +2204,7 @@ get the message received and processed. The following code block demonstrates
 how this is done:</para>
 <informalexample remap="indent">
 <programlisting>ttdt_open PROC_ID STATUS FID "Tool" "HP" "1.0" True
-XtAddInput INPUT_ID &minus;r $FID "ProcessTTInput \"$PROC_ID\""
+XtAddInput INPUT_ID -r $FID "ProcessTTInput \"$PROC_ID\""
 ProcessTTInput()
 {
         tttk_Xt_input_handler $1 $INPUT_SOURCE $INPUT_ID
@@ -2217,7 +2217,7 @@ was returned by the <command>ttdt_open</command> command. When registering <comm
 be registered as a raw handler to prevent <command>dtksh</command> from automatically
 breaking up the input into lines. This can be done as follows:</para>
 <informalexample remap="indent">
-<programlisting>XtAddInput returnId &minus;r $tt_fd \
+<programlisting>XtAddInput returnId -r $tt_fd \
         "tttk_Xt_input_handler \"$procId\""</programlisting>
 </informalexample>
 <para>The \" characters before and after the reference to the <emphasis>procId</emphasis> environment variable are necessary to protect the embedded spaces
@@ -2432,7 +2432,7 @@ state. If arguments are supplied, they should be either widget handles, or
 the names of existing widgets; in this case, the information is written only
 for the requested set of widgets. <!--.LE--></para>
 <cmdsynopsis>
-<command>DtWidgetInfo</command><arg>&minus;r</arg><group><arg><replaceable>widgetHandle</replaceable></arg><arg><replaceable>widgetClass</replaceable></arg>
+<command>DtWidgetInfo</command><arg>-r</arg><group><arg><replaceable>widgetHandle</replaceable></arg><arg><replaceable>widgetClass</replaceable></arg>
 </group>
 </cmdsynopsis>
 <para><!--.VL 6-->If no arguments are supplied, the list of supported resources
@@ -2441,7 +2441,7 @@ are supplied, they should be either widget handles, or the widget class names;
 in this case, the information is written only for the requested set of widgets
 or widget classes. <!--.LE--></para>
 <cmdsynopsis>
-<command>DtWidgetInfo</command><arg>&minus;R</arg><group><arg><replaceable>widgetHandle</replaceable></arg><arg><replaceable>widgetClass</replaceable></arg>
+<command>DtWidgetInfo</command><arg>-R</arg><group><arg><replaceable>widgetHandle</replaceable></arg><arg><replaceable>widgetClass</replaceable></arg>
 </group>
 </cmdsynopsis>
 <para><!--.VL 6-->If no arguments are supplied, the list of supported constraint
@@ -2450,13 +2450,13 @@ classes. If arguments are supplied, they should be either widget handles,
 or the widget class names; in this case, the information is written only for
 the requested set of widgets or widget classes. <!--.LE--></para>
 <cmdsynopsis>
-<command>DtWidgetInfo</command><arg>&minus;c</arg><arg choice="opt"><replaceable>widgetClass</replaceable></arg>
+<command>DtWidgetInfo</command><arg>-c</arg><arg choice="opt"><replaceable>widgetClass</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->If no arguments are supplied, the list of supported widget
 class names is written to standard output. If arguments are supplied, <command>dtksh</command> writes the widget class name (if it is defined); otherwise,
 it writes an error message to standard error. <!--.LE--></para>
 <cmdsynopsis>
-<command>DtWidgetInfo</command><arg>&minus;h</arg><arg choice="opt"><replaceable>widgetHandle</replaceable></arg>
+<command>DtWidgetInfo</command><arg>-h</arg><arg choice="opt"><replaceable>widgetHandle</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->If no arguments are supplied, the list of active widget
 handles is written to standard output. If arguments are supplied, they should
@@ -2493,11 +2493,11 @@ buttons into a menupane or menubar.</para>
 callback1</replaceable></arg><arg choice="opt"><replaceable>label2 callback2&numsp;...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>DtkshAddButtons</command><arg choice="opt"><replaceable>&minus;w</replaceable></arg><arg><replaceable>parent widgetClass variable1 label1
+<command>DtkshAddButtons</command><arg choice="opt"><replaceable>-w</replaceable></arg><arg><replaceable>parent widgetClass variable1 label1
 callback1</replaceable></arg><arg choice="opt"><replaceable>variable2 label2
 callback2&numsp;...</replaceable></arg>
 </cmdsynopsis>
-<para>The <literal>&minus;w</literal> option indicates that the convenience
+<para>The <literal>-w</literal> option indicates that the convenience
 function should return the widget handle for each of the buttons it creates.
 The widget handle is returned in the specified environment variable. The
 <symbol role="Globalvar">widgetClass</symbol> argument can be set to any one of the
@@ -2510,7 +2510,7 @@ following, and defaults to <command>XmPushButtonGadget</command>, if not specifi
 <informalexample remap="indent">
 <programlisting>DtkshAddButtons $MENU XmPushButtonGadget Open do_Open Save \
         do_Save Quit exit
-DtkshAddButtons &minus;w $MENU XmPushButtonGadget B1 Open \
+DtkshAddButtons -w $MENU XmPushButtonGadget B1 Open \
         do_Open B2 Save do_Save</programlisting>
 </informalexample>
 </refsect2>
@@ -3068,13 +3068,13 @@ SessionCallback()
                 exec 9>$PATH
                 # Save off whether we are currently in an iconified state
                 if DtShellIsIconified $TOPLEVEL; then
-                        print &minus;u9 `Iconified'
+                        print -u9 `Iconified'
                 else
-                        print &minus;u9 `Deiconified'
+                        print -u9 `Deiconified'
                 fi
                 # Save off the list of workspaces we currently reside in
-                if DtWsmGetWorkspacesOccupied $(XtDisplay "&minus;" $TOPLEVEL)
-                                $(XtWindow "&minus;" $TOPLEVEL)
+                if DtWsmGetWorkspacesOccupied $(XtDisplay "-" $TOPLEVEL)
+                                $(XtWindow "-" $TOPLEVEL)
                                 CURRENT_WS_LIST;
                 then
                         # Map the comma-separated list of atoms into
@@ -3083,9 +3083,9 @@ SessionCallback()
                         IFS=","
                         for item in $CURRENT_WS_LIST;
                         do
-                                XmGetAtomName NAME $(XtDisplay "&minus;" $TOPLEVEL)
+                                XmGetAtomName NAME $(XtDisplay "-" $TOPLEVEL)
                                         $item
-                                print &minus;u9 $NAME
+                                print -u9 $NAME
                         done
                         IFS=$oldIFS
                 fi
@@ -3096,7 +3096,7 @@ SessionCallback()
                         "/usr/dt/contrib/dtksh/SessionTest $SAVEFILE"
         else
                 echo "DtSessionSavePath FAILED!!"
-                exit &minus;3
+                exit -3
         fi
 }
 # Function invoked during a restore session; restores the
@@ -3106,7 +3106,7 @@ RestoreSession()
         # Retrieve the path where our session file resides
         if DtSessionRestorePath $TOPLEVEL PATH $1; then
                 exec 9&lt;$PATH
-                read &minus;u9 ICONIFY
+                read -u9 ICONIFY
                 # Extract and restore our iconified state
                 case $ICONIFY in
                         Iconified) DtSetIconifyHint $TOPLEVEL True;;
@@ -3116,11 +3116,11 @@ RestoreSession()
                 # them to atoms, and ask the workspace manager to relocate
                 # us to those workspaces
                 WS_LIST=""
-                while read &minus;u9 NAME
+                while read -u9 NAME
                 do
-                        XmInternAtom ATOM $(XtDisplay "&minus;" $TOPLEVEL)
+                        XmInternAtom ATOM $(XtDisplay "-" $TOPLEVEL)
                                         $NAME False
-                        if [ ${#WS_LIST} &minus;gt 0 ]; then
+                        if [ ${#WS_LIST} -gt 0 ]; then
                                 WS_LIST=$WS_LIST,$ATOM
                         else
                                 WS_LIST=$ATOM
@@ -3131,14 +3131,14 @@ RestoreSession()
                 exec 9&lt;&amp;-
          else
                 echo "DtSessionRestorePath FAILED!!"
-                exit &minus;3
+                exit -3
         fi
 }
 ################## Create the Main UI #######################
 XtInitialize TOPLEVEL wmProtTest Dtksh "$@"
 XtCreateManagedWidget DA da XmDrawingArea $TOPLEVEL
 XtSetValues $DA height:200 width:200
-XmInternAtom SAVE_SESSION_ATOM $(XtDisplay "&minus;" $TOPLEVEL)
+XmInternAtom SAVE_SESSION_ATOM $(XtDisplay "-" $TOPLEVEL)
                 "WM_SAVE_YOURSELF" False
 # If a command-line argument was supplied, then treat it as the
 # name of the session file
@@ -3240,12 +3240,12 @@ a graphics context, or GC as an argument, in addition to the drawing data.
 In <command>dtksh</command> drawing functions, a collection of GC options
 are specified in the argument list to the command. By default, the drawing
 commands create a GC that is used for that specific command and then discarded.
-If the script specifies the <literal>&minus;gc</literal> option, the name
+If the script specifies the <literal>-gc</literal> option, the name
 of the graphics context object can be passed to the command; this GC is used
 in interpreting the command, and the variable is updated with any modifications
 to the GC performed by the command.</para>
 <variablelist>
-<varlistentry><term><literal>&minus;gc</literal> <structname role="typedef">GC</structname></term>
+<varlistentry><term><literal>-gc</literal> <structname role="typedef">GC</structname></term>
 <listitem>
 <para><structname role="typedef">GC</structname> is the name of an environment
 variable that has not yet been initialized, or which has been left holding
@@ -3254,35 +3254,35 @@ it must be the first <structname role="typedef">GC</structname> option specified
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;foreground</literal> <symbol role="Variable">color</symbol></term>
+<varlistentry><term><literal>-foreground</literal> <symbol role="Variable">color</symbol></term>
 <listitem>
 <para>Foreground color, which can be either the name of a color or a pixel
 number.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;background</literal> <symbol role="Variable">color</symbol></term>
+<varlistentry><term><literal>-background</literal> <symbol role="Variable">color</symbol></term>
 <listitem>
 <para>Background color, which can be either the name of a color or a pixel
 number.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;font</literal> <emphasis>font name</emphasis></term>
+<varlistentry><term><literal>-font</literal> <emphasis>font name</emphasis></term>
 <listitem>
 <para>Name of the font to be used.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;line_width</literal> <emphasis>number</emphasis></term>
+<varlistentry><term><literal>-line_width</literal> <emphasis>number</emphasis></term>
 <listitem>
 <para>Line width to be used during drawing.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;function</literal> <emphasis>drawing function</emphasis></term>
+<varlistentry><term><literal>-function</literal> <emphasis>drawing function</emphasis></term>
 <listitem>
 <para>Drawing function, which can be any of the following: <literal>xor</literal>, <literal>or</literal>, <literal>clear</literal>, <literal>and</literal>, <literal>copy</literal>, <literal>noop</literal>, <literal>nor</literal>, <literal>nand</literal>, <literal>set</literal>, <literal>invert</literal>, <literal>equiv</literal>, <literal>andReverse</literal>, <literal>orReverse</literal>
 or <literal>copyInverted</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;line_style</literal> <symbol role="Variable">style</symbol></term>
+<varlistentry><term><literal>-line_style</literal> <symbol role="Variable">style</symbol></term>
 <listitem>
 <para>Line style, which can be any of the following: <systemitem class="Constant">LineSolid</systemitem>, <systemitem class="Constant">LineDoubleDash</systemitem>
 or <systemitem class="Constant">LineOnOffDash</systemitem>.</para>

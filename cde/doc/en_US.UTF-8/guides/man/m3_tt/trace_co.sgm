@@ -59,7 +59,7 @@ allowing a programmer to narrow the trace to the suspect area.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;1</Term>
+<Term>-1</Term>
 <ListItem>
 <Para>Tracing is turned on if it was off and vice-versa.
 </Para>

@@ -75,7 +75,7 @@ diagnosis option is given.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>&minus;f&ensp; filename</Term>
+<Term>-f&ensp; filename</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Restricts the set of specs to be inspected or modified to those which
@@ -85,7 +85,7 @@ wildcards which must be escaped to prevent the shell from expanding them.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;k&ensp; objidkey</Term>
+<Term>-k&ensp; objidkey</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>An object id key, specifying a particular spec to be displayed or modified.
@@ -96,7 +96,7 @@ specify its key here.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;t&ensp; type</Term>
+<Term>-t&ensp; type</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Restricts the set of specs to be inspected or modified to those with
@@ -117,7 +117,7 @@ fail the diagnostic check.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>&minus;b</Term>
+<Term>-b</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Check for badly formed specs: those which have no file or type or those
@@ -126,7 +126,7 @@ which have types not defined in the type database.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;x</Term>
+<Term>-x</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Check for specs which refer to files that no longer exist.
@@ -141,7 +141,7 @@ which have types not defined in the type database.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>&minus;i</Term>
+<Term>-i</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Display the object id (including the object id key.)
@@ -149,7 +149,7 @@ which have types not defined in the type database.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;m</Term>
+<Term>-m</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Display the mandatory data that must appear in every spec: the otype
@@ -159,7 +159,7 @@ stored.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;p</Term>
+<Term>-p</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Display all the properties and values for each selected spec.
@@ -167,11 +167,11 @@ stored.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;a</Term>
+<Term>-a</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Display all data (equivalent to specifying
-<Literal>&minus;imp</Literal>)</Para>
+<Literal>-imp</Literal>)</Para>
 </ListItem>
 </VarListEntry>
 </VariableList>
@@ -180,7 +180,7 @@ stored.
 <Title>Repair options</Title>
 <VariableList>
 <VarListEntry>
-<Term>&minus;I</Term>
+<Term>-I</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Invoke the NetISAM isrepair() function for all files accessed.
@@ -192,7 +192,7 @@ return EBADFILE (error code 105).
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;F &ensp;filename</Term>
+<Term>-F &ensp;filename</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Change the file name for the selected specs to the supplied file name.
@@ -200,7 +200,7 @@ return EBADFILE (error code 105).
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;T &ensp;otypeid</Term>
+<Term>-T &ensp;otypeid</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Change the type of the selected specs to the given otype.
@@ -208,7 +208,7 @@ return EBADFILE (error code 105).
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;Z</Term>
+<Term>-Z</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Remove the selected specs entirely.

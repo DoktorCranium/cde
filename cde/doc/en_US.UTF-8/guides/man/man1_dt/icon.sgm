@@ -93,7 +93,7 @@ below.
 <Title>OPTIONS</Title>
 <Para>The following options are available from the command line:
 </Para>
-<Para><Literal>&minus;f</Literal> <Emphasis>file</Emphasis></Para>
+<Para><Literal>-f</Literal> <Emphasis>file</Emphasis></Para>
 <Para>This option takes a bitmap or pixmap file name.
 If the file ends in .pm or .xpm suffix, it will try reading it as an XPM
 file first. If it fails, it will try reading it as an XBM file.
@@ -102,12 +102,12 @@ file first. If it fails, it will try reading it as an XPM file.
 If the file doesn't match any of these suffixes, it will try reading it
 as an XPM file first. If it fails it will try reading it as an XBM file.
 </Para>
-<Para><Literal>&minus;x</Literal> <Emphasis>widthxheight</Emphasis></Para>
+<Para><Literal>-x</Literal> <Emphasis>widthxheight</Emphasis></Para>
 <Para>This option specifies an initial geometry for the icon image. If a
 file is specified using the -f option, the size of that icon
 supersedes the geometry specified.
 </Para>
-<Para><Literal>&minus;session</Literal> <Emphasis>file</Emphasis></Para>
+<Para><Literal>-session</Literal> <Emphasis>file</Emphasis></Para>
 <Para>This option takes the name of a session file as an additional
 parameter. The Icon Editor is invoked with the specified session file
 name. The session file is a file that was previously saved by the Icon

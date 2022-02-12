@@ -28,9 +28,9 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>dtexec</Command>
-<Arg Choice="opt">&minus;open<Replaceable>open_option</Replaceable></Arg>
-<Arg Choice="opt">&minus;ttprocid<Replaceable>procid</Replaceable></Arg>
-<Arg Choice="opt">&minus;tmp<Replaceable>tmpfile</Replaceable></Arg>
+<Arg Choice="opt">-open<Replaceable>open_option</Replaceable></Arg>
+<Arg Choice="opt">-ttprocid<Replaceable>procid</Replaceable></Arg>
+<Arg Choice="opt">-tmp<Replaceable>tmpfile</Replaceable></Arg>
 <Arg><Replaceable>cmd</Replaceable></Arg>
 <Arg Choice="opt"><Replaceable>cmd_arg ...</Replaceable></Arg>
 </CmdSynopsis>
@@ -160,7 +160,7 @@ action service, which then invokes
 <Command>dtexec</Command> as needed.
 Applications should use the
 <Literal>waitTime</Literal> resource to configure the value of the
-<Emphasis>&minus;open_option</Emphasis> and the <Literal>DtexecPath</Literal> resource to configure
+<Emphasis>-open_option</Emphasis> and the <Literal>DtexecPath</Literal> resource to configure
 the location of
 <Command>dtexec</Command>.</Para>
 <Para>If <Emphasis>cmd</Emphasis> writes to stderr, the error messages are time stamped

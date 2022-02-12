@@ -28,8 +28,8 @@
 <![ %CDE.C.CDE; [
 <CmdSynopsis>
 <Command>tt_type_comp</Command>
-<Arg Choice="opt">&minus;mMs</Arg>
-<Arg Choice="opt">&minus;d&numsp;<Replaceable>db</Replaceable></Arg>
+<Arg Choice="opt">-mMs</Arg>
+<Arg Choice="opt">-d&numsp;<Replaceable>db</Replaceable></Arg>
 <Arg><Replaceable>source_file</Replaceable></Arg>
 <!-- -->
 </CmdSynopsis>
@@ -37,7 +37,7 @@
 <![ %CDE.C.XO; [
 <CmdSynopsis>
 <Command>tt_type_comp</Command>
-<Arg Choice="opt">&minus;mMs</Arg>
+<Arg Choice="opt">-mMs</Arg>
 <Arg><Replaceable>source_file</Replaceable></Arg>
 <!-- -->
 </CmdSynopsis>
@@ -45,9 +45,9 @@
 <![ %CDE.C.CDE; [
 <CmdSynopsis>
 <Command>tt_type_comp</Command>
-<Arg>&minus;r</Arg>
-<Arg Choice="opt">&minus;s</Arg>
-<Arg Choice="opt">&minus;d&numsp;<Replaceable>db</Replaceable></Arg>
+<Arg>-r</Arg>
+<Arg Choice="opt">-s</Arg>
+<Arg Choice="opt">-d&numsp;<Replaceable>db</Replaceable></Arg>
 <Arg><Replaceable>type</Replaceable></Arg>
 <Arg>.&thinsp;.&thinsp;.</Arg>
 </CmdSynopsis>
@@ -55,8 +55,8 @@
 <![ %CDE.C.XO; [
 <CmdSynopsis>
 <Command>tt_type_comp</Command>
-<Arg>&minus;r</Arg>
-<Arg Choice="opt">&minus;s</Arg>
+<Arg>-r</Arg>
+<Arg Choice="opt">-s</Arg>
 <Arg><Replaceable>type</Replaceable></Arg>
 <Arg>.&thinsp;.&thinsp;.</Arg>
 </CmdSynopsis>
@@ -64,42 +64,42 @@
 <![ %CDE.C.CDE; [
 <CmdSynopsis>
 <Command>tt_type_comp</Command>
-<Arg>&minus;p</Arg>
-<Arg>&minus;O</Arg>
-<Arg>&minus;P</Arg>
-<Arg Choice="opt">&minus;sE</Arg>
-<Arg Choice="opt">&minus;d&numsp;<Replaceable>db</Replaceable></Arg>
+<Arg>-p</Arg>
+<Arg>-O</Arg>
+<Arg>-P</Arg>
+<Arg Choice="opt">-sE</Arg>
+<Arg Choice="opt">-d&numsp;<Replaceable>db</Replaceable></Arg>
 </CmdSynopsis>
 ]]>
 <![ %CDE.C.XO; [
 <CmdSynopsis>
 <Command>tt_type_comp</Command>
-<Arg>&minus;p</Arg>
-<Arg>&minus;O</Arg>
-<Arg>&minus;P</Arg>
-<Arg Choice="opt">&minus;s</Arg>
+<Arg>-p</Arg>
+<Arg>-O</Arg>
+<Arg>-P</Arg>
+<Arg Choice="opt">-s</Arg>
 </CmdSynopsis>
 ]]>
 <CmdSynopsis>
 <Command>tt_type_comp</Command>
-<Arg>&minus;p</Arg>
-<Arg>&minus;O</Arg>
-<Arg>&minus;P</Arg>
-<Arg Choice="opt">&minus;s</Arg>
+<Arg>-p</Arg>
+<Arg>-O</Arg>
+<Arg>-P</Arg>
+<Arg Choice="opt">-s</Arg>
 <Arg><Replaceable>source_file</Replaceable></Arg>
 <!-- -->
 </CmdSynopsis>
 <CmdSynopsis>
 <Command>tt_type_comp</Command>
-<Arg>&minus;x</Arg>
-<Arg Choice="opt">&minus;s</Arg>
-<Arg Choice="opt">&minus;o&numsp;<Replaceable>compiled_file</Replaceable></Arg>
+<Arg>-x</Arg>
+<Arg Choice="opt">-s</Arg>
+<Arg Choice="opt">-o&numsp;<Replaceable>compiled_file</Replaceable></Arg>
 <Arg><Replaceable>source_file</Replaceable></Arg>
 <!-- -->
 </CmdSynopsis>
 <CmdSynopsis>
 <Command>tt_type_comp</Command>
-<Arg Choice="opt">&minus;hv</Arg>
+<Arg Choice="opt">-hv</Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -143,7 +143,7 @@ own databases, and the format of
 <VariableList>
 <![ %CDE.C.CDE; [
 <VarListEntry>
-<Term><Literal>&minus;d&numsp;</Literal><Emphasis>db</Emphasis></Term>
+<Term><Literal>-d&numsp;</Literal><Emphasis>db</Emphasis></Term>
 <ListItem>
 <Para>Specify the database to work on, which must be one of
 <Literal>user</Literal>, <Literal>system</Literal> or
@@ -196,13 +196,13 @@ type in the user database overrides the definition in the system
 database, and so on.
 For the merge and remove options, the default database is
 <Literal>user</Literal>. For the
-<Literal>&minus;p</Literal>, <Literal>&minus;O</Literal> and
-<Literal>&minus;P</Literal> options, the default is all three databases.
+<Literal>-p</Literal>, <Literal>-O</Literal> and
+<Literal>-P</Literal> options, the default is all three databases.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;E</Literal></Term>
+<Term><Literal>-E</Literal></Term>
 <ListItem>
 <Para>Use Classing Engine mode, instead of the default XDR mode.
 </Para>
@@ -210,7 +210,7 @@ For the merge and remove options, the default database is
 </VarListEntry>
 ]]>
 <VarListEntry>
-<Term><Literal>&minus;h</Literal></Term>
+<Term><Literal>-h</Literal></Term>
 <ListItem>
 <Para>Write a help message for invoking
 <Command>tt_type_comp</Command> and then exit.
@@ -218,7 +218,7 @@ For the merge and remove options, the default database is
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;m</Literal></Term>
+<Term><Literal>-m</Literal></Term>
 <ListItem>
 <Para>Merge types into the specified database, updating any existing type with
 the new definition given.
@@ -242,24 +242,24 @@ If
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;M</Literal></Term>
+<Term><Literal>-M</Literal></Term>
 <ListItem>
 <Para>Merge types into the specified database (see
-<Literal>&minus;m</Literal>), but only if they do not already
+<Literal>-m</Literal>), but only if they do not already
 exist in that database.
 <![ %CDE.C.CDE; [This action is not supported for Classing Engine mode.
 ]]></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;O</Literal></Term>
+<Term><Literal>-O</Literal></Term>
 <ListItem>
 <Para>Write the names of all otypes read.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;p</Literal></Term>
+<Term><Literal>-p</Literal></Term>
 <ListItem>
 <Para>Write the ToolTalk types read
 in a source format suitable for recompilation with
@@ -267,23 +267,23 @@ in a source format suitable for recompilation with
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;P</Literal></Term>
+<Term><Literal>-P</Literal></Term>
 <ListItem>
 <Para>Write the names of all ptypes read.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;o&numsp;</Literal><Emphasis>compiled_file</Emphasis></Term>
+<Term><Literal>-o&numsp;</Literal><Emphasis>compiled_file</Emphasis></Term>
 <ListItem>
 <Para>Write the compiled types into the specified file,
 or to standard output if
-<Emphasis>compiled_file</Emphasis> is &minus;.
+<Emphasis>compiled_file</Emphasis> is -.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;r</Literal></Term>
+<Term><Literal>-r</Literal></Term>
 <ListItem>
 <Para>Remove the given ptypes or otypes
 from the specified database, as indicated by the
@@ -292,7 +292,7 @@ from the specified database, as indicated by the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;s</Literal></Term>
+<Term><Literal>-s</Literal></Term>
 <ListItem>
 <Para>Silent mode.
 Write nothing to standard output.
@@ -300,7 +300,7 @@ Write nothing to standard output.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;v</Literal></Term>
+<Term><Literal>-v</Literal></Term>
 <ListItem>
 <Para>Write the version number of
 <Command>tt_type_comp</Command> and then exit.
@@ -308,7 +308,7 @@ Write nothing to standard output.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;x</Literal></Term>
+<Term><Literal>-x</Literal></Term>
 <ListItem>
 <Para>Compile source types into a compiled types file, instead of merging
 them into the standard types databases.
@@ -327,7 +327,7 @@ them into the standard types databases.
 <ListItem>
 <Para>A pathname of a text file containing ToolTalk source code.
 If
-<Emphasis>source_file</Emphasis> is &minus;, standard input is used.
+<Emphasis>source_file</Emphasis> is -, standard input is used.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -335,7 +335,7 @@ If
 <Term><Symbol Role="Variable">type</Symbol></Term>
 <ListItem>
 <Para>A name of a type to be removed by the
-<Literal>&minus;r</Literal> option.
+<Literal>-r</Literal> option.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -344,7 +344,7 @@ If
 <RefSect1>
 <Title>STDIN</Title>
 <Para>The standard input is used only if a
-<Emphasis>source_file</Emphasis> operand is &minus;.
+<Emphasis>source_file</Emphasis> operand is -.
 </Para>
 </RefSect1>
 <RefSect1>
@@ -452,30 +452,30 @@ where to find the ToolTalk types databases.
 <RefSect1>
 <Title>STDOUT</Title>
 <Para>When the
-<Literal>&minus;h</Literal> option is used,
+<Literal>-h</Literal> option is used,
 <Command>tt_type_comp</Command> writes to standard output a help message
 in an unspecified format.
 </Para>
 <Para>When the
-<Literal>&minus;o</Literal> option is used,
+<Literal>-o</Literal> option is used,
 <Command>tt_type_comp</Command> writes to standard output a listing of all
 otypes
 read.
 </Para>
 <Para>When the
-<Literal>&minus;p</Literal> option is used,
+<Literal>-p</Literal> option is used,
 <Command>tt_type_comp</Command> writes to standard output a listing of
 all the ToolTalk types read,
 in a source format suitable for recompilation with
 <Command>tt_type_comp</Command>.</Para>
 <Para>When the
-<Literal>&minus;P</Literal> option is used,
+<Literal>-P</Literal> option is used,
 <Command>tt_type_comp</Command> writes to standard output a listing of all
 ptypes
 read.
 </Para>
 <Para>When the
-<Literal>&minus;v</Literal> option is used,
+<Literal>-v</Literal> option is used,
 <Command>tt_type_comp</Command> writes to standard output a version number
 in an unspecified format.
 </Para>
@@ -488,13 +488,13 @@ in an unspecified format.
 <RefSect1>
 <Title>OUTPUT FILES</Title>
 <Para>When the
-<Literal>&minus;x</Literal> or
-<Literal>&minus;d&numsp;user</Literal> option is used,
+<Literal>-x</Literal> or
+<Literal>-d&numsp;user</Literal> option is used,
 <Command>tt_type_comp</Command> writes the compiled types in an unspecified format
 into a user-specified file.
 Otherwise, it writes the compiled types into the
 databases described under
-<Literal>&minus;d</Literal>.</Para>
+<Literal>-d</Literal>.</Para>
 </RefSect1>
 <RefSect1>
 <Title>EXTENDED DESCRIPTION</Title>

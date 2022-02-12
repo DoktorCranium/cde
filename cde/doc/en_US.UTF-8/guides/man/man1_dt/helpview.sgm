@@ -51,7 +51,7 @@ of the standard CDE general Help and quick Help dialog widgets.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;helpVolume</Literal> <Emphasis>volume</Emphasis></Term>
+<Term><Literal>-helpVolume</Literal> <Emphasis>volume</Emphasis></Term>
 <ListItem>
 <Para>Specifies the name of the <Literal>&lt;filename>.sdl</Literal> file you want to
 view.
@@ -62,7 +62,7 @@ has been properly registered, no path is required.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;locationId</Literal> <Emphasis>location_id</Emphasis></Term>
+<Term><Literal>-locationId</Literal> <Emphasis>location_id</Emphasis></Term>
 <ListItem>
 <Para>Specifies the location ID representing the desired Help topic to be viewed.
 By default, Helpview uses <Symbol>_HOMETOPIC</Symbol> if an ID is not specified.
@@ -70,21 +70,21 @@ By default, Helpview uses <Symbol>_HOMETOPIC</Symbol> if an ID is not specified.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;file</Literal> <Symbol Role="Variable">file</Symbol></Term>
+<Term><Literal>-file</Literal> <Symbol Role="Variable">file</Symbol></Term>
 <ListItem>
 <Para>Specifies a particular ASCII text file to be displayed.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;manPage</Literal> <Emphasis>man_page</Emphasis></Term>
+<Term><Literal>-manPage</Literal> <Emphasis>man_page</Emphasis></Term>
 <ListItem>
 <Para>Specifies a particular man page to be displayed.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;man</Literal></Term>
+<Term><Literal>-man</Literal></Term>
 <ListItem>
 <Para>Displays a dialog that prompts for a man page to view,
 then displays the requested man page.
@@ -213,7 +213,7 @@ Dthelpview*man_text.columns: 20
 <Title>EXAMPLES</Title>
 <VariableList>
 <VarListEntry>
-<Term>dthelpview &minus;helpVolume dtintro.sdl &minus;locationId _hometopic</Term>
+<Term>dthelpview -helpVolume dtintro.sdl -locationId _hometopic</Term>
 <ListItem>
 <Para>Displays the topic associated with _hometopic in the Help
 volume dtintor.sdl.
@@ -221,14 +221,14 @@ volume dtintor.sdl.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>dthelpview &minus;file /etc/checklist</Term>
+<Term>dthelpview -file /etc/checklist</Term>
 <ListItem>
 <Para>Displays the file /etc/checklist in a general Help dialog
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>dthelpview &minus;man grep</Term>
+<Term>dthelpview -man grep</Term>
 <ListItem>
 <Para>Displays the grep man page in a quick Help dialog
 </Para>

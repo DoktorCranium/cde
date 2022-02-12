@@ -61,7 +61,7 @@ DtHelpQuickDialog
 hierarchy.
 The following is the name of the widget:
 </Para>
-<InformalExample><Para>Display Area &minus; <Emphasis>DisplayArea</Emphasis>
+<InformalExample><Para>Display Area - <Emphasis>DisplayArea</Emphasis>
 </Para></InformalExample>
 <Para>The
 DtHelpQuickDialog

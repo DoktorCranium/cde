@@ -26,11 +26,11 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>dtappintegrate</Command>
-<Arg>&minus;s&numsp;<Replaceable>application_root</Replaceable></Arg>
-<Arg Choice="opt">&minus;t&numsp;<Replaceable>target_path</Replaceable></Arg>
-<Arg Choice="opt">&minus;l&numsp;<Replaceable>locale</Replaceable></Arg>
-<Arg Choice="opt">&minus;u</Arg>
-<Arg Choice="opt">&minus;?</Arg>
+<Arg>-s&numsp;<Replaceable>application_root</Replaceable></Arg>
+<Arg Choice="opt">-t&numsp;<Replaceable>target_path</Replaceable></Arg>
+<Arg Choice="opt">-l&numsp;<Replaceable>locale</Replaceable></Arg>
+<Arg Choice="opt">-u</Arg>
+<Arg Choice="opt">-?</Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -91,7 +91,7 @@ files under the following default &str-XZ; system locations:
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;s&numsp;</Literal><Emphasis>application_root</Emphasis></Term>
+<Term><Literal>-s&numsp;</Literal><Emphasis>application_root</Emphasis></Term>
 <ListItem>
 <Para>Integrate the application files that are located under
 <Emphasis>application_root</Emphasis>. The
@@ -135,7 +135,7 @@ containing the application's default &str-XZ; configuration files:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;t&numsp;</Literal><Emphasis>target_path</Emphasis></Term>
+<Term><Literal>-t&numsp;</Literal><Emphasis>target_path</Emphasis></Term>
 <ListItem>
 <Para>Link the application &str-XZ; configuration files to
 <Emphasis>target_path</Emphasis> rather than to the default &str-XZ; system locations.
@@ -143,7 +143,7 @@ containing the application's default &str-XZ; configuration files:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;l&numsp;</Literal><Symbol Role="Variable">locale</Symbol></Term>
+<Term><Literal>-l&numsp;</Literal><Symbol Role="Variable">locale</Symbol></Term>
 <ListItem>
 <Para>Integrate only the files found in the
 <Symbol Role="Variable">locale</Symbol> subdirectories.
@@ -153,12 +153,12 @@ configuration files are integrated.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;u</Literal></Term>
+<Term><Literal>-u</Literal></Term>
 <ListItem>
 <Para>Destroy the symbolic links previously created by
 <Command>dtappintegrate.</Command> If
-<Literal>&minus;l</Literal> is specified with the
-<Literal>&minus;u</Literal> option, only the
+<Literal>-l</Literal> is specified with the
+<Literal>-u</Literal> option, only the
 symbolic links to the
 &str-XZ; configuration files in the specified
 <Symbol Role="Variable">locale</Symbol> subdirectories
@@ -167,7 +167,7 @@ are destroyed.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;?</Literal></Term>
+<Term><Literal>-?</Literal></Term>
 <ListItem>
 <Para>Write a help message to standard output that describes the command syntax of
 <Command>dtappintegrate</Command> and exit.
@@ -216,7 +216,7 @@ are destroyed.
 <RefSect1>
 <Title>STDOUT</Title>
 <Para>When no option or the
-<Literal>&minus;?</Literal> option is used,
+<Literal>-?</Literal> option is used,
 <Command>dtappintegrate</Command> writes to standard output a usage message.
 </Para>
 <Para>During execution,

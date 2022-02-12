@@ -19,10 +19,10 @@ printer-specific GUIs
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>dtpdm</command>
-<arg choice="opt">&minus;vdisplay <replaceable>vdpy</replaceable></arg>
-<arg choice="opt">&minus;window <replaceable>vwid</replaceable></arg>
-<arg choice="opt">&minus;pdisplay <replaceable>pdpy</replaceable></arg>
-<arg choice="opt">&minus;pcontext <replaceable>pcid</replaceable></arg>
+<arg choice="opt">-vdisplay <replaceable>vdpy</replaceable></arg>
+<arg choice="opt">-window <replaceable>vwid</replaceable></arg>
+<arg choice="opt">-pdisplay <replaceable>pdpy</replaceable></arg>
+<arg choice="opt">-pcontext <replaceable>pcid</replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
 <refsect1>
@@ -184,26 +184,26 @@ spooler.
 <title>OPTIONS</title>
 <para>The following options are available:</para>
 <variablelist>
-<varlistentry><term><literal>&minus;vdisplay</literal> <emphasis>vdpy</emphasis></term>
+<varlistentry><term><literal>-vdisplay</literal> <emphasis>vdpy</emphasis></term>
 <listitem>
 <para>Specifies the display connection to the Video X-Server.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;window</literal> <emphasis>vwid</emphasis></term>
+<varlistentry><term><literal>-window</literal> <emphasis>vwid</emphasis></term>
 <listitem>
 <para>Specifies the window id on the Video X-Server to which the PDM&rsquo;s
 dialogs should be posted as transient windows.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;pdisplay</literal> <emphasis>pdpy</emphasis></term>
+<varlistentry><term><literal>-pdisplay</literal> <emphasis>pdpy</emphasis></term>
 <listitem>
 <para>Specifies the display connection to the Print X-Server.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;pcontext</literal> <emphasis>pcid</emphasis></term>
+<varlistentry><term><literal>-pcontext</literal> <emphasis>pcid</emphasis></term>
 <listitem>
 <para>Specifies the print context id on the Print X-Server. The PDM uses
 this id to gain access to the print context being used by the requesting

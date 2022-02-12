@@ -49,7 +49,7 @@ The
 <Emphasis>restoreFile</Emphasis> argument is the filename of the file containing the application
 state information.
 This is the filename specified with the
-<Literal>&minus;session</Literal> option at application invocation.
+<Literal>-session</Literal> option at application invocation.
 </Para>
 </RefSect1>
 <RefSect1>
@@ -62,7 +62,7 @@ otherwise, it returns False.
 <RefSect1>
 <Title>APPLICATION USAGE</Title>
 <Para>The application must support the
-<Literal>&minus;session</Literal> command-line option.
+<Literal>-session</Literal> command-line option.
 </Para>
 <Para>The application must use
 <Function>XtFree</Function>(3) to free data returned in *<Emphasis>restorePath</Emphasis>.

@@ -27,63 +27,63 @@ print utility for DtHelpDialog and DtHelpQuickDialog widgets</refpurpose>
 <colspec align="left" colwidth="269*">
 <tbody>
 <row>
-<entry align="left" valign="top"><literal>&minus;helpType</literal></entry>
+<entry align="left" valign="top"><literal>-helpType</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">type</symbol></entry>
 <entry align="left" valign="top">type of Help data</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;helpType</literal></entry>
+<entry align="left" valign="top"><literal>-helpType</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">type</symbol></entry>
 <entry align="left" valign="top">type of Help data. type = 0 (help volume),
 1 (string), 2 (man page), 3 (help file)</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;helpVolume</literal></entry>
+<entry align="left" valign="top"><literal>-helpVolume</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">volume</symbol></entry>
 <entry align="left" valign="top">full path of Help volume file.</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;locationId</literal></entry>
+<entry align="left" valign="top"><literal>-locationId</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">location</symbol></entry>
 <entry align="left" valign="top">name of Help topic in the volume.</entry>
 </row>
 <row>
-<entry align="left" valign="top"><literal>&minus;allTopics</literal></entry>
+<entry align="left" valign="top"><literal>-allTopics</literal></entry>
 <entry align="left" valign="top"></entry>
 <entry align="left" valign="top">print all topics, toc, &amp; index.</entry>
 </row>
 <row>
-<entry align="left" valign="top"><literal>&minus;subTopics</literal></entry>
+<entry align="left" valign="top"><literal>-subTopics</literal></entry>
 <entry align="left" valign="top"></entry>
 <entry align="left" valign="top">print topic locationId and all subtopics.</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;oneTopic</literal></entry>
+<entry align="left" valign="top"><literal>-oneTopic</literal></entry>
 <entry align="left" valign="top"></entry>
 <entry align="left" valign="top">print topic locationId.</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;toc</literal></entry>
+<entry align="left" valign="top"><literal>-toc</literal></entry>
 <entry align="left" valign="top"></entry>
 <entry align="left" valign="top">print Help volume table of contents.</entry>
 </row>
 <row>
-<entry align="left" valign="top"><literal>&minus;index</literal></entry>
+<entry align="left" valign="top"><literal>-index</literal></entry>
 <entry align="left" valign="top"></entry>
 <entry align="left" valign="top">print Help volume index.</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;frontMatter</literal></entry>
+<entry align="left" valign="top"><literal>-frontMatter</literal></entry>
 <entry align="left" valign="top"></entry>
 <entry align="left" valign="top">print Help volume front matter.</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;manPage</literal></entry>
+<entry align="left" valign="top"><literal>-manPage</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">manpagename</symbol></entry>
 <entry align="left" valign="top">name of man page.</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;stringData</literal></entry>
+<entry align="left" valign="top"><literal>-stringData</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">string</symbol></entry>
 <entry align="left" valign="top">Help text to print.</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;helpFile</literal></entry>
+<entry align="left" valign="top"><literal>-helpFile</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">filename</symbol></entry>
 <entry align="left" valign="top">file containing Help text.</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;topicTitle</literal></entry>
+<entry align="left" valign="top"><literal>-topicTitle</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">title</symbol></entry>
 <entry align="left" valign="top">title string for Help text.</entry></row>
 </tbody></tgroup><?Pub Caret></informaltable>
@@ -96,7 +96,7 @@ print utility for DtHelpDialog and DtHelpQuickDialog widgets</refpurpose>
 <colspec align="left" colwidth="284*">
 <tbody>
 <row>
-<entry align="left" valign="top"><literal>&minus;printer</literal></entry>
+<entry align="left" valign="top"><literal>-printer</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">printername</symbol></entry>
 <entry align="left" valign="top">printer to use</entry></row>
 <row>
@@ -104,36 +104,36 @@ print utility for DtHelpDialog and DtHelpQuickDialog widgets</refpurpose>
 <entry align="left" valign="top"><symbol role="Variable">number</symbol></entry>
 <entry align="left" valign="top">number of copies to print.</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;outputFile</literal></entry>
+<entry align="left" valign="top"><literal>-outputFile</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">filename</symbol></entry>
 <entry align="left" valign="top">write output to this file.</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;paperSize</literal></entry>
+<entry align="left" valign="top"><literal>-paperSize</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">size</symbol></entry>
 <entry align="left" valign="top">format content to this paper size.</entry>
 </row>
 <row>
-<entry align="left" valign="top"><literal>&minus;paperSize</literal></entry>
+<entry align="left" valign="top"><literal>-paperSize</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">size</symbol></entry>
 <entry align="left" valign="top">format content to this paper size. size =
 {help_papersize_letter|help_papersize_legal| help_papersize_executive|help_papersize_a4|
 help_papersize_b5}</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;display</literal></entry>
+<entry align="left" valign="top"><literal>-display</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">displayname</symbol></entry>
 <entry align="left" valign="top">display from which to get resources.</entry>
 </row>
 <row>
-<entry align="left" valign="top"><literal>&minus;name</literal></entry>
+<entry align="left" valign="top"><literal>-name</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">name</symbol></entry>
 <entry align="left" valign="top">program name used when getting resources.</entry></row>
 <row>
-<entry align="left" valign="top"><literal>&minus;class</literal></entry>
+<entry align="left" valign="top"><literal>-class</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">name</symbol></entry>
 <entry align="left" valign="top">class name used when getting resources.</entry>
 </row>
 <row>
-<entry align="left" valign="top"><literal>&minus;xrm</literal></entry>
+<entry align="left" valign="top"><literal>-xrm</literal></entry>
 <entry align="left" valign="top"><symbol role="Variable">resourcestring</symbol></entry>
 <entry align="left" valign="top">additional resources.</entry></row></tbody>
 </tgroup></informaltable>
@@ -171,14 +171,14 @@ values from those given below. See the <literal>RESOURCE OVERVIEW</literal>
 heading in this manual page for more information.</para>
 <para>Options controlling what to print:</para>
 <variablelist>
-<varlistentry><term><literal>&minus;helpType</literal> <symbol role="Variable">type</symbol></term>
+<varlistentry><term><literal>-helpType</literal> <symbol role="Variable">type</symbol></term>
 <listitem>
 <para>The type of Help data to print. This is a numeric value, as follows:
 0=help volume, 1=string, 2=man page, 3=help file. The default value is 0,
 a Help volume.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;helpVolume</literal> <symbol role="Variable">volume</symbol></term>
+<varlistentry><term><literal>-helpVolume</literal> <symbol role="Variable">volume</symbol></term>
 <listitem>
 <para>The name of the volume holding the topics to be printed.
 If <symbol role="Variable">volume</symbol> is unqualified, the standard &cdeman.dthelpview;
@@ -186,120 +186,120 @@ search paths are used to locate the volume; these are also covered in the
 <literal>ENVIRONMENT VARIABLES</literal> heading in this manual page. The volume may
 also be specified relative to the current directory by beginning the volume
 name with "./" or "../". This option is useful only in conjunction with a
-<literal>&minus;helpType</literal> of 0 (zero).</para>
+<literal>-helpType</literal> of 0 (zero).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;locationId</literal> <symbol role="Variable">location</symbol></term>
+<varlistentry><term><literal>-locationId</literal> <symbol role="Variable">location</symbol></term>
 <listitem>
 <para>The starting topic for processing topics of a Help volume.
 The <symbol role="Variable">location</symbol> must be a text string used by the
 author to mark a location
 in the volume. The default value is <literal>_hometopic</literal>, which is
 the top topic of a CDE Help volume. This option is useful only in conjunction
-with <literal>&minus;helpVolume</literal>.</para>
+with <literal>-helpVolume</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;allTopics</literal></term>
+<varlistentry><term><literal>-allTopics</literal></term>
 <listitem>
 <para>Instructs <command>dthelpprint</command> to print the entire help volume,
 including front matter, table of contents, all topics, and an index. This
-option is useful only in conjunction with <literal>&minus;helpVolume</literal>.
+option is useful only in conjunction with <literal>-helpVolume</literal>.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;subTopics</literal></term>
+<varlistentry><term><literal>-subTopics</literal></term>
 <listitem>
 <para>Instructs <command>dthelpprint</command> to print the topic specified
-by <literal>&minus;locationId</literal> and all the subtopics of that topic.
-This option is useful only in conjunction with <literal>&minus;helpVolume</literal>.</para>
+by <literal>-locationId</literal> and all the subtopics of that topic.
+This option is useful only in conjunction with <literal>-helpVolume</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;oneTopic</literal></term>
+<varlistentry><term><literal>-oneTopic</literal></term>
 <listitem>
 <para>Instructs <command>dthelpprint</command> to print the topic specified
 by <literal>-locationId</literal>. This option is useful only in conjunction
-with <literal>&minus;helpVolume</literal>.</para>
+with <literal>-helpVolume</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;toc</literal></term>
+<varlistentry><term><literal>-toc</literal></term>
 <listitem>
 <para>Instructs <command>dthelpprint</command> to print the Table of Contents
-of the specified helpVolume. This option is useful only in conjunction with <literal>&minus;helpVolume</literal>.</para>
+of the specified helpVolume. This option is useful only in conjunction with <literal>-helpVolume</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;index</literal></term>
+<varlistentry><term><literal>-index</literal></term>
 <listitem>
 <para>Instructs <command>dthelpprint</command> to print the Index of the specified
-helpVolume. This option is useful only in conjunction with <literal>&minus;helpVolume</literal>.</para>
+helpVolume. This option is useful only in conjunction with <literal>-helpVolume</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;frontMatter</literal></term>
+<varlistentry><term><literal>-frontMatter</literal></term>
 <listitem>
 <para>Instructs <command>dthelpprint</command> to print the front matter of
 the specified helpVolume. Front matter includes the volume title, abstract,
-and copyright information. This option is useful only in conjunction with <literal>&minus;helpVolume</literal>.</para>
+and copyright information. This option is useful only in conjunction with <literal>-helpVolume</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;stringData</literal> <symbol role="Variable">string</symbol></term>
+<varlistentry><term><literal>-stringData</literal> <symbol role="Variable">string</symbol></term>
 <listitem>
 <para>Specifies a string to print. This option is useful only in conjunction
-with a <literal>&minus;helpType</literal> of 1.</para>
+with a <literal>-helpType</literal> of 1.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;manPage</literal> <symbol role="Variable">manpagename</symbol></term>
+<varlistentry><term><literal>-manPage</literal> <symbol role="Variable">manpagename</symbol></term>
 <listitem>
 <para>Specifies the name of the Unix man page to print. This option is useful
-only in conjunction with a <literal>&minus;helpType</literal> of 2.</para>
+only in conjunction with a <literal>-helpType</literal> of 2.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;helpFile</literal> <symbol role="Variable">filename</symbol></term>
+<varlistentry><term><literal>-helpFile</literal> <symbol role="Variable">filename</symbol></term>
 <listitem>
 <para>Specifies a file to print. This option is useful only in conjunction
-with a <literal>&minus;helpType</literal> of 3.</para>
+with a <literal>-helpType</literal> of 3.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 <para>Options controlling how to print:</para>
 <variablelist>
-<varlistentry><term><literal>&minus;printer</literal> <symbol role="Variable">printername</symbol></term>
+<varlistentry><term><literal>-printer</literal> <symbol role="Variable">printername</symbol></term>
 <listitem>
 <para>Specifies which printer to use. If this isn't specified as a utility-line
 option or resource, the default value is taken from the environment variable
 <systemitem class="EnvironVar">LPDEST</systemitem>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;copies</literal> <symbol role="Variable">number</symbol></term>
+<varlistentry><term><literal>-copies</literal> <symbol role="Variable">number</symbol></term>
 <listitem>
 <para>Specifies how many copies to produce. The default value is 1. This option
 is only ignored when generating an output file.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;outputFile</literal> <symbol role="Variable">filename</symbol></term>
+<varlistentry><term><literal>-outputFile</literal> <symbol role="Variable">filename</symbol></term>
 <listitem>
 <para>Specifies a file to hold the print-ready output. If this option is specified,
 no output is sent to the printer.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;paperSize</literal> <symbol role="Variable">size</symbol></term>
+<varlistentry><term><literal>-paperSize</literal> <symbol role="Variable">size</symbol></term>
 <listitem>
 <para>Specifies a size of paper to which the output should be formatted. There
 are five valid values for <symbol role="Variable">size</symbol>: <literal>help_papersize_letter</literal>, <literal>help_papersize_legal</literal>, <literal>help_papersize_executive</literal>, <literal>help_papersize_a4</literal>, <literal>help_papersize_b5</literal>. The default value is <literal>help_papersize_letter</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;display</literal> <symbol role="Variable">displayname</symbol></term>
+<varlistentry><term><literal>-display</literal> <symbol role="Variable">displayname</symbol></term>
 <listitem>
 <para>Specifies the X display used to retrieve resource values. Typical format
 for <emphasis>displayname</emphasis> is <literal>hostname:display_number.screen_number</literal>. If no screen number is specified, the first screen (0) is used.
 See also <command>X</command>(1)</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;name</literal> <symbol role="Variable">name</symbol></term>
+<varlistentry><term><literal>-name</literal> <symbol role="Variable">name</symbol></term>
 <listitem>
 <para>Specifies the application name under which resources are to be obtained.
 The default is <command>dthelpprint</command>. The resource <literal>application.name</literal> way also be used to specify the name.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;class</literal> <symbol role="Variable">classname</symbol></term>
+<varlistentry><term><literal>-class</literal> <symbol role="Variable">classname</symbol></term>
 <listitem>
 <para>Specifies the application class name under which resources are to be
 obtained. The default is <command>dthelpprint</command>. The resource
@@ -307,7 +307,7 @@ obtained. The default is <command>dthelpprint</command>. The resource
 specify the class name.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;xrm</literal> <symbol role="Variable">resourcestring</symbol></term>
+<varlistentry><term><literal>-xrm</literal> <symbol role="Variable">resourcestring</symbol></term>
 <listitem>
 <para>Specifies an addition to the resource database used by this invocation
 of the program.</para>
@@ -320,15 +320,15 @@ of the program.</para>
 <para>The <command>dthelpprint</command> utility uses resources in addition
 to utility-line options to configure its operation. There are many more resources
 available for this purpose than utility-line options. To set a resource on
-the utility line, use the <literal>&minus;xrm</literal> option.</para>
+the utility line, use the <literal>-xrm</literal> option.</para>
 <para>The application class is <command>dthelpprint</command> unless specified
 otherwise with the <systemitem class="resource">application.class</systemitem> or
 <systemitem class="resource">Application.Class</systemitem> resource or the
-<literal>&minus;class</literal> option. The application
+<literal>-class</literal> option. The application
 instance name is the name used to run the program (usually <command>dthelpprint</command>)
 unless specified otherwise with the <systemitem class="resource">application.class</systemitem> or
 <systemitem class="resource">Application.Class</systemitem> resource
-or the <literal>&minus;name</literal> option. In the following coverage of resource specifications,
+or the <literal>-name</literal> option. In the following coverage of resource specifications,
 the application's class name and instance name can be used interchangably;
 however, if the same resource is specified more than once, the instance-specific
 resource takes precedence over the class resource. In addition, when a value
@@ -355,7 +355,7 @@ options, but also many others.</para>
 <para>The <command>dthelpprint</command> utility allows printer-specific configurations
 to be specified. The configuration used is controlled by the value of the
 <systemitem class="resource">printer</systemitem> resource or
-<literal>&minus;printer</literal> option.</para>
+<literal>-printer</literal> option.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -1039,10 +1039,10 @@ precedence.</para>
 <para>screen resources</para>
 </listitem>
 <listitem>
-<para>$XENVIRONMENT or <literal>$HOME/.Xdefaults&minus;&lt;hostname></literal></para>
+<para>$XENVIRONMENT or <literal>$HOME/.Xdefaults-&lt;hostname></literal></para>
 </listitem>
 <listitem>
-<para>utility&minus;line resources</para>
+<para>utility-line resources</para>
 </listitem>
 </itemizedlist>
 </refsect1>
@@ -1072,7 +1072,7 @@ used by <command>dthelpprint</command> to configure its operation.</para>
 used.</literal></term>
 <listitem>
 <para>Indicates an invalid or missing value of the <literal>paperSize</literal>
-resource or <literal>&minus;paperSize</literal> option. Specify the option
+resource or <literal>-paperSize</literal> option. Specify the option
 on the utility line or set a default resource value.</para>
 </listitem>
 </varlistentry>
@@ -1086,7 +1086,7 @@ value.</para>
 <varlistentry><term><literal>Warning: Unable to open display &lt;display></literal></term>
 <listitem>
 <para>Indicates that the display specified by the <systemitem class="resource">display</systemitem>
-resource or <literal>&minus;display</literal> option could not be opened.
+resource or <literal>-display</literal> option could not be opened.
 This means that the display's resources cannot be used to configure <command>dthelpprint</command>.</para>
 </listitem>
 </varlistentry>
@@ -1097,7 +1097,7 @@ This means that the display's resources cannot be used to configure <command>dth
 <variablelist>
 <varlistentry><term><literal>Error: helpType is topic, but no helpVolume specified.</literal></term>
 <listitem>
-<para>Indicates that the <systemitem class="resource">helpType</systemitem> resource or <literal>&minus;helpType</literal> option was 0 (zero) or unspecified and defaulted
+<para>Indicates that the <systemitem class="resource">helpType</systemitem> resource or <literal>-helpType</literal> option was 0 (zero) or unspecified and defaulted
 to 0 (zero) and no helpVolume was specified.</para>
 </listitem>
 </varlistentry>
@@ -1128,34 +1128,34 @@ unavailable or an error occurred while retrieving it from the volume.</para>
 <varlistentry><term><literal>Error: helpType is string, but no stringData
 specified.</literal></term>
 <listitem>
-<para>The <systemitem class="resource">helpType</systemitem> resource or <literal>&minus;helpType</literal> option is 1 (string) but no <systemitem class="resource">stringData</systemitem> resource
-or <literal>&minus;stringData</literal> option was specified.</para>
+<para>The <systemitem class="resource">helpType</systemitem> resource or <literal>-helpType</literal> option is 1 (string) but no <systemitem class="resource">stringData</systemitem> resource
+or <literal>-stringData</literal> option was specified.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>Error: helpType is dynamic string, but no stringData
 specified.</literal></term>
 <listitem>
 <para>The <systemitem class="resource">helpType</systemitem> resource or 
-<literal>&minus;helpType</literal> option is 1 (dynamic string) but no 
+<literal>-helpType</literal> option is 1 (dynamic string) but no 
 <systemitem class="resource">stringData</systemitem>
 resource or <literal>-stringData</literal> option was specified.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>Error: helpType is man page, but no manPage specified.</literal></term>
 <listitem>
-<para>The <literal>helpType</literal> resource or <literal>&minus;helpType</literal> option is 2 (manual page) but no <literal>manPage</literal> resource
-or <literal>&minus;manPage</literal> option was specified.</para>
+<para>The <literal>helpType</literal> resource or <literal>-helpType</literal> option is 2 (manual page) but no <literal>manPage</literal> resource
+or <literal>-manPage</literal> option was specified.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>Error: helpType is file, but no helpFile specified.</literal></term>
 <listitem>
-<para>The <literal>helpType</literal> resource or <literal>&minus;helpType</literal> option is 3 (plain text file) but no <literal>helpFile</literal>
-resource or <literal>&minus;helpFile</literal> option was specified.</para>
+<para>The <literal>helpType</literal> resource or <literal>-helpType</literal> option is 3 (plain text file) but no <literal>helpFile</literal>
+resource or <literal>-helpFile</literal> option was specified.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>Error: Illegal helpType &lt;number>.</literal></term>
 <listitem>
-<para>The <systemitem class="resource">helpType</systemitem> resource or <literal>&minus;helpType</literal> option is not in the range 0 to 3.</para>
+<para>The <systemitem class="resource">helpType</systemitem> resource or <literal>-helpType</literal> option is not in the range 0 to 3.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><literal>Error: unable to allocate memory for temporary
@@ -1175,11 +1175,11 @@ file</literal></term>
 </refsect1>
 <refsect1>
 <title>EXAMPLES</title>
-<programlisting><literal>dthelpprint &minus;helpVolume Help4Help &minus;allTopics &minus;outputFile Help4Help.asc</literal>
-dthelpprint &minus;helpVolume Help4Help &minus;toc &minus;index &minus;printer hplj3
-dthelpprint &minus;helpType 1 &minus;stringData 'test string' &minus;printer hplj3
-dthelpprint &minus;helpType 2 &minus;manPage grep &minus;outputFile grep.man
-dthelpprint &minus;helpType 3 &minus;helpFile aFile &minus;printer hplj3
+<programlisting><literal>dthelpprint -helpVolume Help4Help -allTopics -outputFile Help4Help.asc</literal>
+dthelpprint -helpVolume Help4Help -toc -index -printer hplj3
+dthelpprint -helpType 1 -stringData 'test string' -printer hplj3
+dthelpprint -helpType 2 -manPage grep -outputFile grep.man
+dthelpprint -helpType 3 -helpFile aFile -printer hplj3
 </programlisting>
 </refsect1>
 <refsect1>

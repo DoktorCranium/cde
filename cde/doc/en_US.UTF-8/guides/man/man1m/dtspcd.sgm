@@ -27,11 +27,11 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>dtspcd</Command>
-<Arg Choice="opt">&minus;debug</Arg>
-<Arg Choice="opt">&minus;log</Arg>
-<Arg Choice="opt">&minus;auth_dir<Replaceable>directory</Replaceable></Arg>
-<Arg Choice="opt">&minus;timeout<Replaceable>num_minutes</Replaceable></Arg>
-<Arg Choice="opt">&minus;mount_point<Replaceable>mount_point</Replaceable></Arg>
+<Arg Choice="opt">-debug</Arg>
+<Arg Choice="opt">-log</Arg>
+<Arg Choice="opt">-auth_dir<Replaceable>directory</Replaceable></Arg>
+<Arg Choice="opt">-timeout<Replaceable>num_minutes</Replaceable></Arg>
+<Arg Choice="opt">-mount_point<Replaceable>mount_point</Replaceable></Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -49,7 +49,7 @@ requesting a process to be started on the daemon's host.
 <Title>OPTIONS</Title>
 <VariableList>
 <VarListEntry>
-<Term><Literal>&minus;auth_dir</Literal> <Emphasis>directory</Emphasis></Term>
+<Term><Literal>-auth_dir</Literal> <Emphasis>directory</Emphasis></Term>
 <ListItem>
 <Para>The default authentication directory is the user's
 $HOME directory.
@@ -59,12 +59,12 @@ Note that
 <Emphasis>directory</Emphasis> must be exported to hosts wishing
 to use the
 <Literal>dtspc</Literal> service.
-<Emphasis>directory</Emphasis> &minus; the name of the directory to use for authentication.
+<Emphasis>directory</Emphasis> - the name of the directory to use for authentication.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;timeout</Literal> <Emphasis>minutes</Emphasis></Term>
+<Term><Literal>-timeout</Literal> <Emphasis>minutes</Emphasis></Term>
 <ListItem>
 <Para>By default, the dtspcd process will terminate if it does
 not have any activity (process start or process stop)
@@ -75,13 +75,13 @@ To change the timeout, set
 desired number of minutes.
 To force the daemon to not use a timer,
 set
-<Emphasis>minutes</Emphasis> to &minus;1.
-<Emphasis>minutes</Emphasis> &minus; the number of minutes for the timer.
+<Emphasis>minutes</Emphasis> to -1.
+<Emphasis>minutes</Emphasis> - the number of minutes for the timer.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;mount_point</Literal> <Emphasis>mount_point</Emphasis></Term>
+<Term><Literal>-mount_point</Literal> <Emphasis>mount_point</Emphasis></Term>
 <ListItem>
 <Para>The file system's mount point is named
 <Emphasis>mount_point.</Emphasis> For example,
@@ -99,7 +99,7 @@ definitions of
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;log</Literal></Term>
+<Term><Literal>-log</Literal></Term>
 <ListItem>
 <Para>This option turns on logging of status information
 to the file
@@ -112,7 +112,7 @@ The default is to not do any logging.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>&minus;debug</Literal></Term>
+<Term><Literal>-debug</Literal></Term>
 <ListItem>
 <Para>This option turns on logging of dtspc protocol
 to the file
@@ -143,13 +143,13 @@ on the daemon's host must be mounted to the client
 host.
 If the user's home directory is not readable
 and the
-<Literal>&minus;auth_dir</Literal> command line option is not used,
+<Literal>-auth_dir</Literal> command line option is not used,
 the directory
 <Filename>/var/dt/tmp</Filename> will be used.
 </Para>
 <Para>To use a directory other than the user's home directory
 for authentication, use the
-<Literal>&minus;auth_dir</Literal> command
+<Literal>-auth_dir</Literal> command
 line option.
 </Para>
 </RefSect1>
@@ -249,8 +249,8 @@ when a process is executed
 <RefSect1>
 <Title>DIAGNOSTICS</Title>
 <Para>Use the command line options
-<Literal>&minus;log</Literal> and
-<Literal>&minus;debug</Literal> (described above) to get diagnostic
+<Literal>-log</Literal> and
+<Literal>-debug</Literal> (described above) to get diagnostic
 information.
 </Para>
 </RefSect1>

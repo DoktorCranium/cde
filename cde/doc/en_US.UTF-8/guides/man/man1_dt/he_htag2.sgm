@@ -59,18 +59,18 @@ The options to
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>&minus;c:</Term>
+<Term>-c:</Term>
 <ListItem>
-<Para>compress the SDL document on a per virtual page basis &minus; if
+<Para>compress the SDL document on a per virtual page basis - if
 the document is already compressed, this command will result
 in no change to the document.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;d:</Term>
+<Term>-d:</Term>
 <ListItem>
-<Para>decompress an SDL document &minus; if the document is already
+<Para>decompress an SDL document - if the document is already
 compressed, this command will result in no change to the
 document; however, the byte offsets of virtual pages will be
 recomputed.
@@ -78,14 +78,14 @@ recomputed.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;h:</Term>
+<Term>-h:</Term>
 <ListItem>
 <Para>print a help message and exit.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;o:</Term>
+<Term>-o:</Term>
 <ListItem>
 <Para>perform peephole optimization of the SDL document.
 In
@@ -97,7 +97,7 @@ single <Literal>&lt;BLOCK></Literal> or <Literal>&lt;FORM></Literal> with the id
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&minus;t:</Term>
+<Term>-t:</Term>
 <ListItem>
 <Para>eliminate any <Literal>&lt;TOSS></Literal> sub-elements that are not used in this SDL
 document.

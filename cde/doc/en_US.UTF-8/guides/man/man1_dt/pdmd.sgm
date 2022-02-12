@@ -17,12 +17,12 @@ Print Dialog Manager daemon
 </refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dtpdmd</command><arg choice="opt">&minus;d <replaceable>display</replaceable></arg>
-<arg choice="opt">&minus;a <replaceable>selection</replaceable></arg>
-<arg choice="opt">&minus;p <replaceable>pdm</replaceable></arg>
-<arg choice="opt">&minus;P <replaceable>pdm</replaceable></arg>
-<arg choice="opt">&minus;s</arg>
-<arg choice="opt">&minus;l <replaceable>logfile</replaceable></arg>
+<command>dtpdmd</command><arg choice="opt">-d <replaceable>display</replaceable></arg>
+<arg choice="opt">-a <replaceable>selection</replaceable></arg>
+<arg choice="opt">-p <replaceable>pdm</replaceable></arg>
+<arg choice="opt">-P <replaceable>pdm</replaceable></arg>
+<arg choice="opt">-s</arg>
+<arg choice="opt">-l <replaceable>logfile</replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
 <refsect1>
@@ -46,17 +46,17 @@ Communication from the PDM is done via standardized exit codes.</para>
 <cmdsynopsis>
 <command>dt-pdm-command</command>
 <arg choice="opt"><replaceable>dt-pdm-options</replaceable></arg>
-<arg choice="plain">&minus;vdisplay <replaceable>vdpy</replaceable></arg>
-<arg choice="plain">&minus;window <replaceable>vwid</replaceable></arg>
-<arg choice="plain">&minus;pdisplay <replaceable>pdpy</replaceable></arg>
-<arg choice="plain">&minus;pcontext <replaceable>pcid</replaceable></arg>
+<arg choice="plain">-vdisplay <replaceable>vdpy</replaceable></arg>
+<arg choice="plain">-window <replaceable>vwid</replaceable></arg>
+<arg choice="plain">-pdisplay <replaceable>pdpy</replaceable></arg>
+<arg choice="plain">-pcontext <replaceable>pcid</replaceable></arg>
 </cmdsynopsis>
 <variablelist>
 <varlistentry><term><emphasis>dt-pdm-command</emphasis></term>
 <listitem>
 <para>Specifies the path for the PDM executable.
 It is derived by the <command>dtpdmd</command> from either the
-<literal>&minus;p</literal> or <literal>&minus;P</literal> option.
+<literal>-p</literal> or <literal>-P</literal> option.
 </para>
 </listitem>
 </varlistentry>
@@ -64,30 +64,30 @@ It is derived by the <command>dtpdmd</command> from either the
 <listitem>
 <para>Specifies options that may have accompanied the <emphasis>dt-pdm-command</emphasis>,
 whether specified on the <command>dtpdmd</command> command line by the
-<literal>&minus;p</literal> or <literal>&minus;P</literal> option or from other sources.
+<literal>-p</literal> or <literal>-P</literal> option or from other sources.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;vdisplay</literal> <emphasis>vdpy</emphasis></term>
+<varlistentry><term><literal>-vdisplay</literal> <emphasis>vdpy</emphasis></term>
 <listitem>
 <para>Specifies the display connection to the Video X-Server.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;window</literal> <emphasis>vwid</emphasis></term>
+<varlistentry><term><literal>-window</literal> <emphasis>vwid</emphasis></term>
 <listitem>
 <para>Specifies the window id on the Video X-Server to which the PDM&rsquo;s
 dialogs should be posted as transient windows.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;pdisplay</literal> <emphasis>pdpy</emphasis></term>
+<varlistentry><term><literal>-pdisplay</literal> <emphasis>pdpy</emphasis></term>
 <listitem>
 <para>Specifies the display connection to the Print X-Server.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;pcontext</literal> <emphasis>pcid</emphasis></term>
+<varlistentry><term><literal>-pcontext</literal> <emphasis>pcid</emphasis></term>
 <listitem>
 <para>Specifies the print context id on the Print X-Server. The PDM uses
 this id to gain access to the print context being used by the requesting
@@ -146,7 +146,7 @@ often found in other libraries (for example, untrapped XIO errors from libX).
 <title>OPTIONS</title>
 <para>The following options are available:</para>
 <variablelist>
-<varlistentry><term><literal>&minus;d</literal> <emphasis>display</emphasis></term>
+<varlistentry><term><literal>-d</literal> <emphasis>display</emphasis></term>
 <listitem>
 <para>Specifies the display connection to an X-Server upon which an X-selection
 will be created and managed for requests. If specified, it overrides the
@@ -154,7 +154,7 @@ environment variable <systemitem class="environvar">XPDMDISPLAY</systemitem>.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;a</literal> <emphasis>selection</emphasis></term>
+<varlistentry><term><literal>-a</literal> <emphasis>selection</emphasis></term>
 <listitem>
 <para>Specifies an alternative X-selection name for <command>dtpdmd</command>
 to create and manage. If specified, it overrides the environment variable
@@ -162,7 +162,7 @@ to create and manage. If specified, it overrides the environment variable
 the selection name is <literal>PDM_MANAGER</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;p</literal> <emphasis>pdm</emphasis></term>
+<varlistentry><term><literal>-p</literal> <emphasis>pdm</emphasis></term>
 <listitem>
 <para>Specifies a PDM execution string to use if no other PDM execution string
 can be derived, usually from the Server Attribute
@@ -172,7 +172,7 @@ All execution strings are applied against the current search path.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;P</literal> <emphasis>pdm</emphasis></term>
+<varlistentry><term><literal>-P</literal> <emphasis>pdm</emphasis></term>
 <listitem>
 <para>Specifies an alternative PDM execution string that overrides all other
 sources of such execution strings. All execution strings are applied
@@ -180,7 +180,7 @@ against the current search path.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;s</literal></term>
+<varlistentry><term><literal>-s</literal></term>
 <listitem>
 <para>Instructs <command>dtpdmd</command> to turn on the security exchange
 portion of the PDM Selection Protocol. By default, <command>dtpdmd</command>
@@ -188,7 +188,7 @@ does not exchange security information with an application over the wire,
 so the appearance of <literal>auto hosting</literal> cannot be done.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>&minus;l</literal> <emphasis>logfile</emphasis></term>
+<varlistentry><term><literal>-l</literal> <emphasis>logfile</emphasis></term>
 <listitem>
 <para>Specifies a file for <command>dtpdmd</command> to use for logging errors
 and warnings. Entries are time-stamped and may be generated by <command>dtpdmd</command> or any child PDM via stderr. The previous contents of the

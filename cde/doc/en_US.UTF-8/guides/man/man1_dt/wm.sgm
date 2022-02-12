@@ -44,18 +44,18 @@ to organize windows by task and make efficient use of screen real estate.
 <refsect2>
 <title>Options</title>
 <variablelist>
-<varlistentry><term><emphasis>&minus;display</emphasis>&ensp;<literal>display</literal></term>
+<varlistentry><term><emphasis>-display</emphasis>&ensp;<literal>display</literal></term>
 <listitem>
 <para>This option specifies the display to use; see <command>X</command>(1).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>&minus;xrm</emphasis>&ensp;<literal>resourcestring</literal></term>
+<varlistentry><term><emphasis>-xrm</emphasis>&ensp;<literal>resourcestring</literal></term>
 <listitem>
 <para>This option specifies a resource string to use.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>&minus;multiscreen</emphasis></term>
+<varlistentry><term><emphasis>-multiscreen</emphasis></term>
 <listitem>
 <para>This option causes <command>dtwm</command> to manage all screens on
 the display. Since <command>dtwm</command> does this by default, this option
@@ -63,13 +63,13 @@ is of limited use. See the <emphasis>multiScreen</emphasis> resource for informa
 on managing a single screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>&minus;name</emphasis>&ensp;<literal>name</literal></term>
+<varlistentry><term><emphasis>-name</emphasis>&ensp;<literal>name</literal></term>
 <listitem>
 <para>This option causes <command>dtwm</command> to retrieve its resources
 using the specified name, as in <literal>name*resource</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>&minus;screens</emphasis>&ensp;<literal>name&ensp;[name&ensp;[...]]</literal></term>
+<varlistentry><term><emphasis>-screens</emphasis>&ensp;<literal>name&ensp;[name&ensp;[...]]</literal></term>
 <listitem>
 <para>This option specifies the resource names to use for the screens managed
 by <command>dtwm</command>. If <command>dtwm</command> is managing a single
@@ -100,10 +100,10 @@ of specific resources. Resources are defined under the heading "X DEFAULTS."
 <refsect2>
 <title>Screens</title>
 <para>By default, <command>dtwm</command> manages only the single screen specified
-by the <emphasis>&minus;display</emphasis> option or the <systemitem class="EnvironVar">DISPLAY</systemitem> environment variable (by default, screen 0). If the <emphasis>&minus;multiscreen</emphasis> option is specified or if the <emphasis>multiScreen</emphasis> resource is True, <command>dtwm</command> tries to manage all
+by the <emphasis>-display</emphasis> option or the <systemitem class="EnvironVar">DISPLAY</systemitem> environment variable (by default, screen 0). If the <emphasis>-multiscreen</emphasis> option is specified or if the <emphasis>multiScreen</emphasis> resource is True, <command>dtwm</command> tries to manage all
 the screens on the display.</para>
-<para>When <command>dtwm</command> is managing multiple screens, the <emphasis>&minus;screens</emphasis> option can be used to give each screen a unique
-resource name. The names are separated by blanks, for example, <emphasis>&minus;screens</emphasis> scr0 scr1. If there are more screens than names,
+<para>When <command>dtwm</command> is managing multiple screens, the <emphasis>-screens</emphasis> option can be used to give each screen a unique
+resource name. The names are separated by blanks, for example, <emphasis>-screens</emphasis> scr0 scr1. If there are more screens than names,
 resources for the remaining screens will be retrieved using the first name.
 By default, the screen number is used for the screen name.</para>
 </refsect2>
@@ -542,7 +542,7 @@ environment variables and the current language environment.</para>
 specific types of resources. These include files that contain bitmaps, fonts,
 and <command>dtwm</command> specific resources such as menus and behavior
 specifications (for example, button and key bindings).</para>
-<para><emphasis>Dtwm</emphasis> is the resource class name of <command>dtwm</command> and <command>dtwm</command> is the default resource name used by <command>dtwm</command> to look up resources. the <emphasis>&minus;screens</emphasis>
+<para><emphasis>Dtwm</emphasis> is the resource class name of <command>dtwm</command> and <command>dtwm</command> is the default resource name used by <command>dtwm</command> to look up resources. the <emphasis>-screens</emphasis>
 command line option specifies resource names, such as "dtwm_b+w" and "dtwm_color".)
 In the following discussion of resource specification, "Dtwm" and "dtwm" (and
 the aliased <command>dtwm</command> resource names) can be used interchangeably,
@@ -627,19 +627,19 @@ and so on. The following list identifies the naming convention used for window
 manager menu components:</para>
 <itemizedlist>
 <listitem>
-<para>Menu Title LabelGadget &minus; "TitleName"</para>
+<para>Menu Title LabelGadget - "TitleName"</para>
 </listitem>
 <listitem>
-<para>Menu Title SeparatorGadget &minus; "TitleSeparator"</para>
+<para>Menu Title SeparatorGadget - "TitleSeparator"</para>
 </listitem>
 <listitem>
-<para>CascadeButtonGadget &minus; "CascadeButtonGadget&lt;n>"</para>
+<para>CascadeButtonGadget - "CascadeButtonGadget&lt;n>"</para>
 </listitem>
 <listitem>
-<para>PushButtonGadget &minus; "PushButtonGadget&lt;n>"</para>
+<para>PushButtonGadget - "PushButtonGadget&lt;n>"</para>
 </listitem>
 <listitem>
-<para>SeparatorGadget &minus; "SeparatorGadget&lt;n>"</para>
+<para>SeparatorGadget - "SeparatorGadget&lt;n>"</para>
 </listitem>
 </itemizedlist>
 <para>Refer to the man page for each class for a list of resources that can
@@ -648,7 +648,7 @@ be specified.</para>
 manager parts can be specified:</para>
 </refsect2>
 <refsect2>
-<title>Component Appearance Resources &minus; All Window Manager Parts</title>
+<title>Component Appearance Resources - All Window Manager Parts</title>
 <informaltable remap="center" orient="port">
 <tgroup cols="4" colsep="0" rowsep="0">
 <?PubTbl tgroup dispwid="5.78in">
@@ -1580,7 +1580,7 @@ the key bindings to use for screen "1".</para>
 <entry align="left" valign="top">transientFunctions</entry>
 <entry align="left" valign="top">TransientFunctions</entry>
 <entry align="left" valign="top">string</entry>
-<entry align="left" valign="top">&minus;minimize&minus;maximize</entry></row>
+<entry align="left" valign="top">-minimize-maximize</entry></row>
 <row>
 <entry align="left" valign="top">useIconBox</entry>
 <entry align="left" valign="top">UseIconBox</entry>
