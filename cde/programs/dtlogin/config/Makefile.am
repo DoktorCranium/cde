@@ -2,6 +2,8 @@
 AM_CPPFLAGS = -DCDE_CONFIGURATION_TOP=$(CDE_CONFIGURATION_TOP) \
             -DCDE_INSTALLATION_TOP=${prefix} \
             -DCDE_LOGFILES_TOP=$(CDE_LOGFILES_TOP) \
+            -DFONTALIASESCONFDIR=$(sysconfdir)/$(PACKAGE_TARNAME)/fontaliases \
+            -DFONTALIASESDATADIR=$(pkgdatadir)/fontaliases \
 	    -DKORNSHELL=$(KSH)
 
 CPP_TARGETS = 0060.dtsysenv Dtlogin Xaccess Xconfig Xconfig.con	\

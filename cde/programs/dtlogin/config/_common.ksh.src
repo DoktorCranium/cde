@@ -97,10 +97,8 @@ ADDFONTPATH() {
     HASH Append desktop font paths. Note: these directories should be
     HASH accessable by the X server. The file precedence is:
     HASH
-    HASH   CDE_CONFIGURATION_TOP/config/xfonts/$LANG
-    HASH   CDE_INSTALLATION_TOP/config/xfonts/$LANG
-    HASH   CDE_CONFIGURATION_TOP/config/xfonts/C
-    HASH   CDE_INSTALLATION_TOP/config/xfonts/C
+    HASH   FONTALIASESCONFDIR
+    HASH   FONTALIASESDATADIR
     HASH
 #ifdef cpp_Xsession
     Log "setting font path..."
@@ -115,33 +113,17 @@ ADDFONTPATH() {
       HASH font directories and making one call to xset.
       HASH
 
-      if [ "${LANG-C}" != "C" ]; then
-        if [ -f CDE_CONFIGURATION_TOP/config/xfonts/$LANG/fonts.dir ]; then
-          fontpath=CDE_CONFIGURATION_TOP/config/xfonts/$LANG
-        fi
-
-        if [ -f CDE_INSTALLATION_TOP/config/xfonts/$LANG/fonts.dir ]; then
-          if [ -z "$fontpath" ]; then
-            fontpath=CDE_INSTALLATION_TOP/config/xfonts/$LANG
-          else
-            fontpath=$fontpath,CDE_INSTALLATION_TOP/config/xfonts/$LANG
-          fi
-        fi
+      if [ -f FONTALIASESCONFDIR/fonts.dir ] || \
+         [ -f FONTALIASESCONFDIR/fonts.alias ]; then
+        fontpath=FONTALIASESCONFDIR
       fi
 
-      if [ -f CDE_CONFIGURATION_TOP/config/xfonts/C/fonts.dir ]; then
-          if [ -z "$fontpath" ]; then
-            fontpath=CDE_CONFIGURATION_TOP/config/xfonts/C
-          else
-            fontpath=$fontpath,CDE_CONFIGURATION_TOP/config/xfonts/C
-          fi
-      fi
-
-      if [ -f CDE_INSTALLATION_TOP/config/xfonts/C/fonts.dir ]; then
+      if [ -f FONTALIASESDATADIR/fonts.dir ] || \
+         [ -f FONTALIASESDATADIR/fonts.alias ]; then
         if [ -z "$fontpath" ]; then
-          fontpath=CDE_INSTALLATION_TOP/config/xfonts/C
+          fontpath=FONTALIASESDATADIR
         else
-          fontpath=$fontpath,CDE_INSTALLATION_TOP/config/xfonts/C
+          fontpath=$fontpath,FONTALIASESDATADIR
         fi
       fi
 
@@ -157,15 +139,9 @@ ADDFONTPATH() {
       HASH set them one at a time.
       HASH
 
-      if [ "${LANG-C}" != "C" ]; then 
-        $XDIR/xset fp+ CDE_CONFIGURATION_TOP/config/xfonts/$LANG 1>/dev/null
+      $XDIR/xset fp+ FONTALIASESCONFDIR 1>/dev/null
 
-        $XDIR/xset fp+ CDE_INSTALLATION_TOP/config/xfonts/$LANG 1>/dev/null
-      fi
-
-      $XDIR/xset fp+ CDE_CONFIGURATION_TOP/config/xfonts/C 1>/dev/null
-
-      $XDIR/xset fp+ CDE_INSTALLATION_TOP/config/xfonts/C 1>/dev/null
+      $XDIR/xset fp+ FONTALIASESDATADIR 1>/dev/null
 
     fi
 #ifdef cpp_Xsession
