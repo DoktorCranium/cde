@@ -7,7 +7,7 @@ include dtdocbook.am
 bin_SCRIPTS = dtdocbook2man dtdocbook2sdl
 bin_PROGRAMS = dtdocbook2infolib
 
-AM_LDFLAGS = $(XTOOLLIB) $(DTCLIENTLIBS)
+AM_LDFLAGS = $(DTCLIENTLIBS) $(XTOOLLIB) 
 
 dtdocbook2infolib_CPPFLAGS = \
 			     -DDTDCBK_DATAROOTDIR=\"$(dtdocbookdatadir)\" \
