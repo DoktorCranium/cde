@@ -252,6 +252,13 @@ AC_ARG_ENABLE([japanese],
 )
 AM_CONDITIONAL([JAPANESE], [test -n "$enable_ja"])
 
+dnl interface font
+AC_ARG_ENABLE([misc-fixed],
+        AS_HELP_STRING([--enable-misc-fixed], [Set interface font to misc-fixed (default=no)]),
+        [enable_misc_fixed="yes"], [enable_misc_fixed=""]
+)
+AM_CONDITIONAL([MISC_FIXED], [test -n "$enable_misc_fixed"])
+
 dnl hmmm...
 RM="rm -f"
 AC_SUBST(RM)
@@ -718,18 +725,6 @@ programs/dtcreate/Makefile
 programs/dtprintinfo/Makefile
 
 programs/fontaliases/Makefile
-programs/fontaliases/bdf/Makefile
-programs/fontaliases/linux/Makefile
-programs/fontaliases/linux/C/Makefile
-programs/fontaliases/linux/en_US.UTF-8/Makefile
-programs/fontaliases/sun/Makefile
-programs/fontaliases/sun/C/Makefile
-programs/fontaliases/netbsd/Makefile
-programs/fontaliases/netbsd/C/Makefile
-programs/fontaliases/openbsd/Makefile
-programs/fontaliases/openbsd/C/Makefile
-programs/fontaliases/freebsd/Makefile
-programs/fontaliases/freebsd/C/Makefile
 
 programs/dtdspmsg/Makefile
 
