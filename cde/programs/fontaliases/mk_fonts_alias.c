@@ -1308,7 +1308,7 @@ int main(int argc, char *argv[]) {
   for (int i = 0; i < sizeof(iface_encdng) / sizeof(char *); ++i) {
     char *encdng = iface_encdng[i];
 
-    if (argc) {
+    if (argc > 1) {
       if (strcmp(encdng, "5") &&
           strcmp(encdng, "7") &&
           strcmp(encdng, "8") &&

@@ -1,23 +1,36 @@
 MAINTAINERCLEANFILES = Makefile.in
 
-SUBDIRS = bdf
+fontaliasesconfdir = $(sysconfdir)/$(PACKAGE_TARNAME)/fontaliases
+fontaliasesdatadir = $(pkgdatadir)/fontaliases
 
-if LINUX
-SUBDIRS += linux
+BUILT_SOURCES = dtinfo.pcf.gz fixed.alias mixed.alias fonts.dir
+fontaliasesdata_DATA = $(BUILT_SOURCES)
+CLEANFILES = $(BUILT_SOURCES)
+
+mk_fonts_alias_SOURCES = mk_fonts_alias.c
+test_fonts_alias_SOURCES = test_fonts_alias.c
+test_fonts_alias_LDADD = $(XTOOLLIB)
+noinst_PROGRAMS = mk_fonts_alias test_fonts_alias
+
+if MISC_FIXED
+FONTS_ALIAS = fixed.alias
+else
+FONTS_ALIAS = mixed.alias
 endif
 
-if SOLARIS
-SUBDIRS += sun
-endif
+dtinfo.pcf.gz: dtinfo.bdf
+	$(RM) $@
+	$(BDFTOPCF) -t $< |$(GZIP) > $@
 
-if FREEBSD
-SUBDIRS += freebsd
-endif
+fixed.alias: mk_fonts_alias
+	./$< > $@
 
-if OPENBSD
-SUBDIRS += openbsd
-endif
+mixed.alias: mk_fonts_alias
+	./$< 1 > $@
 
-if NETBSD
-SUBDIRS += netbsd
-endif
+fonts.dir: dtinfo.pcf.gz
+	$(MKFONTDIR) -x bdf .
+
+install-data-hook:
+	$(MKDIR_P) $(DESTDIR)$(fontaliasesconfdir)
+	$(CP) $(fontaliasesdatadir)/$(FONTS_ALIAS) $(DESTDIR)$(fontaliasesconfdir)/fonts.alias
