@@ -371,34 +371,36 @@ programs/dtappbuilder/src/libABil/bil_parse.h
 # imake
 config/imake/Makefile.proto
 
-# doc 
+# doc
 book.log
 book.out.idx
 book.esis
 doc/common/guides/TOC.sgm
-doc/C/guides/builderGuide/TOC.sgm
-doc/C/guides/docbookGuide/TOC.sgm
-doc/C/guides/dtkshGuide/TOC.sgm
-doc/C/guides/glossary/TOC.sgm
-doc/C/guides/helpGuide/TOC.sgm
-doc/C/guides/i18nGuide/TOC.sgm
-doc/C/guides/infoAPg/TOC.sgm
-doc/C/guides/infoUGd/TOC.sgm
-doc/C/guides/progGuide/TOC.sgm
-doc/C/guides/progOview/TOC.sgm
-doc/C/guides/sysAdminGuide/TOC.sgm
-doc/C/guides/ttGuide/TOC.sgm
-doc/C/guides/usersGuide/TOC.sgm
-doc/C/guides/man/TOC.sgm
-doc/C/cde.dti/
-doc/C/help/*.sdl
-doc/C/m-guides/common
-doc/C/man/man1/*
-doc/C/man/man1m/*
-doc/C/man/man3/*
-doc/C/man/man4/*
-doc/C/man/man5/*
-doc/C/man/man6/*
+doc/*/help/common/Desktop.hf
+doc/*/help/common/DesktopIntro.hf
+doc/en_US.UTF-8/guides/builderGuide/TOC.sgm
+doc/en_US.UTF-8/guides/docbookGuide/TOC.sgm
+doc/en_US.UTF-8/guides/dtkshGuide/TOC.sgm
+doc/en_US.UTF-8/guides/glossary/TOC.sgm
+doc/en_US.UTF-8/guides/helpGuide/TOC.sgm
+doc/en_US.UTF-8/guides/i18nGuide/TOC.sgm
+doc/en_US.UTF-8/guides/infoAPg/TOC.sgm
+doc/en_US.UTF-8/guides/infoUGd/TOC.sgm
+doc/en_US.UTF-8/guides/progGuide/TOC.sgm
+doc/en_US.UTF-8/guides/progOview/TOC.sgm
+doc/en_US.UTF-8/guides/sysAdminGuide/TOC.sgm
+doc/en_US.UTF-8/guides/ttGuide/TOC.sgm
+doc/en_US.UTF-8/guides/usersGuide/TOC.sgm
+doc/en_US.UTF-8/guides/man/TOC.sgm
+doc/en_US.UTF-8/cde.dti/
+doc/en_US.UTF-8/help/*.sdl
+doc/en_US.UTF-8/m-guides/common
+doc/en_US.UTF-8/man/man1/*
+doc/en_US.UTF-8/man/man1m/*
+doc/en_US.UTF-8/man/man3/*
+doc/en_US.UTF-8/man/man4/*
+doc/en_US.UTF-8/man/man5/*
+doc/en_US.UTF-8/man/man6/*
 doc/de_DE.ISO8859-1/cde.dti/
 doc/de_DE.ISO8859-1/guides/infoUGd/TOC.sgm
 doc/de_DE.ISO8859-1/guides/sysAdminGuide/TOC.sgm
@@ -503,10 +505,40 @@ programs/dtfile/dtfile.config
 programs/dtfile/dtfile_error
 
 # programs/dtdocbook
-programs/dtdocbook/doc2sdl/SGML/docbook.dtd
-programs/dtdocbook/doc2sdl/SGML/dtinfo.af
+programs/dtdocbook/doc_utils/MixedGen
+programs/dtdocbook/doc_utils/NCFGen
+programs/dtdocbook/doc_utils/NodeParser
+programs/dtdocbook/doc_utils/StyleUpdate
+programs/dtdocbook/doc_utils/dbdrv
+programs/dtdocbook/doc_utils/dtdocbook2infolib
+programs/dtdocbook/doc_utils/dtdocbook2infolib.c
+programs/dtdocbook/doc_utils/dtdocbook2man
+programs/dtdocbook/doc_utils/dtdocbook2sdl
+programs/dtdocbook/doc_utils/valBase
+programs/dtdocbook/doc_utils/validator
+programs/dtdocbook/doc_utils/validator.C
+programs/dtdocbook/dtdocbook2infolib
+programs/dtdocbook/dtdocbook2man
+programs/dtdocbook/dtdocbook2sdl
+programs/dtdocbook/dtsr/dtsearch.dbd
+programs/dtdocbook/dtsr/mkdbd
+programs/dtdocbook/dtsr/mkdbd.c
+programs/dtdocbook/infolib/ContentType.C
+programs/dtdocbook/infolib/MixedGen
+programs/dtdocbook/infolib/NCFGen
+programs/dtdocbook/infolib/NodeParser
+programs/dtdocbook/infolib/OL_DataExpr.C
+programs/dtdocbook/infolib/OL_DataExpr.tab.h
+programs/dtdocbook/infolib/RemoteId.C
+programs/dtdocbook/infolib/ReplaceIdIdref.C
+programs/dtdocbook/infolib/StyleUpdate
+programs/dtdocbook/infolib/dbdrv
+programs/dtdocbook/infolib/gr_type.C
+programs/dtdocbook/infolib/lex.cc
+programs/dtdocbook/infolib/restore
+programs/dtdocbook/infolib/valBase
+programs/dtdocbook/infolib/validator
 programs/dtdocbook/instant/instant
-programs/dtdocbook/xlate_locale/xlate_locale
 
 # programs/dtexec
 programs/dtexec/DtGetMessage.c
@@ -2314,3 +2346,16 @@ doc/common/help/HELPEnt.sgm
 include/Dt/Dt.h
 lib/tt/bin/ttauth/ttauth.man
 lib/tt/tooltalk.inc
+
+# DtMmdb
+lib/DtMmdb/StyleSheet/defParser.C
+lib/DtMmdb/StyleSheet/defParser.tab.h
+lib/DtMmdb/StyleSheet/defToken.C
+lib/DtMmdb/StyleSheet/style.C
+lib/DtMmdb/StyleSheet/style.tab.h
+lib/DtMmdb/StyleSheet/tokenStyle.C
+lib/DtMmdb/compression/ps.C
+lib/DtMmdb/compression/sgml.C
+lib/DtMmdb/schema/sheet.C
+lib/DtMmdb/schema/sheet.tab.h
+lib/DtMmdb/schema/token.C
