@@ -203,7 +203,7 @@ FontCache::getxlfd(const char *family, int bold,
 	int  count ;	
 	char **names = XListFonts(display,
 				  pattern,
-				  100, // number of fonts to retrieve...sounds good
+				  200, // number of fonts to retrieve...sounds good
 				  &count); // number actually retrieved ;
 #ifdef DEBUG    
 	{
