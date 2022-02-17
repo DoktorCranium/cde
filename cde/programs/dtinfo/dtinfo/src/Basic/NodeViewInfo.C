@@ -536,7 +536,7 @@ highlight_search_hit(_DtCvSegment* seg, unsigned int vcc, unsigned int vlen)
 			realloc(seg->handle.string.string,
 					sizeof(wchar_t) * (dlen + slen + 1));
 		    dst = (wchar_t*)seg->handle.string.string;
-		    *((char *) memcpy(dst + dlen, src, slen) + slen) = '\0';
+		    wcscat(dst, src);
 		}
 		else {
 		    char* src = (char*)sibling->handle.string.string;
@@ -546,7 +546,7 @@ highlight_search_hit(_DtCvSegment* seg, unsigned int vcc, unsigned int vlen)
 		    seg->handle.string.string = (void*)
 			realloc(seg->handle.string.string, dlen + slen + 1);
 		    dst = (char*)seg->handle.string.string;
-		    *((char *) memcpy(dst + dlen, src, slen) + slen) = '\0';
+		    strcat(dst, src);
 		}
 		DtCvStrVcLenSync(seg);
 
