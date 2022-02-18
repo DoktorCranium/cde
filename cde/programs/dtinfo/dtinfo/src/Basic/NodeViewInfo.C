@@ -256,14 +256,14 @@ DtCvStrVccToIndex(_DtCvSegment* seg, unsigned int vcc)
     if (seg->type & _DtCvWIDE_CHAR) {
 	wchar_t* seg_str = (wchar_t*)seg->handle.string.string;
 	for (; *seg_str && rel_vcc > 0; seg_str++, index++) {
-	    if (!isspace(*seg_str))
+	    if (!ISSPACE_C(*seg_str))
 		rel_vcc--;
 	}
 	if (*seg_str == 0 && rel_vcc > 0)
 	    index = (unsigned int)-1;
 	else {
 	    for (; *seg_str; seg_str++, index++) {
-		if (!isspace(*seg_str))
+		if (!ISSPACE_C(*seg_str))
 		    break;
 	    }
 	}
@@ -271,7 +271,7 @@ DtCvStrVccToIndex(_DtCvSegment* seg, unsigned int vcc)
     else {
 	unsigned char* seg_str = (unsigned char*)seg->handle.string.string;
 	while (*seg_str && rel_vcc > 0) {
-	    if (!isspace(*seg_str))
+	    if (!ISSPACE_C(*seg_str))
 		rel_vcc--;
 
 	    int mbl = mblen((char *) seg_str, MB_CUR_MAX);
@@ -289,7 +289,7 @@ DtCvStrVccToIndex(_DtCvSegment* seg, unsigned int vcc)
 	    index = (unsigned int)-1;
 	else {
 	    for (; *seg_str; seg_str++, index++) {
-		if (!isspace(*seg_str))
+		if (!ISSPACE_C(*seg_str))
 		    break;
 	    }
 	}
@@ -310,14 +310,14 @@ DtCvStrVcLenSync(_DtCvSegment* seg)
     if (seg->type & _DtCvWIDE_CHAR) {
 	wchar_t* seg_str = (wchar_t*)seg->handle.string.string;
 	for (; *seg_str; seg_str++) {
-	    if (!isspace(*seg_str))
+	    if (!ISSPACE_C(*seg_str))
 		vclen++;
 	}
     }
     else {
 	unsigned char* seg_str = (unsigned char*)seg->handle.string.string;
 	while (*seg_str) {
-	    if (!isspace(*seg_str))
+	    if (!ISSPACE_C(*seg_str))
 		vclen++;
 
 	    int mbl = mblen((char *) seg_str, MB_CUR_MAX);
@@ -569,7 +569,7 @@ highlight_search_hit(_DtCvSegment* seg, unsigned int vcc, unsigned int vlen)
 	    unsigned char *seg_str = (unsigned char*)seg->handle.string.string;
 
 	    for (int i = 0; i < rel_vcc; ++i) {
-		if (isspace(*seg_str)) {
+		if (ISSPACE_C(*seg_str)) {
 		    ++seg_str;
 		    continue;
 		}
@@ -581,7 +581,7 @@ highlight_search_hit(_DtCvSegment* seg, unsigned int vcc, unsigned int vlen)
 	    }
 
 	    for (int i = 0; i < vlen; ++i) {
-		if (isspace(*seg_str)) {
+		if (ISSPACE_C(*seg_str)) {
 		    ++seg_str;
 		    ++len;
 		    continue;

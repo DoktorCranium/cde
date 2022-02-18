@@ -395,7 +395,7 @@ DtSR_SearchResultsEntry::create_matches()
 	while (off > 0) {
 
 	    int scanned = 0;
-	    if (isspace(*cursor)) {
+	    if (ISSPACE_C(*cursor)) {
 		scanned++;
 	    }
 	    else if (*cursor == ShiftIn || *cursor == ShiftOut) {
@@ -424,11 +424,11 @@ DtSR_SearchResultsEntry::create_matches()
 
 	int len = atoi(len_str);
 	// remove leading white-spaces
-	for (; len && isspace(*cursor); cursor++, len--);
+	for (; len && ISSPACE_C(*cursor); cursor++, len--);
 
 	// remove trailing white-spaces
 	if (len > 0) {
-	    for (const char *p = cursor + len - 1; isspace(*p); p--, len--);
+	    for (const char *p = cursor + len - 1; ISSPACE_C(*p); p--, len--);
 	}
 
 	if (len == 0)

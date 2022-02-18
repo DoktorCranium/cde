@@ -132,6 +132,8 @@ typedef unsigned char  u_char;
 #define ON_DEBUG(stmt)
 #endif
 
+#define ISSPACE_C(C) (C == ' ' || C > 0x8 && C < 0x14)
+
 #include <stddef.h>
 #include <stdlib.h>
 

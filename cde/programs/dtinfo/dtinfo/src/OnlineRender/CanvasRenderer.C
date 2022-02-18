@@ -1282,7 +1282,7 @@ CanvasRenderer::handle_olias_attributes(ElementFeatures  &features,
 	assert( mb_len > 0 );
 	if (mb_len == 1) {
 	  const unsigned char ch = (unsigned char)*p++;
-	  if (isspace(ch))
+	  if (ISSPACE_C(ch))
 	    continue;
 	}
 	else
@@ -1293,7 +1293,7 @@ CanvasRenderer::handle_olias_attributes(ElementFeatures  &features,
 #else
       while (*p)
 	{
-	  if (!isspace(*p))
+	  if (!ISSPACE_C(*p))
 	    {
 	      vcc++ ;
 	    }
@@ -1673,7 +1673,7 @@ CanvasRenderer::really_insert_string (_DtCvSegment *container,
   if (strseg->type & _DtCvWIDE_CHAR) {
     wchar_t *p;
     for (p = (wchar_t*)string; *p; p++) {
-      if (!isspace(*p))
+      if (!ISSPACE_C(*p))
 	scd.vclen()++;
     }
   }
@@ -1683,7 +1683,7 @@ CanvasRenderer::really_insert_string (_DtCvSegment *container,
     while (*p) {
       int mbl = mblen((char *) p, MB_CUR_MAX);
 
-      if (!isspace(*p))
+      if (!ISSPACE_C(*p))
 	scd.vclen()++;
 
       if (mbl < 0) ++p;
