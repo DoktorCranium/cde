@@ -17,14 +17,12 @@
 <!ENTITY FigurePrefix "Figure">
 <!ENTITY TablePrefix "Table">
 
-<!ENTITY FontJPMono "<family name=courier charset=iso8859-1><family name=gothic charset=jisx0201.1976-0><family name=gothic charset=jisx0208.1983-0>">
-<!ENTITY FontJPSans "<family name=helvetica charset=iso8859-1><family name=mincho charset=jisx0201.1976-0><family name=mincho charset=jisx0208.1983-0>">
-<!ENTITY FontJPSerif "<family name=times charset=iso8859-1><family name=mincho charset=jisx0201.1976-0><family name=mincho charset=jisx0208.1983-0>">
+<!ENTITY FontFamilies "<family foundry=dt name=application charset=iso8859-1><family foundry=dt name=application charset=jisx0201.1976-0><family foundry=dt name=application charset=jisx0208.1983-0>">
 
-<!ENTITY Fontmono "<font fallback=mono>&FontJPMono;</font>">
-<!ENTITY Fontmonobold "<font fallback=mono weight=bold>&FontJPMono;</font>">
-<!ENTITY Fontsans12 "<font fallback=sans size=12>&FontJPSans;</font>">
-<!ENTITY Fontserif12 "<font fallback=serif size=12>&FontJPSerif;</font>">
+<!ENTITY Fontmono "<font fallback=mono slant=roman spacing=char>&FontFamilies;</font>">
+<!ENTITY Fontmonobold "<font fallback=mono slant=roman weight=bold spacing=char>&FontFamilies;</font>">
+<!ENTITY Fontsans12 "<font fallback=sans slant=roman size=12 style=sans>&FontFamilies;</font>">
+<!ENTITY Fontserif12 "<font fallback=serif slant=roman size=12 style=serif spacing=prop>&FontFamilies;</font>">
 <!ENTITY Fontsymbol "<font fallback=symbol>">
 <!ENTITY Fontbold12 "<font size=12 weight=bold>">
 <!ENTITY Fontbold14 "<font size=14 weight=bold>">

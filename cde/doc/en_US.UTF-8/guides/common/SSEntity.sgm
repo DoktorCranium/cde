@@ -17,10 +17,12 @@
 <!ENTITY FigurePrefix "Figure">
 <!ENTITY TablePrefix "Table">
 
-<!ENTITY Fontmono "<font fallback=mono>">
-<!ENTITY Fontmonobold "<font fallback=mono weight=bold>">
-<!ENTITY Fontsans12 "<font fallback=sans size=12>">
-<!ENTITY Fontserif12 "<font fallback=serif size=12>">
+<!ENTITY FontFamilies "<family foundry=dt name=application charset=iso8859-1><family foundry=dt name=application charset=iso8859-15>">
+
+<!ENTITY Fontmono "<font fallback=mono slant=roman spacing=char>&FontFamilies;</font>">
+<!ENTITY Fontmonobold "<font fallback=mono slant=roman weight=bold spacing=char>&FontFamilies;</font>">
+<!ENTITY Fontsans12 "<font fallback=sans slant=roman size=12 style=sans>&FontFamilies;</font>">
+<!ENTITY Fontserif12 "<font fallback=serif slant=roman size=12 style=serif spacing=prop>&FontFamilies;</font>">
 <!ENTITY Fontsymbol "<font fallback=symbol>">
 <!ENTITY Fontbold12 "<font size=12 weight=bold>">
 <!ENTITY Fontbold14 "<font size=14 weight=bold>">
