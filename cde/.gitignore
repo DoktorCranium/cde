@@ -1036,42 +1036,8 @@ programs/dtwm/dtfplist
 programs/dtwm/sys.dtwmrc
 
 # programs/fontaliases
-programs/fontaliases/bdf/dtinfo.pcf.gz
-programs/fontaliases/linux/C/dtinfo.bdf
-programs/fontaliases/linux/C/dtinfo.pcf
-programs/fontaliases/linux/C/dtinfo.pcf.gz
-programs/fontaliases/linux/C/dtinfo.pcf.Z
-programs/fontaliases/linux/C/fonts.dir
-programs/fontaliases/linux/en_US.UTF-8/dtinfo.bdf
-programs/fontaliases/linux/en_US.UTF-8/dtinfo.pcf
-programs/fontaliases/linux/en_US.UTF-8/dtinfo.pcf.gz
-programs/fontaliases/linux/en_US.UTF-8/dtinfo.pcf.Z
-programs/fontaliases/linux/en_US.UTF-8/fonts.dir
-programs/fontaliases/freebsd/C/dtinfo.bdf
-programs/fontaliases/freebsd/C/dtinfo.pcf
-programs/fontaliases/freebsd/C/dtinfo.pcf.gz
-programs/fontaliases/freebsd/C/dtinfo.pcf.Z
-programs/fontaliases/freebsd/C/fonts.dir
-programs/fontaliases/openbsd/C/dtinfo.bdf
-programs/fontaliases/openbsd/C/dtinfo.pcf
-programs/fontaliases/openbsd/C/dtinfo.pcf.gz
-programs/fontaliases/openbsd/C/dtinfo.pcf.Z
-programs/fontaliases/openbsd/C/fonts.dir
-programs/fontaliases/netbsd/C/dtinfo.bdf
-programs/fontaliases/netbsd/C/dtinfo.pcf
-programs/fontaliases/netbsd/C/dtinfo.pcf.gz
-programs/fontaliases/netbsd/C/dtinfo.pcf.Z
-programs/fontaliases/netbsd/C/fonts.dir
-programs/fontaliases/sun/C/dtinfo.bdf
-programs/fontaliases/sun/C/dtinfo.pcf
-programs/fontaliases/sun/C/dtinfo.pcf.gz
-programs/fontaliases/sun/C/dtinfo.pcf.Z
-programs/fontaliases/sun/C/fonts.dir
-programs/fontaliases/sun/ja/dtinfo.bdf
-programs/fontaliases/sun/ja/dtinfo.pcf
-programs/fontaliases/sun/ja/dtinfo.pcf.gz
-programs/fontaliases/sun/ja/dtinfo.pcf.Z
-programs/fontaliases/sun/ja/fonts.dir
+programs/fontaliases/dtinfo.pcf.gz
+programs/fontaliases/fonts.dir
 
 # programs/localized
 programs/localized/C/types/*.dt
