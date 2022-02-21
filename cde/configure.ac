@@ -769,7 +769,6 @@ programs/dtinfo/dtinfo/src/cgm/Makefile
 programs/dtinfo/dtinfo/install/Makefile
 programs/dtinfo/dtinfo/install/lib/Makefile
 programs/dtinfo/dtinfo/install/lib/bitmaps/Makefile
-programs/dtinfo/dtinfo/install/lib/fonts/Makefile
 
 programs/types/Makefile
 
