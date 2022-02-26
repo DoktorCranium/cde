@@ -76,7 +76,10 @@ extern XmWidgetExtData _XmGetWidgetExtData(
 #define MAX_ARGS         20
 #define CMPSTR(str)      XmStringCreateLocalized (str)
 #define XMCLASS          "Dtstyle"
-#define DIALOG_MWM_FUNC  MWM_FUNC_MOVE | MWM_FUNC_CLOSE 
+#define DIALOG_MWM_FUNC  MWM_FUNC_ALL | \
+                         MWM_FUNC_RESIZE | \
+                         MWM_FUNC_MINIMIZE | \
+                         MWM_FUNC_MAXIMIZE
 
 #define COLOR    "Color"
 #define FONT     "Font"
