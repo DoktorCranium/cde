@@ -703,7 +703,7 @@ saveStartup(
         int fd )
 {
     Position   x,y;
-    char *bufr = style.tmpBigStr;     /* size=[1024], make bigger if needed */
+    char bufr[1024];     /* size=[1024], make bigger if needed */
     XmVendorShellExtObject  vendorExt;
     XmWidgetExtData         extData;
 
@@ -712,6 +712,8 @@ saveStartup(
           sprintf(bufr, "*startupDlg.ismapped: True\n");
         else
           sprintf(bufr, "*startupDlg.ismapped: False\n");
+
+        WRITE_STR2FD(fd, bufr);
 
         /* Get and write out the geometry info for our Window */
 	x = XtX(XtParent(style.startupDialog));
@@ -725,12 +727,10 @@ saveStartup(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-        snprintf(bufr, sizeof(style.tmpBigStr), "%s*startupDlg.x: %d\n", bufr, x);
-        snprintf(bufr, sizeof(style.tmpBigStr), "%s*startupDlg.y: %d\n", bufr, y);
-
-        if(-1 == write (fd, bufr, strlen(bufr))) {
-		perror(strerror(errno));
-	}
+        snprintf(bufr, sizeof(bufr), "*startupDlg.x: %d\n", x);
+        WRITE_STR2FD(fd, bufr);
+        snprintf(bufr, sizeof(bufr), "*startupDlg.y: %d\n", y);
+        WRITE_STR2FD(fd, bufr);
     }
 }
 

@@ -1178,7 +1178,7 @@ saveI18n(
 {
     Position x,y;
     Dimension width, height;
-    char *bufr = style.tmpBigStr;     /* size=[1024], make bigger if needed */
+    char bufr[1024];     /* size=[1024], make bigger if needed */
     XmVendorShellExtObject  vendorExt;
     XmWidgetExtData         extData;
 
@@ -1188,6 +1188,8 @@ saveI18n(
             sprintf(bufr, "*i18nDlg.ismapped: True\n");
         else
             sprintf(bufr, "*i18nDlg.ismapped: False\n");
+
+        WRITE_STR2FD(fd, bufr);
 
 	/* Get and write out the geometry info for our Window */
 	x = XtX(XtParent(style.i18nDialog));
@@ -1204,13 +1206,14 @@ saveI18n(
 	width = XtWidth(style.i18nDialog);
 	height = XtHeight(style.i18nDialog);
 
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*i18nDlg.x: %d\n", bufr, x);
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*i18nDlg.y: %d\n", bufr, y);
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*i18nDlg.width: %d\n", bufr, width);
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*i18nDlg.height: %d\n", bufr, height);
-	if(-1 == write (fd, bufr, strlen(bufr))) {
-		perror(strerror(errno));
-	}
+	snprintf(bufr, sizeof(bufr), "*i18nDlg.x: %d\n", x);
+        WRITE_STR2FD(fd, bufr);
+	snprintf(bufr, sizeof(bufr), "*i18nDlg.y: %d\n", y);
+        WRITE_STR2FD(fd, bufr);
+	snprintf(bufr, sizeof(bufr), "*i18nDlg.width: %d\n", width);
+        WRITE_STR2FD(fd, bufr);
+	snprintf(bufr, sizeof(bufr), "*i18nDlg.height: %d\n", height);
+        WRITE_STR2FD(fd, bufr);
     }
 }
 

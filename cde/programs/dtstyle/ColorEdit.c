@@ -1707,7 +1707,7 @@ saveColorEdit(
         int fd )
 {
     Position x,y;
-    char *bufr = style.tmpBigStr;     /* size=[1024], make bigger if needed */
+    char bufr[1024];     /* size=[1024], make bigger if needed */
     XmVendorShellExtObject  vendorExt;
     XmWidgetExtData         extData;
 
@@ -1717,6 +1717,7 @@ saveColorEdit(
             sprintf(bufr, "*colorEditDlg.ismapped: True\n");
         else
             sprintf(bufr, "*colorEditDlg.ismapped: False\n");
+        WRITE_STR2FD(fd, bufr);
 
         /* Get and write out the geometry info for our Window */
         x = XtX(XtParent(edit.DialogShell));
@@ -1730,12 +1731,11 @@ saveColorEdit(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-        snprintf(bufr, sizeof(style.tmpBigStr), "%s*colorEditDlg.x: %d\n", bufr, x);
-        snprintf(bufr, sizeof(style.tmpBigStr), "%s*colorEditDlg.y: %d\n", bufr, y);
+        snprintf(bufr, sizeof(bufr), "*colorEditDlg.x: %d\n", x);
+        WRITE_STR2FD(fd, bufr);
+        snprintf(bufr, sizeof(bufr), "*colorEditDlg.y: %d\n", y);
+        WRITE_STR2FD(fd, bufr);
         /*any other parameter you want to save goes here*/
-        if(-1 == write (fd, bufr, strlen(bufr))) {
-		perror(strerror(errno));
-	}
     }
 }
 

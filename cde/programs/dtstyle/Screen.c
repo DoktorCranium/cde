@@ -2899,7 +2899,7 @@ saveScreen(
         int fd )
 {
     Position x,y;
-    char *bufr = style.tmpBigStr;     /* size=[1024], make bigger if needed */
+    char bufr[1024];     /* size=[1024], make bigger if needed */
     XmVendorShellExtObject  vendorExt;
     XmWidgetExtData         extData;
 
@@ -2909,6 +2909,8 @@ saveScreen(
             sprintf(bufr, "*Screen.ismapped: True\n");
         else
             sprintf(bufr, "*Screen.ismapped: False\n");
+
+        WRITE_STR2FD(fd, bufr);
 
 	/* Get and write out the geometry info for our Window */
 	x = XtX(XtParent(style.screenDialog));
@@ -2921,12 +2923,10 @@ saveScreen(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*Screen.x: %d\n", bufr, x);
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*Screen.y: %d\n", bufr, y);
-       
-        if(-1 == write (fd, bufr, strlen(bufr))) {
-            perror(strerror(errno));
-        }
+	snprintf(bufr, sizeof(bufr), "*Screen.x: %d\n", x);
+        WRITE_STR2FD(fd, bufr);
+	snprintf(bufr, sizeof(bufr), "*Screen.y: %d\n", y);
+        WRITE_STR2FD(fd, bufr);
     }
 }
 

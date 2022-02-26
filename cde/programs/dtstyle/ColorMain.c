@@ -2432,7 +2432,7 @@ saveColor(
         int fd )
 {
     Position x,y;
-    char *bufr = style.tmpBigStr;     /* size=[1024], make bigger if needed */
+    char bufr[1024];     /* size=[1024], make bigger if needed */
     XmVendorShellExtObject  vendorExt;
     XmWidgetExtData         extData;
 
@@ -2442,6 +2442,8 @@ saveColor(
 	  sprintf(bufr, "*paletteDlg.ismapped: True\n");
 	else
 	  sprintf(bufr, "*paletteDlg.ismapped: False\n");
+
+        WRITE_STR2FD(fd, bufr);
 
 	/* Get and write out the geometry info for our Window */
 	x = XtX(XtParent(style.colorDialog));
@@ -2455,15 +2457,16 @@ saveColor(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*paletteDlg.x: %d\n", bufr, x);
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*paletteDlg.y: %d\n", bufr, y);
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*paletteDlg.selected_palette: %s\n", bufr,
-		pCurrentPalette->name);
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*paletteDlg.selected_button: %d\n", bufr,
-		selected_button);
-	if(-1 == write (fd, bufr, strlen(bufr))) {
-		perror(strerror(errno));
-	}
+	snprintf(bufr, sizeof(bufr), "*paletteDlg.x: %d\n", x);
+        WRITE_STR2FD(fd, bufr);
+	snprintf(bufr, sizeof(bufr), "*paletteDlg.y: %d\n", y);
+        WRITE_STR2FD(fd, bufr);
+	snprintf(bufr, sizeof(bufr), "*paletteDlg.selected_palette: %s\n",
+                 pCurrentPalette->name);
+        WRITE_STR2FD(fd, bufr);
+	snprintf(bufr, sizeof(bufr), "*paletteDlg.selected_button: %d\n",
+                 selected_button);
+        WRITE_STR2FD(fd, bufr);
     }
 }
 

@@ -272,6 +272,12 @@ extern void LoadDatabase(void);
     string
 #endif
 
+// JET - helper for writing strings to an FD
+#define WRITE_STR2FD(fd, str) { \
+        if (write ((fd), (str), strlen((str))) == -1)   \
+            perror(strerror(errno));                    \
+        }
+
 #endif /* _main_h */
 /* DON'T ADD ANYTHING AFTER THIS #endif */
-  
+

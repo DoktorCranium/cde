@@ -1210,7 +1210,7 @@ saveBackdrop(
 {
     Position x,y;
     Dimension width, height;
-    char *bufr = style.tmpBigStr;     /* size=[1024], make bigger if needed */
+    char bufr[1024];     /* size=[1024], make bigger if needed */
     XmVendorShellExtObject  vendorExt;
     XmWidgetExtData         extData;
 
@@ -1220,6 +1220,8 @@ saveBackdrop(
             sprintf(bufr, "*backdropsDialog.ismapped: True\n");
         else
             sprintf(bufr, "*backdropsDialog.ismapped: False\n");
+
+        WRITE_STR2FD(fd, bufr);
 
         /* Get and write out the geometry info for our Window */
         x = XtX (XtParent(style.backdropDialog));
@@ -1235,17 +1237,20 @@ saveBackdrop(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-        snprintf(bufr, 1024, "%s*backdropsDialog.x: %d\n", bufr, x);
-        snprintf(bufr, 1024, "%s*backdropsDialog.y: %d\n", bufr, y);
-        snprintf(bufr, 1024, "%s*backdropsDialog.width: %d\n", bufr, width);
-        snprintf(bufr, 1024, "%s*backdropsDialog.height: %d\n", bufr, height);
-        snprintf(bufr, 1024, "%s*backdropsDialog.selectedItemNum: %d\n", bufr,
-                backdrops.selected);
-        snprintf(bufr, 1024, "%s*backdropsDialog.selectedItem: %s\n", bufr,
-                backdrops.bitmapNames[backdrops.selected]);
-        if(-1 == write (fd, bufr, strlen(bufr))) {
-			perror(strerror(errno));
-		}
+        snprintf(bufr, sizeof(bufr), "*backdropsDialog.x: %d\n", x);
+        WRITE_STR2FD(fd, bufr);
+        snprintf(bufr, sizeof(bufr), "*backdropsDialog.y: %d\n", y);
+        WRITE_STR2FD(fd, bufr);
+        snprintf(bufr, sizeof(bufr), "*backdropsDialog.width: %d\n", width);
+        WRITE_STR2FD(fd, bufr);
+        snprintf(bufr, sizeof(bufr), "*backdropsDialog.height: %d\n", height);
+        WRITE_STR2FD(fd, bufr);
+        snprintf(bufr, sizeof(bufr), "*backdropsDialog.selectedItemNum: %d\n",
+                 backdrops.selected);
+        WRITE_STR2FD(fd, bufr);
+        snprintf(bufr, sizeof(bufr), "*backdropsDialog.selectedItem: %s\n",
+                 backdrops.bitmapNames[backdrops.selected]);
+        WRITE_STR2FD(fd, bufr);
     }
 }
 

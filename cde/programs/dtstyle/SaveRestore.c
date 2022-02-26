@@ -102,21 +102,13 @@ saveSessionCB(
   unsigned char *data = NULL;
   char *tmpStr;
 
-#ifdef _SUN_OS
-  char *noCommands = NULL;
-#endif /*  _SUN_OS */
-
   /* get the root window property of SaveMode */
-  GetSessionSaveMode(&data );
-  
+  GetSessionSaveMode(&data);
+
   /* if the property is "home" don't save dtstyle */
   if(strcmp((char *)data, "home") == 0)
   {
-#ifdef _SUN_OS   /*  Sun doesn't like "NULL" when expecting "char **" */
-     XSetCommand(style.display, XtWindow(w), &noCommands, 0);
-#else
      XSetCommand(style.display, XtWindow(w), NULL, 0);
-#endif /* _SUN_OS */
      return;
   }
 
@@ -151,7 +143,7 @@ saveSessionCB(
   saveDtwm(fd);
   saveStartup(fd);
   saveI18n(fd);
-  
+
   close (fd);
 
 /*If this is a session manager requested saveYrSlf, need to put dialogs in*/

@@ -691,7 +691,7 @@ saveAudio(
         int fd )
 {
     Position x,y;
-    char *bufr = style.tmpBigStr;    /* size=[1024], make bigger if needed */
+    char bufr[1024];    /* size=[1024], make bigger if needed */
     XmVendorShellExtObject  vendorExt;
     XmWidgetExtData         extData;
 
@@ -701,6 +701,8 @@ saveAudio(
             sprintf(bufr, "*audioDlg.ismapped: True\n");
         else
             sprintf(bufr, "*audioDlg.ismapped: False\n");
+
+        WRITE_STR2FD(fd, bufr);
 
 	/* Get and write out the geometry info for our Window */
 	x = XtX(XtParent(style.audioDialog));
@@ -714,11 +716,12 @@ saveAudio(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*audioDlg.x: %d\n", bufr, x);
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*audioDlg.y: %d\n", bufr, y);
-	if(-1 == write (fd, bufr, strlen(bufr))) {
-		perror(strerror(errno));	
-	}
+	snprintf(bufr, sizeof(bufr), "*audioDlg.x: %d\n", x);
+        WRITE_STR2FD(fd, bufr);
+
+	snprintf(bufr, sizeof(bufr), "*audioDlg.y: %d\n", y);
+        WRITE_STR2FD(fd, bufr);
+
     }
 }
 

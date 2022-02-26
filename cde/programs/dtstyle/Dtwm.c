@@ -956,7 +956,7 @@ saveDtwm(
 {
     Position x,y;
     Dimension width, height;
-    char *bufr = style.tmpBigStr;     /* size=[1024], make bigger if needed */
+    char bufr[1024];     /* size=[1024], make bigger if needed */
     XmVendorShellExtObject  vendorExt;
     XmWidgetExtData         extData;
 
@@ -966,6 +966,8 @@ saveDtwm(
             sprintf(bufr, "*dtwmDlg.ismapped: True\n");
         else
             sprintf(bufr, "*dtwmDlg.ismapped: False\n");
+
+        WRITE_STR2FD(fd, bufr);
 
 	/* Get and write out the geometry info for our Window */
 	x = XtX(XtParent(style.dtwmDialog));
@@ -982,13 +984,14 @@ saveDtwm(
 	width = XtWidth(style.dtwmDialog);
 	height = XtHeight(style.dtwmDialog);
 
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*dtwmDlg.x: %d\n", bufr, x);
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*dtwmDlg.y: %d\n", bufr, y);
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*dtwmDlg.width: %d\n", bufr, width);
-	snprintf(bufr, sizeof(style.tmpBigStr), "%s*dtwmDlg.height: %d\n", bufr, height);
-	if(-1 == write (fd, bufr, strlen(bufr))) {
-		perror(strerror(errno));
-	}
+	snprintf(bufr, sizeof(bufr), "*dtwmDlg.x: %d\n", x);
+        WRITE_STR2FD(fd, bufr);
+	snprintf(bufr, sizeof(bufr), "*dtwmDlg.y: %d\n", y);
+        WRITE_STR2FD(fd, bufr);
+	snprintf(bufr, sizeof(bufr), "*dtwmDlg.width: %d\n", width);
+        WRITE_STR2FD(fd, bufr);
+	snprintf(bufr, sizeof(bufr), "*dtwmDlg.height: %d\n", height);
+        WRITE_STR2FD(fd, bufr);
     }
 }
 

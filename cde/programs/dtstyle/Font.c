@@ -726,12 +726,12 @@ restoreFonts(
  * restoreFonts.  The suggested minimum is whether you are mapped, and your
  * location.
  ************************************************************************/
-void 
+void
 saveFonts(
         int fd )
 {
     Position x,y;
-    char *bufr = style.tmpBigStr;     /* size=[1024], make bigger if needed */
+    char bufr[1024];     /* size=[1024], make bigger if needed */
     XmVendorShellExtObject  vendorExt;
     XmWidgetExtData         extData;
 
@@ -740,6 +740,8 @@ saveFonts(
           sprintf(bufr, "*Fonts.ismapped: True\n");
         else
           sprintf(bufr, "*Fonts.ismapped: False\n");
+
+        WRITE_STR2FD(fd, bufr);
 
         /* Get and write out the geometry info for our Window */
 
@@ -754,12 +756,10 @@ saveFonts(
         x -= vendorExt->vendor.xOffset;
         y -= vendorExt->vendor.yOffset;
 
-        snprintf(bufr, sizeof(style.tmpBigStr), "%s*Fonts.x: %d\n", bufr, x);
-        snprintf(bufr, sizeof(style.tmpBigStr), "%s*Fonts.y: %d\n", bufr, y);
-
-        if(-1 == write (fd, bufr, strlen(bufr))) {
-		perror(strerror(errno));
-	}
+        snprintf(bufr, sizeof(style.tmpBigStr), "*Fonts.x: %d\n", x);
+        WRITE_STR2FD(fd, bufr);
+        snprintf(bufr, sizeof(style.tmpBigStr), "*Fonts.y: %d\n", y);
+        WRITE_STR2FD(fd, bufr);
     }
 }
 
