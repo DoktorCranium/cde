@@ -503,6 +503,7 @@ programs/dtfile/dtcopy/dtfile_copy
 programs/dtfile/dtfile
 programs/dtfile/dtfile.config
 programs/dtfile/dtfile_error
+programs/dtfile/dterror.ds
 
 # programs/dtdocbook
 programs/dtdocbook/doc_utils/MixedGen
@@ -1038,6 +1039,10 @@ programs/dtwm/sys.dtwmrc
 # programs/fontaliases
 programs/fontaliases/dtinfo.pcf.gz
 programs/fontaliases/fonts.dir
+programs/fontaliases/fixed.alias
+programs/fontaliases/mixed.alias
+programs/fontaliases/mk_fonts_alias
+programs/fontaliases/test_fonts_alias
 
 # programs/localized
 programs/localized/C/types/*.dt
