@@ -349,7 +349,7 @@ void DtMsgLogMessage (
 
 	(void) strftime (buf, 
 			 MAX_DATE_TIME_STRING, 
-			 Dt11GETMESSAGE (48, 1, "%a %b %d %H:%M:%S %Y\n"), 
+			 Dt11GETMESSAGE (48, 1, "%a %b %d %H:%M:%S %Y\n"),
 			 current_time);
 
 	num_bytes = fprintf (fp, "*** %s(%d): %s: PID %d: %s", 
@@ -380,7 +380,9 @@ void DtMsgLogMessage (
 #endif
 	va_end (args);
 
-	fprintf (fp, "\n*** [%d]\n\n", num_bytes);
+	// JET - extraneous noise, just output the count
+        // fprintf (fp, "\n*** [%d]\n\n", num_bytes);
+        fprintf (fp, "[%d bytes]\n\n", num_bytes);
 
 	if (fp != stderr) {
 		(void) fflush (fp);
