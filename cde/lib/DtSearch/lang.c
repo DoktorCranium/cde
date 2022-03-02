@@ -276,7 +276,7 @@ static int euro_mbtowc (wchar_t *pwc, const char *p, const char *s)
 
     if (p == s) goto done;
 
-    mbtowc (NULL, NULL, 0); len = mbtowc (pwc, p - 1, 2);
+    len = mbtowc (pwc, p - 1, MB_CUR_MAX);
 
 done:
     if (len < 0 || *pwc > 0xFF) *pwc = 0x100;
@@ -302,18 +302,18 @@ static int euro_readchar (READCFP cofunction, void *cofunction_arg, char *outp,
 
     if (*pwc >= 0 && *pwc <= 0x7F) goto done;
 
-    *(outp + len) = cofunction (NULL);
+    *(outp + len++) = cofunction (NULL);
 
-    mbtowc (NULL, NULL, 0); if (mbtowc (pwc, outp, ++len) >= 0) goto done;
+    if (mbtowc (pwc, outp, MB_CUR_MAX) >= 0) goto done;
 
     *pwc = 0x100;
 
     for (;;) {
 	if (len >= MB_CUR_MAX) break;
 
-	*(outp + len) = cofunction (NULL);
+	*(outp + len++) = cofunction (NULL);
 
-	mblen (NULL, 0); if (mblen (outp, ++len) >= 0) break;
+	if (mblen (outp, MB_CUR_MAX) >= 0) break;
     }
 
 done:
