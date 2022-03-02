@@ -588,10 +588,6 @@ WindowSystem::init()
   //  the $%^& doesn't seem to get called.
 
   f_AppPrintData = new AppPrintData;
-  f_AppPrintData->f_print_data = (DtPrintSetupData*)XtCalloc(1, sizeof(DtPrintSetupData));
-  f_AppPrintData->f_pform = NULL ;
-  f_AppPrintData->f_print_dialog = NULL;
-  f_AppPrintData->f_print_shell = NULL;
   f_AppPrintData->f_print_only = f_video_shell->print_only;
   f_toplevel = f_video_shell->widget;
 
