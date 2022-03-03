@@ -38,7 +38,7 @@
 information browser, also known as the CDE Information Manager.
 On-line information is typically packaged into an
 information library (infolib), which is a hierarchy of bookcases
-containing SGML books (see the &cdeman.dtinfogen; command).
+containing SGML books (see the &cdeman.dtdocbook2infolib; command).
 The browser offers an ability to view, search, and print on-line
 information with a high degree of control. Bookmarks and annotations may
 be attached at desired points for later recall.
@@ -789,7 +789,7 @@ the generated file
 <title>SEE ALSO</title>
 <para>
 <filename>Generalized Locator Format</filename>(4),
-&cdeman.dtinfogen;,
+&cdeman.dtdocbook2infolib;,
 &cdeman.DtPrintSetupBox;,
 &cdeman.DtInfo.LoadInfoLib;,
 &cdeman.DtInfo.ShowInfoAtLoc;,

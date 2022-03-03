@@ -78,7 +78,7 @@ other path mechanisms are used, the browser uses the standard CDE path.
 <refsect1>
 <title>SEE ALSO</title>
 <para>&cdeman.dtinfo;,
-&cdeman.dtinfogen;,
+&cdeman.dtdocbook2infolib;,
 &cdeman.dtinfoBook.dtd;,
 &cdeman.DtMmdbBookCaseGetInfo;,
 &cdeman.DtMmdbInfoLibInfo;

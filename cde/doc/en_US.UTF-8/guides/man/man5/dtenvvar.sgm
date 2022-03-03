@@ -103,7 +103,7 @@ Refer to
 <ListItem>
 <Para>Used by <command>dtinfo</command> to locate information libraries on
 local and remote mounted systems. Refer to
-&cdeman.dtsearchpath; and &cdeman.dtinfogen; for
+&cdeman.dtsearchpath; and &cdeman.dtdocbook2infolib; for
 more information.
 </Para>
 </ListItem>

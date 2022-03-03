@@ -124,7 +124,7 @@ Required.
 <Para><emphasis>CDE: Information Manager
 Author's and Programmer's Guide</emphasis>,
 &cdeman.dtinfo;,
-&cdeman.dtinfogen;,
+&cdeman.dtdocbook2infolib;,
 &cdeman.dtinfoBook.dtd;,
 &cdeman.dtinfoTOC.dtd;
 </Para>

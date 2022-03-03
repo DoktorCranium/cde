@@ -121,7 +121,7 @@ Formal Public Identifier (FPI):
 <Title>SEE ALSO</Title>
 <Para>&cdeman.dtinfo;,
 &cdeman.DtInfoLib;,
-&cdeman.dtinfogen;,
+&cdeman.dtdocbook2infolib;,
 &cdeman.dtinfoStyle.dtd;,
 &cdeman.dtinfoTOC.dtd;,
 </Para>

@@ -168,7 +168,7 @@ definition
 <RefSect1>
 <Title>SEE ALSO</Title>
 <Para>&cdeman.dtinfo;,
-&cdeman.dtinfogen;,
+&cdeman.dtdocbook2infolib;,
 &cdeman.dtinfoBook.dtd;,
 &cdeman.dtinfoStyle.dtd;
 </Para>

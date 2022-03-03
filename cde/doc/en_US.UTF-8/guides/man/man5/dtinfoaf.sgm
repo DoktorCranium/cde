@@ -37,7 +37,7 @@ Information Manager Author's and Programmer's Guide</emphasis>.
 <RefSect1>
 <Title>SEE ALSO</Title>
 <Para>&cdeman.dtinfo;,
-&cdeman.dtinfogen;,
+&cdeman.dtdocbook2infolib;,
 &cdeman.dtinfoBook.dtd;,
 &cdeman.dtinfoStyle.dtd;,
 &cdeman.dtinfoTOC.dtd;

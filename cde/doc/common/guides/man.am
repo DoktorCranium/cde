@@ -269,7 +269,7 @@ MAN_SRCS12 = \
     man/man1_dt/builder.sgm   man/man1_dt/icon.sgm \
     man/man1_dt/calc.sgm      man/man1_dt/imsstart.sgm \
     man/man1_dt/chooser.sgm   man/man1_dt/info.sgm \
-    man/man1_dt/cm.sgm        man/man1_dt/infogen.sgm \
+    man/man1_dt/cm.sgm        man/man1_dt/docbook2infolib.sgm \
     man/man1_dt/cm_delet.sgm  man/man1_dt/ksh.sgm \
     man/man1_dt/cm_edito.sgm  man/man1_dt/login.sgm \
     man/man1_dt/cm_inser.sgm  man/man1_dt/lp.sgm \

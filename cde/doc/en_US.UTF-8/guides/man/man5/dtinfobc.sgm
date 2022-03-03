@@ -56,7 +56,7 @@ members have the following meanings:
 <Title>SEE ALSO</Title>
 <Para>&cdeman.dtinfo;,
 &cdeman.DtInfoLib;,
-&cdeman.dtinfogen;
+&cdeman.dtdocbook2infolib;
 </Para>
 </RefSect1>
 </RefEntry>

@@ -6,25 +6,25 @@
 <!-- (c) Copyright 1996 Novell, Inc. -->
 <!-- (c) Copyright 1996 FUJITSU LIMITED. -->
 <!-- (c) Copyright 1996 Hitachi. -->
-<![ %CDE.C.CDE; [<refentry id="CDE.INFO.dtinfogen">]]>
+<![ %CDE.C.CDE; [<refentry id="CDE.INFO.dtdocbook2infolib">]]>
 <RefMeta>
-<refentrytitle>dtinfogen</refentrytitle>
+<refentrytitle>dtdocbook2infolib</refentrytitle>
 <manvolnum>user cmd</manvolnum></refmeta>
 <refnamediv>
-<refname><command>dtinfogen</command></refname>
+<refname><command>dtdocbook2infolib</command></refname>
 <refpurpose>access DtInfo Toolkit functions</refpurpose>
 </refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dtinfogen</command>
+<command>dtdocbook2infolib</command>
 <arg choice="opt">-h</arg>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>dtinfogen admin</command>
+<command>dtdocbook2infolib admin</command>
 <arg choice="opt">-h</arg>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>dtinfogen build</command>
+<command>dtdocbook2infolib build</command>
 <arg choice="opt">-h</arg>
 <arg choice="opt">-T <replaceable>TmpDir</replaceable></arg>
 <arg choice="opt">-m <replaceable>CatalogFile</replaceable></arg>
@@ -34,7 +34,7 @@
 <arg choice="plain"><replaceable>Bookcase</replaceable> ...</arg>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>dtinfogen tocgen</command>
+<command>dtdocbook2infolib tocgen</command>
 <arg choice="opt">-h</arg>
 <arg choice="opt">-T <replaceable>TmpDir</replaceable></arg>
 <arg choice="opt">-m <replaceable>CatalogFile</replaceable></arg>
@@ -44,7 +44,7 @@
 <arg choice="plain">-f <replaceable>TOCfile</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>dtinfogen update</command>
+<command>dtdocbook2infolib update</command>
 <arg choice="opt">-h</arg>
 <arg choice="opt">-T <replaceable>TmpDir</replaceable></arg>
 <arg choice="opt">-m <replaceable>CatalogFile</replaceable></arg>
@@ -53,7 +53,7 @@
 <arg choice="plain"><replaceable>stylesheet</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>dtinfogen validate</command>
+<command>dtdocbook2infolib validate</command>
 <arg choice="opt">-h</arg>
 <arg choice="opt">-T <replaceable>TmpDir</replaceable></arg>
 <arg choice="opt">-m <replaceable>CatalogFile</replaceable></arg>
@@ -62,9 +62,9 @@
 </refsynopsisdiv>
 <refsect1>
 <title>DESCRIPTION</title>
-<para>The DtInfo Toolkit command, <command>dtinfogen</command>, is used to create and modify
+<para>The DtInfo Toolkit command, <command>dtdocbook2infolib</command>, is used to create and modify
 hypertext information libraries.
-<command>dtinfogen</command> implements its functions
+<command>dtdocbook2infolib</command> implements its functions
 through a set of subcommands:
 </para>
 <variablelist>
@@ -207,9 +207,9 @@ administration functions to perform on a specified information library:
 </itemizedlist>
 <refsect2>
 <title>Example</title>
-<para>Enter the <command>dtinfogen admin</command> command in a shell window:
+<para>Enter the <command>dtdocbook2infolib admin</command> command in a shell window:
 </para>
-<literallayout><command>dtinfogen admin</command>
+<literallayout><command>dtdocbook2infolib admin</command>
 </literallayout>
 <para>The following menu appears:
 </para>
@@ -224,7 +224,7 @@ Please enter your choice [1-6]
 </literallayout>
 <para>Enter the number associated with the administrative task you
 want to perform.
-<command>dtinfogen admin</command> prompts for additional input as
+<command>dtdocbook2infolib admin</command> prompts for additional input as
 required.
 </para>
 </refsect2>
@@ -238,7 +238,7 @@ It also creates a full-text search index.
 </para>
 <refsect2>
 <title>Example</title>
-<para>Enter the <command>dtinfogen&nbsp;build</command> command in a shell
+<para>Enter the <command>dtdocbook2infolib build</command> command in a shell
 window.
 </para>
 <para>To build an information library containing multiple bookcases,
@@ -269,14 +269,14 @@ source file(s) for a book and generates a hypertext table of contents.
 </para>
 <refsect2>
 <title>Example</title>
-<para>Enter the <command>dtinfogen tocgen</command> command in a shell
+<para>Enter the <command>dtdocbook2infolib tocgen</command> command in a shell
 window.
 </para>
 <para>To generate a hypertext table of contents for a book containing six SGML
 book source files, each of which contains a separate chapter, an example
 command might be:
 </para>
-<programlisting><userinput>dtinfogen tocgen -T
+<programlisting><userinput>dtdocbook2infolib tocgen -T
 </userinput> <filename>/usr/pers</filename><userinput> -f
 </userinput> <replaceable>Perl.TOC</replaceable><userinput> -id
 </userinput> <replaceable>Perl0594</replaceable>
@@ -302,18 +302,18 @@ during processing.
 </refsect1>
 <refsect1>
 <title>update</title>
-<para>The <command>dtinfogen update</command> command dynamically replaces
+<para>The <command>dtdocbook2infolib update</command> command dynamically replaces
 existing style sheets in the DtInfo document database.
 </para>
 <refsect2>
 <title>Example</title>
-<para>Enter the <command>dtinfogen update</command> command in a shell window.
+<para>Enter the <command>dtdocbook2infolib update</command> command in a shell window.
 </para>
-<para>Here is an example of a <command>dtinfogen update</command> command used
+<para>Here is an example of a <command>dtdocbook2infolib update</command> command used
 to reformat the documents and/or document sections that use the
 specified style sheet:
 </para>
-<programlisting><userinput>dtinfogen update -T
+<programlisting><userinput>dtdocbook2infolib update -T
 </userinput> <filename>/usr/pers</filename><userinput> -b
 </userinput> <replaceable>ICE9</replaceable><userinput> -l
 </userinput> <replaceable>Brunn style</replaceable>
@@ -327,19 +327,19 @@ that is specified in the bookcase named <replaceable>ICE9</replaceable>.
 </refsect1>
 <refsect1>
 <title>validate</title>
-<para>The <command>dtinfogen validate</command> command performs SGML
+<para>The <command>dtdocbook2infolib validate</command> command performs SGML
 validation on bookcase specifications, on individual book source files,
 or any SGML document.
 </para>
 <refsect2>
 <title>Examples</title>
-<para>Enter the <command>dtinfogen validate</command> in a shell window.
+<para>Enter the <command>dtdocbook2infolib validate</command> in a shell window.
 </para>
-<para>Here is an example of a <command>dtinfogen validate</command> command
+<para>Here is an example of a <command>dtdocbook2infolib validate</command> command
 that performs validation on three SGML book source files:
 </para>
 <programlisting>
-<userinput>dtinfogen validate
+<userinput>dtdocbook2infolib validate
 </userinput> <replaceable>03.Structure.N</replaceable><userinput>
 </userinput> <replaceable>04.Process.N</replaceable><userinput>
 </userinput> <replaceable>05.BookArea.N</replaceable>

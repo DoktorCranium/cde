@@ -42,7 +42,7 @@
 <Member><Link LinkEnd="CDEMX.MAN24.RSML.1">dticon</Link></Member>
 <Member><Link LinkEnd="CDE.IMS.DTIMSSTART">dtimsstart</Link></Member>
 <Member><Link LinkEnd="CDE.INFO.DTINFO">dtinfo</Link></Member>
-<Member><Link LinkEnd="CDE.INFO.DTINFOGEN">dtinfogen</Link></Member>
+<Member><Link LinkEnd="CDE.INFO.DTDOCBOOK2INFOLIB">dtdocbook2infolib</Link></Member>
 <Member><Link LinkEnd="CDEMX.XCSA.MAN6.RSML.1">dtksh</Link></Member>
 <Member><Link LinkEnd="CDEMX.MAN25.RSML.1">dtlogin</Link></Member>
 <Member><Link LinkEnd="CDEMX.MAN26.RSML.1">dtlp</Link></Member>

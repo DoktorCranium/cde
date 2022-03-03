@@ -12,8 +12,8 @@ MANSEC1 = man1/tttrace.1 man1/tttar.1 man1/ttsession.1 man1/ttrmdir.1	\
     man1/dtsession.1 man1/dtsearchpath.1 man1/dtscreen.1		\
     man1/dtprintinfo.1 man1/dtpdmd.1 man1/dtpdm.1 man1/dtpad.1		\
     man1/dtmailpr.1 man1/dtmail.1 man1/dtlp.1 man1/dtlogin.1		\
-    man1/dtksh.1 man1/dtinfogen.1 man1/dtinfo.1 man1/dtimsstart.1	\
-    man1/dticon.1 man1/dthelpview.1 man1/dthelptag.1			\
+    man1/dtksh.1 man1/dtdocbook2infolib.1 man1/dtinfo.1			\
+    man1/dtimsstart.1 man1/dticon.1 man1/dthelpview.1 man1/dthelptag.1	\
     man1/dthelpprint.1 man1/dthelpgen.1 man1/dthelp_htag2.1		\
     man1/dthelp_htag1.1 man1/dthelp_ctag1.1 man1/dthello.1		\
     man1/dtgreet.1 man1/dtfplist.1 man1/dtfile_error.1			\
@@ -439,7 +439,7 @@ man1/dtimsstart.1: ../guides/man/man1_dt/imsstart.sgm $(MANDEPS)
 man1/dtinfo.1: ../guides/man/man1_dt/info.sgm $(MANDEPS)
 	$(DBTOMAN) cdedecl.sgm $< $@
 
-man1/dtinfogen.1: ../guides/man/man1_dt/infogen.sgm $(MANDEPS)
+man1/dtdocbook2infolib.1: ../guides/man/man1_dt/docbook2infolib.sgm $(MANDEPS)
 	$(DBTOMAN) cdedecl.sgm $< $@
 
 man1/dtksh.1: ../guides/man/man1_dt/ksh.sgm $(MANDEPS)
