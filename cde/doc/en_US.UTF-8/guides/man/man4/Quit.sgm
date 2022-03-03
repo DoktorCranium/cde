@@ -50,7 +50,7 @@ requester's satisfaction.)
 </Para>
 <Para>The
 <Symbol Role="Message">Quit</Symbol> request should be failed (and the status code set
-appropriately) when the termination is not performed&mdash;for
+appropriately) when the termination is not performed--for
 example, because the
 <Emphasis>silent</Emphasis> argument was false and the user canceled the quit.
 </Para>

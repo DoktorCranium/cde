@@ -246,7 +246,7 @@ X server, systems.</para>
 <para>Note in these wild-carded XLFD names that the <systemitem class="Constant">ADD_STYLE_NAME</systemitem> field has a pattern, such as <literal>xxs*</literal>,
 and that the pattern is partly a string ( <literal>xxs</literal>) and partly
 the pattern-matching character <literal>*</literal>. The full XLFD name this
-pattern matches&mdash;the XLFD name implementing the Standard Interface name&mdash;will
+pattern matches--the XLFD name implementing the Standard Interface name--will
 often contain <literal>sans</literal> or <literal>serif</literal> in the field,
 after the <literal>xxs</literal> and a space, and so the <literal>*</literal>
 is essential to match that <literal>sans</literal> or <literal>serif</literal>

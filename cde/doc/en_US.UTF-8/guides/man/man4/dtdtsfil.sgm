@@ -769,7 +769,7 @@ first part of a multipart message has <systemitem class="Constant">IS_TEXT</syst
 window. Otherwise, the text area will contain only message headers and the
 first part of the message will be displayed as an icon in the attachment pane.
 It is immaterial whether the data <emphasis>can</emphasis> be loaded into
-an XmText widget&mdash;even binary data can be&mdash;but rather whether the
+an XmText widget--even binary data can be--but rather whether the
 data <emphasis>should</emphasis> be loaded into an XmText widget.</para>
 <para>Note that the <systemitem class="Constant">IS_TEXT</systemitem> field
 differs from the <literal>text</literal> attribute of the <systemitem class="Constant">MIME_TYPE</systemitem> field, which is the MIME content-type, as described

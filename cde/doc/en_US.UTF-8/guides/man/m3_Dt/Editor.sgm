@@ -87,7 +87,7 @@ such as cut and paste, find and change, and simple formatting.</para>]]></refsec
 <para>The user can use the mouse to move the edit cursor and to select portions
 of a document for editing operations. Selection is based on the model specified
 in the <emphasis>Inter-Client Communication Conventions Manual</emphasis> <![ %CDE.C.CDE; [(ICCCM).
-]]><![ %CDE.C.XO; [(ICCCM&mdash;see the &str-Zi;). ]]>The DtEditor widget
+]]><![ %CDE.C.XO; [(ICCCM--see the &str-Zi;). ]]>The DtEditor widget
 supports primary and secondary selection.</para>
 <para>The user can cut, copy and paste text using the clipboard, primary transfer
 or secondary transfer. The DtEditor widget accepts drops of text, text files

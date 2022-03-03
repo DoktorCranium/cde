@@ -102,7 +102,7 @@ or suspend the X server to access the character login prompt.
 </variablelist>
 </refsect2>
 <refsect2>
-<title>Login Window &mdash; Options Menu</title>
+<title>Login Window -- Options Menu</title>
 <para>The Options menu allows the user to specify a locale for the startup session,
 select a startup session, suspend the X server to access the character login
 prompt, or reset the login screen.
@@ -139,7 +139,7 @@ security reasons since it places the user in a running "root" session.
 </variablelist>
 </refsect2>
 <refsect2>
-<title>Login Window &mdash; Language Menu</title>
+<title>Login Window -- Language Menu</title>
 <para>The Language menu displays the languages (locales)
 available in the CDE environment. Selecting a language
 sets the <systemitem class="environvar">LANG</systemitem> environment variable to the selected language and
@@ -157,7 +157,7 @@ displayed as menu items in the Languages menu. Alternate text to be displayed
 may be specified for a given locale name by using the <literal>languageName</literal> resource.</para>
 </refsect2>
 <refsect2>
-<title>Login Window &mdash; Sessions Menu</title>
+<title>Login Window -- Sessions Menu</title>
 <para>The Sessions menu allows the user to select which
 of the following sessions to start:</para>
 <variablelist>

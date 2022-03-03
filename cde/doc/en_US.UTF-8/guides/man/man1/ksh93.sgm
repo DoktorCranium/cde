@@ -4205,7 +4205,7 @@ Libraries are searched in the reverse order in which they are specified.
 Each command that is to be built-in must be written as a C function whose name is of the form
 <function>b_funcName</function>, where <function>funcName</function> is the name of the built-in
 to be added. This function has the same argument calling convention as 'main' (i.e. <literal>argc</literal>
-and <literal>argv</literal>&mdash; a list of strings).  The <function>b_funcName</function> parses and
+and <literal>argv</literal>-- a list of strings).  The <function>b_funcName</function> parses and
 error-checks the incoming arguments and then calls the real <function>funcName</function> function.
 </para>
 </ListItem>

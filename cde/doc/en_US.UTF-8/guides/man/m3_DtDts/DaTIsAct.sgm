@@ -35,7 +35,7 @@
 <Title>DESCRIPTION</Title>
 <Para>The
 <Function>DtDtsDataTypeIsAction</Function> function determines if the specified data type is
-an action&mdash;a data type that was loaded from the action tables
+an action--a data type that was loaded from the action tables
 of the actions and data types database.
 </Para>
 <Para>The

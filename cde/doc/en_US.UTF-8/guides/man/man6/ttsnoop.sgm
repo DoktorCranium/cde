@@ -38,40 +38,40 @@ selectively monitor any or all ToolTalk messages on your system.
 </para>
 <itemizedlist>
 <listitem>
-<para>Snoop &mdash; Turn on/off tracing; get version information
+<para>Snoop -- Turn on/off tracing; get version information
 </para>
 </listitem>
 <listitem>
-<para>Message &mdash; Create, open, receive, and destroy messages
+<para>Message -- Create, open, receive, and destroy messages
 </para>
 </listitem>
 <listitem>
-<para>Pattern &mdash; Create, open, and destroy patterns
+<para>Pattern -- Create, open, and destroy patterns
 </para>
 </listitem>
 <listitem>
-<para>File &mdash; Numerous tasks, including joining a file
+<para>File -- Numerous tasks, including joining a file
 </para>
 </listitem>
 <listitem>
-<para>Session &mdash; Join a specific session; set the default session
+<para>Session -- Join a specific session; set the default session
 </para>
 </listitem>
 <listitem>
-<para>Ptype &mdash; Declare and undeclare a <literal>ptype</literal>; determine whether
+<para>Ptype -- Declare and undeclare a <literal>ptype</literal>; determine whether
 a <literal>ptype</literal> exists
 </para>
 </listitem>
 <listitem>
-<para>Types &mdash; Generate a list of declared types; generate a list of ToolTalk-based actions
+<para>Types -- Generate a list of declared types; generate a list of ToolTalk-based actions
 </para>
 </listitem>
 <listitem>
-<para>Procid &mdash; Open, close, suspend, and resume a procid
+<para>Procid -- Open, close, suspend, and resume a procid
 </para>
 </listitem>
 <listitem>
-<para>libc &mdash; Call <function>system()</function>, <function>putenv()</function>, <function>chdir()</function>, <function>pause()</function>, and <function>exit()</function>; use <function>exit()</function>
+<para>libc -- Call <function>system()</function>, <function>putenv()</function>, <function>chdir()</function>, <function>pause()</function>, and <function>exit()</function>; use <function>exit()</function>
 to exit <command>ttsnoop</command>
 </para>
 </listitem>
