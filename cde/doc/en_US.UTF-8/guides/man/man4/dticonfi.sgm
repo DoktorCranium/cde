@@ -87,22 +87,22 @@ Dtfoo.l_m.bm</programlisting>
 <variablelist>
 <varlistentry><term>Large</term>
 <listitem>
-<para>48&thinsp;&times;&thinsp;48 icon with <Filename>.l</Filename> suffix</para>
+<para>48&times;48 icon with <Filename>.l</Filename> suffix</para>
 </listitem>
 </varlistentry>
 <varlistentry><term>Medium</term>
 <listitem>
-<para>32&thinsp;&times;&thinsp;32 icon with <Filename>.m</Filename> suffix</para>
+<para>32&times;32 icon with <Filename>.m</Filename> suffix</para>
 </listitem>
 </varlistentry>
 <varlistentry><term>Small</term>
 <listitem>
-<para>24&thinsp;&times;&thinsp;24 icon with <Filename>.s</Filename> suffix</para>
+<para>24&times;24 icon with <Filename>.s</Filename> suffix</para>
 </listitem>
 </varlistentry>
 <varlistentry><term>Tiny</term>
 <listitem>
-<para>16&thinsp;&times;&thinsp;16 icon with <Filename>.t</Filename> suffix</para>
+<para>16&times;16 icon with <Filename>.t</Filename> suffix</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -124,33 +124,33 @@ on the display hardware.</para>
 <entry align="left" valign="top"><literal>LoRes(vga)</literal></entry></row>
 <row>
 <entry align="left" valign="top"><literal>Front Panel</literal></entry>
-<entry align="left" valign="top"><literal>48&thinsp;&times;&thinsp;48</literal></entry>
-<entry align="left" valign="top"><literal>32&thinsp;&times;&thinsp;32</literal></entry>
+<entry align="left" valign="top"><literal>48&times;48</literal></entry>
+<entry align="left" valign="top"><literal>32&times;32</literal></entry>
 </row>
 <row>
 <entry align="left" valign="top"><literal>FP Subpanels</literal></entry>
-<entry align="left" valign="top"><literal>32&thinsp;&times;&thinsp;32</literal></entry>
-<entry align="left" valign="top"><literal>24&thinsp;&times;&thinsp;24</literal></entry>
+<entry align="left" valign="top"><literal>32&times;32</literal></entry>
+<entry align="left" valign="top"><literal>24&times;24</literal></entry>
 </row>
 <row>
 <entry align="left" valign="top"><literal>FP Inset FP</literal></entry>
-<entry align="left" valign="top"><literal>24&thinsp;&times;&thinsp;24</literal></entry>
-<entry align="left" valign="top"><literal>16&thinsp;&times;&thinsp;16</literal></entry>
+<entry align="left" valign="top"><literal>24&times;24</literal></entry>
+<entry align="left" valign="top"><literal>16&times;16</literal></entry>
 </row>
 <row>
 <entry align="left" valign="top"><literal>WMgr ClientIcon</literal></entry>
-<entry align="left" valign="top"><literal>48&thinsp;&times;&thinsp;48</literal></entry>
-<entry align="left" valign="top"><literal>32&thinsp;&times;&thinsp;32</literal></entry>
+<entry align="left" valign="top"><literal>48&times;48</literal></entry>
+<entry align="left" valign="top"><literal>32&times;32</literal></entry>
 </row>
 <row>
 <entry align="left" valign="top"><literal>File Mgr (Large)</literal></entry>
-<entry align="left" valign="top"><literal>32&thinsp;&times;&thinsp;32</literal></entry>
-<entry align="left" valign="top"><literal>32&thinsp;&times;&thinsp;32</literal></entry>
+<entry align="left" valign="top"><literal>32&times;32</literal></entry>
+<entry align="left" valign="top"><literal>32&times;32</literal></entry>
 </row>
 <row>
 <entry align="left" valign="top"><literal>File Mgr (Small)</literal></entry>
-<entry align="left" valign="top"><literal>16&thinsp;&times;&thinsp;16</literal></entry>
-<entry align="left" valign="top"><literal>16&thinsp;&times;&thinsp;16</literal></entry>
+<entry align="left" valign="top"><literal>16&times;16</literal></entry>
+<entry align="left" valign="top"><literal>16&times;16</literal></entry>
 </row></tbody></tgroup></informaltable>
 </refsect2>
 <refsect2>

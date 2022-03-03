@@ -47,7 +47,7 @@ user cmd</manvolnum></refmeta><refnamediv><refname><command>dtterm</command></re
 <arg choice="opt">&plusmn;sb</arg>
 <arg choice="opt">&plusmn;sf</arg>
 <group><arg>-sl <replaceable>screens</replaceable></arg>
-<group><arg>s&thinsp;</arg><arg>&thinsp;l</arg></group></group>
+<group><arg>s</arg><arg>l</arg></group></group>
 <arg choice="opt">-ti <replaceable>term_id</replaceable></arg>
 <arg choice="opt">-title <replaceable>title_string</replaceable></arg>
 <arg choice="opt">-tm <replaceable>term_modes</replaceable></arg>
@@ -275,7 +275,7 @@ enable and disable logging via escape sequences.</para>
 <listitem>
 <para>Name the file to which <command>dtterm</command> writes the output log.
 If the <symbol role="Variable">file_name</symbol> argument begins with a pipe
-symbol (&thinsp;|&thinsp;), <command>dtterm</command> assumes the rest of
+symbol (|), <command>dtterm</command> assumes the rest of
 the string to be a command to be used as the endpoint of a pipe. The default
 file name is <literal>DttermLog</literal> <symbol role="variable">XXXXX</symbol> (where <symbol role="variable">XXXXX</symbol> is a unique value) and is created
 in the directory from which the subprocess was started. The <symbol role="Variable">file_name</symbol> argument specifies the log file name used by <command>dtterm</command> for logging.</para>
@@ -1020,7 +1020,7 @@ and disabled via escape sequences.</para>
 <varlistentry><term><systemitem class="environvar">logFile</systemitem></term>
 <listitem>
 <para>Specifies the filename to which <command>dtterm</command> writes the
-output log. If the filename begins with a pipe symbol (&thinsp;|&thinsp;), <command>dtterm</command> assumes the rest of the string is a command to be used as
+output log. If the filename begins with a pipe symbol (|), <command>dtterm</command> assumes the rest of the string is a command to be used as
 the endpoint of a pipe. The default filename is
 <filename>DttermLog</filename><symbol role="variable">XXXXX</symbol>
 (where <symbol role="variable">XXXXX</symbol> is a unique value) and

@@ -383,8 +383,8 @@ font:</para>
 as:</para>
 <informalexample>
 <programlisting>
--dt-interface system-medium-r-normal-xs&thinsp;sans-11-90-85-85-p-81-iso8859-1
--dt-interface system-medium-r-normal-xs&thinsp;serif Expert-8-80-75-75-m-72-iso8859-1
+-dt-interface system-medium-r-normal-xssans-11-90-85-85-p-81-iso8859-1
+-dt-interface system-medium-r-normal-xsserif Expert-8-80-75-75-m-72-iso8859-1
 </programlisting>
 </informalexample>
 <para>Defined this way, both names will match the single XLFD pattern used

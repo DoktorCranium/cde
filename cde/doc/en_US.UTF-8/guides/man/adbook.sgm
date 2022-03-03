@@ -10,9 +10,9 @@
 <!ENTITY str-Z3 "ISO C standard">
 <!ENTITY str-XX "X/Open">
 
-<!ENTITY  str.OK  "[&thinsp;">
+<!ENTITY  str.OK  "[">
 
-<!ENTITY  str.CK  "&thinsp;]">
+<!ENTITY  str.CK  "]">
 
 <!ENTITY % CDE.C.XO "IGNORE">
 <!ENTITY % CDE.C.CDE "INCLUDE">

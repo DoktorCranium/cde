@@ -33,7 +33,7 @@
 <Title>DESCRIPTION</Title>
 <Para><Emphasis>HelpTag</Emphasis> is a markup
 language used for authoring &str-XZ; help volumes.
-It is based on the ISO 8879:&thinsp;1986 Standard Generalized Markup Language
+It is based on the ISO 8879:1986 Standard Generalized Markup Language
 (SGML) standard and is defined with the following
 Document Type Description (DTD).
 </Para>

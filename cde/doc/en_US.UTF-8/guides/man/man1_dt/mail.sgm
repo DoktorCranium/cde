@@ -36,7 +36,7 @@ use the Tooltalk API to compose and send messages.</para>
 <varlistentry><term>-a file1 ... fileN</term>
 <listitem>
 <!-- ex-TP-->
-<para>Bring up a Compose window with &thinsp;file1&thinsp; through &thinsp;fileN&thinsp;
+<para>Bring up a Compose window with file1 through fileN
 as attachments.</para>
 </listitem>
 </varlistentry>

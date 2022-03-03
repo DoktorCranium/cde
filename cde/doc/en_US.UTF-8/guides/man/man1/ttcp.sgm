@@ -44,7 +44,7 @@
 <Command>ttcp</Command>
 <Arg Choice="opt">-prL</Arg>
 <Arg><Replaceable>filename</Replaceable></Arg>
-<Arg>.&thinsp;.&thinsp;.</Arg>
+<Arg>...</Arg>
 <Arg><Replaceable>directory</Replaceable></Arg>
 <!-- -->
 </CmdSynopsis>

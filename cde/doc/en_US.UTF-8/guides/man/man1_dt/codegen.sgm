@@ -21,7 +21,7 @@ Inc.--><refsynopsisdiv><![ %CDE.C.CDE; [<cmdsynopsis>
 </group><group><arg>-np</arg><arg>-noproject</arg></group><arg
 choice="opt">-showall</arg><arg choice="opt">-noshowall</arg>
 <group><arg>-s</arg><arg>-silent</arg></group><group><arg>-v</arg><arg>-verbose</arg></group><group><arg><replaceable>file</replaceable></arg>
-<arg> .&thinsp;.&thinsp;.</arg></group>
+<arg> ...</arg></group>
 </cmdsynopsis>]]><![ %CDE.C.XO; [<CmdSynopsis>
 <Command>dtcodegen</Command>
 <Arg Choice="opt">-changed</Arg>
@@ -39,7 +39,7 @@ choice="opt">-showall</arg><arg choice="opt">-noshowall</arg>
 <Arg>-verbose</Arg>
 </Group>
 <Arg><Replaceable>file</Replaceable></Arg>
-<Arg> .&thinsp;.&thinsp;.</Arg>
+<Arg> ...</Arg>
 </CmdSynopsis>
 ]]>
 <cmdsynopsis>
@@ -116,7 +116,7 @@ widgets. This value retains the CDE 1.0 behavior.</para>
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>-p&thinsp;|&thinsp;-project </literal> <emphasis>myproj</emphasis></term>
+<varlistentry><term><literal>-p|-project </literal> <emphasis>myproj</emphasis></term>
 <listitem>
 <para>Generate code for the project <emphasis>myproj</emphasis>, (which is
 expected to be defined in the file <emphasis>myproj</emphasis> <Filename>.bip</Filename>).</para>
@@ -150,13 +150,13 @@ been specified. (The <literal>-showall</literal> option suppresses this
 behavior).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>-s&thinsp;|&thinsp;-silent</literal></term>
+<varlistentry><term><literal>-s|-silent</literal></term>
 <listitem>
 <para>Work silently, producing no output except error messages while generating
 source code.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>-v&thinsp;|&thinsp;-verbose</literal></term>
+<varlistentry><term><literal>-v|-verbose</literal></term>
 <listitem>
 <para>Be more verbose in providing progress and status messages during the
 generation of source code.</para>

@@ -1251,31 +1251,31 @@ the child process.</entry></row></tbody></tgroup></informaltable>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>Shift ~Ctrl&lt;Key>KP_Multiply:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>XtDisplayInstalledAccelerators(&thinsp;)</computeroutput></entry></row>
+<entry align="left" valign="top"><computeroutput>XtDisplayInstalledAccelerators()</computeroutput></entry></row>
 <row>
 <entry align="left" valign="top"><computeroutput>~Shift Ctrl&lt;Key>KP_Multiply:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>XtDisplayAccelerators(&thinsp;)</computeroutput></entry></row>
+<entry align="left" valign="top"><computeroutput>XtDisplayAccelerators()</computeroutput></entry></row>
 <row>
 <entry align="left" valign="top"><computeroutput>Shift Ctrl&lt;Key>KP_Multiply:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>XtDisplayTranslations(&thinsp;)</computeroutput></entry></row>
+<entry align="left" valign="top"><computeroutput>XtDisplayTranslations()</computeroutput></entry></row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;Key>osfCancel:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>process-cancel(&thinsp;)</computeroutput></entry></row>
+<entry align="left" valign="top"><computeroutput>process-cancel()</computeroutput></entry></row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;Key>osfCopy:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>copy-clipboard(&thinsp;)</computeroutput></entry></row>
+<entry align="left" valign="top"><computeroutput>copy-clipboard()</computeroutput></entry></row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;Key>osfCut:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>copy-clipboard(&thinsp;)</computeroutput></entry></row>
+<entry align="left" valign="top"><computeroutput>copy-clipboard()</computeroutput></entry></row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;Key>osfPaste:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>paste-clipboard(&thinsp;)</computeroutput></entry></row>
+<entry align="left" valign="top"><computeroutput>paste-clipboard()</computeroutput></entry></row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;Key>osfBeginLine:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>beginning-of-buffer(&thinsp;)</computeroutput></entry></row>
+<entry align="left" valign="top"><computeroutput>beginning-of-buffer()</computeroutput></entry></row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;Key>osfEndLine:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>end-of-buffer(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>end-of-buffer()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>Shift&lt;Key>osfUp:</computeroutput></entry>
@@ -1343,15 +1343,15 @@ the child process.</entry></row></tbody></tgroup></informaltable>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>Mod1&lt;Key>Break:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>soft-reset(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>soft-reset()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>Shift&lt;Key>Break:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>hard-reset(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>hard-reset()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>~Shift ~Mod1&lt;Key>Break:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>vt-break(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>vt-break()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>Ctrl&lt;Key>Cancel:</computeroutput></entry>
@@ -1359,11 +1359,11 @@ the child process.</entry></row></tbody></tgroup></informaltable>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>~Ctrl&lt;Key>Cancel:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>stop(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>stop()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>~Shift&lt;Key>Tab:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>tab(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>tab()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>~Mod1&lt;Key>KP_Space:</computeroutput></entry>
@@ -1735,51 +1735,51 @@ function)</computeroutput></entry></row>
 function)</computeroutput></entry></row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;KeyRelease>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>key-release(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>key-release()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;KeyPress>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>insert(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>insert()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>~Shift~Ctrl&lt;Btn1Down>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>grab-focus(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>grab-focus()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>Shift~Ctrl&lt;Btn1Down>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>extend-start(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>extend-start()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>~Ctrl&lt;Btn1Motion>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>select-adjust(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>select-adjust()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>~Ctrl&lt;Btn1Up>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>extend-end(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>extend-end()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>~Shift&lt;Btn2Down>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>process-bdrag(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>process-bdrag()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>~Shift&lt;Btn2Up>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>copy-to(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>copy-to()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;EnterWindow>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>enter(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>enter()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;LeaveWindow>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>leave(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>leave()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;FocusIn>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>focus-in(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>focus-in()</computeroutput></entry>
 </row>
 <row>
 <entry align="left" valign="top"><computeroutput>&lt;FocusOut>:</computeroutput></entry>
-<entry align="left" valign="top"><computeroutput>focus-out(&thinsp;)</computeroutput></entry>
+<entry align="left" valign="top"><computeroutput>focus-out()</computeroutput></entry>
 </row></tbody></tgroup></informaltable>
 </refsect2>
 <refsect2>
@@ -1795,28 +1795,28 @@ action sends a \f3\s-1DEL\s0\fP (delete) character to the child--><!-- process.-
 <symbol role="Variable">percentage</symbol> above or below the base volume.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>break&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>break&hairsp;</emphasis>()</term>
 <listitem>
 <para>Sends an RS232 break signal to the child process.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>cancel&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>cancel&hairsp;</emphasis>()</term>
 <listitem>
 <para>Sends a <Symbol>CAN</Symbol> (cancel) character to the child process.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>copy-clipboard&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>copy-clipboard&hairsp;</emphasis>()</term>
 <listitem>
 <para>Copies current selection to the clipboard.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>copy-to&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>copy-to&hairsp;</emphasis>()</term>
 <listitem>
 <para>Sends the primary selection to the subprocess.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>do&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>do&hairsp;</emphasis>()</term>
 <listitem>
 <para>Sends the escape sequence (see <![ %CDE.C.CDE; [&cdeman.dttermesc;) ]]><![ %CDE.C.XO; [<xref
 role="2" linkend="XCSA.M5DTT.anch.1">) ]]>associated with the <literal>Do</literal> key to the child process.</para>
@@ -1838,14 +1838,14 @@ select</programlisting>
 </informalexample>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>extend-start&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>extend-start&hairsp;</emphasis>()</term>
 <listitem>
 <para>Starts the extension of the currently selected text. The amount of text
 selected depends on the number of mouse clicks (see <function>grab-focus</function>).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>extend-end&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>extend-end&hairsp;</emphasis>()</term>
 <listitem>
 <para>Extends the current selection. The amount of text selected depends on
 the number of mouse clicks (see <function>grab-focus</function>).</para>
@@ -1864,7 +1864,7 @@ then the string associated with user defined key <emphasis>num</emphasis>
 is sent to the child process.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>grab-focus&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>grab-focus&hairsp;</emphasis>()</term>
 <listitem>
 <para>Performs one of the following depending on the number of multiple mouse
 clicks. One click deselects any selected text and sets the selection anchor
@@ -1872,12 +1872,12 @@ at the pointer position; two clicks selects a word; three clicks selects a
 line of text; and four clicks selects all text.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>hard-reset&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>hard-reset&hairsp;</emphasis>()</term>
 <listitem>
 <para>Performs a hard reset on the terminal emulator. <![ %CDE.C.CDE; [See &cdeman.dttermesc; for a definition of hard reset. ]]></para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>help&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>help&hairsp;</emphasis>()</term>
 <listitem><![ %CDE.C.CDE; [<para>Sends the escape sequence (see <![ %CDE.C.CDE; [ &cdeman.dttermesc;) ]]><![ %CDE.C.XO; [<XRef Linkend="XCSA.M5DTT.anch.1" Role="2">) ]]>associated
 with the DEC VT220 Help key to the child process.</para>]]><![ %CDE.C.XO; [<para>Sends the escape sequence (see <![ %CDE.C.CDE; [&cdeman.dttermesc;) ]]><![ %CDE.C.XO; [<xref
 role="2" linkend="XCSA.M5DTT.anch.1">) ]]>associated with the DEC VT220 Help
@@ -1928,12 +1928,12 @@ forward</programlisting>
 </informalexample>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>paste-clipboard&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>paste-clipboard&hairsp;</emphasis>()</term>
 <listitem>
 <para>Sends the contents of the clipboard to the subprocess.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>process-bdrag&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>process-bdrag&hairsp;</emphasis>()</term>
 <listitem>
 <para>The result of this action is determined by several factors: position
 of the location cursor, motion of the location cursor and the interval between
@@ -1948,7 +1948,7 @@ whose <systemitem class="Resource">XmNexportTargets</systemitem> resource
 value includes target types of <systemitem class="Constant">COMPOUND_TEXT</systemitem>, <systemitem class="Constant">STRING</systemitem> and <systemitem class="Constant">TEXT</systemitem>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>redraw-display&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>redraw-display&hairsp;</emphasis>()</term>
 <listitem>
 <para>Redraws the contents of the text window.</para>
 </listitem>
@@ -1966,30 +1966,30 @@ line</programlisting>
 </informalexample>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>select-adjust&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>select-adjust&hairsp;</emphasis>()</term>
 <listitem>
 <para>Extends the selection. The amount of text selected depends on the number
 of mouse clicks. One click selects characters; two clicks selects words; three
 clicks selects lines; and four clicks selects the entire buffer.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>select-all&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>select-all&hairsp;</emphasis>()</term>
 <listitem>
 <para>Selects all text.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>select-page&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>select-page&hairsp;</emphasis>()</term>
 <listitem>
 <para>Selects all text currently displayed on the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>self-insert&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>self-insert&hairsp;</emphasis>()</term>
 <listitem>
 <para>Sends the character associated with the key pressed to the child process.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>soft-reset&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>soft-reset&hairsp;</emphasis>()</term>
 <listitem>
 <para>Performs a soft reset of the terminal. <![ %CDE.C.CDE; [For a definition
 of soft reset see the ``Reset'' section in &cdeman.dttermesc;. ]]></para>
@@ -2014,12 +2014,12 @@ The string is interpreted as a hexadecimal character constant if it begins
 with the characters <literal>0x</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>tab&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>tab&hairsp;</emphasis>()</term>
 <listitem>
 <para>Sends a tab to the child process.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>visual-bell&hairsp;</emphasis>(&thinsp;)</term>
+<varlistentry><term><emphasis>visual-bell&hairsp;</emphasis>()</term>
 <listitem>
 <para>Flashes the window quickly.</para>
 </listitem>

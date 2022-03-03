@@ -29,7 +29,7 @@
 <Command>ttrmdir</Command>
 <Arg Choice="opt">-L</Arg>
 <Arg><Replaceable>directory</Replaceable></Arg>
-<Arg>.&thinsp;.&thinsp;.</Arg>
+<Arg>...</Arg>
 </CmdSynopsis>
 <CmdSynopsis>
 <Command>ttrmdir</Command>

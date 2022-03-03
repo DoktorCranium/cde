@@ -29,7 +29,7 @@
 <Command>ttrm</Command>
 <Arg Choice="opt">-frL</Arg>
 <Arg><Replaceable>pathname</Replaceable></Arg>
-<Arg>.&thinsp;.&thinsp;.</Arg>
+<Arg>...</Arg>
 </CmdSynopsis>
 <CmdSynopsis>
 <Command>ttrm</Command>

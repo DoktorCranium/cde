@@ -43,7 +43,7 @@ Print <Symbol Role="Variable">file</Symbol>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Compose</Literal> <Symbol Role="Variable">file</Symbol> .&thinsp;.&thinsp;.</Term>
+<Term><Literal>Compose</Literal> <Symbol Role="Variable">file</Symbol> ...</Term>
 <ListItem>
 <Para>Open a mail composition view with attachments named
 by the pathnames in the

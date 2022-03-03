@@ -16,12 +16,12 @@ objects in an archive</refpurpose></refnamediv><!-- $XConsortium: tttar.sgm
 (c) Copyright 1993, 1994, 1995 Sun Microsystems, Inc.--><!-- (c) Copyright
 1993, 1994, 1995 Novell, Inc.--><refsynopsisdiv>
 <cmdsynopsis>
-<command>tttar c</command><arg>t</arg><arg>x</arg><arg choice="opt">EfhpSv</arg><arg choice="opt"><replaceable>tarfile</replaceable></arg><arg><replaceable>pathname</replaceable></arg><arg>.&thinsp;.&thinsp;.</arg>
+<command>tttar c</command><arg>t</arg><arg>x</arg><arg choice="opt">EfhpSv</arg><arg choice="opt"><replaceable>tarfile</replaceable></arg><arg><replaceable>pathname</replaceable></arg><arg>...</arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>tttar c</command><arg>t</arg><arg>xfL</arg><arg choice="opt">EhpRSv</arg><arg><replaceable>tttarfile</replaceable></arg><group><group><arg>-rename <replaceable>oldname</replaceable></arg><arg><replaceable>newname</replaceable></arg></group>
-<arg>.&thinsp;.&thinsp;.</arg></group><arg><replaceable>pathname</replaceable></arg>
-<arg>.&thinsp;.&thinsp;.</arg>
+<arg>...</arg></group><arg><replaceable>pathname</replaceable></arg>
+<arg>...</arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>tttar</command><arg>-h</arg><arg>-help</arg>

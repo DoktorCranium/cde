@@ -583,7 +583,7 @@ a carriage-return ( <systemitem class="Constant">CR</systemitem>).</para>
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis> pi</emphasis> <literal> ; .&thinsp;.&thinsp;. m</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis> pi</emphasis> <literal> ; ... m</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SG</systemitem>) Graphics rendition.
 The default value is 0. This escape sequence selects one or more character

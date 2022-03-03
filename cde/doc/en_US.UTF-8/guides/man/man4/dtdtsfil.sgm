@@ -299,15 +299,15 @@ in buffers.</para>
 <refsect2>
 <title>Pattern Matching Notation</title>
 <para>The pattern-matching text field permits use of the shell pattern-matching
-characters *, ?, and [&thinsp;]. The asterisk (*) matches any set of characters,
+characters *, ?, and []. The asterisk (*) matches any set of characters,
 the question mark (?) matches a single character, and the square brackets
-([&thinsp;]) match any one of a set of characters enclosed in the square brackets.
+([]) match any one of a set of characters enclosed in the square brackets.
 The full definition of shell pattern matching is in the X/Open <literal>CAE
 Specification, Commands and Utilities, Issue 4</literal>.</para>
 </refsect2>
 <refsect2>
 <title>Logical Expressions</title>
-<para>The logical operators AND (&amp;), OR (&thinsp;|&thinsp;) and NOT (!)
+<para>The logical operators AND (&amp;), OR (|) and NOT (!)
 can be used in any of the data criteria fields, except for <systemitem class="Constant">DATA_ATTRIBUTES_NAME</systemitem>, as shown in Data Criteria Format, below.
 The resultant expressions are evaluated from left to right.</para>
 </refsect2>
@@ -585,7 +585,7 @@ in their patterns:</para>
 <para>Patterns with any <literal>?</literal> (most specific)</para>
 </listitem>
 <listitem>
-<para>Patterns with any <literal>[&thinsp;]</literal></para>
+<para>Patterns with any <literal>[]</literal></para>
 </listitem>
 <listitem>
 <para>Patterns with any <literal>*</literal> (least specific)</para>
@@ -615,7 +615,7 @@ patterns, in the following sequence:</para>
 </para>
 </listitem>
 <listitem>
-<para>Path patterns with fewer <literal>[&thinsp;]</literal> characters are
+<para>Path patterns with fewer <literal>[]</literal> characters are
 more specific.</para>
 </listitem>
 <listitem>

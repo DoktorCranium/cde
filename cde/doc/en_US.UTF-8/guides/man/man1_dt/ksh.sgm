@@ -2045,7 +2045,7 @@ termOpts execHost contextDir useIndicator</replaceable></arg><arg><replaceable>d
 used to specify file arguments to be used by <command>DtActionInvoke</command>
 when invoking the specified action. The <emphasis>dtksh-command</emphasis>
 argument <![ %CDE.C.CDE; [is not supported in &str-XZ; 1.0, and should be ]]><![ %CDE.C.XO; [must
-be ]]>specified as a null ("&thinsp;") value. <!--.LE--></para>
+be ]]>specified as a null ("") value. <!--.LE--></para>
 </refsect2>
 <refsect2>
 <title>Built-in Data Typing Commands</title>

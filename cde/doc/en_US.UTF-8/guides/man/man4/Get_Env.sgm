@@ -48,7 +48,7 @@ If no value (in other words,
 argument, then the variable was not present in the
 handler's environment.
 This condition is not an error.
-If an empty string (in other words, "&thinsp;")
+If an empty string (in other words, "")
 is returned for this argument, then the variable was present in the
 handler's environment, but had a null value.
 </Para>

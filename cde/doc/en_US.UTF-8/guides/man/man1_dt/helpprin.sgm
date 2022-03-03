@@ -14,7 +14,7 @@ print utility for DtHelpDialog and DtHelpQuickDialog widgets</refpurpose>
 </refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dthelpprint</command><arg choice="opt"><replaceable>options&thinsp;</replaceable></arg>
+<command>dthelpprint</command><arg choice="opt"><replaceable>options</replaceable></arg>
 </cmdsynopsis>
 <refsect2>
 <title>Options</title>

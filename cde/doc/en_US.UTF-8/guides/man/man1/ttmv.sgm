@@ -36,7 +36,7 @@
 <Command>ttmv</Command>
 <Arg Choice="opt">-fL</Arg>
 <Arg><Replaceable>pathname</Replaceable></Arg>
-<Arg>.&thinsp;.&thinsp;.</Arg>
+<Arg>...</Arg>
 <Arg><Replaceable>directory</Replaceable></Arg>
 <!-- -->
 </CmdSynopsis>

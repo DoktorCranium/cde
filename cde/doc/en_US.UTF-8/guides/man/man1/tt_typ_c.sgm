@@ -49,7 +49,7 @@
 <Arg Choice="opt">-s</Arg>
 <Arg Choice="opt">-d <Replaceable>db</Replaceable></Arg>
 <Arg><Replaceable>type</Replaceable></Arg>
-<Arg>.&thinsp;.&thinsp;.</Arg>
+<Arg>...</Arg>
 </CmdSynopsis>
 ]]>
 <![ %CDE.C.XO; [
@@ -58,7 +58,7 @@
 <Arg>-r</Arg>
 <Arg Choice="opt">-s</Arg>
 <Arg><Replaceable>type</Replaceable></Arg>
-<Arg>.&thinsp;.&thinsp;.</Arg>
+<Arg>...</Arg>
 </CmdSynopsis>
 ]]>
 <![ %CDE.C.CDE; [
