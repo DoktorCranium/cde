@@ -685,8 +685,8 @@
 <!entity cdeman.dtconfig "<link linkend=CDEMX.MAN7.RSML.1><filename moreinfo=RefEntry>dtconfig</filename>(1)</link>">
 <!entity cdeman.dtconvertvf "<link linkend=CDEMX.MAN8.RSML.1><filename moreinfo=RefEntry>dtconvertvf</filename>(1)</link>">
 <!entity cdeman.dtdocbook "<link linkend=CDE.INFO.DTDOCBOOK><filename moreinfo=RefEntry>dtdocbook</filename>(1)</link>">
-<!entity cdeman.dtinfo "<link linkend=CDE.INFO.DTINFO><filename moreinfo=RefEntry>dtinfo</filename>(1)</link>">
 <!entity cdeman.dtdocbook2infolib "<link linkend=CDE.INFO.DTDOCBOOK2INFOLIB><filename moreinfo=RefEntry>dtdocbook2infolib</filename>(1)</link>">
+<!entity cdeman.dtinfo "<link linkend=CDE.INFO.DTINFO><filename moreinfo=RefEntry>dtinfo</filename>(1)</link>">
 <!entity cdeman.dtcreate "<link linkend=CDEMX.MAN9.RSML.1><filename moreinfo=RefEntry>dtcreate</filename>(1)</link>">
 <!entity cdeman.dtsrcreate "<link linkend=CDE.SEARCH.DTSRCREATE><filename moreinfo=RefEntry>dtsrcreate</filename>(1)</link>">
 <!entity cdeman.dtsrdbrec "<link linkend=CDE.SEARCH.DTSRDBREC><filename moreinfo=RefEntry>dtsrdbrec</filename>(1)</link>">
@@ -1345,8 +1345,8 @@
 <!ENTITY manconvertv SYSTEM "./man1_dt/convertv.sgm">
 <!ENTITY mandtcreate SYSTEM "./man1_dt/create.sgm">
 <!ENTITY mandocbook SYSTEM "./man1_dt/docbook.sgm">
-<!ENTITY maninfo SYSTEM "./man1_dt/info.sgm">
 <!ENTITY mandocbook2infolib SYSTEM "./man1_dt/docbook2infolib.sgm">
+<!ENTITY maninfo SYSTEM "./man1_dt/info.sgm">
 <!ENTITY mansrcreate SYSTEM "./man1_dt/srcreate.sgm">
 <!ENTITY mansrdbrec SYSTEM "./man1_dt/srdbrec.sgm">
 <!ENTITY mansrkdump SYSTEM "./man1_dt/srkdump.sgm">
@@ -1999,8 +1999,8 @@
 &manconfig;
 &manconvertv;
 &mandocbook;
-&maninfo;
 &mandocbook2infolib;
+&maninfo;
 &mandtcreate;
 &mansrcreate;
 &mansrdbrec;

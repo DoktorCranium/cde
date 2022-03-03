@@ -145,7 +145,7 @@ SGML 文書の<Link Linkend="KyEB2dBpuI9X3cS">「検証」</Link>。
 </Para>
 </ListItem>
 <ListItem>
-<Para><Command>dtinfogen build</Command> コマンドを使用して、ブラウザで表示可能なインフォメーション・ライブラリを構築します。
+<Para><Command>dtdocbook2infolib build</Command> コマンドを使用して、ブラウザで表示可能なインフォメーション・ライブラリを構築します。
 </Para>
 <Para>
 <Link Linkend="fi1SgFBr-1698oL">「インフォメーション・ライブライの構築」</Link>を参照してください。
@@ -157,14 +157,14 @@ SGML 文書の<Link Linkend="KyEB2dBpuI9X3cS">「検証」</Link>。
 </Para>
 <ItemizedList>
 <ListItem>
-<Para><Command>dtinfogen update</Command> コマンドを使用して、データベースを再構築せずに、文書データベースに存在するスタイル・シートまたはスタイル・シート情報を置き換えることができます。
+<Para><Command>dtdocbook2infolib update</Command> コマンドを使用して、データベースを再構築せずに、文書データベースに存在するスタイル・シートまたはスタイル・シート情報を置き換えることができます。
 </Para>
 <Para>
 <Link Linkend="WmNvZbBE6K9X3cS">「構築されたブックケースのスタイル・シートの更新」</Link> を参照してください。
 </Para>
 </ListItem>
 <ListItem>
-<Para><Command>dtinfogen build</Command> コマンドを使用して、ライブラリのブックケースの追加や置換を行うことができます。
+<Para><Command>dtdocbook2infolib build</Command> コマンドを使用して、ライブラリのブックケースの追加や置換を行うことができます。
 </Para>
 <Para>
 <Link Linkend="n7Ktl2IBUXmBt8oL">「既存ライブラリへのブックケースの追加」</Link>および 
@@ -172,7 +172,7 @@ SGML 文書の<Link Linkend="KyEB2dBpuI9X3cS">「検証」</Link>。
 </Para>
 </ListItem>
 <ListItem>
-<Para><Command>dtinfogen admin</Command> コマンドを使用して、ライブラリのブックケースのコピー、名称変更、一覧表示、および再調整を行うことができます。
+<Para><Command>dtdocbook2infolib admin</Command> コマンドを使用して、ライブラリのブックケースのコピー、名称変更、一覧表示、および再調整を行うことができます。
 </Para>
 <Para>
 <Link Linkend="B7XKbKBcgmg24aK">「ブックケースの管理」</Link>を参照してください。

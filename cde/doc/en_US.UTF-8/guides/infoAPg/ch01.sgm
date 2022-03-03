@@ -174,7 +174,7 @@ See
 <ListItem>
 <Para>
 Build browser-readable information libraries using the
-<Command>dtinfogen build</Command> command.
+<Command>dtdocbook2infolib build</Command> command.
 </Para>
 <Para>
 See
@@ -190,7 +190,7 @@ On Information Manager libraries that are already built, you can:
 <Para>
 Replace existing style sheets or style sheet information
 in the document database, without rebuilding the
-database, using the <Command>dtinfogen update</Command> command.
+database, using the <Command>dtdocbook2infolib update</Command> command.
 </Para>
 <Para>
 See
@@ -200,7 +200,7 @@ See
 <ListItem>
 <Para>
 Add or replace a bookcase in the library using the
-<Command>dtinfogen build</Command> command.
+<Command>dtdocbook2infolib build</Command> command.
 </Para>
 <Para>
 See
@@ -211,7 +211,7 @@ See
 <ListItem>
 <Para>
 Copy, remove, rename, list, or rearrange bookcases in a
-library using the <Command>dtinfogen admin</Command> command.
+library using the <Command>dtdocbook2infolib admin</Command> command.
 </Para>
 <Para>See
 <Link Linkend="B7XKbKBcgmg24aK">Administering Bookcases</Link>.

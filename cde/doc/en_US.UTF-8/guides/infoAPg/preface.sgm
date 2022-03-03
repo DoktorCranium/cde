@@ -78,7 +78,7 @@ build an information library.
 <para>
 Chapter 4, &ldquo;Building Information Libraries&rdquo;
 covers the process of building and updating an
-information library using the <command>dtinfogen</command> commands.
+information library using the <command>dtdocbook2infolib</command> commands.
 </para>
 </listitem>
 <listitem>

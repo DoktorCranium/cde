@@ -39,18 +39,18 @@ See also
 </Para>
 <!--(((((((((((((((((((((((((((((((((((((((((((((((((((-->
 <sect1>
-<Title id="n01cq1dBePI9X3cS">Running dtinfogen admin</Title>
+<Title id="n01cq1dBePI9X3cS">Running dtdocbook2infolib admin</Title>
 <IndexTerm><Primary>Information Manager Toolkit</Primary><Secondary>commands</Secondary>
-<Tertiary>dtinfogen admin</Tertiary></IndexTerm>
+<Tertiary>dtdocbook2infolib admin</Tertiary></IndexTerm>
 <Para>
-<command>dtinfogen admin</command>
+<command>dtdocbook2infolib admin</command>
 is an interactive program that displays a menu
 from which you select the administrative operation you want to
-perform. To run the <Command>dtinfogen admin</Command> command,
+perform. To run the <Command>dtdocbook2infolib admin</Command> command,
 on the command line type:
 </Para>
 <ProgramListing>
-<UserInput>dtinfogen admin</UserInput>
+<UserInput>dtdocbook2infolib admin</UserInput>
 </ProgramListing>
 <Para>
 When you press enter, the following menu appears.</Para>
@@ -71,7 +71,7 @@ Please enter your choice [1-6]
 <IndexTerm><Primary>bookcases</Primary><Secondary>copying from another library</Secondary></IndexTerm>
 <Para>
 When you copy a bookcase from another library,
-<command>dtinfogen admin</command>
+<command>dtdocbook2infolib admin</command>
 validates the bookcase you are copying against the bookcases in
 the destination library. This ensures that no section IDs are
 duplicated within the library, and that the database versions are
@@ -79,7 +79,7 @@ compatible with each other.
 </Para>
 <Para>
 If the bookcase you want to copy already exists in the destination
-library, <Command>dtinfogen admin</Command> asks whether you wish to replace the
+library, <Command>dtdocbook2infolib admin</Command> asks whether you wish to replace the
 bookcase.
 </Para>
 <Para>
@@ -87,7 +87,7 @@ To copy a bookcase from another library:
 </Para>
 <OrderedList>
 <ListItem>
-<Para>At a command line, enter <UserInput>dtinfogen admin</UserInput>.
+<Para>At a command line, enter <UserInput>dtdocbook2infolib admin</UserInput>.
 </Para>
 <Para>
 The following menu appears:
@@ -106,7 +106,7 @@ Please enter your choice [1-6]
 <Para>On the command line, enter <UserInput>1</UserInput>.
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays:
+<command>dtdocbook2infolib admin</command> displays:
 </Para>
 <LiteralLayout>
 Enter the path for the library from which you want to copy a bookcase.
@@ -119,7 +119,7 @@ Enter the path to the information library from which you
 want to copy a bookcase. For example: <UserInput>/lit/wolfe</UserInput>
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays the bookcases available in the
+<command>dtdocbook2infolib admin</command> displays the bookcases available in the
 library you specified. For example:
 </Para>
 <LiteralLayout>
@@ -135,7 +135,7 @@ Enter the number associated with the bookcase you want to copy.
 <ListItem>
 <Para>
 At the prompt, enter the number corresponding to the
-bookcase you want to copy. <command>dtinfogen admin</command> displays:
+bookcase you want to copy. <command>dtdocbook2infolib admin</command> displays:
 </Para>
 <LiteralLayout>
 You specified <Replaceable>[Life]</Replaceable>. Do you really want to copy this bookcase?
@@ -155,7 +155,7 @@ want to copy the bookcase. For example:
 <UserInput>/lit/destiny</UserInput>
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays the bookcases available in the
+<command>dtdocbook2infolib admin</command> displays the bookcases available in the
 library you specified:
 </Para>
 <LiteralLayout>
@@ -179,7 +179,7 @@ choose, the bookcase you are copying takes its place, and
 the original bookcase moves down one place in the list.
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays the new order of the bookcases in
+<command>dtdocbook2infolib admin</command> displays the new order of the bookcases in
 the library. For example:
 </Para>
 <LiteralLayout>
@@ -195,7 +195,7 @@ Is this correct? [ynq]
 <ListItem>
 <Para>
 To copy the bookcase into this position, enter
-<UserInput>Y</UserInput>. <command>dtinfogen admin</command> saves the addition to the library and returns
+<UserInput>Y</UserInput>. <command>dtdocbook2infolib admin</command> saves the addition to the library and returns
 to the main menu.
 </Para>
 </ListItem>
@@ -209,16 +209,16 @@ to the main menu.
 <IndexTerm><Primary>information libraries</Primary><Secondary>removing bookcases from</Secondary></IndexTerm>
 <IndexTerm><Primary>bookcases</Primary><Secondary>removing from a library</Secondary></IndexTerm>
 <Para>
-The procedure for removing a bookcase with <command>dtinfogen
+The procedure for removing a bookcase with <command>dtdocbook2infolib
 admin</command> is similar to the procedure for copying a bookcase into
 a library. When you remove a bookcase from a library, its database is
 deleted from the information library.
 </Para>
 <Para>
-When you specify the library to work with, <Command>dtinfogen
+When you specify the library to work with, <Command>dtdocbook2infolib
 admin</Command> lists the bookcases found in that library. You simply
 specify the bookcase to remove. If the information you supply is valid,
-<Command>dtinfogen admin</Command> prompts you for confirmation before
+<Command>dtdocbook2infolib admin</Command> prompts you for confirmation before
 removing the bookcase you specified.
 </Para>
 <Para>
@@ -227,7 +227,7 @@ To remove a bookcase from a library:
 <OrderedList>
 <ListItem>
 <Para>
-At a command line, enter <UserInput>dtinfogen admin</UserInput>.
+At a command line, enter <UserInput>dtdocbook2infolib admin</UserInput>.
 </Para>
 <Para>
 The following menu appears.
@@ -246,7 +246,7 @@ Please enter your choice [1-6]
 <Para>To remove a bookcase, enter <UserInput>2</UserInput>.
 </Para>
 <Para>
-<Command>dtinfogen admin</Command> displays:
+<Command>dtdocbook2infolib admin</Command> displays:
 </Para>
 <LiteralLayout>
 Enter the path for the library from which you want to remove a bookcase.
@@ -259,7 +259,7 @@ Enter the path to the information library from which you
 want to remove the bookcase. For example: <UserInput>/lit/wolfe</UserInput>.
 </Para>
 <Para>
-<Command>dtinfogen admin</Command> displays the bookcases available in the
+<Command>dtdocbook2infolib admin</Command> displays the bookcases available in the
 library you specified:
 </Para>
 <LiteralLayout>
@@ -276,7 +276,7 @@ Enter the number corresponding to the bookcase to remove.
 <Para>
 At the prompt, enter the number corresponding to the
 bookcase you want to remove.
-<Command>dtinfogen admin</Command> displays:
+<Command>dtdocbook2infolib admin</Command> displays:
 </Para>
 <LiteralLayout>
 You specified <Replaceable>[Essays]</Replaceable>. Do you really want to remove this bookcase?
@@ -284,7 +284,7 @@ You specified <Replaceable>[Essays]</Replaceable>. Do you really want to remove 
 </ListItem>
 <ListItem>
 <Para>To remove the bookcase you specified, enter <UserInput>Y</UserInput>.
-<Command>dtinfogen admin</Command> removes the bookcase and returns to the
+<Command>dtdocbook2infolib admin</Command> removes the bookcase and returns to the
 main menu.
 </Para>
 </ListItem>
@@ -305,10 +305,10 @@ To list bookcases in a library:
 <OrderedList>
 <ListItem>
 <Para>At a command line, enter
-<UserInput>dtinfogen admin</UserInput>.
+<UserInput>dtdocbook2infolib admin</UserInput>.
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays:</Para>
+<command>dtdocbook2infolib admin</command> displays:</Para>
 <LiteralLayout>
 1) Copy a bookcase from another library
 2) Remove a bookcase
@@ -324,7 +324,7 @@ Please enter your choice [1-6]
 To list a bookcase, enter <UserInput>3</UserInput>.
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays:</Para>
+<command>dtdocbook2infolib admin</command> displays:</Para>
 <LiteralLayout>
 Enter the path for the library for which you want to list bookcases.
 This can be a relative or absolute path.
@@ -336,7 +336,7 @@ Enter the path to the information library for which you
 want to list bookcases. For example: <UserInput>/lit/wolfe</UserInput>.
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays the bookcases available in the
+<command>dtdocbook2infolib admin</command> displays the bookcases available in the
 library you specified. For example:
 </Para>
 <LiteralLayout>
@@ -349,7 +349,7 @@ The bookcases available in /lit/wolfe are:
 </ListItem>
 <ListItem>
 <Para>
-After listing the bookcases in the information library, <command>dtinfogen admin</command>
+After listing the bookcases in the information library, <command>dtdocbook2infolib admin</command>
 returns you to the main menu.
 </Para>
 </ListItem>
@@ -368,10 +368,10 @@ the Information Manager Book List. To rename a bookcase:
 <OrderedList>
 <ListItem>
 <Para>
-At a command line, enter <UserInput>dtinfogen admin</UserInput>.
+At a command line, enter <UserInput>dtdocbook2infolib admin</UserInput>.
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays:
+<command>dtdocbook2infolib admin</command> displays:
 </Para>
 <LiteralLayout>
 1) Copy a bookcase from another library
@@ -388,7 +388,7 @@ Please enter your choice [1-6]
 To rename a bookcase, enter <UserInput>4</UserInput>.
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays:
+<command>dtdocbook2infolib admin</command> displays:
 </Para>
 <LiteralLayout>
 Enter the path for the library containing the bookcase you want to rename.
@@ -401,7 +401,7 @@ Enter the path to the information library you want to
 rename. For example: <UserInput>/lit/wolfe</UserInput>.
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays the bookcases available in the
+<command>dtdocbook2infolib admin</command> displays the bookcases available in the
 library you specified:
 </Para>
 <LiteralLayout>
@@ -417,7 +417,7 @@ Enter the number corresponding to the bookcase you want to rename.
 <ListItem>
 <Para>
 At the prompt, enter the number corresponding to the
-bookcase you want to rename. <command>dtinfogen admin</command> displays:
+bookcase you want to rename. <command>dtdocbook2infolib admin</command> displays:
 </Para>
 <LiteralLayout>
 You specified <Replaceable>[Poems]</Replaceable>. Do you really want to rename the bookcase?
@@ -425,7 +425,7 @@ You specified <Replaceable>[Poems]</Replaceable>. Do you really want to rename t
 </ListItem>
 <ListItem>
 <Para>To rename the bookcase you specified, enter <UserInput>Y</UserInput>.
-<command>dtinfogen admin</command> asks you to enter the new title for the
+<command>dtdocbook2infolib admin</command> asks you to enter the new title for the
 bookcase:
 </Para>
 <LiteralLayout>
@@ -435,7 +435,7 @@ Enter the new title for <Replaceable>[Poems]</Replaceable>.
 <ListItem>
 <Para>
 Enter the new title for the bookcase.
-<command>dtinfogen admin</command> displays the new title:
+<command>dtdocbook2infolib admin</command> displays the new title:
 </Para>
 <LiteralLayout>You entered <Replaceable>[Old Poems]</Replaceable>. Is this title correct?
 </LiteralLayout>
@@ -443,7 +443,7 @@ Enter the new title for the bookcase.
 <ListItem>
 <Para>
 To accept the new title, enter <UserInput>Y</UserInput>.
-<command>dtinfogen admin</command> saves the
+<command>dtdocbook2infolib admin</command> saves the
 new title and returns to the main menu.
 </Para>
 </ListItem>
@@ -458,9 +458,9 @@ new title and returns to the main menu.
 After you have built a library, you may find that you want to
 display the bookcases in a different order in the Information Manager Book List.
 Or, you may have added a bookcase using
-<Command>dtinfogen build</Command>, and
+<Command>dtdocbook2infolib build</Command>, and
 want to move it to a different position. You can use
-<Command>dtinfogen admin</Command> to
+<Command>dtdocbook2infolib admin</Command> to
 change the order of bookcases in a library.
 </Para>
 <Para>
@@ -469,10 +469,10 @@ To rearrange bookcases within a library:
 <OrderedList>
 <ListItem>
 <Para>
-At a command line, enter <UserInput>dtinfogen admin</UserInput>.
+At a command line, enter <UserInput>dtdocbook2infolib admin</UserInput>.
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays:
+<command>dtdocbook2infolib admin</command> displays:
 </Para>
 <LiteralLayout>
 1) Copy a bookcase from another library
@@ -489,7 +489,7 @@ Please enter your choice [1-6]
 To rearrange bookcases within a library, enter <UserInput>5</UserInput>.
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays:
+<command>dtdocbook2infolib admin</command> displays:
 </Para>
 <LiteralLayout>
 Enter the path for the library you want to rearrange.
@@ -502,7 +502,7 @@ Enter the path to the information library you want to
 rearrange. For example: <UserInput>/lit/wolfe</UserInput>.
 </Para>
 <Para>
-<command>dtinfogen admin</command> displays the bookcases available in the
+<command>dtdocbook2infolib admin</command> displays the bookcases available in the
 library you specified:
 </Para>
 <LiteralLayout>
@@ -518,7 +518,7 @@ Enter the number corresponding to the bookcase you want to move.
 <ListItem>
 <Para>
 At the prompt, enter the number corresponding to the
-bookcase you want to move. <command>dtinfogen admin</command> displays:
+bookcase you want to move. <command>dtdocbook2infolib admin</command> displays:
 </Para>
 <LiteralLayout>
 You specified <Replaceable>[Poems]</Replaceable>. Do you really want to move this bookcase?
@@ -528,7 +528,7 @@ You specified <Replaceable>[Poems]</Replaceable>. Do you really want to move thi
 <Para>
 To move the bookcase you specified to a different position
 in the library, enter <UserInput>Y</UserInput>.
-<command>dtinfogen admin</command> displays the current
+<command>dtdocbook2infolib admin</command> displays the current
 order of the library without the bookcase you selected to
 move. For example:
 </Para>
@@ -553,7 +553,7 @@ choose, the bookcase you are moving takes its place, and
 the original bookcase moves one place down in the list.
 </Para>
 <Para>
-<Command>dtinfogen admin</Command> displays the new order of the bookcases in
+<Command>dtdocbook2infolib admin</Command> displays the new order of the bookcases in
 the library. For example:
 </Para>
 <LiteralLayout>
@@ -569,7 +569,7 @@ Is this correct? [ynq]
 <ListItem>
 <Para>
 To accept the rearranged order, enter <UserInput>Y</UserInput>.
-<Command>dtinfogen admin</Command> saves
+<Command>dtdocbook2infolib admin</Command> saves
 the new order and returns to the main menu.
 </Para>
 </ListItem>

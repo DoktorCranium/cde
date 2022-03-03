@@ -25,6 +25,7 @@
 <Member><Link LinkEnd="CDEMX.MAN8.RSML.1">dtconvertvf</Link></Member>
 <Member><Link LinkEnd="CDEMX.MAN9.RSML.1">dtcreate</Link></Member>
 <Member><Link LinkEnd="CDE.INFO.DTDOCBOOK">dtdocbook</Link></Member>
+<Member><Link LinkEnd="CDE.INFO.DTDOCBOOK2INFOLIB">dtdocbook2infolib</Link></Member>
 <Member><Link LinkEnd="CDEMX.MAN10.RSML.1">dtexec</Link></Member>
 <Member><Link LinkEnd="CDEMX.MAN11.RSML.1">dtfile</Link></Member>
 <Member><Link LinkEnd="CDEMX.MAN12.RSML.1">dtfile_copy</Link></Member>
@@ -42,7 +43,6 @@
 <Member><Link LinkEnd="CDEMX.MAN24.RSML.1">dticon</Link></Member>
 <Member><Link LinkEnd="CDE.IMS.DTIMSSTART">dtimsstart</Link></Member>
 <Member><Link LinkEnd="CDE.INFO.DTINFO">dtinfo</Link></Member>
-<Member><Link LinkEnd="CDE.INFO.DTDOCBOOK2INFOLIB">dtdocbook2infolib</Link></Member>
 <Member><Link LinkEnd="CDEMX.XCSA.MAN6.RSML.1">dtksh</Link></Member>
 <Member><Link LinkEnd="CDEMX.MAN25.RSML.1">dtlogin</Link></Member>
 <Member><Link LinkEnd="CDEMX.MAN26.RSML.1">dtlp</Link></Member>

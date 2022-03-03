@@ -25,7 +25,7 @@ SGML は、インフォメーション・マネージャのドキュメントの
 </glossdef>
 </Glossentry>
 <GlossEntry>
-<GlossTerm>dtinfogen</GlossTerm>
+<GlossTerm>dtdocbook2infolib</GlossTerm>
 <glossdef>
 <para>
 オンライン・ドキュメントのコンパイルと表示のシステムです。

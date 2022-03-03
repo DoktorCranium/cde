@@ -12,36 +12,36 @@
 <indexterm><primary>information libraries</primary>
 <secondary>building</secondary></indexterm>
 <para>
-This chapter discusses how to use <command>dtinfogen</command>
+This chapter discusses how to use <command>dtdocbook2infolib</command>
 subcommands to validate and
 build your SGML documents into an Information Manager-browsable
 library and how to update style sheet information in a bookcase.
 </para>
 <para>
-You use the <command>dtinfogen validate</command> command to
+You use the <command>dtdocbook2infolib validate</command> command to
 validate your SGML book documents and your bookcase specification.
 Validation is useful during preparation for the build.
 <indexterm><primary>Information Manager</primary>
 <secondary>commands</secondary>
-<tertiary>dtinfogen validate</tertiary></indexterm>
+<tertiary>dtdocbook2infolib validate</tertiary></indexterm>
 </para>
 <para>
-You use the <command>dtinfogen build</command> command,
+You use the <command>dtdocbook2infolib build</command> command,
 which also performs SGML validation, to build a new information library,
 add a bookcase to an existing information library, and update an
 existing library.
 <indexterm><primary>Information Manager</primary>
 <secondary>commands</secondary>
-<tertiary>dtinfogen build</tertiary></indexterm>
+<tertiary>dtdocbook2infolib build</tertiary></indexterm>
 </para>
 <para>
 Once you have built an information library, you can use
-the <command>dtinfogen update</command> command to update the
+the <command>dtdocbook2infolib update</command> command to update the
 style sheet information associated with the library.
 These procedures are covered in:
 <indexterm><primary>Information Manager</primary>
 <secondary>commands</secondary>
-<tertiary>dtinfogen update</tertiary></indexterm>
+<tertiary>dtdocbook2infolib update</tertiary></indexterm>
 </para>
 <itemizedlist>
 <listitem>
@@ -63,7 +63,7 @@ in a Library</link>
 </listitem>
 </itemizedlist>
 <para>
-See the <command>dtinfogen(1)</command> man page for command
+See the <command>dtdocbook2infolib(1)</command> man page for command
 syntax and additional examples of these commands.
 </para>
 <sect1>
@@ -89,7 +89,7 @@ entity references, or
 <listitem>
 <para>
 Specify the appropriate catalog file using the <option>-m</option>
-option with the <command>dtinfogen build</command> command.
+option with the <command>dtdocbook2infolib build</command> command.
 </para>
 </listitem>
 </itemizedlist>
@@ -100,14 +100,14 @@ Check to make sure that you have all of the required
 SGML-conforming documents, including DTD(s), hypertext TOCs,
 and style sheet(s) for every book in the bookcase.
 You can validate your SGML documents using the
-<command>dtinfogen validate</command> command
+<command>dtdocbook2infolib validate</command> command
 as described in <link linkend="ByGm7JBlsoBt8oL">
-Running dtinfogen validate</link>.
+Running dtdocbook2infolib validate</link>.
 </para>
 </listitem>
 <listitem>
 <para>
-Understand the options that <command>dtinfogen build</command> provides,
+Understand the options that <command>dtdocbook2infolib build</command> provides,
 as described in <link linkend="ki1SgFBr-1698oL">Building,
 Adding, and Replacing Bookcases in a Library</link>.
 </para>
@@ -127,7 +127,7 @@ Depending on whether you are using the
 recommendation for resolving external entity references,
 you need to set one or both of the following environment variables,
 or use the <option>-m</option> option with the
-<command>dtinfogen</command> command:</para>
+<command>dtdocbook2infolib</command> command:</para>
 <variablelist>
 <varlistentry>
 <term><systemitem class="environvar">SGML_CATALOG_FILES</systemitem></term>
@@ -145,7 +145,7 @@ file mapping identifiers.
 <para>
 If you don't set this environment variable,
 you can use the <option>-m</option> option with the
-appropriate <command>dtinfogen</command> command to map public
+appropriate <command>dtdocbook2infolib</command> command to map public
 identifiers and entity names to system files.
 See the <filename>catalog(5)</filename> man page for more information.
 </para>
@@ -157,7 +157,7 @@ See the <filename>catalog(5)</filename> man page for more information.
 <para>
 Set this environment variable to map external entity references
 to system files.</para>
-<para>See the <command>dtinfogen(5)</command> man page
+<para>See the <command>dtdocbook2infolib(5)</command> man page
 for more information.
 </para>
 </listitem>
@@ -182,13 +182,13 @@ for more information.
 Before building an information library, you should validate your
 SGML documents to ensure that they conform to the appropriate DTD.
 </para>
-<para>You can use the <command>dtinfogen validate</command>
+<para>You can use the <command>dtdocbook2infolib validate</command>
 <indexterm><primary>Information Manager</primary>
 <secondary>commands</secondary>
-<tertiary>dtinfogen validate</tertiary></indexterm>
+<tertiary>dtdocbook2infolib validate</tertiary></indexterm>
 command to perform SGML validation on bookcase specifications,
 on individual documents, or any other SGML conforming document.
-During the validation process <command>dtinfogen validate</command>:
+During the validation process <command>dtdocbook2infolib validate</command>:
 </para>
 <itemizedlist>
 <listitem>
@@ -204,12 +204,12 @@ consistent with the markup language defined in the document's DTD.
 </itemizedlist>
 <para>
 If any documents are found to be invalid, error messages are
-issued by the <command>dtinfogen validate</command> program.
+issued by the <command>dtdocbook2infolib validate</command> program.
 All errors in files used to build an information library must
 be corrected before the data can be built.
 </para>
 <sect2>
-<title id="ByGm7JBlsoBt8oL">Running dtinfogen validate</title>
+<title id="ByGm7JBlsoBt8oL">Running dtdocbook2infolib validate</title>
 <indexterm><primary>information libraries</primary>
 <secondary>document validation</secondary></indexterm>
 <para>
@@ -217,7 +217,7 @@ The basic command line for the following example, which performs
 validation on a single-bookcase information library, is:
 </para>
 <programlisting>
-<userinput>dtinfogen validate ch03.sgm ch04.sgm ch05.sgm</userinput>
+<userinput>dtdocbook2infolib validate ch03.sgm ch04.sgm ch05.sgm</userinput>
 </programlisting>
 <para>where</para>
 <para>
@@ -225,7 +225,7 @@ validation on a single-bookcase information library, is:
 </para>
 <para>
 specifies the SGML documents that are to be validated.
-The <command>dtinfogen validate</command> command can be run
+The <command>dtdocbook2infolib validate</command> command can be run
 against any valid SGML conforming document.
 </para>
 <para>
@@ -235,14 +235,14 @@ example file <filename>ch05.sgm</filename>,
 which contains missing or invalid entity declarations.
 </para>
 <programlisting>
-%:  <userinput>dtinfogen validate</userinput> 
+%:  <userinput>dtdocbook2infolib validate</userinput> 
 
 nsgmls:ch05.sgm:12:1:E: cannot open "hal.gml" (No such file or directory)
 nsgmls:ch05.sgm:20:1:E: general entity "tab" not defined and no default entity
 ..............................
 ..............................
 ..............................
-dtinfogen: command failed: nsgmls -sg /usr/dt/infolib/C/SGML/dtinfo.decl ch05.sgm
+dtdocbook2infolib: command failed: nsgmls -sg /usr/dt/infolib/C/SGML/dtinfo.decl ch05.sgm
 ch05.sgm
 </programlisting>
 </sect2>
@@ -254,16 +254,16 @@ ch05.sgm
 <title id="ki1SgFBr-1698oL">Building, Adding, and Replacing Bookcases in a Library</title>
 <indexterm><primary>information libraries</primary>
 <secondary>building</secondary>
-<tertiary>with dtinfogen build</tertiary>
+<tertiary>with dtdocbook2infolib build</tertiary>
 </indexterm>
 <para>
 This section describes how you use the
-<command>dtinfogen build</command> command to build a bookcase
+<command>dtdocbook2infolib build</command> command to build a bookcase
 into a new information library, add a bookcase to an existing
 information library, and update the information database in an
 existing library.
 <indexterm><primary>Information Manager</primary>
-<secondary>commands</secondary><tertiary>dtinfogen build</tertiary>
+<secondary>commands</secondary><tertiary>dtdocbook2infolib build</tertiary>
 </indexterm>
 </para>
 
@@ -346,7 +346,7 @@ The default location for temporary build space is
 If you find that the disk space available in
 <filename>/usr/tmp</filename> is less than three times the size of the
 original document source, you should use the <option>-T</option> option
-with the <command>dtinfogen build</command> command to specify a
+with the <command>dtdocbook2infolib build</command> command to specify a
 different location for the temporary build files, or set the <systemitem
 class="environvar">TMPDIR</systemitem> environment variable.
 </para>
@@ -355,10 +355,10 @@ class="environvar">TMPDIR</systemitem> environment variable.
 The current version of the Information Manager has no concurrent-use
 locking mechanisms to prevent users from attempting to simultaneously
 build or modify the same information library. Take precautions to ensure
-that no other <command>dtinfogen</command> or Information Manager
+that no other <command>dtdocbook2infolib</command> or Information Manager
 processes are accessing the information library when you run the
-<command>dtinfogen build</command> command. Concurrent use of the
-<command>dtinfogen</command> commands may cause an Information Manager
+<command>dtdocbook2infolib build</command> command. Concurrent use of the
+<command>dtdocbook2infolib</command> commands may cause an Information Manager
 failure.
 </para>
 </caution>
@@ -427,7 +427,7 @@ This directory contains all the files related to the full-text search engine.
 <listitem>
 <para>
 This file organizes the bookcases within the library.
-You use the <command>dtinfogen admin</command> command to modify this file.
+You use the <command>dtdocbook2infolib admin</command> command to modify this file.
 </para>
 </listitem>
 </varlistentry>
@@ -449,11 +449,11 @@ The string used for <replaceable>LIB</replaceable> gives the library its file na
 <sect1>
 <title id="xXk7ubBtGL9X3cS">Building a New Library</title>
 <para>
-Here is an example of the basic <command>dtinfogen build</command>
+Here is an example of the basic <command>dtdocbook2infolib build</command>
 command line for building a new information library:
 </para>
 <programlisting>
-dtinfogen build <option>-T</option> <replaceable>/k1/local/daver/</replaceable> <option>-l</option> <replaceable>InfoLib1 DCE.bc INFOMGR.bc PROG.bc</replaceable>
+dtdocbook2infolib build <option>-T</option> <replaceable>/k1/local/daver/</replaceable> <option>-l</option> <replaceable>InfoLib1 DCE.bc INFOMGR.bc PROG.bc</replaceable>
 </programlisting>
 <para>
 where
@@ -491,7 +491,7 @@ specification file names on the command line as you wish.
 </listitem>
 </varlistentry>
 </variablelist>
-<para><command>dtinfogen build</command> converts the documents
+<para><command>dtdocbook2infolib build</command> converts the documents
 specified in each of the bookcase specifications into browser-readable
 format and places them in the newly created information
 library directory <filename>InfoLib1</filename>.
@@ -520,18 +520,18 @@ depicts the newly built <filename>InfoLib1</filename> library.
 <title id="n7Ktl2IBUXmBt8oL">Adding a Bookcase to an Existing Library</title>
 <indexterm><primary>bookcases</primary>
 <secondary>adding</secondary>
-<tertiary>with dtinfogen build</tertiary></indexterm>
+<tertiary>with dtdocbook2infolib build</tertiary></indexterm>
 <para>
 In addition to creating a new Information Manager information
-library, you can also use <command>dtinfogen build</command> to add
+library, you can also use <command>dtdocbook2infolib build</command> to add
 a bookcase that has not yet been built to an existing information library.
 In the example below, assume the argument
-<option>-l</option>&nbsp;<replaceable>InfoLib1</replaceable>
+<option>-l</option> <replaceable>InfoLib1</replaceable>
 is the name of an existing information library rather than the name
 of a new information library.
 </para>
 <programlisting>
-dtinfogen build <option>-l</option> <replaceable>InfoLib1 ORA.bc</replaceable></programlisting>
+dtdocbook2infolib build <option>-l</option> <replaceable>InfoLib1 ORA.bc</replaceable></programlisting>
 <para>
 where
 </para>
@@ -557,7 +557,7 @@ as you wish.
 </varlistentry>
 </variablelist>
 <para>
-<command>dtinfogen build</command>
+<command>dtdocbook2infolib build</command>
 converts the book documents in the bookcase specification file
 <filename>ORA.bc</filename> into browser-readable format and adds
 them to the existing information library directory
@@ -577,9 +577,9 @@ library.
 <note>
 <para>
 Added bookcases are appended to the existing list of bookcases
-in the Information Manager Book List. The <command>dtinfogen admin</command>
+in the Information Manager Book List. The <command>dtdocbook2infolib admin</command>
 command can be used to rearrange the list after it is built.
-See the <command>dtinfogen(1)</command> man page.</para>
+See the <command>dtdocbook2infolib(1)</command> man page.</para>
 </note>
 <figure>
 <title id="bMUExiBLxJ9X3cS">Adding a Bookcase to an Existing Library</title>
@@ -590,19 +590,19 @@ See the <command>dtinfogen(1)</command> man page.</para>
 <sect1>
 <title id="pOUExiBLxJ9X3cS">Replacing a Bookcase in an Existing Library</title>
 <indexterm><primary>bookcases</primary>
-<secondary>replacing</secondary><tertiary>with dtinfogen build</tertiary>
+<secondary>replacing</secondary><tertiary>with dtdocbook2infolib build</tertiary>
 </indexterm>
 <para>
 In addition to creating information libraries and adding bookcases
 to existing libraries, you can also replace specified bookcases
-in a library with the <command>dtinfogen build</command> command.
-In the example below, the <command>dtinfogen build</command> process
+in a library with the <command>dtdocbook2infolib build</command> command.
+In the example below, the <command>dtdocbook2infolib build</command> process
 is used to rebuild the bookcases <systemitem>INFOMGR</systemitem> and
 <systemitem>PROG</systemitem> and to overwrite the existing bookcases
 of the same name in the <filename>InfoLib1</filename> information library.
 </para>
 <programlisting>
-dtinfogen build <option>-l</option> <replaceable>InfoLib1 INFOMGR.bc PROG.bc</replaceable></programlisting>
+dtdocbook2infolib build <option>-l</option> <replaceable>InfoLib1 INFOMGR.bc PROG.bc</replaceable></programlisting>
 <para>
 where
 </para>
@@ -627,7 +627,7 @@ many bookcase specification file names on the command line as you wish.
 </listitem>
 </varlistentry>
 </variablelist>
-<para><command>dtinfogen build</command> rebuilds the books in the
+<para><command>dtdocbook2infolib build</command> rebuilds the books in the
 bookcase specification files <filename>INFOMGR.bc</filename> and
 <filename>PROG.bc</filename> and places them in the existing
 information library directory <filename>InfoLib1</filename>.
@@ -654,7 +654,7 @@ Bookcases in an Existing Library</link> depicts the revised
 <indexterm><primary>style sheet</primary>
 <secondary>updating</secondary></indexterm>
 <indexterm><primary>Information Manager</primary>
-<secondary>commands</secondary><tertiary>dtinfogen update</tertiary></indexterm>
+<secondary>commands</secondary><tertiary>dtdocbook2infolib update</tertiary></indexterm>
 <para>
 In Information Manager, you can change the formatting instructions
 for existing bookcases without rebuilding those databases.
@@ -663,27 +663,27 @@ books whose formatting characteristics must change to meet differing
 audience or industry requirements.
 </para>
 <para>
-You use the <command>dtinfogen update</command> command to reformat
+You use the <command>dtdocbook2infolib update</command> command to reformat
 the books in existing information libraries by updating the style
 sheet information that controls their formatting.
 </para>
 <para>
-With <command>dtinfogen update</command> you can revise a style sheet
+With <command>dtdocbook2infolib update</command> you can revise a style sheet
 and quickly see the results of your changes, or you can replace one
 style sheet with another and quickly reformat associated documents.</para>
-<para>When you run <command>dtinfogen update</command>, only the
+<para>When you run <command>dtdocbook2infolib update</command>, only the
 documents or document sections affected by the style sheet changes
 are reformatted.
 </para>
 <para>
-Before you run <command>dtinfogen update</command> to reformat documents
+Before you run <command>dtdocbook2infolib update</command> to reformat documents
 in an information library:
 </para>
 <itemizedlist>
 <listitem>
 <para>
 Ensure that any changes you have made to the style sheet are valid.
-The <command>dtinfogen update</command> command validates the style
+The <command>dtdocbook2infolib update</command> command validates the style
 sheet file during the update process.
 </para>
 </listitem>
@@ -692,23 +692,23 @@ sheet file during the update process.
 Set the appropriate environment variables for handling
 external entity references or specify the appropriate catalog file
 using the <option>-m</option> option when you run
-<command>dtinfogen update</command>.</para>
+<command>dtdocbook2infolib update</command>.</para>
 </listitem>
 </itemizedlist>
 <caution>
 <para>Do not run the Information Manager or execute an
-<command>dtinfogen admin</command> process while updating a style sheet.
+<command>dtdocbook2infolib admin</command> process while updating a style sheet.
 </para>
 </caution>
 <sect2>
-<title id="CDdVddBydG9X3cS">Running dtinfogen update</title>
+<title id="CDdVddBydG9X3cS">Running dtdocbook2infolib update</title>
 <para>
 The basic command line for the following example,
 which reformats the documents and/or document sections
 that use the specified style sheet, is:
 </para>
 <programlisting>
-dtinfogen update <option>-l</option> <replaceable>InfoLib1</replaceable> <option>-b</option> <replaceable>INFOMGR style1.sty</replaceable></programlisting>
+dtdocbook2infolib update <option>-l</option> <replaceable>InfoLib1</replaceable> <option>-b</option> <replaceable>INFOMGR style1.sty</replaceable></programlisting>
 <para>
 where
 </para>
@@ -736,7 +736,7 @@ specified style sheet.
 <listitem>
 <para>
 Is the file name of the style sheet that will be applied
-during the <command>dtinfogen update</command> process.
+during the <command>dtdocbook2infolib update</command> process.
 The style sheet you use must conform to
 <filename>StyleSheet.dtd</filename> as discussed
 in <link linkend="tgmdnkb6vm9x3cs">Understanding
@@ -746,7 +746,7 @@ Information Manager Style Sheets</link>.
 </varlistentry>
 </variablelist>
 <para>
-After running <command>dtinfogen update</command> process you can
+After running <command>dtdocbook2infolib update</command> process you can
 open the information library using the Information Manager Book List
 window to see the effect of your changes.
 </para>
@@ -755,7 +755,7 @@ For related information, see:
 </para>
 <itemizedlist>
 <listitem>
-<para>the <command>dtinfogen(1)</command> man page</para>
+<para>the <command>dtdocbook2infolib(1)</command> man page</para>
 </listitem>
 <listitem>
 <para><link linkend="TcQg4bBSxI9X3cS">Creating a Bookcase Specification</link>

@@ -39,7 +39,7 @@ and its SGML markup.
 </link> &mdash; Each Information Manager book requires a hypertext TOC that
 conforms to <filename>dtinfoTOC.dtd(5)</filename>.
 You can create the hypertext TOC with the
-<command>dtinfogen tocgen</command> command.
+<command>dtdocbook2infolib tocgen</command> command.
 </para>
 </listitem>
 <listitem>
@@ -141,8 +141,8 @@ in <citetitle pubwork="Book">International Standards Organization (ISO) 8879
 The Information Manager's SGML declaration
 <filename>dtinfo.decl</filename> is supplied with the Information
 Manager and is referenced automatically when you invoke the
-<command>dtinfogen build</command>, <command>dtinfogen
-validate</command>, or <command>dtinfogen update</command> commands.
+<command>dtdocbook2infolib build</command>, <command>dtdocbook2infolib
+validate</command>, or <command>dtdocbook2infolib update</command> commands.
 </para>
 </note>
 <figure>
@@ -237,15 +237,15 @@ to extract the section's title and its unique section ID value.
 <indexterm><primary>table of contents</primary>
 <secondary>creating</secondary></indexterm>
 <para>
-You use the <command>dtinfogen tocgen</command> command to create the
+You use the <command>dtdocbook2infolib tocgen</command> command to create the
 TOCs for each of your books.
 </para>
 
 <sect3>
-<title id="Sb4E8eBmqJ9X3cS">Running dtinfogen tocgen</title>
-<para>Here's an example of using <command>dtinfogen tocgen</command>
+<title id="Sb4E8eBmqJ9X3cS">Running dtdocbook2infolib tocgen</title>
+<para>Here's an example of using <command>dtdocbook2infolib tocgen</command>
 to generate a table of contents.
-Before running <command>dtinfogen&nbsp;tocgen</command>,
+Before running <command>dtdocbook2infolib tocgen</command>,
 ensure that the book&rsquo;s source files:
 </para>
 <itemizedlist>
@@ -263,10 +263,10 @@ Contain valid SGML markup based on the DTD.
 </itemizedlist>
 
 <para>
-The basic <command>dtinfogen tocgen</command> command line
+The basic <command>dtdocbook2infolib tocgen</command> command line
 for this example is:</para>
 <programlisting>
-dtinfogen tocgen -T <replaceable>/usr/pers</replaceable> -f <replaceable>TOC.file</replaceable> -id <replaceable>asg.toc</replaceable> -title <replaceable>&ldquo;Acoustic Sound Generators&rdquo;</replaceable> <replaceable>pref.sgm</replaceable> <replaceable>ch01.sgm</replaceable> <replaceable>ch02.sgm</replaceable> <replaceable>ch03.sgm</replaceable> <replaceable>appx.sgm</replaceable>
+dtdocbook2infolib tocgen -T <replaceable>/usr/pers</replaceable> -f <replaceable>TOC.file</replaceable> -id <replaceable>asg.toc</replaceable> -title <replaceable>&ldquo;Acoustic Sound Generators&rdquo;</replaceable> <replaceable>pref.sgm</replaceable> <replaceable>ch01.sgm</replaceable> <replaceable>ch02.sgm</replaceable> <replaceable>ch03.sgm</replaceable> <replaceable>appx.sgm</replaceable>
 </programlisting>
 <para>
 where
@@ -289,7 +289,7 @@ If variable <systemitem class="environvar">TMPDIR</systemitem> is not set,
 <listitem>
 <para>
 Specifies the name of the file to which the output of
-the <command>dtinfogen tocgen</command> process is sent.
+the <command>dtdocbook2infolib tocgen</command> process is sent.
 </para>
 </listitem>
 </varlistentry>
@@ -344,12 +344,12 @@ the on-line book.
 </varlistentry>
 </variablelist>
 <para>
-The <command>dtinfogen tocgen</command> program validates your
+The <command>dtdocbook2infolib tocgen</command> program validates your
 document entities against their DTDs, verifying that the
 Information Manager architectural forms have been applied.
 </para>
 <para>
-After successful validation, <command>dtinfogen tocgen</command>
+After successful validation, <command>dtdocbook2infolib tocgen</command>
 then extracts the list of section titles and section identifiers
 from the book source files and generates the TOC file.
 </para>
@@ -406,10 +406,10 @@ for three books.
 </itemizedlist>
 <para>
 Once you have built an information database, you can use
-the <command>dtinfogen update</command>
+the <command>dtdocbook2infolib update</command>
 <indexterm><primary>Information Manager</primary>
 <secondary>commands</secondary>
-<tertiary>dtinfogen update</tertiary></indexterm>
+<tertiary>dtdocbook2infolib update</tertiary></indexterm>
 command to reformat the sections using new style sheet information.
 See <link linkend="WmNvZbBE6K9X3cS">Updating Style Sheets in Built
 Bookcases</link>.
@@ -832,7 +832,7 @@ hypertext TOC that conforms to the Information Manager
 <filename>dtinfoTOC.dtd</filename>.
 </para>
 <para>
-You can use the <command>dtinfogen tocgen</command> command
+You can use the <command>dtdocbook2infolib tocgen</command> command
 to produce an Information Manager table of contents.
 See <link linkend="n8aJ92dBIsI9X3cS">Creating a Table of Contents</link>.
 </para>

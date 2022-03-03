@@ -36,14 +36,14 @@
 </Para>
 <!--(((((((((((((((((((((((((((((((((((((((((((((((((((-->
 <sect1>
-<Title id="n01cq1dBePI9X3cS">dtinfogen admin の実行</Title>
+<Title id="n01cq1dBePI9X3cS">dtdocbook2infolib admin の実行</Title>
 <IndexTerm><Primary>インフォメーション・マネージャ・ツールキット</Primary><Secondary>コマンド</Secondary>
-<Tertiary>dtinfogen admin</Tertiary></IndexTerm>
+<Tertiary>dtdocbook2infolib admin</Tertiary></IndexTerm>
 <Para>
-<command>dtinfogen admin</command> は、実行する管理操作を選択できるメニューを表示する対話的なプログラムです。<Command>dtinfogen admin</Command> コマンドを実行するには、コマンド行で、次のように入力します。
+<command>dtdocbook2infolib admin</command> は、実行する管理操作を選択できるメニューを表示する対話的なプログラムです。<Command>dtdocbook2infolib admin</Command> コマンドを実行するには、コマンド行で、次のように入力します。
 </Para>
 <ProgramListing>
-<UserInput>dtinfogen admin</UserInput>
+<UserInput>dtdocbook2infolib admin</UserInput>
 </ProgramListing>
 <Para>
 リターン・キーを押すと、次のメニューが表示されます。
@@ -64,10 +64,10 @@
 <IndexTerm><Primary>インフォメーション・ライブラリ</Primary><Secondary>〜間のブックケースのコピー</Secondary></IndexTerm>
 <IndexTerm><Primary>ブックケース</Primary><Secondary>別のライブラリからのコピー</Secondary></IndexTerm>
 <Para>
-別のライブラリからブックケースをコピーする場合、<command>dtinfogen admin</command> は、コピー先のライブラリのブックケースに対してコピーしようとするブックケースを検証します。これにより、ライブラリ内のセクションIDの重複を避け、データベースのバージョンが互換であることを確実にします。
+別のライブラリからブックケースをコピーする場合、<command>dtdocbook2infolib admin</command> は、コピー先のライブラリのブックケースに対してコピーしようとするブックケースを検証します。これにより、ライブラリ内のセクションIDの重複を避け、データベースのバージョンが互換であることを確実にします。
 </Para>
 <Para>
-コピーしようとするブックケースがすでにコピー先のライブラリに存在すると、<Command>dtinfogen admin</Command> は、ブックケースを置換するかどうかを、ユーザに問い合わせます。
+コピーしようとするブックケースがすでにコピー先のライブラリに存在すると、<Command>dtdocbook2infolib admin</Command> は、ブックケースを置換するかどうかを、ユーザに問い合わせます。
 </Para>
 <Para>
 別のライブラリからブックケースをコピーするには、次のようにします。
@@ -75,7 +75,7 @@
 <OrderedList>
 <ListItem>
 <Para>
-コマンド行で、<UserInput>dtinfogen admin</UserInput> を入力します。
+コマンド行で、<UserInput>dtdocbook2infolib admin</UserInput> を入力します。
 </Para>
 <Para>
 次のメニューが表示されます。
@@ -95,7 +95,7 @@
 コマンド行で、<UserInput>1</UserInput> を入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、次のように表示してきます。
+<command>dtdocbook2infolib admin</command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 ブックケースをコピーしたいライブラリへのパスを入力してください。
@@ -108,7 +108,7 @@
 たとえば、<UserInput>/lit/wolfe</UserInput> のように入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、ユーザが指定したライブラリで有効なブックケースを表示します。例を以下に示します。
+<command>dtdocbook2infolib admin</command> は、ユーザが指定したライブラリで有効なブックケースを表示します。例を以下に示します。
 </Para>
 <LiteralLayout>
 /lit/wolfe で有効なブックケースは、次のとおりです。
@@ -122,7 +122,7 @@
 </ListItem>
 <ListItem>
 <Para>
-プロンプトに続いて、コピーしたいブックケースに対応する番号を入力します。<command>dtinfogen admin</command> は、次のように表示してきます。
+プロンプトに続いて、コピーしたいブックケースに対応する番号を入力します。<command>dtdocbook2infolib admin</command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 <Replaceable>[Life]</Replaceable> が指定されました。
@@ -139,7 +139,7 @@
 ブックケースをコピーしたいインフォメーション・ライブラリへのパスを入力します。たとえば、<UserInput>/lit/destiny</UserInput> のように入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、ユーザが指定したライブラリで有効なブックケースを表示します。
+<command>dtdocbook2infolib admin</command> は、ユーザが指定したライブラリで有効なブックケースを表示します。
 </Para>
 <LiteralLayout>
 /lit/destiny で有効なブックケースは、次のとおりです。
@@ -159,7 +159,7 @@
 すでに別のブックケースが選択した位置を占有している場合、コピーしようとするブックケースはその位置を占め、元のブックケースはリストのひとつ下に移動します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、ライブラリのブックケースを更新された順序で表示します。例を次に示します。
+<command>dtdocbook2infolib admin</command> は、ライブラリのブックケースを更新された順序で表示します。例を次に示します。
 </Para>
 <LiteralLayout>
 更新後のブックケースの順番は、次のとおりです。
@@ -173,7 +173,7 @@
 </ListItem>
 <ListItem>
 <Para>
-この位置にブックケースをコピーするには、<UserInput>Y</UserInput> を入力します。<command>dtinfogen admin</command> は、ライブラリへの追加を保存し、メイン・メニューに戻ります。
+この位置にブックケースをコピーするには、<UserInput>Y</UserInput> を入力します。<command>dtdocbook2infolib admin</command> は、ライブラリへの追加を保存し、メイン・メニューに戻ります。
 </Para>
 </ListItem>
 </OrderedList>
@@ -186,10 +186,10 @@
 <IndexTerm><Primary>インフォメーション・ライブラリ</Primary><Secondary>〜のブックケースの削除</Secondary></IndexTerm>
 <IndexTerm><Primary>ブックケース</Primary><Secondary>ライブラリの〜の削除</Secondary></IndexTerm>
 <Para>
-<command>dtinfogen admin</command> によるブックケースの削除の手続きは、ライブラリへのブックケースのコピーの手続きと似ています。ライブラリからブックケースを削除する場合、そのデータベースは、インフォメーション・ライブラリから削除されます。
+<command>dtdocbook2infolib admin</command> によるブックケースの削除の手続きは、ライブラリへのブックケースのコピーの手続きと似ています。ライブラリからブックケースを削除する場合、そのデータベースは、インフォメーション・ライブラリから削除されます。
 </Para>
 <Para>
-ライブラリを指定すると、<Command>dtinfogen admin</Command> は、そのライブラリでみつかったブックケースの一覧を表示します。ユーザは、削除したいブックケースを指定するだけです。指定した情報が無効な場合、<Command>dtinfogen admin</Command> は、指定したブックケースを削除する前に、確認を求めてきます。
+ライブラリを指定すると、<Command>dtdocbook2infolib admin</Command> は、そのライブラリでみつかったブックケースの一覧を表示します。ユーザは、削除したいブックケースを指定するだけです。指定した情報が無効な場合、<Command>dtdocbook2infolib admin</Command> は、指定したブックケースを削除する前に、確認を求めてきます。
 </Para>
 <Para>
 ライブラリからブックケースを削除するには、次のようにします。
@@ -197,7 +197,7 @@
 <OrderedList>
 <ListItem>
 <Para>
-コマンド行で、<UserInput>dtinfogen admin</UserInput> を入力します。
+コマンド行で、<UserInput>dtdocbook2infolib admin</UserInput> を入力します。
 </Para>
 <Para>
 次のメニューが表示されます。
@@ -217,7 +217,7 @@
 ブックケースを削除するには、<UserInput>2</UserInput> を入力します。
 </Para>
 <Para>
-<Command>dtinfogen admin</Command> は、次のように表示してきます。
+<Command>dtdocbook2infolib admin</Command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 ブックケースを削除したいライブラリへのパスを入力してください。
@@ -229,7 +229,7 @@
 ブックケースを削除したいインフォメーション・ライブラリへのパスを入力します。たとえば、<UserInput>/lit/wolfe</UserInput> のように入力します。
 </Para>
 <Para>
-<Command>dtinfogen admin</Command> は、指定されたライブラリで有効なブックケースを表示してきます。
+<Command>dtdocbook2infolib admin</Command> は、指定されたライブラリで有効なブックケースを表示してきます。
 </Para>
 <LiteralLayout>
 /lit/wolfe で有効なブックケースは、次のとおりです。
@@ -244,7 +244,7 @@
 <ListItem>
 <Para>
 プロンプトに続いて、削除したいブックケースに対応する番号を入力します。
-<Command>dtinfogen admin</Command> は、次のように表示してきます。
+<Command>dtdocbook2infolib admin</Command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 <Replaceable>[Essays]</Replaceable> が指定されました。
@@ -253,7 +253,7 @@
 </ListItem>
 <ListItem>
 <Para>
-指定したブックケースを削除するには、<UserInput>Y</UserInput> を入力します。<Command>dtinfogen admin</Command> はブックケースを削除し、メイン・メニューに戻ります。
+指定したブックケースを削除するには、<UserInput>Y</UserInput> を入力します。<Command>dtdocbook2infolib admin</Command> はブックケースを削除し、メイン・メニューに戻ります。
 </Para>
 </ListItem>
 </OrderedList>
@@ -272,10 +272,10 @@
 <OrderedList>
 <ListItem>
 <Para>
-コマンド行で、<UserInput>dtinfogen admin</UserInput> を入力します。
+コマンド行で、<UserInput>dtdocbook2infolib admin</UserInput> を入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、次のように表示してきます。
+<command>dtdocbook2infolib admin</command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 1) 別のライブラリからのブックケースのコピー
@@ -292,7 +292,7 @@
 ブックケースの一覧を表示するには、<UserInput>3</UserInput> を入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、次のように表示してきます。
+<command>dtdocbook2infolib admin</command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 ブックケースの一覧を表示したいライブラリへのパスを入力してください。
@@ -304,7 +304,7 @@
 ブックケースの一覧を表示したいインフォメーション・ライブラリへのパスを入力します。たとえば、<UserInput>/lit/wolfe</UserInput> のように入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、指定されたライブラリで有効なブックケースを表示してきます。例を次に示します。
+<command>dtdocbook2infolib admin</command> は、指定されたライブラリで有効なブックケースを表示してきます。例を次に示します。
 </Para>
 <LiteralLayout>
 /lit.wolfe で有効なブックケースは、次のとおりです。
@@ -316,7 +316,7 @@
 </ListItem>
 <ListItem>
 <Para>
-インフォメーション・ライブラリのブックケースの一覧を表示した後、<command>dtinfogen admin</command> は、メイン・メニューに戻ります。
+インフォメーション・ライブラリのブックケースの一覧を表示した後、<command>dtdocbook2infolib admin</command> は、メイン・メニューに戻ります。
 </Para>
 </ListItem>
 </OrderedList>
@@ -333,10 +333,10 @@
 <OrderedList>
 <ListItem>
 <Para>
-コマンド行で、<UserInput>dtinfogen admin</UserInput> を入力します。
+コマンド行で、<UserInput>dtdocbook2infolib admin</UserInput> を入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、次のように表示してきます。
+<command>dtdocbook2infolib admin</command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 1) 別のライブラリからのブックケースのコピー
@@ -353,7 +353,7 @@
 ブックケースの名称を変更するには、<UserInput>4</UserInput> を入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、次のように表示してきます。
+<command>dtdocbook2infolib admin</command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 名称を変更したいブックケースがあるライブラリへのパスを入力してください。
@@ -365,7 +365,7 @@
 名称を変更したいインフォメーション・ライブラリへのパスを入力します。たとえば、<UserInput>/lit/wolfe</UserInput> のように入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、指定されたライブラリで有効なブックケース
+<command>dtdocbook2infolib admin</command> は、指定されたライブラリで有効なブックケース
 を表示してきます。
 </Para>
 <LiteralLayout>
@@ -380,7 +380,7 @@
 </ListItem>
 <ListItem>
 <Para>
-プロンプトに続いて、名称を変更したいブックケースに対応する番号を入力します。<command>dtinfogen admin</command> は、次のように表示してきます。
+プロンプトに続いて、名称を変更したいブックケースに対応する番号を入力します。<command>dtdocbook2infolib admin</command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 <Replaceable>[Poems]</Replaceable> が指定されました。
@@ -389,7 +389,7 @@
 </ListItem>
 <ListItem>
 <Para>
-指定したブックケースの名称を変更するには、<UserInput>Y</UserInput> を入力します。<command>dtinfogen admin</command> は、ブックケースの新規タイトルを問い合わせてきます。
+指定したブックケースの名称を変更するには、<UserInput>Y</UserInput> を入力します。<command>dtdocbook2infolib admin</command> は、ブックケースの新規タイトルを問い合わせてきます。
 </Para>
 <LiteralLayout>
 <Replaceable>[Poems]</Replaceable> の新しい名前を入力してください。
@@ -397,7 +397,7 @@
 </ListItem>
 <ListItem>
 <Para>
-ブックケースの新規タイトルを入力します。<command>dtinfogen admin</command> は、次のように新規タイトルを表示してきます。
+ブックケースの新規タイトルを入力します。<command>dtdocbook2infolib admin</command> は、次のように新規タイトルを表示してきます。
 </Para>
 <LiteralLayout>
 入力された名前は <Replaceable>[Old Poems]</Replaceable> です。
@@ -406,7 +406,7 @@
 </ListItem>
 <ListItem>
 <Para>
-この新規タイトルでよければ、<UserInput>Y</UserInput> を入力します。<command>dtinfogen admin</command> は新規タイトルを保存し、メイン・メニューに戻ります。
+この新規タイトルでよければ、<UserInput>Y</UserInput> を入力します。<command>dtdocbook2infolib admin</command> は新規タイトルを保存し、メイン・メニューに戻ります。
 </Para>
 </ListItem>
 </OrderedList>
@@ -417,7 +417,7 @@
 <IndexTerm><Primary>インフォメーション・ライブラリ</Primary><Secondary>〜のブックケースの再調整</Secondary></IndexTerm>
 <IndexTerm><Primary>ブックケース</Primary><Secondary>ライブラリの〜の再調整</Secondary></IndexTerm>
 <Para>
-ライブラリ構築後に、インフォメーション・マネージャのブック・リストで、ブックケースを異なる順序で表示させたいときがあります。また、<Command>dtinfogen build</Command> を使用してブックケースを追加し、それを別の位置に移動させたいときがあります。<Command>dtinfogen admin</Command> を使用して、ライブラリのブックケースの順序を変更することができます。
+ライブラリ構築後に、インフォメーション・マネージャのブック・リストで、ブックケースを異なる順序で表示させたいときがあります。また、<Command>dtdocbook2infolib build</Command> を使用してブックケースを追加し、それを別の位置に移動させたいときがあります。<Command>dtdocbook2infolib admin</Command> を使用して、ライブラリのブックケースの順序を変更することができます。
 </Para>
 <Para>
 ライブラリ内のブックケースを再調整するには、次のようにします。
@@ -425,10 +425,10 @@
 <OrderedList>
 <ListItem>
 <Para>
-コマンド行で、<UserInput>dtinfogen admin</UserInput> を入力します。
+コマンド行で、<UserInput>dtdocbook2infolib admin</UserInput> を入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、次のように表示してきます。
+<command>dtdocbook2infolib admin</command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 1) 別のライブラリからのブックケースのコピー
@@ -445,7 +445,7 @@
 ライブラリのブックケースを再調整するには、<UserInput>5</UserInput> を入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、次のように表示してきます。
+<command>dtdocbook2infolib admin</command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 再調整したいライブラリへのパスを入力してください。
@@ -457,7 +457,7 @@
 再調整したいインフォメーション・ライブラリへのパスを入力します。たとえば、<UserInput>/lit/wolfe</UserInput> のように入力します。
 </Para>
 <Para>
-<command>dtinfogen admin</command> は、指定されたライブラリで有効なブックケースを表示してきます。
+<command>dtdocbook2infolib admin</command> は、指定されたライブラリで有効なブックケースを表示してきます。
 </Para>
 <LiteralLayout>
 /lit/wolfe で有効なブックケースは、次のとおりです。
@@ -471,7 +471,7 @@
 </ListItem>
 <ListItem>
 <Para>
-プロンプトに続いて、移動したいブックケースに対応する番号を入力します。<command>dtinfogen admin</command> は、次のように表示してきます。
+プロンプトに続いて、移動したいブックケースに対応する番号を入力します。<command>dtdocbook2infolib admin</command> は、次のように表示してきます。
 </Para>
 <LiteralLayout>
 <Replaceable>[Poems]</Replaceable> が指定されました。
@@ -480,7 +480,7 @@
 </ListItem>
 <ListItem>
 <Para>
-指定したブックケースをライブラリの別の位置に移動するには、<UserInput>Y</UserInput> を入力します。<command>dtinfogen admin</command> は、移動を選択したブックケースが含まれないライブラリの現在の順序を表示してきます。例を次に示します。
+指定したブックケースをライブラリの別の位置に移動するには、<UserInput>Y</UserInput> を入力します。<command>dtdocbook2infolib admin</command> は、移動を選択したブックケースが含まれないライブラリの現在の順序を表示してきます。例を次に示します。
 </Para>
 <LiteralLayout>
 [Poems] を含めない順序は、次のとおりです。
@@ -500,7 +500,7 @@
 選択した位置を別のブックケースがすでに占有していた場合には、移動したブックケースがその位置を占め、元のブックケースはリストのひとつ下の位置に移動します。
 </Para>
 <Para>
-<Command>dtinfogen admin</Command> は、ライブラリの新しいブックケースの順序を表示してきます。例を次に示します。
+<Command>dtdocbook2infolib admin</Command> は、ライブラリの新しいブックケースの順序を表示してきます。例を次に示します。
 </Para>
 <LiteralLayout>
 指定されたブックケースの順番は次のとおりです。
@@ -514,7 +514,7 @@
 </ListItem>
 <ListItem>
 <Para>
-再調整された順序でよければ、<UserInput>Y</UserInput> を入力します。<Command>dtinfogen admin</Command> は、新規の順序を保存し、メイン・メニューに戻ります。
+再調整された順序でよければ、<UserInput>Y</UserInput> を入力します。<Command>dtdocbook2infolib admin</Command> は、新規の順序を保存し、メイン・メニューに戻ります。
 </Para>
 </ListItem>
 </OrderedList>

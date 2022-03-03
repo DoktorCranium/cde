@@ -87,7 +87,7 @@ SGML ドキュメントは、特定の文書型定義 (DTD) に準拠します�
 </para>
 <note>
 <para>
-これらの設計様式は、ほとんどの <command>dtinfogen</command> のサブコマンドの使用前に、適用しなければなりません。
+これらの設計様式は、ほとんどの <command>dtdocbook2infolib</command> のサブコマンドの使用前に、適用しなければなりません。
 </para>
 </note>
 <!--)))))))))))))))))))))))))))))))))))))))))-->
@@ -209,7 +209,7 @@ DTINFO.Graphic  CDATA           #FIXED
 <term><systemitem>DTINFO.Section</systemitem></term>
 <listitem>
 <para>
-<systemitem>DTINFO.Section</systemitem> 様式を、章のようなインフォメーションの一部分を分離するコンテナ要素に適用します。<systemitem>DTINFO.Section</systemitem> を使用して、インフォメーション・マネージャの表示ウィンドウに、インフォメーションの単位として、どの要素を表示するかを定義します。<command>dtinfogen</command> は、<systemitem>DTINFO.Section</systemitem> を使用して、階層構造を引き出すことができます。
+<systemitem>DTINFO.Section</systemitem> 様式を、章のようなインフォメーションの一部分を分離するコンテナ要素に適用します。<systemitem>DTINFO.Section</systemitem> を使用して、インフォメーション・マネージャの表示ウィンドウに、インフォメーションの単位として、どの要素を表示するかを定義します。<command>dtdocbook2infolib</command> は、<systemitem>DTINFO.Section</systemitem> を使用して、階層構造を引き出すことができます。
 </para>
 <para>
 エンティテ名: <systemitem>DTINFO.Section</systemitem>

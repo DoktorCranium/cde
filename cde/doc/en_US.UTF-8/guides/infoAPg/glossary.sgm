@@ -108,7 +108,7 @@ conventions for applying SGML to a document type.
 </glossdef>
 </Glossentry>
 <GlossEntry>
-<GlossTerm>dtinfogen</GlossTerm>
+<GlossTerm>dtdocbook2infolib</GlossTerm>
 <glossdef>
 <para>
 The on-line document compilation and display system.

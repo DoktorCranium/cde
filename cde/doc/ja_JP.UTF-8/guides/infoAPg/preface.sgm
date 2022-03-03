@@ -60,7 +60,7 @@ SGML に準拠した文書を作成して、インフォメーション・マネ
 </listitem>
 <listitem>
 <para>
-第４章「インフォメーション・ライブラリの構築」では、<command>dtinfogen</command> コマンドによるインフォメーション・ライブラリの構築と更新の過程について説明します。
+第４章「インフォメーション・ライブラリの構築」では、<command>dtdocbook2infolib</command> コマンドによるインフォメーション・ライブラリの構築と更新の過程について説明します。
 </para>
 </listitem>
 <listitem>

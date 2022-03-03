@@ -74,8 +74,8 @@
 <!ENTITY manconvertv SYSTEM "./man/man1_dt/convertv.sgm">
 <!ENTITY mandtcreate SYSTEM "./man/man1_dt/create.sgm">
 <!ENTITY mandocbook SYSTEM "./man/man1_dt/docbook.sgm">
-<!ENTITY maninfo SYSTEM "./man/man1_dt/info.sgm">
 <!ENTITY mandocbook2infolib SYSTEM "./man/man1_dt/docbook2infolib.sgm">
+<!ENTITY maninfo SYSTEM "./man/man1_dt/info.sgm">
 <!ENTITY mansrcreate SYSTEM "./man/man1_dt/srcreate.sgm">
 <!ENTITY mansrdbrec SYSTEM "./man/man1_dt/srdbrec.sgm">
 <!ENTITY mansrkdump SYSTEM "./man/man1_dt/srkdump.sgm">
@@ -728,6 +728,7 @@
 &manconvertv;
 &mandtcreate;
 &mandocbook;
+&mandocbook2infolib;
 &manexec;
 &mandtfile;
 &manfilecop;
@@ -745,7 +746,6 @@
 &manicon;
 &manimsstart;
 &maninfo;
-&mandocbook2infolib;
 &manksh;
 &manlogin;
 &manlp;

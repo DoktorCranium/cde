@@ -118,7 +118,7 @@ Forms</link>.
 <note>
 <para>
 These architectural forms must be applied before most
-<command>dtinfogen</command> subcommands can be used.
+<command>dtdocbook2infolib</command> subcommands can be used.
 </para>
 </note>
 <!--)))))))))))))))))))))))))))))))))))))))))-->
@@ -274,7 +274,7 @@ Apply the <systemitem>DTINFO.Section</systemitem> form to container
 elements that separate pieces of information such as chapters.
 Use <systemitem>DTINFO.Section</systemitem> to define which elements
 you want displayed to readers as a unit of information in a reading window
-of the Information Manager. <command>dtinfogen</command> can derive
+of the Information Manager. <command>dtdocbook2infolib</command> can derive
 the hierarchy by containment using <systemitem>DTINFO.Section</systemitem>.
 </para>
 <para>

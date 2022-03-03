@@ -32,7 +32,7 @@
 <listitem>
 <para>
 <link linkend="n3NGoZbBosJ9X3cS">「目次ファイル」</link>
-インフォメーション・マネージャのブックのそれぞれは、<filename>dtinfoTOC.dtd(5)</filename> に準拠したハイパーテキスト目次 (TOC) を必要とします。ハイパーテキスト目次 (TOC) は、<command>dtinfogen tocgen</command> コマンドを使用して作成することができます。
+インフォメーション・マネージャのブックのそれぞれは、<filename>dtinfoTOC.dtd(5)</filename> に準拠したハイパーテキスト目次 (TOC) を必要とします。ハイパーテキスト目次 (TOC) は、<command>dtdocbook2infolib tocgen</command> コマンドを使用して作成することができます。
 </para>
 </listitem>
 <listitem>
@@ -91,7 +91,7 @@ SGML 宣言は、SGML のパーサによって必要とされます。これは�
 </para>
 <note>
 <para>
-インフォメーション・マネージャの SGML 宣言 <filename>dtinfo.decl</filename> は、インフォメーション・マネージャとともに提供され、<command>dtinfogen build</command>、<command>dtinfogen validate</command>、および <command>dtinfogen update</command> コマンドを起動したときには、自動的に参照されます。
+インフォメーション・マネージャの SGML 宣言 <filename>dtinfo.decl</filename> は、インフォメーション・マネージャとともに提供され、<command>dtdocbook2infolib build</command>、<command>dtdocbook2infolib validate</command>、および <command>dtdocbook2infolib update</command> コマンドを起動したときには、自動的に参照されます。
 </para>
 </note>
 <figure>
@@ -163,12 +163,12 @@ SGML 準拠ドキュメントの作成方法を記述した書籍の一覧につ
 <indexterm><primary>目次</primary>
 <secondary>作成</secondary></indexterm>
 <para>
-各ブックのための目次を作成するには、<command>dtinfogen tocgen</command> コマンドを使用します。
+各ブックのための目次を作成するには、<command>dtdocbook2infolib tocgen</command> コマンドを使用します。
 </para>
 
 <sect3>
-<title id="Sb4E8eBmqJ9X3cS">dtinfogen tocgen の実行</title>
-<para>ここでは、目次の生成のために <command>dtinfogen tocgen</command> を使用する例を示します。<command>dtinfogen&nbsp;tocgen</command> を実行する前に、ブックのソース・ファイルが次のようになっていることを確認してください。
+<title id="Sb4E8eBmqJ9X3cS">dtdocbook2infolib tocgen の実行</title>
+<para>ここでは、目次の生成のために <command>dtdocbook2infolib tocgen</command> を使用する例を示します。<command>dtdocbook2infolib&nbsp;tocgen</command> を実行する前に、ブックのソース・ファイルが次のようになっていることを確認してください。
 </para>
 <itemizedlist>
 <listitem>
@@ -184,10 +184,10 @@ SGML 準拠ドキュメントの作成方法を記述した書籍の一覧につ
 </itemizedlist>
 
 <para>
-この例の基本的な <command>dtinfogen tocgen</command> コマンド行を次に示します。
+この例の基本的な <command>dtdocbook2infolib tocgen</command> コマンド行を次に示します。
 </para>
 <programlisting>
-dtinfogen tocgen -T <replaceable>/usr/pers</replaceable> -f <replaceable>TOC.file</replaceable> -id <replaceable>asg.toc</replaceable> -title <replaceable>&ldquo;Acoustic Sound Generators&rdquo;</replaceable> <replaceable>pref.sgm</replaceable> <replaceable>ch01.sgm</replaceable> <replaceable>ch02.sgm</replaceable> <replaceable>ch03.sgm</replaceable> <replaceable>appx.sgm</replaceable>
+dtdocbook2infolib tocgen -T <replaceable>/usr/pers</replaceable> -f <replaceable>TOC.file</replaceable> -id <replaceable>asg.toc</replaceable> -title <replaceable>&ldquo;Acoustic Sound Generators&rdquo;</replaceable> <replaceable>pref.sgm</replaceable> <replaceable>ch01.sgm</replaceable> <replaceable>ch02.sgm</replaceable> <replaceable>ch03.sgm</replaceable> <replaceable>appx.sgm</replaceable>
 </programlisting>
 <para>
 各オプションの意味は以下のとおりです。
@@ -205,7 +205,7 @@ dtinfogen tocgen -T <replaceable>/usr/pers</replaceable> -f <replaceable>TOC.fil
 <term><option>-f</option> <replaceable>TOC.file</replaceable></term>
 <listitem>
 <para>
-<command>dtinfogen tocgen</command> プロセスの出力が行われるファイル名を指定します。
+<command>dtdocbook2infolib tocgen</command> プロセスの出力が行われるファイル名を指定します。
 </para>
 </listitem>
 </varlistentry>
@@ -246,10 +246,10 @@ dtinfogen tocgen -T <replaceable>/usr/pers</replaceable> -f <replaceable>TOC.fil
 </varlistentry>
 </variablelist>
 <para>
-<command>dtinfogen tocgen</command> プログラムは、インフォメーション・マネージャ設計様式が適用されたことを検証し、ドキュメント・エンティティをその文書型定義に対して検証します。
+<command>dtdocbook2infolib tocgen</command> プログラムは、インフォメーション・マネージャ設計様式が適用されたことを検証し、ドキュメント・エンティティをその文書型定義に対して検証します。
 </para>
 <para>
-検証が正常に行われた後、<command>dtinfogen tocgen</command> は、ブック・ソース・ファイルと生成された目次ファイルから、セクションのタイトルとセクションの識別子を抽出します。
+検証が正常に行われた後、<command>dtdocbook2infolib tocgen</command> は、ブック・ソース・ファイルと生成された目次ファイルから、セクションのタイトルとセクションの識別子を抽出します。
 </para>
 <para>
 ブック・ソース・ファイルのセクションの追加や削除を行う場合には、目次を再生成しなければなりません。
@@ -288,8 +288,8 @@ dtinfogen tocgen -T <replaceable>/usr/pers</replaceable> -f <replaceable>TOC.fil
 </listitem>
 </itemizedlist>
 <para>
-インフォメーション・データベースを一度構築すれば、<command>dtinfogen update</command>
-<indexterm><primary>インフォメーション・マネージャ</primary><secondary>コマンド</secondary><tertiary>dtinfogen update</tertiary></indexterm>
+インフォメーション・データベースを一度構築すれば、<command>dtdocbook2infolib update</command>
+<indexterm><primary>インフォメーション・マネージャ</primary><secondary>コマンド</secondary><tertiary>dtdocbook2infolib update</tertiary></indexterm>
  コマンドを使用して、新規のスタイル・シート情報によるセクションの再フォーマットを行うことができます。
 <link linkend="WmNvZbBE6K9X3cS">「構築されたブックケースのスタイル・シートの更新」</link>を参照してください。
 </para>
@@ -637,7 +637,7 @@ BOOK 要素の開始タグは、ブックの内容の一覧表記を開始し、
 ブックケース規定において定義される各ブックは、インフォメーション・マネージャの <filename>dtinfoTOC.dtd</filename> に準拠するハイパーテキスト目次がなければなりません。
 </para>
 <para>
-<command>dtinfogen tocgen</command> コマンドを使用して、インフォメーション・マネージャの目次を作成することができます。
+<command>dtdocbook2infolib tocgen</command> コマンドを使用して、インフォメーション・マネージャの目次を作成することができます。
 <link linkend="n8aJ92dBIsI9X3cS">「目次の作成」</link>を参照してください。
 </para>
 </listitem>
