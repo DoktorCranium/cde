@@ -280,7 +280,7 @@ command might be:
 </userinput> <filename>/usr/pers</filename><userinput> -f
 </userinput> <replaceable>Perl.TOC</replaceable><userinput> -id
 </userinput> <replaceable>Perl0594</replaceable>
-<userinput>-title</userinput> <replaceable>&ldquo;Perl Table of Contents&rdquo; Perl.01 Perl.02 Perl.03 Perl.04 Perl.05 Perl.06</replaceable>
+<userinput>-title</userinput> <replaceable>"Perl Table of Contents&rdquo; Perl.01 Perl.02 Perl.03 Perl.04 Perl.05 Perl.06</replaceable>
 </programlisting>
 <para>This <command>tocgen</command> command generates a table of contents file named
 <replaceable>Perl.TOC</replaceable> with the unique identifier
