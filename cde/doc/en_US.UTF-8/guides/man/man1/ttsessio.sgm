@@ -69,7 +69,7 @@ as a string to be passed to another shell invocation.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>-a&numsp;</Literal><Symbol Role="Variable">level</Symbol></Term>
+<Term><Literal>-a </Literal><Symbol Role="Variable">level</Symbol></Term>
 <ListItem>
 <Para>Set the server authentication level.
 The following
@@ -94,7 +94,7 @@ The following
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>-c&numsp;[</Literal><Symbol Role="Variable">command</Symbol><Literal>]</Literal></Term>
+<Term><Literal>-c [</Literal><Symbol Role="Variable">command</Symbol><Literal>]</Literal></Term>
 <ListItem>
 <Para>Start a process tree session and run the given command.
 The
@@ -112,7 +112,7 @@ Everything after
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>-d&numsp;</Literal><Symbol Role="Variable">display</Symbol></Term>
+<Term><Literal>-d </Literal><Symbol Role="Variable">display</Symbol></Term>
 <ListItem>
 <Para>Specify an X Windows display.
 The ToolTalk session will consist of those applications

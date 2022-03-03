@@ -42,7 +42,7 @@ action management actions:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Dtcreate</Literal>&numsp;<Symbol Role="Variable">file</Symbol></Term>
+<Term><Literal>Dtcreate</Literal> <Symbol Role="Variable">file</Symbol></Term>
 <ListItem>
 <Para>Open a view of the desktop action and data type editor
 and load the action and data type description file

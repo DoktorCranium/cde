@@ -17,17 +17,17 @@ Format, Version 1.0.0--><!-- (c) Copyright
 1995 Sun Microsystems, Inc.--><!-- (c) Copyright 1993, 1994, 1995 Novell,
 Inc.--><refsynopsisdiv>
 <cmdsynopsis>
-<command>dtksh</command><arg choice="opt">-abCefimnuvx</arg><arg choice="opt">-o&numsp;<replaceable>option</replaceable></arg><arg choice="opt">+abCefmnuvx</arg><arg choice="opt">+o&numsp;<replaceable>option</replaceable></arg><group>
+<command>dtksh</command><arg choice="opt">-abCefimnuvx</arg><arg choice="opt">-o <replaceable>option</replaceable></arg><arg choice="opt">+abCefmnuvx</arg><arg choice="opt">+o <replaceable>option</replaceable></arg><group>
 <arg><replaceable>command_file</replaceable></arg><group><arg><replaceable>argument</replaceable></arg><arg>...</arg></group></group>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>dtksh</command><arg choice="opt">-abCefimnuvx</arg><arg choice="opt">-o&numsp;<replaceable>option</replaceable></arg><arg choice="opt">+abCefmnuvx</arg><arg choice="opt">+o&numsp;<replaceable>option</replaceable></arg><arg><replaceable>command_string</replaceable></arg><group><arg><replaceable>command_name</replaceable></arg>
+<command>dtksh</command><arg choice="opt">-abCefimnuvx</arg><arg choice="opt">-o <replaceable>option</replaceable></arg><arg choice="opt">+abCefmnuvx</arg><arg choice="opt">+o <replaceable>option</replaceable></arg><arg><replaceable>command_string</replaceable></arg><group><arg><replaceable>command_name</replaceable></arg>
 <group><arg><replaceable>argument</replaceable></arg><arg>...</arg></group>
 </group>
 </cmdsynopsis>
 <cmdsynopsis>
-<command>dtksh</command><arg>-s</arg><arg choice="opt">-abCefimnuvx</arg><arg choice="opt">-o&numsp;<replaceable>option</replaceable></arg>
-<arg choice="opt">+abeCefmnuvx</arg><arg choice="opt">+o&numsp; <replaceable>option</replaceable></arg><group><arg><replaceable>argument</replaceable></arg>
+<command>dtksh</command><arg>-s</arg><arg choice="opt">-abCefimnuvx</arg><arg choice="opt">-o <replaceable>option</replaceable></arg>
+<arg choice="opt">+abeCefmnuvx</arg><arg choice="opt">+o  <replaceable>option</replaceable></arg><group><arg><replaceable>argument</replaceable></arg>
 <arg>...</arg></group>
 </cmdsynopsis>
 </refsynopsisdiv><refsect1>
@@ -470,7 +470,7 @@ GC arguments</replaceable></arg>
 <cmdsynopsis>
 <command>XDrawLines</command><arg><replaceable>display drawable</replaceable></arg>
 <arg choice="opt"><replaceable>-coordinateMode</replaceable></arg><arg
-choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replaceable>x1 y1 x2 y2</replaceable></arg><arg choice="opt"><replaceable>x3 y3&numsp;...</replaceable></arg>
+choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replaceable>x1 y1 x2 y2</replaceable></arg><arg choice="opt"><replaceable>x3 y3 ...</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->The <emphasis>coordinateMode</emphasis> operand is either <systemitem class="Constant">CoordModeOrigin</systemitem> or <systemitem class="Constant">CoordModePrevious</systemitem>. <!--.LE--></para>
 <cmdsynopsis>
@@ -481,7 +481,7 @@ choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replace
 <cmdsynopsis>
 <command>XDrawPoints</command><arg><replaceable>display drawable</replaceable></arg>
 <arg choice="opt"><replaceable>-coordinateMode</replaceable></arg><arg
-choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replaceable>x1 y1</replaceable></arg><arg choice="opt"><replaceable>x2 y2 x3 y3&numsp;...</replaceable></arg>
+choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replaceable>x1 y1</replaceable></arg><arg choice="opt"><replaceable>x2 y2 x3 y3 ...</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->The <emphasis>coordinateMode</emphasis> operand is either <systemitem class="Constant">CoordModeOrigin</systemitem> or <systemitem class="Constant">CoordModePrevious</systemitem>. <!--.LE--></para>
 <cmdsynopsis>
@@ -491,7 +491,7 @@ choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replace
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XDrawSegments</command><arg><replaceable>display drawable</replaceable></arg>
-<arg choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replaceable>x1 y1 x2 y2</replaceable></arg><arg choice="opt"><replaceable>x3 y3 x4 y4&numsp;...</replaceable></arg>
+<arg choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replaceable>x1 y1 x2 y2</replaceable></arg><arg choice="opt"><replaceable>x3 y3 x4 y4 ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XDrawString</command><arg><replaceable>display drawable</replaceable></arg>
@@ -511,7 +511,7 @@ choice="opt"><replaceable>optional GC arguments</replaceable></arg><arg><replace
 <cmdsynopsis>
 <command>XFillPolygon</command><arg><replaceable>display drawable</replaceable></arg>
 <arg choice="opt"><replaceable>-shape</replaceable></arg><arg choice="opt"><replaceable>-coordinateMode</replaceable></arg><arg choice="opt"><replaceable>optional
-GC arguments</replaceable></arg><arg><replaceable>x1 y1 x2 y2&numsp;...</replaceable></arg>
+GC arguments</replaceable></arg><arg><replaceable>x1 y1 x2 y2 ...</replaceable></arg>
 <!-- -->
 </cmdsynopsis>
 <para><!--.VL 6-->The <emphasis>shape</emphasis> operand is one of <systemitem class="Constant">Complex</systemitem>, <systemitem class="Constant">Convex</systemitem> or <systemitem class="Constant">Nonconvex</systemitem>, and
@@ -641,7 +641,7 @@ causes the work procedure to be automatically unregistered. <!--.LE--></para>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtCreateApplicationShell</command><arg><replaceable>variable applicationName
-widgetClass</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+widgetClass</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtCallCallbacks</command><arg><replaceable>widgetHandle callbackName</replaceable></arg>
@@ -658,19 +658,19 @@ for example, <emphasis>activateCallback</emphasis>. <!--.LE--></para>
 with the passed-in widget handle. <!--.LE--></para>
 <cmdsynopsis>
 <command>XtCreateManagedWidget</command><arg><replaceable>variable widgetName
-widgetClass parentWidgetHandle</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+widgetClass parentWidgetHandle</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtCreatePopupShell</command><arg><replaceable>variable widgetName
-widgetClass parentWidgetHandle</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+widgetClass parentWidgetHandle</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtCreateWidget</command><arg><replaceable>variable widgetName widgetClass
-parentWidgetHandle</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+parentWidgetHandle</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtDestroyWidget</command><arg><replaceable>widgetHandle</replaceable></arg>
-<arg choice="opt"><replaceable>widgetHandle&numsp;...</replaceable></arg>
+<arg choice="opt"><replaceable>widgetHandle ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtDisplay</command><arg><replaceable>variable widgetHandle</replaceable></arg>
@@ -681,7 +681,7 @@ parentWidgetHandle</replaceable></arg><arg choice="opt"><replaceable>resource:va
 <!-- -->
 </cmdsynopsis>
 <cmdsynopsis>
-<command>XtGetValues</command><arg><replaceable>widgetHandle resource:variable1</replaceable></arg><arg choice="opt"><replaceable>resource:variable2&numsp;...</replaceable></arg>
+<command>XtGetValues</command><arg><replaceable>widgetHandle resource:variable1</replaceable></arg><arg choice="opt"><replaceable>resource:variable2 ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtHasCallbacks</command><arg><replaceable>variable widgetHandle callbackName</replaceable></arg>
@@ -751,7 +751,7 @@ name</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtManageChildren</command><arg><replaceable>widgetHandle</replaceable></arg>
-<arg choice="opt"><replaceable>widgetHandle&numsp;...</replaceable></arg>
+<arg choice="opt"><replaceable>widgetHandle ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtMapWidget</command><arg><replaceable>widgetHandle</replaceable></arg>
@@ -841,7 +841,7 @@ registered using the <command>XtAddWorkProc</command> command. <!--.LE--></para>
 <para><!--.VL 6-->The <symbol role="Variable">state</symbol> operand is either
 True or False. <!--.LE--></para>
 <cmdsynopsis>
-<command>XtSetValues</command><arg><replaceable>widgetHandle resource:value</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+<command>XtSetValues</command><arg><replaceable>widgetHandle resource:value</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtUninstallTranslations</command><arg><replaceable>widgetHandle</replaceable></arg>
@@ -853,7 +853,7 @@ True or False. <!--.LE--></para>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtUnmanageChildren</command><arg><replaceable>widgetHandle</replaceable></arg>
-<arg choice="opt"><replaceable>widgetHandle&numsp;...</replaceable></arg>
+<arg choice="opt"><replaceable>widgetHandle ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XtUnmapWidget</command><arg><replaceable>widgetHandle</replaceable></arg>
@@ -878,7 +878,7 @@ dtksh-command</replaceable></arg>
 <para><!--.VL 6-->The <emphasis>protocolAtom</emphasis> operand is typically
 obtained using the <command>XmInternAtom</command> command. <!--.LE--></para>
 <cmdsynopsis>
-<command>XmAddWMProtocols</command><arg><replaceable>widgetHandle protocolAtom</replaceable></arg><arg choice="opt"><replaceable>protocolAtom&numsp;...</replaceable></arg>
+<command>XmAddWMProtocols</command><arg><replaceable>widgetHandle protocolAtom</replaceable></arg><arg choice="opt"><replaceable>protocolAtom ...</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->The <emphasis>protocolAtom</emphasis> operand is typically
 obtained using the <command>XmInternAtom</command> command. <!--.LE--></para>
@@ -906,207 +906,207 @@ strings:</para>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateArrowButton</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateArrowButtonGadget</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateBulletinBoard</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateBulletinBoardDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateCascadeButton</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateCascadeButtonGadget</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateCommand</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateDialogShell</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateDrawingArea</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateDrawnButton</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateErrorDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateFileSelectionBox</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateFileSelectionDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateForm</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateFormDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateFrame</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateInformationDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateLabel</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateLabelGadget</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateList</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateMainWindow</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateMenuBar</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateMenuShell</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateMessageBox</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateMessageDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateOptionMenu</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreatePanedWindow</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreatePopupMenu</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreatePromptDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreatePulldownMenu</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreatePushButton</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreatePushButtonGadget</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateQuestionDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateRadioBox</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateRowColumn</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateScale</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateScrollBar</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateScrolledList</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateScrolledText</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateScrolledWindow</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateSelectionBox</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateSelectionDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateSeparator</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateSeparatorGadget</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateText</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateTextField</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateToggleButton</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateToggleButtonGadget</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateWarningDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateWorkArea</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmCreateWorkingDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmFileSelectionDoSearch</command><arg><replaceable>widgetHandle directoryMask</replaceable></arg>
@@ -1187,12 +1187,12 @@ set to either True or False. <!--.LE--></para>
 </cmdsynopsis>
 <para><!--.VL 6-->The ordering of the arguments to the <command>XmListAddItem</command> command differs from the corresponding C function. <!--.LE--></para>
 <cmdsynopsis>
-<command>XmListAddItems</command><arg><replaceable>widgetHandle position itemString</replaceable></arg><arg choice="opt"><replaceable>itemString&numsp;...</replaceable></arg>
+<command>XmListAddItems</command><arg><replaceable>widgetHandle position itemString</replaceable></arg><arg choice="opt"><replaceable>itemString ...</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->The ordering of the arguments to the <command>XmListAddItems</command> command differs from the corresponding C function. <!--.LE--></para>
 <cmdsynopsis>
 <command>XmListAddItemsUnselected</command><arg><replaceable>widgetHandle
-position itemString</replaceable></arg><arg choice="opt"><replaceable>itemString&numsp;...</replaceable></arg>
+position itemString</replaceable></arg><arg choice="opt"><replaceable>itemString ...</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->The ordering of the arguments to the <command>XmListAddItemsUnselected</command> command differs from the corresponding C function. <!--.LE--></para>
 <cmdsynopsis>
@@ -1210,7 +1210,7 @@ itemString</replaceable></arg>
 <!-- -->
 </cmdsynopsis>
 <cmdsynopsis>
-<command>XmListDeleteItems</command><arg><replaceable>widgetHandle itemString</replaceable></arg><arg choice="opt"><replaceable>itemString&numsp;...</replaceable></arg>
+<command>XmListDeleteItems</command><arg><replaceable>widgetHandle itemString</replaceable></arg><arg choice="opt"><replaceable>itemString ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmListDeleteItemsPos</command><arg><replaceable>widgetHandle itemCount
@@ -1222,7 +1222,7 @@ position</replaceable></arg>
 <!-- -->
 </cmdsynopsis>
 <cmdsynopsis>
-<command>XmListDeletePositions</command><arg><replaceable>widgetHandle position</replaceable></arg><arg choice="opt"><replaceable>position&numsp;...</replaceable></arg>
+<command>XmListDeletePositions</command><arg><replaceable>widgetHandle position</replaceable></arg><arg choice="opt"><replaceable>position ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>XmListDeselectAllItems</command><arg><replaceable>widgetHandle</replaceable></arg>
@@ -1277,12 +1277,12 @@ variable variable2 variable3 variable4</replaceable></arg>
 <para><!--.VL 6-->The command returns a value that can be used in a conditional. <!--.LE--></para>
 <cmdsynopsis>
 <command>XmListReplaceItemsPos</command><arg><replaceable>widgetHandle position
-itemString</replaceable></arg><arg choice="opt"><replaceable>itemString&numsp;...</replaceable></arg>
+itemString</replaceable></arg><arg choice="opt"><replaceable>itemString ...</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->The ordering of the arguments to the <command>XmListReplaceItemsPos</command> command differs from the corresponding C function. <!--.LE--></para>
 <cmdsynopsis>
 <command>XmListReplaceItemsPosUnselected</command><arg><replaceable>widgetHandle
-position itemString</replaceable></arg><arg choice="opt"><replaceable>itemString&numsp;...</replaceable></arg>
+position itemString</replaceable></arg><arg choice="opt"><replaceable>itemString ...</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->The ordering of the arguments to the <command>XmListReplaceItemsPosUnselected</command> command differs from the corresponding C function. <!--.LE--></para>
 <cmdsynopsis>
@@ -1414,7 +1414,7 @@ WM callbacks, when a callback is removed, the same <command>dtksh</command>
 command string must be specified as was specified when the callback was originally
 registered. <!--.LE--></para>
 <cmdsynopsis>
-<command>XmRemoveWMProtocols</command><arg><replaceable>widgetHandle protocolAtom</replaceable></arg><arg choice="opt"><replaceable>protocolAtom&numsp;...</replaceable></arg>
+<command>XmRemoveWMProtocols</command><arg><replaceable>widgetHandle protocolAtom</replaceable></arg><arg choice="opt"><replaceable>protocolAtom ...</replaceable></arg>
 </cmdsynopsis>
 <para><!--.VL 6-->The <emphasis>protocolAtom</emphasis> operand is typically
 obtained using the <command>XmInternAtom</command> command. <!--.LE--></para>
@@ -1805,11 +1805,11 @@ be set to either True or False. <!--.LE--></para>
 <title>Built-in &str-XZ; Application Help Commands</title>
 <cmdsynopsis>
 <command>DtCreateHelpQuickDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>DtCreateHelpDialog</command><arg><replaceable>variable parentWidgetHandle
-name</replaceable></arg><arg choice="opt"><replaceable>resource:value&numsp;...</replaceable></arg>
+name</replaceable></arg><arg choice="opt"><replaceable>resource:value ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>DtHelpQuickDialogGetChild</command><arg><replaceable>variable widgetHandle
@@ -2039,7 +2039,7 @@ defined, or if the <systemitem class="Constant">DESCRIPTION</systemitem> attribu
 is not specified. <!--.LE--></para>
 <cmdsynopsis>
 <command>DtActionInvoke</command><arg><replaceable>widgetHandle actionName
-termOpts execHost contextDir useIndicator</replaceable></arg><arg><replaceable>dtksh-command</replaceable></arg><group><arg>FILE</arg><arg><replaceable>fileName</replaceable></arg></group><arg>&numsp;...</arg>
+termOpts execHost contextDir useIndicator</replaceable></arg><arg><replaceable>dtksh-command</replaceable></arg><group><arg>FILE</arg><arg><replaceable>fileName</replaceable></arg></group><arg> ...</arg>
 </cmdsynopsis>
 <para><!--.VL 6-->The [FILE <emphasis>fileName</emphasis>] couplets can be
 used to specify file arguments to be used by <command>DtActionInvoke</command>
@@ -2490,12 +2490,12 @@ into a composite widget. Most frequently, it is used to add a collection of
 buttons into a menupane or menubar.</para>
 <cmdsynopsis>
 <command>DtkshAddButtons</command><arg><replaceable>parent widgetClass label1
-callback1</replaceable></arg><arg choice="opt"><replaceable>label2 callback2&numsp;...</replaceable></arg>
+callback1</replaceable></arg><arg choice="opt"><replaceable>label2 callback2 ...</replaceable></arg>
 </cmdsynopsis>
 <cmdsynopsis>
 <command>DtkshAddButtons</command><arg choice="opt"><replaceable>-w</replaceable></arg><arg><replaceable>parent widgetClass variable1 label1
 callback1</replaceable></arg><arg choice="opt"><replaceable>variable2 label2
-callback2&numsp;...</replaceable></arg>
+callback2 ...</replaceable></arg>
 </cmdsynopsis>
 <para>The <literal>-w</literal> option indicates that the convenience
 function should return the widget handle for each of the buttons it creates.

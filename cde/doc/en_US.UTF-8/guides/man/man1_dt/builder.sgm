@@ -13,7 +13,7 @@
 CDE Application Builder</refpurpose></refnamediv>
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>dtbuilder</command><arg choice="opt">projectfile</arg><arg choice="opt">-useWC&numsp;<replaceable>class<?Pub Caret></replaceable></arg>
+<command>dtbuilder</command><arg choice="opt">projectfile</arg><arg choice="opt">-useWC <replaceable>class<?Pub Caret></replaceable></arg>
 </cmdsynopsis>
 </refsynopsisdiv>
 <refsect1>
@@ -30,7 +30,7 @@ Help).</para>
 <refsect1>
 <title>OPTIONS</title>
 <variablelist>
-<varlistentry><term><literal>-useWC&numsp;</literal><emphasis>class</emphasis></term>
+<varlistentry><term><literal>-useWC </literal><emphasis>class</emphasis></term>
 <listitem>
 <para>Use the specified widget class whenever possible. Valid values are:
 </para>

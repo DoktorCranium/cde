@@ -29,7 +29,7 @@
 <CmdSynopsis>
 <Command>tt_type_comp</Command>
 <Arg Choice="opt">-mMs</Arg>
-<Arg Choice="opt">-d&numsp;<Replaceable>db</Replaceable></Arg>
+<Arg Choice="opt">-d <Replaceable>db</Replaceable></Arg>
 <Arg><Replaceable>source_file</Replaceable></Arg>
 <!-- -->
 </CmdSynopsis>
@@ -47,7 +47,7 @@
 <Command>tt_type_comp</Command>
 <Arg>-r</Arg>
 <Arg Choice="opt">-s</Arg>
-<Arg Choice="opt">-d&numsp;<Replaceable>db</Replaceable></Arg>
+<Arg Choice="opt">-d <Replaceable>db</Replaceable></Arg>
 <Arg><Replaceable>type</Replaceable></Arg>
 <Arg>.&thinsp;.&thinsp;.</Arg>
 </CmdSynopsis>
@@ -68,7 +68,7 @@
 <Arg>-O</Arg>
 <Arg>-P</Arg>
 <Arg Choice="opt">-sE</Arg>
-<Arg Choice="opt">-d&numsp;<Replaceable>db</Replaceable></Arg>
+<Arg Choice="opt">-d <Replaceable>db</Replaceable></Arg>
 </CmdSynopsis>
 ]]>
 <![ %CDE.C.XO; [
@@ -93,7 +93,7 @@
 <Command>tt_type_comp</Command>
 <Arg>-x</Arg>
 <Arg Choice="opt">-s</Arg>
-<Arg Choice="opt">-o&numsp;<Replaceable>compiled_file</Replaceable></Arg>
+<Arg Choice="opt">-o <Replaceable>compiled_file</Replaceable></Arg>
 <Arg><Replaceable>source_file</Replaceable></Arg>
 <!-- -->
 </CmdSynopsis>
@@ -143,7 +143,7 @@ own databases, and the format of
 <VariableList>
 <![ %CDE.C.CDE; [
 <VarListEntry>
-<Term><Literal>-d&numsp;</Literal><Emphasis>db</Emphasis></Term>
+<Term><Literal>-d </Literal><Emphasis>db</Emphasis></Term>
 <ListItem>
 <Para>Specify the database to work on, which must be one of
 <Literal>user</Literal>, <Literal>system</Literal> or
@@ -274,7 +274,7 @@ in a source format suitable for recompilation with
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>-o&numsp;</Literal><Emphasis>compiled_file</Emphasis></Term>
+<Term><Literal>-o </Literal><Emphasis>compiled_file</Emphasis></Term>
 <ListItem>
 <Para>Write the compiled types into the specified file,
 or to standard output if
@@ -489,7 +489,7 @@ in an unspecified format.
 <Title>OUTPUT FILES</Title>
 <Para>When the
 <Literal>-x</Literal> or
-<Literal>-d&numsp;user</Literal> option is used,
+<Literal>-d user</Literal> option is used,
 <Command>tt_type_comp</Command> writes the compiled types in an unspecified format
 into a user-specified file.
 Otherwise, it writes the compiled types into the

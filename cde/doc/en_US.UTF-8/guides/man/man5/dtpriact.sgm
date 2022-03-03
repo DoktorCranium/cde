@@ -43,7 +43,7 @@ action for viewing printers and print jobs:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Dtprintinfo</Literal>&numsp;<Emphasis>printer</Emphasis></Term>
+<Term><Literal>Dtprintinfo</Literal> <Emphasis>printer</Emphasis></Term>
 <ListItem>
 <Para>Display the printer named by the printer in the
 <Emphasis>printer</Emphasis> argument and its print jobs.
@@ -65,7 +65,7 @@ action for viewing printers and print jobs:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Symbol Role="Message">Print</Symbol>&numsp;<Symbol Role="Variable">file</Symbol></Term>
+<Term><Symbol Role="Message">Print</Symbol> <Symbol Role="Variable">file</Symbol></Term>
 <ListItem>
 <Para>Submit the file named by the pathname in the
 <Symbol Role="Variable">file</Symbol> argument to the default printer.

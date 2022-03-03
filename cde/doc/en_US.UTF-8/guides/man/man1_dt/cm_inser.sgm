@@ -26,12 +26,12 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>dtcm_insert</Command>
-<Arg Choice="opt">-c&numsp;<Replaceable>calendar</Replaceable></Arg>
-<Arg Choice="opt">-d&numsp;<Replaceable>date</Replaceable></Arg>
-<Arg Choice="opt">-s&numsp;<Replaceable>start</Replaceable></Arg>
-<Arg Choice="opt">-e&numsp;<Replaceable>end</Replaceable></Arg>
-<Arg Choice="opt">-v&numsp;<Replaceable>view</Replaceable></Arg>
-<Arg Choice="opt">-w&numsp;<Replaceable>what</Replaceable></Arg>
+<Arg Choice="opt">-c <Replaceable>calendar</Replaceable></Arg>
+<Arg Choice="opt">-d <Replaceable>date</Replaceable></Arg>
+<Arg Choice="opt">-s <Replaceable>start</Replaceable></Arg>
+<Arg Choice="opt">-e <Replaceable>end</Replaceable></Arg>
+<Arg Choice="opt">-v <Replaceable>view</Replaceable></Arg>
+<Arg Choice="opt">-w <Replaceable>what</Replaceable></Arg>
 </CmdSynopsis>
 </RefSynopsisDiv>
 <RefSect1>
@@ -62,7 +62,7 @@ is added, the list of appointments for the specified date
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>-c&numsp;</Literal><Emphasis>calendar</Emphasis></Term>
+<Term><Literal>-c </Literal><Emphasis>calendar</Emphasis></Term>
 <ListItem>
 <Para>Specify the name of the target calendar.
 Calendar names
@@ -79,7 +79,7 @@ the current user at the current host machine.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>-d&numsp;</Literal><Emphasis>date</Emphasis></Term>
+<Term><Literal>-d </Literal><Emphasis>date</Emphasis></Term>
 <ListItem>
 <Para>Specify the date for the appointment(s) to be inserted.
 The
@@ -96,7 +96,7 @@ are correctly calculated.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>-s&numsp;</Literal><Symbol Role="Variable">start</Symbol></Term>
+<Term><Literal>-s </Literal><Symbol Role="Variable">start</Symbol></Term>
 <ListItem>
 <Para>Specify the starting time for the appointment.
 The time is specified using the form
@@ -118,7 +118,7 @@ no time is associated with the inserted appointment.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>-e&numsp;</Literal><Emphasis>end</Emphasis></Term>
+<Term><Literal>-e </Literal><Emphasis>end</Emphasis></Term>
 <ListItem>
 <Para>The ending time for the appointment,
 in the same format as
@@ -127,7 +127,7 @@ in the same format as
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>-v&numsp;</Literal><Emphasis>view</Emphasis></Term>
+<Term><Literal>-v </Literal><Emphasis>view</Emphasis></Term>
 <ListItem>
 <Para>Specify the view span of appointments to display.
 The
@@ -161,7 +161,7 @@ starting with Sunday.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>-w&numsp;</Literal><Emphasis>what</Emphasis></Term>
+<Term><Literal>-w </Literal><Emphasis>what</Emphasis></Term>
 <ListItem>
 <Para>Specify the appointment description text.
 Up to 5 lines of text can be specified by placing &bsol;n

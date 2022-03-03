@@ -26,9 +26,9 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>dtappintegrate</Command>
-<Arg>-s&numsp;<Replaceable>application_root</Replaceable></Arg>
-<Arg Choice="opt">-t&numsp;<Replaceable>target_path</Replaceable></Arg>
-<Arg Choice="opt">-l&numsp;<Replaceable>locale</Replaceable></Arg>
+<Arg>-s <Replaceable>application_root</Replaceable></Arg>
+<Arg Choice="opt">-t <Replaceable>target_path</Replaceable></Arg>
+<Arg Choice="opt">-l <Replaceable>locale</Replaceable></Arg>
 <Arg Choice="opt">-u</Arg>
 <Arg Choice="opt">-?</Arg>
 </CmdSynopsis>
@@ -91,7 +91,7 @@ files under the following default &str-XZ; system locations:
 </Para>
 <VariableList>
 <VarListEntry>
-<Term><Literal>-s&numsp;</Literal><Emphasis>application_root</Emphasis></Term>
+<Term><Literal>-s </Literal><Emphasis>application_root</Emphasis></Term>
 <ListItem>
 <Para>Integrate the application files that are located under
 <Emphasis>application_root</Emphasis>. The
@@ -135,7 +135,7 @@ containing the application's default &str-XZ; configuration files:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>-t&numsp;</Literal><Emphasis>target_path</Emphasis></Term>
+<Term><Literal>-t </Literal><Emphasis>target_path</Emphasis></Term>
 <ListItem>
 <Para>Link the application &str-XZ; configuration files to
 <Emphasis>target_path</Emphasis> rather than to the default &str-XZ; system locations.
@@ -143,7 +143,7 @@ containing the application's default &str-XZ; configuration files:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>-l&numsp;</Literal><Symbol Role="Variable">locale</Symbol></Term>
+<Term><Literal>-l </Literal><Symbol Role="Variable">locale</Symbol></Term>
 <ListItem>
 <Para>Integrate only the files found in the
 <Symbol Role="Variable">locale</Symbol> subdirectories.

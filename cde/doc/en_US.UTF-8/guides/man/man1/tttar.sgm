@@ -90,7 +90,7 @@ the first operand,
 exit.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>-rename</literal><emphasis>&numsp;oldname&numsp;newname</emphasis></term>
+<varlistentry><term><literal>-rename</literal><emphasis> oldname newname</emphasis></term>
 <listitem>
 <para>Interpret the next two arguments as an <emphasis>oldname</emphasis>
 and a <emphasis>newname</emphasis>, respectively, and rename any entry archived

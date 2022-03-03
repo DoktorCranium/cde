@@ -43,7 +43,7 @@ specified by the user.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Dtmanpageview</Literal>&numsp;<Emphasis>page</Emphasis></Term>
+<Term><Literal>Dtmanpageview</Literal> <Emphasis>page</Emphasis></Term>
 <ListItem>
 <Para>Open a view of the manual page named by the pathname in the
 <Emphasis>page</Emphasis> argument.
@@ -51,7 +51,7 @@ specified by the user.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Open</Literal>&numsp;<Emphasis>page</Emphasis></Term>
+<Term><Literal>Open</Literal> <Emphasis>page</Emphasis></Term>
 <ListItem>
 <Para>Open a view of the manual page named by the pathname in the
 <Emphasis>page</Emphasis> argument.
@@ -59,7 +59,7 @@ specified by the user.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Symbol Role="Message">Print</Symbol>&numsp;<Emphasis>page</Emphasis></Term>
+<Term><Symbol Role="Message">Print</Symbol> <Emphasis>page</Emphasis></Term>
 <ListItem>
 <Para>Print the manual page named by the pathname in the
 <Emphasis>page</Emphasis> argument.

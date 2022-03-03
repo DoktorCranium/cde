@@ -41,7 +41,7 @@ trash management actions:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Dttrash</Literal>&numsp;<Symbol Role="Variable">file</Symbol></Term>
+<Term><Literal>Dttrash</Literal> <Symbol Role="Variable">file</Symbol></Term>
 <ListItem>
 <Para>Move the file named by the pathname in the
 <Symbol Role="Variable">file</Symbol> argument to the desktop trash folder.

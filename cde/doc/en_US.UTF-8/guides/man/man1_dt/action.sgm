@@ -28,10 +28,10 @@
 <RefSynopsisDiv>
 <CmdSynopsis>
 <Command>dtaction</Command>
-<Arg Choice="opt">-contextDir&numsp;<Replaceable>context_dir</Replaceable></Arg>
-<Arg Choice="opt">-execHost&numsp;<Replaceable>host_name</Replaceable></Arg>
-<Arg Choice="opt">-termOpts&numsp;<Replaceable>terminal_arguments</Replaceable></Arg>
-<Arg Choice="opt">-user&numsp;<Replaceable>user_name</Replaceable></Arg>
+<Arg Choice="opt">-contextDir <Replaceable>context_dir</Replaceable></Arg>
+<Arg Choice="opt">-execHost <Replaceable>host_name</Replaceable></Arg>
+<Arg Choice="opt">-termOpts <Replaceable>terminal_arguments</Replaceable></Arg>
+<Arg Choice="opt">-user <Replaceable>user_name</Replaceable></Arg>
 <Arg><Replaceable>action_name</Replaceable></Arg>
 <Arg Choice="opt"><Replaceable>action_arg</Replaceable></Arg>
 <Arg>...</Arg>

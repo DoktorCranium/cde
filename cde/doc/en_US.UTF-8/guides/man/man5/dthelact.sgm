@@ -41,7 +41,7 @@ Open <Emphasis>volume</Emphasis>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Dthelpview</Literal>&numsp;<Emphasis>volume</Emphasis></Term>
+<Term><Literal>Dthelpview</Literal> <Emphasis>volume</Emphasis></Term>
 <ListItem>
 <Para>Open a view of the help volume named by the pathname in the
 <Emphasis>volume</Emphasis> argument.
@@ -49,7 +49,7 @@ Open <Emphasis>volume</Emphasis>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Open</Literal>&numsp;<Emphasis>volume</Emphasis></Term>
+<Term><Literal>Open</Literal> <Emphasis>volume</Emphasis></Term>
 <ListItem>
 <Para>Open a view of the help volume named by the pathname in the
 <Emphasis>volume</Emphasis> argument.

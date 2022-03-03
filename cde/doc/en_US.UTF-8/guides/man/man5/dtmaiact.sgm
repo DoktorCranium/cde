@@ -43,7 +43,7 @@ Print <Symbol Role="Variable">file</Symbol>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Compose</Literal>&numsp;<Symbol Role="Variable">file</Symbol>&numsp;.&thinsp;.&thinsp;.</Term>
+<Term><Literal>Compose</Literal> <Symbol Role="Variable">file</Symbol> .&thinsp;.&thinsp;.</Term>
 <ListItem>
 <Para>Open a mail composition view with attachments named
 by the pathnames in the
@@ -59,7 +59,7 @@ by the pathnames in the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Dtmail</Literal>&numsp;<Symbol Role="Variable">file</Symbol></Term>
+<Term><Literal>Dtmail</Literal> <Symbol Role="Variable">file</Symbol></Term>
 <ListItem>
 <Para>Open a view of the mail file named by the pathname in the
 <Symbol Role="Variable">file</Symbol> argument.
@@ -67,7 +67,7 @@ by the pathnames in the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Open</Literal>&numsp;<Symbol Role="Variable">file</Symbol></Term>
+<Term><Literal>Open</Literal> <Symbol Role="Variable">file</Symbol></Term>
 <ListItem>
 <Para>Open a view of the mail file named by the pathname in the
 <Symbol Role="Variable">file</Symbol> argument.
@@ -75,7 +75,7 @@ by the pathnames in the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Symbol Role="Message">Print</Symbol>&numsp;<Symbol Role="Variable">file</Symbol></Term>
+<Term><Symbol Role="Message">Print</Symbol> <Symbol Role="Variable">file</Symbol></Term>
 <ListItem>
 <Para>Print the mail file named by the pathname in the
 <Symbol Role="Variable">file</Symbol> argument.

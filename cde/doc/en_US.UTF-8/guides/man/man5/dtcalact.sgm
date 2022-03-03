@@ -45,7 +45,7 @@ calendar and appointment management actions:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>DtcmEdit</Literal>&numsp;<Emphasis>appointment</Emphasis></Term>
+<Term><Literal>DtcmEdit</Literal> <Emphasis>appointment</Emphasis></Term>
 <ListItem>
 <Para>Edit the appointment named by the pathname in the
 <Emphasis>appointment</Emphasis> argument.
@@ -53,7 +53,7 @@ calendar and appointment management actions:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>DtcmInsert</Literal>&numsp;<Emphasis>appointment</Emphasis></Term>
+<Term><Literal>DtcmInsert</Literal> <Emphasis>appointment</Emphasis></Term>
 <ListItem>
 <Para>Insert the appointment named by the pathname in the
 <Emphasis>appointment</Emphasis> argument into the user's default calendar.
@@ -61,7 +61,7 @@ calendar and appointment management actions:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Open</Literal>&numsp;<Emphasis>appointment</Emphasis></Term>
+<Term><Literal>Open</Literal> <Emphasis>appointment</Emphasis></Term>
 <ListItem>
 <Para>Edit the appointment named by the pathname in the
 <Emphasis>appointment</Emphasis> argument.
@@ -69,7 +69,7 @@ calendar and appointment management actions:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Insert</Literal>&numsp;<Emphasis>appointment</Emphasis></Term>
+<Term><Literal>Insert</Literal> <Emphasis>appointment</Emphasis></Term>
 <ListItem>
 <Para>Insert the appointment named by the pathname in the
 <Emphasis>appointment</Emphasis> argument into the user's default calendar.

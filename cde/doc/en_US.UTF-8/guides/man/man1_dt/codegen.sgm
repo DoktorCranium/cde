@@ -15,13 +15,13 @@ a &str-XZ; application building services project or module file</refpurpose>
 1995 International Business Machines Corp.--><!-- (c) Copyright 1993, 1994,
 1995 Sun Microsystems, Inc.--><!-- (c) Copyright 1993, 1994, 1995 Novell,
 Inc.--><refsynopsisdiv><![ %CDE.C.CDE; [<cmdsynopsis>
-<command>dtcodegen</command><arg choice="opt">-changed</arg><arg choice="opt">-main</arg><arg choice="opt">-merge</arg><arg choice="opt">-nomerge</arg><arg choice="opt">-module&numsp;<replaceable>mymod</replaceable></arg>
-<arg choice="opt">-useWC&numsp;<replaceable>class</replaceable></arg>
-<group><arg>-p</arg><arg>-project&numsp;<replaceable>myproj</replaceable></arg>
+<command>dtcodegen</command><arg choice="opt">-changed</arg><arg choice="opt">-main</arg><arg choice="opt">-merge</arg><arg choice="opt">-nomerge</arg><arg choice="opt">-module <replaceable>mymod</replaceable></arg>
+<arg choice="opt">-useWC <replaceable>class</replaceable></arg>
+<group><arg>-p</arg><arg>-project <replaceable>myproj</replaceable></arg>
 </group><group><arg>-np</arg><arg>-noproject</arg></group><arg
 choice="opt">-showall</arg><arg choice="opt">-noshowall</arg>
 <group><arg>-s</arg><arg>-silent</arg></group><group><arg>-v</arg><arg>-verbose</arg></group><group><arg><replaceable>file</replaceable></arg>
-<arg>&numsp;.&thinsp;.&thinsp;.</arg></group>
+<arg> .&thinsp;.&thinsp;.</arg></group>
 </cmdsynopsis>]]><![ %CDE.C.XO; [<CmdSynopsis>
 <Command>dtcodegen</Command>
 <Arg Choice="opt">-changed</Arg>
@@ -39,7 +39,7 @@ choice="opt">-showall</arg><arg choice="opt">-noshowall</arg>
 <Arg>-verbose</Arg>
 </Group>
 <Arg><Replaceable>file</Replaceable></Arg>
-<Arg>&numsp;.&thinsp;.&thinsp;.</Arg>
+<Arg> .&thinsp;.&thinsp;.</Arg>
 </CmdSynopsis>
 ]]>
 <cmdsynopsis>
@@ -90,14 +90,14 @@ behavior.</para>
 option overrides the default merging behavior. If both <literal>-merge</literal> and <literal>-nomerge</literal> are used, the one given last
 on the command line takes precedence. <![ %CDE.C.CDE; [</para></listitem>
 </varlistentry>
-<varlistentry><term><literal>-module&numsp;</literal><emphasis>mymod</emphasis></term>
+<varlistentry><term><literal>-module </literal><emphasis>mymod</emphasis></term>
 <listitem>
 <para>Generate code for the module <emphasis>mymod</emphasis>, (which is expected
 to be defined in the file <emphasis>mymod</emphasis> <Filename>.bil</Filename>). Using multiple <literal>-module</literal> options includes
 multiple modules in the generated code.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>-useWC&numsp;</literal><emphasis>class</emphasis></term>
+<varlistentry><term><literal>-useWC </literal><emphasis>class</emphasis></term>
 <listitem>
 <para>Use the specified widget class whenever possible. Valid values are:
 </para>
@@ -116,7 +116,7 @@ widgets. This value retains the CDE 1.0 behavior.</para>
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>-p&thinsp;|&thinsp;-project&numsp;</literal> <emphasis>myproj</emphasis></term>
+<varlistentry><term><literal>-p&thinsp;|&thinsp;-project </literal> <emphasis>myproj</emphasis></term>
 <listitem>
 <para>Generate code for the project <emphasis>myproj</emphasis>, (which is
 expected to be defined in the file <emphasis>myproj</emphasis> <Filename>.bip</Filename>).</para>

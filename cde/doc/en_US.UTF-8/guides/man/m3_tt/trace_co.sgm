@@ -45,14 +45,14 @@ allowing a programmer to narrow the trace to the suspect area.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>&numsp;0</Term>
+<Term> 0</Term>
 <ListItem>
 <Para>Tracing is turned off.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&numsp;1</Term>
+<Term> 1</Term>
 <ListItem>
 <Para>Tracing is turned on.
 </Para>

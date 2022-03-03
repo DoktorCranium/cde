@@ -42,7 +42,7 @@ icon editing actions:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Dticon</Literal>&numsp;<Symbol Role="Variable">icon</Symbol></Term>
+<Term><Literal>Dticon</Literal> <Symbol Role="Variable">icon</Symbol></Term>
 <ListItem>
 <Para>Open an icon editor view of the bitmap or pixmap named by the pathname in the
 <Symbol Role="Variable">icon</Symbol> argument.
@@ -50,7 +50,7 @@ icon editing actions:
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Literal>Open</Literal>&numsp;<Symbol Role="Variable">icon</Symbol></Term>
+<Term><Literal>Open</Literal> <Symbol Role="Variable">icon</Symbol></Term>
 <ListItem>
 <Para>Open an icon editor view of the bitmap or pixmap named by the pathname in the
 <Symbol Role="Variable">icon</Symbol> argument.

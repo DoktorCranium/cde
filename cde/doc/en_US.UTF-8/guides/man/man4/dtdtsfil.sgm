@@ -320,7 +320,7 @@ the grammar is significant to the expression. For example,</para>
 <informalexample remap="indent">
 <programlisting>NAME_PATTERN   abc | def</programlisting>
 </informalexample>
-<para>is matched by either `` <literal>abc&numsp;</literal>'' (with a trailing <keysym>space</keysym>) or ``&numsp; <literal>def</literal>'' (with a leading <keysym>space</keysym>).</para>
+<para>is matched by either `` <literal>abc </literal>'' (with a trailing <keysym>space</keysym>) or ``  <literal>def</literal>'' (with a leading <keysym>space</keysym>).</para>
 </refsect2>
 <refsect2>
 <title>Escape Character</title>
