@@ -2838,7 +2838,7 @@ will re-execute the most recent command which starts with the letter
 <RefSect2>
 <Title>In-line Editing Options</Title>
 <Para>Normally, each command line entered from a terminal device is simply
-typed followed by a <Literal>new-line</Literal> (`RETURN' or `LINE&ensp;FEED').
+typed followed by a <Literal>new-line</Literal> (`RETURN' or `LINE FEED').
 If either the
 <Literal>emacs</Literal>, <Literal>gmacs</Literal>, or
 <Literal>vi</Literal> option is active, the user can edit the command line.
@@ -2852,7 +2852,7 @@ option names.
 </Para>
 <Para>The editing features require that the user's terminal
 accept `RETURN' as carriage return without line feed
-and that a space (`&ensp;') must overwrite the current character on
+and that a space (` ') must overwrite the current character on
 the screen.
 </Para>
 <Para>The editing modes implement a concept where the user is looking through a
@@ -3203,7 +3203,7 @@ kill characters from then on cause a line feed
 <VarListEntry>
 <Term>&caret;J</Term>
 <ListItem>
-<Para>(New&ensp;line) Execute the current line.
+<Para>(New line) Execute the current line.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -3264,7 +3264,7 @@ the next command line forward in time is accessed.
 <ListItem>
 <Para>Reverse search history for a previous command line containing
 <Symbol Role="Variable">string</Symbol>. If a parameter of zero is given, the search is forward.
-<StructName Role="typedef">String</StructName> is terminated by a "RETURN" or "NEW&ensp;LINE".
+<StructName Role="typedef">String</StructName> is terminated by a "RETURN" or "NEW LINE".
 If string is preceded by a
 <Literal>&caret;</Literal>, the matched line must begin with
 <Symbol Role="Variable">string</Symbol>. If
@@ -3699,7 +3699,7 @@ The default is the least recent history command.
 <Term>/ string</Term>
 <ListItem>
 <Para>Search backward through history for a previous command containing
-<Symbol Role="Variable">string</Symbol>. <StructName Role="typedef">String</StructName> is terminated by a "RETURN" or "NEW&ensp;LINE".
+<Symbol Role="Variable">string</Symbol>. <StructName Role="typedef">String</StructName> is terminated by a "RETURN" or "NEW LINE".
 If string is preceded by a
 <Literal>&caret;</Literal>, the matched line must begin with
 <Symbol Role="Variable">string</Symbol>. If <Symbol Role="Variable">string</Symbol> is null the previous string will be used.
@@ -3981,7 +3981,7 @@ Has effect only in control mode.
 <VarListEntry>
 <Term>&caret;J</Term>
 <ListItem>
-<Para>(New&ensp;line) Execute the current line, regardless of mode.
+<Para>(New line) Execute the current line, regardless of mode.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -4490,7 +4490,7 @@ The exit status is non-zero when there are no more options.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>hist -e ename&hairsp; &ensp; -nlr&hairsp; first&hairsp; last&hairsp;</Term>
+<Term>hist -e ename&hairsp;   -nlr&hairsp; first&hairsp; last&hairsp;</Term>
 <ListItem>
 <Para></Para>
 </ListItem>

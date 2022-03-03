@@ -20,22 +20,22 @@ System font names, needed by the &str-XZ; GUI itself, that are used for user
 interface elements such as button labels, window titles and text fields.
 These names, for seven sizes of two typefaces, must exist on all &str-XZ;
 systems, and they should be provided in any
-X&ensp;server product on which &str-XZ; applications are expected to run.
+X server product on which &str-XZ; applications are expected to run.
 Seven sizes of a third typeface are recommended.
 They are typically mapped to existing fonts on the system
 using the font alias mechanism, although this method is not
 required.</para>
 <para>&str-XZ; 1.0 does not come with a common set of fonts on all systems,
-and it must be able to run on X&ensp;servers and X terminals from non-&str-XZ;
+and it must be able to run on X servers and X terminals from non-&str-XZ;
 vendors if those vendors so desire. Therefore, there are a standard set of
 ``generic'' font names and sizes that each &str-XZ; vendor makes available
-on their &str-XZ; systems and that X&ensp;server vendors may make available
-on their X&ensp;servers and terminals. The names map to existing fonts on
+on their &str-XZ; systems and that X server vendors may make available
+on their X servers and terminals. The names map to existing fonts on
 each vendor's system and may vary from vendor to vendor.</para>
 <para>The &str-XZ; Standard Interface Font Names described here allow clients
 making up the &str-XZ; desktop, such as &cdeman.dtterm; and a single
 set of default fonts in their <emphasis>app-defaults</emphasis> files, without
-concern for the system or X&ensp;server on which &str-XZ; is running. (The &str-XZ;
+concern for the system or X server on which &str-XZ; is running. (The &str-XZ;
 Standard Application Font Names, described in &cdeman.DtStdAppFontNames;,
 provide a similar mechanism for applications running on the &str-XZ; desktop.)
 </para>
@@ -55,8 +55,8 @@ cross-references, section headers, and so forth.</para>
 <refsect2>
 <title>Rationale</title>
 <para>Common font names are required to prevent &str-XZ; clients such as &cdeman.dtterm; from needing different <emphasis>app-defaults</emphasis>
-files on each system. In addition, any X&ensp;server or X terminal vendor
-may ensure that the &str-XZ; desktop can run on their X&ensp;server by mapping
+files on each system. In addition, any X server or X terminal vendor
+may ensure that the &str-XZ; desktop can run on their X server by mapping
 these standard names to fonts of the corresponding style on their individual
 X systems.</para>
 <para>Interface fonts are needed because of user interface and cognitive research
@@ -79,7 +79,7 @@ or terminal emulator).</para>
 naming scheme. There are three aspects to the standard names:</para>
 <itemizedlist>
 <listitem><para>The <emphasis>underlying font</emphasis> on each system, or
-X&ensp;server platform, to which a standard name is mapped, typically will
+X server platform, to which a standard name is mapped, typically will
 be different on each system.</para>
 </listitem><listitem><para>The <emphasis>standard name</emphasis> itself,
 a full XLFD name mapped to the underlying font, may be different on each system
@@ -92,7 +92,7 @@ files, which will match the full XLFD name of the standard name, is the same
 across all systems, for a given use in an <emphasis>app-defaults</emphasis>
 file.</para>
 </listitem></itemizedlist>
-<para>Each &str-XZ; or X&ensp;server vendor implementing this specification
+<para>Each &str-XZ; or X server vendor implementing this specification
 must provide full XLFD names for the standard names, mapped to system-dependent
 underlying fonts, so that the XLFD patterns used in &str-XZ; application <emphasis>app-defaults</emphasis> files will always match one of the full XLFD names
 provided.</para>
@@ -212,7 +212,7 @@ stylistic attribute that might be appropriate. This is important when specifying
 wild-carded patterns in a resource specification for these fonts, since whether
 the underlying font these names are mapped to is serif or sans serif is not
 specified by &str-XZ;, and the match must work for all XLFD names provided
-by &str-XZ; system vendors or other X&ensp;server vendors.</para>
+by &str-XZ; system vendors or other X server vendors.</para>
 </refsect2>
 <refsect2>
 <title>Example XLFD Patterns for the Standard Names</title>
@@ -257,7 +257,7 @@ matched.</para>
 </refsect2>
 <refsect2>
 <title>Implementation of Font Names</title>
-<para>Each &str-XZ; system vendor and X&ensp;server vendor provides mappings
+<para>Each &str-XZ; system vendor and X server vendor provides mappings
 of its own fonts to XLFD names as described by this document. The actual XLFD
 names will vary from system to system, just as the fonts they are mapped to,
 since they contain some of the same values as the XLFD name of the underlying
@@ -265,7 +265,7 @@ font. What does not vary is the behavior: the common patterns in which only
 specified fields are used will match each system's standard names. This is
 guaranteed by the field specifications given earlier.</para>
 <para>There is no precise specification of how the named sizes <literal>xxs</literal> to <literal>xxl</literal> are mapped to sizes of underlying fonts
-in each system or X&ensp;server product, although each size must be equal
+in each system or X server product, although each size must be equal
 to or larger than the previous size. Nonetheless, some guidelines are appropriate.
 </para>
 <para>Interface fonts have been developed because of human factors research
@@ -383,8 +383,8 @@ font:</para>
 as:</para>
 <informalexample>
 <programlisting>
--dt-interface&ensp;system-medium-r-normal-xs&thinsp;sans-11-90-85-85-p-81-iso8859-1
--dt-interface&ensp;system-medium-r-normal-xs&thinsp;serif&ensp;Expert-8-80-75-75-m-72-iso8859-1
+-dt-interface system-medium-r-normal-xs&thinsp;sans-11-90-85-85-p-81-iso8859-1
+-dt-interface system-medium-r-normal-xs&thinsp;serif Expert-8-80-75-75-m-72-iso8859-1
 </programlisting>
 </informalexample>
 <para>Defined this way, both names will match the single XLFD pattern used
@@ -415,7 +415,7 @@ As was shown in the previous example:</para>
 </programlisting>
 </informalexample>
 <para>is an XLFD pattern, used in a single resource specification, that matches
-a single standard name on different &str-XZ; or X&ensp;server platforms. (And
+a single standard name on different &str-XZ; or X server platforms. (And
 if the last 2 fields, <systemitem class="Constant">CHARSET_REGISTRY</systemitem>
 and <systemitem class="Constant">CHARSET_ENCODING</systemitem>, were wild-carded,
 then the pattern could work across locales as well.) Note that the named size
@@ -423,21 +423,21 @@ then the pattern could work across locales as well.) Note that the named size
 required to obtain the desired nominal size (whatever it may be in the mapped
 font), while still matching either <literal>serif</literal> or <literal>sans serif</literal> in the standard name.</para>
 <para>Note that if a &str-XZ; desktop application tries to open a font using
-one of these standard names, and the X&ensp;server does not know about these
+one of these standard names, and the X server does not know about these
 names, the application will usually fall back on using the <literal>fixed</literal> and <literal>variable</literal> font aliases that are typically
-provided in all X&ensp;servers. When this happens, the &str-XZ; desktop will
+provided in all X servers. When this happens, the &str-XZ; desktop will
 be more difficult to use, visually, than if its expected font names were available.
 </para>
 </refsect1>
 <refsect1>
 <title>NOTES</title>
-<para>There is no requirement on a &str-XZ; system or X&ensp;server vendor
+<para>There is no requirement on a &str-XZ; system or X server vendor
 to implement these standard names in a particular way. Several mechanisms
 are possible: duplicate font files with altered naming attributes, X11R5 font
 aliases, or vendor-specific mechanisms. The only requirement is that an XLFD
 pattern, written with attributes taken from the set that define the standard
 names, can be successfully used to open a font with the Xlib function <function>XLoadFont</function>; and, specifically, the Xlib function <function>XListFonts</function> need NOT return the same XLFD name for the pattern on different &str-XZ;
-or X&ensp;server systems.</para>
+or X server systems.</para>
 </refsect1>
 <refsect1>
 <title>SEE ALSO</title>

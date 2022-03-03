@@ -7,7 +7,7 @@
 <!ENTITY str-Zi " CAE Specification,  Window Management: X Window System File Formats and Application Conventions">
 <!ENTITY str-Zt " CAE Specification,  Window Management: X Toolkit Intrinsics">
 <!ENTITY str-Z2 "referenced <Literal>XDR</Literal> specification">
-<!ENTITY str-Z3 "ISO&ensp;C standard">
+<!ENTITY str-Z3 "ISO C standard">
 <!ENTITY str-XX "X/Open">
 
 <!ENTITY  str.OK  "[&thinsp;">

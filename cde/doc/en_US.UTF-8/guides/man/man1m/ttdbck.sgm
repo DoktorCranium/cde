@@ -75,7 +75,7 @@ diagnosis option is given.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>-f&ensp; filename</Term>
+<Term>-f  filename</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Restricts the set of specs to be inspected or modified to those which
@@ -85,7 +85,7 @@ wildcards which must be escaped to prevent the shell from expanding them.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>-k&ensp; objidkey</Term>
+<Term>-k  objidkey</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>An object id key, specifying a particular spec to be displayed or modified.
@@ -96,7 +96,7 @@ specify its key here.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>-t&ensp; type</Term>
+<Term>-t  type</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Restricts the set of specs to be inspected or modified to those with
@@ -192,7 +192,7 @@ return EBADFILE (error code 105).
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>-F &ensp;filename</Term>
+<Term>-F  filename</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Change the file name for the selected specs to the supplied file name.
@@ -200,7 +200,7 @@ return EBADFILE (error code 105).
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>-T &ensp;otypeid</Term>
+<Term>-T  otypeid</Term>
 <ListItem>
 <!-- ex-TP-->
 <Para>Change the type of the selected specs to the given otype.

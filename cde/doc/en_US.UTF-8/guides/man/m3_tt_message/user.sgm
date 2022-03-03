@@ -58,7 +58,7 @@ The user data cell must be unique for this message.
 <Para>Upon successful completion, the
 <Function>tt_message_user</Function> function returns the data cell,
 a piece of arbitrary user data that can hold a
-<Literal>void&ensp;*</Literal>. The application can use
+<Literal>void *</Literal>. The application can use
 &cdeman.tt.ptr.error; to extract one of the following
 <StructName Role="typedef">Tt_status</StructName> values from the returned data:
 </Para>

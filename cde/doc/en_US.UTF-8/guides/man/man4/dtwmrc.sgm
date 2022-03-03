@@ -241,7 +241,7 @@ connection to the X server is terminated. If the application observes neither
 of these protocols, its connection to the X server is terminated.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><function>f.lower</function>&ensp;[<emphasis>-</emphasis> <literal>client</literal> | <symbol role="Variable">within</symbol>&ensp;| <emphasis>freeFamily</emphasis>]</term>
+<varlistentry><term><function>f.lower</function> [<emphasis>-</emphasis> <literal>client</literal> | <symbol role="Variable">within</symbol> | <emphasis>freeFamily</emphasis>]</term>
 <listitem>
 <para>This function lowers a primary window to the bottom of the global window
 stack (where it obscures no other window) and lowers the secondary window
@@ -408,7 +408,7 @@ switches to the last workspace.</para>
 <para>This function terminates dtwm (but NOT the X window system).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><function>f.raise</function>&ensp;[<emphasis>-</emphasis><symbol role="Variable">client</symbol> | <symbol role="Variable">within</symbol>
+<varlistentry><term><function>f.raise</function> [<emphasis>-</emphasis><symbol role="Variable">client</symbol> | <symbol role="Variable">within</symbol>
 | <emphasis>freeFamily</emphasis>]</term>
 <listitem>
 <para>This function raises a primary window to the top of the global window
@@ -422,7 +422,7 @@ raise the client family in the global window stack. Specifying <emphasis>freeFam
 and raises the family to the top of the global window stack.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><function>f.raise_lower</function>&ensp;[ <symbol role="Variable">within</symbol> | <emphasis>freeFamily</emphasis>]</term>
+<varlistentry><term><function>f.raise_lower</function> [ <symbol role="Variable">within</symbol> | <emphasis>freeFamily</emphasis>]</term>
 <listitem>
 <para>This function raises a primary window to the top of the global window
 stack if it is partially obscured by another window; otherwise, it lowers
@@ -483,7 +483,7 @@ re-executed). Restart is necessary for <command>dtwm</command> to incorporate
 changes in both the <literal>dtwmrc</literal> file and X resources.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><function>f.screen</function>&ensp;[ <symbol role="Variable">next</symbol> | <symbol role="Variable">prev</symbol> | <symbol role="Variable">back</symbol> | <symbol role="Variable">screen_number</symbol>]</term>
+<varlistentry><term><function>f.screen</function> [ <symbol role="Variable">next</symbol> | <symbol role="Variable">prev</symbol> | <symbol role="Variable">back</symbol> | <symbol role="Variable">screen_number</symbol>]</term>
 <listitem>
 <para>This function causes the pointer to be warp to a specific screen number
 or to the <symbol role="Variable">next</symbol>, <symbol role="Variable">previous</symbol>, or last visited (<symbol role="Variable">back</symbol>)
@@ -515,7 +515,7 @@ the specified location (the label is ignored).</para>
 <listitem>
 <para>This function causes the workspace manager to restart with the default
 behavior (if a custom behavior is configured) or a custom behavior (if a
-default behavior is configured). By default this is bound to <emphasis>Shift&ensp;Ctrl&ensp;Alt&ensp;&lt;Key>!</emphasis>.</para>
+default behavior is configured). By default this is bound to <emphasis>Shift Ctrl Alt &lt;Key>!</emphasis>.</para>
 </listitem>
 </varlistentry>
 <varlistentry><term><function>f.title</function></term>

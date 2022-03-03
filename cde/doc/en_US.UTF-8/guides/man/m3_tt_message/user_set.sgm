@@ -55,7 +55,7 @@ The
 The
 <Emphasis>v</Emphasis> argument is the data cell,
 a piece of arbitrary user data that can hold a
-<Literal>void&ensp;*</Literal>.</Para>
+<Literal>void *</Literal>.</Para>
 </RefSect1>
 <RefSect1>
 <Title>RETURN VALUE</Title>

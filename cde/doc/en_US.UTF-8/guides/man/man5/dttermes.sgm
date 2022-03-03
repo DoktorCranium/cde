@@ -87,49 +87,49 @@ Same as Line Feed.</para>
 cursor moves to the left-most column of the current line.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;(&ensp;B</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> ( B</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SCS</systemitem>) Designate ASCII (base
 font) as G0.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;(&ensp;0</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> ( 0</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SCS</systemitem>) Designate DEC Special
 Graphic (line draw) as G0.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;)&ensp;B</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> ) B</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SCS</systemitem>) Designate ASCII (base
 font) as G1.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;)&ensp;0</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> ) 0</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SCS</systemitem>) Designate DEC Special
 Graphic (line draw) as G1.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;*&ensp;B</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> * B</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SCS</systemitem>) Designate ASCII (base
 font) as G2.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;*&ensp;0</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> * 0</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SCS</systemitem>) Designate DEC Special
 Graphic (line draw) as G2.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;+&ensp;B</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> + B</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SCS</systemitem>) Designate ASCII (base
 font) as G3.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;+&ensp;0</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> + 0</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SCS</systemitem>) Designate DEC Special
 Graphic (line draw) as G3.</para>
@@ -145,29 +145,29 @@ Graphic (line draw) as G3.</para>
 <para>( <systemitem class="Constant">LS0</systemitem>) Map G0 into GL.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;n</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> n</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">LS2</systemitem>) Map G2 into GL.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;o</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> o</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">LS3</systemitem>) Map G3 into GL.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;N</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> N</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SS2</systemitem>) Map G2 into GL for
 the next character.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;O</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> O</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SS3</systemitem>) Map G3 into GL for
 the next character.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc&ensp;Space</emphasis><literal>&ensp;F</literal></term>
+<varlistentry><term><emphasis>Esc Space</emphasis><literal> F</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">S7C1T</systemitem>) Select 7-bit C1 Control
 Characters. In this mode, the <command>dtterm</command> utility sends all
@@ -175,7 +175,7 @@ C1 Control Characters to the host as 7-bit escape sequences. That is, <systemite
 [''.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc&ensp;Space</emphasis><literal>&ensp;G</literal></term>
+<varlistentry><term><emphasis>Esc Space</emphasis><literal> G</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">C8C1T</systemitem>) Select 8-bit C1 Control
 Characters. In this mode, the <command>dtterm</command> utility sends all
@@ -185,7 +185,7 @@ Shift Out--><!-- Dtterm1.1 .LI--><!-- Dtterm1.1 .I Ctrl-O--><!-- Dtterm1.1
 (\f3 Ctrl-O\fP) Shift In--></para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>#&ensp;8</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal># 8</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DECALN</systemitem>) DEC Screen Align
 Test. The screen is filled with the character ``E''. <!-- Dtterm1.1 .LI--><!--
@@ -197,7 +197,7 @@ Dtterm1.1 .LI--><!-- Dtterm1.1 \f2Esc \f3 + C--><!-- Dtterm1.1 (\f3ISO2022\fP)
 Designate G3 character set--></para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>7</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>7</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DECSC</systemitem>) Save cursor. The
 following is saved:</para>
@@ -213,7 +213,7 @@ following is saved:</para>
 </listitem></itemizedlist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>8</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>8</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DECRC</systemitem>) Restore cursor. The
 terminal emulator is restored to the state saved by the save cursor ( <systemitem class="Constant">DECSC</systemitem>) function. If nothing was saved by <systemitem class="Constant">DECSC</systemitem>, then the following actions are performed:
@@ -227,7 +227,7 @@ terminal emulator is restored to the state saved by the save cursor ( <systemite
 </listitem></itemizedlist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>=</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>=</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DECPAM</systemitem>) Application keypad.
 In this mode, the numeric keypad sends application sequences. (See the ``Transmitted
@@ -235,7 +235,7 @@ Escape Sequences'' section later in this document for additional information.)
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>></literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>></literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DECPNM</systemitem>) Normal keypad. In
 this mode, the numeric keypad sends the characters shown on the keypad. Keys <systemitem class="Constant">PF1</systemitem> to <systemitem class="Constant">PF4</systemitem>,
@@ -243,7 +243,7 @@ inclusive, send application sequences. (See the ``Transmitted Escape Sequences''
 section later in this document for additional information.)</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<Literal>D</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <Literal>D</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">IND</systemitem>) Index. The cursor moves
 down to the same column of the next line. If the cursor is in the bottom-most
@@ -253,7 +253,7 @@ with no visible character attributes is added at the bottom of the scrolling
 region.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<Literal>E</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <Literal>E</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">NEL</systemitem>) Next line. The cursor
 moves down to the first column of the next line. If the cursor is in the bottom-most
@@ -263,13 +263,13 @@ with no visible character attributes is added at the bottom of the scrolling
 region.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<Literal>H</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <Literal>H</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">HTS</systemitem>) Tab set. This function
 sets a horizontal tab stop at the column where the cursor is located.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<Literal>M</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <Literal>M</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">RI</systemitem>) Reverse index. The cursor
 moves up to the same column of the previous line. If the cursor is in the
@@ -282,13 +282,13 @@ Dtterm1.1 (\f3SS2\fP) Single shift select of G2 character set--><!-- Dtterm1.1
 select of G3 character set--></para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis><literal>&ensp;P</literal> <emphasis>&ensp;p1</emphasis><literal>&ensp;;</literal><emphasis>&ensp;p2</emphasis> <literal>&ensp;|</literal><emphasis>&ensp;p3&ensp;Esc&ensp;Backslash</emphasis></term>
+<varlistentry><term><emphasis>Esc</emphasis><literal> P</literal> <emphasis> p1</emphasis><literal> ;</literal><emphasis> p2</emphasis> <literal> |</literal><emphasis> p3 Esc Backslash</emphasis></term>
 <listitem>
 <para>( <systemitem class="Constant">DECUDK</systemitem>) User defined keys
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<Literal>Z</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <Literal>Z</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DECID</systemitem>) Return terminal ID.
 This function is similar to a primary device attributes ( <systemitem class="Constant">DA</systemitem>) request. (See ``<emphasis>Esc</emphasis> <literal>[ c</literal> ''
@@ -296,7 +296,7 @@ This function is similar to a primary device attributes ( <systemitem class="Con
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>c</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>c</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">RIS</systemitem>) Full reset. This function
 performs a full (hard) reset. For additional information, see the ``Reset''
@@ -309,7 +309,7 @@ Dtterm1.1 \f2Esc \f3 }--><!-- Dtterm1.1 (\f3LS2R\fP) Invoke the G2 character
 set--></para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<literal>q</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <literal>q</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DECSCA</systemitem>) Select character
 protection attribute. The default value is 0. This escape sequence defines
@@ -335,7 +335,7 @@ erase characters defined as erasable. Valid supported values of <emphasis>pi</em
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>&ensp;Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<literal>@</literal></term>
+<varlistentry><term><emphasis> Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <literal>@</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">ICH</systemitem>) Insert <emphasis>pi</emphasis> blank characters. The default value is 1. A parameter value of
 0 or 1 inserts a single blank character. A parameter value of <emphasis>N</emphasis> inserts <emphasis>N</emphasis> blank characters. Blank characters
@@ -344,7 +344,7 @@ to the right of the cursor move to the right. Characters scrolled past the
 end of the line are lost.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>&ensp;Esc</emphasis>&ensp;<literal>[&ensp;</literal> <emphasis>pi&ensp;</emphasis><Literal>A</Literal></term>
+<varlistentry><term><emphasis> Esc</emphasis> <literal>[ </literal> <emphasis>pi </emphasis><Literal>A</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">CUU</systemitem>) Cursor up <emphasis>pi</emphasis> lines. The default value is 1. A parameter value 0 or 1 moves
 the cursor up one line. A parameter value of <emphasis>N</emphasis> moves
@@ -353,7 +353,7 @@ If the cursor is already above the top margin, the cursor stops at the top
 line.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;</literal> <emphasis>pi&ensp;</emphasis><Literal>B</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis>pi </emphasis><Literal>B</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">CUD</systemitem>) Cursor down <emphasis>pi</emphasis> lines. The default value is 1. A parameter value 0 or 1 moves
 the cursor down one line. A parameter value of <emphasis>N</emphasis> moves
@@ -362,7 +362,7 @@ margin. If the cursor is already below the bottom margin, the cursor stops
 at the bottom line.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;</literal> <emphasis>pi&ensp;</emphasis><Literal>C</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis>pi </emphasis><Literal>C</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">CUF</systemitem>) Cursor forward <emphasis>pi</emphasis> characters. The default value is 1. A parameter value 0 or 1
 moves the cursor forward one character. A parameter value of <emphasis>N</emphasis>
@@ -370,14 +370,14 @@ moves the cursor forward <emphasis>N</emphasis> characters. The cursor stops
 at the right-most column of the line.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<Literal>D</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <Literal>D</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">CUB</systemitem>) Cursor backward <emphasis>pi</emphasis> characters. The default value is 1. A parameter value 0 or 1
 moves the cursor backward one character. A parameter value of <emphasis>N</emphasis> moves the cursor backward <emphasis>N</emphasis> characters. The
 cursor stops at the left-most column of the line.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<Literal>F</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <Literal>F</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">CPL</systemitem>) Cursor to the first
 column of the <emphasis>pith</emphasis>preceding<emphasis>line.</emphasis>
@@ -387,14 +387,14 @@ cursor stops at the top margin. If the cursor is already above the top margin,
 the cursor stops at the top line.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;</literal> <emphasis>pi</emphasis>&ensp;<Literal>G</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis>pi</emphasis> <Literal>G</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">CHA</systemitem>) Cursor to column <emphasis>pi</emphasis>. The default value is 1. A parameter value 0 or 1 moves the
 cursor to the first column of the current line. A parameter value of <emphasis>N</emphasis> moves the cursor to the <emphasis>N</emphasis>th column of the
 current line.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>p1&ensp;</emphasis><literal>;&ensp;</literal><emphasis>p2&ensp;</emphasis> <Literal>H</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>p1 </emphasis><literal>; </literal><emphasis>p2 </emphasis> <Literal>H</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">CUP</systemitem>) Cursor position. The
 default value is 1. A <emphasis>p1</emphasis> value 0 or 1 moves the cursor
@@ -406,7 +406,7 @@ the setting of the origin mode ( <systemitem class="Constant">DECOM</systemitem>
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi&ensp;</emphasis><Literal>J</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>pi </emphasis><Literal>J</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">ED</systemitem>) Erase in display. The
 default value is 0. A parameter value of 0 erases from the cursor to the end
@@ -415,7 +415,7 @@ to the cursor position, inclusive. A parameter value of 2 erases the complete
 display.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<Literal>K</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <Literal>K</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">EL</systemitem>) Erase in line. The default
 value is 0. A parameter value of 0 erases from the cursor to the end of the
@@ -424,7 +424,7 @@ cursor position, inclusive. A parameter value of 2 erases the complete line.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;</literal> <emphasis>pi</emphasis>&ensp;<Literal>L</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis>pi</emphasis> <Literal>L</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">IL</systemitem>) Insert lines. The default
 value is 1. A parameter value 0 or 1 inserts one line at the cursor. A parameter
@@ -434,7 +434,7 @@ region move down. Lines scrolled off the page are lost. There is no effect
 outside the scrolling region.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<Literal>M</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <Literal>M</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DL</systemitem>) Delete lines. The default
 value is 1. A parameter value 0 or 1 deletes one line at the cursor. A parameter
@@ -445,7 +445,7 @@ at the bottom of the scrolling region. There is no effect outside the scrolling
 region.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;</literal> <emphasis>pi&ensp;</emphasis><Literal>P</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis>pi </emphasis><Literal>P</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DCH</systemitem>) Delete characters.
 The default value is 1. A parameter value 0 or 1 deletes one character at
@@ -456,7 +456,7 @@ characters move left and are replaced by blank spaces with no visual character
 attributes.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;</literal> <emphasis>pi&ensp;</emphasis><Literal>S</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis>pi </emphasis><Literal>S</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SU</systemitem>) Scroll up <emphasis>pi</emphasis> lines. The default value is 1. A parameter value 0 or 1 scrolls
 the display up one line. A parameter value of <emphasis>N</emphasis> scrolls
@@ -466,7 +466,7 @@ with no visible character attributes are added at the bottom of the scrolling
 region.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<Literal>T</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <Literal>T</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SD</systemitem>) Scroll down <emphasis>pi</emphasis> lines. The default value is 1. A parameter value 0 or 1 scrolls
 the display down one line. A parameter value of <emphasis>N</emphasis> scrolls
@@ -476,7 +476,7 @@ lines with no visible character attributes are added at the top of the scrolling
 region.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<Literal>X</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <Literal>X</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">ECH</systemitem>) Erase <emphasis>pi</emphasis> characters. The default value is 1. A parameter value 0 or 1 erases
 a single character. A parameter value of <emphasis>N</emphasis> erases <emphasis>N</emphasis> characters. The character attributes of erased characters are
@@ -484,7 +484,7 @@ cleared. This escape sequences works inside or outside the scrolling margins.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;</literal> <emphasis>pi</emphasis>&ensp;<literal>c</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis>pi</emphasis> <literal>c</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DA</systemitem>) Send device attributes.
 The default is 0. A parameter value 0 or 1 causes the terminal emulator to
@@ -492,21 +492,21 @@ respond with ``<emphasis>Esc</emphasis> <literal>[ ? 1; 2 c</literal>''.
 This is the standard response for the DEC VT100 Terminal and <command>xterm</command>(1).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>p1&ensp;</emphasis><literal>&ensp;;&ensp;</literal><emphasis>p2</emphasis>&ensp; <literal>f</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>p1 </emphasis><literal> ; </literal><emphasis>p2</emphasis>  <literal>f</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">HVP</systemitem>) Horizontal and vertical
 position. This escape sequence has been replaced by <systemitem class="Constant">CUP</systemitem> and offers identical functionality. It is provided to maintain
 backward compatibility.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<literal>g</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <literal>g</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">TBC</systemitem>) Tab clear. The default
 is 0. A parameter value of 0 clears the tab stop at the current cursor column.
 A parameter value of 3 clears all tab stops.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<literal>h</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <literal>h</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SM</systemitem>) Set mode. This escape
 sequence sets ANSI modes. Valid supported values of <emphasis>pi</emphasis>
@@ -545,7 +545,7 @@ by a newline ( <systemitem class="Constant">NL</systemitem>).</para>
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;</literal> <emphasis>pi</emphasis>&ensp;<literal>l</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis>pi</emphasis> <literal>l</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">RM</systemitem>) Reset mode. This escape
 sequences resets ANSI modes. Valid supported values of <emphasis>pi</emphasis>
@@ -583,7 +583,7 @@ a carriage-return ( <systemitem class="Constant">CR</systemitem>).</para>
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;</literal> <emphasis>&ensp;pi</emphasis>&ensp;<literal>&ensp;;&ensp;.&thinsp;.&thinsp;.&ensp;m</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis> pi</emphasis> <literal> ; .&thinsp;.&thinsp;. m</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SG</systemitem>) Graphics rendition.
 The default value is 0. This escape sequence selects one or more character
@@ -744,7 +744,7 @@ attributes. Valid supported values for <emphasis>pi</emphasis> are:</para>
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<literal>n</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <literal>n</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DSR</systemitem>) Device status report.
 Valid supported values for <emphasis>pi</emphasis> are:</para>
@@ -766,7 +766,7 @@ where <emphasis>p1</emphasis> is the current cursor line and <emphasis>p2</empha
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[</literal>&ensp;?&ensp; <emphasis>pi</emphasis>&ensp;<literal>n</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[</literal> ?  <emphasis>pi</emphasis> <literal>n</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DSR</systemitem>) DEC private device
 status report. Valid supported values for <emphasis>pi</emphasis> are:</para>
@@ -793,7 +793,7 @@ a message of ``<emphasis>Esc</emphasis> <literal>[</literal> ? <literal>27
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;</literal> <emphasis>p1&ensp;</emphasis><literal>;&ensp;</literal>&ensp;<emphasis>p2&ensp;</emphasis> <literal>r</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal> <emphasis>p1 </emphasis><literal>; </literal> <emphasis>p2 </emphasis> <literal>r</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DECSTBM</systemitem>) Set top and bottom
 margins. The default value for <emphasis>p1</emphasis> is 1. The default value
@@ -802,7 +802,7 @@ window. The top and bottom margins are set to <emphasis>p1</emphasis> and <empha
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc&ensp;</emphasis><literal>[&ensp;</literal> <emphasis>p1&ensp;</emphasis><literal>;&ensp;</literal><emphasis>p2&ensp;</emphasis> <literal>;&ensp;</literal><emphasis>p3</emphasis><literal>&ensp;t</literal></term>
+<varlistentry><term><emphasis>Esc </emphasis><literal>[ </literal> <emphasis>p1 </emphasis><literal>; </literal><emphasis>p2 </emphasis> <literal>; </literal><emphasis>p3</emphasis><literal> t</literal></term>
 <listitem>
 <para>Window manipulation. Valid values for <emphasis>p1</emphasis> (and any
 additional parameters) are:</para>
@@ -817,12 +817,12 @@ additional parameters) are:</para>
 <para>Minimize (iconify) window.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>3&ensp;;</literal>&ensp;<emphasis>x&ensp;</emphasis>&ensp; <literal>;</literal>&ensp;<symbol role="Variable">y</symbol></term>
+<varlistentry><term><literal>3 ;</literal> <emphasis>x </emphasis>  <literal>;</literal> <symbol role="Variable">y</symbol></term>
 <listitem>
 <para>Move window to [<symbol role="Variable">x</symbol>, <symbol role="Variable">y</symbol>].</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>4&ensp;;</literal>&ensp;<emphasis>height&ensp;</emphasis> <literal>;</literal>&ensp;<symbol role="Variable">width</symbol></term>
+<varlistentry><term><literal>4 ;</literal> <emphasis>height </emphasis> <literal>;</literal> <symbol role="Variable">width</symbol></term>
 <listitem>
 <para>Resize the &cdeman.dtterm; window to <symbol role="Variable">height</symbol> and <symbol role="Variable">width</symbol> in pixels.</para>
 </listitem>
@@ -844,7 +844,7 @@ order.</para>
 <para>Refresh the &cdeman.dtterm; window.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><literal>8</literal>&ensp;;&ensp;<emphasis>height&ensp;</emphasis> <literal>;&ensp;</literal><symbol role="Variable">width</symbol></term>
+<varlistentry><term><literal>8</literal> ; <emphasis>height </emphasis> <literal>; </literal><symbol role="Variable">width</symbol></term>
 <listitem>
 <para>Resize the text area to <symbol role="Variable">height</symbol> and
 <symbol role="Variable">width</symbol> in characters.</para>
@@ -890,7 +890,7 @@ Esc Backslash</emphasis>''.</para>
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>&ensp;Esc</emphasis>&ensp;<literal>[</literal>&ensp; <emphasis>pi</emphasis>&ensp;<literal>x</literal></term>
+<varlistentry><term><emphasis> Esc</emphasis> <literal>[</literal>  <emphasis>pi</emphasis> <literal>x</literal></term>
 <listitem>
 <para>Request terminal modes. The default value is 0. Valid values are 0 or
 1. If <emphasis>pi</emphasis> is 0, &cdeman.dtterm; responds with
@@ -901,7 +901,7 @@ responds with the message of ``<emphasis>Esc</emphasis> <literal>[ 3; 1;
 backward compatibility for <command>xterm</command>(1) only.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>&ensp;Esc</emphasis>&ensp;<literal>[&ensp;</literal>?&ensp; <emphasis>pi&ensp;</emphasis><literal>h</literal></term>
+<varlistentry><term><emphasis> Esc</emphasis> <literal>[ </literal>?  <emphasis>pi </emphasis><literal>h</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">SM</systemitem>) DEC private set mode.
 This escape sequences sets DEC private modes. Valid supported values of <emphasis>pi</emphasis> are:</para>
@@ -1002,7 +1002,7 @@ child process is logged to a file.</para>
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;</literal>?&ensp; <emphasis>pi</emphasis>&ensp;<literal>l</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ </literal>?  <emphasis>pi</emphasis> <literal>l</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">RM</systemitem>) DEC private mode reset.
 This escape sequence sets DEC private modes. Valid supported values of <emphasis>pi</emphasis> are:</para>
@@ -1096,21 +1096,21 @@ process is not logged to a file.</para>
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;?&ensp;</literal> <emphasis>pi&ensp;</emphasis><literal>r</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ ? </literal> <emphasis>pi </emphasis><literal>r</literal></term>
 <listitem>
 <para>Restore DEC private mode values. The value corresponding to mode <emphasis>pi</emphasis> previously saved is restored. Valid values for <emphasis>pi</emphasis> are the same as the DEC private modes supported by <systemitem class="Constant">SM</systemitem>. It is provided to maintain backward compatibility
 with <command>xterm</command>(1). Using this escape sequence is discouraged.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;?</literal>&ensp; <emphasis>pi</emphasis>&ensp;<literal>s</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ ?</literal>  <emphasis>pi</emphasis> <literal>s</literal></term>
 <listitem>
 <para>Save DEC private mode values. The value corresponding to mode <emphasis>pi</emphasis> is saved. Valid values for <emphasis>pi</emphasis> are the same
 as the DEC private modes supported by <systemitem class="Constant">SM</systemitem>.
 This escape sequence is provided to maintain backward compatibility with <command>xterm</command>(1). Using this escape sequence is discouraged.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>&ensp;Esc</emphasis>&ensp;<literal>]&ensp;</literal> <emphasis>p1</emphasis>&ensp;<literal>;</literal>&ensp;<emphasis>&ensp;p2&ensp;&lt;control>-G</emphasis></term>
+<varlistentry><term><emphasis> Esc</emphasis> <literal>] </literal> <emphasis>p1</emphasis> <literal>;</literal> <emphasis> p2 &lt;control>-G</emphasis></term>
 <listitem>
 <para>Set text parameters. This escape sequence allows various terminal emulator
 text values to be set. Valid supported values of <emphasis>p1</emphasis> are:
@@ -1142,19 +1142,19 @@ in a new session.</para>
 </variablelist>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>&ensp;&caret;&ensp;</literal> <emphasis>&ensp;&ensp;message&ensp;Esc&ensp;Backslash</emphasis></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal> &caret; </literal> <emphasis>  message Esc Backslash</emphasis></term>
 <listitem>
 <para>( <systemitem class="Constant">PM</systemitem>) Privacy message. The
 data received in a privacy message is ignored and is not displayed.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>_&ensp;</literal> <emphasis>pi&ensp;Esc&ensp;Backslash</emphasis></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>_ </literal> <emphasis>pi Esc Backslash</emphasis></term>
 <listitem>
 <para>( <systemitem class="Constant">APC</systemitem>) Application program
 command. The terminal emulator implements no <systemitem class="Constant">APC</systemitem> functions. The data is ignored and is not displayed.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>&ensp;Esc</emphasis>&ensp;<literal>[&ensp;?</literal> &ensp;<emphasis>pi</emphasis>&ensp;<Literal>K</Literal></term>
+<varlistentry><term><emphasis> Esc</emphasis> <literal>[ ?</literal>  <emphasis>pi</emphasis> <Literal>K</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DECSEL</systemitem>) Selective erase
 in line. The default value is 0. This escape sequence only erases erasable
@@ -1165,7 +1165,7 @@ A parameter value of 1 erases from the beginning of the line to the cursor
 position, inclusive. A parameter value of 2 erases the complete line.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>&ensp;[&ensp;?&ensp;</literal> <emphasis>pi</emphasis>&ensp;<Literal>J</Literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal> [ ? </literal> <emphasis>pi</emphasis> <Literal>J</Literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DECSED</systemitem>) Selective erase
 in display. The default value is 0. This escape sequence only erases erasable
@@ -1175,22 +1175,22 @@ of 1 erases from the beginning of the display to the cursor position, inclusive.
 A parameter value of 2 erases the complete display.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>]&ensp;l</literal>&ensp; <emphasis>text&ensp;Esc&ensp;Backslash</emphasis></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>] l</literal>  <emphasis>text Esc Backslash</emphasis></term>
 <listitem>
 <para>Set the window title to <symbol role="Variable">text</symbol>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>]&ensp;I&ensp;</literal> <emphasis>file&ensp;Esc&ensp;Backslash</emphasis></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>] I </literal> <emphasis>file Esc Backslash</emphasis></term>
 <listitem>
 <para>Set the icon to the icon found in file.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>]&ensp;L&ensp;</literal> <emphasis>label&ensp;Esc&ensp;Backslash</emphasis></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>] L </literal> <emphasis>label Esc Backslash</emphasis></term>
 <listitem>
 <para>Set the icon name to <symbol role="Variable">label</symbol>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Esc</emphasis>&ensp;<literal>[&ensp;!&ensp;p</literal></term>
+<varlistentry><term><emphasis>Esc</emphasis> <literal>[ ! p</literal></term>
 <listitem>
 <para>( <systemitem class="Constant">DECSTR</systemitem>) Soft terminal reset.
 This function performs a soft reset. For additional information, see the ``Reset''

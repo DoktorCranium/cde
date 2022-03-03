@@ -32,10 +32,10 @@
 <Arg>-E</Arg>
 <Arg>-X</Arg>
 </Group>
-<Arg Choice="opt">-a&ensp;<Replaceable>level</Replaceable></Arg>
-<Arg Choice="opt">-d&ensp;<Replaceable>display</Replaceable></Arg>
+<Arg Choice="opt">-a <Replaceable>level</Replaceable></Arg>
+<Arg Choice="opt">-d <Replaceable>display</Replaceable></Arg>
 <Group>
-<Arg>-c&ensp;</Arg>
+<Arg>-c </Arg>
 <Arg Choice="opt"><Replaceable>command</Replaceable></Arg>
 </Group>
 </CmdSynopsis>

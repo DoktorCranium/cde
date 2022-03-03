@@ -70,8 +70,8 @@ that represent the library compile-time version:
 It is derived from the following formula:
 </Para>
 <InformalExample Remap="indent">
-<ProgramListing>(10000&ensp;*&ensp;DtVERSION&ensp;+&ensp;100&ensp;*
- DtRevision&ensp;+&ensp;DtUPDATE_LEVEL)
+<ProgramListing>(10000 * DtVERSION + 100 *
+ DtRevision + DtUPDATE_LEVEL)
 </ProgramListing>
 </InformalExample>
 </ListItem>

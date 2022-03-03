@@ -44,13 +44,13 @@ to organize windows by task and make efficient use of screen real estate.
 <refsect2>
 <title>Options</title>
 <variablelist>
-<varlistentry><term><emphasis>-display</emphasis>&ensp;<literal>display</literal></term>
+<varlistentry><term><emphasis>-display</emphasis> <literal>display</literal></term>
 <listitem>
 <para>This option specifies the display to use; see <command>X</command>(1).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>-xrm</emphasis>&ensp;<literal>resourcestring</literal></term>
+<varlistentry><term><emphasis>-xrm</emphasis> <literal>resourcestring</literal></term>
 <listitem>
 <para>This option specifies a resource string to use.</para>
 </listitem>
@@ -63,13 +63,13 @@ is of limited use. See the <emphasis>multiScreen</emphasis> resource for informa
 on managing a single screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>-name</emphasis>&ensp;<literal>name</literal></term>
+<varlistentry><term><emphasis>-name</emphasis> <literal>name</literal></term>
 <listitem>
 <para>This option causes <command>dtwm</command> to retrieve its resources
 using the specified name, as in <literal>name*resource</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>-screens</emphasis>&ensp;<literal>name&ensp;[name&ensp;[...]]</literal></term>
+<varlistentry><term><emphasis>-screens</emphasis> <literal>name [name [...]]</literal></term>
 <listitem>
 <para>This option specifies the resource names to use for the screens managed
 by <command>dtwm</command>. If <command>dtwm</command> is managing a single
@@ -112,7 +112,7 @@ By default, the screen number is used for the screen name.</para>
 <para>Default <command>dtwm</command> window frames have distinct components
 with associated functions:</para>
 <variablelist>
-<varlistentry><term><emphasis>Title&ensp;Area</emphasis></term>
+<varlistentry><term><emphasis>Title Area</emphasis></term>
 <listitem>
 <para>In addition to displaying the client's title, the title area is used
 to move the window. To move the window, place the pointer over the title area,
@@ -121,27 +121,27 @@ frame is moved during the drag to indicate the new location. When the button
 is released, the window is moved to the new location.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Title&ensp;Bar</emphasis></term>
+<varlistentry><term><emphasis>Title Bar</emphasis></term>
 <listitem>
 <para>The title bar includes the title area, the minimize button, the maximize
 button, and the window menu button. In shaped windows, such as round windows,
 the title bar floats above the window.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Minimize&ensp;Button</emphasis></term>
+<varlistentry><term><emphasis>Minimize Button</emphasis></term>
 <listitem>
 <para>To turn the window into an icon, click button 1 on the minimize button
 (the frame box with a <literal>small</literal> square in it).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Maximize&ensp;Button</emphasis></term>
+<varlistentry><term><emphasis>Maximize Button</emphasis></term>
 <listitem>
 <para>To make the window fill the screen (or enlarge to the largest size allowed
 by the configuration files), click button 1 on the maximize button (the frame
 box with a <literal>large</literal> square in it).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Window&ensp;Menu&ensp;Button</emphasis></term>
+<varlistentry><term><emphasis>Window Menu Button</emphasis></term>
 <listitem>
 <para>The window menu button is the frame box with a horizontal bar in it.
 To pull down the window menu, press button 1. While pressing, drag the pointer
@@ -220,7 +220,7 @@ if the window is in more than one workspace.</entry></row>
 <entry align="left" valign="top">Causes client to terminate.</entry></row>
 </tbody></tgroup></informaltable>
 <variablelist>
-<varlistentry><term><emphasis>Resize&ensp;Border&ensp;Handles</emphasis></term>
+<varlistentry><term><emphasis>Resize Border Handles</emphasis></term>
 <listitem>
 <para>To change the size of a window, move the pointer over a resize border
 handle (the cursor changes), press button 1, and drag the window to a new
@@ -509,13 +509,13 @@ order for the <function>f.lower</function> function.</para>
 and lowers the family in the global window stack.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><function>f.lower</function>&ensp;[ <symbol role="Variable">within</symbol>]</term>
+<varlistentry><term><function>f.lower</function> [ <symbol role="Variable">within</symbol>]</term>
 <listitem>
 <para>Lowers the transient window within the family (staying above the parent)
 but does not lower the family in the global window stack.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><function>f.lower</function>&ensp;[<emphasis>freeFamily</emphasis> ]</term>
+<varlistentry><term><function>f.lower</function> [<emphasis>freeFamily</emphasis> ]</term>
 <listitem>
 <para>Lowers the window free from its family stack (below the parent), but
 does not lower the family in the global window stack.</para>
@@ -712,21 +712,21 @@ manager parts can be specified:</para>
 &dagger;&dagger;Image name. See &cdeman.XmInstallImage;. &dagger;&dagger;&dagger;X11
 X Logical Font Description</para>
 <variablelist>
-<varlistentry><term><symbol role="Variable">background</symbol>&ensp;(class&ensp; <emphasis>Background</emphasis>)</term>
+<varlistentry><term><symbol role="Variable">background</symbol> (class  <emphasis>Background</emphasis>)</term>
 <listitem>
 <para>This resource specifies the background color. Any legal X color may
 be specified. The default value is chosen based on the visual type of the
 screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>backgroundPixmap</emphasis>&ensp;(class&ensp; <emphasis>BackgroundPixmap</emphasis>)</term>
+<varlistentry><term><emphasis>backgroundPixmap</emphasis> (class  <emphasis>BackgroundPixmap</emphasis>)</term>
 <listitem>
 <para>This resource specifies the background Pixmap of the <command>dtwm</command>
 decoration when the window is inactive (does not have the keyboard focus).
 The default value is chosen based on the visual type of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>bottomShadowColor</emphasis>&ensp;(class&ensp; <emphasis>Foreground</emphasis>)</term>
+<varlistentry><term><emphasis>bottomShadowColor</emphasis> (class  <emphasis>Foreground</emphasis>)</term>
 <listitem>
 <para>This resource specifies the bottom shadow color. This color is used
 for the lower and right bevels of the window manager decoration. Any legal
@@ -734,27 +734,27 @@ X color may be specified. The default value is chosen based on the visual
 type of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>bottomShadowPixmap</emphasis>&ensp;(class&ensp; <emphasis>BottomShadowPixmap</emphasis>)</term>
+<varlistentry><term><emphasis>bottomShadowPixmap</emphasis> (class  <emphasis>BottomShadowPixmap</emphasis>)</term>
 <listitem>
 <para>This resource specifies the bottom shadow Pixmap. This Pixmap is used
 for the lower and right bevels of the window manager decoration. The default
 is chosen based on the visual type of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>fontList</emphasis>&ensp;(class&ensp; <emphasis>FontList</emphasis>)</term>
+<varlistentry><term><emphasis>fontList</emphasis> (class  <emphasis>FontList</emphasis>)</term>
 <listitem>
 <para>This resource specifies the font used in the window manager decoration.
 The character encoding of the font should match the character encoding of
 the strings that are used. The default is "fixed."</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><symbol role="Variable">foreground</symbol>&ensp;(class&ensp; <emphasis>Foreground</emphasis>)</term>
+<varlistentry><term><symbol role="Variable">foreground</symbol> (class  <emphasis>Foreground</emphasis>)</term>
 <listitem>
 <para>This resource specifies the foreground color. The default is chosen
 based on the visual type of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>saveUnder</emphasis>&ensp;(class&ensp; <emphasis>SaveUnder</emphasis>)</term>
+<varlistentry><term><emphasis>saveUnder</emphasis> (class  <emphasis>SaveUnder</emphasis>)</term>
 <listitem>
 <para>This is used to indicate whether "save unders" are used for <command>dtwm</command> components. For this to have any effect, save unders must be
 implemented by the X server. If save unders are implemented, the X server
@@ -765,14 +765,14 @@ save unders will not be used on any window manager frames. The default value
 is False.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>topShadowColor</emphasis>&ensp;(class&ensp; <emphasis>Background</emphasis>)</term>
+<varlistentry><term><emphasis>topShadowColor</emphasis> (class  <emphasis>Background</emphasis>)</term>
 <listitem>
 <para>This resource specifies the top shadow color. This color is used for
 the upper and left bevels of the window manager decoration. The default is
 chosen based on the visual type of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><action>topShadowPixmap&ensp;(</action>&ensp;class&ensp; <emphasis>TopShadowPixmap)</emphasis></term>
+<varlistentry><term><action>topShadowPixmap (</action> class  <emphasis>TopShadowPixmap)</emphasis></term>
 <listitem>
 <para>This resource specifies the top shadow Pixmap. This Pixmap is used for
 the upper and left bevels of the window manager decoration. The default is
@@ -837,47 +837,47 @@ icons can be specified:</para>
 <para>&dagger;The default is chosen based on the visual type of the screen.
 &dagger;&dagger;See &cdeman.XmInstallImage;.</para>
 <variablelist>
-<varlistentry><term><emphasis>activeBackground</emphasis>&ensp;(class&ensp; <emphasis>Background</emphasis>)</term>
+<varlistentry><term><emphasis>activeBackground</emphasis> (class  <emphasis>Background</emphasis>)</term>
 <listitem>
 <para>This resource specifies the background color of the <command>dtwm</command>
 decoration when the window is active (has the keyboard focus). The default
 is chosen based on the visual type of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>activeBackgroundPixmap</emphasis>&ensp;(class&ensp; <emphasis>ActiveBackgroundPixmap</emphasis>)</term>
+<varlistentry><term><emphasis>activeBackgroundPixmap</emphasis> (class  <emphasis>ActiveBackgroundPixmap</emphasis>)</term>
 <listitem>
 <para>This resource specifies the background Pixmap of the <command>dtwm</command>
 decoration when the window is active (has the keyboard focus). The default
 is chosen based on the visual type of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>activeBottomShadowColor</emphasis>&ensp;(class&ensp; <emphasis>Foreground</emphasis>)</term>
+<varlistentry><term><emphasis>activeBottomShadowColor</emphasis> (class  <emphasis>Foreground</emphasis>)</term>
 <listitem>
 <para>This resource specifies the bottom shadow color of the <command>dtwm</command> decoration when the window is active (has the keyboard focus).
 The default is chosen based on the visual type of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>activeBottomShadowPixmap</emphasis>&ensp;(class&ensp; <emphasis>BottomShadowPixmap</emphasis>)</term>
+<varlistentry><term><emphasis>activeBottomShadowPixmap</emphasis> (class  <emphasis>BottomShadowPixmap</emphasis>)</term>
 <listitem>
 <para>This resource specifies the bottom shadow Pixmap of the <command>dtwm</command> decoration when the window is active (has the keyboard focus).
 The default is chosen based on the visual type of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>activeForeground</emphasis>&ensp;(class&ensp; <emphasis>Foreground</emphasis>)</term>
+<varlistentry><term><emphasis>activeForeground</emphasis> (class  <emphasis>Foreground</emphasis>)</term>
 <listitem>
 <para>This resource specifies the foreground color of the <command>dtwm</command>
 decoration when the window is active (has the keyboard focus). The default
 is chosen based on the visual type of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>activeTopShadowColor</emphasis>&ensp;(class&ensp; <emphasis>Background</emphasis>)</term>
+<varlistentry><term><emphasis>activeTopShadowColor</emphasis> (class  <emphasis>Background</emphasis>)</term>
 <listitem>
 <para>This resource specifies the top shadow color of the <command>dtwm</command>
 decoration when the window is active (has the keyboard focus). The default
 is chosen based on the visual type of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>activeTopShadowPixmap</emphasis>&ensp;(class&ensp; <emphasis>TopShadowPixmap</emphasis>)</term>
+<varlistentry><term><emphasis>activeTopShadowPixmap</emphasis> (class  <emphasis>TopShadowPixmap</emphasis>)</term>
 <listitem>
 <para>This resource specifies the top shadow Pixmap of the <command>dtwm</command>
 decoration when the window is active (has the keyboard focus). The default
@@ -1079,7 +1079,7 @@ window.</para>
 <para>&dagger;The resource doubleClickTime is included for backward compatibility.
 Use of the Xt resource multiClickTime is preferred.</para>
 <variablelist>
-<varlistentry><term><emphasis>autoKeyFocus</emphasis>&ensp;(class&ensp; <emphasis>AutoKeyFocus</emphasis>)</term>
+<varlistentry><term><emphasis>autoKeyFocus</emphasis> (class  <emphasis>AutoKeyFocus</emphasis>)</term>
 <listitem>
 <para>This resource is available only when the keyboard input focus policy
 is explicit. If <emphasis>autoKeyFocus</emphasis> is given a value of True,
@@ -1090,7 +1090,7 @@ keyboard input focus. It is recommended that both <emphasis>autoKeyFocus</emphas
 tear off menus. The default value is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>autoRaiseDelay</emphasis>&ensp;(class&ensp; <emphasis>AutoRaiseDelay</emphasis>)</term>
+<varlistentry><term><emphasis>autoRaiseDelay</emphasis> (class  <emphasis>AutoRaiseDelay</emphasis>)</term>
 <listitem>
 <para>This resource is available only when the <emphasis>focusAutoRaise</emphasis>
 resource is True and the keyboard focus policy is pointer. The <emphasis>autoRaiseDelay</emphasis> resource specifies the amount of time (in milliseconds)
@@ -1098,7 +1098,7 @@ that <command>dtwm</command> will wait before raising a window after it gets
 the keyboard focus. The default value of this resource is 500 (ms).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>bitmapDirectory</emphasis>&ensp;(class&ensp; <emphasis>BitmapDirectory</emphasis>)</term>
+<varlistentry><term><emphasis>bitmapDirectory</emphasis> (class  <emphasis>BitmapDirectory</emphasis>)</term>
 <listitem>
 <para>This resource identifies a directory to be searched for bitmaps referenced
 by <command>dtwm</command> resources. This directory is searched if a bitmap
@@ -1109,7 +1109,7 @@ location of this directory may vary on some systems. If the bitmap is not
 found in the specified directory, <systemitem class="EnvironVar">XBMLANGPATH</systemitem> is searched.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>clientAutoPlace</emphasis>&ensp;(class&ensp; <emphasis>ClientAutoPlace</emphasis>)</term>
+<varlistentry><term><emphasis>clientAutoPlace</emphasis> (class  <emphasis>ClientAutoPlace</emphasis>)</term>
 <listitem>
 <para>This resource determines the position of a window when the window has
 not been given a program- or user-specified position. With a value of True,
@@ -1119,7 +1119,7 @@ of the window to be used. In either case, <command>dtwm</command> will attempt
 to place the windows totally on-screen. The default value is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>colormapFocusPolicy</emphasis>&ensp;(class&ensp; <emphasis>ColormapFocusPolicy</emphasis>)</term>
+<varlistentry><term><emphasis>colormapFocusPolicy</emphasis> (class  <emphasis>ColormapFocusPolicy</emphasis>)</term>
 <listitem>
 <para>This resource indicates the colormap focus policy that is to be used.
 If the resource value is explicit, a colormap selection action is done on
@@ -1129,7 +1129,7 @@ If the value is keyboard, the client window that has the keyboard input focus
 has the colormap focus. The default value for this resource is keyboard.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><symbol role="Variable">configFile</symbol>&ensp;(class&ensp; <emphasis>ConfigFile</emphasis>)</term>
+<varlistentry><term><symbol role="Variable">configFile</symbol> (class  <emphasis>ConfigFile</emphasis>)</term>
 <listitem>
 <para>The resource value is the pathname for a <command>dtwm</command> resource
 description file. If the pathname begins with "~/", <command>dtwm</command>
@@ -1146,14 +1146,14 @@ paths to find a configuration file. The order of the search is shown below: <lit
 implementation dependent.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>deiconifyKeyFocus</emphasis>&ensp;(class&ensp; <emphasis>DeiconifyKeyFocus</emphasis>)</term>
+<varlistentry><term><emphasis>deiconifyKeyFocus</emphasis> (class  <emphasis>DeiconifyKeyFocus</emphasis>)</term>
 <listitem>
 <para>This resource applies only when the keyboard input focus policy is explicit.
 If a value of True is used, a window receives the keyboard input focus when
 it is normalized (deiconified). True is the default value.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>doubleClickTime</emphasis>&ensp;(class&ensp; <emphasis>DoubleClickTime</emphasis>)</term>
+<varlistentry><term><emphasis>doubleClickTime</emphasis> (class  <emphasis>DoubleClickTime</emphasis>)</term>
 <listitem>
 <para>This resource is used to set the maximum time (in ms) between the clicks
 (button presses) that make up a double-click. The use of this resource is
@@ -1162,7 +1162,7 @@ The value of <emphasis>doubleClickTime</emphasis> dynamically defaults to
 the value of <emphasis>multiClickTime</emphasis>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>enableWarp</emphasis>&ensp;(class&ensp; <emphasis>EnableWarp</emphasis>)</term>
+<varlistentry><term><emphasis>enableWarp</emphasis> (class  <emphasis>EnableWarp</emphasis>)</term>
 <listitem>
 <para>The default value of this resource, True, causes <command>dtwm</command>
 to warp the pointer to the center of the selected window during keyboard-controlled
@@ -1170,7 +1170,7 @@ resize and move operations. Setting the value to False causes <command>dtwm</com
 the user explicitly moves it with the cursor keys or pointing device.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>enforceKeyFocus</emphasis>&ensp;(class&ensp; <emphasis>EnforceKeyFocus</emphasis>)</term>
+<varlistentry><term><emphasis>enforceKeyFocus</emphasis> (class  <emphasis>EnforceKeyFocus</emphasis>)</term>
 <listitem>
 <para>If this resource is given a value of True, the keyboard input focus
 is always explicitly set to selected windows even if there is an indication
@@ -1180,7 +1180,7 @@ client.) If the resource is False, the keyboard input focus is not explicitly
 set to globally active windows. The default value is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>frameStyle</emphasis>&ensp;(class&ensp; <emphasis>frameStyle</emphasis>)</term>
+<varlistentry><term><emphasis>frameStyle</emphasis> (class  <emphasis>frameStyle</emphasis>)</term>
 <listitem>
 <para>If this resource is given a value of "slab", the the window manager
 frame is drawn such that the client area appears to be at the same height
@@ -1189,7 +1189,7 @@ window frame is drawn such that the client area appears lower than the top
 of the window frame. The default value is "recessed".</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconAutoPlace</emphasis>&ensp;(class&ensp; <emphasis>IconAutoPlace</emphasis>)</term>
+<varlistentry><term><emphasis>iconAutoPlace</emphasis> (class  <emphasis>IconAutoPlace</emphasis>)</term>
 <listitem>
 <para>This resource indicates whether the window manager arranges icons in
 a particular area of the screen or places each icon where the window was when
@@ -1199,13 +1199,13 @@ The value False indicates that an icon is placed at the location of the window
 when it is iconified. The default is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconClick</emphasis>&ensp;(class&ensp; <emphasis>IconClick</emphasis>)</term>
+<varlistentry><term><emphasis>iconClick</emphasis> (class  <emphasis>IconClick</emphasis>)</term>
 <listitem>
 <para>When this resource is given the value of True, the system menu is posted
 and left posted when an icon is clicked. The default value is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>interactivePlacement</emphasis>&ensp;(class&ensp; <emphasis>InteractivePlacement</emphasis>)</term>
+<varlistentry><term><emphasis>interactivePlacement</emphasis> (class  <emphasis>InteractivePlacement</emphasis>)</term>
 <listitem>
 <para>This resource controls the initial placement of new windows on the screen.
 If the value is True, the pointer shape changes before a new window is placed
@@ -1215,7 +1215,7 @@ placed according to the initial window configuration attributes. The default
 value of this resource is False.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>keyboardFocusPolicy</emphasis>&ensp;(class&ensp; <emphasis>KeyboardFocusPolicy</emphasis>)</term>
+<varlistentry><term><emphasis>keyboardFocusPolicy</emphasis> (class  <emphasis>KeyboardFocusPolicy</emphasis>)</term>
 <listitem>
 <para>If set to pointer, the keyboard focus policy is to have the keyboard
 focus set to the client window that contains the pointer (the pointer could
@@ -1226,7 +1226,7 @@ or any part of the associated <command>dtwm</command> decoration. The default
 value for this resource is explicit.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>lowerOnIconify</emphasis>&ensp;(class&ensp; <emphasis>LowerOnIconify</emphasis>)</term>
+<varlistentry><term><emphasis>lowerOnIconify</emphasis> (class  <emphasis>LowerOnIconify</emphasis>)</term>
 <listitem>
 <para>If this resource is given the default value of True, a window's icon
 appears on the bottom of the window stack when the window is minimized (iconified).
@@ -1234,7 +1234,7 @@ A value of False places the icon in the stacking order at the same place as
 its associated window. The default value of this resource is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>marqueeSelectGranularity</emphasis>&ensp;(class&ensp; <emphasis>MarqueeSelectGranularity</emphasis>)</term>
+<varlistentry><term><emphasis>marqueeSelectGranularity</emphasis> (class  <emphasis>MarqueeSelectGranularity</emphasis>)</term>
 <listitem>
 <para>This resource determines how often changes in the marquee selection
 are reported to the file manager ( &cdeman.dtfile;). The marquee
@@ -1245,7 +1245,7 @@ to the file manager. A value of 0 (zero) means report every motion of the
 pointer. The default value of this resource is 0.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>moveThreshold</emphasis>&ensp;(class&ensp; <emphasis>MoveThreshold</emphasis>)</term>
+<varlistentry><term><emphasis>moveThreshold</emphasis> (class  <emphasis>MoveThreshold</emphasis>)</term>
 <listitem>
 <para>This resource is used to control the sensitivity of dragging operations
 that move windows and icons. The value of this resource is the number of pixels
@@ -1255,14 +1255,14 @@ double-click and there is unintentional pointer movement with the button down.
 The default value of this resource is 4 (pixels).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>multiScreen</emphasis>&ensp;(class&ensp; <emphasis>MultiScreen</emphasis>)</term>
+<varlistentry><term><emphasis>multiScreen</emphasis> (class  <emphasis>MultiScreen</emphasis>)</term>
 <listitem>
 <para>This resource, if True, causes <command>dtwm</command> to manage all
 the screens on the display. If False, <command>dtwm</command> manages only
 a single screen. The default value is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>passButtons</emphasis>&ensp;(class&ensp; <emphasis>PassButtons</emphasis>)</term>
+<varlistentry><term><emphasis>passButtons</emphasis> (class  <emphasis>PassButtons</emphasis>)</term>
 <listitem>
 <para>This resource indicates whether or not button press events are passed
 to clients after they are used to do a window manager function in the client
@@ -1272,7 +1272,7 @@ window. The window manager function is done in either case. The default value
 for this resource is False.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>passSelectButton</emphasis>&ensp;(class&ensp; <emphasis>PassSelectButton</emphasis>)</term>
+<varlistentry><term><emphasis>passSelectButton</emphasis> (class  <emphasis>PassSelectButton</emphasis>)</term>
 <listitem>
 <para>This resource indicates whether or not to pass the select button press
 events to clients after they are used to do a window manager function in the
@@ -1282,7 +1282,7 @@ to the client window. The window manager function is done in either case.
 The default value for this resource is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>positionIsFrame</emphasis>&ensp;(class&ensp; <emphasis>PositionIsFrame</emphasis>)</term>
+<varlistentry><term><emphasis>positionIsFrame</emphasis> (class  <emphasis>PositionIsFrame</emphasis>)</term>
 <listitem>
 <para>This resource indicates how client window position information (from
 the <emphasis>WM_NORMAL_HINTS</emphasis> property and from configuration requests)
@@ -1292,7 +1292,7 @@ value is False, it is interpreted as being the position of the client area
 of the window. The default value of this resource is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>positionOnScreen</emphasis>&ensp;(class&ensp; <emphasis>PositionOnScreen</emphasis>)</term>
+<varlistentry><term><emphasis>positionOnScreen</emphasis> (class  <emphasis>PositionOnScreen</emphasis>)</term>
 <listitem>
 <para>This resource is used to indicate that windows should initially be placed
 (if possible) so that they are not clipped by the edge of the screen (if the
@@ -1302,7 +1302,7 @@ value is False, windows are placed in the requested position even if totally
 off-screen. The default value of this resource is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>quitTimeout</emphasis>&ensp;(class&ensp; <emphasis>QuitTimeout</emphasis>)</term>
+<varlistentry><term><emphasis>quitTimeout</emphasis> (class  <emphasis>QuitTimeout</emphasis>)</term>
 <listitem>
 <para>This resource specifies the amount of time (in milliseconds) that <command>dtwm</command> will wait for a client to update the <emphasis>WM_COMMAND</emphasis>
 property after <command>dtwm</command> has sent the <property>WM_SAVE_YOURSELF</property> message. The default value of this resource is 1000 (ms). (Refer
@@ -1310,7 +1310,7 @@ to the <function>f.kill</function> function description for additional informati
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>raiseKeyFocus</emphasis>&ensp;(class&ensp; <emphasis>RaiseKeyFocus</emphasis>)</term>
+<varlistentry><term><emphasis>raiseKeyFocus</emphasis> (class  <emphasis>RaiseKeyFocus</emphasis>)</term>
 <listitem>
 <para>This resource is available only when the keyboard input focus policy
 is explicit. When set to True, this resource specifies that a window raised
@@ -1318,7 +1318,7 @@ by means of the <function>f.normalize_and_raise</function> function also receive
 the input focus. The default value of this resource is False.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>refreshByClearing</emphasis>&ensp;(class&ensp; <emphasis>RefreshByClearing</emphasis>)</term>
+<varlistentry><term><emphasis>refreshByClearing</emphasis> (class  <emphasis>RefreshByClearing</emphasis>)</term>
 <listitem>
 <para>This resource determines the mechanism used to refresh a window (or
 the screen) when the <function>f.refresh_win</function> (<function>f.refresh</function>) function is executed. When set to True, an XClearArea is performed
@@ -1331,7 +1331,7 @@ screen is created and destroyed. The default value of this resource is True.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>rootButtonClick</emphasis>&ensp;(class&ensp; <emphasis>RootButtonClick</emphasis>)</term>
+<varlistentry><term><emphasis>rootButtonClick</emphasis> (class  <emphasis>RootButtonClick</emphasis>)</term>
 <listitem>
 <para>The <emphasis>rootButtonClick</emphasis> resource controls whether the
 a click on the root window will post the root menu in a "sticky" mode. If
@@ -1344,7 +1344,7 @@ doesn't move between the button down and button up events. The default value
 for this resource is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><symbol role="Variable">screens</symbol>&ensp;(class&ensp; <emphasis>Screens</emphasis>)</term>
+<varlistentry><term><symbol role="Variable">screens</symbol> (class  <emphasis>Screens</emphasis>)</term>
 <listitem>
 <para>This resource specifies the resource names to use for the screens managed
 by <command>dtwm</command>. If <command>dtwm</command> is managing a single
@@ -1354,7 +1354,7 @@ starting with screen 0. Screen 0 gets the first name, screen 1 the second
 name, and so on. The default screen names are 0, 1, and so on.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>showFeedback</emphasis>&ensp;(class&ensp; <emphasis>ShowFeedback</emphasis>)</term>
+<varlistentry><term><emphasis>showFeedback</emphasis> (class  <emphasis>ShowFeedback</emphasis>)</term>
 <listitem>
 <para>This resource controls whether or not feedback windows or confirmation
 dialogs are displayed. A feedback window shows a client window's initial
@@ -1418,14 +1418,14 @@ and resize, and enables the dialog boxes to confirm the restart and set behavior
 functions. It disables feedback for the move function. The default value for
 this resource is all.</para>
 <variablelist>
-<varlistentry><term><emphasis>useFrontPanel</emphasis>&ensp;(class&ensp; <emphasis>UseFrontPanel</emphasis>)</term>
+<varlistentry><term><emphasis>useFrontPanel</emphasis> (class  <emphasis>UseFrontPanel</emphasis>)</term>
 <listitem>
 <para>This resource enables the display of the front panel if True. If set
 to False, the Front Panel will not be displayed. The default value is True.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>startupKeyFocus</emphasis>&ensp;(class&ensp; <emphasis>StartupKeyFocus</emphasis>)</term>
+<varlistentry><term><emphasis>startupKeyFocus</emphasis> (class  <emphasis>StartupKeyFocus</emphasis>)</term>
 <listitem>
 <para>This resource is available only when the keyboard input focus policy
 is explicit. When given the default value of True, a window gets the keyboard
@@ -1434,7 +1434,7 @@ manager). It is recommended that both <emphasis>autoKeyFocus</emphasis> and <emp
 value is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>wMenuButtonClick</emphasis>&ensp;(class&ensp; <emphasis>WMenuButtonClick</emphasis>)</term>
+<varlistentry><term><emphasis>wMenuButtonClick</emphasis> (class  <emphasis>WMenuButtonClick</emphasis>)</term>
 <listitem>
 <para>This resource indicates whether a click of the mouse when the pointer
 is over the window menu button posts and leaves posted the window menu. If
@@ -1442,7 +1442,7 @@ the value given this resource is True, the menu remains posted. True is the
 default value for this resource.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>wMenuButtonClick2</emphasis>&ensp;(class&ensp; <emphasis>WMenuButtonClick2</emphasis>)</term>
+<varlistentry><term><emphasis>wMenuButtonClick2</emphasis> (class  <emphasis>WMenuButtonClick2</emphasis>)</term>
 <listitem>
 <para>When this resource is given the default value of True, a double-click
 action on the window menu button does an <emphasis>f.kill function</emphasis>.
@@ -1592,14 +1592,14 @@ the key bindings to use for screen "1".</para>
 <entry align="left" valign="top">number</entry>
 <entry align="left" valign="top">1</entry></row></tbody></tgroup></informaltable>
 <variablelist>
-<varlistentry><term><emphasis>buttonBindings</emphasis>&ensp;(class&ensp; <emphasis>ButtonBindings</emphasis>)</term>
+<varlistentry><term><emphasis>buttonBindings</emphasis> (class  <emphasis>ButtonBindings</emphasis>)</term>
 <listitem>
 <para>This resource identifies the set of button bindings for window management
 functions. The named set of button bindings is specified in the <command>dtwm</command> resource description file. These button bindings are <literal>merged</literal> with the built-in default bindings. The default value for
 this resource is "DefaultButtonBindings".</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>cleanText</emphasis>&ensp;(class&ensp; <emphasis>CleanText</emphasis>)</term>
+<varlistentry><term><emphasis>cleanText</emphasis> (class  <emphasis>CleanText</emphasis>)</term>
 <listitem>
 <para>This resource controls the display of window manager text in the client
 title and feedback windows. If the default value of True is used, the text
@@ -1609,14 +1609,14 @@ in the area immediately around the text is cleared. If False, the text is
 drawn directly on top of the existing background.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>fadeNormalIcon</emphasis>&ensp;(class&ensp; <emphasis>FadeNormalIcon</emphasis>)</term>
+<varlistentry><term><emphasis>fadeNormalIcon</emphasis> (class  <emphasis>FadeNormalIcon</emphasis>)</term>
 <listitem>
 <para>If this resource is given a value of True, an icon is grayed out whenever
 it has been normalized (its window has been opened). The default value is
 False.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>feedbackGeometry</emphasis>&ensp;(class&ensp; <emphasis>FeedbackGeometry</emphasis>)</term>
+<varlistentry><term><emphasis>feedbackGeometry</emphasis> (class  <emphasis>FeedbackGeometry</emphasis>)</term>
 <listitem>
 <para>This resource sets the position of the move and resize feedback window.
 If this resource is not specified, the default is to place the feedback window
@@ -1624,14 +1624,14 @@ at the center of the screen. The value of the resource is a standard window
 geometry string with the following syntax: [<emphasis>=</emphasis>]{ <emphasis>+-</emphasis>}<literal>xoffset</literal>{<emphasis>+-</emphasis>} <literal>yoffset</literal>]</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>frameBorderWidth</emphasis>&ensp;(class&ensp; <emphasis>FrameBorderWidth</emphasis>)</term>
+<varlistentry><term><emphasis>frameBorderWidth</emphasis> (class  <emphasis>FrameBorderWidth</emphasis>)</term>
 <listitem>
 <para>This resource specifies the width (in pixels) of a client window frame
 border without resize handles. The border width includes the 3-D shadows.
 The default value is based on the size and resolution of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconBoxGeometry</emphasis>&ensp;(class&ensp; <emphasis>IconBoxGeometry</emphasis>)</term>
+<varlistentry><term><emphasis>iconBoxGeometry</emphasis> (class  <emphasis>IconBoxGeometry</emphasis>)</term>
 <listitem>
 <para>This resource indicates the initial position and size of the icon box.
 The value of the resource is a standard window geometry string with the following
@@ -1644,13 +1644,13 @@ is (6 * iconWidth + padding) wide by (1 * iconHeight + padding) high. The
 default value of the location is +0 -0.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconBoxName</emphasis>&ensp;(class&ensp; <emphasis>IconBoxName</emphasis>)</term>
+<varlistentry><term><emphasis>iconBoxName</emphasis> (class  <emphasis>IconBoxName</emphasis>)</term>
 <listitem>
 <para>This resource specifies the name that is used to look up icon box resources.
 The default name is iconbox.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconBoxSBDisplayPolicy</emphasis>&ensp;(class&ensp; <emphasis>IconBoxSBDisplayPolicy</emphasis>)</term>
+<varlistentry><term><emphasis>iconBoxSBDisplayPolicy</emphasis> (class  <emphasis>IconBoxSBDisplayPolicy</emphasis>)</term>
 <listitem>
 <para>This resource specifies the scroll bar display policy of the window
 manager in the icon box. The resource has three possible values: all, vertical,
@@ -1663,13 +1663,13 @@ and sets the orientation of the icon box to vertical (regardless of the iconBoxG
 specification).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconBoxTitle</emphasis>&ensp;(class&ensp; <emphasis>IconBoxTitle</emphasis>)</term>
+<varlistentry><term><emphasis>iconBoxTitle</emphasis> (class  <emphasis>IconBoxTitle</emphasis>)</term>
 <listitem>
 <para>This resource specifies the name that is used in the title area of the
 icon box frame. The default value is Icons.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconDecoration</emphasis>&ensp;(class&ensp; <emphasis>IconDecoration</emphasis>)</term>
+<varlistentry><term><emphasis>iconDecoration</emphasis> (class  <emphasis>IconDecoration</emphasis>)</term>
 <listitem>
 <para>This resource specifies the general icon decoration. The resource value
 is label (only the label part is displayed) or image (only the image part
@@ -1682,21 +1682,21 @@ has an active label part, a label part, and an image part (activelabel label
 image).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconImageMaximum</emphasis>&ensp;(class&ensp; <emphasis>IconImageMaximum</emphasis>)</term>
+<varlistentry><term><emphasis>iconImageMaximum</emphasis> (class  <emphasis>IconImageMaximum</emphasis>)</term>
 <listitem>
 <para>This resource specifies the maximum size of the icon image. The resource
 value is <literal>width</literal><symbol role="Variable">x</symbol> <literal>height</literal> (for example, 64x64). The maximum supported size is 128x128.
 The default value of this resource is 50x50.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconImageMinimum</emphasis>&ensp;(class&ensp; <emphasis>IconImageMinimum</emphasis>)</term>
+<varlistentry><term><emphasis>iconImageMinimum</emphasis> (class  <emphasis>IconImageMinimum</emphasis>)</term>
 <listitem>
 <para>This resource specifies the minimum size of the icon image. The resource
 value is <literal>width</literal><symbol role="Variable">x</symbol> <literal>height</literal> (for example, 32x50). The minimum supported size is 16x16.
 The default value of this resource is 16x16.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconPlacement</emphasis>&ensp;(class&ensp; <emphasis>IconPlacement</emphasis>)</term>
+<varlistentry><term><emphasis>iconPlacement</emphasis> (class  <emphasis>IconPlacement</emphasis>)</term>
 <listitem>
 <para>This resource specifies the icon placement scheme to be used. The resource
 value has the following syntax:</para>
@@ -1744,7 +1744,7 @@ added from the bottom of the screen to the top of the screen). A <literal>tight<
 value is useful for aesthetic reasons, as well as X-terminals with small screens.
 </para>
 <variablelist>
-<varlistentry><term><emphasis>iconPlacementMargin</emphasis>&ensp;(class&ensp; <emphasis>IconPlacementMargin</emphasis>)</term>
+<varlistentry><term><emphasis>iconPlacementMargin</emphasis> (class  <emphasis>IconPlacementMargin</emphasis>)</term>
 <listitem>
 <para>This resource sets the distance between the edge of the screen and the
 icons that are placed along the edge of the screen. The value should be greater
@@ -1754,7 +1754,7 @@ icons as they are placed on the screen (this space is based on maximizing
 the number of icons in each row and column).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>keyBindings</emphasis>&ensp;(class&ensp; <emphasis>KeyBindings</emphasis>)</term>
+<varlistentry><term><emphasis>keyBindings</emphasis> (class  <emphasis>KeyBindings</emphasis>)</term>
 <listitem>
 <para>This resource identifies the set of key bindings for window management
 functions. If specified, these key bindings <literal>replace</literal> the
@@ -1762,14 +1762,14 @@ built-in default bindings. The named set of key bindings is specified in <comman
 is "DefaultKeyBindings".</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>limitResize</emphasis>&ensp;(class&ensp; <emphasis>LimitResize</emphasis>)</term>
+<varlistentry><term><emphasis>limitResize</emphasis> (class  <emphasis>LimitResize</emphasis>)</term>
 <listitem>
 <para>If this resource is True, the user is not allowed to resize a window
 to greater than the maximum size. The default value for this resource is True.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>maximumMaximumSize</emphasis>&ensp;(class&ensp; <emphasis>MaximumMaximumSize</emphasis>)</term>
+<varlistentry><term><emphasis>maximumMaximumSize</emphasis> (class  <emphasis>MaximumMaximumSize</emphasis>)</term>
 <listitem>
 <para>This resource is used to limit the maximum size of a client window as
 set by the user or client. The resource value is <literal>width</literal><symbol role="Variable">x</symbol><literal>height</literal> (for example, 1024x1024)
@@ -1777,28 +1777,28 @@ where the width and height are in pixels. The default value of this resource
 is twice the screen width and height.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>moveOpaque</emphasis>&ensp;(class&ensp; <emphasis>MoveOpaque</emphasis>)</term>
+<varlistentry><term><emphasis>moveOpaque</emphasis> (class  <emphasis>MoveOpaque</emphasis>)</term>
 <listitem>
 <para>This resource controls whether the actual window is moved or a rectangular
 outline of the window is moved. A default value of False displays a rectangular
 outline on moves.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>resizeBorderWidth</emphasis>&ensp;(class&ensp; <emphasis>ResizeBorderWidth</emphasis>)</term>
+<varlistentry><term><emphasis>resizeBorderWidth</emphasis> (class  <emphasis>ResizeBorderWidth</emphasis>)</term>
 <listitem>
 <para>This resource specifies the width (in pixels) of a client window frame
 border with resize handles. The specified border width includes the 3-D shadows.
 The default value is based on the size and resolution of the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>resizeCursors</emphasis>&ensp;(class&ensp; <emphasis>ResizeCursors</emphasis>)</term>
+<varlistentry><term><emphasis>resizeCursors</emphasis> (class  <emphasis>ResizeCursors</emphasis>)</term>
 <listitem>
 <para>This is used to indicate whether the resize cursors are always displayed
 when the pointer is in the window size border. If True, the cursors are shown,
 otherwise the window manager cursor is shown. The default value is True.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>transientDecoration</emphasis>&ensp;(class&ensp; <emphasis>TransientDecoration</emphasis>)</term>
+<varlistentry><term><emphasis>transientDecoration</emphasis> (class  <emphasis>TransientDecoration</emphasis>)</term>
 <listitem>
 <para>This controls the amount of decoration that <command>dtwm</command>
 puts on transient windows. The decoration specification is exactly the same
@@ -1815,7 +1815,7 @@ resource. For more information see the description of <systemitem class="Resourc
 reference page.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>transientFunctions</emphasis>&ensp;(class&ensp; <emphasis>TransientFunctions</emphasis>)</term>
+<varlistentry><term><emphasis>transientFunctions</emphasis> (class  <emphasis>TransientFunctions</emphasis>)</term>
 <listitem>
 <para>This resource is used to indicate which window management functions
 are applicable (or not applicable) to transient windows. The function specification
@@ -1830,14 +1830,14 @@ resource. For more information see the description of <systemitem class="Resourc
 page.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>useIconBox</emphasis>&ensp;(class&ensp; <emphasis>UseIconBox</emphasis>)</term>
+<varlistentry><term><emphasis>useIconBox</emphasis> (class  <emphasis>UseIconBox</emphasis>)</term>
 <listitem>
 <para>If this resource is given a value of True, icons are placed in an icon
 box. When an icon box is not used, the icons are placed on the root window
 (default value).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>workspaceCount</emphasis>&ensp;(class&ensp; <emphasis>WorkspaceCount</emphasis>)</term>
+<varlistentry><term><emphasis>workspaceCount</emphasis> (class  <emphasis>WorkspaceCount</emphasis>)</term>
 <listitem>
 <para>This is the initial number of workspaces that <command>dtwm</command>
 reates when starting up. In the CDE, this resource should only appear in an
@@ -2012,7 +2012,7 @@ class.</para>
 <entry align="left" valign="top">DefaultWindowMenu</entry></row></tbody></tgroup>
 </informaltable>
 <variablelist>
-<varlistentry><term><emphasis>clientDecoration</emphasis>&ensp;(class&ensp; <emphasis>ClientDecoration</emphasis>)</term>
+<varlistentry><term><emphasis>clientDecoration</emphasis> (class  <emphasis>ClientDecoration</emphasis>)</term>
 <listitem>
 <para>This resource controls the amount of window frame decoration. The resource
 is specified as a list of decorations to specify their inclusion in the frame.
@@ -2070,7 +2070,7 @@ page.</para>
 windows. <emphasis>Dtwm*XClock.clientDecoration: menu minimize border</emphasis> This does the same thing as above. Note that either <symbol role="Variable">menu</symbol> or <symbol role="Variable">minimize</symbol> implies
 <symbol role="Variable">title</symbol>.</para>
 <variablelist>
-<varlistentry><term><emphasis>clientFunctions</emphasis>&ensp;(class&ensp; <emphasis>ClientFunctions</emphasis>)</term>
+<varlistentry><term><emphasis>clientFunctions</emphasis> (class  <emphasis>ClientFunctions</emphasis>)</term>
 <listitem>
 <para>This resource is used to indicate which <command>dtwm</command> functions
 are applicable (or not applicable) to the client window. The value for the
@@ -2124,7 +2124,7 @@ page.</para>
 </informaltable>
 <para>&dagger;See &cdeman.dtwmrc;.</para>
 <variablelist>
-<varlistentry><term><emphasis>focusAutoRaise</emphasis>&ensp;(class&ensp; <emphasis>FocusAutoRaise</emphasis>)</term>
+<varlistentry><term><emphasis>focusAutoRaise</emphasis> (class  <emphasis>FocusAutoRaise</emphasis>)</term>
 <listitem>
 <para>When the value of this resource is True, clients are raised when they
 get the keyboard input focus. If the value is False, the stacking of windows
@@ -2133,7 +2133,7 @@ The default value is True when the keyboardFocusPolicy is explicit and False
 when the keyboardFocusPolicy is pointer.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconImage</emphasis>&ensp;(class&ensp; <emphasis>IconImage</emphasis>)</term>
+<varlistentry><term><emphasis>iconImage</emphasis> (class  <emphasis>IconImage</emphasis>)</term>
 <listitem>
 <para>This resource can be used to specify an icon image for a client (for
 example, "Dtwm*myclock*iconImage"). The resource value is a pathname for a
@@ -2142,7 +2142,7 @@ images are used instead of client supplied icon images. The default value
 is to display a built-in window manager icon image.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconImageBackground</emphasis>&ensp;(class&ensp; <emphasis>Background</emphasis>)</term>
+<varlistentry><term><emphasis>iconImageBackground</emphasis> (class  <emphasis>Background</emphasis>)</term>
 <listitem>
 <para>This resource specifies the background color of the icon image that
 is displayed in the image part of an icon. The default value of this resource
@@ -2150,7 +2150,7 @@ is the icon background color (that is, specified by "Dtwm*background or Dtwm*ico
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconImageBottomShadowColor</emphasis>&ensp;(class&ensp; <emphasis>Foreground</emphasis>)</term>
+<varlistentry><term><emphasis>iconImageBottomShadowColor</emphasis> (class  <emphasis>Foreground</emphasis>)</term>
 <listitem>
 <para>This resource specifies the bottom shadow color of the icon image that
 is displayed in the image part of an icon. The default value of this resource
@@ -2158,7 +2158,7 @@ is the icon bottom shadow color (that is, specified by Dtwm*icon*bottomShadowCol
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconImageBottomShadowPixmap</emphasis>&ensp;(class&ensp; <emphasis>BottomShadowPixmap</emphasis>)</term>
+<varlistentry><term><emphasis>iconImageBottomShadowPixmap</emphasis> (class  <emphasis>BottomShadowPixmap</emphasis>)</term>
 <listitem>
 <para>This resource specifies the bottom shadow Pixmap of the icon image that
 is displayed in the image part of an icon. The default value of this resource
@@ -2166,14 +2166,14 @@ is the icon bottom shadow Pixmap (that is, specified by Dtwm*icon*bottomShadowPi
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconImageForeground</emphasis>&ensp;(class&ensp; <emphasis>Foreground</emphasis>)</term>
+<varlistentry><term><emphasis>iconImageForeground</emphasis> (class  <emphasis>Foreground</emphasis>)</term>
 <listitem>
 <para>This resource specifies the foreground color of the icon image that
 is displayed in the image part of an icon. The default value of this resource
 varies depending on the icon background.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconImageTopShadowColor</emphasis>&ensp;(class&ensp; <emphasis>Background</emphasis>)</term>
+<varlistentry><term><emphasis>iconImageTopShadowColor</emphasis> (class  <emphasis>Background</emphasis>)</term>
 <listitem>
 <para>This resource specifies the top shadow color of the icon image that
 is displayed in the image part of an icon. The default value of this resource
@@ -2181,7 +2181,7 @@ is the icon top shadow color (that is, specified by Dtwm*icon*topShadowColor).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>iconImageTopShadowPixmap</emphasis>&ensp;(class&ensp; <emphasis>TopShadowPixmap</emphasis>)</term>
+<varlistentry><term><emphasis>iconImageTopShadowPixmap</emphasis> (class  <emphasis>TopShadowPixmap</emphasis>)</term>
 <listitem>
 <para>This resource specifies the top shadow Pixmap of the icon image that
 is displayed in the image part of an icon. The default value of this resource
@@ -2189,55 +2189,55 @@ is the icon top shadow pixmap (that is, specified by Dtwm*icon*topShadowPixmap).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>matteBackground</emphasis>&ensp;&ensp;(class&ensp; <emphasis>Background</emphasis>)</term>
+<varlistentry><term><emphasis>matteBackground</emphasis>  (class  <emphasis>Background</emphasis>)</term>
 <listitem>
 <para>This resource specifies the background color of the matte, when <emphasis>matteWidth</emphasis> is positive. The default value of this resource is the
 client background color (that is, specified by "Dtwm*background or Dtwm*client*background).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>matteBottomShadowColor</emphasis>&ensp;(class&ensp; <emphasis>Foreground</emphasis>)</term>
+<varlistentry><term><emphasis>matteBottomShadowColor</emphasis> (class  <emphasis>Foreground</emphasis>)</term>
 <listitem>
 <para>This resource specifies the bottom shadow color of the matte, when <emphasis>matteWidth</emphasis> is positive. The default value of this resource is the
 client bottom shadow color (that is, specified by Dtwm*bottomShadowColor or
 Dtwm*client*bottomShadowColor).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>matteBottomShadowPixmap</emphasis>&ensp;(class&ensp; <emphasis>BottomShadowPixmap</emphasis>)</term>
+<varlistentry><term><emphasis>matteBottomShadowPixmap</emphasis> (class  <emphasis>BottomShadowPixmap</emphasis>)</term>
 <listitem>
 <para>This resource specifies the bottom shadow Pixmap of the matte, when <emphasis>matteWidth</emphasis> is positive. The default value of this resource is the
 client bottom shadow pixmap (that is, specified by Dtwm*bottomShadowPixmap
 or Dtwm*client*bottomShadowPixmap).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>matteForeground</emphasis>&ensp;(class&ensp; <emphasis>Foreground</emphasis>)</term>
+<varlistentry><term><emphasis>matteForeground</emphasis> (class  <emphasis>Foreground</emphasis>)</term>
 <listitem>
 <para>This resource specifies the foreground color of the matte, when <emphasis>matteWidth</emphasis> is positive. The default value of this resource is the
 client foreground color (that is, specified by Dtwm*foreground or Dtwm*client*foreground).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>matteTopShadowColor</emphasis>&ensp;(class&ensp; <emphasis>Background</emphasis>)</term>
+<varlistentry><term><emphasis>matteTopShadowColor</emphasis> (class  <emphasis>Background</emphasis>)</term>
 <listitem>
 <para>This resource specifies the top shadow color of the matte, when <emphasis>matteWidth</emphasis> is positive. The default value of this resource is the
 client top shadow color (that is, specified by Dtwm*topShadowColor or Dtwm*client*topShadowColor).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>matteTopShadowPixmap</emphasis>&ensp;(class&ensp; <emphasis>TopShadowPixmap</emphasis>)</term>
+<varlistentry><term><emphasis>matteTopShadowPixmap</emphasis> (class  <emphasis>TopShadowPixmap</emphasis>)</term>
 <listitem>
 <para>This resource specifies the top shadow pixmap of the matte, when <emphasis>matteWidth</emphasis> is positive. The default value of this resource is the
 client top shadow pixmap (that is, specified by "Dtwm*topShadowPixmap or Dtwm*client*topShadowPixmap).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>matteWidth</emphasis>&ensp;(class&ensp; <emphasis>MatteWidth</emphasis>)</term>
+<varlistentry><term><emphasis>matteWidth</emphasis> (class  <emphasis>MatteWidth</emphasis>)</term>
 <listitem>
 <para>This resource specifies the width of the optional matte. The default
 value is 0, which effectively disables the matte.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>maximumClientSize</emphasis>&ensp;(class&ensp; <emphasis>MaximumClientSize</emphasis>)</term>
+<varlistentry><term><emphasis>maximumClientSize</emphasis> (class  <emphasis>MaximumClientSize</emphasis>)</term>
 <listitem>
 <para>This resource is either a size specification or a direction that indicates
 how a client window is to be maximized. The resource value can be specified
@@ -2252,7 +2252,7 @@ the screen. When the maximum client size is not determined by the <emphasis>maxi
 resource value is used as a constraint on the maximum size.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>useClientIcon</emphasis>&ensp;(class&ensp; <emphasis>UseClientIcon</emphasis>)</term>
+<varlistentry><term><emphasis>useClientIcon</emphasis> (class  <emphasis>UseClientIcon</emphasis>)</term>
 <listitem>
 <para>If the value given for this resource is True, a client-supplied icon
 image takes precedence over a user-supplied icon image. The default value
@@ -2260,7 +2260,7 @@ is True, giving the client-supplied icon image higher precedence than the
 user-supplied icon image.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>usePPosition</emphasis>&ensp;(class&ensp; <emphasis>UsePPosition</emphasis>)</term>
+<varlistentry><term><emphasis>usePPosition</emphasis> (class  <emphasis>UsePPosition</emphasis>)</term>
 <listitem>
 <para>This resource specifies whether Dtwm honors program specified position <systemitem class="Constant">PPosition</systemitem> specified in the <emphasis>WM_NORMAL_HINTS</emphasis> property in the absence of an user specified position. Setting
 this resource to on, causes <command>dtwm</command> to always honor program
@@ -2270,7 +2270,7 @@ default value of nonzero cause <command>dtwm</command> to honor program specifie
 position other than (0,0).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>windowMenu</emphasis>&ensp;(class&ensp; <emphasis>WindowMenu</emphasis>)</term>
+<varlistentry><term><emphasis>windowMenu</emphasis> (class  <emphasis>WindowMenu</emphasis>)</term>
 <listitem>
 <para>This resource indicates the name of the menu pane that is posted when
 the window menu is popped up (usually by pressing button 1 on the window
@@ -2384,14 +2384,14 @@ configuration done through the style manager.</para>
 </informaltable>
 <para>&dagger;The default value depends on the display type.</para>
 <variablelist>
-<varlistentry><term><emphasis>colorSetId</emphasis>&ensp;(class&ensp; <emphasis>ColorSetId</emphasis>)</term>
+<varlistentry><term><emphasis>colorSetId</emphasis> (class  <emphasis>ColorSetId</emphasis>)</term>
 <listitem>
 <para>This resource specifies a color set to use for the backdrop. This is
 normally an integer from 1 to 8. The default value of this resource is display
 dependent.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><symbol role="Variable">image</symbol>&ensp;(class&ensp; <emphasis>Image</emphasis>)</term>
+<varlistentry><term><symbol role="Variable">image</symbol> (class  <emphasis>Image</emphasis>)</term>
 <listitem>
 <para>This resource specifies an image to use as the backdrop. If none is
 specified, then no backdrop image will be displayed and the root window of
@@ -2403,7 +2403,7 @@ is dependent on the search path used by &cdeman.XmGetPixmap;.
 The default value for this resource is none.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>imageBackground</emphasis>&ensp;(class&ensp; <emphasis>ImageBackground</emphasis>)</term>
+<varlistentry><term><emphasis>imageBackground</emphasis> (class  <emphasis>ImageBackground</emphasis>)</term>
 <listitem>
 <para>This resource specifies a color to use as the background color of the
 backdrop. If not specified, the color will default to a pixel value from the
@@ -2413,7 +2413,7 @@ of the color set for this workspace or the background color for bitonal displays
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>imageForeground</emphasis>&ensp;(class&ensp; <emphasis>ImageForeground</emphasis>)</term>
+<varlistentry><term><emphasis>imageForeground</emphasis> (class  <emphasis>ImageForeground</emphasis>)</term>
 <listitem>
 <para>This resource specifies a color to use as the foreground color of the
 backdrop. If not specified, the color will default to a pixel value from the <emphasis>colorSetId</emphasis> for this workspace. If this resource is specified, the
