@@ -89,7 +89,7 @@ widget for information on the resources that apply to that widget.</para>
 <para>The following information describes the environment variables that <command>dtksh</command> uses that are in addition to those documented in the manual
 page for the <command>sh</command> command language interpreter.</para>
 <refsect2>
-<title>Immediate Return Value (&hairsp;-&hairsp;)</title>
+<title>Immediate Return Value (-)</title>
 <para>Many of the category 3 commands (as described in <![ %CDE.C.CDE; [the <literal>Return Values From Built-in Commands</literal> section) ]]><![ %CDE.C.XO; [<xref
 role="5" linkend="XCSA.MAN6.anch.1">) ]]>return a single value using an environment
 variable specified as the first argument to the command (in the synopses for

@@ -49,43 +49,43 @@ standard/restricted command and programming language
 </RefSynopsisDiv>
 <RefSect1>
 <Title>DESCRIPTION</Title>
-<Para><Emphasis>Ksh&hairsp;</Emphasis> is a command and programming language
+<Para><Emphasis>Ksh</Emphasis> is a command and programming language
 that executes commands read from a terminal
 or a file.
-<Emphasis>Rksh&hairsp;</Emphasis> is a restricted version of the
+<Emphasis>Rksh</Emphasis> is a restricted version of the
 command interpreter
 <Emphasis>ksh</Emphasis>; it is used to set up login names and execution environments whose
 capabilities are more controlled than those of the standard shell.
 See
-<Emphasis>Invocation&hairsp;</Emphasis> below
+<Emphasis>Invocation</Emphasis> below
 for the meaning of arguments to the shell.
 </Para>
 <RefSect2>
 <Title>Definitions.</Title>
 <Para>A
-<Emphasis>metacharacter&hairsp;</Emphasis> is one of the following characters:
+<Emphasis>metacharacter</Emphasis> is one of the following characters:
 </Para>
 <Para><Literal>; &amp; &lpar; &rpar; &verbar; &lt; &gt; new-line space tab</Literal>
 </Para>
 <Para>A
-<Emphasis>blank&hairsp;</Emphasis> is a
+<Emphasis>blank</Emphasis> is a
 <Literal>tab</Literal> or a
 <Literal>space</Literal>. An
-<Emphasis>identifier&hairsp;</Emphasis> is a sequence of letters, digits, or underscores
+<Emphasis>identifier</Emphasis> is a sequence of letters, digits, or underscores
 starting with a letter or underscore.
 Identifiers are used as components of
-<Emphasis>variable&hairsp;</Emphasis> names.
+<Emphasis>variable</Emphasis> names.
 A
-<Emphasis>vname&hairsp;</Emphasis> is a sequence of one or more identifiers
+<Emphasis>vname</Emphasis> is a sequence of one or more identifiers
 separated by a. and optionally preceded
 by a ..
 Vnames are used as function and variable names.
 A
-<Emphasis>word&hairsp;</Emphasis> is a sequence of
-<Emphasis>characters&hairsp;</Emphasis> excluding non-quoted
+<Emphasis>word</Emphasis> is a sequence of
+<Emphasis>characters</Emphasis> excluding non-quoted
 <Emphasis>metacharacters</Emphasis>.</Para>
 <Para>A
-<Emphasis>command&hairsp;</Emphasis> is a sequence of characters in the syntax
+<Emphasis>command</Emphasis> is a sequence of characters in the syntax
 of the shell language.
 The shell reads each command and
 carries out the desired action either directly or by invoking
@@ -98,7 +98,7 @@ Built-ins that cause
 side effects in the shell environment and
 built-ins that are found before performing a
 path search (see
-<Emphasis>Execution&hairsp;</Emphasis> below)
+<Emphasis>Execution</Emphasis> below)
 are documented here.
 For historical reasons, some of
 these built-ins behave differently than
@@ -108,14 +108,14 @@ other built-ins and are called
 <RefSect2>
 <Title>Commands.</Title>
 <Para>A
-<Emphasis>simple-command&hairsp;</Emphasis> is a list of variable assignments
+<Emphasis>simple-command</Emphasis> is a list of variable assignments
 (see
-<Emphasis>Variable</Emphasis> <Emphasis>Assignments&hairsp;</Emphasis> below)
+<Emphasis>Variable</Emphasis> <Emphasis>Assignments</Emphasis> below)
 or a sequence of
-<Emphasis>blank&hairsp;</Emphasis> separated words
+<Emphasis>blank</Emphasis> separated words
 which may be preceded by a list of variable assignments
 (see
-<Emphasis>Environment&hairsp;</Emphasis> below).
+<Emphasis>Environment</Emphasis> below).
 The first word specifies the name of the command to
 be executed.
 Except as specified below,
@@ -124,13 +124,13 @@ to the invoked command.
 The command name is passed as argument 0
 (see
 <Emphasis>exec</Emphasis>(2)). The
-<Emphasis>value&hairsp;</Emphasis> of a simple-command is its exit status; 0-255
-if it terminates normally; 256+<Emphasis>signum&hairsp;</Emphasis> if
+<Emphasis>value</Emphasis> of a simple-command is its exit status; 0-255
+if it terminates normally; 256+<Emphasis>signum</Emphasis> if
 it terminates abnormally (the name of the signal corresponding
 to the exit status can be
 obtained via the
 <Literal>-l $?</Literal> option of the
-<Literal>kill&hairsp;</Literal> built-in utility).
+<Literal>kill</Literal> built-in utility).
 </Para>
 <Para>An
 <Emphasis>arithmetic command</Emphasis> begins with a
@@ -143,8 +143,8 @@ arithmetic expression evaluates to a non-zero value and
 is 1 when the arithmetic expression evaluates to 0.
 </Para>
 <Para>A
-<Emphasis>pipeline&hairsp;</Emphasis> is a sequence of one or more
-<Emphasis>commands&hairsp;</Emphasis> separated by
+<Emphasis>pipeline</Emphasis> is a sequence of one or more
+<Emphasis>commands</Emphasis> separated by
 <Literal>&verbar;</Literal>. The standard output of each command but the last
 is connected by a
 <Emphasis>pipe</Emphasis>(2) to the standard input of the next command.
@@ -158,7 +158,7 @@ Each pipeline can be preceded by the
 <Emphasis>reserved word</Emphasis> <Literal>!</Literal> which negates the exit status of the pipeline.
 </Para>
 <Para>A
-<Emphasis>list&hairsp;</Emphasis> is a sequence of one or more
+<Emphasis>list</Emphasis> is a sequence of one or more
 pipelines
 separated by
 <Literal>;</Literal>, <Literal>&amp;</Literal>, <Literal>&verbar;&amp;</Literal>, <Literal>&amp;&amp;</Literal>, or
@@ -175,7 +175,7 @@ which is lower than that of
 A semicolon
 (<Literal>;</Literal>) causes sequential execution of the preceding pipeline; an ampersand
 (<Literal>&amp;</Literal>) causes asynchronous execution of the preceding pipeline (i.e., the shell does
-<Emphasis>not&hairsp;</Emphasis> wait for that pipeline to finish).
+<Emphasis>not</Emphasis> wait for that pipeline to finish).
 The symbol
 <Literal>&verbar;&amp;</Literal> causes asynchronous execution of the preceding pipeline
 with a two-way pipe established to the parent shell;
@@ -191,16 +191,16 @@ the built-in commands
 <Literal>read</Literal> and
 <Literal>print</Literal> described later.
 The symbol
-<Literal>&amp;&amp;</Literal> (<Literal>&verbar;&verbar;</Literal>&hairsp;) causes the
-<Emphasis>list&hairsp;</Emphasis> following it to be executed only if the preceding
+<Literal>&amp;&amp;</Literal> (<Literal>&verbar;&verbar;</Literal>) causes the
+<Emphasis>list</Emphasis> following it to be executed only if the preceding
 pipeline
 returns a zero (non-zero) value.
 An arbitrary number of new-lines may appear in a
-<Emphasis>list&hairsp;</Emphasis> instead of a semicolon,
+<Emphasis>list</Emphasis> instead of a semicolon,
 to delimit a command.
 </Para>
 <Para>A
-<Emphasis>command&hairsp;</Emphasis> is either a simple-command
+<Emphasis>command</Emphasis> is either a simple-command
 or one of the following.
 Unless otherwise stated,
 the value returned by a command is that of the
@@ -208,18 +208,18 @@ last simple-command executed in the command.
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>for vname&hairsp; in word&hairsp; ... ;do list&hairsp; ;done</Term>
+<Term>for vname in word ... ;do list ;done</Term>
 <ListItem>
 <Para>Each time a
 <Literal>for</Literal> command is executed,
-<Emphasis>name&hairsp;</Emphasis> is set to the next
-<Emphasis>word&hairsp;</Emphasis> taken from the
-<Literal>in</Literal> <Emphasis>word&hairsp;</Emphasis> list.
+<Emphasis>name</Emphasis> is set to the next
+<Emphasis>word</Emphasis> taken from the
+<Literal>in</Literal> <Emphasis>word</Emphasis> list.
 If
-<Literal>in</Literal> <Emphasis>word&hairsp;</Emphasis> ...
+<Literal>in</Literal> <Emphasis>word</Emphasis> ...
 is omitted, then
 the
-<Literal>for</Literal> command executes the <Literal>do</Literal> <Emphasis>list&hairsp;</Emphasis> once for each positional parameter
+<Literal>for</Literal> command executes the <Literal>do</Literal> <Emphasis>list</Emphasis> once for each positional parameter
 that is set
 (see
 <Emphasis>Parameter Expansion</Emphasis> below).
@@ -228,7 +228,7 @@ Execution ends when there are no more words in the list.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>for (( expr1&hairsp;; expr2&hairsp;; expr3&hairsp; )) ;do list&hairsp; ;done</Term>
+<Term>for (( expr1; expr2; expr3 )) ;do list ;done</Term>
 <ListItem>
 <Para>The arithmetic expression
 <Emphasis>expr1</Emphasis> is evaluated first.
@@ -244,13 +244,13 @@ is omitted, then it behaves as if it evaluated to 1.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>select vname&hairsp; in word&hairsp; ... ;do list&hairsp; ;done</Term>
+<Term>select vname in word ... ;do list ;done</Term>
 <ListItem>
 <Para>A
 <Literal>select</Literal> command prints on standard error (file descriptor 2) the set of
 <Emphasis>word</Emphasis>s, each preceded by a number.
 If
-<Literal>in</Literal> <Emphasis>word&hairsp;</Emphasis> ...
+<Literal>in</Literal> <Emphasis>word</Emphasis> ...
 is omitted, then
 the
 positional parameters
@@ -263,22 +263,22 @@ and a line is read from the standard input.
 If this line consists of the number
 of one of the listed
 <Emphasis>word</Emphasis>s, then the value of the variable
-<Emphasis>vname&hairsp;</Emphasis> is set to the
-<Emphasis>word&hairsp;</Emphasis> corresponding to this number.
+<Emphasis>vname</Emphasis> is set to the
+<Emphasis>word</Emphasis> corresponding to this number.
 If this line is empty the selection list is
 printed again.
 Otherwise the value of the variable
-<Emphasis>vname&hairsp;</Emphasis> is set to
+<Emphasis>vname</Emphasis> is set to
 <Symbol Role="Variable">null</Symbol>. The contents of the line read from standard input is
 saved in
 the variable
 <Symbol>REPLY</Symbol>. The
-<Emphasis>list&hairsp;</Emphasis> is executed for each selection until a
-<Literal>break&hairsp;</Literal> or
-<Emphasis>end-of-file&hairsp;</Emphasis> is encountered.
+<Emphasis>list</Emphasis> is executed for each selection until a
+<Literal>break</Literal> or
+<Emphasis>end-of-file</Emphasis> is encountered.
 If the
 <Symbol>REPLY</Symbol> variable is set to
-<Emphasis>null&hairsp;</Emphasis> by the execution of
+<Emphasis>null</Emphasis> by the execution of
 <Symbol Role="Variable">list</Symbol>, then the selection list is printed before
 displaying the
 <Symbol>PS3</Symbol> prompt for the next selection.
@@ -286,16 +286,16 @@ displaying the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>case word&hairsp; in (pattern&hairsp; &verbar; pattern&hairsp; ...) list&hairsp; ;; ... esac</Term>
+<Term>case word in (pattern &verbar; pattern ...) list ;; ... esac</Term>
 <ListItem>
 <Para>A
 <Literal>case</Literal> command executes the
-<Emphasis>list&hairsp;</Emphasis> associated with the first
-<Emphasis>pattern&hairsp;</Emphasis> that matches
+<Emphasis>list</Emphasis> associated with the first
+<Emphasis>pattern</Emphasis> that matches
 <Emphasis>word</Emphasis>. The form of the patterns is
 the same as that used for
 file-name generation (see
-<Emphasis>File Name Generation&hairsp;</Emphasis> below).
+<Emphasis>File Name Generation</Emphasis> below).
 The
 <Literal>;;</Literal> operator causes execution of
 <Literal>case</Literal> to terminate.
@@ -306,28 +306,28 @@ If
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>if list&hairsp; ;then list&hairsp;</Term>
+<Term>if list ;then list</Term>
 <ListItem>
-<Para><Literal>elif</Literal> <Emphasis>list&hairsp;</Emphasis> <Literal>;then</Literal> <Emphasis>list&hairsp;</Emphasis> &str.CK; ...
-&str.OK; <Literal>;else</Literal> <Emphasis>list&hairsp;</Emphasis> &str.CK; <Literal>;fi</Literal>
+<Para><Literal>elif</Literal> <Emphasis>list</Emphasis> <Literal>;then</Literal> <Emphasis>list</Emphasis> &str.CK; ...
+&str.OK; <Literal>;else</Literal> <Emphasis>list</Emphasis> &str.CK; <Literal>;fi</Literal>
 The
-<Emphasis>list&hairsp;</Emphasis> following <Literal>if</Literal> is executed and,
+<Emphasis>list</Emphasis> following <Literal>if</Literal> is executed and,
 if it
 returns a zero exit status, the
-<Emphasis>list&hairsp;</Emphasis> following
+<Emphasis>list</Emphasis> following
 the first
 <Literal>then</Literal> is executed.
 Otherwise, the
-<Emphasis>list&hairsp;</Emphasis> following <Literal>elif</Literal>
+<Emphasis>list</Emphasis> following <Literal>elif</Literal>
 is executed and, if its value is zero,
 the
-<Emphasis>list&hairsp;</Emphasis> following
+<Emphasis>list</Emphasis> following
 the next
 <Literal>then</Literal> is executed.
 Failing that, the
-<Literal>else</Literal> <Emphasis>list&hairsp;</Emphasis> is executed.
+<Literal>else</Literal> <Emphasis>list</Emphasis> is executed.
 If the
-<Literal>if</Literal> <Emphasis>list&hairsp;</Emphasis> has non-zero exit status
+<Literal>if</Literal> <Emphasis>list</Emphasis> has non-zero exit status
 and there is no
 <Literal>else</Literal> <Symbol Role="Variable">list</Symbol>, then the
 <Literal>if</Literal> command returns a zero exit status.
@@ -335,21 +335,21 @@ and there is no
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>while list&hairsp; ;do list&hairsp; ;done</Term>
+<Term>while list ;do list ;done</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>until list&hairsp; ;do list&hairsp; ;done</Term>
+<Term>until list ;do list ;done</Term>
 <ListItem>
 <Para>A
 <Literal>while</Literal> command repeatedly executes the
-<Literal>while</Literal> <Emphasis>list&hairsp;</Emphasis> and, if the exit status of the last command in the list is zero, executes
+<Literal>while</Literal> <Emphasis>list</Emphasis> and, if the exit status of the last command in the list is zero, executes
 the
 <Literal>do</Literal> <Symbol Role="Variable">list</Symbol>; otherwise the loop terminates.
 If no commands in the
-<Literal>do</Literal> <Emphasis>list&hairsp;</Emphasis> are executed, then the
+<Literal>do</Literal> <Emphasis>list</Emphasis> are executed, then the
 <Literal>while</Literal> command returns a zero exit status;
 <Literal>until</Literal> may be used in place of
 <Literal>while</Literal> to negate
@@ -358,10 +358,10 @@ the loop termination test.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>(list&hairsp;)</Term>
+<Term>(list)</Term>
 <ListItem>
 <Para>Execute
-<Emphasis>list&hairsp;</Emphasis> in a separate environment.
+<Emphasis>list</Emphasis> in a separate environment.
 Note, that if two adjacent open parentheses are
 needed for nesting, a space must be inserted to avoid
 evaluation as an arithmetic command as described above.
@@ -369,9 +369,9 @@ evaluation as an arithmetic command as described above.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>{ list&hairsp;;}</Term>
+<Term>{ list;}</Term>
 <ListItem>
-<Para><Emphasis>list&hairsp;</Emphasis> is simply executed.
+<Para><Emphasis>list</Emphasis> is simply executed.
 Note that unlike the metacharacters
 <Literal>(</Literal> and
 <Literal>)</Literal>, <Literal>{</Literal> and
@@ -383,52 +383,52 @@ at the beginning of a line or after a
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[[ expression &hairsp;]]</Term>
+<Term>[[ expression ]]</Term>
 <ListItem>
 <Para>Evaluates
-<Emphasis>expression&hairsp;</Emphasis> and returns a zero exit status when
-<Emphasis>expression&hairsp;</Emphasis> is true.
+<Emphasis>expression</Emphasis> and returns a zero exit status when
+<Emphasis>expression</Emphasis> is true.
 See
-<Emphasis>Conditional Expressions&hairsp;</Emphasis> below, for a description of
+<Emphasis>Conditional Expressions</Emphasis> below, for a description of
 <Emphasis>expression</Emphasis>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>function varname&hairsp; { list&hairsp; ;}</Term>
+<Term>function varname { list ;}</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>varname&hairsp; () { list&hairsp; ;}</Term>
+<Term>varname () { list ;}</Term>
 <ListItem>
 <Para>Define a function which is referenced by
 <Emphasis>varname</Emphasis>. A function whose
-<Emphasis>varname&hairsp;</Emphasis> contains a
+<Emphasis>varname</Emphasis> contains a
 . is called a discipline function and the portion
 of the
-<Emphasis>varname&hairsp;</Emphasis> preceding the last
+<Emphasis>varname</Emphasis> preceding the last
 . must refer to an existing variable.
 The body of the function is the
-<Emphasis>list&hairsp;</Emphasis> of commands between
+<Emphasis>list</Emphasis> of commands between
 <Literal>{</Literal> and
-<Literal>}</Literal>. A function defined with the <Literal>function</Literal> <Emphasis>varname&hairsp;</Emphasis>
+<Literal>}</Literal>. A function defined with the <Literal>function</Literal> <Emphasis>varname</Emphasis>
 syntax can also be used as an argument to the.
 special built-in command to get the equivalent behavior
-as if the <Emphasis>varname&hairsp;</Emphasis><Literal>()</Literal> syntax were used to define it.
+as if the <Emphasis>varname</Emphasis><Literal>()</Literal> syntax were used to define it.
 (See
-<Emphasis>Functions&hairsp;</Emphasis> below.)
+<Emphasis>Functions</Emphasis> below.)
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>time pipeline&hairsp;</Term>
+<Term>time pipeline</Term>
 <ListItem>
-<Para>If <Emphasis>pipeline&hairsp;</Emphasis> is omitted the user and system time for
+<Para>If <Emphasis>pipeline</Emphasis> is omitted the user and system time for
 the current shell and completed child processes is printed
 on standard error.
 Otherwise,
-<Emphasis>pipeline&hairsp;</Emphasis> is executed and the elapsed time as well as
+<Emphasis>pipeline</Emphasis> is executed and the elapsed time as well as
 the user and system time are printed on standard error.
 </Para>
 <Para>The following reserved words
@@ -449,53 +449,53 @@ select time [[ ]] !</Literal>
 or can be an arguments to the
 <Literal>typeset</Literal>, <Literal>export</Literal>, or
 <Literal>readonly</Literal> special built-in commands.
-The syntax for an <Emphasis>assignment&hairsp;</Emphasis> is of the form:
+The syntax for an <Emphasis>assignment</Emphasis> is of the form:
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>varname&hairsp;=word&hairsp;</Term>
+<Term>varname=word</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>varname&hairsp;[word&hairsp;]=word&hairsp;</Term>
+<Term>varname[word]=word</Term>
 <ListItem>
-<Para>No space is permitted between <Emphasis>varname&hairsp;</Emphasis> and the <Literal>=</Literal> or
-between <Literal>=</Literal> and <Emphasis>word&hairsp;</Emphasis>.
+<Para>No space is permitted between <Emphasis>varname</Emphasis> and the <Literal>=</Literal> or
+between <Literal>=</Literal> and <Emphasis>word</Emphasis>.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>varname&hairsp;=(assign_list&hairsp;)</Term>
+<Term>varname=(assign_list)</Term>
 <ListItem>
-<Para>No space is permitted between <Emphasis>varname&hairsp;</Emphasis> and the <Literal>=</Literal>.
-An <Emphasis>assign_list&hairsp;</Emphasis> can be one of the following:
+<Para>No space is permitted between <Emphasis>varname</Emphasis> and the <Literal>=</Literal>.
+An <Emphasis>assign_list</Emphasis> can be one of the following:
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>word&hairsp; ...</Term>
+<Term>word ...</Term>
 <ListItem>
 <Para>Indexed array assignment.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>[word&hairsp;]=word&hairsp; ...</Term>
+<Term>[word]=word ...</Term>
 <ListItem>
 <Para>Associative array assignment.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>assignment&hairsp; ...</Term>
+<Term>assignment ...</Term>
 <ListItem>
 <Para>Nested variable assignment.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>typeset options assignment&hairsp; ...</Term>
+<Term>typeset options assignment ...</Term>
 <ListItem>
 <Para>Nested variable assignment. Multiple assignments
 can be specified by separating each of them with a <Literal>;</Literal>.
@@ -535,7 +535,7 @@ other than
 any that are in the process of being replaced,
 will be tested for aliases.
 If the last character of the alias value is a
-<Emphasis>blank&hairsp;</Emphasis> then the word following the alias will also be checked for alias
+<Emphasis>blank</Emphasis> then the word following the alias will also be checked for alias
 substitution.
 Aliases can be used to redefine
 built-in commands but cannot be used to redefine
@@ -544,7 +544,7 @@ Aliases can be created and listed with the
 <Literal>alias</Literal> command and can be removed with the
 <Literal>unalias</Literal> command.
 </Para>
-<Para><Emphasis>Aliasing&hairsp;</Emphasis> is performed when
+<Para><Emphasis>Aliasing</Emphasis> is performed when
 scripts are read,
 not while they are executed.
 Therefore,
@@ -610,8 +610,8 @@ but can be unset or redefined:
 <Para>After alias substitution is performed, each word
 is checked to see if it begins with an unquoted
 <Literal>&ap;</Literal>. For tilde substitution,
-<Emphasis>word&hairsp;</Emphasis> also refers to the
-<Emphasis>word&hairsp;</Emphasis> portion of parameter expansion
+<Emphasis>word</Emphasis> also refers to the
+<Emphasis>word</Emphasis> portion of parameter expansion
 ( see
 <Emphasis>Parameter Expansion</Emphasis> below.)
 If it does, then the word up to a
@@ -650,17 +650,17 @@ begins with a
 <Para>The standard output from a command enclosed in
 parentheses preceded by a dollar sign (
 <Literal>$()</Literal>)
-or a pair of grave accents (&hairsp;<Literal>&grave;&hairsp;&grave;</Literal>&hairsp;)
+or a pair of grave accents (<Literal>&grave;&grave;</Literal>)
 may be used as part or all
 of a word;
 trailing new-lines are removed.
 In the second (obsolete) form, the string between the quotes is processed
 for special quoting characters before the command is executed (see
-<Emphasis>Quoting&hairsp;</Emphasis> below).
+<Emphasis>Quoting</Emphasis> below).
 The command substitution
-&hairsp;<Literal>$(&hairsp;cat file&hairsp;)</Literal>&hairsp;
+<Literal>$(cat file)</Literal>
 can be replaced by the equivalent but faster
-&hairsp;<Literal>$(&hairsp;&lt;file&hairsp;)</Literal>&hairsp;.
+<Literal>$(&lt;file)</Literal>.
 </Para>
 </RefSect2>
 <RefSect2>
@@ -678,9 +678,9 @@ within the double parentheses.
 versions of the UNIX operating system that support the
 <Filename>/dev/fd</Filename> directory for naming open files.
 Each command argument of the form
-<Literal>&lt;(</Literal><Emphasis>list&hairsp;</Emphasis><Literal>)</Literal>
+<Literal>&lt;(</Literal><Emphasis>list</Emphasis><Literal>)</Literal>
 or
-<Literal>>(</Literal><Emphasis>list&hairsp;</Emphasis><Literal>)</Literal>
+<Literal>>(</Literal><Emphasis>list</Emphasis><Literal>)</Literal>
 will run process
 <Symbol Role="Variable">list</Symbol> asynchronously connected to some file in
 <Filename>/dev/fd</Filename>. The name of this file will become the argument to the command.
@@ -712,35 +712,35 @@ is a UNIX
 <RefSect2>
 <Title>Parameter Expansion.</Title>
 <Para>A
-<Emphasis>parameter&hairsp;</Emphasis> is an
+<Emphasis>parameter</Emphasis> is an
 <Symbol Role="Variable">variable</Symbol>, one or more digits,
 or any of the characters
 <Literal>&ast;</Literal>, <Literal>@</Literal>, <Literal>#</Literal>, <Literal>?</Literal>, <Literal>-</Literal>, <Literal>$</Literal>, and
 <Literal>!\&caret;</Literal>. A
-<Emphasis>variable&hairsp;</Emphasis> is denoted by a <Emphasis>vname</Emphasis>.
+<Emphasis>variable</Emphasis> is denoted by a <Emphasis>vname</Emphasis>.
 To create a variable whose
-<Emphasis>vname&hairsp;</Emphasis> contains a &period;,
+<Emphasis>vname</Emphasis> contains a &period;,
 a variable whose
-<Emphasis>vname&hairsp;</Emphasis> consists of everything before the last &period; must already exist.
+<Emphasis>vname</Emphasis> consists of everything before the last &period; must already exist.
 A
-<Emphasis>variable&hairsp;</Emphasis> has a
-<Emphasis>value&hairsp;</Emphasis> and zero or more
-<Emphasis>attributes</Emphasis>. <Emphasis>Variables&hairsp;</Emphasis> can be assigned
-<Emphasis>values&hairsp;</Emphasis> and
+<Emphasis>variable</Emphasis> has a
+<Emphasis>value</Emphasis> and zero or more
+<Emphasis>attributes</Emphasis>. <Emphasis>Variables</Emphasis> can be assigned
+<Emphasis>values</Emphasis> and
 <Emphasis>attributes</Emphasis> by using the
-<Literal>typeset&hairsp;</Literal> special built-in command.
+<Literal>typeset</Literal> special built-in command.
 The attributes supported by the shell are described
 later with the
-<Literal>typeset&hairsp;</Literal> special built-in command.
+<Literal>typeset</Literal> special built-in command.
 Exported variables pass values and attributes to
 the environment.
 </Para>
 <Para>The shell supports both indexed and associative arrays.
 An element of an array variable is referenced by a
 <Emphasis>subscript</Emphasis>. A
-<Emphasis>subscript&hairsp;</Emphasis> for an indexed array is denoted by
+<Emphasis>subscript</Emphasis> for an indexed array is denoted by
 an
-<Emphasis>arithmetic</Emphasis> <Emphasis>expression&hairsp;</Emphasis> (see
+<Emphasis>arithmetic</Emphasis> <Emphasis>expression</Emphasis> (see
 <Emphasis>Arithmetic evaluation</Emphasis> below)
 between a
 <Literal>[</Literal> and a
@@ -758,7 +758,7 @@ legal and an array will be created if necessary.
 <Para>An associative array is created with the
 <Literal>-A</Literal> option to
 <Literal>typeset.</Literal> A
-<Emphasis>subscript&hairsp;</Emphasis> for an associative array is denoted by
+<Emphasis>subscript</Emphasis> for an associative array is denoted by
 a string enclosed between
 <Literal>[</Literal> and
 <Literal>]</Literal>.</Para>
@@ -766,21 +766,21 @@ a string enclosed between
 is equivalent to referencing the array with subscript 0.
 </Para>
 <Para>The
-<Emphasis>value&hairsp;</Emphasis> of a
-<Emphasis>variable&hairsp;</Emphasis> may be assigned by writing:
+<Emphasis>value</Emphasis> of a
+<Emphasis>variable</Emphasis> may be assigned by writing:
 </Para>
-<Para><Emphasis>vname</Emphasis><Literal>=</Literal><Emphasis>value&hairsp;</Emphasis> &str.OK;
-<Emphasis>vname</Emphasis><Literal>=</Literal><Emphasis>value&hairsp;</Emphasis> &str.CK; ...
+<Para><Emphasis>vname</Emphasis><Literal>=</Literal><Emphasis>value</Emphasis> &str.OK;
+<Emphasis>vname</Emphasis><Literal>=</Literal><Emphasis>value</Emphasis> &str.CK; ...
 </Para>
 <Para>or
 </Para>
-<Para><Emphasis>vname</Emphasis><Literal>[</Literal><Emphasis>subscript</Emphasis><Literal>]=</Literal><Emphasis>value&hairsp;</Emphasis> &str.OK;
-<Emphasis>vname</Emphasis><Literal>[</Literal><Emphasis>subscript</Emphasis><Literal>]=</Literal><Emphasis>value&hairsp;</Emphasis> &str.CK; ...
+<Para><Emphasis>vname</Emphasis><Literal>[</Literal><Emphasis>subscript</Emphasis><Literal>]=</Literal><Emphasis>value</Emphasis> &str.OK;
+<Emphasis>vname</Emphasis><Literal>[</Literal><Emphasis>subscript</Emphasis><Literal>]=</Literal><Emphasis>value</Emphasis> &str.CK; ...
 </Para>
 <Para>Note that no space is allowed before or after the
 <Literal>=</Literal>.</Para>
 <Para>A
-<Emphasis>nameref&hairsp;</Emphasis> is a variable that is a reference to another variable.
+<Emphasis>nameref</Emphasis> is a variable that is a reference to another variable.
 A nameref is created with the
 <Literal>-n</Literal> attribute of
 <Literal>typeset</Literal>. The value of the variable at the time of the
@@ -808,12 +808,12 @@ name has been passed to the function.
 <Literal>-F</Literal>, or the integer attribute,
 <Literal>-i</Literal>, is set for
 <Emphasis>vname</Emphasis>, then the
-<Emphasis>value&hairsp;</Emphasis> is subject to arithmetic evaluation as described below.
+<Emphasis>value</Emphasis> is subject to arithmetic evaluation as described below.
 </Para>
 <Para>Positional parameters,
 parameters denoted by a number,
 may be assigned values with the
-<Literal>set&hairsp;</Literal> special built-in command.
+<Literal>set</Literal> special built-in command.
 Parameter
 <Literal>$0</Literal> is set from argument zero when the shell
 is invoked.
@@ -823,7 +823,7 @@ is invoked.
 <Emphasis>parameters</Emphasis>.</Para>
 <VariableList>
 <VarListEntry>
-<Term>${parameter&hairsp;}</Term>
+<Term>${parameter}</Term>
 <ListItem>
 <Para>The shell
 reads all the characters from
@@ -832,23 +832,23 @@ reads all the characters from
 braces or metacharacters.
 The value, if any, of the parameter is substituted.
 The braces are required when
-<Emphasis>parameter&hairsp;</Emphasis> is followed by a letter, digit, or underscore
+<Emphasis>parameter</Emphasis> is followed by a letter, digit, or underscore
 that is not to be interpreted as part of its name,
 when the variable name contains a .,
 or when a variable is subscripted.
 If
-<Emphasis>parameter&hairsp;</Emphasis> is one or more digits then it is a positional parameter.
+<Emphasis>parameter</Emphasis> is one or more digits then it is a positional parameter.
 A positional parameter of more than one digit must be
 enclosed in braces.
 If
-<Emphasis>parameter&hairsp;</Emphasis> is
+<Emphasis>parameter</Emphasis> is
 <Literal>&ast;</Literal> or
 <Literal>@</Literal>, then all the positional
 parameters, starting with
 <Literal>$1</Literal>, are substituted
 (separated by a field separator character).
 If an array
-<Emphasis>vname&hairsp;</Emphasis> with subscript
+<Emphasis>vname</Emphasis> with subscript
 <Literal>&ast;</Literal> or
 <Literal>@</Literal> is used,
 then the value
@@ -860,14 +860,14 @@ is substituted
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${#parameter&hairsp;}</Term>
+<Term>${#parameter}</Term>
 <ListItem>
 <Para>If
-<Emphasis>parameter&hairsp;</Emphasis> is
+<Emphasis>parameter</Emphasis> is
 <Literal>&ast;</Literal> or
 <Literal>@</Literal>, the number of positional parameters is substituted.
 Otherwise, the length of the value of the
-<Emphasis>parameter&hairsp;</Emphasis> is substituted.
+<Emphasis>parameter</Emphasis> is substituted.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -875,34 +875,34 @@ Otherwise, the length of the value of the
 <Term>${#vname[*]}</Term>
 <ListItem>
 <Para>The number of elements in the array
-<Emphasis>vname&hairsp;</Emphasis> is substituted.
+<Emphasis>vname</Emphasis> is substituted.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${!vname&hairsp;}</Term>
+<Term>${!vname}</Term>
 <ListItem>
 <Para>Expands to the name of the variable referred to by
 <Emphasis>vname</Emphasis>. This will be
-<Emphasis>vname&hairsp;</Emphasis> except when
-<Emphasis>vname&hairsp;</Emphasis> is a name reference.
+<Emphasis>vname</Emphasis> except when
+<Emphasis>vname</Emphasis> is a name reference.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${!vname&hairsp;[subscript&hairsp;]}</Term>
+<Term>${!vname[subscript]}</Term>
 <ListItem>
 <Para>Expands to name of the subscript unless
-<Emphasis>subscript&hairsp;</Emphasis> is
+<Emphasis>subscript</Emphasis> is
 <Literal>*</Literal>, or
 <Literal>@</Literal>. When
-<Emphasis>subscript&hairsp;</Emphasis> is
-<Literal>*</Literal>, the list of array subscripts for <Emphasis>vname&hairsp;</Emphasis>
+<Emphasis>subscript</Emphasis> is
+<Literal>*</Literal>, the list of array subscripts for <Emphasis>vname</Emphasis>
 is generated.
 For a variable that is not an array, the value is 0 if the variable
 is set. Otherwise it is null.
 When
-<Emphasis>subscript&hairsp;</Emphasis> is
+<Emphasis>subscript</Emphasis> is
 <Literal>@</Literal>, same as above, except that when used in double quotes,
 each array subscript yields a separate
 argument.
@@ -910,26 +910,26 @@ argument.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${!prefix&hairsp;*}</Term>
+<Term>${!prefix*}</Term>
 <ListItem>
 <Para>Expands to the names of the variables whose names begin with
 <Emphasis>prefix</Emphasis>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;:-word&hairsp;}</Term>
+<Term>${parameter:-word}</Term>
 <ListItem>
 <Para>If
-<Emphasis>parameter&hairsp;</Emphasis> is set and is non-null then substitute its value;
+<Emphasis>parameter</Emphasis> is set and is non-null then substitute its value;
 otherwise substitute
 <Emphasis>word</Emphasis>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;:=word&hairsp;}</Term>
+<Term>${parameter:=word}</Term>
 <ListItem>
 <Para>If
-<Emphasis>parameter&hairsp;</Emphasis> is not set or is null then set it to
+<Emphasis>parameter</Emphasis> is not set or is null then set it to
 <Emphasis>word</Emphasis>; the value of the parameter is then substituted.
 Positional parameters may not be assigned to
 in this way.
@@ -937,74 +937,74 @@ in this way.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;:?word&hairsp;}</Term>
+<Term>${parameter:?word}</Term>
 <ListItem>
 <Para>If
-<Emphasis>parameter&hairsp;</Emphasis> is set and is non-null then substitute its value;
+<Emphasis>parameter</Emphasis> is set and is non-null then substitute its value;
 otherwise, print
-<Emphasis>word&hairsp;</Emphasis> and exit from the shell.
+<Emphasis>word</Emphasis> and exit from the shell.
 If
-<Emphasis>word&hairsp;</Emphasis> is omitted then a standard message is printed.
+<Emphasis>word</Emphasis> is omitted then a standard message is printed.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;:+word&hairsp;}</Term>
+<Term>${parameter:+word}</Term>
 <ListItem>
 <Para>If
-<Emphasis>parameter&hairsp;</Emphasis> is set and is non-null then substitute
+<Emphasis>parameter</Emphasis> is set and is non-null then substitute
 <Emphasis>word</Emphasis>; otherwise substitute nothing.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;:offset&hairsp;:length&hairsp;}</Term>
+<Term>${parameter:offset:length}</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;:offset&hairsp;}</Term>
+<Term>${parameter:offset}</Term>
 <ListItem>
 <Para>Expands to the portion of the value of
-<Emphasis>parameter&hairsp;</Emphasis> starting at the character determined by expanding
-<Emphasis>offset&hairsp;</Emphasis> as an arithmetic expression and consisting of the
+<Emphasis>parameter</Emphasis> starting at the character determined by expanding
+<Emphasis>offset</Emphasis> as an arithmetic expression and consisting of the
 number of characters determined by the arithmetic expression
 defined by
 <Emphasis>length.</Emphasis> In the second form, the remainder of the value is used.
 If
-<Emphasis>parameter&hairsp;</Emphasis> is
+<Emphasis>parameter</Emphasis> is
 <Literal>&ast;</Literal> or
 <Literal>@</Literal>, or is an array name indexed by
 <Literal>&ast;</Literal> or
 <Literal>@</Literal>, then
-<Emphasis>offset&hairsp;</Emphasis> and
-<Emphasis>length&hairsp;</Emphasis> refer to the array index and number
+<Emphasis>offset</Emphasis> and
+<Emphasis>length</Emphasis> refer to the array index and number
 of elements respectively.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;#pattern&hairsp;}</Term>
+<Term>${parameter#pattern}</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;##pattern&hairsp;}</Term>
+<Term>${parameter##pattern}</Term>
 <ListItem>
 <Para>If
 the shell
-<Emphasis>pattern&hairsp;</Emphasis> matches the beginning of the value of
+<Emphasis>pattern</Emphasis> matches the beginning of the value of
 <Emphasis>parameter</Emphasis>, then the value of
 this expansion is the value of the
-<Emphasis>parameter&hairsp;</Emphasis> with the matched portion deleted;
+<Emphasis>parameter</Emphasis> with the matched portion deleted;
 otherwise the value of this
-<Emphasis>parameter&hairsp;</Emphasis> is substituted.
+<Emphasis>parameter</Emphasis> is substituted.
 In the first form the smallest matching pattern is deleted and in the
 second form the largest matching pattern is deleted.
 When
-<Emphasis>parameter&hairsp;</Emphasis> is
+<Emphasis>parameter</Emphasis> is
 <Literal>@</Literal>, <Literal>*</Literal>, or an array variable with subscript
 <Literal>@</Literal>, or
 <Literal>*</Literal>, the substring operation is applied to each element in turn.
@@ -1012,25 +1012,25 @@ When
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;%pattern&hairsp;}</Term>
+<Term>${parameter%pattern}</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;%%pattern&hairsp;}</Term>
+<Term>${parameter%%pattern}</Term>
 <ListItem>
 <Para>If
 the shell
-<Emphasis>pattern&hairsp;</Emphasis> matches the end of the value of
+<Emphasis>pattern</Emphasis> matches the end of the value of
 <Emphasis>parameter</Emphasis>, then the value of
 this expansion is the value of the
-<Emphasis>parameter&hairsp;</Emphasis> with the matched part deleted;
+<Emphasis>parameter</Emphasis> with the matched part deleted;
 otherwise substitute the value of
 <Emphasis>parameter</Emphasis>. In the first form the smallest matching pattern is deleted and in the
 second form the largest matching pattern is deleted.
 When
-<Emphasis>parameter&hairsp;</Emphasis> is
+<Emphasis>parameter</Emphasis> is
 <Literal>@</Literal>, <Literal>*</Literal>, or an array variable with subscript
 <Literal>@</Literal>, or
 <Literal>*</Literal>, the substring operation is applied to each element in turn.
@@ -1038,30 +1038,30 @@ When
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;/pattern&hairsp;/string&hairsp;}</Term>
+<Term>${parameter/pattern/string}</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>${parameter&hairsp;//pattern&hairsp;/string&hairsp;}</Term>
+<Term>${parameter//pattern/string}</Term>
 <ListItem>
 <Para>Expands
-<Emphasis>parameter&hairsp;</Emphasis> and replaces
-<Emphasis>pattern&hairsp;</Emphasis> with the given
+<Emphasis>parameter</Emphasis> and replaces
+<Emphasis>pattern</Emphasis> with the given
 <Emphasis>string.</Emphasis> In the first form,
 only the first occurrence of
-<Emphasis>pattern&hairsp;</Emphasis> is replaced.
+<Emphasis>pattern</Emphasis> is replaced.
 In the second form,
 each match for
-<Emphasis>pattern&hairsp;</Emphasis> is replaced by the given
+<Emphasis>pattern</Emphasis> is replaced by the given
 <Emphasis>string.</Emphasis> When
-<Emphasis>string&hairsp;</Emphasis> is null, the
-<Emphasis>pattern&hairsp;</Emphasis> will be deleted and the
+<Emphasis>string</Emphasis> is null, the
+<Emphasis>pattern</Emphasis> will be deleted and the
 <Filename>/</Filename> in front of
-<Emphasis>string&hairsp;</Emphasis> may be omitted.
+<Emphasis>string</Emphasis> may be omitted.
 When
-<Emphasis>parameter&hairsp;</Emphasis> is
+<Emphasis>parameter</Emphasis> is
 <Literal>@</Literal>, <Literal>*</Literal>, or an array variable with subscript
 <Literal>@</Literal>, or
 <Literal>*</Literal>, the substitution operation is applied to each element in turn.
@@ -1076,12 +1076,12 @@ so that, in the following example,
 <Literal>pwd</Literal> is executed only if
 <Literal>d</Literal> is not set or is null:
 </Para>
-<Para>print ${d:-&hairsp;$(&hairsp;pwd&hairsp;)&hairsp;}
+<Para>print ${d:-$(pwd)}
 </Para>
 <Para>If the colon (
 <Literal>:</Literal> <Literal>)</Literal> is omitted from the above expressions,
 then the shell only checks whether
-<Emphasis>parameter&hairsp;</Emphasis> is set or not.
+<Emphasis>parameter</Emphasis> is set or not.
 </Para>
 <Para>The following
 parameters
@@ -1165,7 +1165,7 @@ KEYBDtrap.
 <Para>The value is set to ESC when processing a
 KEYBDtrap while in
 <Literal>vi</Literal> insert mode. (See
-<Emphasis>Vi Editing Mode</Emphasis> <Emphasis>&hairsp;</Emphasis> below.)
+<Emphasis>Vi Editing Mode</Emphasis> <Emphasis></Emphasis> below.)
 Otherwise,
 <Literal>.sh.edmode</Literal> is null when processing a
 KEYBDtrap.
@@ -1342,7 +1342,7 @@ the pathname of the script that will be
 executed when the shell
 is invoked.
 (See
-<Emphasis>Invocation&hairsp;</Emphasis> below.)
+<Emphasis>Invocation</Emphasis> below.)
 This file is typically used for
 <Symbol Role="Variable">alias</Symbol> and
 <Symbol Role="Variable">function</Symbol> definitions.
@@ -1420,7 +1420,7 @@ the default editor name for the
 the value is the pathname of the file that will be
 used to store the command history.
 (See
-<Emphasis>Command re-entry&hairsp;</Emphasis> below.)
+<Emphasis>Command re-entry</Emphasis> below.)
 </Para>
 </ListItem>
 </VarListEntry>
@@ -1458,7 +1458,7 @@ LINESlines are filled.
 <Term>MAIL</Term>
 <ListItem>
 <Para>If this variable is set to the name of a mail file
-<Emphasis>and&hairsp;</Emphasis> the
+<Emphasis>and</Emphasis> the
 MAILPATHvariable is not set,
 then the shell informs the user of arrival of mail
 in the specified file.
@@ -1497,18 +1497,18 @@ and arithmetic substitution
 with the variable
 <Literal>$_</Literal> defined as the name of the file that has changed.
 The default message is
-<Emphasis>you</Emphasis> <Emphasis>have</Emphasis> <Emphasis>mail</Emphasis> <Symbol Role="Variable">in</Symbol> <Emphasis>$_&hairsp;.</Emphasis></Para>
+<Emphasis>you</Emphasis> <Emphasis>have</Emphasis> <Emphasis>mail</Emphasis> <Symbol Role="Variable">in</Symbol> <Emphasis>$_.</Emphasis></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
 <Term>PATH</Term>
 <ListItem>
 <Para>The search path for commands (see
-<Emphasis>Execution&hairsp;</Emphasis> below).
+<Emphasis>Execution</Emphasis> below).
 The user may not change
 <SystemItem Class="EnvironVar">PATH</SystemItem> if executing under
 <Literal>rksh</Literal> (except in
-<Literal>.profile&hairsp;).</Literal></Para>
+<Literal>.profile).</Literal></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
@@ -1519,8 +1519,8 @@ expansion, command substitution, and arithmetic substitution to define the
 primary prompt string which by default is
 ``<Literal>$</Literal>''. The character
 <Literal>!</Literal> in the primary prompt string is replaced by the
-<Emphasis>command&hairsp;</Emphasis> number (see
-<Emphasis>Command Re-entry</Emphasis> <Emphasis>&hairsp;</Emphasis> below).
+<Emphasis>command</Emphasis> number (see
+<Emphasis>Command Re-entry</Emphasis> <Emphasis></Emphasis> below).
 Two successive occurrences of
 <Literal>!</Literal> will produce a single
 <Literal>!</Literal> when the prompt string is printed.
@@ -1558,7 +1558,7 @@ If omitted, the execution trace prompt is
 <Term>SHELL</Term>
 <ListItem>
 <Para>The pathname of the
-<Emphasis>shell&hairsp;</Emphasis> is kept in the environment.
+<Emphasis>shell</Emphasis> is kept in the environment.
 At invocation, if the basename of this variable is
 <Literal>rsh</Literal>, <Literal>rksh</Literal>, or
 <Literal>krsh</Literal>, then the shell becomes restricted.
@@ -1601,7 +1601,7 @@ while
 <SystemItem Class="EnvironVar">HOME</SystemItem>, <SystemItem Class="EnvironVar">SHELL</SystemItem>, <Symbol>ENV</Symbol>, and
 <Symbol>MAIL</Symbol> are
 not set at all by the shell (although
-<SystemItem Class="EnvironVar">HOME</SystemItem> <Emphasis>is&hairsp;</Emphasis> set by
+<SystemItem Class="EnvironVar">HOME</SystemItem> <Emphasis>is</Emphasis> set by
 <Emphasis>login</Emphasis>(1)). On some systems
 <Symbol>MAIL</Symbol> and
 <SystemItem Class="EnvironVar">SHELL</SystemItem> are also
@@ -1614,19 +1614,19 @@ set by
 <Para>After parameter expansion and command substitution,
 the results of substitutions are scanned for the field separator
 characters (those found in
-<Literal>IFS&hairsp;</Literal>)
+<Literal>IFS</Literal>)
 and split into distinct fields where such characters are found.
-Explicit null fields (&hairsp;<Literal>"&hairsp;"</Literal> or <Literal>(fm&hairsp;(fm</Literal>&hairsp;) are retained.
+Explicit null fields (<Literal>""</Literal> or <Literal>(fm(fm</Literal>) are retained.
 Implicit null fields
 (those resulting from
-<Emphasis>parameters&hairsp;</Emphasis> that have no values or command substitutions with no output) are removed.
+<Emphasis>parameters</Emphasis> that have no values or command substitutions with no output) are removed.
 </Para>
 </RefSect2>
 <RefSect2>
 <Title>File Name Generation.</Title>
 <Para>Following splitting, each field is scanned for the characters
 <Literal>&ast;</Literal>, <Literal>?</Literal>, <Literal>(</Literal>, and
-<Literal>&str.OK;&hairsp;</Literal> unless the
+<Literal>&str.OK;</Literal> unless the
 <Literal>-f</Literal> option has been set.
 If one of these characters appears
 then the word is regarded as a
@@ -1673,21 +1673,21 @@ uses of pattern matching the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>&hairsp;...&hairsp;</Term>
+<Term>...</Term>
 <ListItem>
 <Para>Matches any one of the enclosed characters.
 A pair of characters separated by
 <Literal>-</Literal> matches any
 character lexically between the pair, inclusive.
 If the first character following the opening
-<Literal>&str.OK;&hairsp;</Literal> is a
+<Literal>&str.OK;</Literal> is a
 <Literal>!</Literal> then any character not enclosed is matched.
 A
 <Literal>-</Literal> can be included in the character set by putting it as the
 first or last character.
 Within
-<Literal>&str.OK;&hairsp;</Literal> and
-<Literal>&str.CK;&hairsp;</Literal> character classes can be specified with the syntax
+<Literal>&str.OK;</Literal> and
+<Literal>&str.CK;</Literal> character classes can be specified with the syntax
 <Literal>[:</Literal><Symbol Role="Variable">class</Symbol><Literal>:]</Literal>
 where class is one of the following:
 </Para>
@@ -1703,35 +1703,35 @@ with a
 </Para>
 <VariableList>
 <VarListEntry>
-<Term>?(pattern-list&hairsp;)</Term>
+<Term>?(pattern-list)</Term>
 <ListItem>
 <Para>Optionally matches any one of the given patterns.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>*(pattern-list&hairsp;)</Term>
+<Term>*(pattern-list)</Term>
 <ListItem>
 <Para>Matches zero or more occurrences of the given patterns.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>+(pattern-list&hairsp;)</Term>
+<Term>+(pattern-list)</Term>
 <ListItem>
 <Para>Matches one or more occurrences of the given patterns.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>@(pattern-list&hairsp;)</Term>
+<Term>@(pattern-list)</Term>
 <ListItem>
 <Para>Matches exactly one of the given patterns.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>!(pattern-list&hairsp;)</Term>
+<Term>!(pattern-list)</Term>
 <ListItem>
 <Para>Matches anything except one of the given patterns.
 </Para>
@@ -1742,18 +1742,18 @@ with a
 <RefSect2>
 <Title>Quoting.</Title>
 <Para>Each of the
-<Emphasis>metacharacters&hairsp;</Emphasis> listed earlier (see
-<Emphasis>Definitions&hairsp;</Emphasis> above)
+<Emphasis>metacharacters</Emphasis> listed earlier (see
+<Emphasis>Definitions</Emphasis> above)
 has a special meaning to the shell
 and causes termination of a word unless quoted.
 A character may be
-<Emphasis>quoted&hairsp;</Emphasis> (i.e., made to stand for itself)
+<Emphasis>quoted</Emphasis> (i.e., made to stand for itself)
 by preceding
 it with a
 <Literal>&bsol;</Literal>. The pair
 <Literal>&bsol;new-line</Literal> is removed.
 All characters enclosed between a pair of single quote marks
-(&hairsp;<Literal>&acute;&hairsp;&acute;</Literal>&hairsp;)
+(<Literal>&acute;&acute;</Literal>)
 that is not preceded by a
 <Literal>$</Literal> are quoted.
 A single quote cannot appear within the single quotes.
@@ -1765,7 +1765,7 @@ string to be ignored and
 <Literal>&bsol;E</Literal> is equivalent to the escape character
 (ascii
 <Literal>033</Literal>). Inside double quote marks
-(<Literal>"&hairsp;"</Literal>),
+(<Literal>""</Literal>),
 parameter and command substitution occur and
 <Literal>&bsol;</Literal> quotes the characters
 <Literal>&bsol;</Literal>, <Literal>&grave;</Literal>, <Literal>"</Literal>,
@@ -1782,9 +1782,9 @@ where
 <Symbol>IFS</Symbol> variable, whereas
 <Literal>"$@"
 is equivalent to</Literal> <Literal>"$1"</Literal> <Literal>"$2"
-...&hairsp;.
+....
 Inside grave quote marks
-(</Literal><Literal>&grave;&hairsp;&grave;</Literal>),
+(</Literal><Literal>&grave;&grave;</Literal>),
 <Literal>&bsol;</Literal> quotes the characters
 <Literal>&bsol;</Literal>, <Literal>&grave;</Literal>, and
 <Literal>$</Literal>. If the grave quotes occur within double quotes then
@@ -1804,19 +1804,19 @@ arithmetic substitution, to evaluate an arithmetic command,
 to evaluate an indexed array subscript,
 and to evaluate arguments to
 the built-in commands
-<Literal>shift&hairsp;</Literal> and
+<Literal>shift</Literal> and
 <Literal>let</Literal>. Evaluations are performed using
 double precision floating point
 arithmetic.
 Floating point constants follow the ANSI-C programming language
 conventions.
 Integer constants are of the form
-&str.OK;<Emphasis>base</Emphasis><Literal>#&hairsp;</Literal>&str.CK;<Emphasis>n&hairsp;</Emphasis>
+&str.OK;<Emphasis>base</Emphasis><Literal>#</Literal>&str.CK;<Emphasis>n</Emphasis>
 where
-<Emphasis>base&hairsp;</Emphasis> is a decimal number between two and sixty-four
+<Emphasis>base</Emphasis> is a decimal number between two and sixty-four
 representing the arithmetic base
 and
-<Emphasis>n&hairsp;</Emphasis> is a number in that base.
+<Emphasis>n</Emphasis> is a number in that base.
 The digits above 9 are represented
 by the lower case characters, the upper case characters,
 <Literal>@</Literal>, and
@@ -1824,7 +1824,7 @@ by the lower case characters, the upper case characters,
 For bases less than 36, upper and lower case
 character can be used interchangeably.
 If
-<Emphasis>base&hairsp;</Emphasis> is omitted
+<Emphasis>base</Emphasis> is omitted
 then base 10 is used.
 </Para>
 <Para>An arithmetic expression uses the same syntax, precedence, and
@@ -1845,10 +1845,10 @@ expression:
 <Para><Literal>abs acos asin atan cos cosh exp int log sin sinh sqrt tan tanh</Literal>
 </Para>
 <Para>An internal representation of a
-<Emphasis>variable&hairsp;</Emphasis> as a double precision floating point can be specified with the
-<Literal>-E</Literal> &str.OK;<Emphasis>n&hairsp;</Emphasis>&str.CK;
+<Emphasis>variable</Emphasis> as a double precision floating point can be specified with the
+<Literal>-E</Literal> &str.OK;<Emphasis>n</Emphasis>&str.CK;
 or
-<Literal>-F</Literal> &str.OK;<Emphasis>n&hairsp;</Emphasis>&str.CK;
+<Literal>-F</Literal> &str.OK;<Emphasis>n</Emphasis>&str.CK;
 option of the
 <Literal>typeset</Literal> special built-in command.
 The
@@ -1863,8 +1863,8 @@ The optional option argument
 <Symbol Role="Variable">n</Symbol> defines the number of places after the decimal point in this case.
 </Para>
 <Para>An internal integer representation of a
-<Emphasis>variable&hairsp;</Emphasis> can be specified with the
-<Literal>-i</Literal> &str.OK;<Emphasis>n&hairsp;</Emphasis>&str.CK;
+<Emphasis>variable</Emphasis> can be specified with the
+<Literal>-i</Literal> &str.OK;<Emphasis>n</Emphasis>&str.CK;
 option of the
 <Literal>typeset</Literal> special built-in command.
 The optional option argument
@@ -2131,7 +2131,7 @@ has permission to search in the directory.
 <Para>True, if
 <Symbol Role="Variable">string</Symbol> matches
 <Symbol Role="Variable">pattern</Symbol>. Any part of
-<Emphasis>pattern&hairsp;</Emphasis> can be quoted to cause it to be matched as a string.
+<Emphasis>pattern</Emphasis> can be quoted to cause it to be matched as a string.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -2277,12 +2277,12 @@ Used to group expressions.
 may be redirected using a special notation interpreted by the shell.
 The following may appear anywhere in a simple-command
 or may precede or follow a
-<Emphasis>command&hairsp;</Emphasis> and are
-<Emphasis>not&hairsp;</Emphasis> passed on to the invoked command.
+<Emphasis>command</Emphasis> and are
+<Emphasis>not</Emphasis> passed on to the invoked command.
 Command substitution, parameter expansion,
 and arithmetic substitution occur before
-<Emphasis>word&hairsp;</Emphasis> or
-<Emphasis>digit&hairsp;</Emphasis> is used except as noted below.
+<Emphasis>word</Emphasis> or
+<Emphasis>digit</Emphasis> is used except as noted below.
 File name generation
 occurs only if the shell is interactive and
 the pattern matches a single file,
@@ -2293,7 +2293,7 @@ Field splitting is not performed.
 <Term>&lt; word</Term>
 <ListItem>
 <Para>Use file
-<Emphasis>word&hairsp;</Emphasis> as standard input (file descriptor 0).
+<Emphasis>word</Emphasis> as standard input (file descriptor 0).
 </Para>
 </ListItem>
 </VarListEntry>
@@ -2301,7 +2301,7 @@ Field splitting is not performed.
 <Term>> word</Term>
 <ListItem>
 <Para>Use file
-<Emphasis>word&hairsp;</Emphasis> as standard output (file descriptor 1).
+<Emphasis>word</Emphasis> as standard output (file descriptor 1).
 If the file does not exist then it is created.
 If the file exists, and the
 <Literal>noclobber</Literal> option is on,
@@ -2323,7 +2323,7 @@ otherwise, it is truncated to zero length.
 <Term>>> word</Term>
 <ListItem>
 <Para>Use file
-<Emphasis>word&hairsp;</Emphasis> as standard output.
+<Emphasis>word</Emphasis> as standard output.
 If the file exists then output is appended to it (by first seeking to the end-of-file);
 otherwise, the file is created.
 </Para>
@@ -2333,7 +2333,7 @@ otherwise, the file is created.
 <Term>&lt;> word</Term>
 <ListItem>
 <Para>Open file
-<Emphasis>word&hairsp;</Emphasis> for reading and writing
+<Emphasis>word</Emphasis> for reading and writing
 as standard input.
 </Para>
 </ListItem>
@@ -2351,7 +2351,7 @@ called a
 <Emphasis>here-document</Emphasis>, becomes
 the standard input.
 If any character of
-<Emphasis>word&hairsp;</Emphasis> is quoted, then no interpretation
+<Emphasis>word</Emphasis> is quoted, then no interpretation
 is placed upon the characters of the document;
 otherwise, parameter expansion, command substitution, and arithmetic
 substitution occur,
@@ -2361,7 +2361,7 @@ and
 <Literal>&bsol;</Literal>, <Literal>$</Literal>, <Literal>&grave;</Literal>. If
 <Literal>-</Literal> is appended to
 <Literal>&lt;&lt;</Literal>, then all leading tabs are stripped from
-<Emphasis>word&hairsp;</Emphasis> and from the document.
+<Emphasis>word</Emphasis> and from the document.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -2371,7 +2371,7 @@ and
 <Para>The standard input is duplicated from file descriptor
 <Emphasis>digit</Emphasis> (see
 <Emphasis>dup</Emphasis>(2)). Similarly for the standard output using
-<Literal>>&amp;&hairsp;</Literal><Emphasis>digit</Emphasis>.
+<Literal>>&amp;</Literal><Emphasis>digit</Emphasis>.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -2413,15 +2413,15 @@ The shell evaluates each redirection in terms of the
 (<Emphasis>file descriptor</Emphasis>, <Symbol Role="Variable">file</Symbol>) association at the time of evaluation.
 For example:
 </Para>
-<Para>... 1><Emphasis>fname&hairsp;</Emphasis> 2>&amp;1
+<Para>... 1><Emphasis>fname</Emphasis> 2>&amp;1
 </Para>
 <Para>first associates file descriptor 1 with file
-<Emphasis>fname&hairsp;</Emphasis>. It then associates file descriptor 2 with the file associated with file
+<Emphasis>fname</Emphasis>. It then associates file descriptor 2 with the file associated with file
 descriptor 1 (i.e.
-<Emphasis>fname&hairsp;</Emphasis>). If the order of redirections were reversed, file descriptor 2 would be associated
+<Emphasis>fname</Emphasis>). If the order of redirections were reversed, file descriptor 2 would be associated
 with the terminal (assuming file descriptor 1 had been) and then file descriptor
 1 would be associated with file
-<Emphasis>fname&hairsp;</Emphasis>.</Para>
+<Emphasis>fname</Emphasis>.</Para>
 <Para>If a command is followed by
 <Literal>&amp;</Literal> and job control is not active,
 then the default standard input
@@ -2438,11 +2438,11 @@ input/output specifications.
 <RefSect2>
 <Title>Environment.</Title>
 <Para>The
-<Emphasis>environment&hairsp;</Emphasis> (see
+<Emphasis>environment</Emphasis> (see
 <Emphasis>environ</Emphasis>(7)) is a list of name-value pairs that is passed to
 an executed program in the same way as a normal argument list.
 The names must be
-<Emphasis>identifiers&hairsp;</Emphasis> and the values are character strings.
+<Emphasis>identifiers</Emphasis> and the values are character strings.
 The shell interacts with the environment in several ways.
 On invocation, the shell scans the environment
 and creates a
@@ -2466,7 +2466,7 @@ which must be noted in
 <Literal>typeset</Literal> <Literal>-x</Literal> commands.
 </Para>
 <Para>The environment for any
-<Emphasis>simple-command&hairsp;</Emphasis> or function
+<Emphasis>simple-command</Emphasis> or function
 may be augmented by prefixing it with one or more variable assignments.
 A variable assignment argument is a word of the form
 <Emphasis>identifier=value</Emphasis>. Thus:
@@ -2480,13 +2480,13 @@ TERM=450 cmd args
 (export TERM; TERM=450; cmd args)
 </programlisting>
 <Para>are equivalent (as far as the above execution of
-<Emphasis>cmd&hairsp;</Emphasis> is concerned except for special built-in commands listed below -
+<Emphasis>cmd</Emphasis> is concerned except for special built-in commands listed below -
 those that are
 preceded with a dagger).
 </Para>
 <Para>If the obsolete
 <Literal>-k</Literal> option is set,
-<Emphasis>all&hairsp;</Emphasis> variable assignment arguments are placed in the environment,
+<Emphasis>all</Emphasis> variable assignment arguments are placed in the environment,
 even if they occur after the command name.
 The following
 first prints
@@ -2509,9 +2509,9 @@ It is likely to disappear someday.
 <Para>For historical reasons, there are two
 ways to define functions,
 the
-<Symbol Role="Variable">name</Symbol><Literal>(&hairsp;)</Literal> syntax and
+<Symbol Role="Variable">name</Symbol><Literal>()</Literal> syntax and
 the
-<Literal>function</Literal> <Emphasis>name&hairsp;</Emphasis> syntax, described in the
+<Literal>function</Literal> <Emphasis>name</Emphasis> syntax, described in the
 <Emphasis>Commands</Emphasis> section above.
 Shell functions are read in and stored internally.
 Alias names are resolved when the function is read.
@@ -2546,7 +2546,7 @@ all functions it calls.
 Errors within functions return control to the caller.
 </Para>
 <Para>Functions defined with the
-<Symbol Role="Variable">name</Symbol><Literal>(&hairsp;)</Literal> syntax and functions defined with the
+<Symbol Role="Variable">name</Symbol><Literal>()</Literal> syntax and functions defined with the
 <Literal>function</Literal> <Symbol Role="Variable">name</Symbol> syntax that are invoked with the &period;
 special built-in
 are executed in the caller's
@@ -2717,7 +2717,7 @@ the
 are carried out.
 If the command name matches one
 of the
-<Emphasis>Special built-in Commands&hairsp;</Emphasis> listed below,
+<Emphasis>Special built-in Commands</Emphasis> listed below,
 it is executed within the
 current shell process.
 Next, the command name is checked to see if
@@ -2725,20 +2725,20 @@ it matches a user defined function.
 If it does,
 the positional parameters are saved
 and then reset to the arguments of the
-<Emphasis>function&hairsp;</Emphasis> call.
+<Emphasis>function</Emphasis> call.
 When the
-<Emphasis>function&hairsp;</Emphasis> completes or issues a
+<Emphasis>function</Emphasis> completes or issues a
 <Literal>return</Literal>, the positional parameter list is restored.
 For functions defined with the
-<Literal>function</Literal> <Emphasis>name&hairsp;</Emphasis> syntax,
+<Literal>function</Literal> <Emphasis>name</Emphasis> syntax,
 any trap set on
 <Symbol>EXIT</Symbol> within the function is executed.
 The value of a
-<Emphasis>function&hairsp;</Emphasis> is the value of the last command executed.
+<Emphasis>function</Emphasis> is the value of the last command executed.
 A function is also executed in the
 current shell process.
 If a command name is not a
-<Emphasis>special built-in command&hairsp;</Emphasis> or a user defined
+<Emphasis>special built-in command</Emphasis> or a user defined
 <Symbol Role="Variable">function</Symbol>, but it is one of the built-in commands listed below
 it is executed in the current shell process.
 </Para>
@@ -2798,7 +2798,7 @@ A shell can access the commands of
 all
 <Emphasis>interactive</Emphasis> shells which use the same named
 <Symbol>HISTFILE</Symbol>. The built-in command
-<Literal>hist&hairsp;</Literal> is used to list or
+<Literal>hist</Literal> is used to list or
 edit a portion of this file.
 The portion of the file to be edited or listed can be selected by
 number or by giving the first character or
@@ -2806,7 +2806,7 @@ characters of the command.
 A single command or range of commands can be specified.
 If you do not specify an editor program as
 an argument to
-<Literal>hist&hairsp;</Literal> then the value of the variable
+<Literal>hist</Literal> then the value of the variable
 <Symbol>HISTEDIT</Symbol> is used.
 If
 <Symbol>HISTEDIT</Symbol> is unset, the obsolete variable
@@ -3411,9 +3411,9 @@ If the line begins with a
 <Title>Vi Editing Mode.</Title>
 <Para>There are two typing modes.
 Initially, when you enter a command you are in the
-<Emphasis>input&hairsp;</Emphasis> mode.
+<Emphasis>input</Emphasis> mode.
 To edit, the user enters
-<Emphasis>control&hairsp;</Emphasis> mode by typing ESC
+<Emphasis>control</Emphasis> mode by typing ESC
 (<Literal>033</Literal>) and moves the cursor to the point needing correction and
 then inserts or deletes characters or words as needed.
 Most control commands accept an optional repeat
@@ -3431,7 +3431,7 @@ This scheme has the advantages of canonical processing with the type-ahead
 echoing of raw mode.
 </Para>
 <Para>If the option
-<Literal>viraw&hairsp;</Literal> is also set, the terminal will always have canonical processing
+<Literal>viraw</Literal> is also set, the terminal will always have canonical processing
 disabled.
 This mode is implicit for systems that do not support two
 alternate end of line delimiters,
@@ -3889,11 +3889,11 @@ replace characters on the screen with characters you type overlay fashion.
 <Term>[count]_</Term>
 <ListItem>
 <Para>Causes the
-<Emphasis>count&hairsp;</Emphasis> word of the previous command to be appended and
+<Emphasis>count</Emphasis> word of the previous command to be appended and
 input mode entered.
 The last word is used
 if
-<Emphasis>count&hairsp;</Emphasis> is omitted.
+<Emphasis>count</Emphasis> is omitted.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -3966,7 +3966,7 @@ Equivalent to
 <Para>Returns the command
 <Literal>hist -e ${VISUAL:-${EDITOR:-vi}}</Literal> <Emphasis>count</Emphasis> in the input buffer.
 If
-<Emphasis>count&hairsp;</Emphasis> is omitted, then the current line is used.
+<Emphasis>count</Emphasis> is omitted, then the current line is used.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -4042,7 +4042,7 @@ Except for
 <Literal>--</Literal> to indicate end of options.
 They also interpret the option
 <Literal>-?</Literal> as a help request and print a
-<Emphasis>usage&hairsp;</Emphasis> message
+<Emphasis>usage</Emphasis> message
 on standard error.
 Commands that are preceded by one or two -
 are special built-in commands and
@@ -4082,30 +4082,30 @@ performed.
 </OrderedList>
 <VariableList>
 <VarListEntry>
-<Term>-: arg&hairsp; ...</Term>
+<Term>-: arg ...</Term>
 <ListItem>
 <Para>The command only expands parameters.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- . name&hairsp; arg&hairsp; ...</Term>
+<Term>- . name arg ...</Term>
 <ListItem>
 <Para>If
-<Emphasis>name&hairsp;</Emphasis> is a function defined with the
-<Literal>function</Literal> <Emphasis>name&hairsp;</Emphasis> reserved word syntax,
+<Emphasis>name</Emphasis> is a function defined with the
+<Literal>function</Literal> <Emphasis>name</Emphasis> reserved word syntax,
 the function is executed in the current environment
 ( as if it had been defined with the
 <Symbol Role="Variable">name</Symbol><Literal>()</Literal> syntax.)
 Otherwise if
-<Emphasis>name&hairsp;</Emphasis> refers to a file, the
+<Emphasis>name</Emphasis> refers to a file, the
 file is read in its entirety and the commands are
 executed in the current shell environment.
 The search path
 specified by
 PATHis used to find the directory containing file.
 If any arguments
-<Emphasis>arg&hairsp;</Emphasis> are given,
+<Emphasis>arg</Emphasis> are given,
 they become the positional parameters while processing
 the
 . command and are restored upon completion.
@@ -4115,23 +4115,23 @@ The exit status is the exit status of the last command executed.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>-- alias -ptx name =value&hairsp; ...</Term>
+<Term>-- alias -ptx name =value ...</Term>
 <ListItem>
-<Para><Literal>alias&hairsp;</Literal> with no arguments prints the list of aliases
+<Para><Literal>alias</Literal> with no arguments prints the list of aliases
 in the form
-<Emphasis>name=value&hairsp;</Emphasis> on standard output.
+<Emphasis>name=value</Emphasis> on standard output.
 The
 <Literal>-p</Literal> option
 causes the word
 <Literal>alias</Literal> to be inserted before each one.
 When one or more arguments are given
 an
-<Emphasis>alias&hairsp;</Emphasis> is defined
+<Emphasis>alias</Emphasis> is defined
 for each
-<Emphasis>name&hairsp;</Emphasis> whose
-<Emphasis>value&hairsp;</Emphasis> is given.
+<Emphasis>name</Emphasis> whose
+<Emphasis>value</Emphasis> is given.
 A trailing space in
-<Emphasis>value&hairsp;</Emphasis> causes the next word to be checked for
+<Emphasis>value</Emphasis> causes the next word to be checked for
 alias substitution.
 The obsolete
 <Literal>-t</Literal> option is used to set and list tracked aliases.
@@ -4142,52 +4142,52 @@ corresponding to the given
 Without the
 <Literal>-t</Literal> option,
 for each
-<Emphasis>name&hairsp;</Emphasis> in the argument list
+<Emphasis>name</Emphasis> in the argument list
 for which no
-<Emphasis>value&hairsp;</Emphasis> is given, the name
+<Emphasis>value</Emphasis> is given, the name
 and value of the alias is printed.
 The obsolete
 <Literal>-x</Literal> option has no effect.
 The exit status is non-zero if a
-<Emphasis>name&hairsp;</Emphasis> is given, but no value, and no alias has been defined for the
-<Emphasis>name&hairsp;</Emphasis>.</Para>
+<Emphasis>name</Emphasis> is given, but no value, and no alias has been defined for the
+<Emphasis>name</Emphasis>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>bg job&hairsp;...</Term>
+<Term>bg job...</Term>
 <ListItem>
 <Para>This command is only on systems that support job control.
 Puts each specified
-<Emphasis>job&hairsp;</Emphasis> into the background.
+<Emphasis>job</Emphasis> into the background.
 The current job is put in the background
 if
-<Emphasis>job&hairsp;</Emphasis> is not specified.
+<Emphasis>job</Emphasis> is not specified.
 See
 <Emphasis>Jobs</Emphasis> for a description of the format of
 <Emphasis>job</Emphasis>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- break n&hairsp;</Term>
+<Term>- break n</Term>
 <ListItem>
 <Para>Exit from the enclosing
-<Literal>for&hairsp;</Literal>, <Literal>while&hairsp;</Literal>, <Literal>until&hairsp;</Literal>, or
-<Literal>select&hairsp;</Literal> loop, if any.
+<Literal>for</Literal>, <Literal>while</Literal>, <Literal>until</Literal>, or
+<Literal>select</Literal> loop, if any.
 If
-<Emphasis>n&hairsp;</Emphasis> is specified then break
-<Emphasis>n&hairsp;</Emphasis> levels.
+<Emphasis>n</Emphasis> is specified then break
+<Emphasis>n</Emphasis> levels.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>builtin -ds -f file&hairsp; name&hairsp; ...</Term>
+<Term>builtin -ds -f file name ...</Term>
 <ListItem>
 <Para>If
-<Emphasis>name&hairsp;</Emphasis> is not specified, the built-ins are printed on standard output.
+<Emphasis>name</Emphasis> is not specified, the built-ins are printed on standard output.
 The
 <Literal>-s</Literal> option prints only the special built-ins.
 Otherwise, each
-<Emphasis>name&hairsp;</Emphasis> represents the pathname whose basename is the name of the built-in.
+<Emphasis>name</Emphasis> represents the pathname whose basename is the name of the built-in.
 The entry point function name is determined by prepending
 <Literal>b_</Literal> to the built-in name.
 Special built-ins cannot be bound to a pathname or deleted.
@@ -4211,19 +4211,19 @@ error-checks the incoming arguments and then calls the real <function>funcName</
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>cd -LP arg&hairsp;</Term>
+<Term>cd -LP arg</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>cd -LP old&hairsp; new&hairsp;</Term>
+<Term>cd -LP old new</Term>
 <ListItem>
 <Para>This command can be in either of two forms.
 In the first form it
 changes the current directory to
 <Emphasis>arg</Emphasis>. If
-<Emphasis>arg&hairsp;</Emphasis> is
+<Emphasis>arg</Emphasis> is
 <Literal>-</Literal> the directory is changed to the previous
 directory.
 The shell
@@ -4265,25 +4265,25 @@ The last instance of
 <Literal>-P</Literal> determines which method is used.
 </Para>
 <Para>The
-<Literal>cd&hairsp;</Literal> command may not be executed by
-<Literal>rksh&hairsp;.</Literal></Para>
+<Literal>cd</Literal> command may not be executed by
+<Literal>rksh.</Literal></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>command -pvV name&hairsp; arg&hairsp; ...</Term>
+<Term>command -pvV name arg ...</Term>
 <ListItem>
 <Para>Without the
 <Literal>-v</Literal> or
 <Literal>-V</Literal> options,
 <Literal>command</Literal> executes
-<Emphasis>name&hairsp;</Emphasis> with the arguments given by
+<Emphasis>name</Emphasis> with the arguments given by
 <Emphasis>arg</Emphasis>. The
 <Literal>-p</Literal> option causes
 a default path to be searched
 rather than the one defined by the value of
 <SystemItem Class="EnvironVar">PATH</SystemItem>. Functions will not be searched for when finding
 <Symbol Role="Variable">name</Symbol>. In addition, if
-<Emphasis>name&hairsp;</Emphasis> refers to a special built-in,
+<Emphasis>name</Emphasis> refers to a special built-in,
 none of the special properties associated with the leading
 daggers will be honored.
 (
@@ -4301,19 +4301,19 @@ The
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- continue n&hairsp;</Term>
+<Term>- continue n</Term>
 <ListItem>
 <Para>Resume the next iteration of the enclosing
-<Literal>for&hairsp;</Literal>, <Literal>while&hairsp;</Literal>, <Literal>until&hairsp;</Literal>, or
-<Literal>select&hairsp;</Literal> loop.
+<Literal>for</Literal>, <Literal>while</Literal>, <Literal>until</Literal>, or
+<Literal>select</Literal> loop.
 If
-<Emphasis>n&hairsp;</Emphasis> is specified then resume at the
+<Emphasis>n</Emphasis> is specified then resume at the
 <Symbol Role="Variable">n</Symbol>-th enclosing loop.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>disown job&hairsp;...</Term>
+<Term>disown job...</Term>
 <ListItem>
 <Para>Causes the shell not to send a HUP signal to
 each given
@@ -4324,10 +4324,10 @@ when a login shell terminates.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>echo arg&hairsp; ...</Term>
+<Term>echo arg ...</Term>
 <ListItem>
 <Para>When the first
-<Emphasis>arg&hairsp;</Emphasis> does not begin with a -, and
+<Emphasis>arg</Emphasis> does not begin with a -, and
 none of the arguments contain a &bsol;,
 then
 <Literal>echo</Literal> prints each of its arguments separated by a space
@@ -4343,7 +4343,7 @@ See
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- eval arg&hairsp; ...</Term>
+<Term>- eval arg ...</Term>
 <ListItem>
 <Para>The arguments are read as input
 to the shell
@@ -4352,10 +4352,10 @@ and the resulting command(s) executed.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- exec -c -a name&hairsp; arg&hairsp; ...</Term>
+<Term>- exec -c -a name arg ...</Term>
 <ListItem>
 <Para>If
-<Emphasis>arg&hairsp;</Emphasis> is given,
+<Emphasis>arg</Emphasis> is given,
 the command specified by
 the arguments is executed in place of this shell
 without creating a new process.
@@ -4366,13 +4366,13 @@ variable assignments associated with the
 The
 <Literal>-a</Literal> option
 causes
-<Emphasis>name&hairsp;</Emphasis> rather than the first
+<Emphasis>name</Emphasis> rather than the first
 <Emphasis>arg</Emphasis>, to become
 <Literal>argv[0]</Literal> for the new process.
 Input/output arguments may appear and
 affect the current process.
 If
-<Emphasis>arg&hairsp;</Emphasis> is not given
+<Emphasis>arg</Emphasis> is not given
 the effect of this command is to
 modify file descriptors
 as prescribed by the input/output redirection list.
@@ -4384,13 +4384,13 @@ another program.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- exit n&hairsp;</Term>
+<Term>- exit n</Term>
 <ListItem>
 <Para>Causes the shell to exit
 with the exit status specified by
 <Symbol Role="Variable">n</Symbol>. The value will be the least significant 8 bits of the specified status.
 If
-<Emphasis>n&hairsp;</Emphasis> is omitted then the exit status is that of the last command executed.
+<Emphasis>n</Emphasis> is omitted then the exit status is that of the last command executed.
 An end-of-file will also cause the shell to exit
 except for a
 shell which has the
@@ -4400,10 +4400,10 @@ shell which has the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>-- export -p name&hairsp;=value&hairsp; ...</Term>
+<Term>-- export -p name=value ...</Term>
 <ListItem>
 <Para>If
-<Emphasis>name&hairsp;</Emphasis> is not given,
+<Emphasis>name</Emphasis> is not given,
 the names and values of each variable with
 the export attribute are printed with the values
 quoted in a manner that allows them to be re-inputed.
@@ -4414,16 +4414,16 @@ causes the word
 Otherwise, the given
 <Symbol Role="Variable">name</Symbol>s are marked for automatic
 export to the
-<Emphasis>environment&hairsp;</Emphasis> of subsequently-executed commands.
+<Emphasis>environment</Emphasis> of subsequently-executed commands.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>fg job&hairsp;...</Term>
+<Term>fg job...</Term>
 <ListItem>
 <Para>This command is only on systems that support job control.
 Each
-<Emphasis>job&hairsp;</Emphasis> specified is brought to the foreground and waited for in
+<Emphasis>job</Emphasis> specified is brought to the foreground and waited for in
 the specified order.
 Otherwise, the current job is
 brought into the foreground.
@@ -4433,14 +4433,14 @@ See
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>getconf name&hairsp; pathname&hairsp;</Term>
+<Term>getconf name pathname</Term>
 <ListItem>
 <Para>Prints the current value of the configuration parameter given by
 <Symbol Role="Variable">name</Symbol>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>getopts optstring vname&hairsp; arg&hairsp; ...</Term>
+<Term>getopts optstring vname arg ...</Term>
 <ListItem>
 <Para>Checks
 <Emphasis>arg</Emphasis> for legal options.
@@ -4460,7 +4460,7 @@ If a letter is followed by a
 The options can be separated from the argument by blanks.
 </Para>
 <Para><Literal>getopts
-places the next option letter it finds inside variable</Literal> <Emphasis>vname&hairsp;</Emphasis> each time it is invoked with a
+places the next option letter it finds inside variable</Literal> <Emphasis>vname</Emphasis> each time it is invoked with a
 <Literal>+</Literal> prepended when
 <Emphasis>arg</Emphasis> begins with a
 <Literal>+</Literal>. The index of the next
@@ -4490,22 +4490,22 @@ The exit status is non-zero when there are no more options.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>hist -e ename&hairsp;   -nlr&hairsp; first&hairsp; last&hairsp;</Term>
+<Term>hist -e ename   -nlr first last</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>hist -s old=new&hairsp; command&hairsp;</Term>
+<Term>hist -s old=new command</Term>
 <ListItem>
 <Para>In the first form,
 a range of commands from
-<Emphasis>first&hairsp;</Emphasis> to
-<Emphasis>last&hairsp;</Emphasis> is selected from the last
+<Emphasis>first</Emphasis> to
+<Emphasis>last</Emphasis> is selected from the last
 <Symbol>HISTSIZE</Symbol> commands that were typed at the terminal.
 The arguments
-<Emphasis>first&hairsp;</Emphasis> and
-<Emphasis>last&hairsp;</Emphasis> may be specified as a number or as a string.
+<Emphasis>first</Emphasis> and
+<Emphasis>last</Emphasis> may be specified as a number or as a string.
 A string is used to locate the most recent command starting with
 the given string.
 A negative number is used as an offset to the current command number.
@@ -4514,22 +4514,22 @@ If the
 is selected,
 the commands are listed on standard output.
 Otherwise, the editor program
-<Emphasis>ename&hairsp;</Emphasis> is invoked on a file containing these
+<Emphasis>ename</Emphasis> is invoked on a file containing these
 keyboard commands.
 If
-<Emphasis>ename&hairsp;</Emphasis> is not supplied, then the value of the variable
+<Emphasis>ename</Emphasis> is not supplied, then the value of the variable
 <Symbol>HISTEDIT</Symbol> is used.
 If
 <Symbol>HISTEDIT</Symbol> is not set then
 <Symbol>FCEDIT</Symbol> (default
-<Literal>/bin/ed&hairsp;</Literal>) is used as the editor.
+<Literal>/bin/ed</Literal>) is used as the editor.
 When editing is complete, the edited command(s)
 is executed if the changes have been saved.
 If
-<Emphasis>last&hairsp;</Emphasis> is not specified
+<Emphasis>last</Emphasis> is not specified
 then it will be set to
 <Symbol Role="Variable">first</Symbol>. If
-<Emphasis>first&hairsp;</Emphasis> is not specified
+<Emphasis>first</Emphasis> is not specified
 the default is the previous command
 for editing and -16 for listing.
 The option
@@ -4537,14 +4537,14 @@ The option
 the option
 <Literal>-n</Literal> suppresses command numbers when listing.
 In the second form the
-<Emphasis>command&hairsp;</Emphasis> is re-executed after the substitution
-<Emphasis>old&hairsp;</Emphasis><Literal>=</Literal><Emphasis>new&hairsp;</Emphasis>
+<Emphasis>command</Emphasis> is re-executed after the substitution
+<Emphasis>old</Emphasis><Literal>=</Literal><Emphasis>new</Emphasis>
 is performed.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>jobs -lnp&hairsp; job&hairsp; ...</Term>
+<Term>jobs -lnp job ...</Term>
 <ListItem>
 <Para>Lists information about each given job; or all active jobs if
 <Emphasis>job</Emphasis> is omitted.
@@ -4561,19 +4561,19 @@ See
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>kill -s signame&hairsp; job&hairsp; ...</Term>
+<Term>kill -s signame job ...</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>kill -n signum&hairsp; job&hairsp; ...</Term>
+<Term>kill -n signum job ...</Term>
 <ListItem>
 <Para></Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>kill -l sig&hairsp; ...</Term>
+<Term>kill -l sig ...</Term>
 <ListItem>
 <Para>Sends either the TERM (terminate) signal or the
 specified signal to the specified jobs or processes.
@@ -4591,25 +4591,25 @@ after the
 then the job or process will be sent a CONT (continue) signal
 if it is stopped.
 The argument
-<Emphasis>job&hairsp;</Emphasis> can be the process id of a process that is not a member of one of the
+<Emphasis>job</Emphasis> can be the process id of a process that is not a member of one of the
 active jobs.
 See
 <Emphasis>Jobs</Emphasis> for a description of the format of
 <Emphasis>job</Emphasis>. In the third form,
 <Literal>kill -l</Literal>, if
-<Emphasis>sig&hairsp;</Emphasis> is not specified,
+<Emphasis>sig</Emphasis> is not specified,
 the signal names are listed.
 Otherwise, for each
-<Emphasis>sig&hairsp;</Emphasis> that is a name, the corresponding signal number is listed.
+<Emphasis>sig</Emphasis> that is a name, the corresponding signal number is listed.
 For each
-<Emphasis>sig&hairsp;</Emphasis> that is a number, the signal name corresponding to the
+<Emphasis>sig</Emphasis> that is a number, the signal name corresponding to the
 least significant 8 bits of
-<Emphasis>sig&hairsp;</Emphasis> is listed.
+<Emphasis>sig</Emphasis> is listed.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>let arg&hairsp; ...</Term>
+<Term>let arg ...</Term>
 <ListItem>
 <Para>Each
 <Emphasis>arg</Emphasis> is a separate
@@ -4624,15 +4624,15 @@ is non-zero, and 1 otherwise.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- newgrp arg&hairsp; ...</Term>
+<Term>- newgrp arg ...</Term>
 <ListItem>
 <Para>Equivalent to
-<Literal>exec /bin/newgrp</Literal> <Emphasis>arg&hairsp;</Emphasis> ...&hairsp;.
+<Literal>exec /bin/newgrp</Literal> <Emphasis>arg</Emphasis> ....
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>print -Rnprs&hairsp; -u unit&hairsp; -f format&hairsp; arg&hairsp; ...</Term>
+<Term>print -Rnprs -u unit -f format arg ...</Term>
 <ListItem>
 <Para>With no options or with option
 <Literal>-</Literal> or
@@ -4739,20 +4739,20 @@ instead of standard output.
 The
 <Literal>-u</Literal> option can be used to specify a one digit
 file descriptor unit number
-<Emphasis>unit&hairsp;</Emphasis> on which the
+<Emphasis>unit</Emphasis> on which the
 output will be placed.
 The default is 1.
 If the option
 <Literal>-n</Literal> is used, no
-<Literal>new-line&hairsp;</Literal> is added to the output.
+<Literal>new-line</Literal> is added to the output.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>printf format&hairsp; arg&hairsp; ...</Term>
+<Term>printf format arg ...</Term>
 <ListItem>
 <Para>The arguments
-<Emphasis>arg&hairsp;</Emphasis> are printed on standard output
+<Emphasis>arg</Emphasis> are printed on standard output
 in accordance with the ANSI-C
 formatting rules associated with the format string
 <Symbol Role="Variable">format</Symbol>. The following extensions can also be used:
@@ -4762,14 +4762,14 @@ formatting rules associated with the format string
 <Para>A
 <Literal>%b</Literal> format can be used instead of
 <Literal>%s</Literal> to cause escape sequences in the corresponding
-<Emphasis>arg&hairsp;</Emphasis> to be expanded as described in
+<Emphasis>arg</Emphasis> to be expanded as described in
 <Literal>print.</Literal></Para>
 </ListItem>
 <ListItem>
 <Para>A
 <Literal>%P</Literal> format can be used instead of
 <Literal>%s</Literal> to cause
-<Emphasis>arg&hairsp;</Emphasis> to be interpreted as an extended regular
+<Emphasis>arg</Emphasis> to be interpreted as an extended regular
 expression and be printed as a shell pattern.
 </Para>
 </ListItem>
@@ -4801,7 +4801,7 @@ all symbolic links are resolved from the name.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>read -Aprs&hairsp; -d delim&hairsp; -t timeout&hairsp; -u unit&hairsp; vname?prompt&hairsp; vname&hairsp; ...</Term>
+<Term>read -Aprs -d delim -t timeout -u unit vname?prompt vname ...</Term>
 <ListItem>
 <Para>The shell input mechanism.
 One line is read and
@@ -4813,7 +4813,7 @@ character and for line continuation.
 The
 <Literal>-d</Literal> option
 causes the read to continue to the first character of
-<Emphasis>delim&hairsp;</Emphasis> rather than new-line.
+<Emphasis>delim</Emphasis> rather than new-line.
 In raw mode,
 <Literal>-r,</Literal> the
 <Literal>&bsol;</Literal> character is not treated specially.
@@ -4824,7 +4824,7 @@ to the second
 <Emphasis>vname</Emphasis>, etc., with leftover fields assigned to the last
 <Emphasis>vname</Emphasis>. The
 <Literal>-A</Literal> option causes the variable
-<Emphasis>vname&hairsp;</Emphasis> to be unset and each field that is read to be stored in
+<Emphasis>vname</Emphasis> to be unset and each field that is read to be stored in
 successive elements of the indexed array
 <Emphasis>vname.</Emphasis> The
 <Literal>-p</Literal> option causes the input line
@@ -4837,23 +4837,23 @@ the input will be saved as a command in the history file.
 The option
 <Literal>-u</Literal> can be used to specify a one digit file
 descriptor unit
-<Emphasis>unit&hairsp;</Emphasis> to read from.
+<Emphasis>unit</Emphasis> to read from.
 The file descriptor can be opened with the
-<Literal>exec&hairsp;</Literal> special built-in command.
+<Literal>exec</Literal> special built-in command.
 The default value of unit
-<Emphasis>n&hairsp;</Emphasis> is 0.
+<Emphasis>n</Emphasis> is 0.
 The option
 <Literal>-t</Literal> is used to specify a timeout in decimal
 seconds when reading from a terminal or pipe.
 If
-<Emphasis>vname&hairsp;</Emphasis> is omitted then
+<Emphasis>vname</Emphasis> is omitted then
 <Symbol>REPLY</Symbol> is used as the default
 <Emphasis>vname</Emphasis>. An end-of-file with the
 <Literal>-p</Literal> option causes cleanup for this process
 so that another can be spawned.
 If the first argument contains a
 <Literal>?</Literal>, the remainder of this word is used as a
-<Emphasis>prompt&hairsp;</Emphasis> on standard error
+<Emphasis>prompt</Emphasis> on standard error
 when the shell is interactive.
 The exit status is 0 unless an end-of-file is encountered
 or read has timed out.
@@ -4861,10 +4861,10 @@ or read has timed out.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>-- readonly -p vname=value&hairsp; ...</Term>
+<Term>-- readonly -p vname=value ...</Term>
 <ListItem>
 <Para>If
-<Emphasis>vname&hairsp;</Emphasis> is not given
+<Emphasis>vname</Emphasis> is not given
 the names and values of each variable with
 the readonly attribute is printed with the values
 quoted in a manner that allows them to be re-inputed.
@@ -4881,7 +4881,7 @@ by subsequent assignment.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- return n&hairsp;</Term>
+<Term>- return n</Term>
 <ListItem>
 <Para>Causes a shell
 <Symbol Role="Variable">function</Symbol> or
@@ -4891,7 +4891,7 @@ to the invoking script
 with the return status specified by
 <Symbol Role="Variable">n</Symbol>. The value will be the least significant 8 bits of the specified status.
 If
-<Emphasis>n&hairsp;</Emphasis> is omitted then the return status is that of the last command executed.
+<Emphasis>n</Emphasis> is omitted then the return status is that of the last command executed.
 If
 <Literal>return</Literal> is invoked while not in a
 <Symbol Role="Variable">function</Symbol> or a
@@ -4902,7 +4902,7 @@ then it behaves the same as
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- set &plusmn;CPabefhkmnopstuvx &plusmn;o option&hairsp; ... &plusmn;A vname&hairsp; arg&hairsp; ...</Term>
+<Term>- set &plusmn;CPabefhkmnopstuvx &plusmn;o option ... &plusmn;A vname arg ...</Term>
 <ListItem>
 <Para>The options for this command have meaning as follows:
 </Para>
@@ -5158,7 +5158,7 @@ The command
 <Term>vi</Term>
 <ListItem>
 <Para>Puts you in insert mode of a
-<Emphasis>vi&hairsp;</Emphasis> style in-line editor
+<Emphasis>vi</Emphasis> style in-line editor
 until you hit escape character
 <Literal>033</Literal>. This puts you in control mode.
 A return sends the line.
@@ -5170,7 +5170,7 @@ A return sends the line.
 <ListItem>
 <Para>Each character is processed as it is typed
 in
-<Emphasis>vi&hairsp;</Emphasis> mode.
+<Emphasis>vi</Emphasis> mode.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -5248,7 +5248,7 @@ set to the real uid and gid.
 </Para>
 <Para>As an obsolete feature,
 if the first
-<Emphasis>arg&hairsp;</Emphasis> is
+<Emphasis>arg</Emphasis> is
 <Literal>-</Literal> then the
 <Literal>-x</Literal> and
 <Literal>-v</Literal> options are turned off and the next
@@ -5262,7 +5262,7 @@ The current set of options may be found in
 <Literal>-A</Literal> is specified,
 the remaining arguments are positional
 parameters and are assigned, in order, to
-<Literal>$1</Literal> <Literal>$2</Literal> ...&hairsp;.
+<Literal>$1</Literal> <Literal>$2</Literal> ....
 If no arguments are given then the names and values
 of all variables are printed on the standard output.
 </Para>
@@ -5272,23 +5272,23 @@ of all variables are printed on the standard output.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- shift n&hairsp;</Term>
+<Term>- shift n</Term>
 <ListItem>
 <Para>The positional parameters from
 <Literal>$</Literal><Symbol Role="Variable">n</Symbol><Literal>+1</Literal>
 ...
 are renamed
-<Literal>$1</Literal> ...&hairsp;
+<Literal>$1</Literal> ...
 , default
-<Emphasis>n&hairsp;</Emphasis> is 1.
+<Emphasis>n</Emphasis> is 1.
 The parameter
-<Emphasis>n&hairsp;</Emphasis> can be any arithmetic expression that evaluates to a non-negative
+<Emphasis>n</Emphasis> can be any arithmetic expression that evaluates to a non-negative
 number less than or equal to
 <Literal>$#</Literal>.</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>sleep seconds&hairsp;</Term>
+<Term>sleep seconds</Term>
 <ListItem>
 <Para>Suspends execution for the number of decimal seconds or fractions of a
 second given by
@@ -5296,64 +5296,64 @@ second given by
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- trap -p action&hairsp; sig&hairsp; ...</Term>
+<Term>- trap -p action sig ...</Term>
 <ListItem>
 <Para>The -p
 option causes the trap
 action associated with each trap as specified by the arguments
 to be printed with appropriate quoting.
 Otherwise,
-<Emphasis>action&hairsp;</Emphasis> will be processed as if it were an argument to
+<Emphasis>action</Emphasis> will be processed as if it were an argument to
 <Literal>eval</Literal> when the shell
 receives signal(s)
 <Emphasis>sig</Emphasis>. Each
-<Emphasis>sig&hairsp;</Emphasis> can be given as a number or as the name of the signal.
+<Emphasis>sig</Emphasis> can be given as a number or as the name of the signal.
 Trap commands are executed in order of signal number.
 Any attempt to set a trap on a signal that
 was ignored on entry to the current shell
 is ineffective.
 If
-<Emphasis>action&hairsp;</Emphasis> is omitted and the first
-<Emphasis>sig&hairsp;</Emphasis> is a number, or if
-<Emphasis>action&hairsp;</Emphasis> is
+<Emphasis>action</Emphasis> is omitted and the first
+<Emphasis>sig</Emphasis> is a number, or if
+<Emphasis>action</Emphasis> is
 <Literal>-</Literal>, then the trap(s) for each
-<Emphasis>sig&hairsp;</Emphasis> are reset
+<Emphasis>sig</Emphasis> are reset
 to their original values.
 If
-<Emphasis>action&hairsp;</Emphasis> is the null
+<Emphasis>action</Emphasis> is the null
 string then this signal is ignored by the shell and by the commands
 it invokes.
 If
-<Emphasis>sig&hairsp;</Emphasis> is
+<Emphasis>sig</Emphasis> is
 <Symbol>ERR</Symbol> then
-<Emphasis>action&hairsp;</Emphasis> will be executed whenever a command has a non-zero exit status.
+<Emphasis>action</Emphasis> will be executed whenever a command has a non-zero exit status.
 If
-<Emphasis>sig&hairsp;</Emphasis> is
+<Emphasis>sig</Emphasis> is
 <Symbol>DEBUG</Symbol> then
-<Emphasis>action&hairsp;</Emphasis> will be executed before each command.
+<Emphasis>action</Emphasis> will be executed before each command.
 If
-<Emphasis>sig&hairsp;</Emphasis> is
+<Emphasis>sig</Emphasis> is
 <Literal>0</Literal> or
 <Symbol>EXIT</Symbol> and the
 <Literal>trap</Literal> statement is executed inside the body of a function,
 then the command
-<Emphasis>action&hairsp;</Emphasis> is executed
+<Emphasis>action</Emphasis> is executed
 after the function completes.
 If
-<Emphasis>sig&hairsp;</Emphasis> is
+<Emphasis>sig</Emphasis> is
 <Literal>0</Literal> or
 <Symbol>EXIT</Symbol> for a
 <Literal>trap</Literal> set outside any function
 then the command
-<Emphasis>action&hairsp;</Emphasis> is executed
+<Emphasis>action</Emphasis> is executed
 on exit from the shell.
 If
-<Emphasis>sig&hairsp;</Emphasis> is
+<Emphasis>sig</Emphasis> is
 <Symbol>KEYBD</Symbol> then
-<Emphasis>action&hairsp;</Emphasis> will be executed whenever a key is read
+<Emphasis>action</Emphasis> will be executed whenever a key is read
 while in
 <Literal>emacs</Literal>, <Literal>gmacs</Literal>, or
-<Literal>vi&hairsp;</Literal> mode.
+<Literal>vi</Literal> mode.
 The
 <Literal>trap</Literal> command
 with no arguments prints a list
@@ -5362,12 +5362,12 @@ of commands associated with each signal number.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>-- typeset &plusmn;AHflnprtux&hairsp; &plusmn;EFLRZin&hairsp; vname&hairsp;=value&hairsp; &hairsp; ...</Term>
+<Term>-- typeset &plusmn;AHflnprtux &plusmn;EFLRZin vname=value  ...</Term>
 <ListItem>
 <Para>Sets attributes and values for shell variables and functions.
 When invoked inside a function,
 a new instance of the variables
-<Emphasis>vname&hairsp;</Emphasis> is created.
+<Emphasis>vname</Emphasis> is created.
 The variables' value and type are restored
 when the function completes.
 The following list of attributes may be specified:
@@ -5377,7 +5377,7 @@ The following list of attributes may be specified:
 <Term>-A</Term>
 <ListItem>
 <Para>Declares
-<Emphasis>vname&hairsp;</Emphasis> to be an associate array.
+<Emphasis>vname</Emphasis> to be an associate array.
 Subscripts are strings rather than arithmetic
 expressions.
 </Para>
@@ -5387,9 +5387,9 @@ expressions.
 <Term>-E</Term>
 <ListItem>
 <Para>Declares
-<Emphasis>vname&hairsp;</Emphasis> to be a double precision floating point number.
+<Emphasis>vname</Emphasis> to be a double precision floating point number.
 If
-<Emphasis>n&hairsp;</Emphasis> is non-zero it defines the number of significant figures
+<Emphasis>n</Emphasis> is non-zero it defines the number of significant figures
 that are used when expanding
 <Emphasis>vname</Emphasis>. Otherwise ten significant figures will be used.
 </Para>
@@ -5399,9 +5399,9 @@ that are used when expanding
 <Term>-F</Term>
 <ListItem>
 <Para>Declares
-<Emphasis>vname&hairsp;</Emphasis> to be a double precision floating point number.
+<Emphasis>vname</Emphasis> to be a double precision floating point number.
 If
-<Emphasis>n&hairsp;</Emphasis> is non-zero it defines the number of places after the
+<Emphasis>n</Emphasis> is non-zero it defines the number of places after the
 decimal point that are used when expanding
 <Emphasis>vname</Emphasis>. Otherwise ten places after the decimal point will be used.
 </Para>
@@ -5420,7 +5420,7 @@ machines.
 <ListItem>
 <Para>Left justify and remove leading blanks from
 <Symbol Role="Variable">value</Symbol>. If
-<Emphasis>n&hairsp;</Emphasis> is non-zero it defines the width
+<Emphasis>n</Emphasis> is non-zero it defines the width
 of the field,
 otherwise it is determined by the width of the value of
 first assignment.
@@ -5437,7 +5437,7 @@ The
 <ListItem>
 <Para>Right justify and fill with leading blanks.
 If
-<Emphasis>n&hairsp;</Emphasis> is non-zero it defines the width
+<Emphasis>n</Emphasis> is non-zero it defines the width
 of the field,
 otherwise it is determined by the width of the value of
 first assignment.
@@ -5458,7 +5458,7 @@ the first non-blank character is a digit and the
 Remove leading zeros if the
 <Literal>-L</Literal> option is also set.
 If
-<Emphasis>n&hairsp;</Emphasis> is non-zero it defines the width
+<Emphasis>n</Emphasis> is non-zero it defines the width
 of the field,
 otherwise it is determined by the width of the value of
 first assignment.
@@ -5487,11 +5487,11 @@ when the function is referenced.
 <Term>-i</Term>
 <ListItem>
 <Para>Declares
-<Emphasis>vname&hairsp;</Emphasis> to be represented internally as integer.
+<Emphasis>vname</Emphasis> to be represented internally as integer.
 The right hand side of an assignment is evaluated as an
 arithmetic expression when assigning to an integer.
 If
-<Emphasis>n&hairsp;</Emphasis> is non-zero it defines the output arithmetic base,
+<Emphasis>n</Emphasis> is non-zero it defines the output arithmetic base,
 otherwise the the output base will be ten.
 </Para>
 </ListItem>
@@ -5510,7 +5510,7 @@ The upper-case option,
 <Term>-n</Term>
 <ListItem>
 <Para>Declares
-<Emphasis>vname&hairsp;</Emphasis> to be a reference to the variable whose name is
+<Emphasis>vname</Emphasis> to be a reference to the variable whose name is
 defined by the value of variable
 <Emphasis>vname</Emphasis>. This is usually used to reference a variable inside
 a function whose name has been passed as an argument.
@@ -5553,7 +5553,7 @@ The lower-case option,
 <Para>The given
 <Emphasis>vname</Emphasis>s are marked for automatic
 export to the
-<Emphasis>environment&hairsp;</Emphasis> of subsequently-executed commands.
+<Emphasis>environment</Emphasis> of subsequently-executed commands.
 Variables whose names contain a &period;
 can not be exported.
 </Para>
@@ -5565,11 +5565,11 @@ can not be exported.
 <Literal>+</Literal> rather than
 <Literal>-</Literal> causes these options to be turned off.
 If no
-<Emphasis>vname&hairsp;</Emphasis> arguments are given
+<Emphasis>vname</Emphasis> arguments are given
 a list of
-<Emphasis>vnames&hairsp;</Emphasis> (and optionally the
-<Emphasis>values&hairsp;</Emphasis>) of the
-<Emphasis>variables&hairsp;</Emphasis> is printed.
+<Emphasis>vnames</Emphasis> (and optionally the
+<Emphasis>values</Emphasis>) of the
+<Emphasis>variables</Emphasis> is printed.
 (Using
 <Literal>+</Literal> rather than
 <Literal>-</Literal> keeps the
@@ -5586,8 +5586,8 @@ which have all of the given
 options are printed.
 Otherwise, the
 <Emphasis>vname</Emphasis>s and
-<Emphasis>attributes&hairsp;</Emphasis> of all
-<Emphasis>variables&hairsp;</Emphasis> are printed.
+<Emphasis>attributes</Emphasis> of all
+<Emphasis>variables</Emphasis> are printed.
 </Para>
 </ListItem>
 </VarListEntry>
@@ -5595,15 +5595,15 @@ Otherwise, the
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>ulimit -HSacdfmnpstv limit&hairsp;</Term>
+<Term>ulimit -HSacdfmnpstv limit</Term>
 <ListItem>
 <Para>Set or display a resource limit.
 The available resources limits are listed below.
 Many systems do not contain one or more of these limits.
 The limit for a specified resource is set when
-<Emphasis>limit&hairsp;</Emphasis> is specified.
+<Emphasis>limit</Emphasis> is specified.
 The value of
-<Emphasis>limit&hairsp;</Emphasis> can be a number in the unit specified below with each resource,
+<Emphasis>limit</Emphasis> can be a number in the unit specified below with each resource,
 or the value
 <Literal>unlimited</Literal>. The
 <Literal>-H</Literal> and
@@ -5615,7 +5615,7 @@ If neither the
 <Literal>H</Literal> or
 <Literal>S</Literal> options is specified, the limit applies to both.
 The current resource limit is printed when
-<Emphasis>limit&hairsp;</Emphasis> is omitted.
+<Emphasis>limit</Emphasis> is omitted.
 In this case the soft limit is printed unless
 <Literal>H</Literal> is specified.
 When more that one resource is specified, then the limit
@@ -5700,19 +5700,19 @@ current process or by child processes (files of any size may be read).
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>umask -S mask&hairsp;</Term>
+<Term>umask -S mask</Term>
 <ListItem>
 <Para>The user file-creation mask is set to
-<Emphasis>mask&hairsp;</Emphasis> (see
+<Emphasis>mask</Emphasis> (see
 <Emphasis>umask</Emphasis>(2)). <Symbol Role="Variable">mask</Symbol> can either be an octal number or
 a symbolic value as described in
 <Emphasis>chmod</Emphasis>(1). If a symbolic value is given,
 the new
 umask value is the complement of the result of
 applying
-<Emphasis>mask&hairsp;</Emphasis> to the complement of the previous umask value.
+<Emphasis>mask</Emphasis> to the complement of the previous umask value.
 If
-<Emphasis>mask&hairsp;</Emphasis> is omitted, the current value of the mask is printed.
+<Emphasis>mask</Emphasis> is omitted, the current value of the mask is printed.
 The
 <Literal>-S</Literal> option causes the mode to be printed as a symbolic
 value. Otherwise, the
@@ -5721,12 +5721,12 @@ mask is printed in octal.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>- unalias -a name&hairsp; ...</Term>
+<Term>- unalias -a name ...</Term>
 <ListItem>
 <Para>The
-<Emphasis>aliases&hairsp;</Emphasis> given by the list of
+<Emphasis>aliases</Emphasis> given by the list of
 <Symbol Role="Variable">name</Symbol>s are removed from the
-<Emphasis>alias&hairsp;</Emphasis> list.
+<Emphasis>alias</Emphasis> list.
 The
 <Literal>-a</Literal> option causes all the
 aliases to be unset.
@@ -5734,7 +5734,7 @@ aliases to be unset.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>-unset -fv vname&hairsp; ...</Term>
+<Term>-unset -fv vname ...</Term>
 <ListItem>
 <Para>The variables given by the list of
 <Emphasis>vname</Emphasis>s are unassigned,
@@ -5744,10 +5744,10 @@ Readonly variables cannot be unset.
 If the
 <Literal>-f</Literal> option
 is set, then the names refer to
-<Emphasis>function&hairsp;</Emphasis> names.
+<Emphasis>function</Emphasis> names.
 If the
 <Literal>-v</Literal> option is set, then the names refer to
-<Emphasis>variable&hairsp;</Emphasis> names.
+<Emphasis>variable</Emphasis> names.
 The default is equivalent to
 <Literal>-v</Literal>. Unsetting
 <Symbol>ERRNO</Symbol>, <Symbol>LINENO</Symbol>, <Symbol>MAILCHECK</Symbol>, <Symbol>OPTARG</Symbol>, <Symbol>OPTIND</Symbol>, <Symbol>RANDOM</Symbol>, <Symbol>SECONDS</Symbol>, <Symbol>TMOUT</Symbol>, and
@@ -5757,13 +5757,13 @@ subsequently assigned to.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>wait job&hairsp; ...</Term>
+<Term>wait job ...</Term>
 <ListItem>
 <Para>Wait for the specified
 <Emphasis>job</Emphasis> and
 report its termination status.
 If
-<Emphasis>job&hairsp;</Emphasis> is not given then all currently active child processes are waited for.
+<Emphasis>job</Emphasis> is not given then all currently active child processes are waited for.
 The exit status from this command is that of
 the last process waited for.
 See
@@ -5772,7 +5772,7 @@ See
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term>whence -apv name&hairsp; ...</Term>
+<Term>whence -apv name ...</Term>
 <ListItem>
 <Para>For each
 <Symbol Role="Variable">name</Symbol>, indicate how it
@@ -5785,7 +5785,7 @@ produces a more verbose report.
 <Para>The
 <Literal>-p</Literal> option
 does a path search for
-<Emphasis>name&hairsp;</Emphasis> even if name is an alias, a function, or a reserved word.
+<Emphasis>name</Emphasis> even if name is an alias, a function, or a reserved word.
 The
 <Literal>-a</Literal> is similar to the
 <Literal>-v</Literal> option but causes
@@ -5814,14 +5814,14 @@ the value of the environment variable
 <Symbol>ENV</Symbol> if the file exists.
 If the
 <Literal>-s</Literal> option is not present and
-<Emphasis>arg&hairsp;</Emphasis> is, then a path search is performed on the first
-<Emphasis>arg&hairsp;</Emphasis> to determine the name of the script to execute.
+<Emphasis>arg</Emphasis> is, then a path search is performed on the first
+<Emphasis>arg</Emphasis> to determine the name of the script to execute.
 The script
-<Emphasis>arg&hairsp;</Emphasis> must have read permission and any
+<Emphasis>arg</Emphasis> must have read permission and any
 <Emphasis>setuid</Emphasis> and
 <Emphasis>getgid</Emphasis> settings will be ignored.
 If the script is not found on the path,
-<Emphasis>arg&hairsp;</Emphasis> is processed as if it named a built-in command or function.
+<Emphasis>arg</Emphasis> is processed as if it named a built-in command or function.
 Commands are then read as described below;
 the following option are interpreted by the shell
 when it is invoked:
@@ -5847,7 +5847,7 @@ arguments remain
 then commands are read from the standard input.
 Shell output,
 except for the output of the
-<Emphasis>Special</Emphasis> <Emphasis>Commands&hairsp;</Emphasis> listed above,
+<Emphasis>Special</Emphasis> <Emphasis>Commands</Emphasis> listed above,
 is written to
 file descriptor 2.
 </Para>
@@ -5878,7 +5878,7 @@ In all cases, QUIT is ignored by the shell.
 </VarListEntry>
 </VariableList>
 <Para>The
-<Literal>-I</Literal> <Emphasis>filename&hairsp;</Emphasis> option is used
+<Literal>-I</Literal> <Emphasis>filename</Emphasis> option is used
 to generate a cross reference database
 that can be used by a separate utility
 to find definitions and references for variables and commands.
@@ -5924,9 +5924,9 @@ after <Filename>.profile</Filename> and the
 </Para>
 <Para>When a command to be executed is found to be a shell procedure,
 invokes
-<Emphasis>sh&hairsp;}</Emphasis> {.B rksh&hairsp;
+<Emphasis>sh}</Emphasis> {.B rksh
 invokes
-<Emphasis>ksh&hairsp;}</Emphasis> to execute it.
+<Emphasis>ksh}</Emphasis> to execute it.
 Thus, it is possible to provide to the end-user shell procedures
 that have access to the full power of
 the standard shell,
@@ -5939,7 +5939,7 @@ execute permissions in the same directory.
 by performing guaranteed setup actions
 and leaving the user in an appropriate directory
 (probably
-<Emphasis>not&hairsp;</Emphasis> the login directory).
+<Emphasis>not</Emphasis> the login directory).
 </Para>
 <Para>The system administrator often sets up a directory
 of commands
@@ -6028,19 +6028,19 @@ environ(7).
 is executed, and then a command with the same name is
 installed in a directory in the search path before the directory where the
 original command was found, the shell will continue to
-<Emphasis>exec&hairsp;</Emphasis> the original command.
+<Emphasis>exec</Emphasis> the original command.
 Use the
 <Literal>-t</Literal> option of the
-<Literal>alias&hairsp;</Literal> command to correct this situation.
+<Literal>alias</Literal> command to correct this situation.
 </Para>
 <Para>Some very old shell scripts contain a
 <Literal>&caret;</Literal> as a synonym for the pipe character
 <Literal>&verbar;</Literal>.</Para>
 <Para>Using the
-<Literal>hist&hairsp;</Literal> built-in command within a compound command will cause the whole
+<Literal>hist</Literal> built-in command within a compound command will cause the whole
 command to disappear from the history file.
 </Para>
-<Para>The built-in command <Literal>.</Literal> <Emphasis>file&hairsp;</Emphasis>
+<Para>The built-in command <Literal>.</Literal> <Emphasis>file</Emphasis>
 reads the whole file before any commands are executed.
 Therefore,
 <Literal>alias</Literal> and

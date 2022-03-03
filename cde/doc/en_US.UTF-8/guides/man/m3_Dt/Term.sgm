@@ -1789,40 +1789,40 @@ function)</computeroutput></entry></row>
 to the child process.--><!-- DKS .LI  "\f3backarrow\^\f1(\|)"--><!-- DKS This
 action sends a \f3\s-1DEL\s0\fP (delete) character to the child--><!-- process.--></para>
 <variablelist>
-<varlistentry><term><emphasis>bell&hairsp;</emphasis>(<literal>[</literal><symbol role="Variable">percentage</symbol><literal>]</literal>)</term>
+<varlistentry><term><emphasis>bell</emphasis>(<literal>[</literal><symbol role="Variable">percentage</symbol><literal>]</literal>)</term>
 <listitem>
 <para>Rings the keyboard bell at the specified
 <symbol role="Variable">percentage</symbol> above or below the base volume.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>break&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>break</emphasis>()</term>
 <listitem>
 <para>Sends an RS232 break signal to the child process.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>cancel&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>cancel</emphasis>()</term>
 <listitem>
 <para>Sends a <Symbol>CAN</Symbol> (cancel) character to the child process.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>copy-clipboard&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>copy-clipboard</emphasis>()</term>
 <listitem>
 <para>Copies current selection to the clipboard.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>copy-to&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>copy-to</emphasis>()</term>
 <listitem>
 <para>Sends the primary selection to the subprocess.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>do&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>do</emphasis>()</term>
 <listitem>
 <para>Sends the escape sequence (see <![ %CDE.C.CDE; [&cdeman.dttermesc;) ]]><![ %CDE.C.XO; [<xref
 role="2" linkend="XCSA.M5DTT.anch.1">) ]]>associated with the <literal>Do</literal> key to the child process.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>edit-key&hairsp;</emphasis>( <symbol role="Variable">string</symbol>)</term>
+<varlistentry><term><emphasis>edit-key</emphasis>( <symbol role="Variable">string</symbol>)</term>
 <listitem>
 <para>Sends the escape sequence (see <![ %CDE.C.CDE; [&cdeman.dttermesc;) ]]><![ %CDE.C.XO; [<xref
 role="2" linkend="XCSA.M5DTT.anch.1">) ]]>associated with the corresponding
@@ -1838,20 +1838,20 @@ select</programlisting>
 </informalexample>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>extend-start&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>extend-start</emphasis>()</term>
 <listitem>
 <para>Starts the extension of the currently selected text. The amount of text
 selected depends on the number of mouse clicks (see <function>grab-focus</function>).
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>extend-end&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>extend-end</emphasis>()</term>
 <listitem>
 <para>Extends the current selection. The amount of text selected depends on
 the number of mouse clicks (see <function>grab-focus</function>).</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>function-key-execute&hairsp;</emphasis>( <emphasis>num</emphasis><literal>[,</literal> <symbol role="Variable">type</symbol> <literal>]</literal>)</term>
+<varlistentry><term><emphasis>function-key-execute</emphasis>( <emphasis>num</emphasis><literal>[,</literal> <symbol role="Variable">type</symbol> <literal>]</literal>)</term>
 <listitem>
 <para>Sends the escape sequence (see <![ %CDE.C.CDE; [&cdeman.dttermesc;) ]]><![ %CDE.C.XO; [<xref
 role="2" linkend="XCSA.M5DTT.anch.1">) ]]>associated with the corresponding
@@ -1864,7 +1864,7 @@ then the string associated with user defined key <emphasis>num</emphasis>
 is sent to the child process.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>grab-focus&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>grab-focus</emphasis>()</term>
 <listitem>
 <para>Performs one of the following depending on the number of multiple mouse
 clicks. One click deselects any selected text and sets the selection anchor
@@ -1872,12 +1872,12 @@ at the pointer position; two clicks selects a word; three clicks selects a
 line of text; and four clicks selects all text.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>hard-reset&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>hard-reset</emphasis>()</term>
 <listitem>
 <para>Performs a hard reset on the terminal emulator. <![ %CDE.C.CDE; [See &cdeman.dttermesc; for a definition of hard reset. ]]></para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>help&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>help</emphasis>()</term>
 <listitem><![ %CDE.C.CDE; [<para>Sends the escape sequence (see <![ %CDE.C.CDE; [ &cdeman.dttermesc;) ]]><![ %CDE.C.XO; [<XRef Linkend="XCSA.M5DTT.anch.1" Role="2">) ]]>associated
 with the DEC VT220 Help key to the child process.</para>]]><![ %CDE.C.XO; [<para>Sends the escape sequence (see <![ %CDE.C.CDE; [&cdeman.dttermesc;) ]]><![ %CDE.C.XO; [<xref
 role="2" linkend="XCSA.M5DTT.anch.1">) ]]>associated with the DEC VT220 Help
@@ -1885,14 +1885,14 @@ key to the child process.</para>]]>
 <para>The interpretation of this key is application-specific.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>keymap&hairsp;</emphasis>(name)</term>
+<varlistentry><term><emphasis>keymap</emphasis>(name)</term>
 <listitem>
 <para>Defines a new translation table whose resource name is named with the
 suffix <literal>Keymap</literal> (case is significant). The name <systemitem class="Constant">None</systemitem> restores the original translation table.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>keypad-key-execute&hairsp;</emphasis>(<symbol role="Variable">string</symbol>)</term>
+<varlistentry><term><emphasis>keypad-key-execute</emphasis>(<symbol role="Variable">string</symbol>)</term>
 <listitem>
 <para>Sends the escape sequence (see <![ %CDE.C.CDE; [&cdeman.dttermesc;) ]]><![ %CDE.C.XO; [<xref
 role="2" linkend="XCSA.M5DTT.anch.1">) ]]>associated with the corresponding
@@ -1914,7 +1914,7 @@ divide
 </informalexample>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>move-cursor&hairsp;</emphasis>( <symbol role="Variable">direction</symbol>)</term>
+<varlistentry><term><emphasis>move-cursor</emphasis>( <symbol role="Variable">direction</symbol>)</term>
 <listitem>
 <para>Sends the escape sequence (see <![ %CDE.C.CDE; [&cdeman.dttermesc;) ]]><![ %CDE.C.XO; [<xref
 role="2" linkend="XCSA.M5DTT.anch.1">) ]]>associated with the corresponding
@@ -1928,12 +1928,12 @@ forward</programlisting>
 </informalexample>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>paste-clipboard&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>paste-clipboard</emphasis>()</term>
 <listitem>
 <para>Sends the contents of the clipboard to the subprocess.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>process-bdrag&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>process-bdrag</emphasis>()</term>
 <listitem>
 <para>The result of this action is determined by several factors: position
 of the location cursor, motion of the location cursor and the interval between
@@ -1948,12 +1948,12 @@ whose <systemitem class="Resource">XmNexportTargets</systemitem> resource
 value includes target types of <systemitem class="Constant">COMPOUND_TEXT</systemitem>, <systemitem class="Constant">STRING</systemitem> and <systemitem class="Constant">TEXT</systemitem>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>redraw-display&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>redraw-display</emphasis>()</term>
 <listitem>
 <para>Redraws the contents of the text window.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>scroll&hairsp;</emphasis>( <symbol role="Variable">count</symbol><literal>[,</literal> <symbol role="Variable">units</symbol> <literal>]</literal>)</term>
+<varlistentry><term><emphasis>scroll</emphasis>( <symbol role="Variable">count</symbol><literal>[,</literal> <symbol role="Variable">units</symbol> <literal>]</literal>)</term>
 <listitem>
 <para>Scrolls the display memory down if <symbol role="Variable">count</symbol>
 is greater than zero, or up if <symbol role="Variable">count</symbol> is less
@@ -1966,36 +1966,36 @@ line</programlisting>
 </informalexample>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>select-adjust&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>select-adjust</emphasis>()</term>
 <listitem>
 <para>Extends the selection. The amount of text selected depends on the number
 of mouse clicks. One click selects characters; two clicks selects words; three
 clicks selects lines; and four clicks selects the entire buffer.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>select-all&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>select-all</emphasis>()</term>
 <listitem>
 <para>Selects all text.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>select-page&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>select-page</emphasis>()</term>
 <listitem>
 <para>Selects all text currently displayed on the screen.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>self-insert&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>self-insert</emphasis>()</term>
 <listitem>
 <para>Sends the character associated with the key pressed to the child process.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>soft-reset&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>soft-reset</emphasis>()</term>
 <listitem>
 <para>Performs a soft reset of the terminal. <![ %CDE.C.CDE; [For a definition
 of soft reset see the ``Reset'' section in &cdeman.dttermesc;. ]]></para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>stop&hairsp;</emphasis>( <symbol role="Variable">state</symbol>)</term>
+<varlistentry><term><emphasis>stop</emphasis>( <symbol role="Variable">state</symbol>)</term>
 <listitem>
 <para>Toggles, starts, or stops the process of reading data from the child
 process. Valid values for <symbol role="Variable">state</symbol> are:</para>
@@ -2006,7 +2006,7 @@ off</programlisting>
 </informalexample>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>string&hairsp;</emphasis>( <symbol role="Variable">string</symbol>)</term>
+<varlistentry><term><emphasis>string</emphasis>( <symbol role="Variable">string</symbol>)</term>
 <listitem>
 <para>Inserts the specified text string as if it had been typed. The string
 must be quoted if it contains white space or non-alphanumeric characters.
@@ -2014,12 +2014,12 @@ The string is interpreted as a hexadecimal character constant if it begins
 with the characters <literal>0x</literal>.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>tab&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>tab</emphasis>()</term>
 <listitem>
 <para>Sends a tab to the child process.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>visual-bell&hairsp;</emphasis>()</term>
+<varlistentry><term><emphasis>visual-bell</emphasis>()</term>
 <listitem>
 <para>Flashes the window quickly.</para>
 </listitem>

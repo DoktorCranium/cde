@@ -2005,14 +2005,14 @@ resource can be used to modify these translations.</para>
 <title>Action Routines</title>
 <para>The DtEditor widget action routines are described here:</para>
 <variablelist>
-<varlistentry><term><emphasis>backward-character</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>backward-character</emphasis>()</term>
 <listitem>
 <para>This action moves the insertion cursor one character to the left. This
 action may have different behavior in a right-to-left language environment.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>backward-paragraph</emphasis>&hairsp;(<symbol role="Variable">extend</symbol>)</term>
+<varlistentry><term><emphasis>backward-paragraph</emphasis>(<symbol role="Variable">extend</symbol>)</term>
 <listitem>
 <para>If this action is called with no argument, it moves the insertion cursor
 to the first non-whitespace character following the first previous blank line
@@ -2023,7 +2023,7 @@ the previous paragraph.</para>
 and extends the current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>backward-word</emphasis>&hairsp;( <symbol role="Variable">extend</symbol>)</term>
+<varlistentry><term><emphasis>backward-word</emphasis>( <symbol role="Variable">extend</symbol>)</term>
 <listitem>
 <para>If this action is called with no argument, it moves the insertion cursor
 to the first non-whitespace character after the first whitespace character
@@ -2035,7 +2035,7 @@ in a locale other than the C locale.</para>
 and extends the current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>beginning-of-file</emphasis>&hairsp;(<symbol role="Variable">extend</symbol>)</term>
+<varlistentry><term><emphasis>beginning-of-file</emphasis>(<symbol role="Variable">extend</symbol>)</term>
 <listitem>
 <para>If this action is called with no argument, it moves the insertion cursor
 to the beginning of the text.</para>
@@ -2043,7 +2043,7 @@ to the beginning of the text.</para>
 and extends the current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>beginning-of-line</emphasis>&hairsp;(<symbol role="Variable">extend</symbol>)</term>
+<varlistentry><term><emphasis>beginning-of-line</emphasis>(<symbol role="Variable">extend</symbol>)</term>
 <listitem>
 <para>If this action is called with no argument, it moves the insertion cursor
 to the beginning of the line.</para>
@@ -2051,45 +2051,45 @@ to the beginning of the line.</para>
 and extends the current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>clear-selection</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>clear-selection</emphasis>()</term>
 <listitem>
 <para>This action clears the current selection by replacing each character
 except <keysym>carriage-return</keysym> with a <keysym>space</keysym> character.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>copy-clipboard</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>copy-clipboard</emphasis>()</term>
 <listitem>
 <para>This action copies the current selection to the clipboard.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>cut-clipboard</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>cut-clipboard</emphasis>()</term>
 <listitem>
 <para>This action cuts the current selection to the clipboard.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>delete-next-character</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>delete-next-character</emphasis>()</term>
 <listitem>
 <para>If there is a non-<systemitem class="Constant">NULL</systemitem> selection,
 this action deletes the selection; otherwise, it deletes the character following
 the insertion cursor.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>delete-next-word</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>delete-next-word</emphasis>()</term>
 <listitem>
 <para>If there is a non-<systemitem class="Constant">NULL</systemitem> selection,
 this action deletes the selection; otherwise, it deletes the characters following
 the insertion cursor to the next space, tab or end of line character.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>delete-previous-character</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>delete-previous-character</emphasis>()</term>
 <listitem>
 <para>If there is a non-<systemitem class="Constant">NULL</systemitem> selection,
 this action deletes the selection; otherwise, it deletes the character of
 text immediately preceding the insertion cursor.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>delete-previous-word</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>delete-previous-word</emphasis>()</term>
 <listitem>
 <para>If there is a non-<systemitem class="Constant">NULL</systemitem> selection,
 this action deletes the selection; otherwise, it deletes the characters preceding
@@ -2098,26 +2098,26 @@ This action may have different behavior in a locale other than the C locale.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>delete-to-end-of-line</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>delete-to-end-of-line</emphasis>()</term>
 <listitem>
 <para>If there is a non-<systemitem class="Constant">NULL</systemitem> selection,
 this action deletes the selection; otherwise, it deletes the characters following
 the insertion cursor to the next end-of-line character.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>delete-to-start-of-line</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>delete-to-start-of-line</emphasis>()</term>
 <listitem>
 <para>If there is a non-<systemitem class="Constant">NULL</systemitem> selection,
 this action deletes the selection; otherwise, it deletes the characters preceding
 the insertion cursor to the previous beginning-of-line character.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>deselect-all</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>deselect-all</emphasis>()</term>
 <listitem>
 <para>This action deselects the current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>end-of-file</emphasis>&hairsp;( <symbol role="Variable">extend</symbol>)</term>
+<varlistentry><term><emphasis>end-of-file</emphasis>( <symbol role="Variable">extend</symbol>)</term>
 <listitem>
 <para>If this action is called with no argument, it moves the insertion cursor
 to the end of the text.</para>
@@ -2125,7 +2125,7 @@ to the end of the text.</para>
 and extends the current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>end-of-line</emphasis>&hairsp;( <symbol role="Variable">extend</symbol>)</term>
+<varlistentry><term><emphasis>end-of-line</emphasis>( <symbol role="Variable">extend</symbol>)</term>
 <listitem>
 <para>If this action is called with no argument, it moves the insertion cursor
 to the end of the line.</para>
@@ -2133,14 +2133,14 @@ to the end of the line.</para>
 and extends the current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>forward-character</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>forward-character</emphasis>()</term>
 <listitem>
 <para>This action moves the insertion cursor one character to the right. This
 action may have different behavior in a right-to-left language environment.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>forward-paragraph</emphasis>&hairsp;(<symbol role="Variable">extend</symbol>)</term>
+<varlistentry><term><emphasis>forward-paragraph</emphasis>(<symbol role="Variable">extend</symbol>)</term>
 <listitem>
 <para>If this action is called with no argument, it moves the insertion cursor
 to the first non-whitespace character following the next blank line. If the
@@ -2150,7 +2150,7 @@ the insertion cursor to the beginning of the next paragraph.</para>
 and extends the current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>forward-word</emphasis>&hairsp;( <symbol role="Variable">extend</symbol>)</term>
+<varlistentry><term><emphasis>forward-word</emphasis>( <symbol role="Variable">extend</symbol>)</term>
 <listitem>
 <para>If this action is called with no argument, it moves the insertion cursor
 to the first whitespace character or end-of-line following the next non-whitespace
@@ -2163,7 +2163,7 @@ extends the current selection. <![ %CDE.C.CDE; [</Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Emphasis>go-to-line</Emphasis>&hairsp;()</Term>
+<Term><Emphasis>go-to-line</Emphasis>()</Term>
 <ListItem>
 <Para>This action moves the keyboard focus to the Current Line text field to allow the user to
 move the insertion cursor to a new line.
@@ -2175,21 +2175,21 @@ For a description of the status line, see the
 ]]></para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>Help</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>Help</emphasis>()</term>
 <listitem>
 <para>This action calls the callbacks for <systemitem class="Resource">XmNhelpCallback</systemitem> if any exist. If there are no help callbacks for this widget,
 this action calls the help callbacks for the nearest ancestor that has them.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>insert-string</emphasis>&hairsp;( <symbol role="Variable">string</symbol>)</term>
+<varlistentry><term><emphasis>insert-string</emphasis>( <symbol role="Variable">string</symbol>)</term>
 <listitem>
 <para>This action deletes the entire selection if there is a non-<systemitem class="Constant">NULL</systemitem> selection and the cursor is not disjoint
 from it. It inserts <literal>string</literal> before the insertion cursor.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>key-select</emphasis>&hairsp;( <symbol role="Variable">direction</symbol>)</term>
+<varlistentry><term><emphasis>key-select</emphasis>( <symbol role="Variable">direction</symbol>)</term>
 <listitem>
 <para>If this action is called with an argument of <symbol role="Variable">right</symbol>, it moves the insertion cursor one character to the right and
 extends the current selection. If this action is called with an argument of
@@ -2198,7 +2198,7 @@ to the left and extends the current selection. If this action is called with
 no argument, it extends the current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>newline-and-backup</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>newline-and-backup</emphasis>()</term>
 <listitem>
 <para>If there is a non-<systemitem class="Constant">NULL</systemitem> selection
 and the cursor is not disjoint from it, this action deletes the entire selection,
@@ -2206,7 +2206,7 @@ inserts a newline just before the insertion cursor and repositions the insertion
 cursor to the end of the line before the newline.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>newline-and-indent</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>newline-and-indent</emphasis>()</term>
 <listitem>
 <para>If there is a non-<systemitem class="Constant">NULL</systemitem> selection
 and the cursor is not disjoint from it, this action deletes the entire selection,
@@ -2214,7 +2214,7 @@ inserts a newline and then the same number of whitespace characters as at
 the beginning of the previous line.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>next-page</emphasis>&hairsp;( <symbol role="Variable">extend</symbol>)</term>
+<varlistentry><term><emphasis>next-page</emphasis>( <symbol role="Variable">extend</symbol>)</term>
 <listitem>
 <para>If this action is called with no argument, it moves the insertion cursor
 forward one page.</para>
@@ -2222,23 +2222,23 @@ forward one page.</para>
 and extends the current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>page-left</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>page-left</emphasis>()</term>
 <listitem>
 <para>This action scrolls the viewing window left one page of text.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>page-right</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>page-right</emphasis>()</term>
 <listitem>
 <para>This action scrolls the viewing window right one page of text.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>paste-clipboard</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>paste-clipboard</emphasis>()</term>
 <listitem>
 <para>This action pastes the contents of the clipboard before the insertion
 cursor.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>previous-page</emphasis>&hairsp;( <symbol role="Variable">extend</symbol>)</term>
+<varlistentry><term><emphasis>previous-page</emphasis>( <symbol role="Variable">extend</symbol>)</term>
 <listitem>
 <para>If this action is called with no argument, it moves the insertion cursor
 back one page.</para>
@@ -2246,41 +2246,41 @@ back one page.</para>
 and extends the current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>process-cancel</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>process-cancel</emphasis>()</term>
 <listitem>
 <para>This action cancels the current <function>extend-adjust</function> or <function>secondary-adjust</function> operation and leaves the selection state as it
 was before the operation; otherwise, (and if the parent is a manager) it passes
 the event to the parent.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>process-down</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>process-down</emphasis>()</term>
 <listitem>
 <para>This action moves the insertion cursor down one line.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>process-shift-down</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>process-shift-down</emphasis>()</term>
 <listitem>
 <para>This action moves the insertion cursor down one line, extending the
 current selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>process-shift-up</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>process-shift-up</emphasis>()</term>
 <listitem>
 <para>This action moves the insertion cursor up one line, extending the current
 selection.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>process-up</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>process-up</emphasis>()</term>
 <listitem>
 <para>This action moves the insertion cursor up one line.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>select-all</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>select-all</emphasis>()</term>
 <listitem>
 <para>Selects all text.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>toggle-insert-mode</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>toggle-insert-mode</emphasis>()</term>
 <listitem>
 <para>This action toggles the state of the text insertion mode. By default,
 characters typed into the DtEditor widget are inserted at the position of
@@ -2290,7 +2290,7 @@ overstrike mode, characters are appended to the end of the line when the end
 of a line is reached.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>quote-next-character</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>quote-next-character</emphasis>()</term>
 <listitem>
 <para>This action treats the next typed character as a special character and
 inserts it into the text without interpreting it. Enables the insertion of
@@ -2298,7 +2298,7 @@ special instructional characters or special language characters, such as the
 character marking a form feed or the umlaut used in German text.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term><emphasis>undo-edit</emphasis>&hairsp;()</term>
+<varlistentry><term><emphasis>undo-edit</emphasis>()</term>
 <listitem>
 <para>This action undoes the last change (deletion or insertion) made to the
 text. A change consists of either a set of consecutive insertions, or a set
@@ -2323,14 +2323,14 @@ The following lists summarize these functions.
 <Title>DtEditor Life Cycle Functions</Title>
 <VariableList>
 <VarListEntry>
-<Term><Function>DtCreateEditor</Function>&hairsp;()</Term>
+<Term><Function>DtCreateEditor</Function>()</Term>
 <ListItem>
 <Para>Creates a new instance of a DtEditor widget.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorReset</Function>&hairsp;()</Term>
+<Term><Function>DtEditorReset</Function>()</Term>
 <ListItem>
 <Para>Restores a DtEditor widget to its initial state.
 </Para>
@@ -2342,7 +2342,7 @@ The following lists summarize these functions.
 <Title>DtEditor Input/Output Functions</Title>
 <VariableList>
 <VarListEntry>
-<Term><Function>DtEditorAppend</Function>&hairsp;()</Term>
+<Term><Function>DtEditorAppend</Function>()</Term>
 <ListItem>
 <Para>Appends content data to the end of a DtEditor
 widget.
@@ -2350,7 +2350,7 @@ widget.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorAppendFromFile</Function>&hairsp;()</Term>
+<Term><Function>DtEditorAppendFromFile</Function>()</Term>
 <ListItem>
 <Para>Appends the contents of a file to the end of a DtEditor
 widget.
@@ -2358,7 +2358,7 @@ widget.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorGetContents</Function>&hairsp;()</Term>
+<Term><Function>DtEditorGetContents</Function>()</Term>
 <ListItem>
 <Para>Retrieves the entire contents of a DtEditor
 widget.
@@ -2366,42 +2366,42 @@ widget.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorInsert</Function>&hairsp;()</Term>
+<Term><Function>DtEditorInsert</Function>()</Term>
 <ListItem>
 <Para>Inserts content data at the current insert position.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorInsertFromFile</Function>&hairsp;()</Term>
+<Term><Function>DtEditorInsertFromFile</Function>()</Term>
 <ListItem>
 <Para>Inserts the contents of a file at the current insert position.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorReplace</Function>&hairsp;()</Term>
+<Term><Function>DtEditorReplace</Function>()</Term>
 <ListItem>
 <Para>Replaces a portion of text with the supplied data.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorReplaceFromFile</Function>&hairsp;()</Term>
+<Term><Function>DtEditorReplaceFromFile</Function>()</Term>
 <ListItem>
 <Para>Replaces a portion of text with the contents of a file.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorSaveContentsToFile</Function>&hairsp;()</Term>
+<Term><Function>DtEditorSaveContentsToFile</Function>()</Term>
 <ListItem>
 <Para>Saves the entire contents to a file.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorSetContents</Function>&hairsp;()</Term>
+<Term><Function>DtEditorSetContents</Function>()</Term>
 <ListItem>
 <Para>Loads content data into a DtEditor
 widget, replacing the entire contents of the widget.
@@ -2409,7 +2409,7 @@ widget, replacing the entire contents of the widget.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorSetContentsFromFile</Function>&hairsp;()</Term>
+<Term><Function>DtEditorSetContentsFromFile</Function>()</Term>
 <ListItem>
 <Para>Loads the contents of a file into a DtEditor
 widget, replacing the entire contents of the widget.
@@ -2422,42 +2422,42 @@ widget, replacing the entire contents of the widget.
 <Title>DtEditor Selection Functions</Title>
 <VariableList>
 <VarListEntry>
-<Term><Function>DtEditorClearSelection</Function>&hairsp;()</Term>
+<Term><Function>DtEditorClearSelection</Function>()</Term>
 <ListItem>
 <Para>Replaces the currently selected contents with blanks.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorCopyToClipboard</Function>&hairsp;()</Term>
+<Term><Function>DtEditorCopyToClipboard</Function>()</Term>
 <ListItem>
 <Para>Copies the currently selected contents to the clipboard.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorCutToClipboard</Function>&hairsp;()</Term>
+<Term><Function>DtEditorCutToClipboard</Function>()</Term>
 <ListItem>
 <Para>Removes the currently selected contents, placing it on the clipboard.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorDeleteSelection</Function>&hairsp;()</Term>
+<Term><Function>DtEditorDeleteSelection</Function>()</Term>
 <ListItem>
 <Para>Removes the currently selected contents.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorDeselect</Function>&hairsp;()</Term>
+<Term><Function>DtEditorDeselect</Function>()</Term>
 <ListItem>
 <Para>Deselects any selected contents.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorPasteFromClipboard</Function>&hairsp;()</Term>
+<Term><Function>DtEditorPasteFromClipboard</Function>()</Term>
 <ListItem>
 <Para>Pastes the contents of the clipboard into a DtEditor
 widget, replacing any currently selected contents.
@@ -2465,7 +2465,7 @@ widget, replacing any currently selected contents.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorSelectAll</Function>&hairsp;()</Term>
+<Term><Function>DtEditorSelectAll</Function>()</Term>
 <ListItem>
 <Para>Selects the entire contents of a DtEditor widget.
 </Para>
@@ -2477,7 +2477,7 @@ widget, replacing any currently selected contents.
 <Title>DtEditor Format Functions</Title>
 <VariableList>
 <VarListEntry>
-<Term><Function>DtEditorFormat</Function>&hairsp;()</Term>
+<Term><Function>DtEditorFormat</Function>()</Term>
 <ListItem>
 <Para>Formats the contents of all or part of a DtEditor
 widget.
@@ -2485,7 +2485,7 @@ widget.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorInvokeFormatDialog</Function>&hairsp;()</Term>
+<Term><Function>DtEditorInvokeFormatDialog</Function>()</Term>
 <ListItem>
 <Para>Displays the format dialog that enables the user
 to specify format settings for margins and
@@ -2500,21 +2500,21 @@ operations.
 <Title>DtEditor Find and Change Text Functions</Title>
 <VariableList>
 <VarListEntry>
-<Term><Function>DtEditorChange</Function>&hairsp;()</Term>
+<Term><Function>DtEditorChange</Function>()</Term>
 <ListItem>
 <Para>Changes one or all occurrences of a string.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorFind</Function>&hairsp;()</Term>
+<Term><Function>DtEditorFind</Function>()</Term>
 <ListItem>
 <Para>Finds the next occurrence of a string.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorInvokeFindChangeDialog</Function>&hairsp;()</Term>
+<Term><Function>DtEditorInvokeFindChangeDialog</Function>()</Term>
 <ListItem>
 <Para>Displays the dialog that enables the user
 to search for, and optionally change, a string.
@@ -2522,7 +2522,7 @@ to search for, and optionally change, a string.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorInvokeSpellDialog</Function>&hairsp;()</Term>
+<Term><Function>DtEditorInvokeSpellDialog</Function>()</Term>
 <ListItem>
 <Para>Displays a dialog with a list of misspelled
 words in the current contents.
@@ -2536,14 +2536,14 @@ words in the current contents.
 <VariableList>
 <![ %CDE.C.CDE; [
 <VarListEntry>
-<Term><Function>DtEditorDisableRedisplay</Function>&hairsp;()</Term>
+<Term><Function>DtEditorDisableRedisplay</Function>()</Term>
 <ListItem>
 <Para>Temporarily prevents visual update of a DtEditor widget.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorEnableRedisplay</Function>&hairsp;()</Term>
+<Term><Function>DtEditorEnableRedisplay</Function>()</Term>
 <ListItem>
 <Para>Forces the visual update of a DtEditor widget.
 </Para>
@@ -2551,7 +2551,7 @@ words in the current contents.
 </VarListEntry>
 ]]>
 <VarListEntry>
-<Term><Function>DtEditorCheckForUnsavedChanges</Function>&hairsp;()</Term>
+<Term><Function>DtEditorCheckForUnsavedChanges</Function>()</Term>
 <ListItem>
 <Para>Reports whether the contents of a DtEditor
 widget have been altered since they were last
@@ -2560,7 +2560,7 @@ retrieved or saved.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorGetInsertionPosition</Function>&hairsp;()</Term>
+<Term><Function>DtEditorGetInsertionPosition</Function>()</Term>
 <ListItem>
 <Para>Returns the insertion cursor position of a DtEditor
 widget.
@@ -2568,7 +2568,7 @@ widget.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorGetLastPosition</Function>&hairsp;()</Term>
+<Term><Function>DtEditorGetLastPosition</Function>()</Term>
 <ListItem>
 <Para>Returns the position of the last character
 in the edit window.
@@ -2576,7 +2576,7 @@ in the edit window.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorGetMessageTextFieldID</Function>&hairsp;()</Term>
+<Term><Function>DtEditorGetMessageTextFieldID</Function>()</Term>
 <ListItem>
 <Para>Retrieves the widget ID of the Text Field
 widget used to display application messages.
@@ -2584,7 +2584,7 @@ widget used to display application messages.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorGetSizeHints</Function>&hairsp;()</Term>
+<Term><Function>DtEditorGetSizeHints</Function>()</Term>
 <ListItem>
 <Para>Retrieves sizing information from a DtEditor
 widget.
@@ -2592,21 +2592,21 @@ widget.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorGoToLine</Function>&hairsp;()</Term>
+<Term><Function>DtEditorGoToLine</Function>()</Term>
 <ListItem>
 <Para>Moves the insert cursor to the specified line.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorSetInsertionPosition</Function>&hairsp;()</Term>
+<Term><Function>DtEditorSetInsertionPosition</Function>()</Term>
 <ListItem>
 <Para>Sets the position of the insertion cursor.
 </Para>
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorTraverseToEditor</Function>&hairsp;()</Term>
+<Term><Function>DtEditorTraverseToEditor</Function>()</Term>
 <ListItem>
 <Para>Sets keyboard traversal to the edit window of a DtEditor
 widget.
@@ -2614,7 +2614,7 @@ widget.
 </ListItem>
 </VarListEntry>
 <VarListEntry>
-<Term><Function>DtEditorUndoEdit</Function>&hairsp;()</Term>
+<Term><Function>DtEditorUndoEdit</Function>()</Term>
 <ListItem>
 <Para>Undoes the last edit made by a user.
 </Para>
@@ -2627,7 +2627,7 @@ widget.
 <Title>FILES</Title>
 <VariableList>
 <VarListEntry>
-<Term><Emphasis>/usr/dt/lib/nls/msg/$LANG/DtWidget.cat</Emphasis>&hairsp;()</Term>
+<Term><Emphasis>/usr/dt/lib/nls/msg/$LANG/DtWidget.cat</Emphasis>()</Term>
 <ListItem>
 <Para>Message catalog for DtWidget library.
 </Para>
