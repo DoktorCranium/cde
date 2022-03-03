@@ -35,7 +35,7 @@ Formal Public Identifier (FPI):
          &lt;!-- DTINFO Architectural Forms --&gt;
 
 &lt;!ENTITY % OLAF PUBLIC
-        "-//X Consortium//ENTITIES DTINFO Architectural Forms//EN&rdquo;
+        "-//X Consortium//ENTITIES DTINFO Architectural Forms//EN"
 &gt;
 %OLAF;
 
@@ -48,7 +48,7 @@ Formal Public Identifier (FPI):
             StyleSheet        IDREF        &num;REQUIRED
 
             %DTINFO.Bookcase;
-            %DTINFO.Style;                "attr( StyleSheet )&rdquo;
+            %DTINFO.Style;                "attr( StyleSheet )"
 &gt;
 
 &lt;!ELEMENT BookcaseName - - ( &num;PCDATA) &gt;
@@ -65,7 +65,7 @@ Formal Public Identifier (FPI):
             StyleSheet        IDREF        &num;IMPLIED
 
             %DTINFO.Book;
-            %DTINFO.Style;            "attr( StyleSheet )&rdquo;
+            %DTINFO.Style;            "attr( StyleSheet )"
 &gt;
 
 &lt;!ELEMENT Title - - ( &num;PCDATA) &gt;
@@ -94,7 +94,7 @@ Formal Public Identifier (FPI):
             TabLoc        CDATA        &num;REQUIRED
 
             %DTINFO.BookTab;
-            %DTINFO.IDREF;                "attr( TabLoc )&rdquo;
+            %DTINFO.IDREF;                "attr( TabLoc )"
 &gt;
 
 &lt;!--
@@ -113,7 +113,7 @@ Formal Public Identifier (FPI):
              &lt;!-- Style Sheet DTD --&gt;
 
 &lt;!ENTITY % StyleSheet.dtd PUBLIC
-        "-//X Consortium//DTD DTINFO Style Sheet//EN&rdquo;
+        "-//X Consortium//DTD DTINFO Style Sheet//EN"
 &gt;
 %StyleSheet.dtd;</LITERALLAYOUT>
 </RefSect1>

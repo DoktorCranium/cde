@@ -58,7 +58,7 @@ Suffix, Header and Footer features.)
 
         id=chapnum
 
-        reset=&rdquo;Book Part&rdquo;
+        reset="Book Part"
 
         counter=chapter&gt;
 </LITERALLAYOUT>
@@ -70,11 +70,11 @@ Suffix, Header and Footer features.)
 
         type=UCroman
 
-        initial=&rdquo;I&rdquo;
+        initial="I"
 
         delta=l
 
-        counter=&rdquo;FIG TABLE&rdquo;
+        counter="FIG TABLE"
 
         reset=chap&gt;
 

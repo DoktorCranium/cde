@@ -214,7 +214,7 @@ to stderr:</para>
 <para>Make sure that DISPLAY is set properly.</para>
 </listitem>
 </varlistentry>
-<varlistentry><term>cannot open display &lsquo;<emphasis>display_name</emphasis>&rsquo;&rdquo;</term>
+<varlistentry><term>cannot open display &lsquo;<emphasis>display_name</emphasis>&rsquo;"</term>
 <listitem>
 <para>Make sure that DISPLAY is set to the correct value.</para>
 </listitem></varlistentry>

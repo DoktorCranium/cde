@@ -50,13 +50,13 @@ definition
           &lt;!-- DTINFO Architectural Forms --&gt;
 
 &lt;!ENTITY % OLAF PUBLIC
- "-//X Consortium//ENTITIES DTINFO Architectural Forms//EN&rdquo;
+ "-//X Consortium//ENTITIES DTINFO Architectural Forms//EN"
 &gt;
 %OLAF;
 
 &lt;!ENTITY % userphrase.gp "" &gt;
 
-&lt;!ENTITY % inlinechar.gp "&num;PCDATA %userphrase.gp;&rdquo; &gt;
+&lt;!ENTITY % inlinechar.gp "&num;PCDATA %userphrase.gp;" &gt;
 
 
 &lt;!ELEMENT TOC - - ( Title, TitleAbbrev?, TOCfront*, (TOCpart+ | TOCchap+), TOCback*) &gt;
@@ -64,15 +64,15 @@ definition
             Id        ID        &num;REQUIRED
 
             %DTINFO.TOC;
-            %DTINFO.ID;                "attr( Id )&rdquo;
+            %DTINFO.ID;                "attr( Id )"
 &gt;
 
 &lt;!ELEMENT Title - - ( (%inlinechar.gp;)+) &gt;
 &lt;!ATTLIST Title
             Id        ID        &num;IMPLIED
 
-            %DTINFO.Title;                "&num;CONTENT&rdquo;
-            %DTINFO.ID;                "attr( Id )&rdquo;
+            %DTINFO.Title;                "&num;CONTENT"
+            %DTINFO.ID;                "attr( Id )"
             %DTINFO.Scope.Title;
 &gt;
 
@@ -80,15 +80,15 @@ definition
 &lt;!ATTLIST TitleAbbrev
             Id        ID        &num;IMPLIED
 
-            %DTINFO.ShortTitle;                "&num;CONTENT&rdquo;
-            %DTINFO.ID;                "attr( Id )&rdquo;
+            %DTINFO.ShortTitle;                "&num;CONTENT"
+            %DTINFO.ID;                "attr( Id )"
 &gt;
 
 &lt;!ELEMENT TOCfront - - ( (%inlinechar.gp;)+) &gt;
 &lt;!ATTLIST TOCfront
             Id        ID        &num;IMPLIED
 
-            %DTINFO.ID;                "attr( Id )&rdquo;
+            %DTINFO.ID;                "attr( Id )"
 &gt;
 
 &lt;!ELEMENT TOCentry - - ( (%inlinechar.gp;)+) &gt;
@@ -97,14 +97,14 @@ definition
             Linkend        CDATA        &num;REQUIRED
             Pagenum        CDATA        &num;IMPLIED
 
- %DTINFO.ID; "attr( Id )&rdquo;
- %DTINFO.IDREF; "attr( Linkend )&rdquo;
+ %DTINFO.ID; "attr( Id )"
+ %DTINFO.IDREF; "attr( Linkend )"
 &gt;
 
 &lt;!ELEMENT TOCpart - - ( TOCentry+, TOCchap*) &gt;
 &lt;!ATTLIST TOCpart
             Id        ID        &num;IMPLIED
-            %DTINFO.ID;                "attr( Id )&rdquo;
+            %DTINFO.ID;                "attr( Id )"
             %DTINFO.TOCEntry;
 &gt;
 
@@ -112,7 +112,7 @@ definition
 &lt;!ATTLIST TOCchap
             Id        ID        &num;IMPLIED
 
-            %DTINFO.ID;                "attr( Id )&rdquo;
+            %DTINFO.ID;                "attr( Id )"
             %DTINFO.TOCEntry;
 &gt;
 
@@ -120,7 +120,7 @@ definition
 &lt;!ATTLIST TOClevel1
             Id        ID        &num;IMPLIED
 
-            %DTINFO.ID;                "attr( Id )&rdquo;
+            %DTINFO.ID;                "attr( Id )"
             %DTINFO.TOCEntry;
 &gt;
 
@@ -128,7 +128,7 @@ definition
 &lt;!ATTLIST TOClevel2
             Id        ID        &num;IMPLIED
 
-            %DTINFO.ID;                "attr( Id )&rdquo;
+            %DTINFO.ID;                "attr( Id )"
             %DTINFO.TOCEntry;
 
 &gt;
@@ -137,7 +137,7 @@ definition
 &lt;!ATTLIST TOClevel3
             Id        ID        &num;IMPLIED
 
-            %DTINFO.ID;            "attr( Id )&rdquo;
+            %DTINFO.ID;            "attr( Id )"
             %DTINFO.TOCEntry;
 &gt;
 
@@ -145,7 +145,7 @@ definition
 &lt;!ATTLIST TOClevel4
             Id        ID        &num;IMPLIED
 
-            %DTINFO.ID;                "attr( Id )&rdquo;
+            %DTINFO.ID;                "attr( Id )"
             %DTINFO.TOCEntry;
 &gt;
 
@@ -153,7 +153,7 @@ definition
 &lt;!ATTLIST TOClevel5
             Id        ID        &num;IMPLIED
 
-            %DTINFO.ID;                "attr( Id )&rdquo;
+            %DTINFO.ID;                "attr( Id )"
             %DTINFO.TOCEntry;
 &gt;
 
@@ -161,7 +161,7 @@ definition
 &lt;!ATTLIST TOCback
             Id        ID        &num;IMPLIED
 
- %DTINFO.ID; "attr( Id )&rdquo;
+ %DTINFO.ID; "attr( Id )"
 &gt;
 </LITERALLAYOUT>
 </RefSect1>
