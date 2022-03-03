@@ -306,7 +306,6 @@ customizePrintSetupBox(AppPrintData *p)
     f_selected_field = selected_field = XtVaCreateManagedWidget("selected_field",
 					       xmLabelWidgetClass, 
 					       how_many_form, 
-					       XmNlabelString, label,
 					       XmNalignment, XmALIGNMENT_END,
 					       XmNrightAttachment, XmATTACH_FORM,
 					       XmNrightOffset, 2,
@@ -584,6 +583,21 @@ CancelCB(Widget print_dialog, XtPointer client_data, XtPointer call_data)
 
 /*
  * ------------------------------------------------------------------------
+ * Name: DestroyCB
+ *
+ * Description:
+ *
+ *     Called when the Print Setup dialog is destroyed.
+ *
+ */
+static void
+DestroyCB(Widget print_dialog, XtPointer client_data, XtPointer call_data)
+{
+    ((AppPrintData*)client_data)->f_print_dialog = NULL;
+}
+
+/*
+ * ------------------------------------------------------------------------
  * Name: CreatePrintSetup
  *
  * Description:
@@ -676,6 +690,7 @@ CreatePrintSetup(Widget parent, AppPrintData* p)
 
         XtAddCallback(p->f_print_dialog, DtNprintCallback, PrintCB, (XtPointer)p);
         XtAddCallback(p->f_print_dialog, DtNcancelCallback, CancelCB, (XtPointer)p);
+        XtAddCallback(p->f_print_dialog, XmNdestroyCallback, DestroyCB, (XtPointer)p);
 
 	// add context help for dialog
 
