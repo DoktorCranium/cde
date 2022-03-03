@@ -323,20 +323,20 @@ activateHelpCB(Widget w, XtPointer client_data, XtPointer)
 void
 HelpAgent::add_activate_help (Widget w, const String locator_id)
 {
-  XtAddCallback(w, XmNactivateCallback, activateHelpCB, (XtPointer)locator_id);
+  XtAddCallback(w, XmNhelpCallback, activateHelpCB, (XtPointer)locator_id);
   add_help_cb(w);
 }
 
 void
 HelpAgent::add_activate_help (WXmPushButton& w, const String locator_id)
 {
-  XtAddCallback((Widget)w, XmNactivateCallback, activateHelpCB, (XtPointer)locator_id);
+  XtAddCallback((Widget)w, XmNhelpCallback, activateHelpCB, (XtPointer)locator_id);
 }
 
 void
 HelpAgent::add_activate_help (WXmPushButtonGadget& w, const String locator_id)
 {
-  XtAddCallback((Widget)w, XmNactivateCallback, activateHelpCB, (XtPointer)locator_id);
+  XtAddCallback((Widget)w, XmNhelpCallback, activateHelpCB, (XtPointer)locator_id);
 }
 
 void
